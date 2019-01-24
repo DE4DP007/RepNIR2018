@@ -1,0 +1,888 @@
+\section{Приближение непрерывных $2\pi$-периодических кусочно гладких функций дискретными суммами Фурье}
+
+\subsection{Аннотация}
+Пусть $N \geq 2$ --- некоторое натуральное число. Выберем на вещественной оси $N$ равномерно расположенных точек $t_k=2\pi k / N + u$ $(0 \leq k \leq N-1)$.
+Обозначим через $L_{n,N}(f)=L_{n,N}(f,x)$ $(1\leq n\leq N/2)$ тригонометрический полином порядка $n$, обладающий наименьшим квадратичным отклонением от $f$ относительно системы $\{t_k\}_{k=0}^{N-1}$. Выберем $m+1$ точку $-\pi=a_{0}<a_{1}<\ldots<a_{m-1}<a_{m}=\pi$, где $m\geq 2$, и обозначим $\Omega=\left\{a_i\right\}_{i=0}^{m}$. Через $C_{\Omega}^{r}$ обозначим класс $2\pi$-периодических непрерывных функций $f$, $r$-раз дифференцируемых на каждом сегменте  $\Delta_{i}=[a_{i},a_{i+1}]$, причем 
+производная $f^{(r)}$ на каждом $\Delta_{i}$ абсолютно непрерывна.
+В данной работе рассмотрена задача приближения функций $f\in C_{\Omega}^{2}$ полиномами $L_{n,N}(f,x)$.
+Показано, что вместо оценки $\left|f(x)-L_{n,N}(f,x)\right| \leq c\ln n/n$, которая следует из известного неравенства Лебега, найдена точная по порядку оценка $\left|f(x)-L_{n,N}(f,x)\right| \leq c/n$ ($x \in \mathbb{R}$), которая равномерна относительно $1 \leq n \leq N/2$.
+Кроме того, найдена локальная оценка $\left|f(x)-L_{n,N}(f,x)\right| \leq c(\varepsilon)/n^2$ ($\left|x - a_i\right| \geq \varepsilon$), которая также равномерна относительно $1 \leq n \leq N/2$.
+Доказательства этих оценок основаны на сравнении дискретных и непрерывных конечных сумм ряда Фурье.
+
+\subsection{Введение}
+%Сначала введем некоторые обозначения.
+%Пусть $\Omega$ 
+Пусть $\Omega$ --- множество из $m+1$ точек $\left\{ a_{i}\right\} _{i=0}^{m}$ $(m > 2)$, таких, что $-\pi=a_{0}<a_{1}<\ldots<a_{m-1}<a_{m}=\pi$.
+Обозначим через $C_\Omega^{0,r}$ класс всех $2\pi$-периодических функций с $r$ абсолютно непрерывными производными на каждом интервале $(a_i, a_{i+1})$,
+и через $C_\Omega^{r}$ обозначим подкласс всех непрерывных функций из $C_\Omega^{0,r}$ (здесь мы говорим, что $f$ абсолютно непрерывна на интервале $(a,b)$ 
+если функция $\overline{f}$ абсолютно непрерывна на сегменте $[a,b]$, где $\overline{f}(x) = f(x)$ для $x \in (a,b)$, $\overline{f}(a) = f(a+0)$, и $\overline{f}(b) = f(b-0)$). 
+
+Через $L_{n,N}(f,x)$ обозначим
+тригонометрических полином порядка $n$ обладающих наименьшим квадратичным отклонением от функции $f$ в точках $\left\{t_{j}\right\} _{i=0}^{N-1}$,
+где $t_{j}=u+2\pi j / N$, $n \leq N/2$, $N \geq 2$, и $u \in \mathbb{R}$. 
+Другими словами, $L_{n,N}(f,x)$ доставляет минимум сумме 
+$
+\sum_{j=0}^{N-1}\left|f(t_{j})-T_{n}(t_{j})\right|^{2}
+$
+на множестве всех тригонометрических полиномов степени не выше $n$. 
+Подробнее о приближении функций тригонометрическими полиномами можно прочитать в работах 
+\cite{2_bernstein,4_erdos,7_kalashnikov,8_krilov,9_marcinkiewicz,10_marcinkiewicz,11_natanson,12_nikolsky,18_zigmund,17_turetsky}.
+
+Также, мы будем обозначать через $c$ или $c(b_1, b_2, \ldots, b_k)$ некие положительные константы, которые зависят только от указанных аргументов и могут 
+различаться в разных местах в тексте.  Через $S_n(f,x)$ обозначим $n$-ю частичную сумму ряда Фурье функции $f$. 
+Также отметим, что легко показать, что ряд Фурье любой функции $f \in C_\Omega^{2}$ 
+сходится равномерно на $\mathbb{R}$ и возможно следующее представление:
+\begin{equation}\label{f_as_Fourier}
+f(x) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left(a_k \cos kx + b_k \sin kx\right),
+\end{equation} 
+где
+\begin{equation}\label{akbk_definition}
+a_k = \frac1\pi \int_{-\pi}^{\pi} f(t) \cos kt dt,\quad b_k = \frac1\pi \int_{-\pi}^{\pi} f(t) \sin kt dt.
+\end{equation}
+
+
+The goal of this work is to estimate the value $\left|f(x)-L_{n,N}(f,x)\right|$ for $f\in C_{\Omega}^{2}$.
+Note that the special case of this problem is considered in \cite{akniyev}, where the value $\left|f(x)-L_{n,N}(f,x)\right|$ is estimated for a $2\pi$-periodic function $f(x) = |x|$ ($x \in [-\pi,\pi]$).
+In this work, we generalize the results from \cite{akniyev} for any function $f \in C_{\Omega}^{2}$, as stated in the following theorem:
+\begin{theorem}
+	\label{Th1} For $f\in C_{\Omega}^{2}$ the following inequalities hold:
+	\begin{equation}\label{Th1:eq1}
+	\left|f(x)-L_{n,N}(f,x)\right|\leq\frac{c(f)}{n},\quad x\in\mathbb{R},
+	\end{equation}
+	\begin{equation}\label{Th1:eq2}
+	\left|f(x)-L_{n,N}(f,x)\right|\leq\frac{c(f,\varepsilon)}{n^{2}},\quad x\in\left|x-a_{i}\right|\geq\varepsilon.
+	\end{equation}
+	The order of these estimates cannot be improved.
+\end{theorem}
+To prove this theorem we use a lemma from \cite{shii-1983}:
+\begin{lemma}[Sharapudinov, \cite{shii-1983}]
+	If the Fourier series of $f$ converges at the points $t_{k}=u+2k\pi/N$,
+	then the representation 
+	\begin{equation}
+	L_{n,N}(f,x)=S_{n}(f,x)+R_{n,N}(f,x),\label{eq:Lemma1_eq}
+	\end{equation}
+	where
+	\begin{equation}
+	R_{n,N}(f,x)=\frac{2}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}D_{n}(x-t)\cos\mu N(u-t)f(t)dt,\label{eq:RnN1}
+	\end{equation}
+	holds true, where $2n<N$ and $D_{n}(x)$ is the Dirichlet kernel:
+	\begin{equation}\label{eq:D(x)}
+	D_{n}(x)=\frac{1}{2}+\sum_{k=1}^{n}\cos kx.
+	\end{equation}
+\end{lemma}
+This lemma considers only the case $2n < N$. If $2n=N$ (when $N$ is even) we can write (see \cite{shii-1983})
+\begin{equation}
+L_{n,2n}(f,x)=L_{n-1,2n}(f,x)+a_{n}^{(2n)}(f)\cos n(x-u),\label{eq:Ln2n_est}
+\end{equation}
+where
+\begin{equation}
+a_{n}^{(2n)}(f)=\frac{1}{2n}\sum_{k=0}^{2n-1}f(t_{k})\cos n(t_{k}-u).\label{eq:a_n_formula}
+\end{equation}
+To prove the inequalities \eqref{Th1:eq1} and \eqref{Th1:eq2} from Theorem \ref{Th1} we use the formulas 
+\begin{equation}
+\left|f(x)-L_{n,N}(f,x)\right|\leq\left|f(x)-S_{n}(f,x)\right|+\left|R_{n,N}(f,x)\right|,\quad n<N/2,\label{eq:Th_est1}
+\end{equation}
+\begin{equation}
+\left|f(x)-L_{n,N}(f,x)\right|\leq
+\left|f(x)-S_{n-1}(f,x)\right|+\left|R_{n-1,N}(f,x)\right|+\left|a_{n}^{(2n)}(f)\right|,\quad n=N/2\label{eq:Th_est_2},
+\end{equation}
+which immediately follow from \eqref{eq:Lemma1_eq} and \eqref{eq:Ln2n_est}.
+%	The value $\left|f(x)-S_{n}(f,x)\right|$ from (\ref{eq:Th_est1}) and
+%	(\ref{eq:Th_est_2}) can be estimated (see \cite{mkasumov}) as %is estimated in \cite{mkasumov} and the 
+%	\begin{equation}
+%	\left|f(x)-S_{n}(f,x)\right|\leq\frac{c(f)}{n},\quad x\in\mathbb{R},\label{eq:fSn_est1}
+%	\end{equation}
+%	\begin{equation}
+%	\left|f(x)-S_{n}(f,x)\right|\leq\frac{c(f,\varepsilon)}{n^{2}},\quad\left|x-a_{i}\right|\geq\varepsilon.\label{eq:fSn_est2}
+%	\end{equation}
+The estimates for the values $\left|f(x)-S_{n}(f,x)\right|$, $\left|R_{n,N}(f,x)\right|$, and $|a_{n}^{(2n)}(f)|$ are found in the following sections.
+
+\subsection{The estimate for $\left|f(x)-S_{n}(f,x)\right|$}
+To estimate the value $\left|f(x)-S_{n}(f,x)\right|$ we need the following lemma:
+\begin{lemma} \label{l_int_estimate}
+	For $f \in C_\Omega^2$ the following inequality holds:
+	\begin{equation*}
+	\left|\intop_{-\pi}^{\pi}f(t)h_{p}(k(t+\alpha))dt\right|\leq\ \frac{c(f)}{k^{2}},
+	\end{equation*}
+	where $k \in \mathbb{N}$, $\alpha \in \mathbb{R}$, and
+	\begin{equation} \label{h_func_introduction}
+	h_{p}(x)=\begin{cases}
+	\cos x, & p=0,\\
+	\sin x, & p=1.
+	\end{cases}
+	\end{equation}
+\end{lemma}
+%\begin{proof}
+%	Performing integration by parts two times we have
+%	\begin{multline*}
+%	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t+\alpha))dt=\frac{(-1)^{p+1}}{k}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t+\alpha))dt=\\
+%	%			\frac{1}{k^{2}}\sum_{i=0}^{m-1}\left[\left.f^{'}(t)h_{p}(k(t+\alpha))\right|_{a_{i}}^{a_{i+1}}-\intop_{a_{i}}^{a_{i+1}}f^{''}(t)h_{p}(k(t+\alpha))dt\right]=\\
+%	\frac{1}{k^{2}}\left[\sum_{i=0}^{m-1}\left(f^{'}(a_{i}-0)-f^{'}(a_{i}+0)\right)h_{p}(k(a_{i}+\alpha))-\intop_{-\pi}^{\pi}f^{''}(t)h_{p}(k(t+\alpha))dt\right].
+%	\end{multline*}
+%	From this we can get the estimate
+%	\begin{equation*}
+%	\left|\intop_{-\pi}^{\pi}f(t)h_{p}(k(t+\alpha))dt\right| \leq
+%	\frac{1}{k^{2}}\left[\sum_{i=0}^{m-1}\left|f^{'}(a_{i}-0)-f^{'}(a_{i}+0)\right|+\intop_{-\pi}^{\pi}\left|f^{''}(t)\right|dt\right]\leq\frac{c(f)}{k^{2}}.
+%	\end{equation*}
+%\end{proof}
+%	The following lemma holds.
+\begin{lemma}
+	For $f \in C^2_\Omega$ the following inequalities hold:
+	\begin{equation}
+	\left|f(x)-S_{n}(f,x)\right|\leq\frac{c(f)}{n},\quad x\in\mathbb{R},\label{eq:fSn_est1}
+	\end{equation}
+	\begin{equation}
+	\left|f(x)-S_{n}(f,x)\right|\leq\frac{c(f,\varepsilon)}{n^{2}},\quad\left|x-a_{i}\right|\geq\varepsilon.\label{eq:fSn_est2}
+	\end{equation}
+\end{lemma}
+%\begin{proof}
+%	Here we prove only  \eqref{eq:fSn_est1} because the proof for inequality \eqref{eq:fSn_est2} can be found in \cite[Theorem 2.1]{shii-2017}. 
+%	Using \eqref{f_as_Fourier} and \eqref{akbk_definition} we can write
+%	$
+%	f(x)-S_{n}(f,x) = \sum_{k=n+1}^\infty \left(a_k \cos kx + b_k \sin kx\right).
+%	$
+%	Applying Lemma \ref{l_int_estimate} to \eqref{akbk_definition} we get
+%	$|a_k| \leq {c(f)}/{k^2}$, and $|b_k| \leq {c(f)}/{k^2}$,
+%	which gives us
+%	$
+%	\left|f(x)-S_{n}(f,x)\right| \leq \sum_{k=n+1}^{\infty} (|a_k| + |b_k|) \leq {c(f)}/{n}.
+%	$
+%	
+%\end{proof}
+
+\subsection{The estimate for $\left|R_{n,N}(f,x)\right|$}
+
+From \eqref{eq:RnN1} and \eqref{eq:D(x)} follows
+$
+R_{n,N}(f,x)=R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x),
+$
+where
+\begin{equation*}
+R_{n,N}^{1}(f,x)=\frac{1}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}f(t)\cos\mu N(u-t)dt,\label{eq:R1_formula1}
+\end{equation*}
+\begin{equation}
+R_{n,N}^{2}(f,x)=\frac{2}{\pi}\sum_{\mu=1}^{\infty}\sum_{k=1}^{n}\intop_{-\pi}^{\pi}f(t)\cos k(x-t)\cos\mu N(u-t)dt.\label{eq:R2_formula1}
+\end{equation}
+Obviously,
+$
+\left|R_{n,N}(f,x)\right| \leq \left|R_{n,N}^{1}(f,x)\right| + \left|R_{n,N}^{2}(f,x)\right|
+$. The values $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\right|$ are estimated later in this section, but first we prove three auxiliary lemmas.
+
+\begin{lemma}\label{hlemma}
+	For $f \in C_\Omega^{0,1}$ the following holds:
+	\begin{multline}\label{hlemma_eq1}
+	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
+	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))-\\
+	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt+\\
+	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{1-p}(k(a_{i}-x))h_{q}(\mu N(a_{i}-u))-\\
+	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t-x))h_{q}(\mu N(t-u))dt.
+	\end{multline}
+\end{lemma}
+
+%\begin{proof}
+%	Perform integration by parts:
+%	\begin{multline} \label{lemma_first_step}
+%	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
+%	\frac{(-1)^{q}}{\mu N}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))- \\
+%	\frac{(-1)^{q}}{\mu N}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt+ \\
+%	\frac{(-1)^{p+q}k}{\mu N}\intop_{-\pi}^{\pi}f(t)h_{1-p}(k(t-x))h_{1-q}(\mu N(t-u))dt.
+%	\end{multline}
+%	Repeat integration by parts for the last integral in \eqref{lemma_first_step}:
+%	\begin{multline*}
+%	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
+%	\frac{(-1)^{q}}{\mu N}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))- \\
+%	\frac{(-1)^{q}}{\mu N}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt+ \\
+%	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{1-p}(k(a_{i}-x))h_{q}(\mu N(a_{i}-u))-\\
+%	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t-x))h_{q}(\mu N(t-u))dt+
+%	\frac{k^{2}}{\left(\mu N\right)^{2}}\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt.
+%	\end{multline*}
+%	By moving the last integral from the right side to the left and dividing both sides by $\frac{\left(\mu N\right)^{2} - k^{2}}{\left(\mu N\right)^{2}}$ we get \eqref{hlemma_eq1}.
+%\end{proof}
+
+\begin{corollary} \label{cor_hlemma}
+	If $f \in C_\Omega^2$, then $f(a_i - 0) - f(a_i + 0) = 0$, so we can write \eqref{hlemma_eq1} as
+	\begin{multline*}
+	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= 
+	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt-\\
+	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t-x))h_{q}(\mu N(t-u))dt.
+	\end{multline*}
+\end{corollary}
+
+\begin{lemma} \label{hx_sum_estimate}
+	The following estimate holds:
+	\begin{equation*}
+	\left|\sum_{k=1}^{n}h_{p}(kx)\right|\leq\frac{1}{\left|\sin\frac{x}{2}\right|}.
+	\end{equation*}
+\end{lemma}
+%\begin{proof}
+%	The proof is obvious and follows from well-known formulas
+%	\begin{equation*}
+%	\sum_{k=1}^{n}\sin(kx)=\frac{\sin\left(\frac{n+1}{2}x\right)\sin\left(\frac{nx}{2}\right)}{\sin\left(\frac{x}{2}\right)},\quad\sum_{k=1}^{n}\cos(kx)=\frac{\cos\left(\frac{n+1}{2}x\right)\sin\left(\frac{nx}{2}\right)}{\sin\left(\frac{x}{2}\right)}.
+%	\end{equation*}
+%\end{proof}
+
+\begin{lemma}\label{akhkx_estimate}
+	Let $\alpha_1,\alpha_2, \ldots, \alpha_n$ be a monotonous sequence (either increasing or decreasing) of $n$ positive numbers. The following holds:
+	$$
+	\left|\sum_{k=1}^{n} \alpha_{k} h_p(kx)\right| \leq \frac{2\alpha_n + \alpha_1}{\left|\sin \frac{x}{2}\right|}.
+	$$
+\end{lemma}
+
+%\begin{proof}
+%	After performing Abel transformation (summation by parts) we have:
+%	$$
+%	\sum_{k=1}^{n}\alpha_{k}h_{p}(kx)=\alpha_{n}\sum_{j=1}^{n}h_{p}(jx)-\sum_{k=1}^{n-1}\left(\alpha_{k+1}-\alpha_{k}\right)\sum_{j=1}^{k}h_{p}(jx).
+%	$$
+%	Using Lemma \ref{hx_sum_estimate} and the fact that $\sum_{k=1}^{n} \left|\alpha_{k+1} - \alpha_{k}\right| = \left|\sum_{k=1}^{n} \alpha_{k+1} - \alpha_{k}\right|$ we can write
+%	\begin{multline*}
+%	\left|\sum_{k=1}^{n}\alpha_{k}h_{p}(kx)\right|\leq
+%	\alpha_{n}\left|\sum_{j=1}^{n}h_{p}(jx)\right|+\sum_{k=1}^{n-1}\left|\alpha_{k+1}-\alpha_{k}\right|\left|\sum_{j=1}^{k}h_{p}(jx)\right|\leq\\
+%	\frac{1}{\left|\sin\frac{x}{2}\right|}\left(\alpha_{n}+\left|\sum_{k=1}^{n-1}\alpha_{k+1}-\alpha_{k}\right|\right)\leq
+%	\frac{2\alpha_{n}+\alpha_{1}}{\left|\sin\frac{x}{2}\right|}.
+%	\end{multline*}
+%\end{proof}
+
+\begin{lemma}
+	The following inequality holds:
+	$
+	\left|R_{n,N}^{1}(f,x)\right|\leq{c(f)}/{N^{2}}.
+	$
+\end{lemma}
+%\begin{proof}
+%	Using Lemma \ref{l_int_estimate} we have
+%	$$
+%	\left|R_{n,N}^{1}(f,x)\right|
+%	\leq
+%	\frac{1}{\pi}\sum_{\mu=1}^{\infty}\left|\intop_{-\pi}^{\pi}f(t)\cos\mu N(u-t)dt\right| \leq
+%	\frac{c(f)}{N^{2}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{2}}\leq\frac{c(f)}{N^{2}}.
+%	$$
+%\end{proof}
+
+
+
+\begin{lemma} 
+	The following estimates hold:
+	\begin{equation} 
+	\left|R_{n,N}^{2}(f,x)\right|\leq\frac{nc(f)}{N^2},\quad x\in\mathbb{R},\label{eq:Lemma3_firsteq}
+	\end{equation}
+	\begin{equation} 
+	\left|R_{n,N}^{2}(f,x)\right|\leq\frac{c(f,\varepsilon)}{N^{2}},\quad\left|x-a_{i}\right|\geq\varepsilon.\label{eq:Lemma3_secondeq}
+	\end{equation}
+\end{lemma}
+
+
+
+%\begin{proof}
+%	Rewrite \eqref{eq:R2_formula1} using \eqref{h_func_introduction}:
+%	\begin{equation*}
+%	R_{n,N}^{2}(f,x)=
+%	\frac{2}{\pi}\sum_{\mu=1}^{\infty}\sum_{k=1}^{n}\intop_{-\pi}^{\pi}f(t)h_{0}(k(t-x))h_{0}(\mu N(t-u))dt.
+%	\end{equation*}
+%	Using Corollary \ref{cor_hlemma} rewrite the above formula as follows:
+%	\begin{multline*}
+%	R_{n,N}^{2}(f,x)=\frac{2}{\pi N}\sum_{\mu=1}^{\infty}\frac{1}{\mu}\sum_{k=1}^{n}\frac{1}{1-\left(\frac{k}{\mu N}\right)^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{0}(k(t-x))h_{1}(\mu N(t-u))dt+\\
+%	\frac{2}{\pi N}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{2}}\sum_{k=1}^{n}\frac{k}{N}\frac{1}{1-\left(\frac{k}{\mu N}\right)^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1}(k(t-x))h_{0}(\mu N(t-u))dt=
+%	R_{n,N}^{2.1}(f,x)+R_{n,N}^{2.2}(f,x).
+%	\end{multline*}
+%	For brevity we only consider here estimation of  $\left|R_{n,N}^{2.1}(f,x)\right|$ because $\left|R_{n,N}^{2.2}(f,x)\right|$ can be estimated in almost the same way.
+%	Obviously, $f^{'} \in C^{0,1}_\Omega$, so we can apply Lemma \ref{hlemma} to $R_{n,N}^{2.1}(f,x)$:
+%	\begin{multline*}
+%	R_{n,N}^{2.1}(f,x)=\\
+%	\frac{-2}{\pi N^{2}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{2}}\sum_{k=1}^{n}\frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}\sum_{i=0}^{m-1}\left(f^{'}(a_{i}-0)-f^{'}(a_{i}+0)\right)h_{0}(k(a_{i}-x))h_{0}(\mu N(a_{i}-u))+\\\frac{2}{\pi N^{2}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{2}}\sum_{k=1}^{n}\frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}\intop_{-\pi}^{\pi}f^{''}(t)h_{0}(k(t-x))h_{0}(\mu N(t-u))dt+\\\frac{-2}{\pi N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{3}}\sum_{k=1}^{n}\frac{k}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}\sum_{i=0}^{m-1}\left(f^{'}(a_{i}-0)-f^{'}(a_{i}+0)\right)h_{1}(k(a_{i}-x))h_{1}(\mu N(a_{i}-u))+\\\frac{2}{\pi N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{3}}\sum_{k=1}^{n}\frac{k}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}\intop_{-\pi}^{\pi}f^{''}(t)h_{1}(k(t-x))h_{1}(\mu N(t-u))dt = \\
+%	R_{n,N}^{2.1.1}(f,x)+R_{n,N}^{2.1.2}(f,x)+R_{n,N}^{2.1.3}(f,x)+R_{n,N}^{2.1.4}(f,x).
+%	\end{multline*}
+%	%		First consider the values $R_{n,N}^{2.1.2}(f,x)$ and $R_{n,N}^{2.1.4}(f,x)$. 
+%	Begin with $R_{n,N}^{2.1.2}(f,x)$.
+%	Applying Lemma \ref{hlemma} we get
+%	\begin{multline*}
+%	R_{n,N}^{2.1.2}(f,x)=\\
+%	\frac{2}{\pi N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{3}}\sum_{k=1}^{n}\frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\sum_{i=0}^{m-1}\left(f^{''}(a_{i}-0)-f^{''}(a_{i}+0)\right)h_{0}(k(a_{i}-x))h_{1}(\mu N(a_{i}-u))+\\
+%	\frac{-2}{\pi N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{3}}\sum_{k=1}^{n}\frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\intop_{-\pi}^{\pi}f^{'''}(t)h_{0}(k(t-x))h_{1}(\mu N(t-u))dt+\\
+%	\frac{-2}{\pi N^{4}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{4}}\sum_{k=1}^{n}\frac{k}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\sum_{i=0}^{m-1}\left(f^{''}(a_{i}-0)-f^{''}(a_{i}+0)\right)h_{1}(k(a_{i}-x))h_{0}(\mu N(a_{i}-u))+\\
+%	\frac{2}{\pi N^{4}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{4}}\sum_{k=1}^{n}\frac{k}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\intop_{-\pi}^{\pi}f^{'''}(t)h_{1}(k(t-x))h_{0}(\mu N(t-u))dt.
+%	\end{multline*}
+%	From this we can get the estimate 
+%	\begin{multline*}
+%	\left|R_{n,N}^{2.1.2}(f,x)\right|\leq\frac{c}{N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{3}}\sum_{k=1}^{n}\frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\sum_{i=0}^{m-1}\left|f^{''}(a_{i}-0)-f^{''}(a_{i}+0)\right|+\\
+%	\frac{c}{N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{3}}\sum_{k=1}^{n}\frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\intop_{-\pi}^{\pi}\left|f^{'''}(t)\right|dt+\\
+%	\frac{c}{N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{4}}\sum_{k=1}^{n}\frac{k/N}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\sum_{i=0}^{m-1}\left|f^{''}(a_{i}-0)-f^{''}(a_{i}+0)\right|+\\
+%	\frac{c}{ N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{4}}\sum_{k=1}^{n}\frac{k/N}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\intop_{-\pi}^{\pi}\left|f^{'''}(t)\right|dt\leq\frac{c(f)}{N^{2}}.
+%	\end{multline*}
+%	In the same way we can get
+%	$
+%	\left|R_{n,N}^{2.1.4}(f,x)\right| \leq {c(f)}/{N^{2}}.
+%	$
+%	Now we consider $\left|R_{n,N}^{2.1.1}(f,x)\right|$ and $\left|R_{n,N}^{2.1.3}(f,x)\right|$. We will estimate here only $\left|R_{n,N}^{2.1.1}(f,x)\right|$ because the other one can be estimated in the similar way. After a simple transformation we have
+%	\begin{equation*}
+%	R_{n,N}^{2.1.1}(f,x)=
+%	\frac{-2}{\pi N^{2}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{2}}\sum_{i=0}^{m-1}\left(f^{'}(a_{i}-0)-f^{'}(a_{i}+0)\right)h_{0}(\mu N(a_{i}-u))\sum_{k=1}^{n}\frac{h_{0}(k(a_{i}-x))}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}.
+%	\end{equation*}
+%	From this we have the uniform estimate for $x \in \mathbb{R}$:
+%	\begin{equation*}
+%	\left|R_{n,N}^{2.1.1}(f,x)\right|\leq\frac{c}{N^{2}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{2}}\sum_{i=0}^{m-1}\left|f^{'}(a_{i}-0)-f^{'}(a_{i}+0)\right|\left|\sum_{k=1}^{n}\frac{h_{0}(k(a_{i}-x))}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}\right|\leq\frac{nc(f)}{N^{2}}.
+%	\end{equation*}
+%	Using Lemma \ref{akhkx_estimate} and assuming $\alpha_k = \frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^2 \right)^2}$ we have
+%	$$
+%	\left|\sum_{k=1}^{n}\frac{h_{p}(k(a_{i}-x))}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}\right|\leq\frac{1}{\left|\sin\frac{a_{i}-x}{2}\right|}\left(\frac{2}{\left(1-\left(\frac{n}{\mu N}\right)^{2}\right)^{2}}+\frac{1}{\left(1-\left(\frac{1}{\mu N}\right)^{2}\right)^{2}}\right)\leq\frac{c}{\left|\sin\frac{a_{i}-x}{2}\right|}.
+%	$$
+%	Now we can write
+%	$$
+%	\left|R_{n,N}^{2.1.1}(f,x)\right|\leq\frac{c}{N^{2}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{2}}\sum_{i=0}^{m-1}\frac{\left|f^{'}(a_{i}-0)-f^{'}(a_{i}+0)\right|}{\left|\sin\frac{a_{i}-x}{2}\right|}\leq\frac{c(f,\varepsilon)}{N^{2}}, \quad \left|x - a_i\right| \geq \varepsilon.
+%	$$
+%	In the similar way we can get
+%	$$
+%	\left|R_{n,N}^{2.1.3}(f,x)\right|\leq \frac{nc(f)}{N^2},\quad x \in \mathbb{R} \mbox{ and }
+%	\left|R_{n,N}^{2.1.3}(f,x)\right|\leq \frac{c(f,\varepsilon)}{N^2},\quad \left|x - a_i\right| \geq \varepsilon.
+%	$$
+%	Finally, for $R_{n,N}^{2.1}(f,x)$ we can write
+%	\begin{equation*}
+%	\left|R_{n,N}^{2.1}(f,x)\right| \leq \sum_{i=1}^{4}\left|R_{n,N}^{2.1.i}(f,x)\right| \leq \frac{nc(f)}{N^2}, \quad x \in \mathbb{R},
+%	\quad 
+%	\left|R_{n,N}^{2.1}(f,x)\right| \leq  \frac{c(f,\varepsilon)}{N^2}, \quad \left|x - a_i\right| \geq \varepsilon.
+%	\end{equation*}
+%	Using the same approach we can show that the value $\left|R_{n,N}^{2.2}(f,x)\right|$ has the same estimate as $\left|R_{n,N}^{2.1}(f,x)\right|$, which leads us to \eqref{eq:Lemma3_firsteq} and \eqref{eq:Lemma3_secondeq}.
+%\end{proof}
+
+From the previous lemmas and inequality $\left|R_{n,N}(f,x)\right|\leq\left|R_{n,N}^{1}(f,x)\right|+\left|R_{n,N}^{2}(f,x)\right|$
+follow estimates for $\left|R_{n,N}(f,x)\right|$:
+\begin{equation}
+\left|R_{n,N}(f,x)\right|\leq\frac{nc(f)}{N^2},\quad x\in\mathbb{R},\label{eq:R_est1}
+\end{equation}
+\begin{equation}
+\left|R_{n,N}(f,x)\right|\leq\frac{c(f,\varepsilon)}{N^{2}},\quad\left|x-a_{i}\right|\geq\varepsilon.\label{eq:R_est2}
+\end{equation}
+%	Now we should estimate the value $\left|a_{n}^{(2n)}(f)\right|$.
+
+\subsection{The estimate for $\left|a_{n}^{(2n)}(f)\right|$}
+
+%	The following lemma takes place:
+\begin{lemma}
+	\label{Lemma_af_est}For the value $a_{n}^{(2n)}(f)$, where $f\in C_{\Omega}^{2}$ and $2n=N$, the estimate $\left|a_{n}^{(2n)}(f)\right|\leq{c(f)}/{N^{2}}$
+	holds.
+\end{lemma}
+%\begin{proof}
+%	For each $f \in C_{\Omega}^{2}$ the sum
+%	$
+%	S=\sum_{k=0}^{2n-1}\left(f(t_{k})-f(t_{k+1})\right) = 0.
+%	$
+%	We can represent the above sum as $S = S_1 + S_2$, where
+%	$S_{1}=\sum_{k=0}^{n-1}\left(f(t_{2k})-f(t_{2k+1})\right)$, and $S_{2}=\sum_{k=0}^{n-1}\left(f(t_{2k+1})-f(t_{2k+2})\right)$.
+%	We can see, that $S_{1}=-S_{2}$ and $\left|S_{1}\right|=\left|S_{1}-S_{2}\right| / 2$.
+%	From the above formulas we can write the equation for $S_1 - S_2$:
+%	\begin{equation} \label{eq:S1-S2}
+%	S_{1}-S_{2}=\sum_{k=0}^{n-1}\left(f(t_{2k})-2f(t_{2k+1})+f(t_{2k+2})\right)=\sum_{k=0}^{n-1}\Delta^{2}f\left(t_{2k}\right).
+%	\end{equation}		
+%	Denote by $G$ the set of numbers $\bigcup_{i=0}^m\left\{ k:0\leq k<n,\ \left|t_{2k+1}-a_{i}\right|\leq\frac{2\pi}{N}\right\} $
+%	and $\hat{G}=\left\{k\right\}_{k=0}^{n-1} \setminus G$. 
+%	Rewrite \eqref{eq:S1-S2} by dividing it into two sums:
+%	$
+%	S_{1}-S_{2}=\sum_{k\in G}\Delta^{2}f(t_{2k})+\sum_{k\in\hat{G}}\Delta^{2}f(t_{2k}).
+%	$
+%	For every $k\in\hat{G}$ we have $|t_{2k+1} - a_i| > 2\pi / N$ ($0 \leq i \leq m$) so the points $t_{2k}$, $t_{2k+1}$, $t_{2k+2}$ 
+%	are inside some interval $(a_{i},a_{i+1})$, and the function $f\in C_{\Omega}^{2}$
+%	has an absolutely continuous derivative $f^{''}$ on $(a_{i},a_{i+1})$,
+%	therefore we can write
+%	$
+%	\left|\Delta^{2}f(t_{2k})\right|\leq\left(\frac{2\pi}{N}\right)^{2}\max_{x\in[-\pi,\pi]}\left|f^{''}(x)\right|.
+%	$ 
+%	For $k \in G$ we can write $\left|\Delta^{2}f(t_{2k})\right|\leq {c(f)}/{N}$, also note, that $|G| \leq 2m$. Therefore, we have
+%	\begin{equation}
+%	\left|S_{1}\right|=\frac{\left|S_{1}-S_{2}\right|}{2} \leq\frac{c(f)}{N}.\label{eq:S1_est}
+%	\end{equation}
+%	From (\ref{eq:a_n_formula}) 
+%	\begin{equation}
+%	a_{n}^{(2n)}(f)=  
+%	%\frac{1}{N}\sum_{k=0}^{2n-1}f(t_{k})\cos n(t_{k}-u)=
+%	\frac{1}{N}\sum_{k=0}^{2n-1}f(t_{k})\cos\pi k=\frac{1}{N}\sum_{k=0}^{n-1}\left(f(t_{2k})-f(t_{2k+1})\right)=\frac{1}{N}S_{1}.\label{eq:a_n_est_S1}
+%	\end{equation}
+%	From \eqref{eq:S1_est} and \eqref{eq:a_n_est_S1} follows
+%	$
+%	\left|a_{n}^{(N)}(f)\right|\leq {c(f)}/{N^{2}}.
+%	$
+%\end{proof}
+
+\subsection{The proof of Theorem \ref{Th1}}
+The proof of Theorem \ref{Th1} consists of two parts: first we prove that the inequalities \eqref{Th1:eq1} and \eqref{Th1:eq2} of the theorem hold, then we prove that
+these estimates cannot be improved for all $f \in C_{\Omega}^{2}$. 	
+
+From the inequalities \eqref{eq:Th_est1}, \eqref{eq:Th_est_2}, the estimates
+(\ref{eq:fSn_est1}), (\ref{eq:fSn_est2}), %(for $\left|f(x)-S_{n}(f,x)\right|$),
+\eqref{eq:R_est1}, (\ref{eq:R_est2}) %(for $\left|R_{n,N}(f,x)\right|$),
+and Lemma \ref{Lemma_af_est} we can easily get \eqref{Th1:eq1} and \eqref{Th1:eq2}.
+To prove that the order of these estimates cannot be improved we consider the aforementioned $2\pi$-periodic function 
+$f(x) = |x|,\ x \in [-\pi,\pi]$. Obviously, $f \in C_{\Omega}^{2}$. 
+Consider only the case when $n < N/2$.	
+From \eqref{eq:Lemma1_eq} follows the inequality
+$
+\left|f(x) - L_{n,N}(f,x)\right| \geq \left|f(x) - S_n(f,x)\right| - \left|R_{n,N}(f,x)\right|.
+$
+From \eqref{eq:R_est1} follows $\left|R_{n,N}(f,x)\right| \leq c(f)/N$. Therefore, for every $\varepsilon > 0$
+we can find a natural number $N_0$, such that for every $N > N_0$ follows $\left|R_{n,N}(f,x)\right| < \varepsilon$. 
+Let $N_0(n)$ be a natural number such that for every $N > N_0(n)$  
+$$
+\max_{\substack{x \in E \\ N > N_0(n)}} \left|R_{n,N}(f,x)\right| \leq \frac12 \max_{x \in E} \left|f(x) - S_{n}(f,x)\right|,
+$$
+where $E \subset \mathbb{R}$.
+So, we can write
+\begin{equation} \label{maxLgeqmaxRn}
+\max_{\substack{x \in E \\ N > N_0(n)}}\left|f(x) - L_{n,N}(f,x)\right| \geq \frac12 \max_{x \in E}\left|f(x) - S_n(f,x)\right|.
+\end{equation}
+\begin{lemma}
+	The following inequalities hold:
+	$$
+	\max_{x \in \mathbb{R}}\left|f(x) - S_n(f,x)\right| \geq {c(f)}/{n},\quad x \in \mathbb{R},
+	$$
+	$$
+	\max_{\left|\pi k - x\right| \geq \varepsilon} \left|f(x) - S_n(f,x)\right| \geq {c(f, \varepsilon)}/{n^2},\quad \left|\pi k - x\right| \geq \varepsilon.
+	$$
+\end{lemma}
+%\begin{proof}
+%	From \cite[p. 443]{courant} we have the following representation:
+%	\begin{equation*}
+%	f(x) = |x| = \frac{\pi}{2} - \frac{4}{\pi} \sum\limits_{k=1}^{\infty} \frac{\cos (2k-1)x}{(2k-1)^2},\quad x \in [-\pi,\pi].
+%	\end{equation*}
+%	From the previous equation we can get
+%	$
+%	f(x) - S_n(f,x) = -\frac{4}{\pi} \sum_{k=n+1}^{\infty} \frac{\cos (2k-1)x}{(2k-1)^2}.
+%	$
+%	For $x=0$ we have
+%	$$
+%	\left|R_n(f,0)\right| = \frac{4}{\pi} \sum_{k=n+1}^\infty \frac{1}{(2k-1)^2} \geq {c}/{n}.
+%	$$
+%	Now consider the case when $x = {\pi}/{4}$ and $n + 1 = 4l, \  l \in \mathbb{N}$.
+%	It is easy to show, that
+%	\begin{multline*}
+%	R_{n}\left(f,\frac{\pi}{4}\right)=
+%	-\frac{2\sqrt{2}}{\pi}\sum_{k=l}^{\infty}\left(\frac{1}{\left(8k-1\right)^{2}}+\frac{1}{\left(8k+1\right)^{2}}-\frac{1}{\left(8k+3\right)^{2}}-\frac{1}{\left(8k+5\right)^{2}}\right) = \\
+%	-\frac{16\sqrt{2}}{\pi}\sum_{k=l}^{\infty}\left(\frac{8k+1}{\left(8k-1\right)^{2}\left(8k+3\right)^{2}}+\frac{8k+3}{\left(8k+1\right)^{2}\left(8k+5\right)^{2}}\right).
+%	\end{multline*}
+%	Hence we have
+%	$
+%	\left|R_{n}\left(f,\frac{\pi}{4}\right)\right| \geq {c}/{n^2}.
+%	$
+%\end{proof}
+
+From \eqref{maxLgeqmaxRn}  and the above lemma follows
+$$
+\max_{\substack{x \in \mathbb{R} \\ N > N_0(n)}}\left|f(x) - L_{n,N}(f,x)\right| \geq \frac{c}{n}, \quad x \in \mathbb{R},
+$$
+$$
+\max_{\substack{\left|\pi k - x\right| \geq \varepsilon \\ N > N_0(n)}} \left|f(x) - L_{n,N}(f,x)\right| \geq \frac{c(\varepsilon)}{n^2},\quad \left|x - \pi k\right| \geq \varepsilon.
+$$
+Theorem \ref{Th1} is proved.
+
+\section{Аппроксимативные свойства дискретных сумм Фурье для кусочно-гладких разрывных функций}
+\subsection{Аннотация}
+Denote by $L_{n,N}(f,x)$ 
+%		the discrete Fourier sum of order $n$ of the function $f$ on the grid $\left\{t_k = u + \frac{2\pi k}{N}\right\}_{k=0}^{N-1}$, where $u \in \mathbb{R}$ and $n \leq N/2$. 
+a trigonometric polynomial of order at most $n$ possessing the least quadratic deviation from $f$ with respect to the system
+$\left\{t_k = u + \frac{2\pi k}{N}\right\}_{k=0}^{N-1}$, where $u \in \mathbb{R}$ and $n \leq N/2$. 
+Let $D^1$ be a space of $2\pi$-periodic piecewise continuously differentiable functions $f$ with a finite number of jump discontinuity points $-\pi = a_1 < \ldots < a_m = \pi$ which have absolutely continuous derivatives on each interval $(a_i, a_{i+1})$.
+In the present article, we consider the problem of approximation of functions $f \in D^1$  by the trigonometric polynomials $L_{n,N}(f,x)$.
+We have found an exact order estimate $\left|f(x) - L_{n,N}(f,x)\right| \leq c(f,\varepsilon)/n$, $\left|x - a_i\right| \geq \varepsilon$.
+The proofs of these estimations based on comparing of approximating properties of discrete and continuous finite Fourier series.
+\subsection{Введение}
+Let $D^1$ be a space of $2\pi$-periodic functions $f$, each of which has a finite number of jump discontinuity points $\Omega(f) = \left\{a_i\right\}_{i=0}^m$, where $-\pi = a_0 < a_1 < \ldots < a_m = \pi$, $f(a_i) = (f(a_i - 0) + f(a_i + 0)) / 2$
+and has an absolutely continuous derivative $f^{'}$ on each interval $(a_i,a_{i+1})$ $(0\leq i \leq m)$. One of the simplest examples of such functions 
+is the function $f(x) = \mbox{sign} (\sin x)$.
+
+We denote by $L_{n,N}(f,x)$ $(1 \leq n \leq \lfloor N/2 \rfloor)$ a trigonometric polynomial of order at most $n$ possessing the least quadratic deviation from the function $f$ with
+respect to the system $\left\{t_k\right\}_{k=0}^{N-1}$, where $t_k = u + 2\pi k / N$ $(u \in \mathbb{R})$. 
+In other words, the minimum of the sums $\sum_{k=0}^{N-1} \left|f(t_k) - T_n(t_k)\right|^2$ on the set of trigonometric polynomials $T_n$ of order $n$ is attained when
+$T_n = L_{n,N}(f)$. In particular, $L_{\lfloor N/2\rfloor, N}(f,t_k) = f(t_k)$. It is easy to show (see \cite{shii-1983}) that for $n < N/2$ the polynomial $L_{n,N}(f,x)$ can be 
+represented as follows:
+\[
+L_{n,N}(f,x)=\sum\limits _{\nu=-n}^{n}c_{\nu}^{(N)}(f)e^{i\nu x},\quad c_{\nu}^{(N)}(f)=\frac{1}{N}\sum\limits _{k=0}^{N-1}f(t_{k})e^{-i\nu t_{k}},
+\]
+and for $n=N/2$ 
+\begin{equation}
+L_{N/2,N}(f,x)=L_{N/2-1,N}(f,x)+a_{N/2}^{(N)}(f)\cos \frac{N}{2}(x-u),\label{eq:L=00003DL+a}
+\end{equation}
+where
+\begin{equation} \label{an_formula}
+a_n^{(2n)}(f) = a_{N/2}^{(N)}(f)=\frac{1}{N}\sum\limits_{k=0}^{N-1}f(t_{k})\cos \frac{N}{2}(t_{k} - u).
+\end{equation}
+By $S_n(f,x)$ we denote the partial Fourier sum of order $n$ of  $f$:
+\begin{equation*}
+S_n(f,x) = \frac{a_0}{2} + \sum_{k=1}^{n} \left(a_k \cos kx + b_k \sin kx\right),
+\end{equation*}
+where
+\begin{equation*}
+a_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos kt dt, \quad b_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin kt dt.
+\end{equation*}
+To read more about function approximation by trigonometric polynomials see 
+\cite{2_bernstein,4_erdos,7_kalashnikov,8_krilov,9_marcinkiewicz,10_marcinkiewicz,11_natanson,12_nikolsky,18_zigmund}.
+
+Also, later we will need the function
+\begin{equation*} \label{h_func_introduction}
+h_{p}(x)=\begin{cases}
+\cos x, & p=0,\\
+\sin x, & p=1.
+\end{cases}
+\end{equation*}
+and the well-known inequalities
+%	Later we will need the following inequalities:
+\begin{equation} \label{sinkx_k_inequality}
+\left|\sum_{k=1}^{\infty} \frac{\sin kx}{k}\right| \leq \frac{\pi}{2}.
+\end{equation}
+\begin{equation} \label{wk_sinkx_k}
+\left|\sum_{k=1}^{n}h_{p}(kx)\right|\leq\frac{1}{\left|\sin\frac{x}{2}\right|}.
+\end{equation}
+\begin{equation} \label{wk_sum_1_k2}
+\sum_{k=1}^{\infty} \frac{1}{k^2} = \frac{\pi^2}{6}.
+\end{equation}
+It is easy to show, that the Fourier series converges pointwise for any function $f \in D^1$ and therefore the function can be represented as follows:
+\begin{equation*}
+f(x) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left(a_k \cos kx + b_k \sin kx\right).
+\end{equation*}	
+The goal of this work is to estimate the value $\left| f(x) - L_{n,N}(f,x) \right|$, for $f \in D^1$ as $n, N \rightarrow \infty$. We obtained the following result:
+\begin{theorem}\label{theorem}
+	For a function $f \in D^1$ the following estimate holds:
+	\begin{equation}\label{theorem_result}
+	\left| f(x) - L_{n,N}(f,x) \right| \leq \frac{C(f,\varepsilon)}{n}, \quad |x - a_i| > \varepsilon.
+	\end{equation}
+	The order of this estimate cannot be improved.
+\end{theorem}
+To prove this theorem we use a lemma from \cite{shii-1983}:
+\begin{lemma}\label{shii_lemma}
+	(Sharapudinov \cite{shii-1983}) If the Fourier series of $f$ converges
+	at the points $t_{k}=u+2k\pi/N$, then the representation 
+	\[
+	L_{n,N}(f,x)=S_{n}(f,x)+R_{n,N}(f,x),
+	\]
+	where 
+	\begin{equation}
+	R_{n,N}(f,x)=\frac{2}{\pi}\sum\limits_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}
+	f(t)D_{n}(x-t)\cos\mu N(u-t)dt,\label{eq:RnFormula}
+	\end{equation}
+	\begin{equation}
+	D_n(x) = \frac{1}{2} + \sum_{k=1}^{n} \cos kx, \label{kernel}
+	\end{equation}
+	holds true when $2n<N$.
+\end{lemma}
+From this lemma we have the following estimate:
+\begin{equation}
+|f(x) - L_{n,N}(f,x)|\leq|f(x)-S_{n}(f,x)|+|R_{n,N}(f,x)|, \quad n < N/2.\label{eq:L<S+R}
+\end{equation}
+In the case $2n=N$ from \eqref{eq:L=00003DL+a} and \eqref{eq:L<S+R} we have
+\begin{multline}\label{eq:L<S+R+a}
+|f(x)-L_{n,N}(f,x)| \leq\\
+|f(x)-S_{n-1}(f,x)|+|R_{n-1,N}(f,x)|+|a_{n}^{(N)}(f)|,\quad n=N/2.
+\end{multline}
+The estimate for $|f(x)-S_{n}(f,x)|$, where $f \in D^1$, were obtained in \cite{mkasumov_disc_funcs}:
+\begin{equation} \label{f_Sn_estimate_}
+|f(x)-S_{n}(f,x)| \leq \frac{C(f,\varepsilon)}{n},\quad |x - a_i| \geq \varepsilon.
+\end{equation}
+Now we have to estimate the values $|R_{n,N}(f,x)|$ and $|a_{n}^{(2n)}(f)|$, which is done in the following sections.
+
+\subsection{Оценка $|R_{n,N}(f,x)|$}
+From \eqref{eq:RnFormula} and \eqref{kernel} we can get the representation
+\begin{multline*}
+R_{n,N}(f,x)=\frac{1}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}f(t)\cos\mu N(u-t)dt+\\
+\frac{2}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}f(t)\sum_{k=1}^{n}\cos k(x-t) \cos \mu N(u-t)dt=\\
+R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
+\end{multline*}
+
+\begin{lemma} \label{sum_sin_kx2_with_alpha}
+	For $\alpha \in (0, \frac{1}{2}]$ the following inequality holds:
+	\begin{equation*}
+	\left|
+	\sum_{k=1}^{\infty} \frac{\sin kx}{k\left(1-\frac{\alpha^2}{k^2}\right)}
+	\right|
+	\leq 
+	c.
+	\end{equation*}
+\end{lemma}
+%\begin{proof}
+%	Performing Abel transformation (summation by parts) we get
+%	\begin{multline*}
+%	\sum_{k=1}^{\infty} \frac{\sin kx}{k\left(1-\frac{\alpha^2}{k^2}\right)} =
+%	\sum_{k=1}^{\infty} \left(
+%	\frac{1}{1-\frac{\alpha^2}{k^2}} -
+%	\frac{1}{1 - \frac{\alpha^2}{(k+1)^2}}
+%	\right)
+%	\sum_{j=1}^{k} \frac{\sin jx}{j} 
+%	=\\
+%	\sum_{k=1}^{\infty} \frac{1}{k^2}
+%	\frac{\alpha^2 \left( 2 + \frac{1}{k} \right)}{\left(1 + \frac{1}{k}\right)^2 \left(1 - \frac{\alpha^2}{k^2}\right) \left(1 - \frac{\alpha^2}{(k+1)^2}\right)}
+%	\frac{1}{k}
+%	\sum_{j=1}^{k}
+%	\frac{\sin jx}{j}.
+%	\end{multline*}
+%	Using \eqref{wk_sum_1_k2} and that
+%	\begin{equation*}
+%	\frac{\alpha^2 \left( 2 + \frac{1}{k} \right)}{\left(1 + \frac{1}{k}\right)^2 \left(1 - \frac{\alpha^2}{k^2}\right) \left(1 - \frac{\alpha^2}{(k+1)^2}\right)} \leq \frac{16}{15},
+%	\quad
+%	\left|
+%	\frac{1}{k}
+%	\sum_{j=1}^{k}
+%	\frac{\sin jx}{j}
+%	\right| 
+%	\leq 1,
+%	\end{equation*}
+%	we have
+%	\begin{multline*}
+%	\left|
+%	\sum_{k=1}^{\infty} \frac{\sin kx}{k\left(1-\frac{\alpha^2}{k^2}\right)}
+%	\right| \leq \\
+%	\sum_{k=1}^{\infty} \frac{1}{k^2}
+%	\frac{\alpha^2 \left( 2 + \frac{1}{k} \right)}{\left(1 + \frac{1}{k}\right)^2 \left(1 - \frac{\alpha^2}{k^2}\right) \left(1 - \frac{\alpha^2}{(k+1)^2}\right)}
+%	\left|
+%	\frac{1}{k}
+%	\sum_{j=1}^{k}
+%	\frac{\sin jx}{j}
+%	\right| \leq c.
+%	\end{multline*}
+%\end{proof}
+
+\begin{lemma}\label{hlemma}
+	For $f \in D^1$ the following holds:
+	\begin{multline}\label{hlemma_eq1}
+	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
+	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))-\\
+	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt+\\
+	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{1-p}(k(a_{i}-x))h_{q}(\mu N(a_{i}-u))-\\
+	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t-x))h_{q}(\mu N(t-u))dt.
+	\end{multline}
+\end{lemma}
+
+%\begin{proof}
+%	Perform integration by parts:
+%	\begin{multline} \label{lemma_first_step}
+%	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
+%	\frac{(-1)^{q}}{\mu N}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))- \\
+%	\frac{(-1)^{q}}{\mu N}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt+ \\
+%	\frac{(-1)^{p+q}k}{\mu N}\intop_{-\pi}^{\pi}f(t)h_{1-p}(k(t-x))h_{1-q}(\mu N(t-u))dt.
+%	\end{multline}
+%	Repeat integration by parts for the last integral in \eqref{lemma_first_step}:
+%	\begin{multline*}
+%	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
+%	\frac{(-1)^{q}}{\mu N}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))- \\
+%	\frac{(-1)^{q}}{\mu N}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt+ \\
+%	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{1-p}(k(a_{i}-x))h_{q}(\mu N(a_{i}-u))-\\
+%	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t-x))h_{q}(\mu N(t-u))dt+\\
+%	\frac{k^{2}}{\left(\mu N\right)^{2}}\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt.
+%	\end{multline*}
+%	By moving the last integral to the left side and dividing both sides by $\frac{\left(\mu N\right)^{2} - k^{2}}{\left(\mu N\right)^{2}}$ we get \eqref{hlemma_eq1}.
+%\end{proof}
+
+\begin{lemma}\label{lemma:R1_estimate}
+	The value $\left|R_{n,N}^1(f,x) \right|$ can be estimated as follows:
+	\begin{equation*}
+	\left| R_{n,N}^1 (f,x) \right| \leq \frac{c(f)}{N}.
+	\end{equation*}
+\end{lemma}
+%\begin{proof}
+%	Performing integration by parts two times we get
+%	\begin{multline*}
+%	R_{n,N}^1(f,x) =\\
+%	\frac1\pi \sum_{\mu = 1}^{\infty} \intop_{-\pi}^{\pi} f(t) \cos \mu N(t-u) dt = \frac1\pi \sum_{\mu = 1}^{\infty} \sum_{i=0}^{m-1} \intop_{a_i}^{a_{i+1}}f(t)\cos \mu N(t-u) dt = \\
+%	\frac{1}{\pi N} \sum_{\mu=1}^{\infty} \frac{1}{\mu} \sum_{i=0}^{m-1} \left( f(a_i-0) - f(a_i+0) \right) \sin \mu N(a_i-u) + \\
+%	\frac{1}{\pi N^2} \sum_{\mu=1}^{\infty} \frac{1}{\mu^2} 
+%	\left[
+%	\sum_{i=0}^{m-1} \left(f^{'}(a_i - 0) -f^{'}(a_i + 0)\right) \cos \mu N (a_i - u) - \right.\\
+%	\left. \intop_{-\pi}^{\pi} f^{''}(t) \cos \mu N(t-u) dt
+%	\right].
+%	\end{multline*}
+%	Applying some simple transformations and using \eqref{sinkx_k_inequality} we have
+%	\begin{multline*}
+%	\left|R_{n,N}^1(f,x)\right| \leq \frac{1}{\pi N} \sum_{i=0}^{m-1} \left|f(a_i-0) - f(a_i+0)\right| \left|\sum_{\mu=1}^{\infty} \frac{\sin \mu N(a_i-u)}{\mu}\right| + \\
+%	\frac{1}{\pi N^2} \sum_{\mu=1}^{\infty} \frac{1}{\mu^2} \left[
+%	\sum_{i=0}^{m-1} \left| f^{'}(a_i-0) - f^{'}(a_i+0) \right| + \intop_{-\pi}^{\pi} \left|f^{''}(t)\right|dt
+%	\right] \leq \frac{c(f)}{N}.
+%	\end{multline*}		
+%\end{proof}
+
+\begin{lemma}\label{lemma:R2_estimate}
+	The value $\left|R_{n,N}^2(f,x) \right|$ can be estimated as follows:
+	\begin{equation*}
+	\left| R_{n,N}^2 (f,x) \right| \leq \frac{c(f,\varepsilon)}{N}, \quad \left|x - a_i\right| \geq \varepsilon.
+	\end{equation*}
+\end{lemma}
+
+%\begin{proof}
+%	Using Lemma \ref{hlemma} we have
+%	\begin{multline*}
+%	R_{n,N}^2(f,x) = \frac{2}{\pi} \sum_{\mu=1}^{\infty} \sum_{k=1}^{n} \intop_{-\pi}^{\pi} f(t) \cos k(t-x) \cos \mu N(t-u) dt =\\
+%	\frac{2}{\pi N} \sum_{i=0}^{m-1} \left(f(a_i-0) - f(a_i+0)\right) \sum_{\mu=1}^{\infty} \frac{\sin \mu N(a_i-u)}{\mu} \sum_{k=1}^{n} \frac{\cos k(a_i-x)}{1-\left(\frac{k}{\mu N}\right)^2} + \\
+%	\frac{-2}{\pi N} \sum_{\mu=1}^{\infty} \frac{1}{\mu} \sum_{k=1}^{n} \frac{1}{1-\left(\frac{k}{\mu N}\right)^2} \intop_{-\pi}^{\pi} f^{'}(t) \cos k(t-x) \sin \mu N(t-u) dt +\\
+%	\frac{-2}{\pi N^2} \sum_{i=0}^{m-1} \left(f(a_i-0) - f(a_i+0)\right) \sum_{\mu=1}^{\infty} \frac{\cos \mu N (a_i-u)}{\mu^2} \sum_{k=1}^{n} \frac{k \sin k(a_i - x)}{1-\left(\frac{k}{\mu N}\right)^2} + \\
+%	\frac{2}{\pi N^2} \sum_{\mu=1}^{\infty} \frac{1}{\mu^2} \sum_{k=1}^{n} \frac{k}{1-\left(\frac{k}{\mu N}\right)^2} 
+%	\intop_{-\pi}^{\pi} f^{'}(t) \sin k(t-x) \cos \mu N(t-u) dt = \\
+%	R_{n,N}^{2.1}(f,x) + R_{n,N}^{2.2}(f,x) + R_{n,N}^{2.3}(f,x) + R_{n,N}^{2.4}(f,x).
+%	\end{multline*}
+%	Here we estimate only the values $\left|R_{n,N}^{2.1}(f,x)\right|$ and $\left|R_{n,N}^{2.2}(f,x)\right|$ because $\left|R_{n,N}^{2.3}(f,x)\right|$ and
+%	$\left|R_{n,N}^{2.4}(f,x)\right|$ can be estimated in the similar way. Begin with $\left|R_{n,N}^{2.1}(f,x)\right|$.
+%	Consider the expression
+%	\begin{equation*}
+%	A = \sum_{k=1}^{n} \cos k(a_i-x) \sum_{\mu=1}^{\infty} \frac{\sin \mu N(a_i-u)}{\mu\left(1-\left(\frac{k}{\mu N}\right)^2\right)}.
+%	\end{equation*}
+%	Applying Abel transformation we can get
+%	\begin{multline*}
+%	A = \sum_{\mu=1}^{\infty} \frac{\sin \mu N (a_i - u)}{\mu \left(1 - \left(\frac{n}{\mu N}\right)^2\right)}
+%	\sum_{j=1}^{n} \cos j(a_i - x) + \\
+%	\sum_{k=1}^{n-1} \sum_{\mu=1}^{\infty} \frac{\sin \mu N(a_i - u)}{\mu} \left(
+%	\frac{1}{1 - \left(\frac{k}{\mu N}\right)^2} -
+%	\frac{1}{1 - \left(\frac{k+1}{\mu N}\right)^2}
+%	\right)
+%	\sum_{j=1}^{k} \cos j(a_i - x).
+%	\end{multline*}
+%	Using \eqref{wk_sinkx_k}, Lemma \ref{sum_sin_kx2_with_alpha} and that
+%	$$
+%	\frac{1}{1 - \left(\frac{k}{\mu N}\right)^2} -
+%	\frac{1}{1 - \left(\frac{k+1}{\mu N}\right)^2} =
+%	-\frac{k}{\left(\mu N\right)^2} \frac{2 + \frac{1}{k}}{\left(1 - \left(\frac{k}{\mu N}\right)^2\right)\left(1 - \left(\frac{k+1}{\mu N}\right)^2\right)}
+%	$$
+%	we get 
+%	\begin{equation*}
+%	\left|A\right| 
+%	\leq 
+%	\frac{c}{\left|\sin \frac{a_i - x}{2}\right|}.
+%	\end{equation*}
+%	From this we have the estimate for $\left|R_{n,N}^{2.1}(f,x)\right|$:
+%	\begin{multline} \label{R21_estimate}
+%	\left|R_{n,N}^{2.1}(f,x)\right| 
+%	\leq \\
+%	\frac{c}{N}
+%	\sum_{i=0}^{m-1}
+%	\left|
+%	\frac{f(a_i-0) - f(a_i + 0)}{\sin \frac{a_i - x}{2}}
+%	\right|
+%	\leq \frac{c(f,\varepsilon)}{N},
+%	\quad \left|x - a_i\right| \geq \varepsilon.
+%	\end{multline}
+%	In the similar way we can get the estimate 
+%	\begin{equation} \label{R23_estimate}
+%	\left|R_{n,N}^{2.3}(f,x)\right| \leq \frac{c(f,\varepsilon)}{N},
+%	\quad \left|x - a_i\right| \geq \varepsilon.
+%	\end{equation}
+%	Now we estimate $\left|R_{n,N}^{2.2}(f,x)\right|$. Consider the integral 
+%	$$
+%	B = \intop_{-\pi}^{\pi} f^{'}(t)\cos k(t-x) \sin \mu N(t-u) dt.
+%	$$
+%	Using Lemma \ref{hlemma} we can estimate the value $|B|$ as follows:
+%	$$
+%	|B| \leq
+%	\frac{c}{\mu N} \left[
+%	\sum_{i=0}^{m-1} \left|f^{'}(a_i - 0) - f^{'}(a_i + 0)\right| + \intop_{-\pi}^{\pi} \left|f^{''}(t)\right|dt
+%	\right]
+%	\leq \frac{c(f)}{\mu N}.
+%	$$
+%	Now we have
+%	\begin{equation} \label{R22_estimate}
+%	\left|R_{n,N}^{2.2}(f,x)\right| = \left|
+%	\frac{2}{\pi N} \sum_{\mu=1}^{\infty} \frac{1}{\mu}
+%	\sum_{k=1}^{n} \frac{B}{1 - \left(\frac{k}{\mu N}\right)^2}
+%	\right|
+%	\leq \frac{c(f)}{N}.
+%	\end{equation}
+%	The value $\left|R_{n,N}^{2.4}(f,x)\right|$ can be estimated in the similar way:
+%	\begin{equation}\label{R24_estimate}
+%	\left|R_{n,N}^{2.4}(f,x)\right| \leq \frac{c(f)}{N}.
+%	\end{equation}
+%	From \eqref{R21_estimate}-\eqref{R24_estimate} we have
+%	\begin{equation*}
+%	\left|R_{n,N}^{2}(f,x)\right| \leq \frac{c(f,\varepsilon)}{N}, \quad |x - a_i| \geq \varepsilon.
+%	\end{equation*}
+%\end{proof}
+Finally, from Lemmas \ref{lemma:R1_estimate} and \ref{lemma:R2_estimate} we have
+\begin{equation} \label{R_estimate}
+\left|R_{n,N}(f,x)\right|\leq \frac{c(f,\varepsilon)}{N}, \quad |x - a_i| \geq \varepsilon.
+\end{equation}
+
+\subsection{Оценка $|a_{n}^{(2n)}(f)|$}
+From \eqref{an_formula}, using that $t_j=u+2\pi k / N$, we have
+\begin{equation*}
+a_{n}^{(N)}(f) = \frac{1}{N} \sum_{k=0}^{2n-1} (-1)^k f(t_k)  = 
+\frac{1}{N} \sum_{k=0}^{n-1} \left(f(t_{2k}) - f(t_{2k+1})\right)
+\end{equation*}
+and
+\begin{equation*}
+\left|a_{n}^{N}(f)\right| \leq \frac{1}{N} \sum_{k=0}^{n-1} \left| f(t_{2k}) - f(t_{2k+1}) \right|.
+\end{equation*}
+Denote by $G$ the subset of indexes $\left\{k\right\}_{k=0}^{n-1}$ such that for $k \in G$ the segment $[t_{2k}, t_{2k+1}]$ does not contain any point $a_i$ ($0 \leq i \leq m$) and denote 
+$\hat{G} = \left\{k\right\}_{k=0}^{n-1} \setminus G$. 
+Now we write
+\begin{equation}\label{ak_estimate}
+\left|a_{n}^{N}(f)\right| \leq \frac{1}{N} \sum_{k \in G} \left| f(t_{2k}) - f(t_{2k+1}) \right| + \frac{1}{N} \sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right|.
+\end{equation}
+For each $k \in G$ the segment $[t_{2k}, t_{2k+1}]$ lies entirely inside some interval $(a_i, a_{i+1})$ and, therefore, the function $f$ is differentiable on it, which allows us to use the mean value theorem and get the following inequality:
+\begin{equation} \label{ftk_G_estimate}
+\left| f(t_{2k}) - f(t_{2k+1}) \right| \leq c(f) \left| t_{2k} - t_{2k+1} \right| \leq \frac{c(f)}{N}.
+\end{equation}
+For $k \in \hat{G}$ there are $s(k)$ points $a_{i_{k,1}} < a_{i_{k,2}} < \ldots < a_{i_{k,s(k)}}$ inside the segment $[t_{2k}, t_{2k+1}]$. 
+Now we estimate the value $\left|f(t_{2k}) - f(t_{2k+1})\right|$ for $k \in \hat{G}$. First we need the following lemma:
+\begin{lemma}
+	For $f \in D^1$ and the segment $[a,b]$, where  $[a,b] \subset [-\pi, \pi]$ the following holds:
+	\begin{equation*}
+	\left|f(a) - f(b)\right| \leq c(f)(s + |a - b|),
+	\end{equation*}
+	where
+	$s$ is the number of jump discontinuity points $x_1,x_1,\ldots, x_s$ of the function $f$ on the segment $[a,b]$.
+\end{lemma}
+%\begin{proof}
+%	Here we consider only the case $a < x_i < \ldots < x_s < b$. The proof for the cases when $a = x_1$ or $b = x_s$ is similar.
+%	Consider the following inequality:
+%	\begin{multline*}
+%	\left|f(a) - f(b)\right| \leq 
+%	\left|f(a) - f(x_1 - 0)\right| + \sum_{i=1}^{s} \left|f(x_i - 0) - f(x_i + 0)\right| + \\
+%	\sum_{i=1}^{s-1} \left|f(x_i + 0) - f(x_{i+1} -0)\right| +
+%	\left|f(x_s + 0) - f(b)\right|.
+%	\end{multline*}
+%	The function $f$ is differentiable on each of the intervals $(a, x_1)$, $(x_1, x_2)$, $\ldots$, $(x_{s-1}, x_s)$, $(x_s, b)$. Using the mean value theorem we can write
+%	\begin{multline*}
+%	\left|f(a) - f(b)\right| \leq 
+%	c(f) |a - b| + \sum_{i=1}^{s} \left|f(x_i - 0) - f(x_i + 0)\right| \leq \\
+%	c(f) |a-b| + sM \leq c(f) | a - b| + c(f) s,
+%	\end{multline*}
+%	where
+%	$M = \max_{1 \leq i \leq s} |f^{'}(x_i-0) - f^{'}(x_i + 0)|$.
+%\end{proof}	
+From this lemma  
+\begin{multline*}
+\sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq \\
+\sum_{k \in \hat{G}} c(f) \left(s(k) + \frac{2\pi}{N}\right) \leq 
+c(f) \sum_{k \in \hat{G}} s(k) + \sum_{k \in \hat{G}}\frac{2\pi}{N}.
+\end{multline*}
+Each point $a_1,a_2,\ldots, a_{m-1}$ may be included in one or two segments $[t_{2k}, t_{2k+1}]$ 
+% 	and $[t_{2k+1}, t_{2k+2}]$ 
+($k \in \hat{G}$), therefore, $\sum_{k \in \hat{G}} s(k) < 2m$. Using this and that $|\hat{G}| \leq m$ we have
+\begin{equation} \label{sum_ftk_hat}
+\sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq c(f).
+\end{equation}
+From \eqref{ak_estimate}, \eqref{ftk_G_estimate}, and \eqref{sum_ftk_hat} follows
+\begin{equation}\label{an_estimate}
+\left|a_{n}^{N}(f)\right| \leq \frac{c(f)}{N}.
+\end{equation}
+\subsection{Доказательство Теоремы \ref{theorem}}
+The proof of the estimate \eqref{theorem_result} from Theorem \ref{theorem} immediately follows from inequalities \eqref{eq:L<S+R}, \eqref{eq:L<S+R+a}, \eqref{f_Sn_estimate_}, \eqref{R_estimate}, \eqref{an_estimate},
+and $n \leq N/2$.
+To prove that the order of this estimate cannot be improved we consider the value $\left|f_1(\frac{\pi}{2}) - L_{4n,N}(f_1,\frac{\pi}{2})\right|$, where $4n < N/2$ and $f_1(x) = \mbox{sign} (\sin x)$.
+From Lemma \ref{shii_lemma} we can get the inequality
+\begin{equation*}
+\left|f(x) - L_{n,N}(f,x)\right| \geq \left|f(x) - S_n(f,x)\right| -  \left|R_{n,N}(f,x)\right|.
+\end{equation*}
+It is easy to show that the following representation takes place:
+\begin{equation} \label{f-L>f-R}
+f_1(x) = \frac{2}{\pi} \sum_{k=1}^{\infty} \frac{(1-(-1)^k) \sin kx}{k} = \frac{4}{\pi} \sum_{k=1}^{\infty} \frac{\sin (2k-1)\pi}{2k-1},
+\end{equation}
+\begin{equation*}
+S_{2n}(f_1,x) = \frac{4}{\pi} \sum_{k=1}^{n} \frac{\sin(2k-1)x}{2k-1}.
+\end{equation*}
+From the above we can get the bottom estimate for the value $\left|f\left(\frac{\pi}{2}\right) - S_{4n}\left(f,\frac{\pi}{2}\right)\right|$: 
+\begin{multline*}
+\left|f\left(\frac{\pi}{2}\right) - S_{4n}\left(f,\frac{\pi}{2}\right)\right| = \\
+\frac{4}{\pi} \left|\sum_{k=2n+1}^{\infty} \frac{(-1)^{k+1}}{2k-1}\right| = 
+\frac{4}{\pi} \sum_{k=n+1}^{\infty} \left(\frac{1}{4k-3} - \frac{1}{4k-1}\right)= \\
+\frac{8}{\pi} \sum_{k=n+1}^{\infty} \frac{1}{k^2 \left(4-\frac{1}{k}\right) \left(4- \frac{3}{k}\right)} > \frac{1/4}{4n}.
+\end{multline*}
+From this and from \eqref{f-L>f-R} we have
+\begin{equation*}
+\left|f\left(\frac{\pi}{2}\right) - L_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \geq \frac{1/4}{4n} - \left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right|.
+\end{equation*}
+In the previous sections we showed that $\left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \leq c/N $.
+Denote by $N(n)$ a number such that for each $N \geq N(n)$ follows $\left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \leq \frac{1/8}{4n}$. Now we have
+\begin{equation*}
+\left|f\left(\frac{\pi}{2}\right) - L_{4n,N(n)}\left(f,\frac{\pi}{2}\right)\right| \geq \frac{1/8}{4n} = \frac{c}{4n}.
+\end{equation*}
+From this we see that the order of the estimate \eqref{theorem_result} cannot be improved. Theorem \ref{theorem} is proved.
