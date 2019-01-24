@@ -1,0 +1,113 @@
+\documentclass[utf8,usehyperref,12pt]{G7-32}
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{cmap}
+\usepackage{color}
+\usepackage[all,cmtip]{xy}
+\graphicspath{{pictures/}}
+
+
+\usepackage{cite}
+
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+
+
+
+\TableInChaper
+\PicInChaper
+\setlength\GostItemGap{2mm}
+
+
+\NirOrgLongName{\textsc{ФЕДЕРАЛЬНОЕ АГЕНТСТВО НАУЧНЫХ ОРГАНИЗАЦИЙ\\
+ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ НАУКИ \\ ДАГЕСТАНСКИЙ НАУЧНЫЙ ЦЕНТР РОССИЙСКОЙ АКАДЕМИИ НАУК}}
+
+\NirBoss{Врио председателя ДНЦ РАН}{Муртазаев А.К.} %% Заказчик, утверждающий НИР
+\NirManager{Зав. Отделом математики и информатики ДНЦ РАН, доктор физ.-мат. наук}{Шарапудинов И.И.}
+
+\NirYear{2018}
+\NirTown{г. Махачкала,}
+
+
+
+
+\NirUdk{УДК \No }
+\NirGosNo{Регистрационный \No }
+
+\NirStage{
+}{итоговый отчет за 2017 г.}{
+}
+
+\bibliographystyle{unsrt}
+
+\input commands.tex
+\usepackage[shortlabels]{enumitem}
+%%%%%%%<------------- НАЧАЛО ДОКУМЕНТА
+\begin{document}
+\usefont{T2A}{ftm}{m}{} %%% Использование шрифтов Т2 для возможности скопировать текст из PDF-файлов.
+
+\frontmatter %%% <-- это выключает нумерацию ВСЕГО; здесь начинаются ненумерованные главы типа Исполнители, Обозначения и прочее
+
+\NirTitle{
+
+%\begin{figure}[h]
+%\center{\includegraphics[natwidth=2cm, natheight=6cm, width=2cm, height=6cm]{black.bmp}}
+%\caption{Зависимость сигнала от шума для данных.}
+%\label{ris:image}
+%\end{figure}
+
+\input annots/annot1.tex
+
+
+} %%% Название НИР и генерация титульного листа
+
+
+\Executors %% Список исполнителей здесь
+%% это рисует линию размера 3мм и толщиной 0.1 пункт
+\begin{longtable}{p{0.35\linewidth}p{0.2\linewidth}p{0.35\linewidth}}
+\input executors/executors1.tex
+
+Нормоконтролер, н.с. ОМИ,  &		&	\\
+Султанахмедов М.С. & \rule{1\linewidth}{0.1pt}& \\
+\end{longtable}
+
+\input referats/referat1.tex
+
+\setcounter{tocdepth}{2} %hide subsections
+
+\tableofcontents
+
+%\NormRefs % Нормативные ссылки
+%\Defines % Необходимые определения
+
+
+\Abbreviations %% Список обозначений и сокращений в тексте
+\begin{abbreviation}
+\item[ДНЦ] Дагестанский научный центр
+\item[ОМИ] Отдел математики и информатики
+\item[РАН] Российская академия наук
+\end{abbreviation}
+
+
+\input introductions/introduction1.tex
+
+\mainmatter %% это включает нумерацию глав и секций в документе ниже
+
+
+\input chapters/chapter1.tex
+
+
+
+
+\backmatter %% Здесь заканчивается нумерованная часть документа и начинаются заключение и ссылки
+
+\input conclusions/conclusion1.tex% заключение к отчёту
+
+\input biblios/biblio1.tex
+
+% \bibliography{biblio/filosofy} %% вместо вставки библиографии можно использовать базы BiBTeX - просто раскомментируйте эту строку.
+\end{document}

@@ -1,0 +1,910 @@
+\chapter{О базисности системы  полиномов Якоби в весовом пространстве Лебега с переменным показателем}
+
+Для того чтобы сформулировать основной результат, полученный нами в отчетном году, понадобятся некоторые понятия и определения, касающиеся весовых пространств Лебега $L^{p(x)}_\mu([-1,1])$ с переменным показателем $p(x)$ и классических ортогональных полиномов Якоби.
+
+
+\section{Некоторые сведения о пространстве Лебега с переменным показателем }
+
+Пусть $E$ произвольное
+множество, на котором задана мера Лебега $m$, $p=p(x)$ -- неотрицательная $m$-измеримая  функция, заданная на $E$. Через $L^{p(x)}_m(E)$ обозначим пространство $m$-измеримых функций $f=f(x)$, заданных на $E$,  для которых конечен интеграл Лебега $\int_E|f(x)|^{p(x)}m(dx)$.  Если $p=p(x)$ существенно ограничена на $E$, то, как показано в \cite{ShIIBJWShar4}, $L^{p(x)}_m(E)$ является линейным топологическим пространством, в котором при дополнительном условии $1\le p(x)\le \overline{p}<\infty$ можно ввести норму
+\begin{equation}\label{2.1}
+\|f\|_{p(\cdot)}(E)=\inf\{\alpha>0: \int_E\left|\frac{f(x)}{\alpha}\right|^{p(x)}m(dx)\le1\},
+\end{equation}
+которая превращает $L^{p(x)}_m(E)$ в банахово пространство. Если $E \subset \mathbb{R}^n$, $m(dx)=w(x)dx$, мы будем писать  $L^{p(x)}_w(E)$ вместо $L^{p(x)}_m(E)$ и называть $L^{p(x)}_w(E)$ весовым пространством Лебега с переменным показателем $p(x)$ и весом $w=w(x)$. Если к тому же $w(x)\equiv 1$, то будем писать $L^{p(x)}(E)$ вместо $L^{p(x)}_1(E)$.
+
+Если $1<p(x)<\infty$, то можно определить новый переменный показатель $p'(x)=p(x)/(p(x)-1)$ и ввести соответствующее пространство $L^{p'(x)}_m(E)$. В работе \cite{ShIIBJWShar4} было показано, что если $1< p(x)\le \overline{p}(E)<\infty$, то пространство $(L^{p(x)}_m(E))'$, состоящее из непрерывных линейных функционалов $F$, заданных в $L^{p(x)}_m(E)$,  совпадает с линейной оболочкой пространства $(L^{p(x)}_m(E))'$ в том смысле, что произвольный элемент $F\in(L^{p(x)}_m(E))'$ имеет вид
+\begin{equation}\label{2.2}
+F(f)=\int_E f(x)g(x)m(dx), \quad\frac{g}{\alpha}\in L^{p'(x)}_m(E), \quad\alpha\ne0.
+\end{equation}
+В частности, если $1<\underline{p}(E)\le p(x)\le \overline{p}(E)\le\infty$, то и $p'$ обладает этим свойством и поэтому $(L^{p(x)}_m(E))'=L^{p'(x)}_m(E)$ и, как следствие, пространство $L^{p(x)}_m(E)$ рефлексивно. Этот результат позволяет ввести в $L^{p(x)}_m(E)$
+другие нормы, эквивалентные исходной норме $\|f\|_{p(\cdot)}(E)$ (см.\eqref{2.1}). Итак, пусть $1<\underline{p}(E)\le p(x)\le \overline{p}(E)<\infty$, тогда сопряженная функция $p'(x)=p(x)/(p(x)-1)$  обладает, как уже отмечалось, такими же свойствами, т.е. $1<\underline{p'}(E)\le p'(x)\le \overline{p'}(E)<\infty$, поэтому мы можем ввести в рассмотрение следующую норму для $f\in L^{p(x)}_m(E)$:
+\begin{equation}\label{2.3}
+\|f\|^*_{p(\cdot)}(E)=\sup_{g\in L^{p'(x)}_{m}(E), \atop\|g\|_{p'(\cdot)}(E)\le1}\int_Ef(x)g(x)m(dx),
+\end{equation}
+для которой имеет место (см. \cite{ShIIBJWShar3}) неравенство
+\begin{equation}\label{2.4}
+\|f\|^*_{p(\cdot)}(E)\le 2\|f\|_{p(\cdot)}(E).
+\end{equation}
+Пусть $p$ и $q$ два переменных показателя, заданных на $E$, для которых $1\le p(x)\le q(x)\le \overline{q}(E)<\infty$. Тогда для $f\in L^{q(x)}_m(E)$  имеет место \cite{ShIIBJWShar2,ShIIBJWShar3,ShIIBJWShar6} неравенство
+\begin{equation}\label{2.5}
+\|f\|_{p(\cdot)}(E)\le c(p,q)\|f\|_{q(\cdot)}(E),
+\end{equation}
+где здесь и всюду  в дальнейшем через $c, c(p), c(p,q),\ldots $ обозначаются положительные
+числа, зависящие лишь от указанных параметров.
+
+Далее, пусть $E_1$  и $E_2$ два измеримых множества с соответствующими мерами Лебега $m_1$ и $m_2$, причем $m_i(E_i)<\infty, i=1,2$. Пусть $f=f(x,t)$ -- измеримая функция, заданная на декартовом произведении $E_1\times E_2$. Тогда имеет место  \cite{ShIIBJWShar2,ShIIBJWShar3,ShIIBJWShar6} неравенство
+\begin{equation}\label{2.6}
+\|\int_{E_2}f(\cdot,t)m_2(dt)\|_{p(\cdot)}(E_1)\le 2\int_{E_2}\|f(\cdot,t)\|_{p(\cdot)}(E_1)m_2(dt).
+\end{equation}
+
+
+
+
+\section{Условие Дини-Липшица и его следствия}
+В работе \cite{ShIIBJWShar1} на примере системы Хаара впервые был рассмотрен вопрос о сходимости в пространстве $L^{p(x)}([0,1])$   сумм Фурье по ортонормированным системам функций. В связи с этой задачей в \cite{ShIIBJWShar1} было показано, что для базисности в $L^{p(x)}([0,1])$ системы Хаара $\{\chi_n(x)\}$ достаточно и, в определенном смысле, необходимо, чтобы переменный показатель $p(x)$ подчинялся условию Дини -- Липшица вида ($x,y\in[0,1]$, $d>0$)
+\begin{equation}\label{3.1}
+|p(x)-p(y)|\le \frac{d}{-\ln|x-y|}, \quad |x-y|\le\frac12.
+\end{equation}
+Обозначим через $\mathcal{P}_{2\pi}$ множество всех  $2\pi$-периодических переменных показателей  $p>1$, для которых имеет место неравенство \eqref{3.1}.  В работе \cite{ShIIBJWShar5} было доказано, что условие $p\in\mathcal{P}_{2\pi}$  является достаточным и необходимым в определенном смысле для равномерной ограниченности некоторых семейств операторов свертки в пространстве $L^{p(x)}_{2\pi}$, где $L^{p(x)}_{2\pi}$ -- пространство $2\pi$-периодических измеримых функций, для которых определена норма $\|f\|_{p(\cdot)}=\|f\|_{p(\cdot)}([0,2\pi])$. В работе \cite{ShIIBJWShar2} было доказано, что тригонометрическая система является базисом в пространстве $L^{p(x)}_{2\pi}$ тогда и только тогда, когда переменный показатель $p>1$ удовлетворяет условию  \eqref{3.1}.
+ В \cite{ShIIBJWSharap1} было показано, что условие \eqref{3.1} необходимо и достаточно для базисности системы полиномов Лежандра в пространстве $L^{p(x)}([-1,1])$ при дополнительном условии, которое состоит в том, что для  переменного показателя  $p$ найдутся отрезки вида $[-1,-1+\delta_1]$ и $[1-\delta_2,1]$, на  которых $p$ сохраняет постоянные значения, причем $p(\pm1)\in(\frac43,4)$.
+
+В \cite{ShIIBJWDiening,ShIIBJWCruz-Uribe}  доказано (см. также цитированную в \cite{ShIIBJWDiening,ShIIBJWCruz-Uribe} литературу), что при соблюдении условия \eqref{3.1} и некоторого дополнительного условия на $p(x)$ при $|x|\to\infty$ максимальная функция Харди -- Литлвуда $M(f)$ является элементом пространства $L^{p(x)}(\mathbb{R})$ вместе с $f$. Сформулируем этот результат более точно, следуя    \cite{ShIIBJWCruz-Uribe}.
+Пусть $\Omega$ -- открытое множество в $\mathbb{R}^n$, $f$ -- локально интегрируемая функция, заданная на $\Omega$. Тогда мы можем определить максимальную функцию Харди -- Литлвуда $M(f)=M(f)(x)$, полагая
+\begin{equation}\label{3.2}
+M(f)(x)=\sup_{x\in B}\frac{1}{|B|}\int_{B\cap\Omega}|f(y)|dy,
+\end{equation}
+где верхняя грань берется по всем открытым шарам $B\in \mathbb{R}^n $, содержащим точку $x$, $|B|$ -- объем шара $B$. Хорошо известно, что если постоянное число $p$  удовлетворяет условию $1<p<\infty$, то $M(f)$ вместе с $f$ принадлежит $L^p(\Omega)$, причем $\|M(f)\|_p(\Omega)\le c(p)\|f\|_p(\Omega)$. В  \cite{ShIIBJWCruz-Uribe} (см. также \cite{ShIIBJWDiening}) показано, что этот результат допускает обобщение на пространства $L^{p(x)}(\Omega)$, если переменный показатель $p>1$ подчиняется
+$n$-мерному аналогу условия \eqref{3.1} и дополнительному условию
+\begin{equation}\label{3.3}
+|p(x)-p(y)|\le \frac{c}{\ln(e+|x|^n)}, \quad x,y\in\Omega,\quad |y|>|x|,
+\end{equation}
+где для $x=(x_1,\ldots,x_n)\in \mathbb{R}^n$ принято обозначение $|x|=(x_1^2+\ldots+x_n^2)^{1/2}$.
+А именно, пусть задано открытое множество $\Omega\subset\mathbb{R}^n$, $p:\Omega\to [0,\infty)$ -- переменный показатель, для которого $1<\underline{p}\le p(x)\le\overline{p}<\infty$. Предположим, что   $p$ удовлетворяет условиям  \eqref{3.1} и \eqref{3.3} для $x,y\in\Omega$. Тогда имеет место оценка
+\begin{equation}\label{3.4}
+\|M(f)\|_{p(\cdot)}(\Omega)\le c(p)\|f\|_{p(\cdot)}(\Omega).
+\end{equation}
+
+
+Это очень важный результат, который находит себе многочисленные приложения. В качестве одного из следствий оценки \eqref{3.4} отметим свойство ограниченности в $L^{p(x)}(\mathbb{R}^n)$ некоторых сингулярных интегралов и преобразований Кальдерона -- Зигмунда (см.  \cite{ShIIBJWCruz-Uribe,ShIIBJWDiening} и цитированную там литературу). Нам понадобится свойство ограниченности в $L^{p(x)}(\mathbb{R})$ преобразования Гильберта, которое мы рассмотрим более подробно в следующем параграфе.
+
+
+\section{Преобразование Гильберта в $L^{p(x)}(\mathbb{R})$}
+Пусть $p>1$, $f\in L^{p}(\mathbb{R})$. Тогда мы можем определить преобразование Гильберта $H(f)=H(f)(x)$ следующим образом:
+\begin{equation}\label{4.1}
+H(f)(x)=\int_{\mathbb{R}}\frac{f(t)dt}{t-x},
+\end{equation}
+ где интеграл в \eqref{4.1} понимается в смысле главного значения Коши, т.е. \linebreak
+$
+H(f)(x)=\lim_{\varepsilon\to0}H_\varepsilon(f)(x),\quad H_\varepsilon(f)(x)=\int_{|t-x|>\varepsilon}\frac{f(t)dt}{t-x}.
+$
+Хорошо известно, что функция $Hf(x)$ конечна для почти всех $x\in\mathbb{R}$. Более того, если $f\in L^p(\mathbb{R})$, где $p=const>1$, то из известной теоремы Рисса  следует, что
+$\|H(f)\|_p(\mathbb{R})\le c(p)\|f\|_p(\mathbb{R})$. Как это показано в \cite{ShIIBJWCruz-Uribe,ShIIBJWDiening}, эта оценка допускает обобщение на случай, когда $f\in L^{p(x)}(\mathbb{R})$, если переменный показатель  $p:\mathbb{R}\to[0,\infty)$ удовлетворяет условиям \eqref{3.1} и \eqref{3.3}. Другими словами, если переменный показатель  $p:\mathbb{R}\to[0,\infty)$ удовлетворяет условиям, которые обеспечивают справедливость оценки \eqref{3.4}, то имеет место оценка
+\begin{equation}\label{4.2}
+\|H(f)\|_{p(\cdot)}(\mathbb{R})\le c(p)\|f\|_{p(\cdot)}(\mathbb{R}).
+\end{equation}
+Через $\mathcal{ P}(\mathbb{R})$ обозначим множество переменных показателей $p>1$, заданных на вещественной оси  $\mathbb{R}$, для каждого из которых найдется такое число $\Delta>1$, что $p(x)=p(\Delta)$ при $|x|\ge \Delta$, а на отрезке $E=[-\Delta,\Delta]$ $p$ удовлетворяет условию \eqref{3.1}.
+Очевидно, что если $p\in \mathcal{ P}(\mathbb{R})$, то условие \eqref{3.3} также выполнено, поэтому для такого переменного показателя справедлива оценка \eqref{4.2}.
+Рассмотрим  преобразование Гильберта следующего вида
+\begin{equation}\label{4.3}
+H^{a,b}f=H^{a,b}f(x)=\int_{a}^{b}\frac{f(t)dt}{t-x}.
+\end{equation}
+Пусть переменный показатель $p$ удовлетворяет на $[a,b]$ условию \eqref{3.1}. Тогда мы можем продолжить $p=p(x)$ на все $\mathbb{R}$ следующим образом. Пусть $A=1 +\max\{|a|,|b|\}$, $p(x)=3/2$ при $|x|\ge A$, а на отрезки $[-A,a]$ и $[b,A]$ продолжим $p(x)$ линейно и непрерывно. Тогда нетрудно убедиться в том, что  продолженная функция $p$ удовлетворяет условиям \eqref{3.1} и \eqref{3.3} на всем $\mathbb{R}$. С  другой стороны, если функция $f\in L^{p(x)}([a,b])$, то можно ее продолжить на все $\mathbb{R}$, полагая $f(x)\equiv0$ при $x\notin[a,b]$ и рассмотреть преобразование Гильберта
+ \begin{equation*}
+Hf=Hf(x)=\int_\mathbb{R}\frac{f(t)dt}{t-x}=\int_{a}^{b}\frac{f(t)dt}{t-x}=H^{a,b}f(x).
+\end{equation*}
+Отсюда и из \eqref{4.2} выводим
+\begin{equation}\label{4.4}
+\|H^{a,b}(f)\|_{p(\cdot)}(\mathbb{R})=\|H(f)\|_{p(\cdot)}(\mathbb{R})\le c(p)\|f\|_{p(\cdot)}(\mathbb{R})=c(p)\|f\|_{p(\cdot)}([a,b]).
+\end{equation}
+
+
+
+
+
+
+ \section{Некоторые сведения о полиномах Якоби}
+ Для произвольных действительных $\alpha$ и $\beta$ полиномы Якоби  $P_n^{\alpha,\beta}(x)$ можно определить \cite{ShIIBJWSege}  с помощью формулы Родрига
+ \begin{equation}\label{7.1}
+P_n^{\alpha,\beta}(x) = {(-1)^n\over2^nn!}{1\over\mu(x)}{d^n\over
+dx^n} \left\{\mu(x)\sigma^n(x)\right\},
+\end{equation}
+где $\alpha,\beta$ -- произвольные действительные числа, $\mu(x)=
+\mu(x;\alpha,\beta) =
+(1-x)^\alpha(1+x)^\beta,\,\sigma(x)=1-x^2$. Если
+$\alpha,\beta>-1$, то полиномы Якоби образуют ортогональную
+систему с весом $\mu(x)$, т.е.
+\begin{equation}\label{7.2}
+\int_{-1}^1P_n^{\alpha,\beta}(x)P_m^{\alpha,\beta}(x)\rho(x)dx =
+h_n^{\alpha,\beta}\delta_{nm},
+\end{equation}
+где
+\begin{equation}\label{7.3}
+h_n^{\alpha,\beta} =
+{\Gamma(n+\alpha+1)\Gamma(n+\beta+1)2^{\alpha+\beta+1} \over
+n!\Gamma(n+\alpha+\beta+1)(2n+\alpha+\beta+1)}.
+\end{equation}
+
+Пусть $-1<\alpha, \beta$ -- произвольные вещественные числа,
+$$
+s(\theta)=s^{\alpha,\beta}(\theta)=\pi^{-\frac12}
+\left(\sin\frac{\theta}{2}\right)^{-\alpha-\frac12}
+\left(\cos\frac{\theta}{2}\right)^{-\beta-\frac12},
+$$
+$$
+\lambda_n=n+\frac{\alpha+\beta+1}{2}, \quad\gamma=-
+\left(\alpha+\frac{1}{2}\right)\frac{\pi}{2}.
+$$
+Тогда для $0<\theta<\pi$ имеет место асимптотическая формула
+\begin{equation}\label{7.4}
+P_n^{\alpha,\beta}(\cos\theta)=n^{-\frac12}s(\theta)
+\left(\cos(\lambda_n\theta+\gamma)+
+\frac{v_n(\theta)}{n\sin\theta}\right),
+\end{equation}
+в которой для функции $v_n(\theta)=v_n(\theta;\alpha,\beta)$
+справедлива оценка
+\begin{equation}\label{7.5}
+|v_n(\theta)|\le c(\alpha,\beta,\delta)\quad
+ \left(0<\frac{\delta}{n}\le\theta\le\pi-\frac{\delta}{n}\right).
+\end{equation}
+Из \eqref{7.4} и  \eqref{7.5} непосредственно выводим следующие оценки
+
+\begin{equation}\label{7.6}
+|P_n^{\alpha,\beta}(\cos\theta)|\le c(\alpha,\beta,\gamma)(n+1)^\alpha, \quad |\theta|\le \frac{\gamma}{n+1},
+\end{equation}
+
+\begin{equation}\label{7.7}
+\sqrt{n+1}(1-x)^{\frac\alpha2+\frac14}(1+x)^{\frac\beta2+\frac14}
+|P_n^{\alpha,\beta}(x)|\le c(\alpha,\beta)\,\,\, (-1\le x\le1,\alpha,\beta\ge-1/2).
+\end{equation}
+ Указанные оценки вместе с  формулой Кристоффеля -- Дарбу
+$$
+ K_n^{\alpha,\beta}(x,y)=
+\sum_{k=0}^n{P_k^{\alpha,\beta}(x)P_k^{\alpha,\beta}(y)\over
+h_k^{\alpha,\beta}}={2^{-\alpha-\beta}\over
+2n+\alpha+\beta+2} {\Gamma(n+2)\Gamma(n+\alpha+\beta+2)\over
+\Gamma(n+\alpha+1)\Gamma(n+\beta+1)}
+ $$
+\begin{equation}\label{7.8}
+\times  {P_{n+1}^{\alpha,\beta}(x)P_n^{\alpha,\beta}(y)-
+P_n^{\alpha,\beta}(x)P_{n+1}^{\alpha,\beta}(y)\over x-y}
+\end{equation}
+играют основополагающую роль при изучении аппроксимативных свойств  сумм Фурье по полиномами Якоби.
+
+
+%Отметим еще следующие свойства полиномов Якоби:
+%
+% \begin{equation}\label{7.9}
+%P_n^{\alpha,\beta}(-x) = (-1)^nP_n^{\beta,\alpha}(x),
+%\end{equation}
+%$$
+%(1-x)P_n^{\alpha+1,\beta}(x)=
+%$$
+%\begin{equation}\label{7.10}
+%{2\over2n+\alpha+\beta+2}
+%\left[(n+ \alpha+1)P_n^{\alpha,\beta}(x)-
+%(n+1)P_{n+1}^{\alpha,\beta}(x)\right].
+%\end{equation}
+%Пусть $T_n(x)=\cos(n\arccos x)$ -- полином Чебышева первого рода. Тогда \cite{Sege}
+%\begin{equation}\label{7.11}
+%P_n^{-\frac{1}{2},-\frac{1}{2}}(x)=\frac{(2n)!}{2^{2n}{n!}^2}T_n(x).
+%\end{equation}
+
+
+
+\section{О равномерной ограниченности и сходимости сумм Фурье по ультрасферическим полиномам Якоби в весовом пространстве Лебега с переменным показателем }
+Пусть $\alpha,\beta>-1$, $\mu=\mu(x)=\mu(x;\alpha,\beta) =(1-x)^\alpha(1+x)^\beta$, $L^{p(x)}_\mu([-1,1])$ -- пространство Лебега с переменным показателем $p=p(x)$ и весом $\mu$. Если $p\ge1$ и $f\in L^{p(x)}_\mu([-1,1])$, то мы можем определить коэффициенты Фурье -- Якоби
+\begin{equation}\label{8.1}
+f_k^{\alpha,\beta}=\frac{1}{h_k^{\alpha,\beta}}\int_{-1}^1f(t)P_k^{\alpha,\beta}(t)
+\mu(t)dt
+\end{equation}
+и сумму Фурье -- Якоби
+\begin{equation}\label{8.2}
+S_n^{\alpha,\beta}(f)=S_n^{\alpha,\beta}(f,x)=\sum_{k=0}^nf_k^{\alpha,\beta}P_k^{\alpha,\beta}(x).
+\end{equation}
+Основная цель предпринятого исследования заключается в том, чтобы найти условия на переменный показатель $p=p(x)$ и весовую функцию $\mu(x) = (1-x)^\alpha (1+x)^\beta$, которые гарантируют сходимость при $n\to\infty$ сумм Фурье $S_n^{\alpha,\beta}(f)$ по полиномам Якоби $P_k^{\alpha,\beta}(x)$ к функции $f\in L^{p(x)}_\mu([-1,1])$ по норме пространства $L^{p(x)}_\mu([-1,1])$. Другими словами, рассматривается задача о базисности в банаховом пространстве $L^{p(x)}_\mu([-1,1])$ системы ортонормированных полиномов Якоби $p_k^{\alpha,\beta}(x)=(h_k^{\alpha,\beta})^{-1/2}P_k^{\alpha,\beta}(x)$ $(k=0,1,\ldots)$, ограничившись при этом случаем $\alpha, \beta\ge-1/2$.
+С этой целью  вводится класс переменных показателей $\mathcal{ P}(-1,1)$, удовлетворяющих следующим условиям:
+
+$A)$ $p$ обладает свойством \eqref{3.1} на $[-1,1]$;
+
+$B)$  $\underline{p}([-1,1])=\min_{x\in [-1,1]}p(x)>1$;
+
+$C)$ для $p$ найдутся такие  положительные (сколь угодно малые) числа $\delta_i=\delta_i(p)$ $(i=1,2)$, что $p(x)=p(-1)$ при $x\in[-1,-1+\delta_1]$ и $p(x)=p(1)$ при $x\in [1-\delta_2,1]$.
+
+
+Показано, что условия $A)$, $B)$ и $C)$, взятые вместе, обеспечивают равномерную ограниченность в  $L^{p(x)}_\mu([-1,1])$ последовательности линейных операторов $S_n^{\alpha,\beta}(f)$ $(n=0,1,\ldots)$ при соблюдении дополнительного условия \eqref{8.13}.  При этом отметим, что  $A)$ и $B)$ являются также и необходимыми условиями для равномерной ограниченности в $L^{p(x)}_\mu([-1,1])$ последовательности линейных операторов $S_n^{\alpha,\beta}(f)$ $(n=0,1,\ldots)$. Что же касается условия $C)$, то вопрос о его необходимости в случае $\alpha,\beta>-1/2$ остается открытым, а когда $\alpha=\beta=-1/2$  оно становится излишним.
+Сформулируем основной результат, полученного нами в отчетном году. А именно, имеет место следующая
+
+
+
+
+
+\begin{theorem}
+Пусть $\alpha,\beta>-1/2$, $\mu=\mu(x)=(1-x)^\alpha(1+x)^\beta$, $p\in\mathcal{ P}(-1,1)$,
+$4\frac{\alpha+1}{2\alpha+3}<p(1)<4\frac{\alpha+1}{2\alpha+1}$, $4\frac{\beta+1}{2\beta+3}<p(-1)<4\frac{\beta+1}{2\beta+1}$.
+Тогда суммы Фурье -- Якоби $S_n^{\alpha,\beta}(f)$ $(n=0,1,\ldots)$ равномерно ограничены в весовом пространстве
+Лебега $L_\mu^{p(x)}([-1,1])$ с переменным показателем $p$. Другими словами, найдется такое положительное число $c(\alpha,\beta,p)$, зависящее только от указанных параметров $\alpha$, $\beta$ и $p$, что для произвольной функции $f\in L_\mu^{p(x)}([-1,1])$ имеет место оценка
+\begin{equation}\label{8.91}
+\|S_n^{\alpha,\beta}(f)\|_{p(\cdot),\mu}([-1,1])\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1,1]).
+\end{equation}
+\end{theorem}
+%
+%
+%\begin{proof}
+%  Поскольку сумма Фурье -- Якоби $\|S_n^{\alpha,\beta}(f)$ представляет собой линейный оператор в пространстве $L_\mu^{p(x)}([-1,1])$, то, очевидно,  достаточно проверить справедливость оценки \eqref{8.91} для таких функций $f\in L_\mu^{p(x)}([-1,1])$, для которых  $\|f\|_{p(\cdot),\mu}([-1,1])\le1$. Но в этом случае мы можем воспользоваться неравенством \eqref{8.8} и леммой 8.2. Это дает
+%  \begin{equation}\label{8.92}
+%\|S_n^{\alpha,\beta}(f)\|_{p(\cdot),\mu}([0,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%С другой стороны, если  мы определим функцию $g$ равенством $g(x)=f(-x)$, то с помощью равенства \eqref{7.9} нетрудно проверить, что
+%\begin{equation}\label{8.93}
+%S_n^{\alpha,\beta}(f,-x)=S_n^{\beta,\alpha}(g,x).
+%\end{equation}
+%Введем новый переменный показатель $s=s(x)=p(-x)$, тогда в силу \eqref{8.93}
+%\begin{equation}\label{8.94}
+%\int_{-1}^0|S_n^{\alpha,\beta}(f,x)|^{p(x)}\mu(x)dx=\int_0^1|S_n^{\beta,\alpha}(g,x)|^{s(x)}\mu(x)dx.
+%\end{equation}
+%Поскольку переменный показатель $s$ вместе с $p$ удовлетворяет всем условиям леммы 8.2, то имеет место оценка
+%\begin{equation}\label{8.95}
+%\int_0^1|S_n^{\beta,\alpha}(g,x)|^{s(x)}\mu(x)dx\le c(\beta,\alpha,s).
+%\end{equation}
+%Из \eqref{8.94} и \eqref{8.95} находим
+%$\int_{-1}^0|S_n^{\alpha,\beta}(а,x)|^{p(x)}\mu(x)dx\le c(\alpha,\beta,p)$,
+%а это неравенство эквивалентно неравенству
+%\begin{equation}\label{8.96}
+%\|S_n^{\alpha,\beta}(f)\|_{p(\cdot),\mu}([-1,0])\le c(\alpha,\beta,p).
+%\end{equation}
+%Сопоставляя \eqref{8.96} с \eqref{8.92}, убеждаемся в справедливости утверждения теоремы 1.
+%\end{proof}
+
+
+
+Доказательство этой теоремы базируется на ряде вспомогательных утверждений (леммы 1.1 -- 1.4), связанных с преобразованиями частичных сумм ряда Фурье -- Якоби $S_n^{\alpha,\beta}(f,x)$.
+В первую очередь воспользовавшись формулой   Кристоффеля -- Дарбу \eqref{7.8}, перепишем \eqref{8.2} следующим образом
+\begin{equation}\label{8.3}
+S_n^{\alpha,\beta}(f,x)=\int_{-1}^1K^{\alpha,\beta}_n(x,y)f(y)\mu(y)dy.
+\end{equation}
+
+\begin{lemma}\label{l1}
+Если $x\neq y$, то ядро Кристоффеля -- Дарбу $K^{\alpha,\beta}_n(x,y)$ допускает следующее представление
+\begin{equation}\label{8.4}
+K^{\alpha,\beta}_n(x,y)=K^{\alpha,\beta}_{n1}(x,y)+K^{\alpha,\beta}_{n2}(x,y),
+\end{equation}
+где
+\begin{equation}\label{8.5}
+K^{\alpha,\beta}_{n1}(x,y)=-\gamma_n(\alpha,\beta)
+\frac{(1-x)P_n^{\alpha+1,\beta}(x)P_n^{\alpha,\beta}(y)}{x-y},
+\end{equation}
+\begin{equation}\label{8.6}
+K^{\alpha,\beta}_{n2}(x,y)=\gamma_n(\alpha,\beta)
+\frac{(1-y)P_n^{\alpha+1,\beta}(y)P_n^{\alpha,\beta}(x)}{x-y},
+\end{equation}
+где $\gamma_n(\alpha,\beta)=O(n)$ $(n\to\infty)$.
+\end{lemma}
+%Доказательство леммы \ref{l1} непосредственно вытекает из \eqref{7.8} и \eqref{7.10}.
+
+С учетом леммы \ref{l1} равенство \eqref{8.3} можно переписать в следующем виде
+$$
+S_n^{\alpha,\beta}(f,x)=\gamma_n(\alpha,\beta)P_n^{\alpha,\beta}(x)\int_{-1}^1
+\frac{(1-y)P_n^{\alpha+1,\beta}(y)f(y)\mu(y)dy}{x-y}
+$$
+\begin{equation}\label{8.7}
+-\gamma_n(\alpha,\beta)(1-x)P_n^{\alpha+1,\beta}(x)\int_{-1}^1
+\frac{P_n^{\alpha,\beta}(y)f(y)\mu(y)dy}{x-y},
+\end{equation}
+где интегралы понимаются в смысле главных значений Коши. В дальнейшем %(до теоремы 2)
+мы рассмотрим случай, когда $\alpha,\beta>-1/2$, $\mu(x)=(1-x)^\alpha(1-x)^\beta$, $x\in[0,1)$.
+ Поскольку функция $f(x)(1-x)^\alpha(1-x)^\beta$ интегрируема на $(-1,1)$, то в этом случае из \eqref{8.7} c учетом весовой оценки \eqref{7.7} для почти всех
+ $x\in[0,1]$ выводим
+ $$
+(1-x)^{\frac{\alpha}{p(x)}}|S_n^{\alpha,\beta}(f,x)|\le
+$$
+$$
+c(\alpha,\beta)\sqrt{n+1}(1-x)^{u(x)}\left|\int_{-1}^1
+\frac{(1-y)\mu(y) P_n^{\alpha+1,\beta}(y)f(y)dy}{x-y}\right|
+$$
+$$
++c(\alpha,\beta)\sqrt{n+1}(1-x)^{v(x)}\left|\int_{-1}^1
+\frac{\mu(y)P_n^{\alpha,\beta}(y)f(y)dy}{x-y}\right|\le
+$$
+\begin{equation}\label{8.8}
+\sigma_1(f,x)+\sigma_2(f,x)+\sigma_3(f,x)+\sigma_4(f,x),
+\end{equation}
+где
+\begin{equation}\label{8.9}
+\sigma_1(f,x)=c(\alpha,\beta)\sqrt{n+1}(1-x)^{u(x)}\left|\int_{-1}^{-\frac12}
+\frac{(1-y)\mu(y) P_n^{\alpha+1,\beta}(y)f(y)dy}{x-y}\right|,
+\end{equation}
+\begin{equation}\label{8.10}
+\sigma_2(f,x)=c(\alpha,\beta)\sqrt{n+1}(1-x)^{u(x)}\left|\int_{-\frac12}^{1}
+\frac{(1-y)\mu(y) P_n^{\alpha+1,\beta}(y)f(y)dy}{x-y}\right|,
+\end{equation}
+\begin{equation}\label{8.11}
+\sigma_3(f,x)=c(\alpha,\beta)\sqrt{n+1}(1-x)^{v(x)}\left|\int_{-1}^{-\frac12}
+\frac{\mu(y) P_n^{\alpha,\beta}(y)f(y)dy}{x-y}\right|,
+\end{equation}
+\begin{equation}\label{8.12}
+\sigma_4(f,x)=c(\alpha,\beta)\sqrt{n+1}(1-x)^{v(x)}\left|\int_{-\frac12}^{1}
+\frac{ P_n^{\alpha,\beta}(y)\mu(y)f(y)dy}{x-y}\right|,
+\end{equation}
+а $u(x)=\frac{\alpha}{p(x)}-\frac{\alpha}{2}-\frac14$, $v(x)=\frac{\alpha}{p(x)}-\frac{\alpha}{2}+\frac14$. Мы рассмотрим вопрос об оценке норм
+$\|\sigma_i(f)\|_{p(\cdot)}([0,1])$ $(i=1,2,3,4)$ при $p \in \mathcal{ P}(-1,1)$.
+Следующее утверждение является основополагающим:
+
+\begin{lemma}\label{l2}
+Пусть $\alpha,\beta>-1/2$, $p\in\mathcal{ P}(-1,1)$, $\mu=\mu(x)=(1-x)^\alpha(1-x)^\beta$, $f\in L_\mu^{p(x)}([-1,1])$, $\|f\|_{p(\cdot)}([-1,1])\le1$,
+\begin{equation}\label{8.13}
+4\frac{\alpha+1}{2\alpha+3}<p(1)<4\frac{\alpha+1}{2\alpha+1},\quad
+4\frac{\beta+1}{2\beta+3}<p(-1)<4\frac{\beta+1}{2\beta+1}.
+\end{equation}
+Тогда
+\begin{equation}\label{8.14}
+\|\sigma_i(f)\|_{p(\cdot)}([0,1])\le c(\alpha,\beta,p)\quad (i=1,2,3,4).
+\end{equation}
+\end{lemma}
+%Доказательству этой леммы мы предпошлем некоторые вспомогательные ут-\linebreak верждения.
+
+\begin{lemma}\label{l3}
+Пусть $0<\gamma<1$. Тогда имеет место неравенство
+\begin{equation}\label{8.15}
+|a^\gamma-1|\le\frac{2|a-1|}{a^{1-\gamma}+1},\quad  0\le a<\infty.
+\end{equation}
+\end{lemma}
+%\begin{proof}
+%В самом деле, если $a\ge1$, то нужно проверить, что $(a^\gamma-1)(a^{1-\gamma}+1)<2(a-1)$ или, что то же, $1-a\le a^{1-\gamma}-a^{\gamma} $. Но это неравенство справедливо, так как $a^{\gamma}\le a$ и  $1\le a^{1-\gamma}$. Если же $0<a<1$, то нужно проверить,  что $(1-a^\gamma)(a^{1-\gamma}+1)<2(1-a)$ или, что то же,  $ a^{1-\gamma}-a^{\gamma}\le 1-a$. Это неравенство следует из того, что $a^{1-\gamma}<1$ и $a^\gamma>a$. Итак неравенство \eqref{8.15} справедливо при любом $a\ge0$.
+%\end{proof}
+Из леммы 1.3 непосредственно вытекает
+\begin{lemma}
+Пусть $-1<a,b<1$, $0<\gamma<1$. Тогда
+\begin{equation}\label{8.16}
+\frac{1}{|a-b|}\left|\left( \frac{1-b}{1-a}\right)^\gamma -1\right|\le \frac{2}{(1-a)^\gamma((1-a)^{1-\gamma}+(1-b)^{1-\gamma})}.
+\end{equation}
+\end{lemma}
+
+
+%
+%\section*{Доказательство леммы \ref{l2}.}
+%
+%Пусть $p\in\mathcal{ P}(-1,1)$, тогда  найдутся такие  положительные числа $\delta_s=\delta_s(p)$ $(s=1,2)$, что $p(x)=p(-1)$ при $x\in[-1,-1+\delta_1]$ и $p(x)=p(1)$ при $x\in [1-\delta_2,1]$. Аналогичными свойствами обладает и сопряженная функция $q(x)=p(x)/(p(x)-1)$. Перейдем к доказательству оценки \eqref{8.14} для $i=1$. Из \eqref{8.9} с учетом \eqref{7.7} для $0\le x<1$  имеем
+%$$
+%\sigma_1(f,x)\le c(\alpha)(1-x)^{u(x)}\int_{-1}^{-\frac12}\mu(y)
+%(1+y)^{-\beta/2-1/4} |f(y)|dy=
+%$$
+%$$ c(\alpha)(1-x)^{u(x)}\left[\int_{-1}^{-1+\delta_1}+\int_{-1+\delta_1}^{-1/2}\right]\mu(y)
+%(1+y)^{-\beta/2-1/4} |f(y)|dy
+%$$
+%\begin{equation}\label{8.17}
+%\le\sigma_{11}(f,x)+ \sigma_{12}(f,x),
+%\end{equation}
+%где
+%\begin{equation}\label{8.18}
+%\sigma_{11}(f,x)= c(\alpha,\beta)(1-x)^{u(x)}\int\limits_{-1}^{-1+\delta_1}
+%(1+y)^{-\frac\beta2-\frac14+\frac\beta{q(-1)}}(1-y^2)^\frac\beta{p(-1)} |f(y)|dy,
+%\end{equation}
+%\begin{equation}\label{8.19}
+%\sigma_{12}(f,x)= c(\alpha,\beta)(1-x)^{u(x)}\int_{-1+\delta_1}^{-1/2}|f(y)|dy.
+%\end{equation}
+%Используя неравенство Гельдера, из \eqref{8.18} находим
+%$$
+%\sigma_{11}(f,x)\le c(\alpha,\alpha)(1-x)^{u(x)}\left(\int_{-1}^{-1+\delta_1}
+%(1+y)^{-q(-1)(\frac\beta2+\frac14)+\beta}dy\right)^\frac{1}{q(-1)}\times
+%$$
+%\begin{equation}\label{8.20}
+%\left(\int_{-1}^{-1+\delta_1}(1-y^2)^\beta |f(y)|^{p(-1)}dy \right)^\frac{1}{p(-1)}.
+%\end{equation}
+%Первый из интегралов в \eqref{8.20} конечен, так как в силу  \eqref{8.13} $\beta-q(-1)(\frac\beta2+\frac14)>-1$. Что касается второго из интегралов в \eqref{8.20},
+%то он равен $\|f\|_{p(\cdot),\mu}([-1,-1+\delta_1])$, поэтому он допускает оценку
+%$\|f\|_{p(\cdot),\mu}([-1,-1+\delta_1])\le \|f\|_{p(\cdot),\mu}([-1,1])\le1$.
+%Отсюда и из \eqref{8.20} находим
+%\begin{equation}\label{8.21}
+%\sigma_{11}(f,x)\le c(p,\alpha,\beta)(1-x)^{u(x)}.
+%\end{equation}
+%С другой стороны, для $\sigma_{12}(f,x)$ из \eqref{8.19} имеем
+%$$
+%\sigma_{12}(f,x)\le c(p,\alpha,\beta)(1-x)^{u(x)}
+%\int_{-1+\delta_1}^{-\frac12}|f(y)|dy
+%$$
+%$$
+%\le
+%c(p,\alpha,\beta)(1-x)^{u(x)}\|f\|_{p(\cdot)}([-1,-1+\delta_1])
+%$$
+%\begin{equation}\label{8.22}
+% \le c(p,\alpha,\beta)(1-x)^{u(x)}\|f\|_{p(\cdot),\mu}([-1,1])\le c(p,\alpha,\beta)(1-x)^{u(x)}.
+%\end{equation}
+%Из \eqref{8.17}, \eqref{8.21} и \eqref{8.22} получаем
+%\begin{equation}\label{8.23}
+%\sigma_{1}(f,x)\le c(p,\alpha,\beta)(1-x)^{u(x)}\quad (0\le x<1).
+%\end{equation}
+%Совершенно аналогично из \eqref{8.11} выводим
+%\begin{equation}\label{8.24}
+%\sigma_{3}(f,x)\le c(p,\alpha,\beta)(1-x)^{v(x)}\quad (0\le x<1).
+%\end{equation}
+%Далее, из \eqref{8.23} имеем
+%$$
+%\int_0^1(\sigma_1(f,x))^{p(x)}dx=\int_0^{1-\delta_2}(\sigma_1(f,x))^{p(x)}dx+
+%\int_{1-\delta_2}^1(\sigma_1(f,x))^{p(1)}dx\le
+%$$
+%$$
+%c(\alpha,\beta,p)+c(\alpha,\beta,p)\int_{1-\delta_2}^1(1-x)^{p(1)u(1)}dx=
+%$$
+%$$
+%c(\alpha,\beta,p)+c(\alpha,\beta,p)\int_{1-\delta_2}^1
+%(1-x)^{p(1)(\frac{\alpha}{p(1)}-\frac{\alpha}{2}-\frac14)}dx=
+%$$
+%\begin{equation}\label{8.25}
+%c(\alpha,\beta,p)+c(\alpha,\beta,p)\int_{1-\delta_2}^1
+%(1-x)^{\alpha-{p(1)}(\frac{\alpha}{2}+\frac14)}dx\le c(\alpha,\beta,p),
+%\end{equation}
+%так как из \eqref{8.13} следует, что $p(1)<4(\alpha+1)/(2\alpha+1)$ и, стало быть $\alpha-{p(1)}(\frac{\alpha}{2}+\frac14)>-1$. Из \eqref{8.25} выводим $\|\sigma_1(f)\|_{p(\cdot)}([0,1])\le c(\alpha,\beta,p)$, и аналогично, из \eqref{8.24} выводим
+%$\|\sigma_3(f)\|_{p(\cdot)}([0,1])\le c(\alpha,\beta,p)$. Таким образом, оценка \eqref{8.14} для $i=1$ и $i=3$ доказана.
+%
+%Перейдем к случаю $i=2$. Положим
+%\begin{equation}\label{8.26}
+%A_n(y)=\sqrt{n+1}(1+y)^\beta P_n^{\alpha+1,\beta}(y)(1-y)^{\frac{\alpha}{2}+\frac34},
+%\end{equation}
+%тогда из \eqref{8.10} имеем
+%$$
+%\sigma_2(f,x)=c(\alpha,\beta)(1-x)^{u(x)}\left|\left(\int_{-\frac12}^{1-\delta_2}+
+%\int_{1-\delta_2}^1\right)
+%\frac{A_n(y)(1-y)^{\frac{\alpha}{2}+\frac14} f(y)dy}{x-y}\right|
+%$$
+%\begin{equation}\label{8.27}
+%\le \sigma_{21}(f,x)+\sigma_{22}(f,x),
+%\end{equation}
+%где $\sigma_{21}(f,x)=c(\alpha,\beta)(1-x)^{u(x)}|\int_{-\frac12}^{1-\delta_2}\mathcal{ F}|$, $\sigma_{22}(f,x)=c(\alpha,\beta)(1-x)^{u(x)}|\int_{1-\delta_2}^1\mathcal{ F}|$, а $\mathcal{ F}$ -- выражение, фигурирующее под знаком интеграла в левой части неравенства \eqref{8.27}. Положим $\varphi_n(y)=A_n(y)(1-y)^{\frac{\alpha}{2}+\frac14}$ и заметим, что в силу \eqref{7.7} найдется постоянная $c(\alpha,\beta,p)$, для которой
+%\begin{equation}\label{8.28}
+%|\varphi_n(y)|\le c(\alpha,\beta,p)\quad (-1/2\le y\le 1-\delta_2/2).
+%\end{equation}
+%Запишем $\sigma_{21}(f,x)$ в виде
+%\begin{equation}\label{8.29}
+%\sigma_{21}(f,x)=c(\alpha,\beta)(1-x)^{u(x)}\left|\int_{-\frac12}^{1-\delta_2}
+%\frac{\varphi_n(y) f(y)dy}{x-y}\right|
+%\end{equation}
+%и рассмотрим два случая: a) $0\le x\le 1-\delta_2/2$; b) $ 1-\delta_2/2< x<1$.
+% Если  $0\le x\le 1-\delta_2/2$, то из \eqref{4.3} и \eqref{8.29} имеем
+%\begin{equation}\label{8.30}
+%\sigma_{21}(f,x)\le c(\alpha,\beta,p)\left|\int_{-\frac12}^{1-\delta_2}
+%\frac{\varphi_n(y) f(y)dy}{x-y}\right|=c(\alpha,\beta,p)|H^{-1/2,1-\delta_2}g(x)|,
+%\end{equation}
+%где $g(y)=\varphi_n(y) f(y)$. Обратимся к оценке \eqref{4.4}, которая с учетом \eqref{8.28}
+%дает
+%$$
+%\|H^{-\frac12,1-\delta_2}g\|_{p(\cdot)}(\mathbb{R})\le c(\alpha,\beta,p)\|g\|_{p(\cdot)}([-1/2,1-\delta_2])
+%$$
+%$$\le c(\alpha,\beta,p)\|f\|_{p(\cdot)}([-1/2,1-\delta_2])\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1/2,1-\delta_2])$$
+%\begin{equation}\label{8.31}
+%\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%Из \eqref{8.30} и \eqref{8.31} имеем
+%\begin{equation}\label{8.32}
+%\|\sigma_{21}(f)\|_{p(\cdot)}([0,1-\delta_2/2])\le c(\alpha,\beta,p).
+%\end{equation}
+% Если же $ 1-\delta_2/2< x<1$, то
+%\begin{equation}\label{8.33}
+%\sigma_{21}(f,x)=c(\alpha,\beta,p)(1-x)^{u(1)}\int_{-\frac12}^{1-\delta_2}
+%|\varphi_n(y) f(y)|dy.
+%\end{equation}
+%С другой стороны, из \eqref{2.5}  и \eqref{8.28} имеем
+%$$
+%\int_{-\frac12}^{1-\delta_2}|g(y)|dy\le c(p)\|g\|_{p(\cdot)}([-1/2,1-\delta_2])\le
+%$$
+%\begin{equation}\label{8.34}
+%c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1/2,1-\delta_2])\le c(\alpha,\beta,p).
+%\end{equation}
+%Из \eqref{8.33} и  \eqref{8.34} находим (см. \eqref{8.25})
+%$$
+%\int_{1-\delta_2/2}^1(\sigma_{21}(f,x))^{p(x)}dx =
+%\int_{1-\delta_2/2}^1(\sigma_{21}(f,x))^{p(1)}dx\le
+%$$
+%\begin{equation}\label{8.35}
+%c(\alpha,\beta,p)\int_{1-\delta_2/2}^1(1-x)^{p(1)u(1)}dx\le c(\alpha,\beta,p).
+%\end{equation}
+% Соединяя оценки \eqref{8.32} и \eqref{8.35}, мы можем записать
+%\begin{equation}\label{8.36}
+% \|\sigma_{21}(f)\|_{p(\cdot)}([0,1])\le c(\alpha,\beta,p).
+% \end{equation}
+%Перейдем к оценке номы функции $\sigma_{22}(f)$. Рассмотрим два случая: 1) $0\le x\le 1-\delta_2$; 2) $ 1-\delta_2< x<1$.
+% Если  $0\le x\le 1-\delta_2$, то из  \eqref{8.27} имеем
+%\begin{equation}\label{8.37}
+%\sigma_{22}(f,x)\le c(\alpha,\beta,p)\left|\int\limits_{1-\delta_2}^1
+%\frac{A_n(y)(1-y)^{\frac\alpha2+\frac14} f(y)dy}{x-y}\right|\le\sigma_{221}(f,x)+\sigma_{222}(f,x),
+%\end{equation}
+%где $\sigma_{221}(f,x)= c(\alpha,\beta,p)\left|\int_{1-\delta_2}^{1-\delta_2/2}\mathcal{ F}\right|$, $\sigma_{222}(f,x)= c(\alpha,\beta,p)\left|\int_{1-\delta_2/2}^1\mathcal{ F}\right|$.
+%Положим $g(y)=\varphi_n(y)f(y)$ и воспользуемся обозначением
+%\eqref{4.3}, тогда из \eqref{8.37} имеем
+%$
+%\sigma_{221}(f,x)=c(\alpha,\beta,p)|H^{1-\delta_2,1-\delta_2/2}g(x)|,
+%$
+%поэтому в силу \eqref{4.4} и \eqref{8.28}
+%$$
+%\|\sigma_{221}(f)\|_{p(\cdot)}([0,1-\delta_2/2])\le c(\alpha,\beta,p)\|g\|_{p(\cdot)}([1-\delta_2,1-\delta_2/2])\le
+%$$
+%\begin{equation}\label{8.38}
+%c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([1-\delta_2,1-\delta_2/2])\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%Далее, из \eqref{7.7} и \eqref{8.26} следует, что
+%\begin{equation}\label{8.39}
+%|A_n(y)|\le c(\alpha,\beta)\quad (-1/2\le y<1),
+%\end{equation}
+%поэтому из \eqref{8.37} имеем
+%$$
+%\sigma_{222}(f,x)\le c(\alpha,\beta,p)\int\limits_{1-\delta_2/2}^1
+%(1-y)^{\frac\alpha2+\frac14-\alpha/p(1)}(1-y^2)^{\alpha/p(1)} |f(y)|dy\le
+%$$
+%\begin{equation}\label{8.40}
+%c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([1-\delta_2/2,1])\left(\int_{1-\delta_2/2}^1
+%(1-y)^{(\frac\alpha2+\frac14-\frac\alpha{p(1)})q(1)}\right)^{\frac1{q(1)}},
+%\end{equation}
+%где $q(1)=p(1)/(p(1)-1)$. Последний интеграл конечен, так как в силу \eqref{8.13} $(\frac\alpha2+\frac14-\frac\alpha{p(1)})q(1)>-1$.
+%В самом деле, это неравенство эквивалентно неравенству $4(\alpha+1)/(2\alpha+5)<p(1)$, котрое, очевидно, вытекает из \eqref{8.13}. Таким образом, из \eqref{8.40} выводим
+%$
+%\sigma_{222}(f,x)\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([1-\delta_2/2,1])
+%\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1,1])\le c(\alpha,\beta,p),\quad (0\le x\le 1-\delta_2),
+%$
+%откуда, в свою очередь, находим
+%\begin{equation}\label{8.41}
+%\|\sigma_{222}(f)\|_{p(\cdot)}([0,1-\delta_2])\le c(\alpha,\beta,p).
+%\end{equation}
+%Оценки \eqref{8.37}, \eqref{8.38} и \eqref{8.41}, взятые вместе дают
+%\begin{equation}\label{8.42}
+%\|\sigma_{22}(f)|_{p(\cdot)}([0,1-\delta_2])\le c(\alpha,\beta,p).
+%\end{equation}
+%Рассмотрим случай $1-\delta_2\le x<1$ и заметим, что в этом случае $p(x)=p(1)$, $u(x)=u(1)$, поэтому мы можем представить $\sigma_{22}(f,x)$ в следующем виде (см.\eqref{8.27})
+%$$
+%\sigma_{22}(f,x)=c(\alpha,\beta)\left|\int\limits_{1-\delta_2}^{1}
+%\frac{A_n(y)(1-y)^{\frac{\alpha}{p(1)}} f(y)}{x-y}\left(\frac{1-y}{1-x}\right)^{\frac\alpha2+\frac14-\frac\alpha{p(1)}}dy\right|
+%$$
+%\begin{equation}\label{8.43}
+%\le U(f,x)+V(f,x),
+%\end{equation}
+%где
+%\begin{equation}\label{8.44}
+%U(f,x)=c(\alpha,\beta)\left|\int_{1-\delta_2}^{1}
+%\frac{A_n(y)(1-y)^{\frac{\alpha}{p(1)}} f(y)}{x-y}dy\right|,
+%\end{equation}
+%\begin{equation}\label{8.45}
+%V(f,x)=c(\alpha,\beta)\int_{1-\delta_2}^{1}
+%\frac{|A_n(y)|(1-y)^{\frac{\alpha}{p(1)}} |f(y)|}{|x-y|}\left|\left(\frac{1-y}{1-x}\right)^{\frac\alpha2+\frac14-\frac\alpha{p(1)}}-1\right|dy.
+%\end{equation}
+%Рассмотрим сначала $U(f,x)$. Положим  $\psi(y)=A_n(y)(1-y)^{\frac{\alpha}{p(1)}}f(y)$ и воспользуемся определением \eqref{4.3}, тогда из \eqref{8.44} имеем
+%$U(f,x)=c(\alpha,\beta)|H^{1-\delta_2,1}\psi(x)|$, поэтому из оценок \eqref{4.4} и \eqref{8.39}
+%находим
+%$$
+%\|U(f)\|_{p(\cdot)}([1-\delta_2,1])\le c(\alpha,\beta, p)\|\psi\|_{p(\cdot)}([1-\delta_2,1])\le
+%$$
+%\begin{equation}\label{8.46}
+% c(\alpha,\beta, p)\|f\|_{p(\cdot),\mu}([1-\delta_2,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%Чтобы оценить $\|V(f)\|_{p(\cdot)}([1-\delta_2,1])$ обратимся к соотношениям \eqref{2.3}, \eqref{2.4} и \eqref{8.45}, из которых, полагая  $\gamma=\alpha/2+1/4-1/p(1)$,
+%\begin{equation}\label{8.47}
+%K_\gamma(x,y)=\frac{1}{|x-y|}\left|\left(\frac{1-y}{1-x}\right)^\gamma-1\right|,
+%\end{equation}
+%находим
+%\begin{equation}\label{8.48}
+%\|V(f)\|_{p(\cdot)}([1-\delta_2,1])\le c(\alpha,\beta) \sup_{g}\int\limits_{1-\delta_2}\int\limits_{1-\delta_2}|g(x)\psi(y)|K_\gamma(x,y)dxdy,
+%\end{equation}
+%где верхняя грань берется по всем $g\in L^{q(1)}([1-\delta_2,1])$, для которых $\|g\|_{p(\cdot)}([1-\delta_2,1])\le 1$. Оценим двойной интеграл $I$ из \eqref{8.48}. Имеем $$
+%I= \int_{1-\delta_2}^1\int_{1-\delta_2}^1|\psi(y)|K_\gamma^\frac1{p(1)}(x,y)
+%\left(\frac{1-y}{1-x}\right)^\frac1{p(1)q(1)}\times
+%$$
+%$$
+%|g(x)|K_\gamma^\frac1{q(1)}(x,y)
+%\left(\frac{1-y}{1-x}\right)^{-\frac1{p(1)q(1)}} dxdy\le
+%$$
+%\begin{equation}\label{8.49}
+%\left(\int_{1-\delta_2}^1|g(x)|^{q(1)}F_1(x)dx\right)^\frac1{q(1)}
+%\left(\int_{1-\delta_2}^1|\psi(y)|^{p(1)}F_2(y)dy\right)^\frac1{p(1)},
+%\end{equation}
+%где
+%\begin{equation}\label{8.50}
+%F_1(x)=\int\limits_{1-\delta_2}^1K_\gamma(x,y)
+%\left(\frac{1-x}{1-y}\right)^{\frac1{p(1)}} dy,\,\, F_2(y)=\int\limits_{1-\delta_2}^1K_\gamma(x,y)
+%\left(\frac{1-y}{1-x}\right)^{\frac1{q(1)}} dx.
+%\end{equation}
+%Покажем, что функции $F_1$ и $F_2$ ограничены на $[1-\delta_2,1]$. С этой целью заметим, что из \eqref{8.13}   при $\alpha>-1/2$ для $\gamma=\frac\alpha2+\frac14-\frac\alpha{p(1)}$ вытекают неравенства $0<\gamma<\frac1{p(1)}$, поэтому мы можем воспользоваться леммой 8.3 (неравенство \eqref{8.16} ), из которой и из \eqref{8.50} имеем
+%$$
+%F_1(x)\le 2\int_{1-\delta_2}^1\frac{(1-x)^{\frac{1}{p(1)}-\gamma}dy}{
+%(1-y)^\frac{1}{p(1)}((1-y)^{1-\gamma}+(1-x)^{1-\gamma})}\le
+%$$
+%$$
+% 2\int_{1-\delta_2}^x\frac{(1-x)^{\frac{1}{p(1)}-\gamma}dy}{
+%(1-y)^{\frac{1}{p(1)}+1-\gamma}}+2\int_x^1\frac{(1-x)^{\frac{1}{p(1)}-\gamma}dy}{
+%(1-y)^\frac{1}{p(1)}(1-x)^{1-\gamma}}\le
+%$$
+%\begin{equation}\label{8.51}
+%2(1-x)^{\frac{1}{p(1)}-\gamma}\frac{(1-x)^{\gamma-\frac{1}{p(1)}}}{\frac{1}{p(1)}-\gamma}+
+%2(1-x)^{\frac{1}{p(1)}-1}\frac{(1-x)^{1-\frac{1}{p(1)}}}{1-\frac{1}{p(1)}}\le c(\alpha,p),
+%\end{equation}
+%$$
+%F_2(x)\le 2\int_{1-\delta_2}^1\frac{(1-y)^{\frac{1}{q(1)}}dx}{
+%(1-x)^{\gamma+\frac{1}{q(1)}}((1-y)^{1-\gamma}+(1-x)^{1-\gamma})}\le
+%$$
+%$$
+% 2\int_{1-\delta_2}^y\frac{(1-y)^{\frac{1}{q(1)}}dx}{
+%(1-x)^{\frac{1}{q(1)}+1}}+2\int_y^1\frac{(1-y)^{\frac{1}{q(1)}-1+\gamma}dx}{
+%(1-x)^{\frac{1}{q(1)}+\gamma}}\le
+%$$
+%\begin{equation}\label{8.52}
+%2(1-y)^{\frac{1}{q(1)}}\frac{(1-y)^{-\frac{1}{q(1)}}}{1/q(1)}+
+%2(1-y)^{\frac{1}{q(1)}-1+\gamma}\frac{(1-y)^{1-\frac{1}{q(1)}-\gamma}}{1-\frac{1}{q(1)}-\gamma}
+%\le c(\alpha,p).
+%\end{equation}
+%Из \eqref{8.39}, \eqref{8.49}, \eqref{8.51} и  \eqref{8.52}  следует, что
+%$$
+%I\le c(\alpha,p)\|g\|_{q(1)}([1-\delta_2,1])\|\psi\|_{p(1)}([1-\delta_2,1])\le
+%c(\alpha,\beta,p)\|A_n\mu^\frac{1}{p(1)}f\|_{p(1)}([1-\delta_2,1])
+%$$
+%\begin{equation}\label{8.53}
+%\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([1-\delta_2,1])\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1,1]),
+%\end{equation}
+%Оценки \eqref{8.48} и \eqref{8.53}, взятые вместе дают
+%\begin{equation}\label{8.54}
+%\|V(f)\|_{p(\cdot)}([1-\delta_2,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%Из \eqref{8.46} и \eqref{8.54} и неравенства \eqref{8.43} выводим
+%\begin{equation}\label{8.55}
+%\|\sigma_{22}(f)\|_{p(\cdot)}([1-\delta_2,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%а из   \eqref{8.42} и \eqref{8.55} получаем
+%\begin{equation}\label{8.56}
+%\|\sigma_{22}(f)\|_{p(\cdot)}([0,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%Сопоставляя \eqref{8.36} и \eqref{8.56} с \eqref{8.27}, убеждаемся в  справедливости утверждения леммы 8.2 при $i=2$.
+%Перейдем к доказательству утверждения леммы 8.2 для $i=4$. Положим
+%\begin{equation}\label{8.57}
+%B_n(y)=\sqrt{n+1}(1+y)^\beta(1-y)^{\frac{\alpha}{2}+\frac14}P_n^{\alpha,\beta}(y),
+%\end{equation}
+%\begin{equation}\label{8.58}
+%\Phi_n(y)=B_n(y)(1-y)^{\frac{\alpha}{2}-\frac14}
+%\end{equation}
+%и заметим, что в силу \eqref{7.7}
+%\begin{equation}\label{8.59}
+%|B_n(y)|\le c(\alpha,\beta)\quad(-1/2\le y<1),
+%\end{equation}
+%\begin{equation}\label{8.60}
+%|\Phi_n(y)|\le c(\alpha,\beta,p)\quad(-1/2\le y<1-{\delta_2}/{2}).
+%\end{equation}
+%Из \eqref{8.12} и \eqref{8.57} имеем
+%\begin{equation}\label{8.61}
+%\sigma_4(f,x)=c(\alpha,\beta)(1-x)^{v(x)}\left|\int_{-\frac12}^{1}
+%\frac{\Phi_n(y)f(y)dy}{x-y}\right|\le\sigma_{41}(f,x)+\sigma_{42}(f,x),
+%\end{equation}
+%где $v(x)=\frac{\alpha}{p(x)}-\frac{\alpha}{2}+\frac14$,
+%\begin{equation}\label{8.62}
+%\sigma_{41}(f,x)=c(\alpha,\beta)(1-x)^{v(x)}\left|\int_{-\frac12}^{1-\delta_2}
+%\frac{\Phi_n(y)f(y)dy}{x-y}\right|,
+%\end{equation}
+%\begin{equation}\label{8.63}
+%\sigma_{42}(f,x)=c(\alpha,\beta)(1-x)^{v(x)}\left|\int_{1-\delta_2}^1
+%\frac{\Phi_n(y)f(y)dy}{x-y}\right|.
+%\end{equation}
+%Оценим $|\sigma_{41}(f,x)|$. С этой целью рассмотрим два случая: 1) $0\le x\le1-\delta_2/2$; 2) $1-\delta_2/2\le x<1$. Если $0\le x\le1-\delta_2/2$, то из \eqref{8.62} и \eqref{4.3} следует, что
+%\begin{equation}\label{8.64}
+%\sigma_{41}(f,x)\le c(\alpha,\beta,p)\left|\int_{-\frac12}^{1-\delta_2}
+%\frac{\Phi_n(y)f(y)dy}{x-y}\right|=c(\alpha,\beta,p)\left|H^{-\frac12,1-\delta_2}g(x)\right|,
+%\end{equation}
+%где $g(y)=\Phi_n(y)f(y)$, если же  $1-\delta_2/2\le x<1$, то
+%\begin{equation}\label{8.65}
+%\sigma_{41}(f,x)\le c(\alpha,\beta, p)(1-x)^{v(1)}\int_{-\frac12}^{1-\delta_2}
+%|\Phi_n(y)f(y)|dy.
+%\end{equation}
+%Обратимся к оценке \eqref{4.4}, тогда, полагая $g(y)=\Phi_n(y)f(y)$ и учитывая \eqref{8.57} -- \eqref{8.60},  мы можем записать
+%$$
+%\|H^{-\frac12,1-\delta_2}g\|_{p(\cdot)}(\mathbb{R})\le c(\alpha,\beta,p)\|g\|_{p(\cdot)}([-1/2,1-\delta_2])\le
+%$$
+%\begin{equation}\label{8.66}
+%c(\alpha,\beta,p)\|f\|_{p(\cdot)}([-1/2,1-\delta_2])\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1/2,1-\delta_2]).
+%\end{equation}
+%Из \eqref{8.64} и \eqref{8.66} выводим
+%\begin{equation}\label{8.67}
+%\|\sigma_{41}(f)\|_{p(\cdot)}([0,1-\delta_2])\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%С другой стороны, в силу \eqref{2.5} и \eqref{8.60}
+%$$
+%\int\limits_{-\frac12}^{1-\delta_2}|g(y)|dy\le c(p)\|g\|_{p(\cdot)}([-\frac12,1-\delta_2])
+%$$
+%$$\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-\frac12,1-\delta_2])\le c(\alpha,\beta,p),$$
+%поэтому из \eqref{8.65} для $p\in\mathcal{ P}(-1,1)$ имеем
+%$$\int\limits_{1-\delta_2}^{1}(\sigma_{41}(f,x))^{p(x)}dx\le c(\alpha,\beta,p)\int\limits_{1-\delta_2}^{1}(1-x)^{v(1)p(1)}dx=$$
+%\begin{equation}\label{8.68}
+%\frac{c(\alpha,\beta,p)\delta_2^{v(1)p(1)+1}}{v(1)p(1)+1}\le c(\alpha,\beta,p),
+%\end{equation}
+%так как из \eqref{8.13} вытекает, что $v(1)>0$. Чтобы убедиться в этом заметим, что из условия \eqref{8.13} имеем $4(\alpha+1)/(2\alpha+1)>p(1)$. С другой строны, если $\alpha>1/2$, то
+%$4\alpha/(2\alpha-1)>4(\alpha+1)/(2\alpha+1)$ и, стало быть, $4\alpha/(2\alpha-1)>p(1)$ или, что то же, $1/p(1)>(2\alpha-1)/4\alpha$ и отсюда $\alpha/p(1)>\alpha/2-1/4$, а это означает, что $v(1)=v_\alpha(1)=-\alpha/2+1/4+\alpha/p(1)>0$. Если же $-1/2<\alpha\le1/2$, то $v_\alpha(1)>0$   каково бы ни было $p(1)>0$. В самом деле, прямая $l(\alpha)=v_\alpha(1)$ в точках $\alpha=-1/2$ и $\alpha=0$ принимает значения $l(-1/2)=1/2-1/(2p(1))>0$ и $l(0)=1/4$, соответственно, поэтому для любого $\alpha>-1/2$ имеем $v_\alpha(1)>0$.
+%
+%Из \eqref{8.67} и \eqref{8.68} находим
+%\begin{equation}\label{8.69}
+%\|\sigma_{41}(f)\|_{p(\cdot)}([0,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%Оценим $|\sigma_{42}(f,x)|$, для чего рассмотрим два случая: 1)
+%$0\le x \le1-\delta_2$; 2) $1-\delta_2\le x<1$. Если $0\le x \le1-\delta_2$, то согласно \eqref{8.63}
+%\begin{equation}\label{8.70}
+%\sigma_{42}(f,x)=c(\alpha)(1-x)^{v(x)}\left|\int_{1-\delta_2}^1
+%\frac{\Phi_n(y)f(y)dy}{x-y}\right|\le \sigma_{421}(f,x)+\sigma_{422}(f,x),
+%\end{equation}
+% где
+% \begin{equation}\label{8.71}
+%\sigma_{421}(f,x)=c(\alpha,\beta,p)\left|\int_{1-\delta_2}^{1-\delta_2/2}
+%\frac{\Phi_n(y)f(y)dy}{x-y}\right|,
+%\end{equation}
+%\begin{equation}\label{8.72}
+%\sigma_{422}(f,x)=c(\alpha,\beta,p)\left|\int_{1-\delta_2/2}^1
+%\frac{\Phi_n(y)f(y)dy}{x-y}\right|.
+%\end{equation}
+%Положим $r_n=r_n(y)=\Phi_n(y)f(y)$ и воспользуемся определением \eqref{4.3}, тогда можем переписать \eqref{8.71} так $\sigma_{421}(f,x)=c(\alpha,\beta,p)\left|H^{1-\delta_2,1-\delta_2/2}r_n(x)\right|$,
+%поэтому в силу \eqref{4.4} и \eqref{8.60}
+%$$
+%\|\sigma_{421}(f)\|_{p(\cdot)}([0,1-\delta_2])\le c(\alpha,\beta,p)\|r_n\|_{p(\cdot)}([1-\delta_2,1-\delta_2/2])\le
+%$$
+%\begin{equation}\label{8.73}
+%c(\alpha,\beta,p)\|f\|_{p(\cdot)}([1-\delta_2,1-\delta_2/2])\le c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%Далее, в силу \eqref{8.59}, \eqref{8.72} и с учетом того, что $\|f\|_{p(\cdot),\mu}([-1,1])\le1$, а из левого из неравенств \eqref{8.13} вытекает $(\frac\alpha2-\frac14-\frac\alpha{p(1)})q(1)+1>0$, мы можем записать
+%$$
+%\sigma_{422}(f,x)\le c(\alpha,\beta,p)\int_{1-\delta_2/2}^1(1-y)^{\frac\alpha2-\frac14-\frac\alpha{p(1)}}
+%(1-y^2)^\frac{\alpha}{p(1)}|f(y)|dy\le
+%$$
+%$$
+%c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1,1])
+%\left(\int_{1-\delta_2/2}^1(1-y)^{(\frac\alpha2-\frac14-\frac\alpha{p(1)})q(1)}
+%\right)^{\frac{1}{q(1)}}\le c(\alpha,\beta,p),
+%$$
+%поэтому
+%\begin{equation}\label{8.74}
+%\|\sigma_{421}(f)\|_{p(\cdot)}([0,1-\delta_2])\le c(\alpha,\beta,p).
+%\end{equation}
+%Оценки  \eqref{8.70},  \eqref{8.72} и  \eqref{8.74}, взятые вместе, дают
+%\begin{equation}\label{8.75}
+%\|\sigma_{42}(f)\|_{p(\cdot)}([0,1-\delta_2])\le c(\alpha,\beta,p).
+%\end{equation}
+%Рассмотрим случай $1-\delta_2\le x<1$.  Поскольку в этом случае $p(x)=p(1)$ и, следовательно, $v(x)=v(1)$, то мы можем записать
+%\begin{equation}\label{8.76}
+%\sigma_{42}(f,x)=c(\alpha)\left|\int_{1-\delta_2}^1
+%\frac{B_n(y)(1-y)^{\frac{\alpha}{p(1)}}f(y)dy}{x-y}\left(\frac{1-x}{1-y}\right)^{v(1)}\right|\le
+%G(f,x)+Q_(f,x),
+%\end{equation}
+%где
+%\begin{equation}\label{8.77}
+%G(f,x)=c(\alpha)\left|\int_{1-\delta_2}^1
+%\frac{B_n(y)(1-y)^{\frac{\alpha}{p(1)}}f(y)dy}{x-y}\right|,
+%\end{equation}
+%\begin{equation}\label{8.78}
+%Q(f,x)=c(\alpha)\left|\int_{1-\delta_2}^1
+%\frac{B_n(y)(1-y)^{\frac{\alpha}{p(1)}}f(y)dy}{x-y}
+%\left[\left(\frac{1-x}{1-y}\right)^{v(1)}-1\right]\right|.
+%\end{equation}
+%Рассмотрим $G(f,x)$. С этой целью положим $F(y)=B_n(y)(1-y)^\frac\alpha{p(1)}f(y)$ и обратимся к определению  \eqref{4.3}, тогда из \eqref{8.77} имеем $G(f,x)=c(\alpha)|H^{1-\delta_2,1}F|$, поэтому из оценки \eqref{4.4} с учетом \eqref{8.59} находим
+%$$
+%\|G(f)\|_{p(\cdot)}([1-\delta_2,1])\le c(\alpha,\beta,p)\|F\|_{p(\cdot)}([1-\delta_2,1])\le c(\alpha,\beta,p)\|f\|_{p(\cdot)}([1-\delta_2,1])
+%$$
+%\begin{equation}\label{8.79}
+%\le c(\alpha,\beta,p)\|f\|_{p(\cdot)}([-1,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%Далее нам понадобятся следующие неравенства: 1) $0<v(1)$; 2) $v(1)<1/q(1)$. Первое из них мы уже проверяли выше, поэтому остается убедиться в справедливости второго. Для этого заметим, что  в силу первого из неравенств
+%\eqref{8.13} имеем $4(\alpha+1)/(2\alpha+3)<p(1)$, отсюда $(2\alpha+3)/4>(\alpha+1)/p(1)$, т.е. $-\alpha/2-3/4<-\alpha/p(1)-1/p(1)$ или, что то же $v_\alpha(1)<1-1/p(1)=1/q(1)$, что и требовалось доказать. Итак, мы проверили справедливость неравенств
+%\begin{equation}\label{8.80}
+%0<v(1)=v_\alpha(1)=-\frac\alpha2+\frac14+\frac\alpha{p(1)}<\frac{1}{q(1)}\quad (\alpha>-1/2).
+%\end{equation}
+%Оценим норму $\|Q(f)\|_{p(\cdot)}([1-\delta_2,1)$. Положим $\gamma=v_\alpha(1)$,
+% \begin{equation}\label{8.81}
+%K_\gamma(x,y)=\frac{1}{|x-y|}\left|\left(\frac{1-x}{1-y}\right)^{\gamma}-1\right|.
+%\end{equation}
+%Тогда с учетом \eqref{8.78} мы можем записать
+%\begin{equation}\label{8.82}
+%\|Q(f)\|_{p(\cdot)}([1-\delta_2,1])\le c(\alpha) \sup_{g}\int\limits_{1-\delta_2}\int\limits_{1-\delta_2}|g(x)Z(y)|K_\gamma(x,y)dxdy,
+%\end{equation}
+%где $Z(y)=B_n(y)(1-y)^\frac{\alpha}{p(1)}$, а  верхняя грань берется по всем $g\in L^{q(1)}([1-\delta_2,1])$, для которых $\|g\|_{p(\cdot)}([1-\delta_2,1])\le 1$. Оценим двойной интеграл $J$ из \eqref{8.82}. Имеем $$
+%J= \int\limits_{1-\delta_2}\int\limits_{1-\delta_2}|F(y)|K_\gamma^\frac1{p(1)}(x,y)
+%\left(\frac{1-y}{1-x}\right)^\frac1{p(1)q(1)}\times
+%$$
+%$$
+%|g(x)|K_\gamma^\frac1{q(1)}(x,y)
+%\left(\frac{1-x}{1-y}\right)^{\frac1{p(1)q(1)}} dxdy\le
+%$$
+%\begin{equation}\label{8.83}
+%\left(\int\limits_{1-\delta_2}|g(x)|^{q(1)}F_3(x)dx\right)^\frac1{q(1)}
+%\left(\int\limits_{1-\delta_2}|Z(y)|^{p(1)}F_4(y)dy\right)^\frac1{p(1)},
+%\end{equation}
+%где
+%\begin{equation}\label{8.84}
+%F_3(x)=\int\limits_{1-\delta_2}K_\gamma(x,y)
+%\left(\frac{1-x}{1-y}\right)^{\frac1{p(1)}} dy,
+%\end{equation}
+%\begin{equation}\label{8.85}
+% F_4(y)=\int\limits_{1-\delta_2}K_\gamma(x,y)
+%\left(\frac{1-y}{1-x}\right)^{\frac1{q(1)}} dx.
+%\end{equation}
+%Покажем, что функции $F_3$ и $F_4$ ограничены на $(1-\delta_2,1)$.
+%Поскольку для $\gamma=v_\alpha(1)$ справедливы неравенства \eqref{8.80}, то мы можем обратимся к лемме 8.4. Тогда из  \eqref{8.81}, \eqref{8.84}, \eqref{8.85} и \eqref{8.16} имеем
+%$$
+% F_3(x)\le \int_{1-\delta_2}^1 \left(\frac{1-x}{1-y}\right)^\frac{1}{p(1)}\frac{2dy}
+% {(1-y)^\gamma((1-y)^{1-\gamma}+(1-x)^{1-\gamma})}<
+%$$
+%$$
+%2(1-x)^\frac{1}{p(1)} \int_{1-\delta_2}^1\frac{(1-y)^{-\frac{1}{p(1)}-\gamma}dy}{(1-y)^{1-\gamma}+(1-x)^{1-\gamma}}\le
+%$$
+%$$
+%2(1-x)^\frac{1}{p(1)} \int_{1-\delta_2}^x(1-y)^{-\frac{1}{p(1)}-1}dy+
+%2(1-x)^{\frac{1}{p(1)}-1+\gamma} \int_x^1(1-y)^{-\frac{1}{p(1)}-\gamma}dy<
+%$$
+%$$
+%2p(1)(1-x)^\frac{1}{p(1)}(1-x)^{-\frac{1}{p(1)}}+2(1-x)^{\frac{1}{p(1)}-1+\gamma}
+%\frac{(1-x)^{-\frac{1}{p(1)}-\gamma+1}}{-\frac{1}{p(1)}-\gamma+1}=
+%$$
+%\begin{equation}\label{8.86}
+% 2p(1)+\frac{2}{\frac1{q(1)}-\gamma}\le c(\alpha,\beta,p),
+% \end{equation}
+%$$
+% F_4(y)\le \int_{1-\delta_2}^1 \left(\frac{1-y}{1-x}\right)^\frac{1}{q(1)}\frac{2dx}
+% {(1-y)^\gamma((1-y)^{1-\gamma}+(1-x)^{1-\gamma})}<
+%$$
+%$$
+%2(1-y)^{-\frac{1}{q(1)}} \int_{1-\delta_2}^y(1-x)^{-\frac{1}{p(1)}-1+\gamma}dx+
+%2(1-y)^{\frac{1}{q(1)}-1} \int_y^1(1-x)^{-\frac{1}{q(1)}}dx<
+%$$
+%\begin{equation}\label{8.87}
+%\frac{2(1-y)^{\frac{1}{q(1)}-\gamma}}{\frac{1}{q(1)}-\gamma}
+%\left[(1-y)^{-\frac{1}{q(1)}+\gamma}-\delta_2^{-\frac{1}{q(1)}+\gamma}\right]+
+%2(1-y)^{\frac{1}{q(1)}-1}\frac{(1-y)^{\frac{1}{p(1)}}}{1/p(1)}\le c(\alpha,\beta,p).
+%\end{equation}
+%Из  \eqref{8.59},  \eqref{8.83}, \eqref{8.86}, \eqref{8.87}  имеем
+%$$
+%J\le c(\alpha,\beta,p)\|g\|_{q(1)}([1-\delta_2,1])\|Z\|_{p(1)}([1-\delta_2,1])\le
+%$$
+%$$
+%c(\alpha,\beta,p)\|B_n\mu^\frac{1}{p(1)}f\|_{p(1)}([1-\delta_2,1])\le
+%c(\alpha,\beta,p)\|f\|_{p(\cdot),\mu}([-1,1])\le c(\alpha,\beta,p).
+%$$
+%Сопоставляя эту оценку с  \eqref{8.82},  выводим
+%\begin{equation}\label{8.88}
+%\|Q(f)\|_{p(\cdot)}([1-\delta_2,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%Оценки  \eqref{8.79} и \eqref{8.88} и неравенство \eqref{8.76} дают
+%\begin{equation}\label{8.89}
+%\|\sigma_{42}(f)\|_{p(\cdot)}([1-\delta_2,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%а из   \eqref{8.75} и \eqref{8.89} получаем
+%\begin{equation}\label{8.90}
+%\|\sigma_{42}(f)\|_{p(\cdot)}([0,1])\le c(\alpha,\beta,p).
+%\end{equation}
+%Сопоставляя \eqref{8.69} и \eqref{8.90} с \eqref{8.61}, убеждаемся в  справедливости утверждения леммы 8.2 при $i=4$. Итак, лемма 8.2 полностью доказана.
+
+
+
+
+
+
+
+\begin{corollary}
+Если выполнены условия теоремы 1.1,  то  система ортонормированных  полиномов  Якоби $\{p_n^{\alpha,\beta}(x)\}_{n=0}^\infty$ с $\alpha,\beta>-1/2$ является базисом пространства  $L^{p(x)}_\mu([-1,1])$, где $\mu=\mu(x)=(1-x)^\alpha(1+x)^\beta$, и, как следствие, $\|f-S_n^{\alpha,\beta}(f)\|_{p(\cdot),\mu}([-1,1])\to0$ при $n\to\infty$ для произвольной функции $f\in L^{p(x)}_\mu([-1,1])$.
+\end{corollary}
+
+
+
+Рассмотрим отдельно случай, когда $\alpha=-1/2$, который не входит в теорему 1.1. Хорошо известно (см., напр. \cite{ShIIBJWSege}), что сумма Фурье -- Якоби  $S_n^{\alpha,\alpha}(f)$ при $\alpha=-1/2$ представляет собой сумму Фурье -- Чебышева по полиномами Чебышева $T_n(x)=\cos(n\arccos x)$ $(n=0,1,\ldots)$. Это обстоятельство позволяет доказать равномерную ограниченность сумм Фурье -- Чебышева $S_n^{-1/2,-1/2}(f)$, $n=0,1,\ldots$  в пространстве $L_\mu^{p(x)}([-1,1])$ с $\mu(x)=(1-x^2)^{-\frac12}$ когда переменный показатель $p=p(x)>1$ подчиняется на $[-1,1]$ лишь условию \eqref{3.1}.  Причем это условие является, в определенном смысле, также и необходимым. Чтобы сформулировать соответствующий окончательный результат введем  одно обозначение. Обозначим через $\mathcal{ P}^\alpha$ класс переменных показателей $p>1$, удовлетворяющих на $[-1,1]$ следующему условию:
+\begin{equation}\label{8.97}
+|p(x)-p(y)|\left(\ln\frac{2}{|x-y|}\right)^\alpha\le d\quad(\alpha,d>0, x,y\in[-1,1]).
+\end{equation}
+
+\begin{theorem}
+Пусть  $\mu=\mu(x)=(1-x^2)^{-\frac12}$. Тогда суммы Фурье-Чебышева $S_n^{-\frac12,-\frac12}(f)$ $(n=0,1,\ldots)$
+равномерно ограничены в весовом пространстве Лебега $L_\mu^{p(x)}([-1,1])$ с произвольным переменным показателем $p\in \mathcal{ P}^\alpha$ тогда и только тогда, когда $\alpha\ge1$. Другими словами, найдется такое положительное число $c(\alpha,p)$, зависящее только от указанных параметров $\alpha$ и $p\in \mathcal{ P}^\alpha$,     что для произвольной функции $f\in L_\mu^{p(x)}([-1,1])$ имеет место оценка
+\begin{equation}\label{8.98}
+\|S_n^{-\frac12,-\frac12}(f)\|_{p(\cdot),\mu}([-1,1])\le c(\alpha,p)\|f\|_{p(\cdot),\mu}([-1,1]).
+\end{equation}
+Если же $0<\alpha<1$, то найдется переменный показатель $p_\alpha\in \mathcal{P}^\alpha$ и $f_\alpha\in L_\mu^{p_\alpha(x)}([-1,1])$,
+для которых
+\begin{equation}\label{8.99}
+\|S_n^{-\frac12,-\frac12}(f_\alpha)\|_{p_\alpha(\cdot),\mu}([-1,1])\to\infty\quad(n\to\infty).
+\end{equation}
+\end{theorem}
+
+
+
+
+
+
+
+
+
+\begin{corollary}
+  Если выполнены условия теоремы 1.2,  то система полиномов Чебышева первого рода $\{p_n^{-\frac12,-\frac12}(x)\}_{n=0}^\infty$  является базисом пространства  $L^{p(x)}_\mu([-1,1])$, где $\mu=\mu(x)=(1-x^2)^{-\frac12}$.
+\end{corollary}

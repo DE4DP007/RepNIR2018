@@ -1,0 +1,364 @@
+
+\subsection{Усреднение одного эллиптического уравнения второго порядка с комплекснозначными периодическими коэффициентами}
+
+\textit{
+    Рассмотрены вопросы усреднения одного класса эллиптических операторов второго порядка с комплекснозначными периодическими  коэффициентами.
+}
+
+
+
+Вопрос об усреднении дифференциальных операторов с частными производными и связанный с ним более общий вопрос о G-сходимости последовательности операторов возник в связи с задачами математической физики. В частности, физические процессы, рассматриваемые в сильно неоднородных средах, описываются дифференциальными уравнениями с частными производными, причем сильная неоднородность этих сред приводит к изучению уравнений с быстро меняющимися коэффициентами. Такие задачи возникают в теории упругости, в теории гетерогенных сред и композитных материалов.
+
+В работе рассматриваются вопросы G-сходимости и усреднения одного класса недивергентных эллиптических уравнений второго порядка с комплекснозначными коэффициентами.
+
+В работе будем придерживаться следующих обозначений:
+
+$Q\subset R^{2} $ -- ограниченная односвязная гладкая область класса $C_{}^{2+\alpha } $, $0<\alpha <1$; $\partial _{\bar{z}} =2^{-1} \, \left(\frac{\partial }{\partial x_{1} } +i\frac{\partial }{\partial x_{2} } \right)$,      $\partial _{z} =2^{-1} \, \left(\frac{\partial }{\partial x_{1} } -i\frac{\partial }{\partial x_{2} } \right)$;
+
+$L_{2} (Q;C)$ -- пространство Лебега комплекснозначных квадратично суммируемых функций. Символ $C$ в обозначении пространства (здесь и далее) означает также, что это пространство есть линейное пространство над полем действительных чисел;
+
+$W_{p}^{k} (Q)$ $(k\in N,\quad 1\le p<\infty )$ -- обычное пространсво Соболева;
+
+$W_{p}^{k} (Q;!)$ -- пространство Соболева комплекснозначных функций;
+
+$L_{2} (\Omega )$, $H^{k} (\Omega )\equiv W_{2}^{k} (\Omega )$, $L_{2} (\Omega ;C)$, $H^{k} (\Omega ;C)\equiv W_{2}^{k} (\Omega ;C)$ -- пространства Лебега и Соболева периодических функций, где  $\Omega $- квадрат со стороной $T$,  параллельной оси координат, $|\Omega |=T^{2} $ -- площадь квадрата $\Omega $;
+
+Под периодической функцией $g(x_{1} ,x_{2} )$ будем понимать функцию периодическую (периода $T$) по каждой переменной.
+
+\textbf{\S 1. Формулировка основных результатов}
+
+\textbf{1.1.} Рассмотрим следующую краевую задачу Пуанкаре
+\begin{equation*}
+Au \equiv \partial _{z\bar{z}}^{2} u+\mu \, \partial _{zz}^{2} u+\nu \; \partial _{\bar{z}\bar{z}}^{2} \bar{u}=f\in L_{2} (Q;C),
+\end{equation*}
+\begin{equation*}
+u\in W(Q)=\left\{u\in W_{2}^{2} (Q;\mathrm{C}),\; Reu=0,\; Re\partial _{z} u=0  \partial Q, \right.
+\end{equation*}
+\begin{equation}
+\label{sirM2.1_}
+\left. \int _{Q}Imu\, dx=0 ,\int _{Q}Im\partial _{z} u\, dx=0 \right\}
+\end{equation}
+ где  $\mu =\mu (x)$ и  $\nu =\nu (x)$ --  измеримые в области  $Q$,  комплекснозначные функции удовлетворяющие условию:
+
+\begin{equation}
+\label{sirM2.2_} \mathop{\mathrm{ vrai}\, \sup }\limits_{\, \, x\in Q} \; \, \left(|\mu (x)|+|\nu (x)|\right)\le k_{0} <1,     \end{equation}
+
+
+$k_{0} $ -- положительная постоянная; $Q$ -- ограниченная односвязная область плоскости с границей класса $C^{2+\alpha } $.
+
+В дальнейшем класс операторов вида \eqref{sirM2.1_}, \eqref{sirM2.2_} будем обозначать $A(k_{0} ;Q)$.
+
+Справедлива следующая (см. \cite{Jamaludinova})
+
+\textbf{Теорема. }\textit{Краевая задача Пуанкаре }\eqref{sirM2.1_} \textit{однозначно разрешима для любой правой части $f\in L_{2} (Q;C)$. Более того, имеют место априорные оценки}
+\begin{equation}
+(1-k_{0} )\, \left\| \, \partial _{z\bar{z}}^{2} u\, \right\| _{L_{2} (Q;C)} \le \left\| \, Au\, \right\| _{L_{2} (Q;C)} \le (1+k_{0} )\, \left\| \, \partial _{z\bar{z}}^{2} u\, \right\| _{L_{2} (Q;C)},
+\label{sirM2.3_}
+\end{equation}
+\begin{equation}
+(1-k_{0} )\, \left\| \, \partial _{z\bar{z}}^{2} u\, \right\| ^{2} _{L_{2} (Q;C)} \le Re\int _{Q}Au\, \, \overline{\partial _{z\bar{z}}^{2} u} \, dx,\quad u\in W(Q).
+\label{sirM2.4_}
+\end{equation}
+Заметим, что выражение $\left\| u\right\| _{W(Q)} =\left\| \partial _{z\bar{z}}^{2} u\right\| _{L_{2} (Q;C)} $, $u\in W(Q)$, задает в подпространстве $W(Q)$ пространства $W_{2}^{2} (Q;C)$ норму эквивалентную норме пространства $W_{2}^{2} (Q;C)$ (см. \cite{Jamaludinova}).
+
+\textbf{1.2.  Усреднение}
+
+\textbf{1.2.1. }Дадим понятие $G$--сходимости.
+
+\textbf{Определение 1.} Скажем, что  последовательность операторов $\left\{A_{k} \right\}\subset A(k_{0} ,Q)$ G-сходится в области $Q$ к $A\in A(k_{0} ,Q)$, если $\left\{A_{k}^{-1} \right\}$ слабо сходится к $A^{-1} $, где $A_{k} $ и $A$ операторы задач Пуанкаре:  $A_{k} u_{k} =f\in $$L_{2} (Q;C)$, $u_{k} \in W(Q)$, $Au=f\in $ $L_{2} (Q;C)$, $u\in W(Q)$.
+
+
+
+Как показано в \cite{JikovKozlov}  класс  $A(k_{0} ,Q)$ G-компактен.
+
+\textbf{1.2.2.} Пусть коэффициенты $\mu $, $\nu $ --- измеримые периодические функции, удовлетворяющие следующему условию
+\begin{equation}
+\label{sirM2.5_}
+\mathop{\mathrm{ vrai}\, {\kern 1pt} \; \sup {\kern 1pt} }\limits_{x\in \mathrm{ R}^{2} } \left(\, \left|\mu (x)\right|+\left|\nu (x)\right|\, \right)\le k_{0} <1.
+\end{equation}
+
+Рассмотрим семейство операторов $\left\{A_{\varepsilon } \right\}_{0<\varepsilon \le 1} $, действующих из $W(Q)$ в $L_{2} (Q;C)$ и определенных формулой
+\begin{equation}
+\label{sirM2.6_}
+A_{\varepsilon } u\equiv \partial _{z\bar{z}}^{2} u+\mu ^{\varepsilon } \partial _{zz}^{2} u+\nu ^{\varepsilon } \partial _{\bar{z}\bar{z}}^{2} \bar{u}=f\in L_{2} (\Omega ;C), \quad u\in W(Q),
+\end{equation}
+
+где  $0<\varepsilon \le 1$, $\mu ^{\varepsilon } =\mu (\varepsilon ^{-1} x)$, $\nu ^{\varepsilon } =\nu (\varepsilon ^{-1} x)$.
+
+\textbf{Определение 2.} Скажем, что для семейства $\left\{A_{\varepsilon } \right\}_{0<\varepsilon \le 1} $ имеет место усреднение, если найдется $A_{0} \in A(k_{0} ;Q)$ такой, что  $A_{\varepsilon } \stackrel{G}{\longrightarrow} A_{0} $ в области $Q$ при $\varepsilon \to 0$. При этом $A_{0} $ называется усредненным оператором (а соответствующее уравнение -- усредненным уравнением).
+
+Рассмотрим периодическую краевую задачу
+
+         $Au\equiv \partial _{z\bar{z}}^{2} u+\mu \partial _{zz}^{2} u+\nu \partial _{\bar{z}\bar{z}}^{2} \bar{u}=f\in L_{2} (\Omega ;C)$,     $u\in H^{2} (\Omega ;C)$,                \eqref{sirM2.7_}
+
+где $\mu =\mu (x),$ $\nu =\nu (x)$ --- периодические на всей плоскости функции, удовлетворяющие условию \eqref{sirM2.5_}. Справедлива следующая
+
+\textbf{Лемма 1. }  \textit{Для задачи }\eqref{sirM2.7_}\textit{ имеет место неравенство острого угла}
+
+\begin{equation}
+\label{sirM2.8_}
+(1-k_{0} ){\kern 1pt} {\kern 1pt} \left\langle \left|\partial _{z\bar{z}}^{2} u\right|^{2} \right\rangle \le Re\, \left\langle Au\overline{\partial _{z\bar{z}}^{2} u}\right\rangle ,\quad u\in H^{2} (\Omega ;C),
+\end{equation}
+
+\textit{где $\left\langle g\right\rangle =\left|\Omega \right|^{-1} \int _{\Omega }g(x)dx $ }---\textit{ среднее значение $g$.}
+
+Лемма 1  доказана ниже в  \S 2,  п. 2.1.
+
+Важную роль при усреднении играет ядро оператора  $A^{*} :L_{2} (\Omega ;C)\to H^{-2} $, сопряженного оператору периодической краевой задачи:
+\begin{equation}
+Au\equiv \partial _{z\bar{z}}^{2} u+\mu \partial _{zz}^{2} u+\nu \partial _{\bar{z}\bar{z}}^{2} \bar{u}=f\in L_{2} (\Omega ;C),\quad u\in H^{2} (\Omega ;C),
+\label{sirM2.9_}
+\end{equation}
+
+где $\mu =\mu (x)$, $\nu =\nu (x)$ --- периодические на всей плоскости функции, удовлетворяющие условию \eqref{sirM2.5_}.  Имеет место
+
+\textbf{Теорема 1. }\textit{Ядро оператора $A^{*} :L_{2} (\Omega ;C)\to H^{-2} (\Omega ;C)$ }---\textit{ двухмерное подпространство   $L_{2} (\Omega ;C)$,   причем  один   из   базисов   ядра  $\left\{p_{1} ,p_{2} \right\}$ }
+
+\textit{удовлетворяет  условиям  }
+
+\begin{equation}
+\label{sirM2.10_}
+\left\langle p_{1} \right\rangle =1, \left\langle p_{2} \right\rangle =i.
+\end{equation}
+
+\textit{Кроме того, в случае $\nu =0$  базисные векторы можно выбрать так, что }
+
+\begin{equation}
+\label{sirM2.11_}
+p_{2} =ip_{1}.
+\end{equation}
+
+    Сформулируем теперь теорему об усреднении.
+
+\textbf{Теорема 2. }\textit{Для семейства }\eqref{sirM2.6_}\textit{ имеет место усреднение, причем коэффициенты усредненного оператора   $A_{0} u\equiv \partial _{z\bar{z}}^{2} u+\mu ^{0} \partial _{zz}^{2} u+\nu ^{0} \partial _{\bar{z}\bar{z}}^{2} \bar{u}$, $\quad u\in W(Q)$,}
+
+\textit{постоянные и даются равенствами $\quad \mu ^{0} =\left\langle \mu F+\bar{\nu }P\right\rangle $,  $\quad \nu ^{0} =\left\langle \bar{\mu }P+\nu F\right\rangle $,  где $P=2^{-1} (p_{1} +ip_{2} )$, $F=2^{-1} (\bar{p}_{1} +i\, \bar{p}_{2} )$,   $p_{1} $, $p_{2} $  --  базисные векторы из теоремы 1.}
+
+\textit{При $\nu =0$ коэффициент $\nu ^{0} $ усредненного оператора также равен нулю, а $\mu ^{0} =\left\langle \mu \, \bar{p}_{1} \right\rangle $.}
+
+\textbf{Следствие.  }\textit{Пусть коэффициенты $\mu $ и $\nu $оператора  }\eqref{sirM2.6_} связаны одним из двух соотношений: \textit{$\nu =e^{i\alpha } \mu $, $\nu =e^{i\alpha } \bar{\mu }$,  где $\alpha \in [-\pi ,\pi )$ - постоянная. Тогда аналогичную структуру имеет и усредненный оператор. Подробнее:}
+
+\textit{(i) при $\nu =e^{i\alpha } \mu $ имеем $\nu ^{0} =e^{i\alpha } \mu ^{0} $;}
+
+\textit{(ii) при $\nu =e^{i\alpha } \bar{\mu }$ имеем $\nu ^{0} =e^{i\alpha } \overline{\mu ^{0} }$; если при этом $\alpha \ne -\pi $, то $\mu ^{0} =\frac{\left\langle \mu Re(p_{1} e^{{\raise0.5ex\hbox{$\scriptstyle -i\alpha  $}\kern-0.1em/\kern-0.15em\lower0.25ex\hbox{$\scriptstyle 2 $}} } )\right\rangle }{\cos (\alpha /2)} $,}
+
+\textit{если $\alpha \ne 0$, то    $\mu ^{0} =\frac{\left\langle \mu Re(p_{2} e^{{\raise0.5ex\hbox{$\scriptstyle -i\alpha  $}\kern-0.1em/\kern-0.15em\lower0.25ex\hbox{$\scriptstyle 2 $}} } )\right\rangle }{\sin (\alpha /2)} $, где $p_{1} $, $p_{2} $ - базисные векторы из теоремы 1.}
+
+\textbf{\S 2.  Периодические решения уравнения $A^{*} p=0$}
+
+\textbf{2.1. Доказательство леммы 1.} Неравенство \eqref{sirM2.8_}  достаточно доказать для всюду плотного в $H^{2} (\Omega ;C)$ множества $C_{\mathrm{ per}}^{\infty } (\Omega ;C)$ гладких (бесконечно дифференцируемых) периодических функций. Пусть $u\in C_{\mathrm{ per}}^{\infty } (\Omega ;C)$ и пусть $f=Au$. Умножим $Au=f$ на $\overline{\partial _{z\bar{z}}^{2} u}$ интегрируем по квадрату периодов $\Omega $ и находим реальную часть. Тогда имеем   $\left\langle \left|\partial _{z\bar{z}}^{2} u\right|^{2} \right\rangle +Re\left\langle \left(\mu \, \partial _{zz}^{2} u+\nu \, \partial _{\bar{z}\bar{z}}^{2} \bar{u}\right)\cdot \overline{\partial _{\bar{z}\bar{z}}^{2} u}\right\rangle =Re\, \left\langle Au{\kern 1pt} {\kern 1pt} \overline{\partial _{z\bar{z}}^{2} u}\right\rangle $
+
+Отсюда следует неравенство:
+
+\begin{equation}
+\label{sirM2.12_}
+\left\langle \left|\partial _{z\bar{z}}^{2} u\right|^{2} \right\rangle -\left|\left\langle \left(\mu \partial _{zz}^{2} u+\nu \partial _{\bar{z}\bar{z}}^{2} \bar{u}\right)\, \cdot \overline{\partial _{z\bar{z}}^{2} u}\right\rangle \right|\le Re\, \left\langle Au\cdot \overline{\partial _{z\bar{z}}^{2} u}\right\rangle
+\end{equation}
+
+Ввиду  \eqref{sirM2.5_} легко видеть, что     $\left|\left\langle \left(\mu \partial _{zz}^{2} u+\nu \partial _{\bar{z}\bar{z}}^{2} \bar{u}\right)\, \cdot \overline{\partial _{z\bar{z}}^{2} u}\right\rangle \right|\le k_{0} \left\langle \left|\partial _{zz}^{2} u\right|^{2} \right\rangle ^{\frac{1}{2} } \cdot \left\langle \left|\partial _{z\bar{z}}^{2} u\right|^{2} \right\rangle ^{\frac{1}{2} } $.
+
+Отсюда и неравенства \eqref{sirM2.12_}, получим
+\begin{equation}
+\left\langle \left|\partial _{z\bar{z}}^{2} u\right|^{2} \right\rangle -k_{0} \left\langle \left|\partial _{zz}^{2} u\right|^{2} \right\rangle ^{\frac{1}{2} } \cdot \left\langle \left|\partial _{z\bar{z}}^{2} u\right|^{2} \right\rangle ^{\frac{1}{2} } \le Re\, \left\langle Au\overline{\partial _{z\bar{z}}^{2} u}\right\rangle.
+\label{sirM2.13_}
+\end{equation}
+Осталось показать, что
+\begin{equation}
+\left\langle \left|\partial _{zz}^{2} u\right|^{2} \right\rangle =\left\langle \left|\partial _{z\bar{z}}^{2} u\right|^{2} \right\rangle.
+\label{sirM2.14_}
+\end{equation}
+ Положим $v=\partial _{z} u=v_{1} +iv_{2} $.  Тогда \eqref{sirM2.14_} эквивалентно
+
+\begin{equation}
+\label{sirM2.15_} \left\langle \left|\partial _{z}^{2} v\right|^{2} \right\rangle =\left\langle \left|\partial _{\bar{z}}^{2} v\right|^{2} \right\rangle
+\end{equation}
+
+ Имеем            $\left|\Omega \right|\left\langle \left|\partial _{z} v\right|^{2} \right\rangle =\int _{\Omega }\left|\partial _{z} v\right|^{2} dx=\frac{1}{4} \sum _{j=1}\left\| \nabla v_{j} \right\| _{L_{2} (\Omega ;C)}^{2}   -\frac{1}{2} \int _{\Omega }\left(\frac{\partial v_{2} }{\partial x_{1} } \frac{\partial v_{1} }{\partial x_{2} } -\frac{\partial v_{1} }{\partial x_{1} } \frac{\partial v_{2} }{\partial x_{2} } \right) \, dx$,
+
+\begin{equation*}
+\left|\Omega \right|\left\langle \left|\partial _{\bar{z}} v\right|^{2} \right\rangle =\int _{\Omega }\left|\partial _{\bar{z}} v\right|^{2} dx=\frac{1}{4} \sum _{j=1}\left\| \nabla v_{j} \right\| _{L_{2} (\Omega ;C)}^{2}   +\frac{1}{2} \int _{\Omega }\left(\frac{\partial v_{2} }{\partial x_{1} } \frac{\partial v_{1} }{\partial x_{2} } -\frac{\partial v_{1} }{\partial x_{1} } \frac{\partial v_{2} }{\partial x_{2} } \right)\,  dx.
+\end{equation*}
+
+ Покажем, что  $J=\int _{\Omega }\left(\frac{\partial v_{2} }{\partial x_{1} } \frac{\partial v_{1} }{\partial x_{2} } -\frac{\partial v_{1} }{\partial x_{1} } \frac{\partial v_{2} }{\partial x_{2} } \right) \, dx$ равняется нулю,   тем самым \eqref{sirM2.15_} будет установлено. При помощи интегрирования по частям перебросим производные с $v_{1} $ на $v_{2} $. Тогда получим
+
+\begin{equation*}
+J=\int _{\Omega }\left(\frac{\partial v_{2} }{\partial x_{1} } v_{1} \cos (\angle nx_{1} )-\frac{\partial v_{2} }{\partial x_{2} } v_{1} \cos (\angle nx_{2} )\right) \, ds,
+\end{equation*}
+
+где $n$ --- внешняя нормаль к  границе, $\angle nx_{i} $  ---  угол между $Ox_{i} $ и $n$, $i=1,\, 2$. Так как $\Omega $ --- квадрат периодов, то на противоположных сторонах квадрата нормали противоположно направлены. С учетом этого и периодичности $v_{1} $, $v_{2} $, получим, что $J$ равняется нулю.  Из соотношений \eqref{sirM2.13_}, \eqref{sirM2.14_} получим неравенство острого угла \eqref{sirM2.8_}.   Лемма 1  доказана.
+
+\textbf{2.2. Доказательство теоремы 1.} Обозначим
+
+\begin{equation*}
+\hat{H}=\left\{u\in H^{2} (\Omega ,C)|\left\langle u\right\rangle =0\right\},      \hat{L}=\left\{f\in L_{2} (\Omega ;C)|\left\langle f\right\rangle =0\right\}.
+\end{equation*}
+
+Очевидно, что $\hat{H}$ есть подпространство $H^{2} (\Omega ;C)$, $\hat{L}$ --- подпространство $L_{2} (\Omega ;C)$. Привлечением рядов Фурье легко показать, что $\Delta =4\partial _{z\bar{z}}^{2} :\hat{H}\to \hat{L}$ есть изоморфизм. Следовательно, по теореме Банаха,  выражение
+
+\begin{equation*}
+\left\| u\right\| _{\hat{H}} =\left\| \partial _{z\bar{z}}^{2} u\right\| _{L_{2} (\Omega ;C)} ,  u\in \hat{H}
+\end{equation*}
+
+задает норму в $\hat{H}$, эквивалентную норме пространства $H^{2} (\Omega ;C)$.
+
+Согласно неравенству острого угла \eqref{sirM2.8_}, получим
+\begin{equation}
+(1-k_{0} ){\kern 1pt} {\kern 1pt} {\kern 1pt} \left\| u\right\| _{\hat{H}}^{2} \le Re\left\langle Au\overline{\partial _{z\bar{z}}^{2} u}\right\rangle.
+\label{sirM2.16_}
+\end{equation}
+Обозначим через  $P:L_{2} (\Omega ;C)\to \hat{L}$ --- ортопроектор на подпространство  $\hat{L}$. Тогда из \eqref{sirM2.16_} получим неравенство      \textbf{$c_{1} \left\| f\right\| _{L_{2} (\Omega ;C)}^{2} \le \left(P\circ A\circ \left(\partial _{z\bar{z}}^{2} \right)^{-1} f,f\right)_{L_{2} (\Omega ;C)} $,  $f\in \hat{L}$,}  где $c_{1} >0$ --- константа, зависящая только от константы эллиптичности $k_{0} $. Это означает, что оператор $B=P\circ A\circ \left(\partial _{z\bar{z}}^{2} \right)^{-1} :\hat{L}\to \hat{L}$ --- коэрцитивный и, следовательно, по лемме Лакса-Мильграма (см. \cite{JikovKozlov}, гл.1, п.1) отображение  $B:\hat{L}\to \hat{L}$ --- изоморфизм. Тогда отображение $P\circ A:\hat{H}\to \hat{L}$ изоморфизм, так как $\left(\partial _{z\bar{z}}^{2} \right)^{-1} :\hat{L}\to \hat{H}$ --- изоморфизм. Отсюда следует, что сужение $P$ на образ $\mathrm{ J}A$ оператора $A$ устанавливает изоморфизм между подпространствами $\mathrm{ J}A$ и $\hat{L}$. (Замкнутость, образа $\mathrm{ J}A$ есть следствие неравенства \eqref{sirM2.16_}).
+
+У изоморфных подпространств одинаковые коразмерности. Так как $\hat{L}$ имеет коразмерность два (напомним, что мы рассматриваем пространства над полем $\mathrm{ R}$), то образ $\mathrm{ J}A$ также имеет коразмерность два.
+
+Для завершения доказательства теоремы осталось показать, что один из базисов $\left\{p_{1} ;p_{2} \right\}$ ядра $A^{*} $ имеет структуру, отмеченную в теореме, то есть $\left\langle p_{1} \right\rangle =1$, $\left\langle p_{2} \right\rangle =i$.
+
+ Пусть $\left\{p_{1} ;p_{2} \right\}$ --- базис $\mathrm{ Ker}{\kern 1pt} A^{*} $, тогда средние $\left\langle p_{1} \right\rangle $, $\left\langle p_{2} \right\rangle $одновременно не  равны нулю. Иначе периодическая задача $Au=1$, $u\in H^{2} (\Omega ;C)$ разрешима. И тогда из \eqref{sirM2.8_} получим $u=const$, что невозможно, так как $Au=1$.
+
+Пусть $\left\{p_{1} ;p_{2} \right\}$ --- базис $\mathrm{ Ker}{\kern 1pt} A^{*} $, тогда произведение $\left\langle p_{1} \right\rangle \left\langle p_{2} \right\rangle $ не равно нулю. Пусть это не так, $\left\langle p_{1} \right\rangle =0$, $\left\langle p_{2} \right\rangle =a+ib\ne 0$. Положим константу $c$ равной $-b+ia$. Тогда периодическая задача $Au=c$, $u\in H^{2} (\Omega ;C)$, разрешима, так как $Re{\kern 1pt} \left\langle c\bar{p}_{1} \right\rangle =Re{\kern 1pt} \left\langle c\bar{p}_{2} \right\rangle =0$, но это невозможно в силу \eqref{sirM2.8_}.
+
+Средние значения базисных векторов $p_{1} $, $p_{2} $ одновременно не могут быть действительными (мнимыми) числами. Иначе рассмотрим базис $\left\{q_{1} ;q_{2} \right\}$, $q_{1} =p_{1} $,  $q_{2} =p_{2} -\left\langle p_{2} \right\rangle \, \left\langle p_{1} \right\rangle ^{-1} \, p_{1} $. Тогда $\left\langle q_{2} \right\rangle =0$, что противоречит предыдущему.
+
+Таким образом, любой из базисов $\left\{p_{1} ;p_{2} \right\}$ удовлетворяет условиям: произведение  $\left\langle p_{1} \right\rangle $$\left\langle p_{2} \right\rangle $ не равно нулю, $\left\langle p_{1} \right\rangle =a_{1} +ib_{1} $, $\left\langle p_{2} \right\rangle =a_{2} +ib_{2} $, $a_{1} $ или $a_{2} $ не нуль и $b_{1} $ или $b_{2} $ не нуль. Если $a_{1} \ne 0$, то для базиса $\left\{q_{1} ;q_{2} \right\}$, $q_{1} =p_{1} $, $q_{2} =p_{2} -a_{2} a_{1} ^{-1} \, p_{1} $, имеем $Re\, \left\langle q_{1} \right\rangle =a_{1} \ne 0$, $Re\, \left\langle q_{2} \right\rangle =0$. Так что можно считать с самого начала $\left\langle p_{2} \right\rangle =ib_{2} \ne 0$. Аналогично, можно считать,  что $b_{1} =0$.
+
+Итак, существует базис $\left\{q_{1} ;q_{2} \right\}$ со свойствами $\left\langle q_{1} \right\rangle =a$, $\left\langle q_{2} \right\rangle =ib$, $ab\ne 0$, $a,b\in \mathrm{ R}$. Заменив базис $\left\{q_{1} ;q_{2} \right\}$ на $\left\{p_{1} ;p_{2} \right\}$, где$p_{1} =a^{-1} q$,  $p_{2} =b^{-1} q_{2} $, получим требуемый базис со свойствами $\left\langle p_{1} \right\rangle =1$, $\left\langle p_{2} \right\rangle =i$.
+
+Пусть теперь $A$ --- оператор, у которого коэффициент $\nu =0$. Тогда в силу линейности $A$ и $A^{*} $ над полем $C$ вместе с вектором $p_{1} $ и вектор $\bar{p}_{2} =ip_{1} $ принадлежит ядру $\mathrm{ Ker}{\kern 1pt} A^{*} $. Осталось заметить, что $p_{1} $ и $ip_{1} $ линейно независимы над полем $\mathrm{ R}$. Теорема доказана.
+
+\textbf{}
+
+\textbf{\S 3. Усреднение }
+
+\textbf{3.1. Об одной лемме. }
+
+\textbf{Лемма 2. }Пусть $p$ - элемент ядра $A^{*} $ оператора сопряженного оператору периодической задачи. Тогда имеет место равенство
+\begin{equation}
+\label{sirM2.17_}
+Re\int _{R^{2} }\left(\partial _{z\bar{z}}^{2} \varphi +\mu {\kern 1pt} \partial _{zz}^{2} \varphi +\nu \partial _{\bar{z}\bar{z}}^{2} \bar{\varphi }\right)\bar{p}\, {\kern 1pt} dx =0, \quad \forall \; \varphi \in C_{0}^{\infty } (R^{2} ),
+\end{equation}
+где  $p$- любой элемент ядра оператора $A^{*}$.
+
+\textbf{Доказательство. }В силу  того, что $(\varphi ,\psi )=Re\int _{\Omega }\varphi \bar{\psi }\, dx $,  $\varphi $, $\psi \in L_{2} (\Omega ;C)$ скалярное произведение в $L_{2} (\Omega ;C)$, имеем
+
+\begin{equation*}
+0=\left\langle A^{*} p,u\right\rangle =\left(Au,p\right)=Re\int _{}Au{\kern 1pt} {\kern 1pt} \bar{p} \, dx=
+\end{equation*}
+\begin{equation}
+\label{sirM2.18_}
+Re\int _{\Omega }\left(\partial _{z\bar{z}}^{2} u+\mu {\kern 1pt} {\kern 1pt} \partial _{zz}^{2} u+\nu {\kern 1pt} {\kern 1pt} \partial _{\bar{z}\bar{z}}^{2} {\kern 1pt} \bar{u}\right)\bar{p}{\kern 1pt} dx =\left\langle \partial _{z\bar{z}}^{2} p+\partial _{\bar{z}\bar{z}}^{2} (\bar{\mu }{\kern 1pt} p+\nu {\kern 1pt} \bar{p}),u\right\rangle ,   \quad u\in H^{2} (\Omega ;C),             \end{equation}
+
+где  $\left\langle \cdot ,\cdot \right\rangle $ - значение функционала; производные понимаются в смысле (периодических)  распределений.    Отметим, что из  \eqref{sirM2.18_} следует, что сопряженное однородное уравнение дается равенством
+\begin{equation}
+\label{sirM2.19_}
+-A^{*} p\equiv \partial _{z\bar{z}}^{2} p+\partial _{\bar{z}\bar{z}}^{2} (\bar{\mu }{\kern 1pt} p+\nu {\kern 1pt} \bar{p})=0.                               \end{equation}
+
+Из соотношения \eqref{sirM2.18_} стандартной процедурой, использующей разбиение единицы, получим равенство  \eqref{sirM2.17_}. Лемма 2 доказана.
+
+\textbf{3.2. Доказательство теоремы об усреднении.} Пусть $\hat{A}\in A(k_{0} ;Q)$ любой из $G$-предельных в области $Q$ операторов семейства , т.е. $A_{\varepsilon _{k} } \stackrel{G}{\longrightarrow} \hat{A}$. Достаточно показать, что $\hat{A}=A_{0} $. С этой целью рассмотрим задачу Пуанкаре
+\begin{equation}
+\label{sirM2.20_}
+\partial _{z\bar{z}}^{2} u+\mu ^{\varepsilon } \partial _{zz}^{2} u+\nu ^{\varepsilon } \partial _{\bar{z}\bar{z}}^{2} \bar{u}=f\in L_{2} (Q;C), \quad u_{\varepsilon } \in W(Q),
+\end{equation}
+
+где $\mu ^{\varepsilon } =\mu (\varepsilon ^{-1} x)$, $\nu ^{\varepsilon } =\nu (\varepsilon ^{-1} x)$, $0<\varepsilon \le 1$.
+
+Пусть $u_{\varepsilon } $ --  решение этой задачи. Умножим равенство  \eqref{sirM2.20_} на функцию $\overline{p_{1}^{\varepsilon } (x){\kern 1pt} {\kern 1pt} }\psi (x)=\overline{p_{1} (\varepsilon ^{-1} x){\kern 1pt} {\kern 1pt} }\psi (x)$,  где $p_{1} =p_{1} (x)$, $\left\langle p_{1} \right\rangle =1$ --  первый из базисных элементов ядра $\mathrm{ Ker}{\kern 1pt} A^{*}$  (см. теорему 1), $\psi \in C_{0}^{\infty } (Q)$ -- действительная функция. Тогда после интегрирования по $Q$ (с учетом равенства $Rez=Re\bar{z}$) легко получим
+
+\begin{equation*}
+Re\int _{\Omega }\left(\partial _{z\bar{z}}^{2} (u_{\varepsilon } \psi )+\mu ^{\varepsilon } \partial _{zz}^{2} (u_{\varepsilon } \psi )+\nu ^{\varepsilon } \partial _{\bar{z}\bar{z}}^{2} (\bar{u}_{\varepsilon } \psi )\right) \overline{p_{1}^{\varepsilon } }dx-
+\end{equation*}
+\begin{equation*}
+-Re\int _{\Omega }\left(\overline{p_{1}^{\varepsilon } }u_{\varepsilon } \partial _{z\bar{z}}^{2} \psi +\overline{p_{1}^{\varepsilon } }\partial _{z}^{} u_{\varepsilon } \partial _{\bar{z}} \psi +\overline{p_{1}^{\varepsilon } }\partial _{z}^{2} \psi \partial _{\bar{z}} u_{\varepsilon } \right.  +
+\end{equation*}
+\begin{equation*}
++\overline{p_{1}^{\varepsilon } }\mu ^{\varepsilon } u_{\varepsilon } \partial _{zz}^{2} \psi +\overline{p_{1}^{\varepsilon } }\mu ^{\varepsilon } \partial _{z} u_{\varepsilon } \partial _{z} \psi +\overline{p_{1}^{\varepsilon } }\mu ^{\varepsilon } \partial _{z} \psi \partial _{z} u_{\varepsilon } +
+\end{equation*}
+\begin{equation}
+\label{sirM2.21_}
+\left. +p_{1}^{\varepsilon } \overline{\nu ^{\varepsilon } }u_{\varepsilon } \partial _{zz}^{2} \psi +p_{1}^{\varepsilon } \overline{\nu ^{\varepsilon } }\partial _{z} u_{\varepsilon } \partial _{z} \psi +p_{1}^{\varepsilon } \overline{\nu ^{\varepsilon } }\partial _{z} \psi {\kern 1pt} \partial _{z} u_{\varepsilon } \right)dx=Re\int _{Q}p_{1}^{\varepsilon } \psi \, f dx
+\end{equation}
+где $p_{1`}^{\varepsilon } (x)=p_{1} (\varepsilon ^{-1} x)$.
+
+Покажем, что первое слагаемое слева в \eqref{sirM2.21_} равняется нулю. Положим в равенство \eqref{sirM2.17_} $\varphi (x)=\chi (\varepsilon x)$, $0<\varepsilon \le 1$, где $\chi (x)$- финитная функция. Тогда после замены переменной $\varepsilon x\mapsto x$ легко получим
+
+\begin{equation}
+\label{sirM2.22_}
+Re\int _{R^{2} }\left(\partial _{z\bar{z}}^{2} \chi +\mu (\varepsilon ^{-1} x)\partial _{zz}^{2} \chi +\nu (\varepsilon ^{-1} x)\partial _{\bar{z}\bar{z}}^{2} \bar{\chi }\right) \, \overline{p(\varepsilon ^{-1} x)}\, dx=0.
+\end{equation}
+
+Соотношение \eqref{sirM2.20_} имеет место и для любой финитной функции $\chi \in W_{2}^{2} (Q;C)$, так как в множестве таких функций плотно множество $C_{0}^{\infty } (Q;C)$. Теперь заменим в \eqref{sirM2.20_} $\chi $ на $u_{\varepsilon } \psi $ и получим, что первое слагаемое в \eqref{sirM2.20_} равняется нулю.
+
+Отсюда, так как $u_{\varepsilon _{k} } \to u$, $\partial _{z} u_{\varepsilon _{k} } \to \partial _{z} u$, $\partial _{\bar{z}} u_{\varepsilon _{k} } \to \partial _{\bar{z}} u$ в $L_{2} (Q;C)$, где $u$ -- решение $G$-предельной задачи  $\hat{A}u=f$ , $u\in W(Q)$ и, ввиду $\mu ^{\varepsilon _{k} } \overline{p_{1}^{\varepsilon _{k} } }\to \left\langle \mu \, \bar{p}_{1} \right\rangle $, $\overline{\nu ^{\, \varepsilon \, k} }p_{1}^{\varepsilon \, k} \to \left\langle \bar{\nu }\, p_{1} \right\rangle $, $\overline{p_{1}^{\varepsilon _{k} } }\to \left\langle \bar{p}_{1} \right\rangle =1$ слабо в $L_{2} (Q;C)$, после предельного перехода по последовательности $\varepsilon _{k} \to 0$ получим
+\begin{equation*}
+-Re\int _{Q}\left(u\partial _{z\bar{z}}^{2} \psi +\partial _{z} u\partial _{\bar{z}} \psi +\partial _{z} \psi \partial _{\bar{z}} u\right.+
+\end{equation*}
+\begin{equation*}
++\left\langle \bar{p}_{1} \mu \right\rangle u\partial _{zz}^{2} \psi +\left\langle \bar{p}_{1} \mu \right\rangle \partial _{z} u\partial _{z} \psi +\left\langle \bar{p}_{1} \mu \right\rangle \partial _{z} \psi {\kern 1pt} \partial _{z} u+
+\end{equation*}
+\begin{equation*}
++\left. \left\langle p_{1} \bar{\nu }\right\rangle u\partial _{zz}^{2} \psi +\left\langle p_{1} \bar{\nu }\right\rangle \partial _{z} u\partial _{z} \psi +\left\langle p_{1} \bar{\nu }\right\rangle \partial _{z} \psi {\kern 1pt} \partial _{z} u\right)dx=Re\int _{Q}\psi f\, dx
+\end{equation*}
+
+Под интегралом слева перебросим производные с $u$ на $\psi $ при помощи интегрирования по частям. В результате получим
+\begin{equation*}
+Re\int _{Q}\left(\partial _{z\bar{z}}^{2} u+\left\langle \bar{p}_{1} \mu \right\rangle \partial _{zz}^{2} u+\left\langle p_{1} \bar{\nu }\right\rangle \partial _{zz}^{2} u\right) \, \psi dx=Re\int _{Q}\psi \, f\, dx .
+\end{equation*}
+
+Ввиду того, что пробная функция $\psi $ -- действительная функция, имеем $\int _{Q}\psi Re\left(\partial _{z\bar{z}}^{2} u+\left\langle \mu \, \bar{p}_{1} +\bar{\nu }\, p_{1} \right\rangle \partial _{zz}^{2} u\right){\kern 1pt}  dx=\int _{Q}\psi Re\, f\, dx $. Отсюда в силу произвольности $\psi $, получим
+\begin{equation}
+\label{sirM2.23_}
+Re\left(\partial _{z\bar{z}}^{2} u+\left\langle \mu {\kern 1pt} \bar{p}_{1} +\bar{\nu }p_{1} \right\rangle \partial _{zz}^{2} u\right)=Ref.
+\end{equation}
+
+Аналогично, с учетом того, что $\left\langle p_{2} \right\rangle =i$,$\left\langle \bar{p}_{2} \right\rangle =-i$   (см. теорему 1 ), получим еще одно соотношение  $Re\left(-i\partial _{z\bar{z}}^{2} u+\left\langle \mu {\kern 1pt} \bar{p}_{2} +\bar{\nu }p_{2} \right\rangle \partial _{zz}^{2} u\right)=Re(-i{\kern 1pt} f)$, которое эквивалентно соотношению    $Re\left(-i(\partial _{z\bar{z}}^{2} u+i\left\langle \mu {\kern 1pt} \bar{p}_{2} +\bar{\nu }p_{2} \right\rangle \partial _{zz}^{2} u)\right)=Re(-i{\kern 1pt} f)$    или, что тоже самое,
+\begin{equation}
+\label{sirM2.24_}
+Im\left(\partial _{z\bar{z}}^{2} u+i\left\langle \mu {\kern 1pt} \bar{p}_{2} +\bar{\nu }p_{2} \right\rangle \partial _{zz}^{2} u\right)=Imf.
+\end{equation}
+
+Умножим \eqref{sirM2.24_} на $i$ и прибавим к \eqref{sirM2.23_}, тогда имеем
+\begin{equation*}
+Re\, \left(\partial _{z\bar{z}}^{2} u+\left\langle \mu {\kern 1pt} \bar{p}_{1} +\bar{\nu }p_{1} \right\rangle \partial _{zz}^{2} u\right)+iIm\, \left(\partial _{z\bar{z}}^{2} u+\left\langle i{\kern 1pt} {\kern 1pt} \bar{p}_{2} \mu +p_{2} \bar{\nu }\right\rangle \partial _{zz}^{2} u\right)=f.
+\end{equation*}
+
+С учетом того, что $Rez=\frac{z+\bar{z}}{2} $, а $Imz=\frac{z-\bar{z}}{2i} $, получим
+\begin{equation*}
+\partial _{z\bar{z}}^{2} u+\frac{1}{2} \left(\left\langle \mu {\kern 1pt} \bar{p}_{1} +\bar{\nu }p_{1} \right\rangle \partial _{zz}^{2} u+\left\langle \bar{\mu }{\kern 1pt} p_{1} +\nu {\kern 1pt} \bar{p}_{1} \right\rangle \partial _{\bar{z}\bar{z}}^{2} \bar{u}\right)+
+\end{equation*}
+
+\begin{equation*}
+\frac{1}{2} \left(\left\langle i{\kern 1pt} \bar{p}_{2} \mu +ip_{2} \bar{\nu }\right\rangle \partial _{zz}^{2} u+\left\langle {\kern 1pt} ip_{1} \bar{\mu }+i\bar{p}_{1} \nu \right\rangle \partial _{\bar{z}\bar{z}}^{2} \bar{u}\right)=f.
+\end{equation*}
+
+Отсюда имеем     $\partial _{z\bar{z}}^{2} u+\left\langle \mu \frac{\bar{p}_{1} +i\bar{p}_{2} }{2} +\nu \frac{p_{1} +ip_{2} }{2} \right\rangle \partial _{zz}^{2} u+$$\left\langle \bar{\mu }\frac{p_{1} +ip_{2} }{2} +\nu \frac{\bar{p}_{1} +i\bar{p}_{2} }{2} \right\rangle \partial _{\bar{z}\bar{z}}^{2} \bar{u}=f$, т.е.
+\begin{equation*}
+\partial _{z\bar{z}}^{2} u+\mu ^{0} \partial _{zz}^{2} u+\nu ^{0} \partial _{\bar{z}\bar{z}}^{2} \bar{u}=f\in L_{2} (\Omega ;C).
+\end{equation*}
+
+Значит, в силу единственности $G$-предела получим $\hat{A}=A_{0} $.
+
+Итак, любой из $G$-пределов семейства $\left\{A_{\varepsilon } \right\}$ совпадает с $A_{0} $. Отсюда  легко следует, что $A_{\varepsilon } \stackrel{G}{\longrightarrow} A_{0} $ при $\varepsilon \to 0$.
+
+В случае, когда $\nu =0$, то, согласно \eqref{sirM2.11_}, $p_{2} =ip_{1} $, поэтому $P=2^{-1} (p_{1} +ip_{2} )=2^{-1} (p_{1} +i^{2} \cdot p_{1} )=0$, $F=2^{-1} (\bar{p}_{1} +i\bar{p}_{2} )=2^{-1} (\bar{p}_{1} +\bar{p}_{1} )=\bar{p}_{1} $.
+
+Значит $\mu ^{0} =(\mu F)=\left\langle \mu {\kern 1pt} \bar{p}_{1} \right\rangle $, $\nu ^{0} =\left\langle \bar{\mu }\cdot 0+0\cdot F\right\rangle =0$.  Теорема доказана.
+
+\textbf{3.2. Доказательство следствия.}Пусть $\nu _{k} =e^{i\alpha } \mu _{k} $.Тогда согласно теореме 2, определению 2 и следствию из \cite{Jamaludinova} в силу единственности G-предела получим $\nu ^{0} =e^{i\alpha } \mu ^{0} $. Аналогично доказывается, что при $\nu =e^{i\alpha } \bar{\mu }$ имеем $\nu ^{0} =e^{i\alpha } \overline{\mu ^{0} }$. Осталось показать, что в случае $\nu =e^{i\alpha } \overline{\mu }$ коэффициент $\mu ^{0} $определяется по формулам из следствия .
+
+При $\nu =e^{i\alpha } \bar{\mu }$ сопряженное однородное уравнение \eqref{sirM2.19_} представимо  в виде $\partial _{z\bar{z}}^{2} p+2\partial _{\bar{z}{\kern 1pt} \bar{z}}^{2} (\bar{\mu }e^{i\alpha /2} Re(e^{-i\alpha /2} p))=0$. Отсюда следует, что число $q=e^{i(\alpha +\pi )/2} $ является  одним из его решений.
+
+Пусть $\alpha \ne -\pi $, $\alpha \in [-\pi ,\pi )$, и пусть $p_{1} $,  $\left\langle p_{1} \right\rangle =1$, - первый базисный вектор (см. теорему 1); тогда вторым базисным вектором является
+\begin{equation}
+\label{sirM2.22_}
+p_{2} =\frac{q-p_{1} Req}{Imq}.
+\end{equation}
+
+Пусть $\alpha \ne 0$, $\alpha \in [-\pi ,\pi )$,  если  $p_{2} $,  $\left\langle p_{2} \right\rangle =i$, - второй базисный вектор , то первый дается формулой
+\begin{equation}
+\eqref{sirM2.23_}
+p_{1} =\frac{q-p_{2} Imq}{Req}.
+\end{equation}
+
+Из формул \eqref{sirM2.22_}, \eqref{sirM2.23_} и \eqref{sirM2.11_} легко получим требуемый результат. Например, при $\alpha \ne -\pi $ имеем
+\begin{equation*}
+\mu ^{0} =\left\langle \mu (F+e^{-ia} P)\right\rangle =\frac{1}{2} \left\langle \mu (\bar{p}_{1} +e^{-ia} p_{1} )\left(1-i\frac{Req}{Imq} \right)\right\rangle =\frac{\left\langle \mu Re(p_{1} e^{-i\alpha /2} )\right\rangle }{\cos (\alpha /2)}.
+\end{equation*}

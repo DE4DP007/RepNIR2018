@@ -1,0 +1,172 @@
+\section{Приближение функций суммами Хаара в весовых пространствах Лебега и Соболева с переменным показателем}\label{section-haar-speed}
+Пусть $p(x)$ -- измеримая на $E$ функция, такая что $1 \le \underline{p}(E) \le \overline{p}(E) < \infty$.
+Здесь и далее символами $\underline{p}(M)$, $\overline{p}(M)$ будем обозначать $\operatorname*{ess\,inf}\limits_{x \in M}p(x)$ и $\operatorname*{ess\,sup}\limits_{x \in M}p(x)$ соответственно. Пусть $w(x)$ -- неотрицательная почти всюду (п.в.) положительная суммируемая функция (вес).
+Через $L^{p(x)}_w(E)$ обозначим пространство измеримых функций $f(x)$, удовлетворяющих условию
+$
+  \int\limits_E |f(x)|^{p(x)}w(x)dx < \infty.
+$
+Пространство $L^{p(x)}_w(E)$ представляет собой линейное нормированное пространство, в котором одну из эквивалентных норм можно определить равенством (см. \cite{shii-lpx,shii-monog-2012,diening-book-2011,cruz-book-2013})
+$
+  \|f\|_{p(\cdot),w}(E) = \inf\{\lambda>0: \int\limits_E \Bigl|\frac{f(x)}{\lambda}\Bigr|^{p(x)}w(x)dx \le 1\}.
+$
+
+В данной работе рассмотрена задача о приближении функций суммами Фурье-Хаара в весовых пространствах Лебега $L^{p(x)}_w=L^{p(x)}_w([0,1])$ с переменным показателем $p(x)$ и весом $w(x)$. Далее, если речь идет об отрезке $[0,1]$, то существенную верхнюю и нижнюю грани функции $p(x)$ будем обозначать кратко $\overline{p}$ и $\underline{p}$ соответственно. Через $c, c(p), c(p,w)$ будут обозначаться константы, зависящие лишь от величин в скобках и, вообще говоря, различные в разных местах. Результаты данной статьи являются обобщениями на весовой случай результатов, полученных в статье \cite{shii-haarspeed}.
+
+\subsection{Предварительные сведения}
+В \S\ref{section-haar-basis} получены достаточные условия, при которых система Хаара образует базис в $L^{p(x)}_w$.
+
+%Для этого сначала введем некоторые обозначения.
+%Пусть $\mathfrak{S}$ -- система множеств. Через $\mathfrak{F}_p(\mathfrak{S})$ будем обозначать подсистему системы множеств $\mathfrak{S}$, состоящую из множеств $S$, для которых $\underline{p}(S)=1$:
+%$$
+%\mathfrak{F}_p(\mathfrak{S}) = \{ S \in \mathfrak{S}: \underline{p}(S)=1\}.
+%$$
+%Для заданной системы множеств $\mathfrak{S}$ символом $\hat{A}_{p(\cdot)}(\mathfrak{S})$ обозначим множество весовых функций $w(x)$, удовлетворяющих условиям:
+%\begin{align*}
+%(A1) &\sup\limits_{S \in \mathfrak{F}_p(\mathfrak{S})} \frac{1}{|S|}\int\limits_S w(x)dx < c(p,w),\\
+%(A2) &\sup\limits_{S \in \mathfrak{S} \setminus \mathfrak{F}_p(\mathfrak{S})}
+%\Bigl(\frac{1}{|S|}\int\limits_S w(x)dx\Bigr) \Bigl(\frac{1}{|S|}\int\limits_S w(x)^{-\frac{1}{\underline{p}(S)-1}} dx \Bigr)^{\underline{p}(S)-1} < c(p,w).
+%\end{align*}
+%
+%Пусть $\mathfrak{B}_\nu$ -- множество всех двоичных интервалов (см. [8, с. 69]) из пачек с номерами $j \ge \nu$
+%\begin{equation*}
+%    \mathfrak{B}_\nu = \{\Delta_j^i: j \ge \nu, i=1,\ldots,2^j\}.
+%\end{equation*}
+%Множество измеримых на $[0,1]$ функций $p(x) \ge 1$, удовлетворяющих условию
+%\begin{equation}\label{logHolderCond}
+%    \bigl|p(x)-p(y)\bigr|\ln\frac{1}{|x-y|} \le c(p),
+%\end{equation}
+%будем обозначать символом $\mathcal{P}^{log}$.
+
+
+
+Основным результатом данного параграфа является оценка скорости сходимости сумм Фурье -- Хаара
+$Q_n(f,x)=\sum\limits_{k=1}^n c_k \chi_k(x)$
+к исходной функции $f(x)$ в метрике пространства $L^{p(x)}_w$. Для безвесового случая исследование этого вопроса было проведено в \cite{shii-haarspeed}. В этой статье автор отмечает необходимость использования для пространств Лебега с переменным показателем модуля непрерывности $\Omega(f,\delta)_{p(\cdot)}$, основанного на усредненном сдвиге (см. также \cite{guven-trigapp}):
+\begin{equation}\label{modulus-var-p}
+\Omega(f,\delta)_{p(\cdot)}=
+\begin{cases}
+0, &\delta=0,\\
+\sup\limits_{0 < h\le\delta}\|f-s_h(f)\|_{p(\cdot)}, &\delta>0,
+\end{cases}
+\end{equation}
+где $s_h(f)=s_h(f)(x)=\frac{1}{h}\int\limits_0^hf(x+t)dt$ -- функция Стеклова. В весовом случае мы воспользуемся аналогичной конструкцией. Пусть $f(x) \in L^{p(x)}_w$, $w \in \mathcal{H}(p)$. Будем считать, что функция $f(x)$ продолжена на всю полуось $[0,+\infty)$ с помощью равенства $f(x)=0, x>1$. Тогда для таких функций $f(x)$ мы можем ввести оператор Стеклова
+\begin{equation*}
+  s_h(f)=s_h(f)(x)=\frac{1}{h}\int\limits_0^hf(x+t)dt, \quad x \in [0,1].
+\end{equation*}
+Отметим, что при условии $w \in \mathcal{H}(p)$ имеет место вложение $L^{p(x)}_w \subset L^1$, поэтому оператор Стеклова будет определен для любой $f \in L^{p(x)}_w$. Введем теперь модуль непрерывности:
+\begin{equation}\label{modulus-weighted-var-p}
+\Omega(f,\delta)_{p(\cdot),w}=
+\begin{cases}
+0, &\delta=0,\\
+\sup\limits_{0 < h\le\delta}\|f-s_h(f)\|_{p(\cdot),w}, &\delta>0.
+\end{cases}
+\end{equation}
+
+Модуль непрерывности \eqref{modulus-weighted-var-p} является неубывающей неотрицательной функцией, а при некоторых ограничениях на показатель $p(x)$ и вес $w(x)$ также и непрерывной. Последнее вытекает из следующего результата, доказанного в работе \cite{shakh-conv}.
+
+\begin{theoremA}\label{sh-uniform-boundedness}
+Пусть $\mathfrak{D}_\nu = \{\Delta_j^i \cup \Delta_j^{i+1} : j \ge \nu, i=1,\ldots,2^j-1\}$ и
+\begin{equation*}
+1)\,\,\, p(x) \in \mathcal{P}^{log}(E), \quad
+2)\,\,\, w(x) \in \mathcal{H}_{p(\cdot)}(E), \quad
+3)\,\,\, w(x) \in \bigcup\limits_\nu \hat{A}_{p(\cdot)}(\mathfrak{D}_\nu).
+\end{equation*}
+Тогда для функций $f(x) \in L^{p(x)}_w$ имеет место оценка $(0 < h \le 1)$
+$$
+    \|s_h(f)\|_{p(\cdot),w} \le c(p,w)\|f\|_{p(\cdot),w}.
+$$
+Другими словами, семейство операторов $s_h(f) (0<h \le 1)$ будет равномерно ограничено в $L^{p(x)}_w$.
+\end{theoremA}
+
+Данная теорема позволяет утверждать, в частности, что при условиях 1)--3) усредненный сдвиг $s_h(f)$ для любой функции $f \in L^{p(x)}_w$  также будет принадлежать пространству  $L^{p(x)}_w$. Более того, с помощью этой теоремы легко устанавливается следующий факт (см. также \cite[лемма 3.2]{shii-haarspeed}).
+
+\begin{lemma}
+Если
+$p(x) \in \mathcal{P}^{log}$,
+$w(x) \in \mathcal{H}(p) \cap \Bigl[\bigcup\limits_\nu \hat{A}_{p(\cdot)}(\mathfrak{D}_\nu)\Bigr]$,
+то
+\begin{equation}\label{modulusTendToZero}
+\Omega(f,\delta)_{p(\cdot),w} \to 0  \textrm{ при } \delta \to 0.
+\end{equation}
+%$\lim\limits_{\delta \to 0}\Omega(f,\delta)_{p(\cdot),w} =0$.
+\end{lemma}
+
+Отметим, что система Хаара будет базисом в пространствах $L^{p(x)}_w$, если показатель $p(x)$ и вес $w(x)$ удовлетворяет условиям 1)--3) теоремы \ref{sh-uniform-boundedness}.
+
+В данном параграфе рассматривается задача об оценке в терминах модуля непрерывности \eqref{modulus-weighted-var-p} скорости приближения функций суммами Фурье-Хаара в весовых пространствах Лебега $L^{p(x)}_w$ с переменным показателем $p(x)\in \mathcal{P}^{log}$ и весом $w(x)\in \mathcal{H}(p) \cap \Bigl[\bigcup\limits_\nu \hat{A}_{p(\cdot)}(\mathfrak{D}_\nu)\Bigr]$.
+
+\subsection{Весовые классы Соболева с переменным показателем}
+Классом Соболева $W_{p(\cdot),w}^r(M)$ с переменным показателем $p(x)$ и весом $w(x)$ будем называть множество $r-1$ раз непрерывно дифференцируемых на $[0,1]$ функций $f(x)$, для которых $f^{(r-1)}(x)$ абсолютно непрерывна, а $f^{(r)}(x)\in L^{p(x)}_w$ и $\|f^{(r)}\|_{p(\cdot),w}\le M$.
+Положим $W^r_{p(\cdot),w}=\cup_{M>0} W^r_{p(\cdot),w}(M)$, $W_{p(\cdot),w}=W_{p(\cdot),w}^1$. В данном пункте рассмотрена задача о приближении функций $f\in W_{p(\cdot),w}$ суммами Фурье-Хаара $Q_n(f)=Q_n(f,x)$.
+\begin{theorem}\label{convSpeedWpw}
+Пусть $p(x) \in \mathcal{P}^{log}$, $w(x) \in \mathcal{H}(p) \cap \Bigl[\bigcup\limits_\nu \hat{A}_{p(\cdot)}(\mathfrak{D}_\nu)\Bigr]$. Справедлива следующая оценка для $f \in W_{p(\cdot),w}$
+\begin{equation*}
+\norm{f-Q_n(f)} \le \frac{c(p,w)}{n} \norm{f'}.
+\end{equation*}
+\end{theorem}
+
+\subsection{Весовые пространства Лебега с переменным показателем}
+В случае постоянного $p$ задача о скорости приближения функций $f(x) \in L^p$ суммами Фурье-Хаара была решена Ульяновым.
+
+\textbf{Теорема (Ульянов).}
+\textit{
+Если $f(x) \in L^p(0,1)$ с некоторым $p\in [1,\infty]$, то
+\begin{equation*}
+  \|f-Q_n(f)\|_p \le 24\,\omega_p(f,\frac{1}{n}) \textrm{ при } n \ge 1,
+\end{equation*}
+где $\omega_p(f,\delta) = \sup\limits_{0 < h \le \delta} \Bigl( \int\limits_0^{1-h}|f(x+h)-f(x)|^p dx \Bigr)^{\frac{1}{p}}$.
+}
+
+Данная теорема получила обобщение на переменный показатель в работе И.И.~Шарапудинова \cite{shii-haarspeed}. Напомним, что для этого потребовалось ввести модуль непрерывности \eqref{modulus-var-p}, основанный на усредненном сдвиге.
+
+\textbf{Теорема (Шарапудинов).}
+\textit{
+Пусть $p(x) \in \mathcal{P}^{log}$, $f(x) \in L^{p(x)}$. Тогда справедлива оценка
+\begin{equation*}
+  \|f-Q_n(f)\|_{p(\cdot)} \le c(p) \Omega(f,\frac{1}{n})_{p(\cdot)}.
+\end{equation*}
+}
+
+В этом пункте мы получим аналогичную оценку для функций $f(x) \in L^{p(x)}_w$ в терминах модуля непрерывности \eqref{modulus-weighted-var-p}. Для этого нам понадобится следующий оператор:
+\begin{equation*}
+  \Theta_\nu(f)(x)=
+  \frac{2}{\nu}\int\limits_{\nu/2}^{\nu} s_h(f)(x) dh =
+  \frac{2}{\nu}\int\limits_{\nu/2}^{\nu} \frac{dh}{h}\int\limits_0^h f(x+t) \,dt =
+  \frac{2}{\nu}\int\limits_{\nu/2}^{\nu} \frac{dh}{h}\int\limits_x^{x+h} f(t) \,dt, \quad
+  0<\nu \le 1.
+\end{equation*}
+Отметим, что данный оператор использовался при доказательстве приведенной выше теоремы из статьи \cite[\S5]{shii-haarspeed} (см. также \cite[с. 291]{guven-trigapp}). Рассмотрим некоторые свойства этого оператора.
+\begin{enumerate}[1)]
+\item\label{thetaPropAbsCont}
+\textit{
+Для любого $f(x)\in L^1$ функция $\Theta_\nu(f)(x)$, $0<\nu \le 1$ является абсолютно непрерывной на отрезке $[0,1]$.
+}
+Таким образом, $\Theta_\nu(f)(x)$ -- абсолютно непрерывна и, следовательно, почти всюду дифференцируема. Более того, справедливо следующее свойство.
+\item
+\textit{
+Для любого $f(x)\in L^1$ для почти всех $x \in [0,1]$ имеет место равенство
+\begin{equation}\label{thetaDeriv}
+  \bigl(\Theta_\nu(f)\bigr)'(x)=
+  \frac{2}{\nu}\int\limits_{\nu/2}^{\nu}
+  \frac{f(x+h)-f(x)}{h}dh.
+\end{equation}
+}
+
+\item\label{thetaPropDerivEst}
+\textit{
+%Пусть $F \subset L^1$ -- некоторое пространство с нормой $\gamma(f)$.
+Для любого $f(x)\in L^{p(x)}_w$, $w\in \mathcal{H}(p)$ выполняется неравенство ($0 < \nu \le 1$)
+\begin{equation*}
+  \|\bigl(\Theta_\nu(f)\bigr)'\|_{p(\cdot),w} \le
+  c(p)\,\frac{\Omega(f,\nu)_{p(\cdot),w}}{\nu}.
+\end{equation*}
+}
+\end{enumerate}
+
+Сформулируем теперь основную теорему данного пункта (доказательство см. в \cite{mmg-haarspeed})
+\begin{theorem}
+Пусть $p(x) \in \mathcal{P}^{log}$, $w(x) \in \mathcal{H}(p) \cap \Bigl[\bigcup\limits_\nu \hat{A}_{p(\cdot)}(\mathfrak{D}_\nu)\Bigr]$. Тогда для $f \in L^{p(\cdot)}_w$ \linebreak имеет место оценка
+\begin{equation*}
+  \norm{f-Q_n(f)} \le c(p,w)\Omega(f,\frac{1}{n})_{p(\cdot),w}.
+\end{equation*}
+\end{theorem}

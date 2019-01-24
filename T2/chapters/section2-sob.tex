@@ -1,0 +1,926 @@
+\chapter{Полиномы, ортогональные в смысле Соболева}
+\section{Введение}\label{common-sob-intro}
+В течение последних двух десятилетий в теории ортогональных полиномов появилось и стало
+интенсивно развиваться (см. \cite{sobleg-KwonLittl1, sobleg-KwonLittl2, sobleg-MarcelAlfaroRezola, sobleg-IserKoch, sobleg-Meijer, sobleg-Lopez1995, sobleg-MarcelXu, sobleg-Shar2016} и цитированную там литературу) новое направление, которое принято обозначать словами: <<полиномы, ортогональные по Соболеву>>. Растущий интерес  к этому направлению теории ортогональных полиномов можно объяснить в том числе и тем обстоятельством, что ряды Фурье по полиномам, ортогональным по Соболеву, оказались естественным и весьма удобным инструментом для представления решений  дифференциальных (разностных) уравнений. Это можно показать, в частности, на примере  задачи Коши для линейного дифференциального уравнения
+\begin{equation}\label{sobleg-3.1}
+ a_r(x)y^{(r)}(x)+a_{r-1}(x)y^{(r-1)}(x)+\cdots+a_0(x)y(x)=h(x)
+ \end{equation}
+с начальными условиями $y^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$.  Наряду с различными сеточными методами для решения этой задачи часто применяют так называемые спектральные методы \cite{sobleg-Tref1, sobleg-Tref2, sobleg-SolDmEg, sobleg-Pash, sobleg-MMG2016}. Напомним, что суть спектрального метода решения задачи Коши  для ОДУ \eqref{sobleg-3.1} заключается в том, что в первую очередь искомое решение $y(x)$ представляется в виде ряда Фурье
+\begin{equation}\label{sobleg-3.2}
+ y(x)=\sum_{k=0}^\infty \hat y_k\psi_k(x)
+ \end{equation}
+по подходящей ортонормированной системе $\{\psi_k(x)\}_{k=0}^\infty$ (чаще всего в качестве $\{\psi_k(x)\}_{k=0}^\infty$ используют    тригонометрическую систему, ортогональные полиномы, вэйвлеты, корневые функции того или иного дифференциального оператора  и некоторые другие). На втором этапе осуществляется подстановка вместо $y(x)$ ряда \eqref{sobleg-3.2} в уравнение \eqref{sobleg-3.1}. Это приводит к системе уравнений относительно неизвестных коэффициентов $\hat y_k$ ($k=0,1,\ldots$). На третьем этапе требуется решить эту систему с учетом начальных условий  $y^{(
+k)}(-1)=y_k$, $k=0,1,\ldots,r-1$ исходной задачи Коши.
+Одна из основных трудностей, которая возникает на этом этапе, состоит в том, чтобы
+выбрать такой ортонормированный базис $\{\psi_k(x)\}_{k=0}^\infty$, для которого искомое решение $y(x)$ уравнения \eqref{sobleg-3.1}, представленное в виде ряда  \eqref{sobleg-3.2}, удовлетворяло начальным условиям $y^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$. Более того, поскольку в результате решения системы уранений относительно неизвестных коэффициентов $\hat y_k$  будет найдено только конечное их число с $k=0,1,\ldots, n$, то весьма важно, чтобы частичная сумма ряда \eqref{sobleg-3.2} вида
+$ y_n(x)=\sum_{k=0}^n\hat y_k\psi_k(x)$, будучи приближенным решением рассматриваемой задачи Коши, также удовлетворяла  начальным условиям $y_n^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$. Покажем, что  базис $\{\psi_k(x)=p_{r,k}^{\alpha,\beta}(x)\}_{k=0}^\infty$, состоящий из полиномов
+$p_{r,k}^{\alpha,\beta}x)$, ортонормированных по Соболеву относительно скалярного произведения \eqref{sobleg-1.1} и порожденных ортонормированными полиномами Якоби $p_k^{\alpha,\beta}(x)$  посредством равенства \eqref{sobleg-3.27}, требуемыми свойствами обладает.
+   С этой целью заметим, что ряд Фурье \eqref{sobleg-3.2} в случае, когда $\{\psi_k(x)=p_{r,k}^{\alpha,\beta}(x)\}_{k=0}^\infty$, приобретает, как показано ниже, следующий смешанный вид
+   \begin{equation}\label{sobleg-3.3}
+y(x)= \sum_{k=0}^{r-1} y^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^\infty \hat y_{r,k}p_{r,k}^{\alpha,\beta}(x),
+\end{equation}
+где  $ \hat y_{r,k}=\int_{-1}^1 y^{(r)}(t)p_{k-r}^{\alpha,\beta}(t)\kappa(t)dt$.
+С другой стороны, из определения \eqref{sobleg-3.27} вытекает (см.\eqref{sobleg-3.7}), что $(p_{r,k}^{\alpha,\beta}(-1))^{(\nu)}=0$ для всех $0\le\nu\le r-1$, поэтому как функция $y(x)$, представленная в виде ряда \eqref{sobleg-3.3}, так и частичная  сумма этого ряда вида
+$
+y_n(x)= \sum_{k=0}^{r-1} y^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^n \hat y_{r,k}p_{r,k}^{\alpha,\beta}(x)
+$
+удовлетворяют начальным условиям задачи Коши для уравнения \eqref{sobleg-3.1}.
+Таким образом, полиномы, ортогональные по Соболеву относительно скалярного произведения \eqref{sobleg-1.1}, тесно связаны с задачей Коши для уравнения \eqref{sobleg-3.1}. Можно также показать,что полиномы $p_{r,k}^{0,0}(x)$ могут служить удобным и эффективным методом приближенного решения двухточечной краевой задачи для уравнений типа \eqref{sobleg-3.1}.
+
+\section{Некоторые результаты общего характера}
+Полиномы $p_{r,k}^{\alpha,\beta}(x)$, определяемые равенством   \eqref{sobleg-3.27},  существенно использовались ранее в работах \cite{sobleg-Shar11, sobleg-Shar12, sobleg-Shar13, sobleg-Shar15, sobleg-Shar16, sobleg-Shar17, sobleg-Shar18, sobleg-sharap3, sobleg-SHII} в качестве вспомогательного аппарата при исследовании вопросов сходимости смешанных рядов вида \eqref{sobleg-3.3}. Следует при этом отметить, что термин <<полиномы, ортогональные по Соболеву>> в работах \cite{sobleg-Shar11, sobleg-Shar12, sobleg-Shar13, sobleg-Shar15, sobleg-Shar16, sobleg-Shar17, sobleg-Shar18, sobleg-sharap3, sobleg-SHII}  не применялся и, соответственно, при исследовании свойств смешанных рядов аппарат теории ортогональных систем использовался неявно.  В настоящей работе мы будем, как уже отмечалось, рассматривать смешанные ряды по полиномам Якоби и Лежандра именно как ряды Фурье по полиномам $p_{r,k}^{\alpha,\beta}(x)$, образующим  ортонормированную систему относительно скалярного произведения \eqref{sobleg-3.8}. Общая идея, которая лежит в основе построения смешанных рядов с точки зрения геометрии гильбертовых пространств заключается в следующем. Предположим, что система полиномов  $\left\{q_k(x)\right\}$ ортонормирована  на $(a,b)$  c весом   $\rho(x)$, т.е.
+ \begin{equation}\label{sobleg-3.4}
+\int\limits_a^bq_k(x)q_l(x)\rho(x)dx=\delta_{kl},
+\end{equation}
+где $\delta_{kl}$ -- символ Кронекера.  Мы можем определить следующие порожденные системой $\{q_k(x)\}$ полиномы
+ \begin{equation}\label{sobleg-3.5}
+q_{r,r+k}(x) =\frac{1}{(r-1)!}\int\limits_a^x(x-t)^{r-1}q_{k}(t)dt, \quad k=0,1,\ldots.
+\end{equation}
+ Кроме того, определим конечный набор полиномов
+  \begin{equation}\label{sobleg-3.6}
+q_{r,k}(x) =\frac{(x-a)^k}{k!}, \quad k=0,1,\ldots, r-1.
+\end{equation}
+
+ Из \eqref{sobleg-3.5} и \eqref{sobleg-3.6} следует, что для $x\in (a,b)$
+ \begin{equation}\label{sobleg-3.7}
+(q_{r,k}(x))^{(\nu)} =\begin{cases}q_{r-\nu,k-\nu}(x),&\text{если $0\le\nu\le r-1$, $r\le k$,}\\
+q_{k-r}(x),&\text{если  $\nu=r\le k$,}\\
+q_{r-\nu,k-\nu}(x),&\text{если $\nu\le k< r$,}\\
+0,&\text{если $k< \nu\le r-1$}.
+  \end{cases}
+\end{equation}
+Через $L^p_\rho(a,b)$ обозначим пространство  функций $f(x)$, измеримых  на  $(a,b)$, для которых $$\int_a^b|f(x)|^p\rho(x)dx<\infty.$$
+Если $\rho(x)\equiv1$, то будем писать $L^p_\rho(a,b)=L^p(a,b)$ и $L(a,b)=L^1(a,b)$.
+Пусть $W^r_{L^p_\rho(a,b)}$ -- пространство Соболева $W^r_{L^p_\rho(a,b)}$, состоящее из функций $f(x)$, непрерывно дифференцируемых на $[a,b]$ $r-1$ раз, причем $f^{(r-1)}(x)$ абсолютно непрерывна на $[a,b]$  и $f^{(r)}(x)\in L^p_\rho(a,b)$.
+Скалярное произведение в пространстве $W^r_{L^2_\rho(a,b)}$ определим с помощью равенства
+\begin{equation}\label{sobleg-3.8}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(a)g^{(\nu)}(a)+\int_{a}^{b} f^{(r)}(t)g^{(r)}(t)\rho(t) dt.
+\end{equation}
+Тогда, пользуясь определением полиномов $q_{r,k}(x)$ (см. \eqref{sobleg-3.5} и \eqref{sobleg-3.6}) и равенством  \eqref{sobleg-3.7}, нетрудно увидеть (см. теорему \ref{soblegstate1}),  что система $\{q_{r,k}(x)\}_{k=0}^\infty$ является ортонормированной в пространстве $W^r_{L^2_\rho(a,b)}$.  Мы будем называть систему $\{q_{r,k}(x)\}_{k=0}^\infty$ \textit{ ортонормированной по Соболеву } относительно скалярного произведения \eqref{sobleg-3.8} и  \textit{ порожденной} ортонормированной системой $\{q_{k}(x)\}_{k=0}^\infty$.
+Нетрудно увидеть,  что ряд Фурье функции $f(x)\in W^r_{L^2_\rho(a,b)}$ по системе  $\{q_{r,k}(x)\}_{k=0}^\infty$ имеет смешанный характер, а, более точно, имеет следующий вид
+  \begin{equation}\label{sobleg-3.9}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^\infty \hat f_{r,k}q_{r,k}(x),
+\end{equation}
+где
+  \begin{equation}\label{sobleg-3.10}
+ \hat f_{r,k}=\int\limits_a^b f^{(r)}(t) q^{(r)}_{r,k}(t)\rho(t)dt=\int\limits_a^b f^{(r)}(t) q_{k-r}(t)\rho(t)dt.
+\end{equation}
+Ряд  вида \eqref{sobleg-3.9} будем (следуя  \cite{sobleg-Shar11, sobleg-Shar12, sobleg-Shar13, sobleg-Shar15, sobleg-Shar16, sobleg-Shar17, sobleg-Shar18, sobleg-sharap3, sobleg-SHII})   называть \textit{ смешанным рядом} по  системе $\{q_{k}(x)\}_{k=0}^\infty$, считая это название условным и сокращенным обозначением полного названия: <<\textit{ряд Фурье по системе  $\{q_{r,k}(x)\}_{k=0}^\infty$, ортонормированной по Соболеву, порожденной ортонормированной системой $\{q_{k}(x)\}_{k=0}^\infty$}>>.
+
+Отметим некоторые свойства смешанного ряда \eqref{sobleg-3.9}, непосредственно вытекающие из \eqref{sobleg-3.7}:
+\begin{equation}\label{equ102-2.1}
+f'(x)\sim \sum_{k=1}^\infty (\hat f_{r,k}\varphi_{r,k}(x))'= \sum_{k=1}^\infty f'_{r-1,k-1}\varphi_{r-1,k-1}(x).
+\end{equation}
+\begin{equation}\label{equ102-2.2}
+\int_a^xf'(t)dt\sim \sum_{k=1}^\infty f'_{r-1,k-1}\int_a^x\varphi_{r-1,k-1}(t)dt=\sum_{k=1}^\infty \hat f_{r,k}\varphi_{r,k}(x).
+\end{equation}
+Важное значение имеет свойство  смешанного ряда \eqref{sobleg-3.9}, которое заключается в том, что его частичная сумма вида
+\begin{equation}\label{sobleg-3.11}
+Y_{r,N}(f,x)=\sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^{N} \hat f_{r,k}q_{r,k}(x)
+\end{equation}
+ при   $r\le N$  совпадает с исходной функцией $f(x)$   в точке $x=a$ $r$-кратно , т.е.
+\begin{equation}\label{sobleg-3.12}
+(Y_{r,N}(f,x))^{(\nu)}_{x=a}=f^{(\nu)}(a)\quad (0\le\nu\le r-1).
+\end{equation}
+Кроме того, из \eqref{sobleg-3.7} и \eqref{sobleg-3.11} следует, что $(0\le\nu\le r-1)$
+\begin{equation}\label{sobleg-3.13}
+ Y_{r,N}^{(\nu)}(f,x)=Y_{r-\nu,N-\nu}(f^{(\nu)},x),
+ \end{equation}
+отсюда, в свою очередь, выводим $(0\le\nu\le r-2)$
+ $$
+f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)=
+$$
+  \begin{equation}\label{sobleg-3.14}
+\frac{1}{(r-\nu-2)!}\int_a^x (x-t)^{r-\nu-2}(f^{(r-1)}(t)-Y_{1,N-r+1}(f^{(r-1)},t))dt.
+ \end{equation}
+
+В  \cite{sobleg-Shar11, sobleg-Shar12, sobleg-Shar13, sobleg-Shar15, sobleg-Shar16, sobleg-Shar17, sobleg-Shar18, sobleg-sharap3, sobleg-SHII}, воспользовавшись равенствами типа \eqref{sobleg-3.13} и \eqref{sobleg-3.14}, было показано, что частичные суммы смешанных рядов по классическим ортогональным полиномам, в отличие от сумм Фурье по этим же полиномам, успешно могут быть использованы в задачах, в которых требуется одновременно приближать дифференцируемую функцию и ее несколько производных. Как было показано выше, такие задачи непосредственно возникают, например, в связи с решением краевых задач для дифференциальных уравнений спектральными методами.
+В связи с отмеченными выше и рядом других важных задач, в которых полиномы, ортогональные по Соболеву, предстают перед нами как естественный и эффективный инструмент для их решения, возникают важные вопросы об изучении различных  свойств самих этих полиномов. Наиболее трудными из них, как это и бывает в теории ортогональных полиномов, являются вопросы, связанные с их асимптотическим поведением.   В связи с этой проблемой  отметим  работу
+\cite{sobleg-Lopez1995}, в которой, используя  идеи и технику А.\,А. Гончара \cite{sobleg-Gonchar1975}, исследована задача о сравнительной асимптотике полиномов, ортогональных относительно скалярного произведения типа  Соболева с дискретными массами.
+В настоящей  работе получены (теоремы \ref{soblegtheo1} и \ref{soblegtheo2}) различные выражения для полиномов $p_{r,k}^{\alpha,\beta}(x)$, порожденных ортонормированными полиномами Якоби $p_{k}^{\alpha,\beta}(x)$ (см.\eqref{sobleg-2.13}) посредством  равенства \eqref{sobleg-3.27}. Эти результаты в сочетании с  хорошо известными асимптотическими формулами для полиномов Якоби могут быть использованы  при изучении асимптотических свойств полиномов $p_{r,n}^{\alpha,\beta}(x)$ при $x\in[-1,1]$ и $n\to\infty$ и аппроксимативных свойств рядов Фурье по ним. Например,  благодаря формуле \eqref{sobleg-2.6}  и теореме \ref{soblegtheo2}, задача об асимптотических свойствах полиномов $p_{r,k}^{\alpha,\beta}(x)$ с целыми $\alpha,\beta>-1$ и их нулей непосредственно сводится к аналогичным задачам соответствующих полиномов Якоби $P_n^{|r-\alpha|,|r-\beta|}(x)$.  %Однако в настоящей работе мы не будем  останавливаться на задаче о получении с помощью теорем \ref{soblegtheo1} и \ref{soblegtheo2}  асимптотических свойств полиномов $p_{r,n}^{\alpha,\beta}(x)$ с произвольными $\alpha,\beta>-1$, поскольку, как уже отмечалось, она является объектом исследования другой нашей работы. 
+Следует также отметить, что в упомянутых выше работах \cite{sobleg-Shar11, sobleg-Shar12, sobleg-Shar13, sobleg-Shar15, sobleg-Shar16, sobleg-Shar17, sobleg-Shar18, sobleg-sharap3, sobleg-SHII} задача об асимптотических свойствах полиномов $p_{r,k}^{\alpha,\beta}(x)$ с произвольными $\alpha,\beta>-1$ также не рассматривалась. В то же время отметим, что
+равенство \eqref{sobleg-3.44}, которое является следствием теоремы \ref{soblegtheo2}, соответствующим случаю $\alpha=\beta=0$, существенно использовалось в \cite{sobleg-Shar15, sobleg-Shar16, sobleg-Shar17} в связи с исследованием задачи об аппроксимативных свойствах смешанных рядов по полиномам Лежандра и
+оно же, как уже отмечалось,  является отправной точкой при конструировании специального ряда  по ультрасферическим полиномам Якоби с  прилипающими в точках $\pm1$ частичными суммами $\sigma_{r,n}^\alpha(f,x)$.
+
+Прежде чем  перейти к исследованию свойств полиномов $p_{r,k}^{\alpha,\beta}(x)$, мы рассмотрим некоторые общие свойства  полиномов $q_{r,k}(x)$, $k=0,1,\ldots$, определенных равенствами \eqref{sobleg-3.5} и \eqref{sobleg-3.6},  ортонормированных по Соболеву относительно скалярного произведения \eqref{sobleg-3.8}. Рассмотрим сначала задачу о полноте в $W^r_{L^2_\rho(a,b)}$ системы $\{q_{r,k}(x)\}_{k=0}^\infty$.
+
+\begin{theorem}\label{soblegstate1}
+Предположим, что полиномы $q_k(x)$ $(k=0,1,\ldots)$ образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на  $(a,b)$. Тогда система $\{q_{r,k}(x)\}_{k=0}^\infty$, порожденная системой $\{q_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{sobleg-3.5} и \eqref{sobleg-3.6}, полна  в $W^r_{L^2_\rho(a,b)}$ и ортонормирована относительно скалярного произведения \eqref{sobleg-3.8}.
+\end{theorem}
+
+%\begin{proof}
+%Из равенства \eqref{sobleg-3.7} следует, что если $r\le k$ и $0\le\nu\le r-1$, то  $(q_{r,k}(x))^{(\nu)}_{x=a}=0$, поэтому
+%в силу \eqref{sobleg-3.8} и второго из равенств \eqref{sobleg-3.7}  имеем
+%$$
+%<q_{r,k},q_{r,l}>= \int_{a}^b(q_{r,k}(x))^{(r)}(q_{r,l}(x))^{(r)}\rho(x) dx=
+%$$
+%\begin{equation}\label{3.15}
+%    \int_{a}^bq_{k-r}(x)q_{l-r}(x)\rho(x) dx=\delta_{kl},\quad k,l\ge r ,
+%  \end{equation}
+%  а из \eqref{sobleg-3.6}  имеем
+%\begin{equation}\label{3.16}
+%  <q_{r,k},q_{r,l}>=\sum_{\nu=0}^{r-1}(q_{r,k}(x))^{(\nu)}|_{x=a}(q_{r,l}(x))^{(\nu)}|_{x=a}=\delta_{kl},\quad k,l< r.
+%  \end{equation}
+%  Очевидно также, что
+%  \begin{equation}\label{3.17}
+%  <q_{r,k},q_{r,l}>=0,\quad \text{если}\quad k< r\le l\quad \text{или} \quad l< r\le k.
+%  \end{equation}
+% Это означает, что полиномы $q_{r,k}(t)\, (k=0,1,\ldots) $ образуют   в $W^r_{L^2_\rho(a,b)}$ ортонормированную  систему относительно скалярного произведения \eqref{sobleg-3.8}.  Остается убедиться в ее полноте в $W^r_{L^2_\rho(a,b)}$. С этой целью покажем, что если для некоторой функции $f=f(x)\in W^r_{L^2_\rho(a,b)}$ и для  всех $k=0,1,\ldots$ справедливы равенства $<f,q_{r,k}>=0$, то $f(x)\equiv0$. В самом деле, если $k\le r-1$, то  $<f,q_{r,k}>=f^{(k)}(a)$, поэтому с учетом того, что $<f,q_{r,k}>=0$,  для нашей функции  $f(x)$ формула Тейлора имеет вид
+%\begin{equation}\label{3.18}
+%f(x)={1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1} f^{(r)}(t)dt.
+%     \end{equation}
+%С другой стороны, для всех $k\ge r$ имеем
+%$$
+% 0= <f,q_{r,k}>=\int_{a}^bf^{(r)}(x) (q_{r,k}(x))^{(r)}\rho(x) dx=
+%  \int_{a}^b f^{(r)}(x)q_{k-r}(x) \rho(x) dx .
+%$$
+%Отсюда и из того, что $q_m(x)$ ($m=0,1,\ldots$)  образуют в $L^2_{\rho}(a,b)$ полную ортонормированную систему, имеем $f^{(r)}(x)=0$ почти всюду на $(a,b)$. Поэтому в силу \eqref{3.18}  $f(x)\equiv0$.  Предложение 1 доказано.
+%\end{proof}
+
+
+\begin{theorem}\label{soblegstate2}
+Предположим, что  $ \frac{1}{\rho(x)}\in L(a,b) $, а  полиномы $q_k(x)$ $(k=0,1,\ldots)$  образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на $(a,b)$, $\{q_{r,k}(x)\}_{k=0}^\infty$ -- система, ортонормированная в $W^r_{L^2_\rho(a,b)}$ относительно скалярного произведения \eqref{sobleg-3.8}, порожденная системой $\{q_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{sobleg-3.5} и \eqref{sobleg-3.6}.
+Тогда, если $f(x)\in W^r_{L^2_\rho(a,b)}$, то ряд Фурье (смешанный ряд) \eqref{sobleg-3.9} сходится к функции $f(x)$ равномерно относительно $x\in[a,b]$.
+\end{theorem}
+
+%\begin{proof}
+%Обозначим через $S_n(f^{(r)})=S_n(f^{(r)},x)$ частичную сумму ряда Фурье функции $f^{(r)}(x)\in L^2_\rho(a,b) $ по системе $\{q_k(x)\}_{k=0}^n$, т.е.
+%\begin{equation}\label{3.19}
+%S_n(f^{(r)},x)=\sum_{k=0}^n \hat f_{r,k+r}q_k(x),
+%     \end{equation}
+%где коэффициенты $\hat f_{r,k+r}$ $(k=0,1,\ldots)$ определены равенством \eqref{sobleg-3.10}.  Из условий теоремы 2 следует, что если $n\to\infty$, то
+% \begin{equation}\label{3.20}
+%\|f^{(r)}-S_n(f^{(r)})\|_{L^2_\rho(a,b)}\to0.
+% \end{equation}
+%Запишем формулу Тейлора
+%\begin{equation}\label{3.21}
+% f(x)= \sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ {1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1} f^{(r)}(t)dt
+%\end{equation}
+%и заметим, что из  \eqref{sobleg-3.11} и \eqref{3.21}  имеем
+%\begin{equation}\label{3.22}
+% f(x)-Y_{r,n+r}(f,x)=  {1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1} f^{(r)}(t)dt-\sum_{k=r}^{n+r} \hat f_{r,k}q_{r,k}(x).
+%\end{equation}
+%Обратимся к равенству \eqref{sobleg-3.5}, тогда \eqref{3.22} можно переписать так
+%$$
+%f(x)-Y_{r,n+r}(f,x)=
+%$$
+%$$
+%  {1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1} f^{(r)}(t)dt-{1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1}\sum_{k=r}^{n+r} \hat f_{r,k}q_{k-r}(t)dt=
+%$$
+%\begin{equation}\label{3.23}
+% {1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1}[f^{(r)}(t)-S_n(f^{(r)},t)]dt .
+%\end{equation}
+%Из \eqref{3.23} и неравенства Гельдера имеем
+%$$
+%|f(x)-Y_{r,n+r}(f,x)|\le
+%$$
+%\begin{equation}\label{3.24}
+% {1\over (r-1)!} \left(\int\limits_{a}^b\frac{|x-t|^{2(r-1)}}{\rho(t)}dt\right)^\frac12\left(\int\limits_{a}^b [f^{(r)}(t)-S_n(f^{(r)},t)]^2\rho(t)dt\right)^\frac12.
+% \end{equation}
+%Сопоставляя \eqref{3.24} с \eqref{3.20}, убеждаемся в справедливости предложения 2.
+%\end{proof}
+
+\begin{corollary}
+Предположим, что  $ \frac{1}{\rho(x)}\in L(a,b) $, а  функции $\varphi_k(x)$ $(k=0,1,\ldots)$  образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на $(a,b)$, $\{\varphi_{1,k}(x)\}_{k=0}^\infty$ -- система, ортонормированная в $W^1_{L^2_\rho(a,b)}$ относительно скалярного произведения \eqref{sobleg-3.8} с $r=1$,  порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{sobleg-3.5} и \eqref{sobleg-3.6}.
+Тогда если числовая последовательность $\{c_k\}_{k=0}^\infty$ такова, что $\sum_{k=0}^\infty c_k^2<\infty$, то  ряд  $\sum_{k=0}^\infty c_k\varphi_{1,k+1}(x)$ сходится равномерно на $[a,b]$ к функции $\eta(x)=\int_a^x g(t)dt$ и  $\eta(x)\in W^r_{L^2_\rho(a,b)}$, где $g(x)=\sum_{k=0}^\infty c_k\varphi_{k}(x)$.
+\end{corollary}
+%\begin{proof}
+%Если $\sum_{k=0}^\infty c_k^2<\infty$ и $g(x)=\sum_{k=0}^\infty c_k\varphi_{k}(x)$, то $g(x)\in L^2_\rho(a,b)$, поэтому из условия $ \frac{1}{\rho(x)}\in L(a,b)$ следует, что $\int_a^x g(t)dt\in W^1_{L^2_\rho(a,b)}$. С другой стороны, имеем
+%$$
+%\left|\int_a^x g(t)dt-\sum\nolimits_{k=0}^N c_k\varphi_{1,k+1}(x)\right|=
+%\left|\int_a^x [g(t)dt-\sum\nolimits_{k=0}^N c_k\varphi_{k}(t)]dt\right|\le
+%$$
+%$$
+%\int_a^x |g(t)dt-\sum\nolimits_{k=0}^N c_k\varphi_{k}(t)|dt\le
+%\int_a^b |g(t)dt-\sum\nolimits_{k=0}^N c_k\varphi_{k}(t)|dt\le
+%$$
+%$$
+%\left(\int_a^b \frac{dt}{\rho(t)}\right)^\frac12
+%\left(\int_a^b (g(t)dt-\sum\nolimits_{k=0}^Nc_k\varphi_{k}(t))^2\rho(t)dt\right)^\frac12\to 0
+%$$
+%при $N\to\infty$.  Следствие 1 доказано.
+%
+%
+%
+%
+%\end{proof}
+%
+%
+
+\section{Полиномы, порожденные  ортонормированными полиномами Якоби $p_{k}^{\alpha,\beta}(x)$}\label{sobleg4}
+Из \eqref{sobleg-2.2} и \eqref{sobleg-2.13} следует, что если $\alpha,\beta>-1$, то полиномы $p_n^{\alpha,\beta}(x)=P_n^{\alpha,\beta}(x)/\sqrt{ h_n^{\alpha,\beta}}\quad(n=0,1,\ldots)$
+образуют ортонормированную  в $L_\kappa^2(-1,1)$ с весом $\kappa(x)=(1-x)^\alpha(1+x)^\beta$ систему. В частности, если $\alpha=\beta=\frac12$, $x=\cos\theta$, то
+$$
+ p_n^{\frac12,\frac12}(x)=\sqrt{2/\pi}\frac{\sin(n+1)\theta}{\sin\theta}\quad (n=0,1,\ldots)
+ $$
+ -- ортонормированные полиномы Чебышева второго рода, а если $\alpha=\beta=-\frac12$, то
+\begin{equation}\label{sobleg-3.25}
+p_0^{-\frac12,-\frac12}(x)=\sqrt{1/\pi},\quad  p_n^{-\frac12,-\frac12}(x)=\sqrt{2/\pi}\cos n\theta\quad (n=1,\ldots)
+\end{equation}
+ -- ортонормированные полиномы Чебышева первого рода.
+ Как хорошо известно \cite{sobleg-Sege}, система полиномов Якоби \eqref{sobleg-2.13} полна в $L_\kappa^2(-1,1)$.   Она порождает на $[-1,1]$ систему полиномов  $p_{r,k}^{\alpha,\beta}(x)$ $(k=0,1,\ldots)$, определенных равенствами
+   \begin{equation}\label{sobleg-3.26}
+p_{r,k}^{\alpha,\beta}(x) =\frac{(x+1)^k}{k!}, \quad k=0,1,\ldots, r-1,
+\end{equation}
+  \begin{equation}\label{sobleg-3.27}
+p_{r,r+n}^{\alpha,\beta}(x) =\frac{1}{(r-1)!}\int\limits_{-1}^x(x-t)^{r-1}p_n^{\alpha,\beta}(t)dt, \quad n=0,1,\ldots.
+\end{equation}
+Если мы обратимся к скалярному произведению \eqref{sobleg-3.8}, то из теоремы \ref{soblegstate1} непосредственно вытекает
+\begin{corollary}
+Пусть $\alpha,\beta>-1$. Тогда система полиномов $\{p_{r,k}^{\alpha,\beta}(x)\}_{k=0}^\infty$, порожденная системой ортонормированных полиномов Якоби \eqref{sobleg-2.13} посредством равенств \eqref{sobleg-3.5} и \eqref{sobleg-3.6}, полна  в $W^r_{L^2_\kappa(-1,1)}$ и ортонормирована относительно скалярного произведения \eqref{sobleg-3.8}.
+\end{corollary}
+Ряд Фурье \eqref{sobleg-3.9} для системы   $\{p_{r,k}^{\alpha,\beta}(x)\}_{k=0}^\infty$ приобретает вид
+\begin{equation}\label{sobleg-3.28}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^\infty \hat f_{r,k}p_{r,k}^{\alpha,\beta}(x),
+\end{equation}
+где
+  \begin{equation}\label{sobleg-3.29}
+ \hat f_{r,k}=\int_{-1}^1 f^{(r)}(t)p_{k-r}^{\alpha,\beta}(t)\kappa(t)dt.
+\end{equation}
+
+\begin{corollary}
+Пусть $-1<\alpha,\beta<1$. Тогда если $f(x)\in W^r_{L^2_\kappa(-1,1)}$, то ряд Фурье (смешанный ряд) \eqref{sobleg-3.28} сходится к функции $f(x)$ равномерно относительно $x\in[-1,1]$.
+\end{corollary}
+%\begin{proof}
+%Заметим, что если $-1<\alpha,\beta<1$, то $\frac{1}{\kappa(x)}\in L(-1,1)$, где $\kappa(x)=(1-x)^\alpha(1+x)^\beta$. Поэтому утверждение следствия 2 вытекает из предложения 2 и следствия 1.
+%\end{proof}
+
+При исследовании дальнейших (более глубоких) аппроксимативных свойств частичных сумм смешанного ряда \eqref{sobleg-3.28} возникает задача об асимптотических свойствах полиномов $p_{r,k}^{\alpha,\beta}(x)$, которая, в свою очередь, приводит к вопросу о получении различных представлений для этих полиномов, отличных от  \eqref{sobleg-3.27} и не содержащих знаков интеграла с переменным пределом. Прежде всего мы найдем явный вид полиномов $p_{r,k}^{\alpha,\beta}(x)$.
+
+\begin{theorem}\label{soblegtheo1}
+Для произвольных $\alpha, \beta>-1$ и $n\ge0$
+имеет место следующее равенство
+\begin{equation}\label{sobleg-3.30}
+p_{r,n+r}^{\alpha,\beta}(x)=\frac{(-1)^n2^{r}}{\sqrt{ h_n^{\alpha,\beta}}}
+{n+\beta\choose n}
+\sum_{k=0}^n{(-n)_k(n+\alpha+\beta+1)_k\over (\beta+1)_k(k+r)!}
+\left({1+x\over 2}\right)^{k+r}.
+\end{equation}
+\end{theorem}
+%\begin{proof}
+%Воспользуемся равенством \eqref{sobleg-2.7} и запишем
+%$$
+%P_{n}^{\alpha,\beta}(x)=(-1)^nP_{n}^{\beta,\alpha}(-x)=(-1)^n{n+\beta\choose n}
+%\sum_{k=0}^n{(-n)_k(n+\alpha+\beta+1)_k\over k!(\beta+1)_k}
+%\left({1+x\over 2}\right)^k,
+%$$
+%поэтому, в силу \eqref{sobleg-2.13} имеем
+%\begin{equation}\label{3.31}
+%p_{n}^{\alpha,\beta}(x)=\frac{(-1)^n}{\sqrt{ h_n^{\alpha,\beta}}}{n+\beta\choose n}
+%\sum_{k=0}^n{(-n)_k(n+\alpha+\beta+1)_k\over k!(\beta+1)_k}
+%\left({1+x\over 2}\right)^k.
+%\end{equation}
+%С другой стороны в силу формулы Тейлора
+%\begin{equation}\label{3.32}
+%\left({1+x\over 2}\right)^{k+r}={(k+r)^{[r]}\over 2^r(r-1)!}\int\limits_{-1}^x(x-t)^{r-1} \left({1+t\over 2}\right)^{k}dt,
+%\end{equation}
+%где $a^{[0]}=1$, $a^{[r]}=a(a-1)\dots(a-r+1)$.
+%Сопоставляя \eqref{3.31} и \eqref{3.32} с \eqref{sobleg-3.27}, убеждаемся в справедливости утверждения теоремы 1.
+%\end{proof}
+
+Равенство \eqref{sobleg-3.30}, установленное в теореме \ref{soblegtheo1}, может быть использовано при исследовании асимптотических свойств полиномов $p_{r,n+r}^{\alpha,\beta}(x)$ в окрестности точки $x=-1$. Если же $-1+\varepsilon\le x$, то формула  \eqref{sobleg-3.30} становится непригодной для изучения асимптотического  поведения полиномов  $p_{r,n+r}^{\alpha,\beta}(x)$ при $n\to\infty$, поэтому возникает задача найти иные представления для этих полиномов, которые могли бы быть использованы для исследования их поведения при $n\to\infty$ в том случае, когда точка $x$ не находится в непосредственной близости от $-1$. Мы перейдем теперь к рассмотрению этого вопроса. Пусть $\lambda=\alpha+\beta$. Тогда если $(k+\lambda)^{[r]}\neq0$,
+то мы можем воспользоваться равенством \eqref{sobleg-2.5} и записать
+\begin{equation}\label{sobleg-3.33}
+P^{\alpha,\beta}_k(t)={2^r \over (k+\lambda )^{[r]}}\frac{d^r}{dt^r}P_{k+r}^{\alpha-r,\beta-r}(t).
+\end{equation}
+Заметим, что если $-1<\alpha,\beta<1$ и $\lambda\notin\{-1,0,1\}$, то
+ равенство \eqref{sobleg-3.33} справедливо при всех
+$k=0,1,\ldots$. Если  $k\ge r-\lambda$, то, очевидно,
+$(k+\lambda)^{[r]}\neq0$ и для таких $k$ мы
+можем снова воспользоваться равенством \eqref{sobleg-3.33}. Наконец, если одно из чисел $\alpha$ или $\beta$ целое, а другое дробно, то
+$(k+\lambda)^{[r]}\neq0$ для всех $k=0,1,\ldots$ и опять верна формула \eqref{sobleg-3.33}. Итак, пусть $(k+\lambda)^{[r]}\neq0$, тогда в силу  \eqref{sobleg-3.33}
+$$
+\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}P_k^{\alpha,\beta}(t)\,dt=
+$$
+$$
+\frac{2^r}{(k+\lambda)^{[r]}}\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}
+\frac{d^r}{dt^r}P_{k+r}^{\alpha-r,\beta-r}(t)\,dt=
+$$
+\begin{equation}\label{sobleg-3.34}
+\frac{2^r}{(k+\lambda)^{[r]}}\left[P_{k+r}^{\alpha-r,\beta-r}(x)-\sum^{r-1}_{\nu=0}
+\frac{(1+x)^\nu}{\nu!}\left\{P_{k+r}^{\alpha-r,\beta-r}(t)
+\right\}_{t=-1}^{(\nu)}\right].
+\end{equation}
+ Далее, в силу \eqref{sobleg-2.5}
+ \begin{equation}\label{sobleg-3.35}
+\left\{P_{k+r}^{\alpha-r,\beta-r}(t)\right\}^{(\nu)}=
+\frac{(k+\lambda-r+1)_\nu}{2^\nu}P_{k+r-\nu}^{\alpha+\nu-r,\beta+\nu-r}(t),
+\end{equation}
+а из \eqref{sobleg-2.9} имеем
+$$P_{k+r-\nu}^{\alpha+\nu-r,\beta+\nu-r}(-1)=(-1)^{k+r-\nu}{k+\beta\choose k+r-\nu}=$$
+\begin{equation}\label{sobleg-3.36}
+\frac{(-1)^{k+r-\nu}\Gamma(k+\beta+1)}{\Gamma(\nu-r+\beta+1)(k+r-\nu)!}.
+\end{equation}
+Из \eqref{sobleg-3.35}  и \eqref{sobleg-3.36} находим
+\begin{equation}\label{sobleg-3.37}
+\left\{P_{k+r}^{\alpha-r,\beta-r}(t)\right\}_{t=-1}^{(\nu)}=
+\frac{(-1)^{k+r-\nu}\Gamma(k+\beta+1)(k+\lambda-r+1)_{\nu}}
+{\Gamma(\nu-r+\beta+1)(k+r-\nu)!2^\nu}
+=A_{\nu,k,r}^{\alpha,\beta}.
+\end{equation}
+Сопоставляя \eqref{sobleg-3.34} и \eqref{sobleg-3.37} мы можем записать
+$$\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}P_k^{\alpha,\beta}(t)\,dt=$$
+\begin{equation}\label{sobleg-3.38}
+\frac{2^r}{(k+\lambda)^{[r]}}\left[P_{k+r}^{\alpha-r,\beta-r}(x)
+-\sum^{r-1}_{\nu=0}\frac{A_{\nu,k,r}^{\alpha,\beta}}{\nu!}(1+x)^{\nu}\right].
+\end{equation}
+Из \eqref{sobleg-3.27}, \eqref{sobleg-2.13} и \eqref{sobleg-3.34} мы выводим следующий результат.
+
+\begin{theorem}\label{soblegtheo2}
+Пусть $\alpha, \beta>-1$, $\lambda=\alpha+\beta$. Тогда  при условии $(k+\lambda)^{[r]}\neq0$ имеет место следующее равенство
+\begin{equation}\label{sobleg-3.39}
+p_{r,r+k}^{\alpha,\beta}(x) ={1\over\sqrt{ h_k^{\alpha,\beta}}}
+\frac{2^r}{(k+\lambda)^{[r]}}\left[P_{k+r}^{\alpha-r,\beta-r}(x)
+-\sum^{r-1}_{\nu=0}\frac{A_{\nu,k,r}^{\alpha,\beta}}{\nu!}(1+x)^{\nu}\right] ,
+\end{equation}
+в котором числа $A_{\nu,k,r}^{\alpha,\beta}$ определены равенством \eqref{sobleg-3.37}.
+\end{theorem}
+
+\begin{remark}
+  Выражения, аналогичные тем, которые фигурируют в правой части равенства  \eqref{sobleg-3.39}, впервые появились в   работах \cite{sobleg-Shar13}, \cite{sobleg-Shar17}, \cite{sobleg-Shar18} в связи исследованием задачи об аппроксимативных свойствах смешанных рядов \eqref{sobleg-3.28} по общим полиномам Якоби $P_{k}^{\alpha,\beta}(x)$.
+\end{remark}
+
+
+Рассмотрим некоторые частные случаи.
+
+\section{Полиномы, порожденные полиномами Якоби $p_{k}^{\alpha,0}(x)$}
+Пусть $\beta=0$, $\alpha$ -- дробное. Тогда, во-первых $(k+\lambda)^{[r]}\neq0$ для всех $k\ge0$, во-вторых,  из \eqref{sobleg-3.37} следует, что $A_{\nu,k,r}^{\alpha,0}=0$ при всех  $\nu=0,1,\dots, r-1$, поэтому равенство \eqref{sobleg-3.39} можно переписать так
+\begin{equation}\label{sobleg-3.40}
+p_{r,r+k}^{\alpha,0}(x) ={1\over\sqrt{ h_k^{\alpha,0}}}
+\frac{2^r}{(k+\alpha)^{[r]}}P_{k+r}^{\alpha-r,-r}(x) \quad (k=0,1,\ldots).
+\end{equation}
+С учетом свойства \eqref{sobleg-2.6} этому равенству можно придать также следующий вид
+\begin{equation}\label{sobleg-3.41}
+p_{r,r+k}^{\alpha,0}(x) =
+\frac{(1+x)^rP_{k}^{\alpha-r,r}(x)}{(k+r)^{[r]}\sqrt{ h_k^{\alpha,0}}},
+ \quad (k=0,1,\ldots).
+\end{equation}
+
+\section{Полиномы, порожденные полиномами Чебышева первого рода}
+В настоящем разделе мы отдельно и большей частью независимо от предыдущих разделов исследуем полиномы $T_{r,k}(x)\,(k=0,1,\ldots)$, ортогональные по Соболеву, порожденные полиномами Чебышева первого рода
+\begin{equation}\label{sobcheb-urav-5.1}
+T_0(x)=T_0=\frac{1}{\sqrt{2}},\quad T_k(x)=\cos(k\arccos x), \quad k=1,2,\ldots,
+\end{equation}
+образующми  ортонормированную  в $L_\mu^2(-1,1)$ с весом  $\mu(x)=\frac2\pi(1-x^2)^{-\frac12}$ систему. Как хорошо известно \cite{laplas-Sege}, система полиномов Чебышева \eqref{sobcheb-urav-5.1} полна в $L_\mu^2(-1,1)$.   Она порождает на $[-1,1]$ систему полиномов $T_{r,k}(x)$ $(k=0,1,\ldots)$, определенных равенствами \eqref{sobleg-3.26} и\eqref{sobleg-3.27}.
+Из теоремы \ref{soblegstate1} непосредственно вытекает
+\begin{corollary}
+  Система полиномов $\{T_{r,k}(x)\}_{k=0}^\infty$, порожденная системой ортонормированных полиномов Чебышева \eqref{sobcheb-urav-5.1} посредством равенств \eqref{sobleg-3.26} и \eqref{sobleg-3.27}, полна  в $W^r_{L^2_\mu(-1,1)}$ и ортонормирована относительно скалярного произведения \eqref{sobleg-3.8}.
+\end{corollary}
+
+Ряд Фурье по системе $\{T_{r,k}(x)\}_{k=0}^\infty$ для функции системы   $f\in W^r_{L^2_\mu(-1,1)}$ приобретает вид
+\begin{equation}\label{sobcheb-urav-5.2}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^\infty \hat f_{r,k}T_{r,k}(x),
+\end{equation}
+где
+  \begin{equation}\label{sobcheb-urav-5.3}
+ \hat f_{r,r+j}=\int_{-1}^1 f^{(r)}(t)T_{j}(t)\mu(t)dt\quad(j\ge0).
+\end{equation}
+
+\begin{corollary}
+ Если $f(x)\in W^r_{L^2_\mu(-1,1)}$, то ряд Фурье (смешанный ряд) \eqref{sobcheb-urav-5.2} сходится к функции $f(x)$ равномерно относительно $x\in[-1,1]$.
+\end{corollary}
+%\begin{proof}
+% Так как $\frac{1}{\mu(x)}\in L(-1,1)$, то утверждение следствия 4 вытекает из теоремы 2 и следствия 3.
+%\end{proof}
+
+ Рассмотрим дальнейшие свойства полиномов $T_{r,k}(x)$.
+Пусть $\alpha=\beta=-\frac{1}{2}$, тогда $\lambda=\alpha+\beta=-1$ и если $(k-1)^{[r]}\neq0$, то мы можем воспользоваться равенством \eqref{sobleg-2.5} и записать
+\begin{equation}\label{sobcheb-urav-5.4}
+P^{-\frac{1}{2},-\frac{1}{2}}_k(t)={2^r \over (k-1 )^{[r]}}\frac{d^r}{dt^r}P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(t).
+\end{equation}
+ Если  $k\ge r+1$, то, очевидно, $(k-1)^{[r]}\neq0$ и для таких $k$ мы
+можем  воспользоваться равенством \eqref{sobcheb-urav-5.4}. Итак, пусть $(k-1)^{[r]}\neq0$. Тогда в силу  \eqref{sobcheb-urav-5.4}
+$$
+\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}P_k^{-\frac{1}{2},-\frac{1}{2}}(t)\,dt=
+$$
+$$
+\frac{2^r}{(k-1)^{[r]}}\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}
+\frac{d^r}{dt^r}P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(t)\,dt=
+$$
+\begin{equation}\label{sobcheb-urav-5.5}
+\frac{2^r}{(k-1)^{[r]}}\left[P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(x)-\sum^{r-1}_{\nu=0}
+\frac{(1+x)^\nu}{\nu!}\left\{P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(t)
+\right\}_{t=-1}^{(\nu)}\right].
+\end{equation}
+ Далее, в силу \eqref{sobleg-2.5}
+ \begin{equation}\label{sobcheb-urav-5.6}
+\left\{P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(t)\right\}^{(\nu)}=
+\frac{(k-r)_\nu}{2^\nu}P_{k+r-\nu}^{-\frac{1}{2}+\nu-r,-\frac{1}{2}+\nu-r}(t),
+\end{equation}
+а из \eqref{sobleg-2.9} имеем 
+\begin{equation}\label{sobcheb-urav-5.7}
+P_{k+r-\nu}^{-\frac{1}{2}+\nu-r,-\frac{1}{2}+\nu-r}(-1)=\frac{(-1)^{k+r-\nu}\Gamma(k+\frac{1}{2})}{\Gamma(\nu-r+\frac{1}{2})(k+r-\nu)!}.
+\end{equation}
+Из \eqref{sobcheb-urav-5.6}  и \eqref{sobcheb-urav-5.7} находим
+\begin{equation}\label{sobcheb-urav-5.8}
+\left\{P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(t)\right\}_{t=-1}^{(\nu)}=
+\frac{(-1)^{k+r-\nu}\Gamma(k+\frac{1}{2})(k-r)_{\nu}}
+{\Gamma(\nu-r+\frac{1}{2})(k+r-\nu)!2^\nu}=A_{\nu,k,r}.
+\end{equation}
+Сопоставляя \eqref{sobcheb-urav-5.5} и \eqref{sobcheb-urav-5.8}, мы можем записать
+$$\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}P_k^{-\frac{1}{2},-\frac{1}{2}}(t)\,dt=$$
+\begin{equation}\label{sobcheb-urav-5.9}
+\frac{2^r}{(k-1)^{[r]}}\left[P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(x)-\sum^{r-1}_{\nu=0}
+\frac{A_{\nu,k,r}}{\nu!}(1+x)^{\nu}\right].
+\end{equation}
+
+Поскольку \cite{laplas-Sege}
+\begin{equation}\label{sobcheb-urav-3.12}
+P_n^{-\frac{1}{2},-\frac{1}{2}}(x)=\frac{1\cdot3\cdot\ldots\cdot(2n-1)}
+{2\cdot4\cdot\ldots\cdot2n}T_n(x)=\frac{(2n)!}{2^{2n}{n!}^2}T_n(x),
+\end{equation}
+то из \eqref{sobleg-3.27} и  \eqref{sobcheb-urav-5.5} имеем
+$$
+T_{r,r+k}(x)=\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}T_k(t)\,dt=
+$$
+$$
+\frac{2^{2k}k!^2}{(2k)!(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}P_k^{-\frac12,-\frac12}(t)\,dt=
+$$
+\begin{equation}\label{sobcheb-urav-5.10}
+\frac{k!^2}{(2k)!}
+\frac{2^{r+2k}}{(k-1)^{[r]}}\left[P_{k+r}^{-\frac12-r,-\frac12-r}(x)-\sum^{r-1}_{\nu=0}
+\frac{A_{\nu,k,r}}{\nu!}(1+x)^{\nu}\right],
+\end{equation}
+где в силу \eqref{sobcheb-urav-5.8} и равенств
+$$
+\Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin(\pi z)},\quad \Gamma(z+1/2)=\frac{\sqrt{\pi}\Gamma(2z)}{\Gamma(z)2^{2z-1}}
+$$
+ для $k\ge r+1$ находим
+$$
+A_{\nu,k,r}=
+\frac{(-1)^{k+r-\nu}\Gamma(k+1/2)(k-r)_{\nu}}{\Gamma(\nu-r+1/2)(k+r-\nu)!2^\nu}
+$$
+$$
+=\frac{(-1)^{k}\Gamma(k+1/2)(k-r)_{\nu}\Gamma(r-\nu+1/2)}{\pi (k+r-\nu)!2^\nu}=
+$$
+\begin{equation}\label{sobcheb-urav-5.11}
+\frac{(-1)^{k}(2k-1)!(2(r-\nu)-1)!(k-r)_{\nu}}{(k-1)!(r-\nu-1)! (k+r-\nu)!2^{2(k+r-1)-\nu}}.
+\end{equation}
+Таким образом, при $k\ge r+1$ мы получаем следующее представление
+\begin{equation}\label{sobcheb-urav-5.12}
+T_{r,r+k}(x)=\frac{k!^2}{(2k)!}
+\frac{2^{r+2k}}{(k-1)^{[r]}}\left[P_{k+r}^{-\frac12-r,-\frac12-r}(x)-
+\sum^{r-1}_{\nu=0}\frac{A_{\nu,k,r}}{\nu!}(1+x)^{\nu}\right].
+\end{equation}
+Имеет место следующая
+
+\begin{lemma}\label{sobcheb-uravlemma3}
+Пусть  $k,r$ -- целые, $r\ge1$,
+     $k\ge r+1$. Тогда
+ $$
+P_{k+r}^{-\frac12-r,-\frac12-r}(x)={(2k)!\over(k!)^22^{2k+2r}}\sum_{j=0}^r{(-1)^j\over j!}
+{r^{[j]}k^{[r+1]}\over(k+r-j)^{[r+1]}}T_{k+r-2j}(x).
+     $$
+\end{lemma}
+Отсюда выводим
+\begin{equation}\label{sobcheb-urav-5.13}
+\frac{k!^2}{(2k)!}
+\frac{2^{r+2k}}{(k-1)^{[r]}}P_{k+r}^{-\frac12-r,-\frac12-r}(x)=
+\sum_{j=0}^r(-1)^j{r\choose j}
+{kT_{k+r-2j}(x)\over2^r(k+r-j)^{[r+1]}}.
+\end{equation}
+Сопоставляя \eqref{sobcheb-urav-5.12} и  \eqref{sobcheb-urav-5.13}, мы приходим к следующему результату.
+\begin{theorem}\label{sobcheb-uravtheo4}
+Если  $k\ge r+1$, то
+\begin{equation}\label{sobcheb-urav-5.14}
+T_{r,r+k}(x)=\sum_{j=0}^r{r\choose j}
+{(-1)^jkT_{k+r-2j}(x)\over2^r(k+r-j)^{[r+1]}}
+-\frac{k!^22^{r+2k}}{(2k)!(k-1)^{[r]}}
+\sum^{r-1}_{\nu=0}\frac{A_{\nu,k,r}}{\nu!}(1+x)^{\nu}.
+\end{equation}
+\end{theorem}
+
+Рассмотрим два важных частных случая, соответствующие  значениям   $r=1$  и $r=2$.
+
+\noindent\textbf{1)} Пусть $r=1$. Тогда из \eqref{sobcheb-urav-5.10} имеем
+\begin{equation}\label{sobcheb-urav-5.15}
+A_{0,k,1}=\frac{(-1)^{k}(2k-1)!}{(k-1)!(k+1)!2^{2k}}, \quad k=2,3,\ldots.
+\end{equation}
+
+Из \eqref{sobcheb-urav-5.13} и \eqref{sobcheb-urav-5.15}  для $k\ge2$ находим
+$$
+T_{1,k+1}(x)=\sum_{j=0}^1(-1)^j
+{kT_{k+1-2j}(x)\over2(k+1-j)^{[2]}}-\frac{k!^2}{(2k)!}
+\frac{2^{2k+1}}{(k-1)}\frac{(-1)^{k}(2k-1)!}{(k-1)!(k+1)!2^{2k}}
+$$
+$$
+=\sum_{j=0}^1(-1)^j
+{kT_{k+1-2j}(x)\over2(k+1-j)^{[2]}}-\frac{(-1)^k}{k^2-1}.
+$$
+Отсюда и из \eqref{sobcheb-urav-5.2} и \eqref{sobcheb-urav-5.3} мы водим
+\begin{corollary}\label{sobcheb-uravcor5}
+Имеют место равенства
+\begin{equation}\label{sobcheb-urav-5.16}
+T_{1,k+1}(x)={T_{k+1}(x)\over2(k+1)}- {T_{k-1}(x)\over2(k-1)} -\frac{(-1)^k}{k^2-1}\quad (k\ge 2),
+\end{equation}
+\begin{equation}\label{sobcheb-urav-5.17}
+T_{1,0}(x)=1, \quad T_{1,1}(x)=\frac{1+x}{\sqrt{2}}, \quad T_{1,2}(x)=\frac12(x^2-1).
+\end{equation}
+\end{corollary}
+
+
+\noindent\textbf{2)} Для $r=2$ и $k\ge3$ из \eqref{sobcheb-urav-5.14} и \eqref{sobcheb-urav-5.17} имеем
+$$
+A_{0,k,2}=\frac{6(-1)^{k}(2k-1)!}{(k-1)! (k+2)!2^{2(k+1)}},\quad A_{1,k,2}=\frac{(-1)^{k}(2k-1)!(k-2)}{(k-1)! (k+1)!2^{2k+1}},
+$$
+$$
+T_{2,k+2}(x)=\sum_{j=0}^2{r\choose j}
+{(-1)^jkT_{k+2-2j}(x)\over2^2(k+2-j)^{[3]}}
+-\frac{k!^2}{(2k)!}
+\frac{2^{2+2k}}{(k-1)^{[2]}}\sum^1_{\nu=0}\frac{A_{\nu,k,2}}{\nu!}(1+x)^{\nu},
+$$
+поэтому при $k\ge3$
+$$
+T_{2,k+2}(x)=\sum_{j=0}^2{2\choose j}
+{(-1)^jkT_{k+2-2j}(x)\over4(k+2-j)^{[3]}}
+-(-1)^k\left[\frac{1+x}{k^2-1}+\frac{3}{(k^2-1)(k^2-4)}\right].
+$$
+Отсюда и из \eqref{sobcheb-urav-5.2} и \eqref{sobcheb-urav-5.3} мы выводим
+\begin{corollary} Имеют место равенства
+$$
+T_{2,k+2}(x)={T_{k+2}(x)\over4(k+2)(k+1)}-{T_{k}(x)\over2(k^2-1)}+
+{T_{k-2}(x)\over4(k-1)(k-2)}-
+$$
+\begin{equation}\label{sobcheb-urav-5.18}
+(-1)^k\left[\frac{1+x}{k^2-1}+\frac{3}{(k^2-1)(k^2-4)}\right]\quad(k\ge3),
+\end{equation}
+\begin{equation}\label{sobcheb-urav-5.19}
+T_{2,0}(x)=1, \quad T_{2,1}(x)=1+x, \quad T_{2,2}(x)=\frac{(1+x)^2}{2\sqrt{2}},
+\end{equation}
+\begin{equation}\label{sobcheb-urav-5.20}
+T_{2,3}(x)=\frac16(x-2)(x+1)^2, \quad T_{2,4}(x)=\frac16x(x-2)(x+1)^2.
+\end{equation}
+\end{corollary}
+
+   В заключение этого параграфа мы выведем явный вид для полиномов  $T_{r,k}(x)$, представляющий из себя частный случай равенства \eqref{sobleg-3.30}. С этой целью установим их связь с полиномами $p_{r,k}^{-\frac12,-\frac12}(x)$, определенными равенством \eqref{sobleg-3.27}. В силу \eqref{sobcheb-urav-3.12},  \eqref{sobleg-2.3} и \eqref{sobleg-2.13} имеем
+ $$
+ T_{r,r+n}(x) =  \frac{2^{2n}{n!}^2}{(2n)!}\frac{1}{(r-1)!}\int\limits_{-1}^x(x-t)^{r-1}
+   P_n^{-\frac{1}{2},-\frac{1}{2}}(t)dt=
+$$
+\begin{equation}\label{sobcheb-urav-5.21}
+\frac{2^{2n}{n!}^2}{(2n)!}\frac{\sqrt{h_n^{-\frac{1}{2},-\frac{1}{2}}}}{(r-1)!}
+\int\limits_{-1}^x(x-t)^{r-1}
+   p_n^{-\frac{1}{2},-\frac{1}{2}}(t)dt= \frac{2^{2n}{n!}^2}{(2n)!}\sqrt{h_n^{-\frac{1}{2},-\frac{1}{2}}}
+   p_{r,r+n}^{-\frac12,-\frac12}(x).
+\end{equation}
+Обратимся теперь к теореме \ref{soblegtheo1}, из которой следует равенство
+\begin{equation}\label{sobcheb-urav-5.22}
+p_{r,n+r}^{-\frac{1}{2},-\frac{1}{2}}(x)=\frac{(-1)^n2^{r}}{\sqrt{ h_n^{-\frac{1}{2},-\frac{1}{2}}}}
+{n-\frac{1}{2}\choose n}
+\sum_{k=0}^n{(-n)_k(n)_k\over (\frac12)_k(k+r)!}
+\left({1+x\over 2}\right)^{k+r}.
+\end{equation}
+ Сопоставля \eqref{sobcheb-urav-5.21} и \eqref{sobcheb-urav-5.22} и учитывая, что ${n-\frac{1}{2}\choose n}=\frac{(2n)!}{n!^22^{2n}}$, мы приходим к следующему результату.
+\begin{corollary} При $n\ge1$ имеют место равенство
+\begin{equation}\label{sobcheb-urav-5.23}
+T_{r,n+r}(x)=(-1)^n2^r\sum\nolimits_{k=0}^n{(-n)_k(n)_k\over (\frac12)_k(k+r)!}
+\left({1+x\over 2}\right)^{k+r}.
+\end{equation}
+\end{corollary}
+
+\section{Полиномы, порожденные полиномами Лежандра $p_{n}^{0,0}(x)$}
+Рассмотрим ортогональные по Соболеву полиномы $p_{r,n}(x)=p_{r,n}^{0,0}(x)$, порожденные полиномами \textit{ Лежандра}. С этой целью положим $\beta=\alpha=0$. Тогда  $(k+\lambda)^{[r]}\neq0$ для всех $k\ge r$, а из \eqref{sobleg-3.37} следует, что $A_{\nu,k,r}^{0,0}=0$ при всех  $\nu=0,1,\dots, r-1$. Поэтому из теоремы 2 имеем
+\begin{equation}\label{sobleg-3.42}
+p_{r,r+k}(x) =\sqrt{k+1/2}
+\frac{2^r}{k^{[r]}}P_{k+r}^{-r,-r}(x) \quad (k=r,r+1,\ldots).
+\end{equation}
+Если мы обратимся к равенству \eqref{sobleg-2.6}, то можем записать
+\begin{equation}\label{sobleg-3.43}
+P_{k+r}^{-r,-r}(x)= \frac{(-1)^r(1-x^2)^r}{2^{2r}}P_{k-r}^{r,r}(x) \quad (k=r,r+1,\ldots).
+\end{equation}
+Из \eqref{sobleg-2.13}, \eqref{sobleg-3.42} и \eqref{sobleg-3.43} имеем
+\begin{equation}\label{sobleg-3.44}
+p_{r,r+k}(x) =
+\frac{(-1)^r}{2^rk^{[r]}}\sqrt{(k+1/2)h_{k-r}^{r,r}}(1-x^2)^rp_{k-r}^{r,r}(x) \quad (k=r,r+1,\ldots).
+\end{equation}
+Соответствующий этому случаю ряд Фурье \eqref{sobleg-3.28} по полиномам $p_{r,k}(x)=p_{r,k}^{0,0}(x)$, ортогональным по Соболеву (или, что то же, \textit{ смешанный ряд по полиномам  Лежандра}), приобретает вид
+\begin{equation}\label{sobleg-3.45}
+f(x)\sim \mathcal{ Y}_{r,2r-1}(f,x)+\left(\frac{x^2-1}2\right)^r\sum_{k=0}^\infty\hat f_{r,k+2r} \frac{\sqrt{(k+r+\frac12)h_k^{r,r}}}{ (k+r)^{[r]}}p_{k}^{r,r}(x),
+\end{equation}
+где
+\begin{equation*}
+ \mathcal{ Y}_{r,2r-1}(f,x)=\sum_{k=0}^{r-1} f^{(k)}(-1)\frac{(x+1)^k}{k!}+\sum_{k=r}^{2r-1} \hat f_{r,k}p_{r,k}(x),
+\end{equation*}
+а для полиномов $p_{r,k}(x)=p_{r,k}^{0,0}(x)$, фигурирующих в правой части последнего равенства, в силу теоремы \ref{soblegtheo1} имеет место представление
+\begin{equation}\label{sobleg-3.46}
+p_{r,k}(x)=(-1)^{k-r}2^{r}\sqrt{k-r+\frac12}
+\sum_{l=0}^{k-r}{(r-k)_l(k-r+1)_l\over l!(l+r)!}
+\left({1+x\over 2}\right)^{l+r}.
+\end{equation}
+Аппроксимативные свойства частичных сумм ряда \eqref{sobleg-3.45} вида
+$$
+\mathcal{ Y}_{r,N}(f,x)=\sum_{k=0}^{r-1} f^{(k)}(-1)\frac{(x+1)^k}{k!}+\sum_{k=r}^N \hat f_{r,k}p_{r,k}(x)=
+$$
+\begin{equation}\label{sobleg-3.47}
+\mathcal{ Y}_{r,2r-1}(f,x)+\left(\frac{x^2-1}2\right)^r\sum_{k=0}^{N-2r}\hat f_{r,k+2r} \frac{\sqrt{(k+r+\frac12)h_k^{r,r}}}{ (k+r)^{[r]}}p_{k}^{r,r}(x)
+\end{equation}
+были весьма подробно исследованы в работах \cite{sobleg-Shar11, sobleg-Shar12, sobleg-Shar13, sobleg-Shar15, sobleg-Shar16, sobleg-Shar17, sobleg-Shar18, sobleg-sharap3}. Мы напомним здесь некоторые из них. Прежде всего отметим, что оператор  $f\to \mathcal{ Y}_{r,n}(f)$ представляет собой проектор на подпространство алгебраических полиномов $p_n$ степени не выше $n$, т.е. $\mathcal{ Y}_{r,n}(p_n)=p_n$. С другой стороны, если $f\in W^r_{L^2(-1,1)}$, то в силу предложения \ref{soblegstate2} имеет место равенство
+$$
+f(x)=\sum_{k=0}^{r-1} f^{(k)}(-1)\frac{(x+1)^k}{k!}+\sum_{k=r}^\infty \hat f_{r,k}p_{r,k}(x)
+$$
+\begin{equation}\label{sobleg-3.48}
+=\mathcal{ Y}_{r,2r-1}(f,x)+\left(\frac{x^2-1}2\right)^r\sum_{k=0}^\infty\hat f_{r,k+2r} \frac{\sqrt{(k+r+\frac12)h_k^{r,r}}}{ (k+r)^{[r]}}p_{k}^{r,r}(x),
+\end{equation}
+причем ряд, фигурирующий в правой части равенства \eqref{sobleg-3.48}, сходится равномерно на $[-1,1]$. Отсюда, в свою очередь, следует, что   $\mathcal{ Y}_{r,n}(f,x)$ при $n\ge2r-1 $ совпадает с функцией $f(x)\in W^r_{L^2_\kappa(-1,1)}$ $r$-кратно в точках $-1$ и $1$, т.е. $f^{(\nu)}(\pm1)=\mathcal{ Y}_{r,n}^{(\nu)}(f,\pm1),\quad \nu=0,1,\ldots, r-1$. Стало быть,
+ $D_{2r-1}(f,x)=\mathcal{ Y}_{r,2r-1}(f,x)$
+представляет собой \cite{sobleg-Shar17} интерполяционный полином Эрмита степени $2r-1$.
+В работе \cite{sobleg-Shar15}  была доказана следующая неулучшаемая по порядку (при $N\to\infty$) оценка
+\begin{equation}\label{sobleg-3.49}
+\sup_{f\in W^r}\max_{-1\le x\le 1}{\left|f^{(\nu)}(x)-\left(\mathcal{ Y}_{r,N}(f,x)\right)^{(\nu)}\right|\over(1-x^2)^{(r-\nu)/2-1/4}}
+\le c(r)\frac{\ln N}{N^{r-\nu}},\,\, 0\le \nu\le r-1,
+\end{equation}
+где  $W^r$ -- класс функций, непрерывно дифференцируемых $r$-раз, для которых $\max_{-1\le x\le 1}|f^{(r)}(x)|\le1$.
+Доказательство оценки \eqref{sobleg-3.49}  основано \cite{sobleg-Shar15} на неравенстве типа Лебега для $(\mathcal{ Y}_{r,n+2r}(f,x))^{(\nu)}$, которое имеют следующий вид ($0\le\nu\le r-1$)
+$$
+{\left|f^{(\nu)}(x)-\left(\mathcal{ Y}_{r,n+2r}(f,x)\right)^{(\nu)}\right|
+\over(1-x^2)^{\frac{r-\nu}{2}-\frac14}}\le
+$$
+\begin{equation}\label{sobleg-3.50}
+((1-x^2)^\frac14+(1-x^2)^{\frac{r-\nu}{2}+\frac14}I^{r-\nu}_{n+\nu}(x))
+E^{r-\nu}_{n+2r-\nu}(f^{(\nu)}),
+\end{equation}
+где
+\begin{equation}\label{sobleg-3.51}
+I^{d}_{l}(x)= \int_{-1}^{1}|K^{d,d}_{l}(x,t)|(1-t^2)^{\frac{d}{2}}dt,
+\end{equation}
+а величина
+\begin{equation}\label{sobleg-3.52}
+E_s^d(f)=\inf_{p_s}\sup_{-1<x<1}{|f(x)-p_s(x)|\over (1-x^2)^\frac{d}{2}}
+\end{equation}
+представляет собой наилучшее (весовое) приближение функции $f\in W^d$ алгебраическими полиномами $p_s(x)$ степени
+$s$, обладающими свойством $p_s^{(\nu)}(\pm1)=f^{(\nu)}(\pm1)$ $(\nu=0,\ldots, d-1)$. Для величины, определенной равенством  \eqref{sobleg-3.51}, в \cite{sobleg-Shar15} получена следующая оценка
+\begin{equation}\label{sobleg-3.53}
+I^d_n(x)\le c(d)(1-x^2)^{-\frac{d}{2}}\left[\ln(n\sqrt{1-x^2}+1)+(1-x^2)^{-\frac14}\right]\quad(-1<x<1),
+\end{equation}
+а из известной теоремы Теляковского -- Гопенгауза \cite{sobleg-TEL},\cite{sobleg-GOP} следует, что
+\begin{equation}\label{sobleg-3.54}
+E_N^d(f)\le c(d)N^{-d}\omega(f^{(d)},\frac{1}{N})\quad (f\in W^d),
+\end{equation}
+где $\omega(g,\delta)$ -- модуль непрерывности функции $g\in C[-1,1]$. Отдельно отметим частный случай неравенства \eqref{sobleg-3.49}, соответствующий выбору $\nu=0$. В этом случае,  учитывая оценку \eqref{sobleg-3.53} и полагая $N=n+2r$, мы получаем следующее неравенство типа Лебега
+\begin{equation}\label{sobleg-3.55}
+{\left|f(x)-\mathcal{ Y}_{r,N}(f,x)\right|
+\over(1-x^2)^{\frac{r}{2}-\frac14}}\le c(r)\left[(1-x^2)^{\frac14}\ln(N\sqrt{1-x^2}+1)+1\right]E^{r}_{N}(f).
+\end{equation}
+
+
+\section{Полиномы, порожденные полиномами Лагерра}
+Пусть $-1<\gamma$,  $\rho=\rho(x)=x^\gamma e^{-x}$, $1\le p<\infty $,  $\mathcal{ L}_{\rho}^p$ -- пространство измеримых функций $f(x)$, определенных на полуоси $[0,\infty)$ и таких, что
+     $$
+\|f\|_{\mathcal{ L}_{\rho}^p}=
+\left(\int_0^\infty|f(x)|^p\rho(x)dx\right)^{1/p}<\infty.
+    $$
+Из равенства \eqref{laplas-2.3} следует, что если $\gamma>-1$, то полиномы $l_n^{\gamma}(x),\quad(n=0,1,\ldots)$ (см.\eqref{laplas-2.13})
+образуют ортонормированную  в $\mathcal{ L}_\rho^2$  систему. Как хорошо известно \cite{laplas-Sege}, система полиномов Лагерра  \eqref{laplas-2.13} полна в $\mathcal{ L}_\rho^2$.   Эта система порождает на $[0,\infty)$ систему полиномов $l_{r,k}^{\gamma}(x)$ $(k=0,1,\ldots)$, определенных равенствами
+
+  \begin{equation}\label{laplas-5.1}
+l_{r,k}^{\gamma}(x) =\frac{x^k}{k!}, \quad k=0,1,\ldots, r-1,
+\end{equation}
+  \begin{equation}\label{laplas-5.2}
+l_{r,r+k}^{\gamma}(x) =\frac{1}{(r-1)!}\int_{0}^x(x-t)^{r-1}l_{k}^{\gamma}(t)dt, \quad k=0,1,\ldots.
+\end{equation}
+ Через $W_{\mathcal{ L}_{\rho}^p}^r$ обозначим  подкласс функций $f=f(x)$ из $\mathcal{ L}_{\rho}^p$,
+непрерывно дифференцируемых $r-1$ раз, для которых $f^{(r-1)}(x)$
+абсолютно непрерывна на произвольном сегменте $[a,b]\subset[0,\infty)$,
+а $f^{(r)}\in \mathcal{ L}_{\rho}^p$. В $W_{\mathcal{ L}_{\rho}^2}^r$ мы введем скалярное произведение \eqref{laplas-1.1}, которое превращает $W_{\mathcal{ L}_{\rho}^2}^r$ в гильбертово пространство.
+В работах  \cite{laplas-Shar11} и \cite{sobleg-SHII} была доказана следующая теорема.
+
+\begin{theoremA}\label{laplastheo1}
+Пусть $\gamma>-1$. Тогда система полиномов $\{l_{r,k}^{\gamma}(x)\}_{k=0}^\infty$, порожденная системой ортонормированных полиномов Лагерра \eqref{laplas-2.13} посредством равенств \eqref{laplas-5.1} и \eqref{laplas-5.2}, полна  в $W^r_{\mathcal{ L}^2_\rho}$ и ортонормирована относительно скалярного произведения \eqref{laplas-1.1}.
+\end{theoremA}
+
+%\begin{proof}
+%Из \eqref{laplas-5.1} и \eqref{laplas-5.2} следует, что
+% \begin{equation}\label{laplas-5.3}
+%(l^\gamma_{r,k}(x))^{(\nu)} =\begin{cases}l^\gamma_{r-\nu,k-\nu}(x),&\text{если $0\le\nu\le r-1$, $r\le k$,}\\
+%l^\gamma_{k-r}(x),&\text{если  $\nu=r\le k$,}\\
+%l^\gamma_{r-\nu,k-\nu}(x),&\text{если $\nu\le k< r$,}\\
+%0,&\text{если $k< \nu\le r$}.
+%  \end{cases}
+%\end{equation}
+%В силу первого из равенств  \eqref{laplas-5.3} следует, что если $r\le k$ и $0\le\nu\le r-1$, то  $(l^\gamma_{r,k}(x))^{(\nu)}_{x=0}=0$, поэтому
+%в силу второго равенства из  \eqref{laplas-5.3},  имеем
+%$$
+%<l^\gamma_{r,k},l^\gamma_{r,l}>= \int_{0}^\infty(l^\gamma_{r,k}(x))^{(r)}(l^\gamma_{r,l}(x))^{(r)}\rho(x) dx=
+%$$
+%\begin{equation}\label{laplas-5.4}
+%    \int_{0}^\infty l^\gamma_{k-r}(x)l^\gamma_{l-r}(x)\rho(x) dx=\delta_{kl},
+%    \quad k,l\ge r,
+%  \end{equation}
+% а в силу третьего  и четвертого из равенств  \eqref{laplas-5.3} получаем
+%\begin{equation}\label{laplas-5.5}
+%  <l^\gamma_{r,k},l^\gamma_{r,l}>=
+%  \sum_{\nu=0}^{r-1}(l^\gamma_{r,k}(x))^{(\nu)}|_{x=0}
+%  (l^\gamma_{r,l}(x))^{(\nu)}|_{x=0}=\delta_{kl},\quad k,l< r.
+%  \end{equation}
+%  Очевидно также, что
+%  \begin{equation}\label{laplas-5.6}
+%  <l^\gamma_{r,k},l^\gamma_{r,l}>=0,\quad \text{если}\quad k< r\le l\quad \text{или} \quad l< r\le k.
+%  \end{equation}
+% Равенства \eqref{laplas-5.4} -- \eqref{laplas-5.6}  означают, что функции  $l^\gamma_{r,k}(x)\, (k=0,1,\ldots) $ образуют   в $W^r_{\mathcal{ L}^2_\rho}$ ортонормированную  систему относительно скалярного произведения \eqref{laplas-1.1}.  Остается убедиться в ее полноте в $W^r_{\mathcal{ L}^2_\rho}$. С этой целью покажем, что если для некоторой функции $f=f(x)\in W^r_{\mathcal{ L}^2_\rho}$ и для  всех $k=0,1,\ldots$ справедливы равенства $<f,l^\gamma_k>=0$, то $f(x)\equiv0$. В самом деле, если $k\le r-1$, то  $<f,l^\gamma_{r,k}>=f^{(k)}(0)$, поэтому с учетом того, что $<f,l^\gamma_{r,k}>=0$,  для нашей функции  $f(x)$ формула Тейлора
+% \begin{equation*}
+%f(x)=\sum_{k=0}^{r-1} f^{(k)}(0)\frac{x^k}{k!}+{1\over (r-1)!}\int\limits_{0}^x(x-t)^{r-1} f^{(r)}(t)dt
+%     \end{equation*}
+% приобретает вид
+%\begin{equation}\label{laplas-5.7}
+%f(x)={1\over (r-1)!}\int\limits_{0}^x(x-t)^{r-1} f^{(r)}(t)dt.
+%     \end{equation}
+%С другой стороны, для всех $k\ge r$ имеем
+%$$
+% 0= <f,l^\gamma_{r,k}>=\int_{0}^\infty f^{(r)}(x) (l^\gamma_{r,k}(x))^{(r)}\rho(x) dx=
+%  \int_{0}^\infty f^{(r)}(x)l^\gamma_{k-r}(x) \rho(x) dx .
+%$$
+%Отсюда и из того, что $l^\gamma_m(x)$ ($m=0,1,\ldots$)  образуют в $\mathcal{ L}^2_{\rho}$ полную ортонормированную систему имеем $f^{(r)}(x)=0$ почти всюду на $[0,\infty)$. Поэтому из \eqref{laplas-5.7} следует, что   $f(x)\equiv0$. Теорема I доказана.
+%
+%\end{proof}
+
+Ряд Фурье функции $f\in W^r_{\mathcal{ L}^2_\rho}$ по системе $\{l_{r,k}^{\gamma}(x)\}_{k=0}^\infty$
+мы можем записать в виде
+\begin{equation}\label{laplas-5.8}
+f(x)\sim  \sum_{k=0}^\infty <f,l_{r,k}^\gamma>  l_{r,k}^\gamma(x),
+     \end{equation}
+где
+\begin{equation}\label{laplas-5.9}
+<f,l_{r,k}^\gamma>=f^{(k)}(0),\quad k=0,\ldots, r-1,
+     \end{equation}
+\begin{equation}\label{laplas-5.10}
+<f,l_{r,k}^\gamma>=\int\limits_0^\infty f^{(r)}(t) l_{k-r}^\gamma(t)e^{-t}t^\gamma dt=f_{r,k}^\gamma,\quad k=r,r+1,\ldots.
+     \end{equation}
+В силу \eqref{laplas-5.9}  и \eqref{laplas-5.10} мы можем \eqref{laplas-5.8} переписать еще так
+\begin{equation}\label{laplas-5.11}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(0)\frac{x^k}{k!}+ \sum_{k=r}^\infty f_{r,k}^\gamma l_{r,k}^\gamma(x).
+\end{equation}
+
+Ряд, фигурирующий в правой части соотношения \eqref{laplas-5.11} впервые был исследован в работе \cite{laplas-Shar13}, где он был назван \textit{ смешанным рядом по полиномам Лагерра $L_{k}^\gamma(x)$ }. Из теоремы \ref{laplastheo1} следует, что если $f\in W^r_{\mathcal{ L}^2_\rho}$, то ряд \eqref{laplas-5.11}, будучи  рядом Фурье  по системе $\{l_{r,k}^{\gamma}(x)\}_{k=0}^\infty$, сходится к $f$ в метрике гильбертова пространства $W^r_{\mathcal{ L}^2_\rho}$ со скалярным произведением \eqref{laplas-1.1}, другими словами, имеет место предельное соотношение
+ \begin{equation*}
+ \lim_{n\to\infty}\sum_{k=n}^\infty (f_{r,k}^\gamma)^2= 0 .
+\end{equation*}
+
+Перейдем к получению некоторых  представлений для полиномов
+$l_{r,r+k}^{\gamma}(x)$ при $k\ge0$.Важное представление для полиномов $l_{r,n+r}^{\gamma}(x)$ можно получить если мы обратимся к равенствам \eqref{laplas-2.2} и \eqref{laplas-2.13} и запишем
+\begin{equation*}
+l_n^\gamma(x) =\frac{1}{(h_n^\gamma)^{1/2}}
+\sum\limits_{\nu=0}^{n}
+\binom{n+\gamma}{n-\nu}
+\frac{(-x)^\nu}{\nu!}.
+\end{equation*}
+Из этого равенства, с учетом того, что
+\begin{equation*}
+{1\over (r-1)!}\int\limits_{0}^x(x-t)^{r-1}t^\nu dt=\frac{x^{\nu+r}}{(\nu+r)^{[r]}},
+\end{equation*}
+убеждаемся в справедливости следующего утверждения.
+\begin{theorem}
+Имеют место равенства
+\begin{equation*}
+l_{r,n+r}^{\gamma}(x)=
+\frac{1}{(h_n^\gamma)^{1/2}}
+\sum\limits_{\nu=0}^{n}(-1)^\nu \binom{n+\gamma}{n-\nu}
+\frac{x^{\nu+r}}{\nu!(\nu+r)^{[r]}}\quad (n=0,1,\ldots).
+\end{equation*}
+\end{theorem}
+Для получения дальнейших представлений полиномов $l_{r,k}^{\gamma}(x)$ обратимся  к свойству \eqref{laplas-2.8} и запишем
+ $$
+ {1\over
+(r-1)!}\int\limits_{0}^x(x-t)^{r-1}
+     L^\gamma_k(t)dt=
+{(-1)^r\over (r-1)!}\int\limits_{0}^x(x-t)^{r-1}
+{d^r\over dt^r}L_{k+r}^{\gamma-r}(t)dt
+     $$
+ \begin{equation}\label{laplas-5.12}
+ =(-1)^rL_{k+r}^{\gamma-r}(x)-(-1)^r\sum_{\nu=0}^{r-1}
+{x^\nu\over\nu!}\{L_{k+r}^{\gamma-r}(t)\}_{t=0}^{(\nu)}.
+ \end{equation}
+Далее
+\begin{equation}\label{laplas-5.13}
+ \{L_{k+r}^{\gamma-r}(t)\}^{(\nu)}=(-1)^\nu
+L_{k+r-\nu}^{\gamma-r+\nu}(t),
+  \end{equation}
+ а в силу \eqref{laplas-2.2}
+ \begin{equation}\label{laplas-5.14}
+L_{k+r-\nu}^{\gamma-r+\nu}(0)= {k+\gamma\choose
+k+r-\nu}={\Gamma(k+\gamma+1)\over\Gamma(\nu-r+
+\gamma+1)(k+r-\nu)!}.
+\end{equation}
+Сопоставляя \eqref{laplas-5.13} и \eqref{laplas-5.14}, имеем
+\begin{equation}\label{laplas-5.15}
+B_{k,\nu}^\gamma=\{L_{k+r}^{\gamma-r}(t)\}^{(\nu)}_{t=0}=
+{(-1)^\nu\Gamma(k+\gamma+1)\over\Gamma(\nu-r+ \gamma+1)(k+r-\nu)!}.
+\end{equation}
+Из \eqref{laplas-5.12} и \eqref{laplas-5.15} находим
+\begin{equation}\label{laplas-5.16}
+{1\over (r-1)!}\int\limits_{0}^x(x-t)^{r-1}
+ L^\gamma_k(t)dt=
+(-1)^rL_{k+r}^{\gamma-r}(x)-
+     (-1)^r\sum_{\nu=0}^{r-1}
+{B_{k,\nu}^\gamma x^\nu\over\nu!}.
+\end{equation}
+С другой стороны, в силу определения \eqref{laplas-5.2} и равенства \eqref{laplas-2.13}    имеем
+ \begin{equation}\label{laplas-5.17}
+l_{r,r+k}^{\gamma}(x) =\frac{1}{\sqrt{h_k^\gamma}(r-1)!}\int\limits_{0}^x(x-t)^{r-1}L_{k}^{\gamma}(t)dt, \quad k=0,1,\ldots.
+\end{equation}
+ Сопоставляя \eqref{laplas-5.16} с \eqref{laplas-5.17} мы приходим к следующему результату.
+\begin{theorem}
+Пусть $\gamma>-1$, $k\ge0$ . Тогда имеет место равенство
+\begin{equation}\label{laplas-5.18}
+l_{r,r+k}^{\gamma}(x)=\frac{(-1)^r}{\sqrt{h_k^\gamma}}\left[L_{k+r}^{\gamma-r}(x)-
+     \sum_{\nu=0}^{r-1}
+{B_{k,\nu}^\gamma x^\nu\over\nu!}\right],
+\end{equation}
+в котором
+$$
+B_{k,\nu}^\gamma={(-1)^\nu\Gamma(k+\gamma+1)\over\Gamma(\nu-r+ \gamma+1)(k+r-\nu)!}.
+$$
+\end{theorem}
+
+\begin{corollary}\label{laplascor1}
+Пусть  $k\ge0$ . Тогда
+$$
+l_{r,r+k}^{0}(x)=(-1)^rL_{k+r}^{-r}(x)=\frac{x^{r}L_{k}^{r}(x)}{(k+r)^{[r]}}.
+$$
+\end{corollary}
+\begin{proof}
+Из \eqref{laplas-5.16} следует, что если $\gamma=0$, то $B_{k,\nu}^\gamma=0$ для всех $\nu=0,1,\ldots, r-1$ и, как следствие, в этом случае равенство \eqref{laplas-5.18} принимает вид
+\begin{equation}\label{laplas-5.19}
+l_{r,r+k}^{0}(x)=(-1)^rL_{k+r}^{-r}(x),\quad k=0,1,\ldots
+\end{equation}
+Поскольку в силу равенства \eqref{laplas-2.7}
+$$
+L_{k+r}^{-r}(x) = \frac{(-x)^{r}}{(k+r)^{[r]}} L_{k}^{r}(x),
+$$
+то  утверждения следствия вытекает  из \eqref{laplas-5.19}.
+\end{proof}
+
+В качестве одного из приложений следствия \ref{laplascor1} покажем, что
+ смешанный ряд \eqref{laplas-5.11} в случае $\gamma=0$ совпадет со специальным рядом \eqref{laplas-3.14}.  В силу \eqref{laplas-5.19} ряд \eqref{laplas-5.11} при $\gamma=0$ приобретает следующий вид
+\begin{equation}\label{laplas-5.20}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(0)\frac{x^k}{k!}+ x^{r}\sum_{k=r}^\infty  \frac{f_{r,k}^0}{(k+r)^{[r]}} L_{k}^{r}(x).
+\end{equation}
+Далее
+\begin{equation*}
+  {f}_{r,k}^0=\int\limits_0^\infty f^{(r)}(\tau)e^{-\tau}L_k(\tau)d\tau=\frac1{k!}\int\limits_0^\infty(f(\tau)-P_{r-1}(f)(\tau))^{(r)}(e^{-\tau}\tau^k)^{(k)}d\tau=
+\end{equation*}
+\begin{equation*}
+  \frac{(-1)^r}{k!}\int\limits_0^\infty(f(\tau)-P_{r-1}(f)(\tau))(e^{-\tau}\tau^k)^{(k+r)}d\tau=
+\end{equation*}
+\begin{equation*}
+  \frac{(-1)^r}{k!}\int\limits_0^\infty(f(\tau)-P_{r-1}(f)(\tau))\tau^{-r}e^{-\tau}L_{k+r}^{-r}(\tau)(k+r)!d\tau=
+\end{equation*}
+\begin{equation*}
+  \frac{(k+r)!}{k!}(-1)^r\int\limits_0^\infty\frac{(f(\tau)-P_{r-1}(f)(\tau))}{\tau^r}e^{-\tau}\frac{(-\tau)^r}{(k+r)^{[r]}}L_k^r(\tau)d\tau=
+\end{equation*}
+\begin{equation}\label{laplas-4.6}
+  \int_0^\infty\frac{f(t)-P_{r-1}(f)(t)}{t^r}e^{-\tau}t^rL_k^r(\tau)d\tau=h_k^r\hat{f}_{r,k}^r.
+\end{equation}
+В силу \eqref{laplas-4.6} и того, что  $h_k^r=(k+1)_r$, ряд \eqref{laplas-5.20} мы можем переписать так
+\begin{equation*}
+  f(t)=P_{r-1}(f)(t)+t^r\sum\nolimits_{k=0}^\infty\frac{h_k^r\hat{f}_{r,k}^rL_k^r(t)}{(k+1)_r}=
+  P_{r-1}(f)(t)+t^r\sum\nolimits_{k=0}^\infty\hat{f}_{r,k}^rL_k^r(t).
+\end{equation*}
+ С другой стороны, из равенств \eqref{laplas-3.3} и \eqref{laplas-4.3} следует, что $\hat{f}_{r,k}^r=g_k^r$. Таким образом, в случае $\gamma=0$ ряд  \eqref{laplas-5.11}, который представляет собой ряд Фурье по полиномам $l_{r,k}^{0}(x)$, ортогональным по Соболеву, порожденным полиномами Лагерра $L_k^0(x)$,   совпадает со специальным рядом \eqref{laplas-3.14}.
+
+\subsection{Рекуррентные соотношения для полиномов $l_{r,r+n}^{\alpha}(x)$}
+Хорошо известно, что в исследовании систем ортогональных полиномов важную роль играют рекуррентные соотношения, которые являются одним из способов задания систем ортогональных полиномов.
+В этом пункте получены рекуррентные соотношения для полиномов $l_{r,n}^\alpha(x)$, которые могут быть использованы для изучения различных свойств этих полиномов и вычисления их значений при любых $x$ и $n$.
+Имеет место следующая теорема.
+
+\begin{theorem}\label{ramis-RItheo4}
+Справедливы следующие рекуррентные соотношения:
+\begin{equation*}\label{ramis-Gadz_eq14}
+l_{r,n}^\alpha(x)=\frac{x}{n}l_{r,n-1}^\alpha(x), \ \ 1\leq n\leq r-1;
+\end{equation*}
+\begin{equation*}\label{ramis-Gadz_eq15}
+l_{r,r}^\alpha(x)=\frac{x}{r}l_{r-1,r-1}^\alpha(x), \ \ r\geq 1;
+\end{equation*}
+\begin{equation*}\label{ramis-Gadz_eq16}
+l_{1,n+1}^\alpha(x)=-\sqrt{\frac{n+\alpha+1}{n+1}} l_{n+1}^{\alpha}(x)+l_{n}^{\alpha}(x)+
+\sqrt{\frac{n+\alpha+1}{n+1}} l_{n+1}^{\alpha}(0)-l_{n}^{\alpha}(0), \ \ n\geq 1;
+\end{equation*}
+$$
+b_n^\alpha rl_{r+1,r+n}^\alpha(x)=l_{r,r+n}^{\alpha}(x)+
+$$
+\begin{equation*}\label{ramis-Gadz_eq17}
+\left[b_n^\alpha x - a_n^\alpha\right]l_{r,r+n-1}^{\alpha}(x)
++c_{n}^\alpha l_{r,r+n-2}^{\alpha}(x), \ r\geq 1, \ n=2, 3, \ldots,
+\end{equation*}
+где
+\begin{equation*}
+a_n^\alpha=\frac{2n+\alpha-1}{[n(n+\alpha)]^\frac{1}{2}},\quad
+b_n^\alpha=\frac{1}{[n(n+\alpha)]^\frac{1}{2}},\quad
+c_n^\alpha=\Big[\frac{(n-1)(n+\alpha-1)}{n(n+\alpha)}\Big]^\frac{1}{2}.
+\end{equation*}
+\end{theorem}
+
+\noindent Для функций $\mu_{r,r+n}^\alpha(x)$ мы приведем аналогичные рекуррентные соотношения при $\alpha=0$:
+\begin{equation*}
+\mu_{r,r}^0(x)=\frac{2x^{r-1}}{(r-1)!}-2\mu_{r-1,r-1}^0(x), \quad r\geq1;
+\end{equation*}
+
+\begin{equation*}
+\mu_{1,n+2}^0(x) = - \mu_{1,n+1}^0(x) - 2 (\mu_{n+1}^0(x) - \mu_{n}^0(x)) \quad n\geq 0;
+\end{equation*}
+$$
+\mu_{r+1,r+n}^0(x)=\frac{n}{r}\mu_{r,r+n}^{0}(x)+
+$$
+\begin{equation*}
+\left[\frac{x}{r} - \frac{2n-1}{r}\right]\mu_{r,r+n-1}^{0}(x)
++\frac{n-1}{r} \mu_{r,r+n-2}^{0}(x), \ r\geq 1, \ n=2, 3, \ldots.
+\end{equation*}

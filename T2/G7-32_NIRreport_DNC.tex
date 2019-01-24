@@ -1,0 +1,138 @@
+% This package designed and commented in russian koi8-r encoding.
+%
+% Класс документов по ГОСТ 7.32-2001 "Отчёт о научно-исследовательской работе"
+% на основе ГОСТ 2.105-95
+% Автор - Алексей Томин, с помощью списка рассылки latex-gost-request@ice.ru,
+%  "extreport.cls", "lastpage.sty" и конференции RU.TEX
+% Лицензия GPL
+% Все вопросы, замечания и пожелания сюда: mailto:alxt@yandex.ru
+% Дальнейшая разработка и поддержка - Михаил Конник,
+% связаться можно по адресу mydebianblog@gmail.com
+
+
+\documentclass[utf8,usehyperref,12pt]{G7-32}
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd} % Математические дополнения от AMS
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} %% ваша любимая кодировка здесь
+\usepackage[english,russian]{babel} %% это необходимо для включения переносов
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{cmap}
+\usepackage{color}
+\usepackage[all,cmtip]{xy}
+\graphicspath{{pictures/}}
+
+
+\usepackage{cite} % Красивые ссылки на литературу
+%\usepackage[plainpages=false,pdfpagelabels=false]{hyperref}
+%%% Списки %%%
+
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+
+
+
+\TableInChaper % таблицы будут нумероваться в пределах раздела
+\PicInChaper   % рисунки будут нумероваться в пределах раздела
+\setlength\GostItemGap{2mm}% для красоты можно менять от 0мм
+
+% Определяем заголовки для титульной страницы
+\NirOrgLongName{\textsc{ФЕДЕРАЛЬНО АГЕНТСТВО НАУЧНЫХ ОРГАНИЗАЦИЙ\\
+ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ НАУКИ \\ ДАГЕСТАНСКИЙ НАУЧНЫЙ ЦЕНТР РОССИЙСКОЙ АКАДЕМИИ НАУК}} %% Полное название организации
+
+\NirBoss{Врио председателя ДНЦ РАН}{Гаджиев М.С.} %% Заказчик, утверждающий НИР
+\NirManager{Зав. Отделом математики и информатики ДНЦ РАН, доктор физ.-мат. наук}{Шарапудинов И.И.} %% Название организации
+
+\NirYear{2015}%% если нужно поменять год отчёта; если закомментировано, ставится текущий год
+\NirTown{г. Махачкала,} %% город, в котором написан отчёт
+% по проекту \No8550:
+
+% \NirIsAnnotacion{АННОТАЦИОННЫЙ } %% Раскомментируйте, если это аннотационный отчёт
+
+\NirUdk{УДК \No }
+\NirGosNo{Регистрационный \No }
+
+\NirStage{%Этап \No 1.1
+}{итоговый отчет за 2015 г.}{%<<Обзор современного состояния торсионных наногенераторов>>
+} %%% Этап НИР: {номер этапа}{вид отчёта - промежуточный или заключительный}{название этапа}
+
+\bibliographystyle{unsrt} %Стиль библиографических ссылок БибТеХа
+
+\input commands.tex
+\usepackage[shortlabels]{enumitem}
+%%%%%%%<------------- НАЧАЛО ДОКУМЕНТА
+\begin{document}
+\usefont{T2A}{ftm}{m}{} %%% Использование шрифтов Т2 для возможности скопировать текст из PDF-файлов.
+
+\frontmatter %%% <-- это выключает нумерацию ВСЕГО; здесь начинаются ненумерованные главы типа Исполнители, Обозначения и прочее
+
+\NirTitle{%\textbf{<<Торсионные наногенераторы плазменных стволовых клеток с протонной накачкой>>}
+
+%\begin{figure}[h]
+%\center{\includegraphics[natwidth=2cm, natheight=6cm, width=2cm, height=6cm]{black.bmp}}
+%\caption{Зависимость сигнала от шума для данных.}
+%\label{ris:image}
+%\end{figure}
+
+\input annots/annot.tex
+
+
+} %%% Название НИР и генерация титульного листа
+
+
+\Executors %% Список исполнителей здесь
+%% это рисует линию размера 3мм и толщиной 0.1 пункт
+\begin{longtable}{p{0.35\linewidth}p{0.2\linewidth}p{0.35\linewidth}}
+
+\input executors/executors.tex
+
+
+Нормоконтроллер, н.с. ОМИ,  &		&	\\
+Султанахмедов М.С. & \rule{1\linewidth}{0.1pt}& \\
+\end{longtable}
+
+\input chapters/referat.tex
+
+\setcounter{tocdepth}{2} %hide subsections
+
+\tableofcontents
+
+%\NormRefs % Нормативные ссылки
+%\Defines % Необходимые определения
+
+
+\Abbreviations %% Список обозначений и сокращений в тексте
+\begin{abbreviation}
+\item[ДНЦ] Дагестанский научный центр
+\item[ОМИ] Отдел математики и информатики
+\item[РАН] Российская академия наук
+\end{abbreviation}
+
+
+\input chapters/introduction.tex
+
+\mainmatter %% это включает нумерацию глав и секций в документе ниже
+
+
+%\input chapters/chapter1.tex
+
+\input chapters/chapter2.tex
+%
+%\input chapters/chapter3.tex
+%
+%\input chapters/chapter4.tex
+%
+%\input chapters/chapter5.tex
+%
+%\input chapters/chapter6.tex
+
+
+
+\backmatter %% Здесь заканчивается нумерованная часть документа и начинаются заключение и ссылки
+
+\input chapters/conclusion.tex% заключение к отчёту
+
+\input chapters/biblio.tex
+
+% \bibliography{biblio/filosofy} %% вместо вставки библиографии можно использовать базы BiBTeX - просто раскомментируйте эту строку.
+\end{document}

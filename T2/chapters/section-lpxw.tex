@@ -1,0 +1,84 @@
+\section{Весовые пространства Лебега с переменным показателем}
+Пусть $E$ -- множество с произвольной мерой Лебега $\mu(A), A \subset E$, а $p(x)$~-- измеримая на множестве $E$ неотрицательная функция.
+
+Пространством Лебега $L^{p(x)}(E)$ с переменным показателем $p(x)$ называется множество измеримых функций $f(x)$, определённых на $E$ и удовлетворяющих условию
+\begin{equation*}
+  \int\limits_{E}|f(x)|^{p(x)}\mu(dx) < \infty.
+\end{equation*}
+
+
+Систематическое исследование топологии указанных пространств впервые было дано в работе Шарапудинова~И.И. \cite{shii-lpx}. В частности, в ней было показано, что если
+\begin{equation}\label{pxBasicCond}
+1 \le \underline{p}(E) \le \overline{p}(E) < \infty
+\,\footnote[1]{Здесь и далее символами $\underline{p}(M)$, $\overline{p}(M)$ будем обозначать $\essinf\limits_{x \in M}p(x)$ и $\esssup\limits_{x \in M}p(x)$ соответственно},
+\end{equation}
+то топология пространства $L^{p(x)}(E)$ нормируема и одну из эквивалентных норм можно определить, полагая для $f\in L^{p(x)}(E)$
+\begin{equation}\label{normDefLpx}
+\norm{f}=\norm{f}(E)=\inf\{\alpha>0:
+\int\limits_{E}\left|\frac{f(x)}{\alpha}\right|^{p(x)}dx\leq 1\}.
+\end{equation}
+
+Пусть $w(x)$ -- неотрицательная почти всюду (п.в.) положительная суммируемая функция (вес). Весовым пространством Лебега $L^{p(x)}_w=L^{p(x)}_w(E)$ называется пространство измеримых функций $f(x)$, удовлетворяющих условию
+\begin{equation}\label{lpxw-space-def}
+  \int\limits_E |f(x)|^{p(x)}w(x)dx < \infty.
+\end{equation}
+Пространство $L^{p(x)}_w$ представляет собой линейное нормированное пространство, в котором одну из эквивалентных норм можно определить равенством \cite{shii-lpx,shii-monog-2012,diening-book-2011}
+\begin{equation*}
+  \|f\|_{p(\cdot),w}(E) = \inf\{\lambda>0: \int\limits_E \Bigl|\frac{f(x)}{\lambda}\Bigr|^{p(x)}w(x)dx \le 1\}.
+\end{equation*}
+
+Отметим некоторые свойства, связанные с этими пространствами, которые понадобятся нам в дальнейшем.
+{
+%Меняем стиль нумерации только для данного блока
+\renewcommand{\theenumi}{\arabic{enumi}$^\circ$}
+\begin{enumerate}
+\item\label{normLpxwLpx}
+$\|f\|_{p(\cdot),w}=\|f \, w^{\frac{1}{p(\cdot)}}\|_{p(\cdot)}$.
+\item\label{normPropSets}
+Для любых измеримых множеств $A \subset B$
+\begin{equation*}
+  \|f\|_{p(\cdot),w}(A) \le \|f\|_{p(\cdot),w}(B),
+\end{equation*}
+так как
+\begin{equation*}
+  \int\limits_{A}\Bigl|\frac{f(x)}{\|f\|_{p(\cdot),w}(B)}\Bigr|^{p(x)}w(x)dx \le
+  \int\limits_{B}\Bigl|\frac{f(x)}{\|f\|_{p(\cdot),w}(B)}\Bigr|^{p(x)}w(x)dx = 1.
+\end{equation*}
+
+\item\label{normpq}
+Почти дословно повторяя рассуждения, проведенные при доказательстве леммы в~\cite{shii-haar-basis}, можно показать, что если $1\le p(x) \le q(x) \le \overline{q}(E) < \infty$, то для любой функции $f \in L^{q(x)}_w(E)$
+\begin{equation*}
+  \|f\|_{p(\cdot),w} \le r_{p,q}^w \|f\|_{q(\cdot),w},
+\end{equation*}
+где
+$r_{p,q}^w \le \dfrac{1}{\underline{\alpha}}+\dfrac{\int_E w(x)dx}{\underline{\alpha^*}} \quad
+\Bigl(\alpha(x)=\dfrac{q(x)}{p(x)}, \, \alpha^*(x)=\dfrac{\alpha(x)}{\alpha(x)-1}\Bigr)$.
+
+\item\label{Holder}
+Если $p(x)>1,\, x \in M$ (не исключая и случай, когда $\underline{p}(M)=1$), то справедливо неравенство типа Гельдера для пространств Лебега с переменным показателем~\cite[нер-во (8)]{shii-lpx}:
+\begin{equation*}
+  \int\limits_M |f(x)||g(x)|dx \le
+  C(p,M) \cdot \|f\|_{p(\cdot)}(M) \cdot \|g\|_{p'(\cdot)}(M),
+\end{equation*}
+где $\frac{1}{p(x)}+\frac{1}{p'(x)}=1$, $C(p,M)\le \frac{1}{\underline{p}(M)}+\frac{1}{\underline{p}'(M)}$.
+Через $C, C(\alpha), C(\alpha,\beta),\ldots$ здесь и далее будут обозначаться положительные числа, зависящие лишь от указанных параметров, различные в разных местах.
+%причем от формулы к формуле значения этих констант могут меняться.
+
+\item\label{lemmaDensity}
+Множество непрерывных функций $C[0,1]$ всюду плотно в $L^{p(x)}_w$ \cite{mmg-haarspeed}.
+
+\item\label{lemmaNormUnderInt}
+Пусть $f(x,t)$ -- измеримая функция, заданная на декартовом произведении $E_1 \times E_2$ множеств $E_1$ и $E_2$, на которых заданы конечные меры $\mu_1$ и $\mu_2$ соответственно. Тогда справедливо неравенство
+\begin{equation}\label{normUnderInt}
+  \Bigl\|\int\limits_{E_2}|f(\cdot,x)|\mu_2(dx)\Bigr\|_{p(\cdot),w}(E_1) \le
+  r_p\int\limits_{E_2} \norm{f(\cdot,x)}(E_1)\mu_2(dx),
+\end{equation}
+где $r_p \le \frac{1}{\underline{p}(E_1)}+\frac{1}{\underline{p}'(E_1)} \le 2$,
+$\frac{1}{p(t)}+\frac{1}{p'(t)}=1$, $1 \le p(t) \le \overline{p}(E_1) < \infty$
+\cite{shii-monog-2012,mmg-haarspeed}.
+
+
+\end{enumerate}
+}
+
+

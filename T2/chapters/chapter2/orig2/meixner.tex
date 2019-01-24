@@ -1,0 +1,386 @@
+\chapter{Полиномы, ортогональные по Соболеву, порожденные многочленами Мейкснера}%
+
+%\Rabstract{Рассмотрена задача о конструировании полиномов $m _{r,n}^{\alpha}(x,q)$, $(n=0,1,\ldots)$, ортогональных по Соболеву и порожденных классическими полиномами Мейкснера. Эти полиномы могут быть определены с помощью следующих равенств
+%$m_{r,k}^{\alpha}(x,q)={x^{[k]}\over k!},\quad x^{[k]}=x(x-1)\cdots(x-k+1),\quad k=0,1,\ldots,r-1$,
+% $m_{r,k+r}^{\alpha}(x,q)=\frac{1}{(r-1)!}\sum\limits_{t=0}^{x-r}(x-1-t)^{[r-1]}m_{k}^{\alpha}(t,q)$,
+% где через $m_{k}^{\alpha}(t,q)$ обозначены полиномы Мейкснера, ортонормированные на сетке   $\Omega=\{0,1,\ldots\}$ с весом $\rho(x)=q^x\frac{\Gamma(x+\alpha+1)}{\Gamma(x+1)}(1-q)^{\alpha+1}$. Полиномы
+%  $m _{r,n}^{\alpha}(x,q)$, $(n=0,1,\ldots)$ образуют  ортонормированную систему на
+%$\Omega=\{0,1,\ldots\}$ относительно скалярного произведения типа Соболева следующего вида
+%$$
+%<m_{r,n}^{\alpha},m_{r,m}^{\alpha}>=
+%\sum_{k=0}^{r-1}\Delta^km_{r,n}^{\alpha}(0,q)\Delta^km_{r,m}^{\alpha}(0,q)+
+%\sum_{j=0}^{\infty}\Delta^rm_{r,n}^{\alpha}(j,q)\Delta^r
+%m_{r,m}^{\alpha}(j,q)\rho(j).
+%$$
+%Для $m_{r,n}^{\alpha}(x,q)$  мы получили явную формулу, содержащую полиномы Мейкснера
+% $M_{n}^{\alpha-r}(x,q)$:
+%$$
+%m_{r,k+r}^{\alpha}(x,q)=\big(\frac{q}{q-1}\big)^r\left\{h_{k}^{\alpha}(q)\right\}^{-\frac12}
+%\left[M_{k+r}^{\alpha-r}(x,q)-\sum_{\nu=0}^{r-1}\frac{A_{r,k,\nu}x^{[\nu]}}{\nu!}\right], k=0,1,\ldots,
+%$$
+% где $A_{r,k,\nu}=\Big({q-1\over q}\Big)^\nu \frac{\Gamma(k+\alpha+1)}{(k+r-\nu)!\Gamma(\nu-r+\alpha+1)}$,  $M_n^{a}(x,q)={\Gamma(n+a+1)\over
+%n!}\sum_{k=0}^n {(-1)^kn^{[k]}x^{[k]}\over
+%\Gamma(k+a+1) k!}\Big(1-\frac{1}{q}\Big)^k$, $h_n^\alpha(q)=
+%      {n+\alpha\choose n}q^{-n}\Gamma(\alpha+1)$.
+%  }
+
+%\section{Введение}
+В данном параграфе мы рассмотрим дискретный аналог скалярного произведения \eqref{Haar-Tcheb-1.6}  следующего вида
+\begin{equation}\label{meixner-1.6}
+   <f,g>=\sum_{k=0}^{r-1}\Delta^kf(0)\Delta^kg(0)+
+      \sum_{j=0}^\infty\Delta^rf(j)\Delta^rg(j)\rho(j),
+\end{equation}
+ где функции $f$ и $g$ заданы на  множестве $\Omega=\{0,1,\ldots,\}$, $\rho=\rho(j)$ -- дискретная весовая функция, заданная на множестве $\Omega$. В случае, когда $r=0$ мы будем считать, что $\sum_{k=0}^{r-1}\Delta^kf(0)\Delta^kg(0)=0$. При $r\ge1$ особой точкой в скалярном произведении \eqref{meixner-1.6} является  $x=0$, в которой контролируется поведение соответствующих ортогональных по Соболеву полиномов дискретной переменной, благодаря присутствию в  \eqref{meixner-1.6} выражения  $\sum_{k=0}^{r-1}\Delta^kf(0)\Delta^kg(0)$. В настоящей статье рассматриваются системы дискретных функций, ортонормированных по Соболеву относительно скалярного произведения \eqref{meixner-1.6}, порожденных заданной ортонормированной системой функций дискретной переменной. Основное внимание будет уделено изучению свойств полиномов, ортогональных по Соболеву, порожденных классическими  ортогональными полиномами Мейкснера  дискретной переменной.
+
+\section{Системы дискретных функций, ортонормированных по Соболеву, порожденные  ортонормированными  функциями}\label{sobolev-common}
+
+Перейдем к конструированию дискретных функций, ортонормированных по Соболеву относительно скалярного произведения \eqref{meixner-1.6}, порожденных заданной системой $\{\psi_k(x)\}_{k=0}^\infty$, ортонормированной на дискретном множестве $\Omega=\{0,1,\ldots\}$ с весом $\rho(x)$. Для этого нам понадобятся некоторые обозначения и понятия. Если целое $k\ge0$, то положим $a^{[k]}=a(a-1)\cdots (a-k+1)$, $a^{[0]}=1$ и рассмотрим следующие функции
+\begin{equation}\label{meixner-2.1}
+\psi_{r,k}(x)={x^{[k]}\over k!},\, k=0,1,\ldots,r-1,
+\end{equation}
+\begin{equation}\label{meixner-2.2}
+\psi_{r,k}(x)=\begin{cases}\frac{1}{(r-1)!}\sum\limits_{t=0}^{x-r}(x-1-t)^{[r-1]}\psi_{k-r}(t),
+&\text{$r\le x$,}\\ 0,&\text{$x=0,1,\ldots, r-1$,}
+\end{cases}
+\end{equation}
+которые определены на сетке $\Omega=\{0,1,\ldots\}$. Рассмотрим некоторые важные разностные  свойства системы функций $\psi_{r,k}(x)$, определенных равенствами \eqref{meixner-2.1} и \eqref{meixner-2.2}. Введем оператор  конечной разности $\Delta f$: $\Delta f(x)=f(x+1)-f(x)$ и положим $\Delta^{\nu+1} f(x)=\Delta\Delta^\nu f(x)$. Имеет место следующая
+
+\begin{lemma}\label{meilem1}
+Имеют место равенства
+\begin{equation}\label{meixner-2.3}
+\Delta^\nu \psi_{r,k}(x)=\begin{cases}\psi_{r-\nu,k-\nu}(x),&\text{если $0\le\nu\le r-1$, $r\le k$,}\\
+\psi_{k-r}(x),&\text{если  $\nu=r\le k$,}\\
+\psi_{r-\nu,k-\nu}(x),&\text{если $\nu\le k< r$,}\\
+0,&\text{если $k< \nu\le r$}.
+\end{cases}
+\end{equation}
+\end{lemma}
+
+
+Пусть $0\le r$ -- целое. Обозначим через $l_\rho$ пространство дискретных функций $f=f(x)$, заданных на сетке $\Omega=\{0,1,\ldots\}$, в котором скалярное произведение $<f,g>$ определено с помощью равенства \eqref{meixner-1.6}. Рассмотрим  задачу об ортогональности, нормированности и полноте в $l_\rho$ системы $\{\psi_{r,k}(x)\}_{k=0}^\infty$, состоящей из функций, определенных равенствами   \eqref{meixner-2.1} и \eqref{meixner-2.2}.
+
+\begin{theorem}\label{meitheo1}
+Предположим, что    функции $\psi_k(x)$ $(k=0,1,\ldots)$ образуют полную в $l_\rho$ ортонормированную систему  c весом   $\rho(x)$. Тогда система $\{\psi_{r,k}(x)\}_{k=0}^\infty$, порожденная системой $\{\psi_{k}(x)\}_{k=0}^\infty$
+ посредством равенств \eqref{meixner-2.1} и \eqref{meixner-2.2}, полна  в $l_\rho
+ $ и ортонормирована относительно скалярного произведения \eqref{meixner-1.6}.
+\end{theorem}
+
+Систему функций $\psi_{r,k}(t)\, (k=0,1,\ldots) $ мы будем называть системой, ортонормированной по Соболеву относительно скалярного произведения \eqref{meixner-1.6}
+
+Из теоремы \eqref{meitheo1} следует, что система дискретных функций $\psi_{r,k}(t)\, (k=0,1,\ldots)$
+является ортонормированным базисом (ОНБ) в пространстве $l_\rho$, поэтому для произвольной функции $f(x)\in l_\rho$ мы можем записать равенство
+  \begin{equation}\label{meixner-2.8}
+ f(x)= \sum_{k=0}^\infty<f,\psi_{r,k}> \psi_{r,k}(x),
+  \end{equation}
+которое представляет собой  ряд Фурье функции $f(x)\in l_\rho$ по системе
+$\{\psi_{r,k}(t)\}_{k=0}^\infty$, ортонормированной по Соболеву. Поскольку коэффициенты Фурье $<f,\psi_{r,k}>$ имеют  вид
+\begin{equation}\label{meixner-2.9}
+f_{r,k}=<f,\psi_{r,k}> =\sum_{\nu=0}^{r-1}\Delta^\nu f(0)\Delta^\nu\psi_{r,k}(0)=\Delta^kf(0),\, k=0,\ldots, r-1,
+ \end{equation}
+ $$
+f_{r,k}= <f,\psi_{r,k}> =\sum_{j=0}^\infty\Delta^rf(j)\Delta^r\psi_{r,k}(j)\rho(j)=
+ $$
+\begin{equation}\label{meixner-2.10}
+\sum_{j=0}^{N-1}\Delta^rf(j)\psi_{k-r}(j)\rho(j),\, k=r,\ldots,
+ \end{equation}
+то равенство \eqref{meixner-2.8} можно переписать в следующем  смешанном виде
+  \begin{equation}\label{meixner-2.11}
+ f(x)= \sum_{k=0}^{r-1}\Delta^kf(0){x^{[k]}\over k!} +\sum_{k=r}^\infty f_{r,k} \psi_{r,k}(x),\, x\in \Omega.
+  \end{equation}
+Поэтому ряд фурье по системе $\{\psi_{r,k}(t)\}_{k=0}^\infty$ мы будем следуя \cite{meixner-7} -- \cite{meixner-18}  называть смешанным рядом по исходной ортонормированной  $\{\psi_{k}(t)\}_{k=0}^\infty$. Отметим некоторые важные свойства смешанных рядов  \eqref{meixner-2.11} и их частичных сумм вида
+\begin{equation}\label{meixner-2.12}
+ \mathcal{Y}_{r,n}(f,x)= \sum_{k=0}^{r-1}\Delta^kf(0){x^{[k]}\over k!} +\sum_{k=r}^{n}f_{r,k} \psi_{r,k}(x).
+  \end{equation}
+Из \eqref{meixner-2.11} и \eqref{meixner-2.12} с учетом равенств \eqref{meixner-2.3} мы можем записать ($0\le\nu\le r-1$, $x\in \Omega$ )
+ \begin{equation}\label{meixner-2.13}
+ \Delta^\nu f(x)= \sum_{k=0}^{r-\nu-1}\Delta^{k+\nu}f(0){x^{[k]}\over k!} +\sum_{k=r-\nu}^\infty f_{r,k+\nu} \psi_{r-\nu,k}(x),
+  \end{equation}
+  \begin{equation}\label{meixner-2.14}
+ \Delta^\nu\mathcal{Y}_{r,n}(f,x)= \sum_{k=0}^{r-\nu-1}\Delta^{k+\nu}f(0){x^{[k]}\over k!} +\sum_{k=r-\nu}^{n-\nu} f_{r,k+\nu} \psi_{r-\nu,k}(x),
+  \end{equation}
+ \begin{equation}\label{meixner-2.15}
+ \Delta^\nu\mathcal{Y}_{r,n}(f,x) = \mathcal{Y}_{r-\nu,n-\nu}(\Delta^\nu f,x),
+  \end{equation}
+\begin{equation}\label{sob-tcheb-difference-2.16}
+\Delta^\nu\mathcal{Y}_{r,n}(f,0) = \Delta^\nu f(0), \quad 0\le \nu\le r-1.
+\end{equation}
+Кроме того, из \eqref{meixner-2.3} и \eqref{meixner-2.11} имеем
+ \begin{equation}\label{sob-tcheb-difference-2.17}
+ \Delta^r f(x)= \sum_{k=0}^{N-1} f_{r,r+k} \psi_{k}(x), \quad x\in \Omega_{N}.
+  \end{equation}
+
+\section{Некоторые сведения о полиномах Мейкснера}
+При конструировании полиномов, ортогональных по Соболеву и порожденных классическими многочленами Мейкснера нам понадобится ряд свойств этих многочленов, которые мы приведем в настоящем параграфе.
+ Для произвольного $\alpha$ и $0<q<1$ положим
+\begin{equation}
+\rho(x)=\rho(x;\alpha)=q^x{\Gamma(x+\alpha+1)\over \Gamma(x+1)}(1-q)^{\alpha+1}, \label{meixner-3.1}
+\end{equation}
+\begin{equation}\label{meixner-3.2}
+M_n^{\alpha}(x,q)={q^{-n}\over n!\rho(x)}\Delta^n
+\left\{\rho(x)x^{[n]}\right\},
+\end{equation}
+ где $\Delta^nf(x)$ -- конечная разность $n$-го порядка функции
+     $f(x)$ в точке $x$, т.е. $\Delta^0f(x)=f(x)$,
+$\Delta^1f(x)=\Delta f(x)=f(x+1)-f(x)$, $\Delta^nf(x)=\Delta
+\Delta^{n-1}f(x)$ $(n\ge1)$, $a^{[0]}=1$,
+$a^{[k]}=a(a-1)\cdots(a-k+1)$ при $k\ge1$. Для каждого $0\le n$ равенство \eqref{meixner-3.2} определяет \cite{meixner-22}, алгебраический полином степени $n$,   для которого
+$
+M_n^{\alpha}(0,q)={n+\alpha\choose n}.
+$
+Полные доказательства приведенных ниже свойств полиномов Мейкснера $M_n^{\alpha}(x,q)$
+можно найти, например, в  \cite{meixner-22} и \cite{meixner-23}. Прежде всего отметим, что полиномы  $M_n^{\alpha}(x,q)$ допускают  следующее явное представление
+\begin{equation}\label{meixner-3.3}
+M_n^{\alpha}(x,q)={\Gamma(n+\alpha+1)\over
+n!}\sum_{k=0}^n {n^{[k]}x^{[k]}\over
+\Gamma(k+\alpha+1) k!}\Big(1-\frac{1}{q}\Big)^k.
+\end{equation}
+Если $\alpha>-1$, то полиномы $M_n^{\alpha}(x)=M_n^{\alpha}(x,q)$ ($n=0,1,\ldots$) образуют ортогональную  с весом $\rho(x)$ (см. \eqref{meixner-3.1}) систему  на множестве $\Omega=\{0,1,\ldots\}$:
+\begin{equation}\label{meixner-3.4}
+\sum_{x\in\Omega}M_k^\alpha(x)M_n^\alpha(x)\rho(x)=\delta_{n,k}
+     h_n^\alpha(q) \quad 0<q<1,\alpha>-1,
+\end{equation}
+где
+\begin{equation}\label{meixner-3.5}
+  h_n^\alpha(q)=\sum_{x=0}^\infty\rho(x)
+ \left\{M_n^\alpha(x)\right\}^2=
+      {n+\alpha\choose n}q^{-n}\Gamma(\alpha+1).
+\end{equation}
+Нам понадобятся также следующие свойства:
+\begin{equation}\label{meixner-3.6}
+ \Delta M_n^\alpha(x)=M_n^\alpha(x+1)-M_n^\alpha(x)= {q-1\over
+q}M_{n-1}^{\alpha+1}(x),
+\end{equation}
+\begin{equation}\label{meixner-3.7}
+ M_n^a(x,q)=\sum_{k=0}^n  {(a-\alpha)_k\over k!}M_k^\alpha(x,q),
+ \end{equation}
+\begin{equation}\label{meixner-3.8}
+M_{k+r}^{\alpha-r}(x,q)=\sum_{j=0}^r(-1)^j{r^{[j]}\over
+j!}M_{k+r-j}^\alpha(x,q),
+  \end{equation}
+\begin{equation}\label{meixner-3.9}
+M_{n}^{-l}(x,q)=\frac{(n-l)!}{n!}\left(\frac1q-1\right)^l(-x)_lM_{n-l}^{l}(x-l,q), (l -\text{целое}, 1\le l\le n ),
+  \end{equation}
+где $(a)_0=1$, $(a)_l=a(a+1)\ldots (a+l-1)$.
+
+\begin{lemma}\label{meilem2}
+Пусть  $0\le r$. Тогда
+     $$
+{(x+r)^{[r]}\over (k+r)^{[r]}}M_k^r(x,q)={1\over(1-q)^r}
+     \sum_{i=0}^r(-q)^i{r\choose i}M_{k+i}^0(x,q).
+     $$
+\end{lemma}
+
+Из \eqref{meixner-3.4} следует, что полиномы
+\begin{equation}\label{meixner-3.12}
+m_k^\alpha(x)=m_k^\alpha(x,q)=(h_n^\alpha(q))^{-\frac12}M_n^\alpha(x,q)
+\end{equation}
+образуют ортонормированную систему на множестве $\Omega$  с весом $\rho(x)=\rho(x,\alpha,q)$, т.е.
+\begin{equation}\label{meixner-3.13}
+\sum_{x\in\Omega}m_k^\alpha(x)m_n^\alpha(x)\rho(x)=\delta_{n,k}.
+ \quad 0<q<1,\alpha>-1,
+\end{equation}
+
+\section{Ортогональные по Соболеву полиномы, порожденные многочленами Мейкснера}
+Из равенства \eqref{meixner-3.13} следует, что если $\alpha>-1$, то полиномы $m_n^\alpha(x,q)\quad(n=0,1,\ldots, )$ образуют ортонормированную на $\Omega=\{0,1,\ldots\}$       с весом $\rho(x)$  систему.  Эта система порождает на $\Omega$  систему полиномов $m_{r,k+r}^{\alpha}(x,q)$ $(k=0, 1,\ldots)$, определенных равенством
+ \begin{equation}\label{meixner-4.1}
+m_{r,k+r}^{\alpha}(x,q)=\frac{1}{(r-1)!}
+\sum\limits_{t=0}^{x-r}(x-1-t)^{[r-1]}m_{k}^{\alpha}(t,q).
+\end{equation}
+Кроме того определим полиномы
+ \begin{equation}\label{meixner-4.2}
+m_{r,k}^{\alpha}(x,q)={x^{[k]}\over k!},\, k=0,1,\ldots,r-1.
+\end{equation}
+ Покажем, что полином $m_{r,k+r}^{\alpha}(x,q)$ обращается в нуль, если $x\in\{0,1,\ldots,r-1\}$.  С этой целью мы рассмотрим следующий дискретный аналог формулы Тейлора ($x\in\{r,r+1,\ldots\}$)
+ \begin{equation}\label{meixner-4.3}
+F(x)=Q_{r-1}(F,x) + {1\over(r-1)!}\sum_{t=0}^{x-r} (x-1-t)^{[r-1]}\Delta^rF(t),
+\end{equation}
+где
+\begin{equation}\label{meixner-4.4}
+Q_{r-1}(F,x)= F(0)+{\Delta F(0)\over 1!}x+{\Delta^2 F(0)\over 2!}
+x^{[2]}+\ldots+{\Delta^{r-1} F(0)\over (r-1)!}x^{[r-1]}.
+\end{equation}
+Так как для функции $F(x)=x^{[l+r]}$, где целое $l\ge0$, имеем $\Delta^r F(x)=(l+r)^{[r]}x^{[l]}$ и   $Q_{r-1}(F,x)\equiv0$ , то из \eqref{meixner-4.3} следует, что
+$$
+{1\over(r-1)!}\sum_{t=0}^{x-r} (x-1-t)^{[r-1]}t^{[l]}=
+$$
+\begin{equation}\label{meixner-4.5}
+ {1\over(l+r)^{[r]}(r-1)!}\sum_{t=0}^{x-r} (x-1-t)^{[r-1]}\Delta^rF(t)=\frac{x^{[l+r]}}{(l+r)^{[r]}}.
+\end{equation}
+С другой стороны, функция $x^{[l+r]}$ обращается в нуль в узлах $x\in\{0,1,\ldots,r-1\}$, поэтому наше утверждение вытекает из того, что полином  $m_{k+r}^{\alpha}(x,q)$ в силу \eqref{meixner-3.3} и \eqref{meixner-3.12} можно представить в виде линейной комбинации функций вида $x^{[l]}$. Поэтому, из теоремы \eqref{meitheo1} и свойства \eqref{meixner-3.8} непосредственно выводим  следующий результат.
+
+\begin{theorem}\label{meitheo2}
+Если $\alpha>-1$, то система полиномов $m_{r,k}^{\alpha}(x,q)$ $(k=0, 1,\ldots)$, порожденная многочленами Мейкснера $m_n^{\alpha}(x,q)\quad(n=0,1,\ldots)$ посредством равенств \eqref{meixner-4.1} и \eqref{meixner-4.2}, полна  в $l_\rho$ и ортонормирована относительно скалярного произведения \eqref{meixner-1.6}.
+\end{theorem}
+
+\section{Дальнейшие свойства полиномов $m_{r,k}^{\alpha}(x,q)$}
+
+Перейдем к исследованию дальнейших свойств полиномов $m_{r,k}^{\alpha}(x,q)$ $(k=0, 1,\ldots)$. Речь, в первую очередь,  идет о том, чтобы получить представление полиномов   $m_{r,k}^{\alpha}(x,q)$, которое не содержит знаков суммирования с переменным верхним пределом типа \eqref{meixner-4.1}. С этой целью  применим  формулу \eqref{meixner-4.3}    к полиному $F(x)=M_{k+r}^{\alpha-r}(x,q)$ и запишем
+ \begin{equation}\label{meixner-5.1}
+ F(x)=Q_{r-1}(F,x)+ {1\over(r-1)!}\sum_{t=0}^{x-r} (x-1-t)^{[r-1]}\Delta^rM_{k+r}^{\alpha-r}(t,q).
+\end{equation}
+Вместо $\Delta^rM_{k+r}^{\alpha-r}(x,q)$ подставим его значение, которое согласно формуле \eqref{meixner-3.6} равно \linebreak$({q-1\over q})^rM_k^{\alpha}(x,q)$, тогда из \eqref{meixner-4.3} получим
+ \begin{equation}\label{meixner-5.2}
+F(x)-Q_{r-1}(F,x)=\big(\frac{q-1}{q}\big)^r{1\over(r-1)!}\sum_{t=0}^{x-r} (x-1-t)^{[r-1]}M_k^{\alpha}(t,q)
+\end{equation}
+Сопоставляя \eqref{meixner-4.1} и \eqref{meixner-5.2} с \eqref{meixner-3.12}, находим
+\begin{equation}\label{meixner-5.3}
+\big(\frac{q-1}{q}\big)^r\left\{h_{k}^{\alpha}(q)\right\}^{1/2}m_{r,k+r}^{\alpha}(x,q)=
+F(x)-Q_{r-1}(F,x).
+\end{equation}
+Из \eqref{meixner-5.3} имеем $\left(F(x)=M_{k+r}^{\alpha-r}(x,q)\right)$
+\begin{equation}\label{meixner-5.4}
+m_{r,k+r}^{\alpha}(x,q)= \big(\frac{q}{q-1}\big)^r\left\{h_{k}^{\alpha}(q)\right\}^{-1/2}
+[F(x)-Q_{r-1}(F,x)].
+\end{equation}
+Далее, в силу \eqref{meixner-3.6}
+$\Delta^\nu M_{k+r}^{\alpha-r}(x,q)=({q-1\over q})^\nu M_{k+r-\nu}^{\alpha-r+\nu}(x,q)$,
+поэтому из \eqref{meixner-3.3} находим
+\begin{equation}\label{meixner-5.5}
+\Delta^\nu M_{k+r}^{\alpha-r}(0,q)= \Big({q-1\over q}\Big)^\nu \frac{\Gamma(k+\alpha+1)}{(k+r-\nu)!\Gamma(\nu-r+\alpha+1)}=A_{r,k,\nu}.
+\end{equation}
+ Равенства \eqref{meixner-4.4}  и  \eqref{meixner-5.5}, взятые вместе, дают
+\begin{equation}\label{meixner-5.6}
+F(x)-Q_{r-1}(F,x)=M_{k+r}^{\alpha-r}(x,q)-\sum_{\nu=0}^{r-1}\frac{A_{r,k,\nu}x^{[\nu]}}{\nu!}.
+ \end{equation}
+ Подставив это выражение в \eqref{meixner-5.4},  находим
+\begin{equation}\label{meixner-5.7}
+m_{r,k+r}^{\alpha}(x,q)=\big(\frac{q}{q-1}\big)^r\left\{h_{k}^{\alpha}(q)\right\}^{-\frac12}
+\left[M_{k+r}^{\alpha-r}(x,q)-\sum_{\nu=0}^{r-1}\frac{A_{r,k,\nu}x^{[\nu]}}{\nu!}\right], k=0,1,\ldots.
+\end{equation}
+
+Еще одно важное представление для полиномов $m_{r,k+r}^{\alpha}(x,q)$ можно получить если мы обратимся к равенствам \eqref{meixner-3.3} и \eqref{meixner-3.12} и запишем
+\begin{equation}\label{meixner-5.8}
+m_{k}^{\alpha}(x,q)={\Gamma(k+\alpha+1)\over
+k!\left\{h_{k}^{\alpha}(q)\right\}^{1/2}}\sum_{l=0}^k {k^{[l]}x^{[l]}\over
+\Gamma(l+\alpha+1) l!}\Big(1-\frac{1}{q}\Big)^k.
+\end{equation}
+
+Подставим это выражение в \eqref{meixner-4.1} и воспользуемся равенством \eqref{meixner-4.5}. Это приводит к следующему явному виду для полиномов  $m_{r,k+r}^{\alpha}(x,q)$ ($k=0,1,\ldots$):
+\begin{equation}\label{meixner-5.9}
+m_{r,k+r}^{\alpha}(x,q)={\Gamma(k+\alpha+1)\over
+k!\left\{h_{k}^{\alpha}(q)\right\}^{1/2}}\sum_{l=0}^k {k^{[l]}x^{[r+l]}\over
+\Gamma(l+\alpha+1) l!(r+l)^{[r]}}\Big(1-\frac{1}{q}\Big)^k.
+\end{equation}
+
+\section{Полиномы \{$m_{r,k}^0(x,q)\}_{k=0}^\infty $}
+
+Рассмотрим  частный случай, который соответствует выбору $\alpha=0$.
+ Заметим, что если $\alpha=0$, то из \eqref{meixner-5.5} имеем $A_{r,k,\nu}=0$ при всех  $\nu=0,1,\dots, r-1$. Поэтому  из \eqref{meixner-5.7}  имеем
+\begin{equation}\label{meixner-6.1}
+m_{r,k+r}^{0}(x,q)=\big(\frac{q}{q-1}\big)^r\left\{h_{k}^{0}(q)\right\}^{-\frac12}
+M_{k+r}^{-r}(x,q), k=0,1,\ldots.
+\end{equation}
+
+Далее, если мы обратимся к равенству \eqref{meixner-3.9}, то можем записать
+\begin{equation}\label{meixner-6.2}
+M_{k+r}^{-r}(x,q)=\frac{k!}{(k+r)!}\left(1-\frac1q\right)^rx^{[r]}M_{k}^{r}(x-r,q).
+  \end{equation}
+
+Из \eqref{meixner-6.1} и \eqref{meixner-6.2} находим
+\begin{equation}\label{meixner-6.3}
+m_{r,k+r}^{0}(x,q)=\frac{k!}{(k+r)!}\left\{h_{k}^{0}(q)\right\}^{-\frac12}x^{[r]}
+M_{k}^{r}(x-r,q), k=0,1,\ldots.
+\end{equation}
+С учетом \eqref{meixner-3.5} и \eqref{meixner-3.12} этому равенству можно придать также следующий вид
+\begin{equation}\label{meixner-6.4}
+m_{r,k+r}^{0}(x,q)=\Big((k+r)^{[r]}\Big)^{-\frac12}x^{[r]}
+m_{k}^{r}(x-r,q), k=0,1,\ldots.
+\end{equation}
+Воспользовавшись леммой \eqref{meilem2} и равенством \eqref{meixner-6.3}, мы  также можем получить для $m_{r,k+r}^{0}(x,q)$ представления в виде линейных комбинаций полиномов Мейкснера
+$m_{k+i}^0(x,q)$ ($i=0,1,\ldots,r$).
+
+
+Наконец, если $0\le k\le r-1$, то в силу определения \eqref{meixner-4.2}
+\begin{equation}\label{meixner-6.5}
+m_{r,k}^{0}(x,q)={x^{[k]}\over k!}.
+\end{equation}
+
+
+Из теоремы \eqref{meitheo1} следует, что система полиномов $m_{r,k}^{0}(x,q)\, (k=0,1,\ldots)$
+является ортонормированным базисом (ОНБ) в пространстве $l_\rho$, поэтому для произвольной функции $f(x)\in l_\rho$ мы можем записать равенство
+  \begin{equation}\label{meixner-6.6}
+ f(x)= \sum_{k=0}^\infty<f,m_{r,k}^{0}> m_{r,k}^{0}(x,q),
+  \end{equation}
+которое представляет собой ряд Фурье функции $f(x)\in l_\rho$ по системе
+$\{m_{r,k}^{0}(x,q)\}_{k=0}^\infty$, ортонормированной по Сободлеву относительно скалярного призведения \eqref{meixner-1.6}. Поскольку коэффициенты Фурье $<f,m_{r,k}^{0}>$ имеют  вид
+\begin{equation}\label{meixner-6.7}
+f_{r,k}=<f,m_{r,k}^{0}> =\sum_{\nu=0}^{r-1}\Delta^\nu f(0)\Delta^\nu m_{r,k}^{0}(0,q)=\Delta^kf(0),\, k=0,\ldots, r-1,
+ \end{equation}
+ \begin{equation}\label{meixner-6.8}
+f_{r,k}= <f,m_{r,k}^{0}>=\sum_{j=0}^\infty\Delta^rf(j)m_{k-r}^{0}(j,m)\rho(j),\, k=r,\ldots,
+ \end{equation}
+то равенство \eqref{meixner-6.6} можно переписать в следующем  смешанном виде
+  \begin{equation}\label{meixner-6.9}
+ f(x)= \sum_{k=0}^{r-1}\Delta^kf(0){x^{[k]}\over k!} +\sum_{k=r}^\infty f_{r,k} m_{r,k}^{0}(x,q),\, x\in \Omega.
+  \end{equation}.
+
+
+\section{Разностные свойства частичных сумм Фурье по системе
+\{$ m_{r,k}^{\alpha}(x,q)\}_{k=0}^\infty $}
+
+Основные разностные свойства  сумм Фурье по полиномам $m_{r,k}^{\alpha}(x,q)$, которые согласно \eqref{meixner-2.12} имеют вид
+\begin{equation}\label{meixner-7.1}
+ \mathcal{Y}_{r,n}^{\alpha}(f,x)= \sum_{k=0}^{r-1}\Delta^kf(0){x^{[k]}\over k!} +\sum_{k=r}^{n}f_{r,k}m_{r,k}^{\alpha}(x,q),
+  \end{equation}
+где
+\begin{equation*}
+f_{r,k}= <f,m_{r,k}^{\alpha}>=\sum_{j=0}^{N-1}\Delta^rf(j)m_{k-r}^{\alpha}(j,m)\rho(j),\, k=r,\ldots.
+ \end{equation*}
+выражены равенствами \eqref{meixner-2.13} -- \eqref{meixner-2.15}. Для системы
+$\{m_{r,k}^{\alpha}(x,q)\}_{k=0}^\infty$ они принимают вид $(0\le\nu\le r-1)$
+ \begin{equation}\label{meixner-7.2}
+ \Delta^\nu f(x)= \sum_{k=0}^{r-\nu-1}\Delta^{k+\nu}f(0){x^{[k]}\over k!} +\sum_{k=r-\nu}^\infty f_{r,k+\nu} m_{r-\nu,k}^{\alpha}(x,q),
+  \end{equation}
+  \begin{equation}\label{meixner-7.3}
+ \Delta^\nu\mathcal{Y}_{r,n}^{\alpha}(f,x)= \sum_{k=0}^{r-\nu-1}\Delta^{k+\nu}f(0){x^{[k]}\over k!} +\sum_{k=r-\nu}^{n-\nu} f_{r,k+\nu}m_{r-\nu,k}^{\alpha}(x,q),
+  \end{equation}
+ \begin{equation}\label{meixner-7.4}
+ \Delta^\nu\mathcal{Y}_{r,n}^{\alpha}(f,x) = \mathcal{Y}_{r-\nu,n-\nu}^{\alpha}(\Delta^\nu f,x).
+  \end{equation}
+Из \eqref{meixner-2.13} и \eqref{meixner-2.14} мы также можем записать для $n\ge r>\nu\ge0$
+\begin{equation}\label{meixner-7.5}
+ \Delta^\nu f(x)-\Delta^\nu\mathcal{Y}_{r,n}^{\alpha}(f,x)= \sum_{k=n-\nu+1}^\infty f_{r,k+\nu} m_{r-\nu,k}^{\alpha}(x,q).
+  \end{equation}
+Равенство  \eqref{meixner-7.5} дает выражение для погрешности, проистекающей в результате замены конечной разности  $\Delta^\nu f(x)$ ее приближенным значением $\Delta^\nu\mathcal{Y}_{r,n}^{\alpha}(f,x)$. При решении задачи об оценке этой погрешности возникает вопрос об асимптотических свойствах полиномов $m_{r-\nu,k}^{\alpha}(x,q)$. Этот вопрос, в свою очередь, сводится, как это было показано в \S\S-х 5 и 6 настоящей статьи, к задаче об асимптлотических свойствах полиномов   $m_k^{\alpha}(x,q)$, которые весьма подробно исследованы в \cite{meixner-22}.
+
+%Теория полиномов, ортогональных относительно скалярных произведений типа Соболева (полиномы, ортогональные по Соболеву) получила интенсивное развитие в работах многих авторов \cite{Ram1} -- \cite{Ram11}. Были достаточно подробно исследованы различные особенности полиномов, ортогональных по Соболеву, которыми не обладают обычные полиномы, ортогональные на интервале (или на сетке) относительно положительных весов. В частности, может случится так, что полиномы, ортогональные по Соболеву на заданном интервале $(a, b)$ могут иметь нули, совпадающие с одним или обоими концами этого интервала. Заметим, что обычные ортогональные с положительным на $(a, b)$ весом полиномы этим важным свойством не обладают. Продолжая эту теорию нам удалось показать, что сдвинутые классические полиномы Мейкснера $\left\{a_kM_k^{-r}(x+r)\right\}_{k=r}^\infty$ ортонормированны относительно скалярного произведения Соболева. Если к системе $\left\{a_kM_k^{-r}(x+r)\right\}_{k=r}^\infty$  присоединить конечный набор степеней $\left\{\frac{(x+r)^{[k]}}{k!}\right\}_{k=0}^{r-1},$ то мы получим полную в $l_{2,\mu}(\Omega_r),$  ортонормированную относительно скалярного произведения Соболева систему полиномов. Показано, что ряд Фурье по этой системе совпадают со смешанным рядом по полиномам $M_k^\alpha(x)$ с $\alpha=0$. Отметим, что смешанные ряды по классическим ортогональным полиномам были введены в работах И. И.\ Шарапудинова и З. Д.\ Гаджиевой \cite{Ram12} -- \cite{Ram19}, частичные суммы которых также обладают свойством совпадения их значений на границе области ортогональности со значениями исходной функции. В работах \cite{Ram12} -- \cite{Ram19} были подробно исследованы аппроксимативные свойства смешанных рядов для функций из различных пространств.
+%
+%Далее рассмотрен вопрос о представлении решения задачи Коши для разностного уравнения $r$-того порядка с переменными коэффициентами и  заданными начальными условиями в точке x=0 путем разложения его решения в ряд Фурье по полиномам, ортогональным по Соболеву на сетке $(0,1,...)$. Указанное представление базируется на
+%конструировании новых полиномов, ортогональных по Соболеву и порожденных классическими полиномами Мейкснера. Для новых полиномов получена явная формула, содержащая многочлены Мейкснера. Этот результат позволяет исследовать асимптотические свойства сконструированных новых полиномов, ортогональных по Соболеву на сетке $(0,1,...)$ с заданным весом. Для системы полиномов, ортонормирванной по Соболеву получены рекуррентные соотношения, которые могут быть использованы для изучения различных свойств этих полиномов и вычисления их значений при любых $x$ и $n$.
+
+\section{Ряды Фурье по полиномам Мейкснера, ортогональным по Соболеву}
+Показано, что если $r\geq 0,$  то сдвинутые классические полиномы Мейкснера \linebreak $\left\{a_kM_k^{-r}(x+r)\right\}_{k=r}^\infty$ образуют ортонормированную систему в пространстве $l_{2,\mu}(\Omega_r),$  состоящем из дискретных функций $f,g, \ldots,$  заданных на сетке $\Omega_r=\{-r, -r+1, \ldots, 0, 1, \ldots\},$  в котором введено  скалярное произведение типа Соболева следующего вида
+$$
+\langle f,g \rangle=\sum_{\nu=0}^{r-1}\Delta^{\nu} f(-r)\Delta^{\nu} g(-r) + \sum_{t\in\Omega_r}\Delta^r f(t) \Delta^r g(t)\mu(t),
+$$
+где  $\mu(t)=q^t(1-q)$ -- весовая функция, $0<q<1.$  Кроме того, показано, что если к системе $\left\{a_kM_k^{-r}(x+r)\right\}_{k=r}^\infty$  присоединить конечный набор степеней $\left\{\frac{(x+r)^{[k]}}{k!}\right\}_{k=0}^{r-1},$ то мы получим полную в $l_{2,\mu}(\Omega_r),$  ортонормированную относительно скалярного произведения $\langle f,g \rangle$ систему полиномов $\Psi=\left\{\frac{(x+r)^{[k]}}{k!}\right\}_{k=0}^{r-1}\bigcup\left\{a_kM_k^{-r}(x+r)\right\}_{k=r}^\infty.$
+Показано, что ряд Фурье по системе  $\Psi$ представляет собой смешанный ряд по полиномам Мейкснера $M_k^\alpha(x)$ с $\alpha=0$, в котором присутствуют только классические полиномы Мейкснера. Это, в свою очередь, позволяет использовать при исследовании аппроксимативных свойств ряда Фурье по системе $\Psi$  методы, разработанные в работах \cite{Ram14} -- \cite{meixner-11} при решении аналогичной задачи для смешанных рядов по полиномам Мейкснера. Кроме того, в п.4 введен новый специальный ряд по ортогональным полиномам Мейкснера $M_k^{\alpha}(x)$ с $\alpha>-1$, который в случае $\alpha=r$  совпадает с рядом Фурье по системе $\Psi$  и смешанным рядом по полиномам Мейкснера $M_k^0(x)$.
+
+
+%\section{Разностные уравнения и полиномы, ортогональные по Соболеву, порожденные многочленами Мейкснера}
+%
+%
+%Рассмотрен вопрос о представлении решении задачи Коши разностного уравнения
+%$$
+%\sum_{l=0}^{r}a_l(j)\Delta^{l}y(j)=f(j), \, j\in \Omega
+%$$
+%с начальными условиями $\Delta^{l}y(0)=y_l, \, l=0,1,\ldots,r-1,$  путем разложения $y(j)$ на сетке $\Omega=\{0,1,\ldots\}$ в ряд Фурье по полиномам, ортогональным по Соболеву  на $\Omega$, где функции $a_l\, (l=0,1,\ldots,r-1)$  заданы на множестве $\Omega$, $\Delta^{l}y$ -- оператор конечной разности порядка $l$.
+% Такая задача представляет интерес не только сама по себе, но и в связи с тем, что к ней может быть сведена проблема  о приближенном решении задачи  Коши для обыкновенного дифференциального уравнения вида
+%$$
+%\sum_{l=0}^{r}a_l(t)y^{(l)}(t)=f(t)
+%$$
+%с начальными условиями $y^{(l)}(0)=y_l, \, l=0,1,\ldots,r-1$.
+
+
+%\section{Рекуррентные соотношения для полиномов, ортогональных по Соболеву, порожденных полиномами Мейкснера}
+%Рассматривается система полиномов $m_{r,n}^\alpha(x)$ ($r$-натуральное число, $n=0, 1, \ldots)$, введенная в работах \cite{Ram14}, \cite{meixner-11}, \cite{Ram20}, ортонормированная при $\alpha>-1$ относительно скалярного произведения Соболева следующего вида
+%$$
+%\langle f,g \rangle=\sum_{k=0}^{r-1}\Delta^kf(0)\Delta^kg(0)+\sum_{t=0}^\infty\Delta^rf(t)\Delta^rg(t)\rho(t),
+%$$
+%где $\rho(t)$ -- дискретная весовая функция, определенная равенством
+%$$
+%\rho(x)=\rho(x;\alpha,q)=q^x{\Gamma(x+\alpha+1)\over \Gamma(x+1)}(1-q)^{\alpha+1}, \quad 0<q<1,
+%$$
+%$\Delta^rg(t)$ -- конечная разность $r$-го порядка функции $g(t)$.
+%Полиномы $m_{r,n}^{\alpha}(x)$, порожденные классическими ортонормированными полиномами Мейкснера $m_n^{\alpha}(x)$ $(n=0,1,\ldots)$. Для полиномов $m_{r,n}^\alpha(x)$ получены рекуррентные соотношения, которые могут быть использованы для изучения различных свойств этих полиномов и вычисления их значений при любых $x$ и $n$.
+

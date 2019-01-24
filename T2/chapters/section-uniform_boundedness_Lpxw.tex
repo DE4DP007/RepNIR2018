@@ -1,0 +1,268 @@
+\chapter{О равномерной ограниченности семейства сдвигов функций Стеклова в весовых пространствах Лебега с переменным показателем}
+
+
+\section{Некоторые свойства нормы весового пространства Лебега с переменным показателем}
+
+Пусть $p(x)$ --- $2\pi$-периодическая   измеримая на $[-\pi,\pi]$ функция, такая что $1\le\underline{p}(E)\le p(x)\le\overline{p}(E)<\infty$.
+ Кроме того, пусть $w(x)$ -- суммируемая на $[-\pi,\pi]$ почти всюду положительная $2\pi$-периодическая функция. Здесь и далее символами $\underline{p}(D)$, $\overline{p}(D)$ будем обозначать $\operatorname*{ess\,inf}\limits_{x \in D}p(x)$ и $\operatorname*{ess\,sup}\limits_{x \in D}p(x)$ соответственно.
+Обозначим через $L^{p(x)}_{2\pi,w} = L^{p(x)}_{w}([-\pi,\pi])$ пространство измеримых на $[-\pi,\pi]$ функций $f(x)$, удовлетворяющих условию
+\begin{equation*}
+    \int_E|f(x)|^{p(x)}w(x)dx<\infty.
+\end{equation*}
+Напомним, что  $L^{p(x)}_{2\pi,w}$ представляет собой линейное нормированное пространство, где одна из эквивалентных норм определяется равенством \eqref{2.1}.
+
+Отметим некоторые свойства нормы, которые понадобятся нам в дальнейшем.
+{
+%Меняем стиль нумерации только для данного блока
+\renewcommand{\theenumi}{\arabic{enumi}$^\circ$}
+\begin{enumerate}
+\item\label{normLpxwLpx}
+$\|f\|_{p(\cdot),w}=\|f \, w^{\frac{1}{p(\cdot)}}\|_{p(\cdot)}$.
+\item\label{normPropSets}
+Для любых измеримых множеств $A \subset B$
+\begin{equation*}
+  \|f\|_{p(\cdot),w}(A) \le \|f\|_{p(\cdot),w}(B),
+\end{equation*}
+так как
+\begin{equation*}
+  \int_{A}\Bigl|\frac{f(x)}{\|f\|_{p(\cdot),w}(B)}\Bigr|^{p(x)}w(x)dx \le
+  \int_{B}\Bigl|\frac{f(x)}{\|f\|_{p(\cdot),w}(B)}\Bigr|^{p(x)}w(x)dx = 1.
+\end{equation*}
+
+\item\label{normpq}
+Почти дословно повторяя рассуждения, проведенные при доказательстве теоремы 1.6.1 в~\cite{ShIIBJWShar3}, можно показать, что если $1\le p(x) \le q(x) \le \overline{q}(E) < \infty$, то для любой функции $f \in L^{q(x)}_w(E)$
+\begin{equation*}
+  \|f\|_{p(\cdot),w} \le r_{p,q}^w \|f\|_{q(\cdot),w},
+\end{equation*}
+где
+$r_{p,q}^w \le \dfrac{1}{\underline{\alpha}}+\dfrac{\int_E w(x)dx}{\underline{\alpha^*}} \quad
+\Bigl(\alpha(x)=\dfrac{q(x)}{p(x)}, \, \alpha^*(x)=\dfrac{\alpha(x)}{\alpha(x)-1}\Bigr)$.
+
+\item\label{Holder}
+Если $p(x)>1,\, x \in M$ (не исключая и случай, когда $\underline{p}(M)=1$), то справедливо неравенство типа Гельдера для пространств Лебега с переменным показателем~\cite[нер-во (8)]{ShIIBJWShar4}:
+\begin{equation*}
+  \int_M |f(x)||g(x)|dx \le
+  c(p,M) \cdot \|f\|_{p(\cdot)}(M) \cdot \|g\|_{p'(\cdot)}(M),
+\end{equation*}
+где $\frac{1}{p(x)}+\frac{1}{p'(x)}=1$, $c(p,M)\le \frac{1}{\underline{p}(M)}+\frac{1}{\underline{p}'(M)}$.
+Через $c, c(\alpha), c(\alpha,\beta),\ldots$ здесь и далее будут обозначаться положительные числа, зависящие лишь от указанных параметров, различные в разных местах.
+%причем от формулы к формуле значения этих констант могут меняться.
+\end{enumerate}
+}
+
+%Через $\mathcal{P}$ обозначим класс показателей $p(x)$, $p(x)\ge1$, удовлетворяющих условию Дини-Липшица:
+%\begin{equation}
+%    \bigl|p(x)-p(y)\bigr|\ln\frac{1}{|x-y|} \le C\quad(x,y\in E)\label{dinilip}.
+%\end{equation}
+
+
+
+\section{Функции Стеклова и их сдвиги}
+
+
+
+
+Пусть $\lambda>0$, $\Delta_\lambda=[-\frac1{2\lambda},\frac1{2\lambda}]$
+$$K_\lambda(x)=\begin{cases}\lambda,\ x\in\Delta_\lambda,\\0,x\in[-\pi,\pi]\backslash\Delta_\lambda.\end{cases}$$
+Продолжим $K_\lambda(x)$ $2\pi$-периодически на $(-\infty,\infty)$. Функции Стеклова $S_\lambda$ определяются равенством
+\begin{equation}\label{Steklov}
+  S_\lambda(f)=(S_\lambda(f))(x)=\int_{-\pi}^{\pi}f(t+x)K_\lambda(t)dt.
+\end{equation}
+
+%Если положить $h=\frac1\lambda$, то
+%$$f_h(x)=S_{\frac1h}(f)=\frac1h\int\limits_{-\frac h2}^{\frac h2}f(t+x)dt=\frac1h\int\limits_{x-\frac h2}^{x+\frac h2}f(t)dt.$$
+
+Чтобы можно было определить для $f(x)\in L^{p(x)}_{w}(E)$ оператор \eqref{Steklov}, функция $f(x)$ должна принадлежать $L^1(E)$, то есть имело место вложение $L^{p(x)}_{w}(E)\subset L^1(E)$. Очевидно, что это имеет место не для всех весов $w(x)$. В работе \cite{SHETN1} исследованы условия на вес, при которых имеет место вышеупомянутое вложение. %Приведем эти условия ниже.
+Эти условия зависят от того, какое значение принимает переменный показатель $p=p(x)$, а именно равняется он единице или нет.
+В связи с этим, рассмотрим множества $E_1=\{x\in [-\pi,\pi]:p(x)=1\}$ и  $E_2=[-\pi,\pi]\setminus E_1$. Тогда вопрос суммируемости функции $f\in L^{p(x)}_{2\pi,w}$
+сводится к тому, чтобы были конечны интегралы в правой части следующего равенства
+\begin{equation}\label{twointegrals}
+    \int_{-\pi}^{\pi}f(x)dx=\int_{E_1}f(x)dx+\int_{E_2}f(x)dx.
+\end{equation}
+Первый интеграл конечен в силу следующего утверждения.
+\begin{lemma}
+Функция $f \in L^{p(x)}_{w}(E)$ будет суммируемой на $E_1$ в том и только в том случае, если вес отделен от нуля почти всюду на $E_1$:
+\begin{equation}
+    w(x) \ge C_1(w) > 0 \text{ для почти всех } x \in E_1.\label{w1}
+\end{equation}
+\end{lemma}
+%Для суммируемости $f \in L^{p(x)}_{w}$ на $E_2$ достаточно выполнения следующего условия:
+\noindent Для того, чтобы второй интеграл в правой части \eqref{twointegrals} был конечен, достаточно выполнения следующего условия:
+\begin{equation}
+    \|w^{-\frac{1}{p(\cdot)}}\|_{p'(\cdot)}(E_2) < \infty.\label{w2}
+\end{equation}
+%Условия \eqref{w1}, \eqref{w2} обеспечивают суммируемость функции $f\in L^{p(x)}_{2\pi}$.
+ Через $\mathcal{ H}(E,p)$ обозначим класс весов, удовлетворяющих условиям \eqref{w1}, \eqref{w2}.
+Заметим, что  при выполнении условий \ref{normLpxwLpx} и \ref{normPropSets} из \eqref{w1} и \eqref{w2} имеем
+\begin{equation}\label{fL1Finite}
+  \int_E |f(x)|dx \le
+  C(p,w) \|f\|_{p(\cdot),w}.
+\end{equation}
+Сдвиг функции Стеклова определяется следующим образом
+\begin{equation}\label{SteklovShift}
+  S_{\lambda,\tau}(f)(x)=S_{\lambda}(f)(x+\tau)=\lambda\int_{x+\tau-\frac 1{2\lambda}}^{x+\tau+\frac 1{2\lambda}}f(t)dt.
+\end{equation}
+
+
+
+
+\section{Равномерная ограниченность семейства сдвигов функции Стеклова}
+Введем некоторые обозначения для формулировки результата. Пусть $N=\left[\lambda^\gamma\right]$, $h=\frac1N$,
+\begin{equation}\label{xkknots}
+  x_k=(kh-1)\pi,\ k\in\mathbb{Z},%k=0,\pm1,\pm2,\ldots,
+\end{equation}
+\begin{equation*}
+\Delta_k(\lambda)=[x_k,x_{k+1}],\ k\in\mathbb{Z},
+\end{equation*}
+\begin{equation*}
+\tilde{\Delta}_k(\lambda)=\Delta_{k-1}(\lambda)
+\cup\Delta_k(\lambda)\cup\Delta_{k+1}(\lambda),\ k\in\mathbb{Z},
+\end{equation*}
+\begin{equation}\label{skessinf}
+  p_k=p(\tilde{\Delta}_k(\lambda))%\min\{p(x)|x_{k-1}\le x \le x_{k+2}\},
+\end{equation}
+где $[\alpha]$ представляет собой целую часть числа $\alpha$.
+Нам понадобятся следующие системы отрезков
+$$\mathfrak{B}_{\varepsilon}^1=\left\{\Delta_k(\lambda):p_k=1,|\Delta_k(\lambda)|<\varepsilon\right\}_{k\in\mathbb{Z}},$$
+$$\mathfrak{B}_{\varepsilon}^{p(\cdot)}=\left\{\tilde{\Delta}_k(\lambda):p_k>1,|\tilde{\Delta}_k(\lambda)|<3\varepsilon\right\}_{k\in\mathbb{Z}}.$$
+%Основным результатом настоящей работы является следующая
+%Сформулируем основной результат данного раздела.
+Была доказана следующая
+
+\begin{theorem}
+  Пусть $p\in\mathcal{ P}_{2\pi}$, $w\in \mathcal{ H}(E,p)$, $0<\gamma\le1$. Тогда семейство сдвигов операторов Стеклова $\{S_{\lambda,\tau}(f)\}_{1\le\lambda<\infty,\ |\tau|\le \pi/{\lambda^\gamma}}$ будет равномерно ограничено в пространстве $L^{p(x)}_{2\pi,w}$ если для некоторого $\varepsilon>0$ выполняются следующие условия
+    \begin{equation*}%\label{m1}
+      \sup_{B\in\mathfrak{B}_{\varepsilon}^1}\frac1{|B|^{\frac1\gamma}}\int_Bw(x)dx<C(p,w),
+    \end{equation*}
+    \begin{equation*}%\label{m2}
+    \sup_{B\in\mathfrak{B}_{\varepsilon}^{p(\cdot)}}
+    \Bigl(\frac{1}{|B|^{\frac1\gamma}}\int_B w(x)dx\Bigr) \Bigl(\frac{1}{|B|^{\frac1\gamma}}\int_B w(x)^{-\frac{1}{\underline{p}(B)-1}}dx \Bigr)^{\underline{p}(B)-1} < C(p,w).
+    \end{equation*}
+\end{theorem}
+
+
+%\textit{Доказательство. }Пусть
+%\begin{equation}\label{normineq}
+%  \|f\|_{p(\cdot),w}\le1.
+%\end{equation}
+%Из \eqref{SteklovShift} имеем
+%\begin{equation*}
+%  I=\int\limits_{-\pi}^{\pi}|S_{\lambda,\tau}(f)(x)|^{p(x)}w(x)dx=
+%  \int\limits_{-\pi}^{\pi}\left|\lambda\int\limits_{x+\tau-\frac1{2\lambda}}^{x+\tau+\frac1{2\lambda}}f(t)dt\right|^{p(x)}w(x)dx=
+%\end{equation*}
+%\begin{equation*}
+%  \sum_{k=0}^{2N-1}\int\limits_{x_k}^{x_{k+1}}\left|\lambda\int\limits_{x+\tau-\frac1{2\lambda}}^{x+\tau+\frac1{2\lambda}}f(t)dt\right|^{p(x)}w(x)dx=
+%\end{equation*}
+%\begin{equation}\label{SSLpxInt}
+%  \sum_{k=0}^{2N-1}\int\limits_{x_k}^{x_{k+1}}\left|\lambda\int\limits_{x+\tau-\frac1{2\lambda}}^{x+\tau+\frac1{2\lambda}}f(t)dt\right|^{p(x)-p_k+p_k}w(x)dx.
+%\end{equation}
+%Далее из \eqref{fL1Finite} имеем
+%\begin{equation}\label{norm1pineq}
+%  \left|\int\limits_{x+\tau-\frac1{2\lambda}}^{x+\tau+\frac1{2\lambda}}f(t)dt\right|\le
+%  \int\limits_{x+\tau-\frac1{2\lambda}}^{x+\tau+\frac1{2\lambda}}|f(t)|dt\le
+%  \int\limits_{-\pi}^{\pi}|f(t)|dt\le c(p,w)\|f\|_{p(\cdot),w}.
+%\end{equation}
+%и
+%\begin{equation}\label{dinilipeq}
+%  \lambda^{p(x)-p_k}\le\lambda^{\frac{c(p)}{\ln\lambda}}\le c(p)
+%\end{equation}
+%Из \eqref{normineq}, \eqref{norm1pineq} и \eqref{dinilipeq} получим
+%\begin{equation*}
+%  I\le c(p,w)\sum_{k=0}^{2N-1}\int\limits_{x_k}^{x_{k+1}}\left|\lambda\int\limits_{x+\tau-\frac1{2\lambda}}^{x+\tau+\frac1{2\lambda}}f(t)dt\right|^{p_k}w(x)dx=
+%\end{equation*}
+%\begin{equation}\label{s1s2eq}
+%  c(p,w)\left(\sum\limits_{k\in K_1}+\sum\limits_{k\in K_2}\right)\int\limits_{x_k}^{x_{k+1}}\left|\lambda\int\limits_{x+\tau-\frac1{2\lambda}}^{x+\tau+\frac1{2\lambda}}f(t)dt\right|^{p_k}w(x)dx=
+%  c(p,w)\left(\mathfrak{S}_1+\mathfrak{S}_2\right),
+%\end{equation}
+%где $K_1=\{k:p_k=1\}$, $K_2=\{k:p_k>1\}$.
+%
+%Оценим $\mathfrak{S}_1$. Учитывая \eqref{normineq} и условие \eqref{m1}
+%получаем
+%\begin{equation*}
+%  \mathfrak{S}_1=\sum\limits_{k\in K_1}\int\limits_{x_k}^{x_{k+1}}\left|\lambda\int\limits_{x+\tau-\frac1{2\lambda}}^{x+\tau+\frac1{2\lambda}}f(t)dt\right|w(x)dx\le
+%  \sum\limits_{k\in K_1}\int\limits_{x_k}^{x_{k+1}}\left|\lambda\int\limits_{x_{k-1}}^{x_{k+2}}f(t)dt\right|w(x)dx=
+%\end{equation*}
+%$$
+%  \sum\limits_{k\in K_1}\lambda\int\limits_{x_k}^{x_{k+1}}w(x)dx\left|\int\limits_{x_{k-1}}^{x_{k+2}}f(t)dt\right|\le$$
+%\begin{equation}\label{s1bounded}
+%  C(p,w)\sum\limits_{k\in K_1}\int\limits_{x_{k-1}}^{x_{k+2}}|f(t)|dt\le C(w)3\|f\|_{1,1}\le C(p,w).
+%\end{equation}
+%Перейдем к оценке $\mathfrak{S}_2$. Пусть $p'_k=\frac{p_k}{p_k-1}$, тогда, применяя \ref{Holder}, получим
+%\begin{equation*}
+%  \mathfrak{S}_2=\sum\limits_{k\in K_2}\int\limits_{x_k}^{x_{k+1}}\left|\lambda\int\limits_{x+\tau-\frac1{2\lambda}}^{x+\tau+\frac1{2\lambda}}f(t)dt\right|^{p_k}w(x)dx\le\sum\limits_{k\in K_2}\int\limits_{x_k}^{x_{k+1}}\left|\lambda\int\limits_{x_{k-1}}^{x_{k+2}}f(t)dt\right|^{p_k}w(x)dx=
+%\end{equation*}
+%\begin{equation*}
+%  \sum\limits_{k\in K_2}\int\limits_{x_k}^{x_{k+1}}\left|\lambda\int\limits_{x_{k-1}}^{x_{k+2}}[w^{-\frac1{p_k}}(t)f(t)w^{\frac1{p_k}}(t)]dt\right|^{p_k}w(x)dx\le
+%\end{equation*}
+%\begin{equation*}
+%  \sum\limits_{k\in K_2}\int\limits_{x_k}^{x_{k+1}}\left(\lambda
+%  \left(\int\limits_{x_{k-1}}^{x_{k+2}}|f(t)|^{p_k}w(t)dt\right)^{\frac1{p_k}}
+%  \left(\int\limits_{x_{k-1}}^{x_{k+2}}w^{-\frac{p'_k}{p_k}}(t)dt\right)^{\frac1{p'_k}}\right)^{p_k}w(x)dx=
+%\end{equation*}
+%\begin{equation*}
+%  \sum\limits_{k\in K_2}\int\limits_{x_k}^{x_{k+1}}\lambda^{p_k}
+%  \int\limits_{x_{k-1}}^{x_{k+2}}|f(t)|^{p_k}w(t)dt
+%  \left(\int\limits_{x_{k-1}}^{x_{k+2}}w^{-\frac{p'_k}{p_k}}(t)dt\right)^{\frac{p_k}{p'_k}}w(x)dx=
+%\end{equation*}
+%\begin{equation}\label{s2estimate}
+%  \sum\limits_{k\in K_2}\lambda\int\limits_{x_k}^{x_{k+1}}w(x)dx
+%  \left(\lambda\int\limits_{x_{k-1}}^{x_{k+2}}w^{-\frac{1}{p_k-1}}(t)dt\right)^{p_k-1}
+%  \int\limits_{x_{k-1}}^{x_{k+2}}|f(t)|^{p_k}w(t)dt.
+%\end{equation}
+%С учетом условия \eqref{m2} из \eqref{s2estimate} получаем, что
+%\begin{equation*}
+%  \mathfrak{S}_2\le C(w,p)\sum\limits_{k\in K_2}
+%  \int\limits_{x_{k-1}}^{x_{k+2}}|f(t)|^{p_k}w(t)dt=
+%\end{equation*}
+%\begin{equation*}
+%  C(w,p)\sum\limits_{k\in K_2}
+%  \left(\int\limits_{x_{k-1}}^{x_{k}}+\int\limits_{x_{k}}^{x_{k+1}}+
+%  \int\limits_{x_{k+1}}^{x_{k+2}}\right)|f(t)|^{p_k}w(t)dt\le
+%\end{equation*}
+%\begin{equation*}
+%  C(w,p)\sum\limits_{k=0}^{2N-1}
+%  \left(\int\limits_{x_{k-1}}^{x_{k}}+\int\limits_{x_{k}}^{x_{k+1}}+
+%  \int\limits_{x_{k+1}}^{x_{k+2}}\right)|f(t)|^{p_k}w(t)dt.
+%\end{equation*}
+%Полагая
+%$$h_1(x)=p_k, x\in[x_{k-1},x_{k}],h_2(x)=p_k, x\in[x_{k},x_{k+1}],$$
+%$$h_3(x)=p_k, x\in[x_{k+1},x_{k+2}],0\le k\le2N-1,$$
+%$$h_i(x+2\pi)=h_i(x), x\in[-\pi,\pi], i=1,2,3,$$
+%последнее неравенство можно переписать в следующем виде
+%\begin{equation*}
+%  \mathfrak{S}_2\le C(w,p)\sum\limits_{k=0}^{2N-1}
+%  \left(\int\limits_{x_{k-1}}^{x_{k}}|f(t)|^{h_1(t)}w(t)dt+\right.
+%\end{equation*}
+%\begin{equation*}
+%  \left.\int\limits_{x_{k}}^{x_{k+1}}|f(t)|^{h_2(t)}w(t)dt+
+%  \int\limits_{x_{k+1}}^{x_{k+2}}|f(t)|^{h_3(t)}w(t)dt\right)=
+%\end{equation*}
+%\begin{equation*}
+%  C(w,p)\left(\int\limits_{x_{-1}}^{x_{2N-1}}|f(t)|^{h_1(t)}w(t)dt+\right.
+%\end{equation*}
+%\begin{equation*}
+%  \left.\int\limits_{x_{0}}^{x_{2N}}|f(t)|^{h_2(t)}w(t)dt+
+%  \int\limits_{x_{1}}^{x_{2N+1}}|f(t)|^{h_3(t)}w(t)dt\right)\overset{\eqref{xkknots}}{=}
+%\end{equation*}
+%\begin{equation*}%x_k=(kh-1)\pi
+%  C(w,p)\left(\int\limits_{-\pi-h}^{\pi-h}|f(t)|^{h_1(t)}w(t)dt+
+%  \int\limits_{-\pi}^{\pi}|f(t)|^{h_2(t)}w(t)dt+
+%  \int\limits_{-\pi+h}^{\pi+h}|f(t)|^{h_3(t)}w(t)dt\right)=
+%\end{equation*}
+%\begin{equation*}%x_k=(kh-1)\pi
+%  C(w,p)\left(\int\limits_{-\pi}^{\pi}|f(t)|^{h_1(t)}w(t)dt+
+%  \int\limits_{-\pi}^{\pi}|f(t)|^{h_2(t)}w(t)dt+
+%  \int\limits_{-\pi}^{\pi}|f(t)|^{h_3(t)}w(t)dt\right).
+%\end{equation*}
+%Так как
+%\begin{equation*}
+%  h_i(x)\le p(x), i=1,2,3,
+%\end{equation*}
+%то по свойству (*) нормы $\|*\|_{p(\cdot),w}$ получим
+%\begin{equation*}
+%  \mathfrak{S}_2\le C(w,p)(\|f\|_{h_1(\cdot),w}+\|f\|_{h_2(\cdot),w}+\|f\|_{h_3(\cdot),w})\le
+%\end{equation*}
+%\begin{equation*}
+%  C(w,p)(r_{h_1,p}+r_{h_2,p}+r_{h_3,p})=C(w,p).
+%\end{equation*}
+

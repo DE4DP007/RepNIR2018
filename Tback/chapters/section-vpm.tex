@@ -1,0 +1,687 @@
+\chapter{Приближение функций из пространств Лебега и Соболева с переменным показателем средними Валле Пуссена}
+
+
+
+
+
+\section{ Постановка задачи}\label{vpmshiis1}
+
+Пусть $f=f(x)$ -- $2\pi$-периодическая функция, интегрируемая на периоде,
+\begin{equation}\label{vpmshii1.1}
+    a_k=a_k(f)=\frac1\pi\int_{-\pi}^\pi f(t)\cos ktdt,\quad b_k=b_k(f)=\frac1\pi\int_{-\pi}^\pi f(t)\sin ktdt
+\end{equation}
+-- коэффициенты Фурье,
+\begin{equation}\label{vpmshii1.2}
+    f(x) \sim \frac{a_0}{2}+ \sum_{k=1}^\infty a_k\cos kx+b_k\sin kx
+\end{equation}
+-- ряд Фурье функции $f(x)$. Далее, пусть
+
+\begin{equation} \label{vpmshii1.3}
+ S_n(f)=   S_n(f,x)=\frac{a_0}{2}+ \sum_{k=1}^n a_k\cos kx+b_k\sin kx
+\end{equation}
+-- сумма Фурье,
+\begin{equation}\label{vpmshii1.4}
+ V_m^n(f)=V_m^n(f,x)=\frac1{m+1}[S_n(f,x)+\cdots+S_{n+m}(f,x)]
+\end{equation}
+-- средние Валле Пуссена. В отчетном году рассмотрена задача
+об аппроксимативных свойствах операторов $V_m^n=V_m^n(f)$ в пространствах Лебега и Соболева с переменным показателем.
+В частности, показано, что $V_m^n(f)$ могут быть использованы для доказательства второй теоремы Джексона в пространстве
+Лебега $L_{2\pi}^{p(x)}$ с $2\pi$-периодическим переменным показателем  $p(x)\ge1$, удовлетворяющим условию
+\begin{equation}\label{vpmshii1.5}
+  |p(x)-p(y)|\ln\frac{2\pi}{|x-y|}\le c \quad (x,y\in [0,2\pi]).
+  \end{equation}
+
+Теория приближения функций в пространствах Лебега $L_{2\pi}^{p(x)}$  и Соболева $W^{r,p(x)}_{2\pi}$ с $2\pi$-пери\-одическим переменным показателем $p(x)\ge1$ в настоящее время достаточно хорошо разработана \cite{vpmshiiShar5}  -- \cite{vpmshiiShar6}. При этом следует отметить, что методы исследования задач этой теории и полученные результаты существенно зависят от  величины $p_-=p_-([-\pi,\pi])=\min_{x\in[-\pi,\pi]}p(x)$. Дело в том, что если $p_->1$ и выполнено условие \eqref{vpmshii1.5}, то, как было показано впервые в работе автора \cite{vpmshiiShar2}, тригонометрическая система $1, \{\cos kx, \sin kx\}_{k=1}^\infty$ является базисом Шаудера в пространстве  $L_{2\pi}^{p(x)}$ и, как следствие, суммы Фурье $S_n(f)$ (см. \eqref{vpmshii1.3})  доставляют функции $f\in L_{2\pi}^{p(x)}$ наилучший порядок приближения среди тригонометрических полиномов $T_n(x)$ порядка $n$. Этот результат и тот факт  \cite{vpmshiiShar2}, что оператор сопряженной функции
+$$
+\tilde f=\tilde f(x)=\int_{-\pi}^{\pi}{f(t)dt\over \operatorname{tg}\frac12(x-t)}
+$$
+ ограниченно действует в  $L_{2\pi}^{p(x)}$, послужили основой   для доказательства прямых и обратных теорем теории приближений в $L_{2\pi}^{p(x)}$ и $W_{2\pi}^{r,p(x)}$ при $p_-([-\pi,\pi])>1$  (см. \cite{vpmshiiGuvIsr}--\cite{vpmshiiChaich}). Если же  $p_-([-\pi,\pi])=1$, то ситуация принимает существенно иной характер: тригонометрическая система теряет в этом случае свойство базисности в $L_{2\pi}^{p(x)}$ и, как следствие, потребовалось \cite{vpmshiiShar6} разработать принципиально новые подходы для получения прямых и обратных теорем теории приближений в пространстве $L_{2\pi}^{p(x)}$. Частично, а именно в части, касающейся первой теоремы Джексона, такие подходы были разработаны в работах \cite{shiimonog}, \cite{vpmshiiShar6}. Что же касается задачи о справедливости второй теоремы Джексона, которая касается оценки вида
+ \begin{equation}\label{vpmshiieq1.6}
+   E_n(f)_{p(\cdot)}\le \frac{c_r(p)}{n^r}\Omega(f^{(r)},\frac1n)_{p(\cdot)},
+ \end{equation}
+ где $f\in W_{2\pi}^{r,p(x)}$, $E_n(f)_{p(\cdot)}$ -- наилучшее приближение функции $f$ тригонометрическими полиномами степени $n$ по норме пространства $L_{2\pi}^{p(x)}$, $\Omega(g,\frac1n)_{p(\cdot)}$ -- выбранный модуль непрерывности функции $g\in L_{2\pi}^{p(x)}$, то в случае $p_-([-\pi,\pi])=1$ она оставалась не решенной. Эту проблему удалось решить недавно в работах \cite{vpmshiiShar7}, \cite{vpmshiiShar8}, в которых в связи с этой задачей были  исследованы аппроксимативные свойства  средних Валле Пуссена $V_m^n(f,x)$ c $m=n-1$ и  $m=n$, определенные равенством   \eqref{vpmshii1.4}. В настоящей работе рассмотрены аппроксимативные свойства операторов $V_m^n(f)=V_m^n(f,x)$ в пространстве $ L_{2\pi}^{p(x)}$
+ в наиболее общем случае, когда параметры $n$   и $m$ независимо друг от друга могут принимать любые неотрицательные целые значения.
+Основное внимание будет уделено задачам трех типов. Первая задача касается условий на переменный показатель $p(x)$, которые гарантируют  равномерную ограниченность в $L_{2\pi}^{p(x)}$ семейства операторов  $V_m^n(f)$ $(m,n=0,1,\ldots)$. Доказано, что если переменный показатель $p(x)\ge1$ удовлетворяет условию \eqref{vpmshii1.5}, то семейство операторов  $V_m^n(f)$ с $n\le cm$ равномерно ограничено в $L_{2\pi}^{p(x)}$. Если же $p_-([-\pi,\pi])>1$ и выполнено условие \eqref{vpmshii1.5}, то  в $L_{2\pi}^{p(x)}$ равномерно ограничено (\eqref{vpmshii4.10} из \ref{vpmshiis4}) семейство всех операторов  $V_m^n(f)$ с $n,m=0,1,\ldots$. Следующая проблема, рассмотренная в \ref{vpmshiis7}  , связана с оценкой отклонения в метрике  $L_{2\pi}^{p(x)}$
+средних Валле Пуссена $V_m^n(f)$  от функции $f\in W_{2\pi}^{r,p(x)}$. Доказано (теорема \ref{vpmshiit2}), что если переменный показатель $p(x)$ удовлетворяет условию Дини-Липшица \eqref{vpmshii1.5} и $f\in W^{r,p(x)}_{2\pi}$,
+то для средних Валле  Пуссена $V_m^n(f)=V_m^n(f,x)$ с $ n\le am$ ($0<a$ -- фиксировано) имеет место неравенство
+ $\|f-V_m^n(f)\|_{p(\cdot)}\le \frac{c_r(p)}{(n+1)^r}\Omega(f^{(r)},\frac1{n+1})_{p(\cdot)}$,  где здесь и всюду в дальнейшем $\Omega(g,\delta)_{p(\cdot)}$ -- модуль непрерывности функции $g\in L^{p(x)}_{2\pi}$, определенный с помощью функций В.А. Стеклова, $c(p),\ c(p,a),\ c_r(p,a),\ \ldots $ -- положительные числа, зависящие лишь от указанных параметров.
+ Если  $r\ge3$, $f\in W^{r,p(x)}_{2\pi}$, $a>0$, $ n\le am$, то доказано (теорема \ref{vpmshiit3}), что имеют место следующие оценки
+\begin{equation*}
+   \|f-V_m^n(f\|_{p(\cdot)}\le {c_r(a,p)\over(m+1) (n+1)^{r-1}}E_n(f^{(r)})_{p(\cdot)},
+\end{equation*}
+\begin{equation*}
+   \|f-V_m^n(f)\|_{p(\cdot)}\le {c_r(a,p)\over(m+1) (n+1)^{r-1}}\Omega\left(f^{(r)},\frac1{n+1}\right)_{p(\cdot)}.
+\end{equation*}
+Для $r=2$ также имеют место (теорема \ref{vpmshiit4}) аналогичные оценки при $m^\delta\le n\le am$, где $0<\delta<1$.
+В случае $r=1$  характер соответствующих оценок принимают несколько иной вид (теорема \ref{vpmshiit5}).
+
+ В \ref{vpmshiis8} рассмотрена  задача о приближении функций из пространства Соболева с переменным показателем средними Валле Пуссена $V_m^n(f,x)$  в заданной точке $x$.  В частности, если  $p=p(x)>1$, $r\ge1$, $f\in W^{r,p(x)}_{2\pi}$, то доказано (теорема \ref{vpmshiit7}), что имеет место следующая оценка
+ \begin{equation}\label{vpmshii1.7}
+    |f(x)-V_m^n(f,x)|\le \frac{c_r(p)}{m+1}\sum_{k=n}^{n+m}{E_k(f^{(r)})_{p(\cdot)}\over (k+1)^{r-{\frac{1}{p(x)}}}}.
+ \end{equation}
+Эта оценка показывает, что применение пространств Соболева  $W^{r,p(x)}_{2\pi}$ с переменным показателем $p=p(x)$ позволяет учитывать существенно переменное поведение производных функции  $f(x)$  при оценке погрешности $|f(x)-V_m^n(f,x)|$ приближения  $f(x)$ средними Валле Пуссена $V_m^n(f,x)$. Говоря более точно, имеется ввиду следующее: если $p=p(x)>1$, $r\ge1$, $f\in W^{r,p(x)}_{2\pi}$, то оставшись в шкале пространств Соболева $W^{r,p}_{2\pi}$ с постоянным показателем $p$, мы можем утверждать лишь, что  $f\in W^{r,p_0}_{2\pi}$, где $p_0=\min\limits_x p(x)$. Поэтому вместо оценки \eqref{vpmshii1.7} мы будем иметь
+\begin{equation}\label{vpmshii1.8}
+    |f(x)-V_m^n(f,x)|\le \frac{c_r(p_0)}{m+1}\sum_{k=n}^{n+m}{E_k(f^{(r)})_{p_0}\over (k+1)^{r-{\frac{1}{p_0}}}}.
+ \end{equation}
+Но для точки $x$, в которой $p(x)>p_0$ оценка \eqref{vpmshii1.7} на порядок хуже, чем оценка \eqref{vpmshii1.8}.
+
+
+
+
+
+
+
+
+
+\section{ Некоторые сведения о пространствах Лебега и Соболева с переменным показателем}\label{vpmshiis2}
+
+Пусть $p(x)$ -- измеримая функция, определенная на измеримом множестве $E$ и такая, что $p(x)\ge1$ почти всюду на $E$. Через $L^{p(x)}(E)$ обозначим пространство измеримых функций $f(x)$, заданных на $E$, для каждой из  которых найдется такое число $\alpha=\alpha(f)>0$, что $\int_E|f(x)/\alpha|^{p(x)}dx<\infty$.  Целенаправленное исследование топологии пространств $L^{p(x)}(E)$  было дано впервые в работе автора
+\cite{vpmshiiShar4}. В частности, в \cite{vpmshiiShar4} было показано, что в пространстве $L^{p(x)}(E)$ можно ввести норму
+\begin{equation}\label{vpmshii2.1}
+    \|f\|_{p(\cdot)}(E)=\inf \left\{\alpha>0:   \int_E\left|{f(x)\over\alpha}\right|^{p(x)}dx\le1\right\}.
+\end{equation}
+Если $p(x)>1$ для почти всех $x\in E$, то мы можем определить сопряженную функцию $q(x)=p(x)/(p(x)-1)$. В \cite{vpmshiiShar4} было показано, что пространство $(L^{p(x)}(E))'$, сопряженное к   $L^{p(x)}(E)$, совпадает с $L^{q(x)}(E)$,  в том смысле, что произвольный элемент $F\in(L^{p(x)}(E))' $ допускает представление
+\begin{equation}\label{vpmshii(2.2)}
+    F(f)=\int_E f(x)g(x)dx,
+\end{equation}
+где $g(x)\in L^{q(x)}(E)$. Исходя из представления \eqref{vpmshii(2.2)},  в $L^{p(x)}(E)$ можно ввести (см.\cite{shiimonog} ) еще одну эквивалентную норму
+
+\begin{equation}\label{vpmshii2.3}
+    \|f \|^*_{p(\cdot)}(E)=\sup_{g\in L^{q(x)}(E),\atop \|g\|_{q(\cdot)}\le1}\int_E f(x)g(x)dx.
+\end{equation}
+
+ Пусть $E_1$, $E_2$ -- измеримые множества,
+$p(x)$ -- измеримая функция, заданная на $E_1$, $1\le
+p^-(E_1)<\infty$, $f(t,x)$ -- измеримая функция, заданная на
+прямоугольнике $E_1\times E_2$. Тогда имеет место \cite{vpmshiiShar6} неравенство
+
+\begin{equation}\label{vpmshii2.4}
+    \left\|\int\limits_{E_2}|f(*,x)|dx\right\|_{p(\cdot)}(E_1)\le
+r_p \int\limits_{E_2}\|f(*,x)\|_{p(\cdot)}(E_1)dx\quad
+(r_p\le2).
+\end{equation}
+Отметим также следующее неравенство
+\begin{equation}\label{vpmshii2.5}
+    \int_E |f(x)g(x)|dx\le \|f \|^*_{p(\cdot)}(E)\|g\|_{q(\cdot)}(E),
+\end{equation}
+которое вытекает из \eqref{vpmshii2.3}.
+
+
+
+
+%\section{Пространства $L_{2\pi}^{p(x)}$ и $W_{2\pi}^{r,p(x)}$}\label{vpmshiis3}
+
+Если переменный показатель $p(x)$ является $2\pi$-периодической функцией, то через  $L_{2\pi}^{p(x)}$ обозначим пространство
+$2\pi$-периодических функций $f(x)$, сужение на $[-\pi,\pi]$ которых принадлежит пространству $L^{p(x)}([-\pi,\pi])$. Норма в $L_{2\pi}^{p(x)}$ мы определим равенством
+\begin{equation}\label{vpmshii3.1}
+    \|f\|_{p(\cdot)}=\inf \left\{\alpha>0:   \int_{-\pi}^{\pi}\left|{f(x)\over\alpha}\right|^{p(x)}dx\le1\right\}.
+\end{equation}
+ В пространстве $L_{2\pi}^{p(x)}$ мы выделим подпространство $W_{2\pi}^{r,p(x)}$, состоящее из \\ $r-1$-раз непрерывно дифференцируемых функций $f(x)$, для которых $f^{(r-1)}(x)$ абсолютно непрерывна на $[-\pi,\pi]$, а $f^{(r)}(x)\in L_{2\pi}^{p(x)}$.
+
+
+
+
+\section{Классы переменных показателей $\mathcal{ P}^\alpha_{2\pi}$ и равномерная ограниченность в $L_{2\pi}^{p(x)}$ некоторых семейств операторов свертки }\label{vpmshiis4}
+
+Пусть $\alpha>0$. Через $\mathcal{ P}^\alpha_{2\pi}$ обозначим множество всех $2\pi$-периодических переменных показателей $p(x)$, удовлетворяющих условию
+\begin{equation}\label{vpmshii4.1}
+    |p(x)-p(y)|\left(\ln\frac{2\pi}{|x-y|}\right)^\alpha\le c \quad (x,y\in [0,2\pi]),
+\end{equation}
+где здесь и далее через $c(p),c(p,q), \ldots$ обозначаются положительные числа, зависящие лишь от указанных параметров, вообще говоря различные в разных местах. При $\alpha=1$ мы положим  $\mathcal{ P}_{2\pi}= \mathcal{ P}^1_{2\pi}$. Через  $\hat{\mathcal{ P}}^\alpha_{2\pi}$
+обозначим подкласс переменных показателей из  $p(x)\in \mathcal{ P}^\alpha_{2\pi}$, для которых $p_-=p_-([-\pi,\pi])>1$ и, соответственно, положим  $\hat{\mathcal{ P}}_{2\pi}=\hat{\mathcal{ P}}^1_{2\pi}$. Аналогичные классы переменных показателей
+$p(x)$, определенных на $[0,1]$, впервые были рассмотрены в работе автора \cite{vpmshiiShar1}, в которой были найдены необходимые и достаточные условия, которые гарантируют базисность системы Хаара в пространстве $L^{p(x)}([0,1])$. Что касается классов  $\mathcal{ P}^\alpha_{2\pi}$,
+то они впервые появились в работе автора \cite{vpmshiiShar5}, в которой были получены необходимые и достаточные условия, которые обеспечивают
+равномерную ограниченность в $L_{2\pi}^{p(x)}$ некоторых семейств операторов свертки.
+
+Пусть для каждого $\lambda\geq1$ задана измеримая
+ $2\pi$-периодическая и существенно ограниченная  функция (ядро)
+ $K_{\lambda}=K_{\lambda}(x)$. Тогда мы можем определить линейный
+ оператор
+  \begin{equation}\label{vpmshii4.2}
+    k_{\lambda}f=(k_{\lambda}f)(x)=\int\limits_{-\pi}^{\pi}f(t)K_{\lambda}(t-x)dt,
+ \end{equation}
+действующий в пространстве $L_{2\pi}^{p(x)}$. В работе автора \cite{vpmshiiShar5} был рассмотрен
+ вопрос о равномерной ограниченности в $L^{p(x)}_{2\pi}$
+семейства операторов $\{k_{\lambda}\}_{n\geq1}$.   Мы сформулируем один результат из \cite{vpmshiiShar5} (см. также \cite{shiimonog}), который нам понадобится в дальнейшем.
+Предположим, что $K_{\lambda}=K_{\lambda}(x)$ ---
+измеримая $2\pi$-периодическая функция. Будем говорить, что
+семейство ядер $\{K_{\lambda}(x)\}_{1\leq\lambda<\infty}$
+удовлетворяет, соответственно, условиям $A)$, $B)$, $C)$, если имеют
+место следующие оценки:\\
+$A)\qquad\int\limits_{-\pi}^{\pi}|K_{\lambda}(x)|dx\le c_{1},$\\
+$B)\qquad\sup\limits_{x}|K_{\lambda}(x)|\leq c_{2}\lambda^{v},$\\
+$C)\qquad|K_{\lambda}(x)|\leq c_{3}\text{ при
+}\lambda^{-\gamma}\leq|x|<\pi$,\\
+где $v,\gamma, c_{j}>0$ и не зависят от $\lambda$.
+\begin{theorem}\label{vpmshiit A}
+ Пусть $K_{\lambda}(x)$
+$(1\leq\lambda<\infty)$ удовлетворяет условиям $A) - C)$. Тогда,
+если $ p(x)\in \mathcal{ P}_{2\pi} $ ,  то семейство операторов $\{k_{\lambda}\}_{\lambda\geq1}$ равномерно
+ограничено в $L_{2\pi}^{p(x)}$, другими словами, найдется положительное число $c=c(p)$, для которого имеет место неравенство
+$$
+ \|k_{\lambda}(f)\|_{p(\cdot)}\le c(p)\|f\|_{p(\cdot)},\quad 1\leq\lambda<\infty, f\in L_{2\pi}^{p(x)}.
+ $$
+\end{theorem}
+Для $f(x)\in L_{2\pi}^{p(x)}$  рассмотрим средние Фейера
+\begin{equation}\label{vpmshii4.3}
+    F_m(f,x)=V_m^0(f,x)=\frac1{m+1}[S_0(f,x)+\cdots+S_{m}(f,x)].
+\end{equation}
+Известно, что \cite{Zigmund1}, что
+\begin{equation}\label{vpmshii4.4}
+    F_m(f)=F_m(f,x)=\int\limits_{-\pi}^{\pi}f(t)K_{m}(t-x)dt,
+\end{equation}
+где
+\begin{equation}\label{vpmshii4.5}
+    K_{m}(u)=\frac1{2(m+1)}\left({\sin  \frac{(m+1)u}{2}\over\sin \frac{u}{2}}\right)^2,
+\end{equation}
+причем
+\begin{equation}\label{vpmshii4.6}
+    \int\limits_{-\pi}^{\pi}K_{m}(t)dt=1.
+\end{equation}
+Из \eqref{vpmshii4.5} и \eqref{vpmshii4.6} следует, что последовательность ядер Фейера $K_{m}(u)$ ($m=1,2,\ldots$) удовлетворяет условиям $A)$ -- $C)$ c $v=1$, $\gamma=\frac12$, поэтому в силу теоремы \ref{vpmshiit A} имеет место
+\begin{corollary}\label{vpmshii1}
+ Если $ p(x)\in \mathcal{ P}_{2\pi} $ ,  то семейство операторов $\{F_{m}\}_{m\geq1}$ равномерно
+ограничено в $L_{2\pi}^{p(x)}$, другими словами, найдется положительное число $c=c(p)$, для которого имеет место неравенство
+$$
+ \|F_{m}(f)\|_{p(\cdot)}\le c(p)\|f\|_{p(\cdot)}\quad  (f\in L_{2\pi}^{p(x)},\quad m=1,2,\ldots).
+ $$
+\end{corollary}
+
+Из определения \eqref{vpmshii1.4} для средних Валле Пуссена $V_m^n(f,x)$ находим
+\begin{equation}\label{vpmshii4.7}
+    V_m^n(f,x)=\frac{m+n+1}{m+1}F_{m+n}(f,x)-\frac{n}{m+1}F_{n-1}(f,x).
+\end{equation}
+Из \eqref{vpmshii4.7} следствия \ref{vpmshii1} вытекает
+\begin{corollary}\label{vpmshii2}
+ Если $ p(x)\in \mathcal{ P}_{2\pi} $ , $a>0$,  то семейство операторов\linebreak $\{V_{m}^n(f)\}_{n\le am}$ равномерно
+ограничено в $L_{2\pi}^{p(x)}$, другими словами, найдется положительное число $c=c(p,a)$, для которого имеет место неравенство
+$$
+ \|V_m^n(f)\|_{p(\cdot)}\le c(p,a)\|f\|_{p(\cdot)}\quad  (f\in L_{2\pi}^{p(x)},\quad n\le am).
+ $$
+\end{corollary}
+
+Если $ p(x)\in \hat{\mathcal{ P}}_{2\pi} $, то  для частичных сумм
+ $S_n(f)=S_n(f,x)$ ряда Фурье функции $f(x)\in L^{p(x)}_{2\pi}$  имеет место \cite{vpmshiiShar2} оценка
+ \begin{equation}\label{vpmshii4.8}
+    \|S_n(f)\|_{p(\cdot)}\le c(p)\|f\|_{p(\cdot)}\quad(n=1,2,\ldots).
+ \end{equation}
+
+С другой стороны, в силу \eqref{vpmshii1.4} имеем
+\begin{equation}\label{vpmshii4.9}
+  \|V_m^n(f)\|_{p(\cdot)}\le \frac{1}{m+1}\sum_{k=n}^{m+n}\|S_k(f)\|_{p(\cdot)}.
+ \end{equation}
+Из \eqref{vpmshii4.8} и \eqref{vpmshii4.9} выводим следующую оценку
+\begin{equation}\label{vpmshii4.10}
+  \|V_m^n(f)\|_{p(\cdot)}\le c(p)\|f\|_{p(\cdot)}\quad(m,n=0,1,2,\ldots),
+ \end{equation}
+где $ p(x)\in \hat{\mathcal{ P}}_{2\pi} $, $f(x)\in L^{p(x)}_{2\pi}$.
+
+
+
+
+
+
+
+
+
+
+\section{Модуль непрерывности и первая теорема Джексона в  $L_{2\pi}^{p(x)}$}\label{vpmshiis5}
+
+Если $f(x)\in L_{2\pi}^{p(x)} $, то мы можем определить функцию Стеклова с помощью равенства
+\begin{equation}\label{vpmshii4.1}
+    s_h(f)=s_h(f)(x)=\frac1h\int_0^hf(x+t)dt=\frac1h\int_x^{x+h}f(t)dt.
+\end{equation}
+Оператор, сопоставляющий функции  $f=f(x)$ функцию Стеклова $s_h(f)=s_h(f)(x)$ назовем оператором Стеклова. В работах автора  \cite{vpmshiiShar5},
+\cite{vpmshiiShar2} (см. также \cite{shiimonog}) было показано, что если $p(x)\in\mathcal{ P}^\alpha_{2\pi}$, то семейство операторов $\{s_h(f)=s_h(f)(x)\}_{|h|>0}$ равномерно ограничено в $ L_{2\pi}^{p(x)} $, т.е.
+\begin{equation}\label{vpmshii5.2}
+    \|s_h(f)\|_{p(\cdot)}\le c(p)\|f\|_{p(\cdot)}.
+\end{equation}
+Отсюда легко показать (см. \cite{vpmshiiShar5}, \cite{shiimonog}), что
+\begin{equation}\label{vpmshii5.3}
+    \lim_{h\to0}\|f-s_h(f)\|_{p(\cdot)}=0.
+\end{equation}
+Рассмотрим в $L^{p(x)}_{2\pi}$ при $0<|h|\le1$, $\gamma>0$, $|\tau|\le\pi |h|^\gamma$ семейство
+сдвигов функций  В.А. Стеклова
+\begin{equation}\label{vpmshii5.4}
+   \mathcal{ S}_{h,\tau}(f)=\mathcal{
+S}_{h,\tau}(f)(x)=s_h(f)(x+\tau-\frac{h}{2})=
+\frac{1}{h}\int\limits_{x+\tau-\frac{h}{2}}^{x+\tau+\frac{h}{2}}f(t)dt.
+\end{equation}
+
+В работе \cite{vpmshiiShar2}  доказано, что если $p(x)\in \mathcal{ P}_{2\pi}$, то
+имеет место оценка
+\begin{equation}\label{vpmshii5.5}
+ \|\mathcal{ S}_{h,\tau}(f)\|_{p(\cdot)}\le
+c(p,\gamma)(2\pi+1)^{p^-}\|f\|_{p(\cdot)} \quad 0<|h|\le1, |\tau|\le\pi
+|h|^\gamma,
+\end{equation}
+где $p^-=\max\limits_{x}p(x)$.
+
+Введем следующую величину \cite{vpmshiiShar2}, \cite{shiimonog}, \cite{vpmshiiShar6}
+\begin{equation}\label{vpmshii5.6}
+    \Omega(f,0)_{p(\cdot)}=0,\quad \Omega(f,\delta)_{p(\cdot)}=\sup_{0<h<\delta}\|f-s_h(f)\|_{p(\cdot)}.
+\end{equation}
+Из \eqref{vpmshii5.3} и \eqref{vpmshii5.6} непосредственно следует, что
+\begin{equation}\label{vpmshii5.7}
+    \lim_{\delta\to0}\Omega(f,\delta)_{p(\cdot)}=0.
+\end{equation}
+Будем называть величину $\Omega(f,\delta)_{p(\cdot)}$ \textit{ модулем непрерывности} функции $f\in L_{2\pi}^{p(x)} $.
+Далее, через $E_n(f)_{p(\cdot)}$  обозначим наилучшее приближение функции $f\in L_{2\pi}^{p(x)} $ тригонометрическими полиномами $T_n(x)$ порядка $n$, т.е.
+
+\begin{equation}\label{vpmshii5.8}
+    E_n(f)_{p(\cdot)}=\inf_{T_n}\|f-T_n\|_{p(\cdot)}.
+\end{equation}
+ В работе \cite{vpmshiiShar6} доказано, что если $p(x)\in\mathcal{ P}_{2\pi}$ и $f\in L_{2\pi}^{p(x)} $, то имеет место следующая оценка (первая теорема типа Джексона)
+\begin{equation}\label{vpmshii5.9}
+    E_n(f)_{p(\cdot)}\le c(p)\Omega(f,\frac{1}{n+1})_{p(\cdot)}.
+\end{equation}
+
+
+\section{Некоторые вспомогательные результаты}\label{vpmshiis6}
+
+Пусть $r\ge1$, $f(x)\in W_{2\pi}^{r,p(x)} $. Тогда имеет место (\cite{Zigmund1}, стр.75) равенство
+\begin{equation}\label{vpmshii6.1}
+    f(x)=\frac{a_0}{2}+ \frac{1}{\pi}\int_{-\pi}^\pi f^{(r)}(t)B_r(t-x)dt,
+\end{equation}
+где
+\begin{equation}\label{vpmshii6.2}
+    B_r(u)=\sum_{k=1}^\infty {\cos(ku+\frac{\pi r}{2})\over k^r}
+\end{equation}
+функция Бернулли. Если запишем \eqref{vpmshii6.1} для функции $f(x)-S_n(f,x)$, где $S_n(f,x)$ -- частичная сумма ряда Фурье функции $f(x)$ (см. \eqref{vpmshii1.3}), то получим ($S_n^{(r)}(f,x)=S_n(f^{(r)},x)$)
+$$
+R_n(f,x)=f(x)-S_n(f,x)=\frac{1}{\pi}\int_{-\pi}^\pi( f^{(r)}(t)-S_n(f^{(r)},x))B_r(t-x)dt=
+$$
+\begin{equation}\label{vpmshii6.3}
+    \frac{1}{\pi}\int_{-\pi}^\pi f^{(r)}(t)R_{r,n}(t-x)dt,
+\end{equation}
+где
+\begin{equation}\label{vpmshii6.4}
+     R_{r,n}(u)=\sum_{k=n+1}^\infty {\cos(ku+\frac{\pi r}{2})\over k^r}.
+\end{equation}
+Чтобы получить представление, аналогичное \eqref{vpmshii6.3} для разности $f(x)-V_m^n(f,x)$ рассмотрим функцию
+\begin{equation}\label{vpmshii6.5}
+    \mathcal{ V}_{r,m}^n(u)=\sum_{k=n}^{n+m}R_{r,k}(u).
+\end{equation}
+Из \eqref{vpmshii1.4} и \eqref{vpmshii6.3} имеем
+$$
+f(x)-V_m^n(f,x)=\frac{1}{m+1}\sum_{k=n}^{n+m}(f(x)-S_k(f,x))
+$$
+$$
+=\frac{1}{m+1}\sum_{k=n}^{n+m}\frac{1}{\pi}\int_{-\pi}^\pi f^{(r)}(t)R_{r,k}(t-x)dt
+$$
+\begin{equation}\label{vpmshii6.6}
+    =\frac{1}{(m+1)\pi}\int_{-\pi}^\pi f^{(r)}(t)\mathcal{ V}_{r,m}^n(t-x)dt.
+\end{equation}
+Заметим, что $R_{r,k}(t-x)$ ортогонален к произвольному тригонометрическому полиному $T_k(t)$
+порядка $k$, поэтому из \eqref{vpmshii6.6} имеем
+\begin{equation}\label{vpmshii6.7}
+  f(x)-V_m^n(f,x)= \frac{1}{m+1}\sum_{k=n}^{n+m}\frac{1}{\pi}\int_{-\pi}^\pi (f^{(r)}(t)-T_k(f^{(r)},t))R_{r,k}(t-x)dt,
+ \end{equation}
+где $T_k(g)=T_k(g,t)$ полином наилучшего приближения к функции  $g\in L_{2\pi}^{p(x)}$, т.е.
+\begin{equation}\label{vpmshii6.8}
+    E_k(g)_{p(\cdot)}=\|g-T_k(g)\|_{p(\cdot)}=\inf_{T_k}\|g-T_k\|_{p(\cdot)}.
+\end{equation}
+В частном случае, если $p(x)>1$ почти всюду на $[-\pi,\pi]$, то из \eqref{vpmshii2.3} и \eqref{vpmshii6.7} следует, что
+\begin{equation}\label{vpmshii6.9}
+    |f(x)-V_m^n(f,x)|\le \frac{1}{\pi(m+1)}\sum_{k=n}^{n+m}E_k(f^{(r)})_{p(\cdot)}\|R_{r,k}(*-x)\|_{q(\cdot)}^*
+\end{equation}
+где $q(x)={p(x)\over p(x)-1}$ -- сопряженная функция.
+
+Рассмотрим некоторые свойства семейства функций
+\begin{equation}\label{vpmshii6.10}
+    \kappa_{r,m}^n(u)=\frac{(n+1)^r}{m+1}\mathcal{ V}_{r,m}^n(u) \quad (n,m=0,1,\ldots).
+\end{equation}
+
+\begin{lemma}\label{vpmshiil6.1} Имеют следующие равенства
+ $$
+ \kappa_{2s,m}^n(u)=
+ $$
+ $$
+ {(-1)^s(n+1)^{2s}\over m+1}\sum\limits_{l=0}^{m-1}
+\sum\limits_{k=0}^{\infty}\frac{\sin\frac{l+1}{2}u\sin\frac{k+1}{2}u\cos(2n+k+l+2)
+\frac u2}{2\sin^2\frac u2}\Delta^2g_s(n+1+k+l)
+$$
+ \begin{equation}\label{vpmshii6.11}
+    +{(-1)^{s-1}(n+1)^{2s}\over m+1}\sum\limits_{k=0}^{\infty}
+\frac{\sin\frac {m+1}{2}u\sin\frac{k+1}{2}u\cos(2n+m+k+2)\frac u2}{2\sin^2\frac u2}
+\Delta q_s(n+m+k+1),
+ \end{equation}
+$$
+ \kappa_{2s-1,m}^n(u)=
+ $$
+ $$
+ {(-1)^s(n+1)^{2s-1}\over m+1}\sum\limits_{l=0}^{m-1}
+\sum\limits_{k=0}^{\infty}\frac{\sin\frac{l+1}{2}u\sin\frac{k+1}{2}u\sin(2n+k+l+2)
+\frac u2}{2\sin^2\frac u2}\Delta^2g_s(n+1+k+l)
+ $$
+ \begin{equation}\label{vpmshii6.12}
+ +{(-1)^{s-1}(n+1)^{2s-1}\over m+1}\sum\limits_{k=0}^{\infty}
+\frac{\sin\frac {m+1}{2}u\sin\frac{k+1}{2}u\sin(2n+m+k+2)\frac u2}{2\sin^2\frac u2}
+\Delta q_s(n+m+k+1),
+  \end{equation}
+ где $g_s(t)=t^{-2s}$, $q_s(t)=t^{-2s+1}$, $\Delta\varphi(t)=\varphi(t+1)-\varphi(t)$,
+ $\Delta^2\varphi(t)=\varphi(t+2)-2\varphi(t+1)+\varphi(t)$.
+\end{lemma}
+
+\begin{lemma}\label{vpmshiil6.2}
+  Пусть $0\le k\le l$. Тогда
+$$A_{k,l}=\int\limits_{0}^{\pi}\frac{|\sin\frac{k+1}{2}u\sin\frac{l+1}{2}u|}
+{\sin^2\frac u2}du\le2(k+1)(2+\ln\frac{l+1}{k+1})+\pi.$$
+\end{lemma}
+
+\begin{lemma}\label{vpmshiil6.3}
+Пусть $r\ge1$. Тогда для произвольных $n$ и $m$ имеет место неравенство
+$$
+\int\limits_{-\pi}^{\pi}|\kappa_{r,m}^n(u)|du\le c(r)\ln\left(2+\frac{n}{m+1}\right) .
+$$
+Если, кроме того $n\le m$, то справедливы  следующие неравенства
+$$
+\int\limits_{-\pi}^{\pi}|\kappa_{r,m}^n(u)|du\le c(r)\frac{n+1}{m+1}\quad (r\ge2),
+$$
+$$
+\int\limits_{-\pi}^{\pi}|\kappa_{1,m}^n(u)|du\le c\frac{n+1}{m+1}\left(1+\ln\frac{m+1}{n+1}\right).
+$$
+
+
+
+
+
+ \end{lemma}
+
+\begin{lemma}\label{vpmshiil6.4}
+ Пусть  $n^{-\frac12}\le u\le2\pi-n^{-\frac12}$, $r\ge1$. Тогда найдется такое,  число $c(r)>0$, что
+ $$|\kappa_{r,m}^{n}(u)|\le c(r)\frac{n+1}{m+1}.$$
+  \end{lemma}
+
+\begin{lemma}\label{vpmshiil6.5} Имеют место следующие оценки:
+ $$|\kappa_{1,m}^{n}(u)|\le c(n+1), $$
+ $$
+ |\kappa_{2,m}^{n}(u)|\le c\frac{(n+1)^2}{n+m+1}\ln\left(1+\frac{m+1}{n+1}\right),
+ $$
+ $$
+ |\kappa_{r,m}^{n}(u)|\le c(r)\frac{(n+1)^2}{n+m+1}\quad (r\ge3).
+ $$
+  \end{lemma}
+
+Рассмотрим в пространстве $L^{p(x)}_{2\pi}$ семейство  линейных операторов свертки с помощью следующего равенства
+\begin{equation}\label{vpmshii6.42}
+    \mathcal{K}_{n}(f)=\mathcal{K}_{n,m}(f)(x)=
+\int\limits_{-\pi}^{\pi}f(t)\kappa_{r,m}^{n}(t-x)dt\quad(n=1,2,\ldots),
+\end{equation}
+в котором ядра $\kappa_{r,m}^{n}(u)$ определены равенством \eqref{vpmshii6.10}. Имеет место следующая
+
+\begin{lemma}\label{vpmshiil6.6}
+ Пусть $p=p(x)\in\mathcal{ P}_{2\pi}$, $f\in L^{p(x)}_{2\pi}$, $a>0$, $n\le am$. Тогда
+$$\|\mathcal{K}_{n,m}(f)\|_{p(\cdot)}\le c_r(a,p)\|f\|_{p(\cdot)}.$$
+  \end{lemma}
+
+
+
+
+\section{Приближение функций средними Валле Пуссена $V_m^n(f)$ по норме пространства $ L^{p(x)}_{2\pi}$  }\label{vpmshiis7}
+
+Из равенств \eqref{vpmshii6.7} и  \eqref{vpmshii6.10} мы можем записать
+\begin{equation}\label{vpmshii7.1}
+  f(x)-V_m^n(f,x)= \frac{1}{(n+1)^r}\int_{-\pi}^\pi (f^{(r)}(t)-T_n(f^{(r)},t))\kappa_{r,m}^n(t-x)dt,
+\end{equation}
+где $T_n(f^{(r)})=T_n(f^{(r)},t)$ -- полином наилучшего приближения производной  $f^{(r)}(t)$ по норме пространства
+ $L^{p(x)}_{2\pi}$. Обратимся теперь к лемме \ref{vpmshiil6.6}, в которой вместо $f(x)$ фигурирует разность $f^{(r)}(t)-T_n(f^{(r)},t)$. Тогда из \eqref{vpmshii7.1} имеем
+ $$
+ \|f(x)-V_m^n(f,x)\|_{p(\cdot)}\le
+  $$
+ \begin{equation}\label{vpmshii7.2}
+  {c_r(a,p)\over (n+1)^r}\|f^{(r)}-T_n(f^{(r)})\|_{p(\cdot)}={c_r(a,p)\over (n+1)^r}E_n(f^{(r)})_{p(\cdot)} \quad (n\le am) .
+ \end{equation}
+
+Мы можем теперь сформулировать следующий результат.
+\begin{theorem}\label{vpmshiit2}
+Пусть  $p=p(x)\in\mathcal{  P}_{2\pi}$, $r\ge1$, $f\in W^{r,p(x)}_{2\pi}$, $a>0$, $n\le am$. Тогда имеют место следующие оценки
+\begin{equation}\label{vpmshii7.3}
+   \|f-V_m^n(f)\|_{p(\cdot)}\le {c_r(a,p)\over (n+1)^r}E_n(f^{(r)})_{p(\cdot)},
+\end{equation}
+\begin{equation}\label{vpmshii7.4}
+   \|f-V_m^n(f)\|_{p(\cdot)}\le {c_r(a,p)\over (n+1)^r}\Omega\left(f^{(r)},\frac1{n+1}\right)_{p(\cdot)}.
+\end{equation}
+\end{theorem}
+
+Положим
+\begin{equation}\label{vpmshii7.5}
+    \tilde\kappa_{r,m}^{n}(u)= \frac{m+1}{n+1}\kappa_{r,m}^{n}(u)
+\end{equation}
+и рассмотрим семейство операторов
+\begin{equation}\label{vpmshii7.6}
+    \tilde{\mathcal{K}}_n^r(f)=\tilde{\mathcal{K}}_{n,m}^r(f)(x)=
+\int\limits_{-\pi}^{\pi}f(t)\tilde\kappa_{r,m}^{n}(t-x)dt\quad(n=1,2,\ldots).
+\end{equation}
+Если $r\ge3$, то из леммы \ref{vpmshiil6.5} вытекают следующие оценки
+ $$
+ |\tilde\kappa_{r,m}^{n}(u)|\le c(r)(n+1),
+ $$
+$$
+ |\tilde\kappa_{r,m}^{n}(u)|\le c(r) \quad (n^{-\frac12}\le u\le2\pi-n^{-\frac12}),
+ $$
+$$
+\int_{-\pi}^\pi |\tilde\kappa_{r,m}^{n}(u)|du \le c(r).
+$$
+Отсюда следует, что семейство ядер $\tilde\kappa_{r,m}^{n}(u)$ при $r\ge3$ и $n\le m$ удовлетворяет условиям A), B) и C), при соблюдении
+которых справедливо утверждение теоремы \ref{vpmshiit A} (см. \ref{vpmshiis4}). Поэтому мы можем сформулировать следующее утверждение.
+\begin{lemma}\label{vpmshiil7.1}
+ Пусть $p=p(x)\in\mathcal{ P}_{2\pi}$, $f\in L^{p(x)}_{2\pi}$, $r\ge3$, $n\le m$. Тогда
+$$\|\tilde{\mathcal{ K}}_{n,m}^r(f)\|_{p(\cdot)}\le c_r(p)\|f\|_{p(\cdot)}.$$
+  \end{lemma}
+С учетом \ref{vpmshii7.5} перепишем   равенство \eqref{vpmshii7.1} следующим образом
+\begin{equation}\label{vpmshii7.7}
+  f(x)-V_m^n(f,x)= \frac{1}{(m+1)(n+1)^{r-1}}\int_{-\pi}^\pi (f^{(r)}(t)-T_n(f^{(r)},t))\tilde\kappa_{r,m}^n(t-x)dt.
+\end{equation}
+
+\begin{theorem}\label{vpmshiit3}
+Пусть  $p=p(x)\in\mathcal{  P}_{2\pi}$, $r\ge3$, $f\in W^{r,p(x)}_{2\pi}$, $a>0$, $ n\le am$. Тогда имеют место следующие оценки
+\begin{equation}\label{vpmshii7.8}
+   \|f-V_m^n(f\|_{p(\cdot)}\le {c_r(p,a)\over(m+1) (n+1)^{r-1}}E_n(f^{(r)})_{p(\cdot)},
+\end{equation}
+\begin{equation}\label{vpmshii7.9}
+   \|f-V_m^n(f)\|_{p(\cdot)}\le {c_r(p,a)\over(m+1) (n+1)^{r-1}}\Omega\left(f^{(r)},\frac1{n+1}\right)_{p(\cdot)}.
+\end{equation}
+\end{theorem}
+
+Оценки \eqref{vpmshii7.8} и  \eqref{vpmshii7.9} доказаны в теореме \ref{vpmshiit3} при условии $r\ge3$.
+Рассмотрим теперь вопрос о справедливости этих оценок для $r=2$. С этой целью введем семейство операторов
+\begin{equation}\label{vpmshii7.10}
+    \hat{\mathcal{ K}}_m(f)=\hat{\mathcal{ K}}_{n,m}(f)(x)=
+\int\limits_{-\pi}^{\pi}f(t)\tilde\kappa_{2,m}^{n}(t-x)dt\quad(m=1,2,\ldots)
+\end{equation}
+в предположении $m^\delta\le n\le am$, где $0<\delta\le 1$, $a\ge1$. В этом случае из лемм \ref{vpmshiil6.3} -- \ref{vpmshiil6.5} вытекают следующие оценки (равномерно относительно $m^\delta\le n\le am$, $m=1,2,\ldots$)
+ $$
+ |\tilde\kappa_{2,m}^{n}(u)|\le c(\delta,a)(m+1),
+ $$
+$$
+ |\tilde\kappa_{2,m}^{n}(u)|\le c(\delta,a) \quad (m^{-\frac\delta2}\le u\le2\pi-m^{-\frac\delta2}),
+ $$
+$$
+\int_{-\pi}^\pi |\tilde\kappa_{2,m}^{n}(u)|du \le c(\delta,a).
+$$
+Это означает, что семейство ядер $ \tilde\kappa_{r,m}^{n}(u)$ ($m^\delta\le n\le am$, $m=1,2,\ldots$) удовлетворяет условиям A), B) и C), при соблюдении которых справедливо утверждение теоремы \ref{vpmshiit A}. Поэтому мы можем сформулировать следующее утверждение.
+\begin{lemma}\label{vpmshiil7.2}
+ Пусть $p=p(x)\in\mathcal{ P}_{2\pi}$, $f\in L^{p(x)}_{2\pi}$, $m^\delta\le n\le am$, $m=1,2,\ldots$ где $0<\delta\le 1$, $a\ge1$. Тогда
+$$\|\hat{\mathcal{ K}}_{m}(f)\|_{p(\cdot)}\le c(p,a,\delta)\|f\|_{p(\cdot)}.$$
+  \end{lemma}
+
+
+\begin{theorem}\label{vpmshiit4}
+Пусть  $p=p(x)\in\mathcal{  P}_{2\pi}$,  $f\in W^{2,p(x)}_{2\pi}$, $m^\delta\le n\le am$, $m=1,2,\ldots$, где $0<\delta\le 1$, $a\ge1$. Тогда имеют место следующие оценки
+\begin{equation}\label{vpmshii7.11}
+   \|f-V_m^n(f)\|_{p(\cdot)}\le {c(p,a,\delta)\over(m+1) (n+1)}E_n(f'')_{p(\cdot)},
+\end{equation}
+\begin{equation}\label{vpmshii7.12}
+   \|f-V_m^n(f)\|_{p(\cdot)}\le {c(p,a,\delta)\over(m+1) (n+1)}\Omega\left(f'',\frac1{n+1}\right)_{p(\cdot)}.
+\end{equation}
+\end{theorem}
+
+
+Перейдем к исследованию аппроксимативных свойств средних Валле Пуссена $V_m^n(f,x)$ для функций $f\in W^{1,p(x)}_{2\pi}$. С этой целью
+заметим, что $V_m^n(f,x)$ допускает следующее интегральное представление
+\begin{equation}\label{vpmshii7.13}
+    V_m^n(f,x)=\frac1\pi\int_{-\pi}^\pi v_m^n(t)f(x-t)dt,
+\end{equation}
+где
+\begin{equation}\label{vpmshii7.14}
+    v_m^n(t)=\frac1{m+1}{\cos nt-\cos(n+m+1)t\over4\sin^2\frac{t}{2}}=\frac1{m+1}{\sin m\frac{t}{2}\sin(2n+m)\frac{t}{2}\over2\sin^2\frac{t}{2}}.
+\end{equation}
+
+Если $f\in W^{1,p(x)}_{2\pi}$ из \eqref{vpmshii7.13} имеем
+$$
+f(x)-V_m^n(f,x)=
+$$
+\begin{equation}\label{vpmshii7.15}
+  \frac1\pi\int_{-\pi}^\pi v_m^n(t)(f(x)-f(x-t))dt=  \frac1\pi\int_{-\pi}^\pi v_m^n(t)\int_{x-t}^xf'(t)dt.
+\end{equation}
+С другой стороны, если  $T_n(x)$ -- произвольный тригонометрический полином порядка $n$, то
+$V_m^n(T_n,x)=T_n(x)$ и, следовательно,
+ \begin{equation}\label{vpmshii7.16}
+0 \equiv T_n(x)-V_m^n(T_n,x)=  \frac1\pi\int_{-\pi}^\pi v_m^n(t)\int_{x-t}^xT_n'(t)dt.
+\end{equation}
+Из \eqref{vpmshii7.15} и \eqref{vpmshii7.16} имеем
+$$
+f(x)-V_m^n(f,x)= \frac1\pi\int_{-\pi}^\pi v_m^n(t)\int_{x-t}^x(f'(t)-T_n'(t))dt=
+$$
+\begin{equation}\label{vpmshii7.17}
+ \frac1\pi\int_{-\pi}^\pi v_m^n(t)tS_{t,-\frac{t}{2}}(f'-T_n')(x)dt,
+\end{equation}
+где $S_{h,\tau}(g)(t)$ -- сдвиг функции Стеклова, определенный с помощью равенства (5.4).
+Обратимся теперь к неравенству \eqref{vpmshii2.4} и применим его к правой части равенства \eqref{vpmshii7.17}, что в результате дает
+\begin{equation}\label{vpmshii7.18}
+    \|f-V_m^n(f)\|_{p(\cdot)}\le \frac1\pi\int_{-\pi}^\pi |tv_m^n(t)|\|S_{t,-\frac{t}{2}}(f'-T_n')\|_{p(\cdot)} dt.
+\end{equation}
+
+Из \eqref{vpmshii7.18} и \eqref{vpmshii5.5} выводим следующее неравенство
+\begin{equation}\label{vpmshii7.19}
+    \|f-V_m^n(f)\|_{p(\cdot)}\le c(p)\|f'-T_n'\|_{p(\cdot)}\frac1\pi\int_{-\pi}^\pi |tv_m^n(t)|dt,
+\end{equation}
+где $T_n=T_n(x)$ -- произвольный тригонометрический полином порядка $n$. С другой стороны, с учетом равенства \eqref{vpmshii7.14} нетрудно увидеть, что
+\begin{equation}\label{vpmshii7.20}
+    \frac1\pi\int_{-\pi}^\pi |tv_m^n(t)|dt\le c{\ln(m+1)\over m+1}.
+\end{equation}
+Из \eqref{vpmshii7.19} и \eqref{vpmshii7.20} получаем
+\begin{equation}\label{vpmshii7.21}
+    \|f-V_m^n(f)\|_{p(\cdot)}\le c(p) {\hat E}_n(f'){\ln(m+1)\over m+1},
+\end{equation}
+где
+\begin{equation}\label{vpmshii7.22}
+    {\hat E}_n(f')=\inf_{T_n}\|f'-T_n'\|_{p(\cdot)}
+\end{equation}
+- наилучшее приближение функции $f'(x)$ тригонометрическими полиномами вида $T_n'(x)$.
+
+\begin{theorem}\label{vpmshiit5}
+Пусть  $p=p(x)\in\mathcal{  P}_{2\pi}$,  $f\in W^{1,p(x)}_{2\pi}$. Тогда имеют место следующие оценки
+\begin{equation}\label{vpmshii7.23}
+   \|f-V_m^n(f)\|_{p(\cdot)}\le c(p){\ln(m+1)\over m+1 }{\hat E}_n(f')_{p(\cdot)},
+\end{equation}
+\begin{equation}\label{vpmshii7.24}
+   \|f-V_m^n(f)\|_{p(\cdot)} \le c(p){\ln(m+1)\over m+1 }\Omega\left(f',\frac2{n}\right)_{p(\cdot)}.
+\end{equation}
+\end{theorem}
+
+Перейдем к рассмотрению вопроса об аппроксимативных свойствах средних Валле Пуссена $V_m^n(f,x)$ в пространстве  $L^{p(x)}_{2\pi}$
+в том случае, когда  $p(x)>1$. Пусть  $p=p(x)\in\hat{\mathcal{  P}}_{2\pi}$ (см. \ref{vpmshiis4}), тогда, как уже отмечалось выше, для частичных сумм
+ $S_n(f)=S_n(f,x)$ ряда Фурье функции $f(x)\in L^{p(x)}_{2\pi}$  имеет место  оценка \eqref{vpmshii4.8} и, как следствие, мы выводим
+\begin{equation}\label{vpmshii7.32}
+    \|f-S_n(f)\|_{p(\cdot)}\le c(p)E_n(f)_{p(\cdot)}\quad(n=0,1,2,\ldots).
+ \end{equation}
+С другой стороны, в силу \eqref{vpmshii1.4} имеем
+\begin{equation}\label{vpmshii7.33}
+  \|f-V_m^n(f)\|_{p(\cdot)}\le \frac{1}{m+1}\sum_{k=n}^m\|f-S_k(f)\|_{p(\cdot)}.
+ \end{equation}
+Из \eqref{vpmshii7.32} и \eqref{vpmshii7.33} выводим следующий результат.
+\begin{theorem}\label{vpmshiit6}
+Пусть  $p=p(x)\in\hat{\mathcal{  P}}_{2\pi}$,  $f\in L^{p(x)}_{2\pi}$. Тогда имеют место следующие оценки
+$$
+   \|f-V_m^n(f)\|_{p(\cdot)}\le \frac{c(p)}{m+1}\sum_{k=0}^mE_{n+k}(f)_{p(\cdot)},
+$$
+$$
+   \|f-V_m^n(f)\|_{p(\cdot)}\le \frac{c(p)}{m+1}\sum_{k=0}^m\Omega\left(f,\frac2{n+k+1}\right)_{p(\cdot)}.
+$$
+\end{theorem}
+\section{Приближение функций $f(x)\in W^{r,p(x)}_{2\pi}$ средними Валле Пуссена $V_m^n(f,x)$ в заданной точке $x$  }\label{vpmshiis8}
+
+Рассмотрим задачу об приближении  функции $f(x)\in  W^{r,p(x)}_{2\pi}$ средними Валле Пуссена $V_m^n(f,x)$ в заданной точке $x$. С этой целью обратимся к неравенству \eqref{vpmshii6.9} и оценим величину $\|R_{r,l}(*-x)\|_{q(\cdot)}^*$ для $q(x)\in \hat{\mathcal{  P}}_{2\pi}$. Заметим, что если   $p=p(x)\in\hat{\mathcal{  P}}_{2\pi}$, то сопряженная функция $q(x)={p(x)\over p(x)-1}$ также принадлежит классу $\hat{\mathcal{  P}}_{2\pi}$.  Поскольку нормы $\|R_{r,l}(*-x)\|_{q(\cdot)}^*$ и $\|R_{r,l}(*-x)\|_{q(\cdot)}$ эквивалентны, то нам достаточно оценить $\|R_{r,l}(*-x)\|_{q(\cdot)}$.
+ Рассмотрим сначала случай четного $r\ge2$. Из \eqref{vpmshii6.4}, путем преобразования Абеля мы можем записать
+$$
+ R_{r,l}(u)  =(-1)^{\frac{r}{2}}\sum\limits_{k=l+1}^{\infty}\frac{\cos ku}{ k^r}=
+$$
+\begin{equation} \label{vpmshii8.1}
+    =-\frac{(-1)^\frac{r}{2}}{(l+1)^r}D_l(u)+\sum\limits_{k=l+1}^\infty[\frac{1}{ k^r}-\frac{1}{(k+1)^r}]D_k(u),
+\end{equation}
+где
+$$
+D_{l}(u)=\frac12+\sum\limits_{s=1}^{l}\cos su=\frac{\sin(l+\frac12)u}{2\sin\frac{u}2}.
+$$
+
+\begin{lemma}\label{vpmshii8.1}
+ Пусть  $p(x)\in \hat{\mathcal{ P}}_{2\pi}$,
+$\frac{1}{p(x)}+\frac{1}{q(x)}=1$. Тогда имеет место оценка
+$$
+    \|D_{l}(x-*)\|_{q(\cdot)}\le c(p)l^{\frac{1}{p(x)}}\quad(l=1,2,\ldots).
+$$
+\end{lemma}
+
+Из леммы \ref{vpmshii8.1} и эквивалентности норм $\|D_{l}(x-*)\|_{q(\cdot)}$ и $\|D_{l}(x-*)\|^*_{q(\cdot)}$ непосредственно вытекает
+\begin{lemma}\label{vpmshii8.2}
+ Пусть  $p(x)\in \hat{\mathcal{ P}}_{2\pi}$,
+$\frac{1}{p(x)}+\frac{1}{q(x)}=1$. Тогда имеет место оценка
+$$
+    \|D_{l}(x-*)\|^*_{q(\cdot)}\le c(p)l^{\frac{1}{p(x)}}\quad(l=1,2,\ldots).
+$$
+\end{lemma}
+Из леммы \ref{vpmshii8.2} и равенства \eqref{vpmshii8.1}, в свою очередь, вытекает
+\begin{lemma}\label{vpmshii8.3}
+ Пусть  $p(x)\in \hat{\mathcal{ P}}_{2\pi}$,
+$\frac{1}{p(x)}+\frac{1}{q(x)}=1$, $r\ge1$. Тогда имеет место оценка
+$$
+    \|R_{r,l}(x-*)\|^*_{q(\cdot)}\le c_r(p)l^{-r+{\frac{1}{p(x)}}}\quad(l=1,2,\ldots).
+$$
+\end{lemma}
+Из леммы \ref{vpmshii8.3} и неравенства \eqref{vpmshii6.9} выводим следующее утверждение.
+
+\begin{theorem}\label{vpmshiit7}
+Пусть  $p=p(x)\in \hat{\mathcal{  P}}_{2\pi}$, $r\ge1$, $f\in W^{r,p(x)}_{2\pi}$. Тогда имеет место следующая оценка
+$$
+     |f(x)-V_m^n(f,x)|\le \frac{c_r(p)}{m+1}\sum_{k=n}^{n+m}{E_k(f^{(r)})_{p(\cdot)}\over (k+1)^{r-{\frac{1}{p(x)}}}}.
+$$
+ \end{theorem}
+
+Из теоремы \ref{vpmshiit7} непосредственно вытекает
+
+
+\begin{corollary}\label{vpmshii3}
+Пусть  $p=p(x)\in \hat{\mathcal{  P}}_{2\pi}$, $r\ge1$, $f\in W^{r,p(x)}_{2\pi}$. Тогда имеют место следующие оценки:
+$$
+|f(x)-S_n(f,x)|= |f(x)-V_0^n(f,x)|\le c_r(p){E_n(f^{(r)})_{p(\cdot)}\over (n+1)^{r-{\frac{1}{p(x)}}}},
+$$
+$$
+ |f(x)-F_m(f,x)| =   |f(x)-V_m^0(f,x)|\le \frac{c_r(p)}{m+1}\sum_{k=0}^{m}{E_k(f^{(r)})_{p(\cdot)}\over (k+1)^{r-{\frac{1}{p(x)}}}} .
+$$
+ \end{corollary}
+ Из следствия \ref{vpmshii3} и оценки \eqref{vpmshii5.9} вытекает
+
+\begin{corollary}\label{vpmshii4}
+Пусть  $p=p(x)\in \hat{\mathcal{  P}}_{2\pi}$, $r\ge1$, $f\in W^{r,p(x)}_{2\pi}$. Тогда имеют место следующие оценки:
+$$
+|f(x)-S_n(f,x)|= |f(x)-V_0^n(f,x)|\le c_r(p){\Omega\left(f^{(r)},\frac1{n+1}\right)_{p(\cdot)}\over (n+1)^{r-{\frac{1}{p(x)}}}},
+$$
+$$
+ |f(x)-F_m(f,x)| =   |f(x)-V_m^0(f,x)|\le \frac{c_r(p)}{m+1}\sum_{k=0}^{m}{\Omega\left(f^{(r)},\frac1{k+1}\right)_{p(\cdot)}\over (k+1)^{r-{\frac{1}{p(x)}}}} .
+$$
+ \end{corollary}
+
+
+
+
+
+
+
+
+
+
+
+
+

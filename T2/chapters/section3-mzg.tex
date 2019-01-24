@@ -1,0 +1,122 @@
+\chapter{Восстановление векторного поля по данным его поперечного лучевого преобразования в ограниченном угловом диапазоне на плоскости}
+
+\section{Интегральная формула обращения}
+
+Символом $S_{m,k}$ обозначим класс функций, имеющих непрерывные частные производные до $k$-го порядка, причем сами функции и все их частные производные до $k$-го порядка убывают на бесконечности со скоростью $O\left(\frac{1}{|x|^m}\right)$ Будем говорить, что векторное поле $f=(f_1, f_2)$ принадлежит классу $S_{m,k}$, если координатные функции $f_1, f_2 \in S_{m,k}$.
+
+Посредством символов $d\varphi, \delta\varphi$ обозначим соответственно градиент и дивергенцию поля $f$. Операторы ортогонального градиента $d^\bot$ и ортогональной дивергенции $\delta^\bot$ определим формулами
+$$d^\bot\varphi=\left(-\frac{\partial\varphi}{\partial x_2}, \frac{\partial\varphi}{\partial x_1}\right), \delta^\bot\varphi=\frac{\partial f_2}{\partial x_1}-\frac{\partial f_1}{\partial x_2}.$$
+\begin{lemma}
+	Преобразование $P^\bot$ поля $f=(f_1, f_2)$ на плоскости связано с двумерным преобразованием Радона $R(\delta f)(\xi,s)=\int\limits_{x\cdot\xi=s}(\delta f)(x)dx$ функции $\delta f$ соотношением
+	$$R(\delta f)(\xi,s)=\frac{\partial}{\partial s}P^\bot f(\xi,s).$$
+\end{lemma}
+Через $g(\xi,\sigma)$ обозначим преобразование Фурье функции $P^\bot f(\xi,s)$ по переменной $s$.
+
+\begin{theorem}
+Пусть носитель поля $f\in S_{2,1}$ лежит в полосе ${|x_1|\geq r}$, функция $P^\bot f(\xi, s)$ задана на множестве $\mathbb S^1_I\times \mathbb R\subset \mathbb S^1\times \mathbb R$, где $I=(-\alpha_0, \alpha_0), 0<\alpha_0<\frac{\pi}{2}, \,\mathbb S^1_I=\{\xi=(\cos \alpha, \sin \alpha), \alpha\in I\} $. Тогда преобразование Фурье $\tilde{\delta f}$ функции $\delta f$ восстанавливается по формуле
+$$\tilde{\delta f}(y_1, y_2)=i \exp\left(r \sqrt{K^2y_2^2-y_1^2}\right)\cdot\left(\int\limits_{-\infty}^{-K|y_2|}\cdots -\int\limits_{K|y_2|}^{\infty}\frac{\sin r\sqrt{z^2-K^2y_2^2}}{\pi(z-y_1)}\sigma g(\xi,\sigma)dz\right),$$
+где под первым интегралом многоточие заменяют функцию $\frac{\sin r\sqrt{z^2-K^2y_2^2}}{\pi(z-y_1)}\sigma g(\xi,\sigma)$, $K=\ctg \alpha_0, \sigma =\sqrt{z^2+y_2^2}$, у квадратного корня выбрана ветвь, у которой $Re\sqrt{K^2y_2^2-y_1^2}>0$.
+\end{theorem}
+
+Для решения задачи восстановления потенциальной части неизвестного поля достаточно к функции $\tilde{\delta f}(y_1, y_2)$ применить обратное двумерное преобразование Фурье.
+
+\section{Интерполяция по дискретному множеству значений}
+
+Следующая формула обращения основана на интерполяционной формуле, обобщающей формулу Котельникова.
+
+\begin{theorem}
+Пусть носитель поля $f\in S_{1,2}$ лежит в круге $\{x_1^2+x_2^2\leq r^2\}$, функция $P^\bot f(\xi,s)$ задана на множестве $\mathbb S^1_I\times \mathbb R\subset \mathbb S^1\times \mathbb R$, где $I=(-\alpha_0, \alpha_0), 0<\alpha_0<\frac{\pi}{2}, \, \mathbb S^1_I=\{\xi=(\cos \alpha, \sin \alpha), \alpha\in I\} $. Тогда для преобразований Фурье координатных функций $u_1$ и $u_2$ потенциальной части поля $f$ справедливы формулы
+$$\tilde{u_1}(y_1,y_2)=\frac{1}{2\pi r}\ch\left(2\pi r\sqrt{b^2-y_1^2}\right)\sum\limits_{k=0}^\infty(-1)^k\cos \alpha_k \cdot\frac{\rho_k}{\sigma_k}\left(\frac{g(\xi_k,\sigma_k)}{y_1-\rho_k}-\frac{g(\xi_k',\sigma_k)}{y_1+\rho_k}\right),$$
+$$\tilde{u_2}(y_1,y_2)=\frac{1}{2\pi r}\ch\left(2\pi r\sqrt{b^2-y_1^2}\right)\sum\limits_{k=0}^\infty(-1)^k\cos \alpha_k \cdot\frac{y_2}{\sigma_k}\left(\frac{g(\xi_k,\sigma_k)}{y_1-\rho_k}-\frac{g(\xi_k',\sigma_k)}{y_1+\rho_k}\right),$$
+где $b=\sqrt{\rho^2-\left(\frac{1}{4r}\right)^2}, \alpha_k=\arg(\rho_k+ib), \rho=K|y_2|, K=\ctg \alpha_0, \rho_k=\sqrt{\rho^2+\frac{k(k+1)}{4r^2}}, \sigma_k=\sqrt{\rho_k^2+y_2^2}, \xi_k=\left(\frac{\rho_k}{\sigma_k},\frac{y_2}{\sigma_k}\right),  \xi_k'=\left(-\frac{\rho_k}{\sigma_k},\frac{y_2}{\sigma_k}\right)$.
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+
+\chapter{Восстановление функции по ее интегралам вдоль ломаных одного семейства на плоскости}
+
+\section{Основная формула}
+Введем дифференциальный оператор $\partial_\omega=\left<\omega,\nabla_x\right>h=\omega_1\frac{\partial h}{\partial x_1}+\omega_2\frac{\partial h}{\partial x_2}$. Если $\omega$ -- единичный вектор, то $\partial_\omega$ -- производная скалярного поля $h$ по направлению вектора $\omega$: $\partial_\omega h=\frac{\partial h}{\partial \omega}$.
+Рассмотрим интегральное преобразование вида
+
+$$h_n(x,\omega)=\int\limits_0^\infty e^{\lambda t}t^n f(x+t\omega)dt.$$
+
+Справедлива следующая
+\begin{lemma}
+Для любого натурального $n$ справедлива формула
+\begin{equation}
+\label{med-PifagorTh5}
+\partial_\omega^nh_{n-1}(x,\omega)=(-1)^n(n-1)!f(x)-\sum\limits_{j=0}^{n-1}C_n^j\lambda^{n-j}\partial_\omega^j h_{n-1(x,\omega)},
+\end{equation}
+где $C_n^j=\frac{n!}{j!\cdot(n-j)!}$ --биномиальные коэффициенты.
+\end{lemma}
+
+Формула \eqref{med-PifagorTh5} позволяет написать явную формулу для вычисления $f(x)$ в компактной форме:
+$$ f(x)=\frac{(-1)^{n+1}}{n!}(\partial_\omega +\lambda)^{n+1}h_n(x,\omega).$$
+
+\begin{theorem}
+Пусть интегралы \eqref{med-PifagorTh2} с весовой функцией \eqref{med-PifagorTh3} и фиксированным вектором $\omega\, (\omega_1\neq0, \omega_2\neq0)$ известны всюду в $\mathbb R^2$. Тогда задача восстановления функции $f(x)$ однозначно разрешима в классе $C_0^{n_1+n_2+1}(\mathbb R^2)$ финитных $n_1+n_2+1$ раз непрерывно дифференцируемых функций, причем справедлива формула обращения
+\begin{equation}
+\label{med-PifagorTh4}
+f(x)=-\frac{1}{\omega_1^{n_1}\omega_2^{n_2}}(\partial_\omega+\lambda)^{n_1+n_2+1} g_\rho(x;\omega),
+\end{equation}
+где $\lambda=-\left<a,\omega\right>$, а $(\partial_\omega+\lambda)^k$ -- $k$-я степень дифференциального оператора $(\partial_\omega+\lambda)h=\partial_\omega h+\lambda h$.
+\end{theorem}
+
+Вернемся к преобразованию \eqref{med-PifagorTh1} с весовой функцией \eqref{med-PifagorTh3}. Для компактности записей введем обозначения: $n=n_1+n_2, \, \omega^n=\omega_1^{n_1}\cdot\omega_2^{n_2}$. Подействуем на обе части формулы \eqref{med-PifagorTh1} оператором $-\frac{1}{\omega^n n!}(\partial_\omega +\lambda)^{n+1}$ и воспользуемся формулой \eqref{med-PifagorTh4}:
+
+$$-\frac{1}{\omega^n n!}(\partial_\omega +\lambda)^{n+1}g_\rho(x,\omega,\theta)=f(x)+\frac{1}{\omega^n n!}(\partial_\omega +\lambda)^{n+1}\int\limits_{\Gamma_\theta(x)}\rho(x,\xi)f(\xi)d\xi.$$
+
+К обеим частям полученного равенства подействуем оператором $-\frac{1}{\omega^n n!}(\partial_\theta +\mu)^{n+1}$, где $\mu=-\left<a,\theta\right>$, и снова воспользуемся формулой \eqref{med-PifagorTh4}:
+
+
+\begin{equation}
+\label{med-PifagorTh14}
+\left[\frac{1}{\omega^n}(\partial_\omega +\lambda)^{n+1}-\frac{1}{\theta^n}(\partial_\theta +\mu)^{n+1}\right]f(x)=\frac{1}{\omega^n \theta^n n!}\left[(\partial_\theta+\mu)(\partial_\omega+\lambda)\right]^{n+1}g_\rho (x;\omega, \theta).
+\end{equation}
+
+\section{Теорема единственности}
+Рассмотрим круг  $S_R=\{x\in\mathbb R^2: |x|\leq R\}$ и весовую функцию \eqref{med-PifagorTh3} с $\lambda=0$:
+
+\begin{equation}
+\label{med-PifagorTh22}
+\rho(x,\xi)=(x_1-\xi_1)^n_1(x_2-\xi_2)^n_2.
+\end{equation}
+
+\begin{theorem}
+Пусть интегралы \eqref{med-PifagorTh1} с весовой функцией \eqref{med-PifagorTh22} и фиксированными векторами $\omega$, $\theta$ ($\omega_i\neq 0, \theta_i\neq0, i=1,2$) известны всюду в $\mathbb R^2$. Тогда задача восстановления функции $f(x)$ однозначно разрешима в классе $C_0^{n_1+n_2+1}(S_R)$ финитных $n_1+n_2+1$ раз непрерывно дифференцируемых функций.
+\end{theorem}
+
+\begin{example}
+Пусть $\rho(x,\xi)=1$ и, стало быть, $n=0,\, \lambda=0$. Формула \eqref{med-PifagorTh14} имеет вид
+\end{example}
+
+\begin{equation}
+\label{med-PifagorTh18}\partial_{\omega-\theta}f(x)=\partial_{\omega\theta}g(x;\omega,\theta),\end{equation}
+где $\partial_{\omega\theta}=\partial_\omega\partial_\theta$.
+Положив $\tau=\omega-\theta, \, h(x)=\partial_{\omega\theta}g_\rho(x;\omega,\theta)$, запишем уравнение \eqref{med-PifagorTh18} в виде
+
+\begin{equation}
+\label{med-PifagorTh19}
+\partial_{\tau}f(x)=h(x).
+\end{equation}
+Общее решение этого уравнения, как легко проверить, дается формулой
+
+\begin{equation}
+\label{med-PifagorTh20}
+f(x_1, x_2)=-\int\limits_0^{t_0}h(x_1+\tau_1 t, x_2+\tau_2 t)dt+F(-\tau_2x_1+\tau_1x_2),
+\end{equation}
+где $t_0>0$ -- такое число, что $|x+\tau t_0|\geq R$ для всех $x\in S_R$, а  $F$ -- произвольная функция одной переменной. Значения  функции $F$ постоянны на любой прямой, параллельной вектору $\tau$. Такие функции называют плоскими волнами или ридж-функциями.  Если ридж-функция равна нулю на какой-либо прямой, перпендикулярной вектору $\tau$, то она тождественно равна нулю.
+
+Рассмотрим значения обеих частей формулы \eqref{med-PifagorTh20} в точках прямой $l: x=\chi\tau+\mu\tau^\bot, |\chi|\geq R+t_0, \mu\in\mathbb R$, перпендикулярной $\tau$ ($\chi$ фиксировано). Поскольку $|\chi\tau+\mu\tau^\bot|\geq R$ и $|(\chi+t)\tau+\mu\tau^\bot|\geq R$ для всех $t\in[0,t_0]$, то $f(\chi\tau+\mu\tau^\bot)=0$ и $h((\chi+t)\tau+\mu\tau^\bot)=0$, поэтому функция $F$ тождественно равна нулю.
+
+Таким образом, уравнение \eqref{med-PifagorTh18} имеет единственное решение и дается оно формулой
+
+$$f(x)=-\int\limits_0^{t_0}\partial_{\omega\theta}g (x+(\omega-\theta)t;\omega,\theta)dt.$$
+
+В частности, если $\omega=(1,1), \,\theta=(1,-1)$, то получим
+
+$$f(x_1, x_2)=\left( \frac{\partial^2}{\partial x_2^2}-\frac{\partial^2}{\partial x_1^2}\right)\int\limits_0^{t_0}g(x_1,x_2+2t)dt,$$
+т. е. с точностью до обозначений формулу \eqref{med-PifagorTh0}. 

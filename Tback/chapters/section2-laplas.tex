@@ -1,0 +1,241 @@
+\chapter{Обращение преобразования Лапласа посредством обобщенных специальных рядов по  полиномами Лагерра}\label{sect-laplas}
+
+%Рассмотрена задача об обращении преобразования Лапласа
+% посредством специального ряда по полиномам Лагерра, который в  частном случае совпадают с рядом Фурье по   полиномам $l_{r,k}^{\gamma}(x)$ $(r\in \mathbb{N}, k=0,1,\ldots)$, ортогональным относительно скалярного произведения типа Соболева следующего вида
+%\begin{equation*}
+%<f,g>=\sum\nolimits_{\nu=0}^{r-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_0^\infty f^{(r)}(t)g^{(r)}(t)t^\gamma e^{-t}dt, \gamma>-1.
+%\end{equation*}
+%  Даны оценки приближения функций частичными суммами специального ряда по полиномам Лагерра.
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Введение}
+В работах \cite{laplas-Shar13, laplas-Shar14, sobleg-Shar15, sobleg-Shar16}  были введены так называемые смешанные ряды по классическим ортогональным полиномам, которые, как выяснилось позже \cite{laplas-Shar11}, \cite{sobleg-SHII}, представляют собой не что иное, как ряды Фурье по полиномам, ортогональным по Соболеву, ассоциированным с соответствующими классическими ортогональными  полиномами.
+Интерес к теории систем   функций (особенно, полиномов), ортогональных по Соболеву в последние годы заметно усилился (см., например, \cite{sobleg-KwonLittl1, sobleg-KwonLittl2, sobleg-MarcelAlfaroRezola, sobleg-IserKoch, laplas-Meijer, laplas-MarcelXu} и цитированную там литературу). Были исследованы некоторые общие свойства полиномов, ортогональных по Соболеву, в том числе и связанные со сравнительной асимптотикой \cite{laplas-MarcelVanash}. Число работ по данной теме  неуклонно растет  \cite{laplas-MarcelXu}. В работах \cite{laplas-Shar13, laplas-Shar14, sobleg-Shar15, sobleg-Shar16, laplas-Shar11, sobleg-SHII} были подробно исследованы аппроксимативные свойства смешанных рядов для функций из различных функциональных пространств и классов. В частности, было показано, что частичные суммы смешанных рядов по классическим ортогональным полиномами, в отличие от сумм Фурье по этим же полиномам, успешно могут быть использованы в задачах, в которых требуется одновременно приближать дифференцируемую функцию и ее несколько производных. Такие проблемы непременно возникают, например, при решении краевых задач для обыкновенных дифференциальных уравнений.
+
+В этом параграфе эти вопросы рассмотрены для классических полиномов Лагерра $L_n^\alpha(x)$ в связи с задачей обращения преобразования Лапласа. Тот факт, что ряд Фурье по полиномам, ортогональным по Соболеву относительно скалярного произведения
+\begin{equation}\label{laplas-1.1}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_0^\infty f^{(r)}(t)g^{(r)}(t)t^\alpha e^{-t}dt, \alpha>-1,
+\end{equation}
+ассоциированным с полиномами Лагерра представляет собой смешанный ряд по полиномам Лагерра, позволяет применить к исследованию их аппроксимативных свойств  методы и подходы, разработанные нами ранее \cite{laplas-Shar13, laplas-Shar14, sobleg-Shar15, sobleg-Shar16} для решения аналогичной задачи для смешанных рядов по классическим ортогональным полиномам. Именно на таком пути в работах  \cite{laplas-Shar11} и \cite{sobleg-SHII}, в частности, были исследованы апрроксимативные свойства частичных сумм ряда Фурье по полиномам, ортогональным по Соболеву, порожденным классическими полиномами Лагерра. С другой стороны, в \cite{laplas-Shar11} и \cite{sobleg-SHII} были введены некоторые специальные ряды по полиномам Лагерра, которые также тесно связаны со смешанными рядами по полиномами Лагерра и в отдельных важных случаях совпадают с рядами Фурье по полиномам, ортогональным по Соболеву и порожденным полиномами Лагерра. В \cite{laplas-Shar11} и \cite{sobleg-SHII} были весьма подробно исследованы аппроксимативные свойства частичных сумм указанных специальных рядов. В этом параграфе в связи задачей об обращении преобразования Лапласа мы введем \textit{ обобщенные специальные ряды} по полиномам Лагерра,  для которых специальные ряды, введенные в \cite{laplas-Shar11} и \cite{sobleg-SHII} являются частным случаем.
+
+ Отметим, что если нам задано преобразование Лапласа
+$\bar f(p)=\int_0^\infty e^{-pt}f(t)dt$, и для оригинала существуют производные $f^{(\nu)}(0)$ с $\nu=0,1,\ldots, r-1$, то мы можем считать заданным и преобразование Лапласа $F(p)=\int_0^\infty e^{-pt}[f(t)-P_{r-1}(t)]dt$, где $P_{r-1}(t)=P_{r-1}(x)=\sum\nolimits_{\nu=0}^{r-1}f^{(\nu)}(0)\frac{x^\nu}{\nu!}$ -- полином Тейлора для функции $f(t)$ в точке $t=0$. В данном параграфе мы будем рассматривать задачи об обращении преобразования Лапласа второго из указанных типов. Именно на этом пути возникают специальные ряды по общим полиномам Лагерра $L_n^{\alpha}(t)$, обладающие на конечных отрезках вида $[0,A]$ лучшими, чем у классических рядов Фурье --- Лагерра аппроксимативными свойствами для дифференцируемых функций   (см. п.\ref{laplas6}).
+
+
+
+
+
+
+\section{Обращение преобразования Лапласа посредством специальных рядов по полиномами Лагерра}
+Пусть для функции $f(x)$, определенной на полуоси $[0,\infty)$, существуют производные $f^{(\nu)}(0)$ с $\nu=0,1,\ldots, r-1$. Тогда мы можем определить на $(0,\infty)$  новую функцию ($\alpha\in\mathbb{R}$)
+\begin{equation}\label{laplas-3.1}
+g(x)=\frac{1}{x^\alpha}(f(x)-P_{r-1}(x)),\quad \text{где} \quad P_{r-1}(x)=\sum\nolimits_{\nu=0}^{r-1}f^{(\nu)}(0)\frac{x^\nu}{\nu!},
+\end{equation}
+причем будем считать, что если $r=0$, то $P_{r-1}(x)\equiv0$. Предположим, что $g(x)\in L_{2,\rho}$, где $\rho(x)=e^{-x}x^\alpha$, $\alpha>-1$.
+Тогда  $g(x)$ можно представить в виде ряда Фурье по  полиномам Лагерра $L_k^\alpha(x)$:
+\begin{equation}\label{laplas-3.2}
+g(x)=\sum_{k=0}^{\infty} g_k^\alpha L_k^\alpha(x),
+\end{equation}
+где
+\begin{equation}\label{laplas-3.3}
+ g_k^\alpha=\frac{1}{h_k^\alpha} \int_0^\infty g(t) L_k^\alpha(t)t^\alpha e^{-t}dt.
+\end{equation}
+Кроме того, представим в виде ряда Фурье по полиномам Лагерра $L_k^\alpha(x)$  функцию $\eta(x)=e^{-(p-1)x}$:
+\begin{equation}\label{laplas-3.4}
+\eta(x)=\sum_{k=0}^{\infty} \eta_k^\alpha L_k^\alpha(x),
+\end{equation}
+\begin{equation}\label{laplas-3.5}
+ \eta_k^\alpha=\frac{1}{h_k^\alpha} \int_0^\infty \eta(t) L_k^\alpha(t)t^\alpha e^{-t}dt=\frac{1}{h_k^\alpha} \int_0^\infty e^{-pt}L_k^\alpha(t)t^\alpha dt.
+\end{equation}
+Чтобы найти значение последнего интеграла, воспользуемся тем фактом, что он представляет собой преобразование Лапласа функции
+$L_k^\alpha(t)t^\alpha$ и, как хорошо известно \cite{laplas-DitPrud}, \cite{laplas-KrylovSkob}, имеет место равенство
+\begin{equation}\label{laplas-3.6}
+  \int_0^\infty e^{-pt}L_k^\alpha(t)t^\alpha dt=\frac{1}{p^{\alpha+1}}\left(1-\frac1p\right)^kh_k^\alpha.
+\end{equation}
+Из \eqref{laplas-3.5} и \eqref{laplas-3.6} имеем
+\begin{equation}\label{laplas-3.7}
+ \eta_k^\alpha=\frac{1}{p^{\alpha+1}}\left(1-\frac1p\right)^k.
+\end{equation}
+Пусть задано преобразование Лапласа
+\begin{equation}\label{laplas-3.8}
+F(p)=\int_0^\infty e^{-pt}\left[f(t)-P_{r-1}(t)\right]dt,
+\end{equation}
+которое с учетом \eqref{laplas-3.1} можем переписать так
+\begin{equation}\label{laplas-3.9}
+F(p)=\int_0^\infty e^{-(p-1)t} g(t)t^\alpha e^{-t}dt.
+\end{equation}
+Если $p>\frac12$, то к последнему интегралу мы можем применить обобщенное равенство Парсеваля, что с учетом \eqref{laplas-3.3} и \eqref{laplas-3.8} дает
+\begin{equation}\label{laplas-3.10}
+p^{\alpha+1}F(p)=p^{\alpha+1}\sum_{k=0}^\infty h_k^\alpha g_k^\alpha\eta_k=\sum_{k=0}^\infty g_k^\alpha h_k^\alpha\left(1-\frac1p\right)^k.
+\end{equation}
+Полагая $z=1-1/p$, мы можем переписать это равенство еще так:
+\begin{equation}\label{laplas-3.11}
+G(z)=\frac{1}{(1-z)^{\alpha+1}}F\left(\frac{1}{1-z}\right)=\sum_{k=0}^\infty g_k^\alpha h_k^\alpha z^k.
+\end{equation}
+Поскольку  $G(z)$ -- заданная функция, аналитическая в круге $|z|<1$,  то неизвестные коэффициенты $g_k^\alpha$ из \eqref{laplas-3.10} можно найти из равенств
+\begin{equation}\label{laplas-3.12}
+g_k^\alpha=\frac{1}{R^{k} h_k^\alpha}\frac{1}{2\pi}\int_0^{2\pi}G(Re^{i\varphi})e^{-ik\varphi}d\varphi, \quad k=0,1,\ldots,
+\end{equation}
+где $0<R<1$. При этом заметим, что приближенные значения интегралов из \eqref{laplas-3.12} c $0\le k\le N $ для произвольного натурального $N$ (особенно для $N=2^m$) можно найти путем применения быстрого дискретного преобразования Фурье.
+
+Равенство \eqref{laplas-3.2} с учетом \eqref{laplas-3.1} можно переписать  так
+\begin{equation}\label{laplas-3.13}
+f(x)=\sum\nolimits_{\nu=0}^{r-1}f^{(\nu)}(0)\frac{x^\nu}{\nu!}+x^\alpha\sum_{k=0}^{\infty} g_k^\alpha L_k^\alpha(x),
+\end{equation}
+в, частности, если  $\alpha=r$, то
+\begin{equation}\label{laplas-3.14}
+f(x)=\sum\nolimits_{\nu=0}^{r-1}f^{(\nu)}(0)\frac{x^\nu}{\nu!}+x^r\sum_{k=0}^{\infty} g_k^r L_k^r(x).
+\end{equation}
+
+ Отметим, что рассмотренный нами выше подход к обращению преобразования  Лапласа \eqref{laplas-3.8} приводит к задаче об исследованиии вопросов сходимости  специальных рядов по полиномам Лагерра вида \eqref{laplas-3.13} и \eqref{laplas-3.14}. Специальные ряды \eqref{laplas-3.14} являлись одним из объектов исследования работ  \cite{laplas-Shar11} и \cite{sobleg-SHII}. Ниже мы покажем, что ряд \eqref{laplas-3.13} представляет собой частный случай некоторых обобщенных специальных рядов по полиномам Лагерра, а ряд \eqref{laplas-3.14} представляет собой не что иное, как ряд Фурье по полиномам, ортогональным по Соболеву, порожденным полиномами Лагерра $L_k^0(x)$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Обобщенные специальные ряды по полиномам Лагерра}
+
+Пусть $1\le r$ -- целое, $\beta\in \mathbb{R}$, $f(t)$ -- $r-1$ раз дифференцируемая в точке $t=0$,
+\begin{equation}\label{laplas-4.1}
+  P_{r-1}(f)=P_{r-1}(f)(t)=\sum\limits_{i=0}^{r-1}\frac{f^{(i)}(0)}{i!}t^i,
+\end{equation}
+\begin{equation}\label{laplas-4.2}
+  f_\beta(t)=\frac1{t^\beta}[f(t)-P_{r-1}(f)(t)].
+\end{equation}
+
+Предположим, что для функции $f_\beta(t)$, определенной равенством \eqref{laplas-4.2}, существуют коэффициенты Фурье --- Лагерра
+\begin{equation*}
+  \hat{f}_{\beta,k}^\gamma=\frac1{h_k^\gamma}\int_0^\infty f_\beta(\tau)t^\gamma e^{-t}L_k^\gamma(t)dt=
+\end{equation*}
+\begin{equation}\label{laplas-4.3}
+  \frac1{h_k^\gamma}\int_0^\infty [f(t)-P_{r-1}(f)(t)]t^{\gamma-\beta}e^{-t}L_k^\gamma(t)dt,
+\end{equation}
+где $h_n^\gamma=\Gamma(n+\gamma+1)/n!$.
+Тогда мы можем рассмотреть ряд Фурье --- Лагерра функции $f_\beta(t)$:
+\begin{equation}\label{laplas-4.4}
+  f_\beta(t)\sim\sum\nolimits_{k=0}^\infty\hat{f}_{\beta,k}^\gamma L_k^\gamma(t).
+\end{equation}
+Если ряд \eqref{laplas-4.4} сходится к $f_\beta(t)$, то с учетом \eqref{laplas-4.2} мы можем записать
+\begin{equation}\label{laplas-4.5}
+  f(t)=P_{r-1}(f)(t)+t^\beta\sum\nolimits_{k=0}^\infty\hat{f}_{\beta,k}^\gamma L_k^\gamma(t).
+\end{equation}
+ Это и есть \textit{ обобщенный специальный ряд по полиномам Лагерра}. Из равенств \eqref{laplas-3.1} и \eqref{laplas-4.2}  непосредственно следует, что  если $\gamma=\beta=\alpha$, то $g_(x)=f_\beta(x)$ и ряд \eqref{laplas-4.5} совпадает с рядом \eqref{laplas-3.13}. В следующем параграфе мы покажем, в частности, что ряд \eqref{laplas-3.14} представляет собой ряд Фурье по полиномам, ортогональным по Соболеву, порожденным полиномами Лагерра $L_n^0(x)$.
+
+
+
+
+
+
+
+
+\section{Неравенство Лебега для частичных сумм специального ряда  по полиномам Лагерра}\label{laplas6}
+Вернемся к вопросу об обращении преобразования Лапласа \eqref{laplas-3.8} посредством специального ряда \eqref{laplas-3.13}, коэффициенты $g_k^\alpha$ которого могут быть найдены с помощью равенства  \eqref{laplas-3.12}. При этом следует отметить, что мы можем найти только конечное число  коэффициентов $g_k^\alpha$ с $k=0,1,\ldots, N$, поэтому вместо искомого оригинала $f(t)$ (или, что то же, $f(t)-\sum\nolimits_{\nu=0}^{r-1}f^{(\nu)}(0)\frac{t^\nu}{\nu!}$ ) мы получим его приближение
+\begin{equation*}
+Y_N(t)=\sum\nolimits_{\nu=0}^{r-1}f^{(\nu)}(0)\frac{t^\nu}{\nu!}+t^\alpha\sum\nolimits_{k=0}^{N} g_k^\alpha L_k^\alpha(t).
+\end{equation*}
+ Отсюда возникает задача об исследовании величины $|f(t)-Y_N(t)|$. Более подробно эту задачу мы рассмотрим для частичных сумм более общего специального ряда, получающегося из обобщенного специального ряда \eqref{laplas-4.5}  в случае $\beta=r$. Через $\mathcal{L}_n^\gamma(f)=\mathcal{L}_n^\gamma(f)(t)$ обозначим частичную сумму этого ряда  вида
+\begin{equation*}
+  \mathcal{L}_n^\gamma(f)(t)=P_{r-1}(f)+t^r\sum\limits_{k=0}^{n-r}\hat{f}_{r,k}^\gamma L_k^\gamma(t).
+\end{equation*}
+ Заметим, что если $f(t)=q_n(t)$ представляет собой алгебраический полином степени $n$, то
+$\mathcal{L}_n^\gamma(q_n)(t)\equiv q_n(t)$ при $\gamma>-1$, другими словами, оператор $\mathcal{L}_n^\gamma(f)$ является проектором на подпространство $H^n$, состоящем из алгебраических полиномов степени $n$.
+Это свойство частичных сумм  $\mathcal{L}_n^\gamma(f)(t)$ играет важную роль при решении задачи об оценке отклонения $\mathcal{L}_n^\gamma(f)(t)$ от исходной функции $f=f(t)$. Пусть $f(t)$ --- непрерывная функция, заданная на полуоси $[0,\infty)$ и такая, что в точке $t=0$ существуют производные $f^{(\nu)}(0)$ $(\nu=0,1,\dots,r-1)$. Кроме того будем считать, что для всех $k=0,1,\ldots$ существуют коэффициенты $\hat{f}_{r,k}^\gamma$, определяемые равенством \eqref{laplas-4.3} с $\beta=r$. Тогда мы можем определить специальный ряд \eqref{laplas-4.5} и его частичную сумму $\mathcal{L}_n^\gamma(f)(t)$. Рассмотрим задачу об оценке величины
+\begin{equation}\label{laplas-6.1}
+  R_{n,r}^\gamma(f)(t)=|f(t)-\mathcal{L}_n^\gamma(f)(t)|t^{-\frac r2+\frac14}e^{-\frac t2}.
+\end{equation}
+Весовой множитель $t^{-\frac r2+\frac14}$, фигурирующий в правой части равенства \eqref{laplas-6.1}, связан с тем обстоятельством, что разность
+$|f(t)-\mathcal{L}_n^\gamma(f)(t)|$ стремится к нулю вместе с $t$ со скоростью, не меньшей, чем  $t^{\frac r2-\frac14}$.
+Обозначим через $q_n(t)$ --- алгебраический полином степени $n$, для которого
+\begin{equation}\label{laplas-6.2}
+  f^{(\nu)}(0)=q_n^{(\nu)}(0)\text{ }(\nu=0,1,\ldots,r-1).
+\end{equation}
+Тогда
+\begin{equation*}
+  f(t)-\mathcal{L}_n^\gamma(f)(t)=f(t)-q_n(t)+q_n(t)-\mathcal{L}_n^\gamma(f)(t)=
+\end{equation*}
+\begin{equation}\label{laplas-6.3}
+  f(t)-q_n(t)+\mathcal{L}_n^\gamma(q_n-f)(t),
+\end{equation}
+поэтому в силу \eqref{laplas-6.1} и \eqref{laplas-6.3}
+\begin{equation}\label{laplas-6.4}
+  |R_{n,r}(f)(t)|\le|f(t)-q_n(t)|t^{-\frac r2+\frac14}e^{-\frac t2}+|\mathcal{L}_n^\gamma(q_n-f)(t)|t^{-\frac r2+\frac14}e^{-\frac t2}.
+\end{equation}
+С другой стороны, в силу \eqref{laplas-6.2} $P_{r-1}(q_n-f)\equiv0$, поэтому  имеем
+\begin{equation*}
+  \mathcal{L}_n^\gamma(q_n-f)(t)=t^r\sum\limits_{k=0}^{n-r}(\widehat{q_n-f})_{r,k}L_k^\gamma(t)=
+\end{equation*}
+\begin{equation*}
+  t^r\sum\limits_{k=0}^{n-r}\frac1{h_k^\gamma}\int\limits_0^\infty(q_n(\tau)-f(\tau))\tau^{\gamma-r}e^{-\tau}L_k^\gamma(\tau)L_k^\gamma(t)d\tau.
+\end{equation*}
+Отсюда
+$$
+e^{-\frac t2}t^{-\frac r2+\frac14}\mathcal{L}_n^\gamma(q_n-f)(t)=
+$$
+\begin{equation}\label{laplas-6.5}
+  e^{-\frac t2}t^{\frac r2+\frac14}\int\limits_0^\infty(q_n(\tau)-f(\tau))e^{-\tau}\tau^{\gamma-r}\sum\limits_{k=0}^{n-r}\frac{L_k^\gamma(t)L_k^\gamma(\tau)}{h_k^\gamma}d\tau.
+\end{equation}
+Положим
+\begin{equation}\label{laplas-6.6}
+  E_n^r(f)=\inf\limits_{q_n}\sup\limits_{t>0}|q_n(t)-f(t)|e^{-\frac t2}t^{-\frac r2+\frac14},
+\end{equation}
+где нижняя грань берется по всем алгебраическим полиномам $q_n(t)$ степени $n$ для которых $f^{(\nu)}(0)=q_n^{(\nu)}(0)$ $(\nu=0,\ldots,r-1)$. Тогда из \eqref{laplas-6.5} находим
+\begin{equation}\label{laplas-6.7}
+ e^{-\frac{t}{2}} t^{-\frac r2+\frac14}|\mathcal{L}_n^\gamma(q_n-f)(t)|\le E_n^r(f)\lambda_{r,n}^\gamma(t),
+\end{equation}
+где
+\begin{equation}\label{laplas-6.8}
+  \lambda_{r,n}^\gamma(t)=t^{\frac r2+\frac14}\int\limits_0^\infty e^{-\frac{\tau+t}2}\tau^{\gamma-\frac r2-\frac14}|\mathcal{K}_{n-r}^\gamma(t,\tau)|d\tau,
+\end{equation}
+а ядро $\mathcal{K}_{n-r}^\gamma(t,\tau)$ определяется равенством \eqref{laplas-2.5}.
+Из \eqref{laplas-6.4}, \eqref{laplas-6.6} -- \eqref{laplas-6.8} выводим следующее неравенство типа Лебега
+\begin{equation}\label{laplas-6.9}
+  |R_{n,r}^\gamma(f)(t)|\le E_n^r(f)(1+\lambda_{r,n}^\gamma(t)).
+\end{equation}
+В связи с неравенством \eqref{laplas-6.9} возникает задача об оценке функции Лебега $\lambda_{r,n}^\gamma(t)$, определяемой равенством \eqref{laplas-6.8}. С этой целью мы введем следующие обозначения: $G_1=[0,\frac3{\theta_n}]$, $G_2=[\frac3{\theta_n},\frac{\theta_n}2]$, $G_3=[\frac{\theta_n}2,\frac{3\theta_n}2]$, $G_4=[\frac{3\theta_n}2,\infty]$. В работах \cite{laplas-Shar11} и \cite{sobleg-SHII}, существенно используя весовые оценки \eqref{laplas-2.12}, \eqref{laplas-2.14} и \eqref{laplas-2.15},  были получены оценки для $\lambda_{r,n}^\gamma(t)$ при $t\in G_s$ $(s=1,2,3,4)$. А именно, доказана
+
+\begin{theorem}
+ Пусть $1\le r$ -- целое, $r-\frac12<\gamma< r+\frac12$, $\theta_n=4n+2\gamma+2$. Тогда имеют место следующие оценки:
+
+1) если $t \in G_1=[0,\frac3{\theta_n}]$,  то
+\begin{equation}\label{laplas-6.10}
+\lambda^\gamma_{r,n}(t) \leq c(\gamma,r)[\ln(n+1)+n^{\gamma-r}];
+\end{equation}
+
+2) если $t \in G_2=[\frac3{\theta_n},\frac{\theta_n}2]$, то
+\begin{equation}
+\lambda_{r,n}^\gamma(t) \leq c(\gamma,r)\left[\ln(n+1)+\left({n\over t}\right)^{\gamma-r\over2}\right];
+\label{laplas-6.11}
+\end{equation}
+
+3) если $t \in G_3=[\frac{\theta_n}2,\frac{3\theta_n}2]$, то
+\begin{equation}
+\lambda_{r,n}^\gamma(t) \leq c(\gamma,r)\left[\ln(n+1)+\left({t\over \theta_n^{1/3}+|t-\theta_n| }\right)^{1/4}\right];
+\label{laplas-6.12}
+\end{equation}
+
+4) если $t \in G_4=[\frac{3\theta_n}2,\infty)$, то
+\begin{equation}
+\lambda_{r,n}^\gamma(t) \leq c(\gamma,r)n^{-\frac{r}{2}+\frac54}t^{\frac r2+\frac14}e^{-\frac{t}{4}}.
+\label{laplas-6.13}
+\end{equation}
+
+\end{theorem} 

@@ -1,0 +1,225 @@
+\chapter{Оценка аппроксимативных свойств полиномов $L_{n,N}(f,x)$ для некоторых кусочно-линейных функций}
+
+
+\section{Предварительные сведения}
+
+
+
+Пусть $N \geq 2$ --- целое положительное число, и
+$t_k = 2\pi k/N$, $(0 \leq k \leq N-1)$
+--- система узловых точек. Обозначим через
+$ L_{n,N}(f) = L_{n,N}(f,x)$, где $1 \leq n \leq \lfloor N/2\rfloor$,
+тригонометрический полином порядка $n$ наименьшего квадратического отклонения от функции $f$ на сетке
+$\{t_k\}_{k=0}^{N-1}$. Другими словами, полином $L_{n,N}(f,x)$ доставляет минимум для
+суммы
+$\sum_{k=0}^{N-1}|f(t_k)-T_n(t_k)|^2$
+на множестве всех тригонометрических полиномов $T_n$ порядка $n$.
+В частности, $L_{\lfloor N/2 \rfloor,N}(f,x)$ --- интерполяционный полином, совпадающий с функцией $f(x)$ в
+точках $t_k$.
+Легко показать\cite{aggshii_article}, что $L_{n,N}(f,x)$ при $n < N/2$ представляется в виде
+\begin{equation*}
+	L_{n,N}(f,x) = \sum\limits_{\nu = -n}^{n} c_\nu^{(N)}(f) e^{i\nu x}, \mbox{ где } c_\nu^{(N)}(f) = \frac{1}{N}\sum\limits_{k=0}^{N-1} f(t_k)e^{-i\nu t_k},
+\end{equation*}
+а когда $n = N/2$ (когда $N$ --- чётное)
+\begin{equation} \label{L=L+a}
+	L_{N/2,N}(f,x) = L_{N/2-1,N}(f,x) + a_n^{(2n)}(f)\cos nx,
+\end{equation}
+где
+\begin{equation} \label{a_n_formula}
+	a_n^{(2n)}(f) = \frac{1}{2n}\sum_{k=0}^{2n-1}f(t_k)\cos nt_k.
+\end{equation}
+Подробнее о приближении функций тригонометрическими полиномами можно почитать в работах \cite{agg2_bernstein,agg4_erdos,agg7_kalashnikov,agg8_krilov,agg9_marcinkiewicz,agg10_marcinkiewicz,agg11_natanson,LapVPNIK,agg17_turetsky,LapVPZigmund}.
+
+Через
+$f_1$ и $f_2$ обозначим $2\pi$-периодические функции, которые на отрезке $[-\pi, \pi]$ совпадают с функциями $|x|$ и $\mbox{sign } x$ соответственно.
+В отчетном году было проведено исследование поведения величин $|L_{n,N}(f_1,x) - f_1(x)|$ и $|L_{n,N}(f_2,x) - f_2(x)|$ при $n,N \to \infty$  на отрезке $[-\pi, \pi]$.
+
+
+
+
+
+
+\section{Некоторые вспомогательные утверждения}
+
+
+Рассмотрим ряд Фурье функции $f(x)$:
+\begin{equation*}
+	f(x) = \sum\limits_{k\in \mathbb{Z}} c_k(f)e^{ikx},
+\end{equation*}
+где
+\begin{equation*}
+	c_k(f) = \frac{1}{2\pi}\int\limits_{-\pi}^{\pi}f(t)e^{-ik t} dt, \quad k \in \mathbb{Z},
+\end{equation*}
+и его частичную сумму порядка $n$
+\begin{equation*}
+	S_n(f, x) = \sum\limits_{k = -n}^{n} c_k(f)e^{ikx}.
+\end{equation*}
+Обозначим
+$$\Delta^I(\varepsilon) = [-\pi + \varepsilon,- \varepsilon] \cup [\varepsilon, \pi - \varepsilon], \quad 0 < \varepsilon < \pi/2.$$
+Кроме того, через $C$ и $C(\varepsilon)$ мы будем обозначать некоторые положительные константы, зависящие только от указанных параметров, вообще говоря, разные в разных местах.
+
+\begin{lemma}[Шарапудинов И.И., \cite{aggshii_article}] \label{theorem sharapudinov}
+	Если ряд Фурье функции $f$ сходится в точках $t_k = 2\pi k/N$, тогда имеет место представление
+	\begin{equation*}
+		L_{n,N}(f,x) = S_n(f,x) + R_{n,N}(f,x), \label{iishar_Ln_eq_Sn_Rn}
+	\end{equation*}
+	где $2n < N$, и
+	\begin{equation}\label{RfromLemma}
+		R_{n,N}(f,x) = \frac2\pi \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} D_n(x-t) \cos \mu N t f(t) dt.
+	\end{equation}
+\end{lemma}
+Из приведённой леммы следует, что при $n < N/2$
+\begin{equation}\label{Ln = Sn + Rn}
+	|L_{n,N}(f,x) - f(x)| \leq |S_n(f,x) - f(x)| + |R_{n,N}(f,x)|.
+\end{equation}
+При чётном $N$ возможен случай, когда $2n = N$, тогда из \eqref{L=L+a} и \eqref{Ln = Sn + Rn} можно записать
+\begin{equation}\label{L<SRa}
+	|L_{n,2n}(f,x) - f(x)| \leq |S_{n-1}(f,x) - f(x)| + |R_{n-1,2n}(f,x)| + |a_n^{(2n)}(f)|,\quad n=N/2.
+\end{equation}
+
+
+
+%Из \eqref{Ln = Sn + Rn} и \eqref{L<SRa} видно, что для доказательства вышеуказанных теорем требуется изучить поведение величин $|S_n(f_1,x) - f_1(x)|$, $|S_n(f_2,x) - f_2(x)|$, $|R_{n,N}(f_1,x)|$ и $|R_{n,N}(f_2,x)|$, а также $|a_n^{(2n)}(f_1)|$ и $|a_n^{(2n)}(f_2)|$, для чего были доказаны следующие леммы:
+
+\begin{lemma} \label{lemma_Sn_f1}
+	Для величины $|S_n(f_1,x) - f_1(x)|$, где $f_1(x) = |x|$, $x \in [-\pi,\pi]$, справедливы оценки
+	\begin{equation} \label{Sn1 -pi pi}
+		|S_n(f_1,x) - f_1(x)| \leq \frac{C}{n}, \quad x \in [-\pi, \pi],
+	\end{equation}
+	\begin{equation} \label{Sn1 eps pi - eps}
+		|S_n(f_1,x) - f_1(x)| \leq \frac{C(\varepsilon)}{n^2}, \quad x \in \Delta^I(\varepsilon).
+	\end{equation}
+\end{lemma}
+\begin{lemma} \label{lemma_Sn_f2}
+	Для величины $|S_n(f_2,x) - f_2(x)|$, где $f_2(x) = \mbox{sign } x$, $x \in [-\pi,\pi]$, справедлива оценка
+	\begin{equation*}
+		|S_n(f_2,x) - f_2(x)| \leq \frac{C(\varepsilon)}{n}, \quad x \in \Delta^I(\varepsilon). \label{Sn2 eps pi - eps}
+	\end{equation*}
+\end{lemma}
+
+\begin{lemma} \label{th_abs_1}
+	Для $R_{n,N}(f_1,x)$, при $n < N/2$, справедливы оценки
+	\begin{equation*}
+		|R_{n,N}(f_1,x)| \leq \frac{\pi}{n}\left(4+\frac{1}{2n}\right) \leq \frac{C}{n}, \quad x \in [-\pi, \pi],
+	\end{equation*}
+	\begin{equation*}
+		|R_{n,N}(f_1,x)| \leq \frac{\pi}{n^2} \left(\frac{1}{6}+\frac{4}{|\sin \varepsilon|}\right) \leq \frac{C(\varepsilon)}{n^2}, \quad x \in \Delta^I(\varepsilon).
+	\end{equation*}
+\end{lemma}
+%Для формулировки следующих лемм необходимы некоторые формулы:
+%\begin{equation}
+%	R_{n,N}(f_1,x) = \frac{2}{\pi} \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} D_n(x-t) \cos \mu N t |t| dt, \label{agg_1_RnN}
+%\end{equation}
+%где
+%\begin{equation}
+%	D_n(x-t) = \frac12 + \sum\limits_{k=1}^{n} \cos k (x - t) \label{agg_2_Dn}
+%\end{equation}
+%--- ядро Дирихле.
+%Подставив формулу  \eqref{agg_2_Dn} в \eqref{agg_1_RnN} имеем
+Нетрудно показать, что имеет место следующее представление
+\begin{equation} \label{R=R1+R2}
+	\left|R_{n,N}(f_1,x)\right| \leq \left|R^1_{n,N}(f_1,x)\right| + \left|R^2_{n,N}(f_1,x)\right|,
+\end{equation}
+где
+\begin{equation}\label{R_1_abs}
+	R^1_{n,N}(f_1,x) = \frac{1}{\pi} \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} |t| \cos \mu N t dt,
+\end{equation}
+\begin{equation}\label{R2f1}
+	R^2_{n,N}(f_1,x) = \frac{2}{\pi} \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} |t| \sum\limits_{k=1}^{n} \cos k (x-t) \cos \mu N t dt.
+\end{equation}
+Величины $\left|R_{n,N}(f_1,x)\right| $ и $\left|R_{n,N}(f_2,x)\right| $ оценены в следующих леммах.
+\begin{lemma} \label{lm1}
+	Выражение \eqref{R_1_abs} имеет следующую оценку при $n < N/2$:
+	\begin{equation*}
+		|R^1_{n,N}(f_1,x)| \leq \frac{\pi}{6n^2}, \quad x \in [-\pi,\pi].
+	\end{equation*}
+\end{lemma}
+\begin{lemma} \label{lm3}
+	Выражение \eqref{R2f1}	имеет следующую оценку при $n < N/2$:
+	\begin{equation*}
+		|R^2_{n,N}(f_1,x)| \leq \frac{4\pi}{3n}, \quad x \in [-\pi, \pi],
+	\end{equation*}
+\end{lemma}
+\begin{lemma} \label{lm2}
+	Выражение \eqref{R2f1} имеет, также, следующую оценку при $n < N/2$:
+	\begin{equation*}
+		|R^2_{n,N}(f_1,x)| \leq \frac{4\pi}{n^2|\sin \varepsilon|}, \quad x \in \Delta^I(\varepsilon).
+	\end{equation*}
+\end{lemma}
+
+\begin{lemma}\label{lemma_R2f1_transformation}
+	Выражение \eqref{R2f1} можно представить в следующем виде:
+	\begin{equation}\label{R_2 with two sums before abel}
+		R^2_{n,N}(f_1,x) = \frac{2}{\pi} \sum\limits_{\mu=1}^{\infty} \sum_{k=1}^{n} \cos kx \left[ \frac{1}{(\mu N - k)^2} + \frac{1}{(\mu N + k)^2} \right]
+		\left((-1)^{\mu N + k} - 1\right).
+	\end{equation}
+\end{lemma}
+
+\begin{lemma} \label{lemma sum cos}
+	Справедлива следующая оценка:
+	\begin{equation*}
+		\left|\sum_{j=1}^{n} ((-1)^{M + j} - 1) \cos jx\right| \leq \frac{2}{|\sin x|},\quad M \in \mathbb{Z}.
+	\end{equation*}
+\end{lemma}
+
+\begin{lemma} \label{th_f2}
+	Для $R_{n,N}(f_2,x)$, при $n < N/2$, справедлива оценка
+	\begin{equation*} \label{Rf2_est}
+		|R_{n,N}(f_2,x)| \leq \frac{2\pi}{n|\sin \varepsilon|} = \frac{C(\varepsilon)}{n}, \quad x \in \Delta^I(\varepsilon).
+	\end{equation*}
+\end{lemma}
+
+\begin{lemma} \label{lm_sum_sin}
+	Имеет место следующая оценка:
+	\begin{equation*}
+		\left| \sum\limits_{j=1}^{m} \sin j x (1 - (-1)^{j+M}) \right| \leq \frac{2}{|\sin x|},
+	\end{equation*}
+	где $m$ и $M$ --- произвольные натуральные числа.
+\end{lemma}
+
+\begin{lemma} \label{lemma_an_f1_f2}
+	Имеют место оценки
+	\begin{equation*}
+		|a_n^{(2n)}(f_1)| \leq \frac{\pi}{2n^2}, \quad
+		|a_n^{(2n)}(f_2)| \leq \frac{1}{2n}.
+	\end{equation*}
+\end{lemma}
+
+
+
+\section{Оценка погрешности приближения функций $|x|$ и $\mbox{sign } x$ тригонометрическими полиномами $L_{n,N}(f,x)$}
+
+Используя леммы 4.2 -- 4.12 нами получены оценки отклонения полиномов $L_{n,N}(f,x)$, построенных на узлах сетки $t_k = \left\{ \frac{2\pi k}{N} \right\}$, от функций $f_1(x)$ и $f_2(x)$.
+%\begin{theorem} \label{th_abs_2}
+%	Для отклонения $L_{n,N}(f)$ от функции $f_1$, где $f_1(x) = |x|$ на $[-\pi,\pi]$ и $n \leq \lfloor N/2\rfloor$, справедливы следующие оценки:
+%	\begin{equation*}
+%		|L_{n,N}(f_1,x) - f_1(x)| \leq \frac{C}{n}, \quad x \in [-\pi,\pi],
+%	\end{equation*}
+%	\begin{equation*}
+%		|L_{n,N}(f_1,x) - f_1(x)| \leq \frac{C(\varepsilon)}{n^2}, \quad x \in \Delta^I(\varepsilon).
+%	\end{equation*}
+%\end{theorem}
+%\begin{theorem} \label{th_sign_2}
+%	Для отклонения $L_{n,N}(f)$ от функции $f_2$, где $f_2(x) = \mbox{sign } x$ на $[-\pi,\pi]$ и $n \leq \lfloor N/2\rfloor$, справедлива следующая оценка:
+%	\begin{equation*}
+%		|L_{n,N}(f,x) - f(x)| \leq \frac{C(\varepsilon)}{n}, \quad x \in \Delta^I(\varepsilon).
+%	\end{equation*}
+%\end{theorem}
+В дальнейшем эти оценки были обобщены для случая полиномов $\hat{L}_{n,N}(f,x)$, построенных на узлах $\hat{t}_k = \left\{ \frac{2\pi k}{N} + u \right\}$, где $u$ --- произвольное действительное число.
+Приведем здесь две теоремы, охватывающие оба случая.
+
+\begin{theorem} \label{th2_abs_2}
+	Для отклонения $\hat{L}_{n,N}(f)$ от функции $f_1$, где $f_1(x) = |x|$ на $[-\pi,\pi]$ и $n \leq \lfloor N/2\rfloor$, справедливы следующие оценки:
+	\begin{equation*}
+		|\hat{L}_{n,N}(f_1,x) - f_1(x)| \leq \frac{C}{n}, \quad x \in [-\pi,\pi],
+	\end{equation*}
+	\begin{equation*}
+		|\hat{L}_{n,N}(f_1,x) - f_1(x)| \leq \frac{C(\varepsilon)}{n^2}, \quad x \in \Delta^I(\varepsilon).
+	\end{equation*}
+\end{theorem}
+\begin{theorem} \label{th2_sign_2}
+	Для отклонения $\hat{L}_{n,N}(f)$ от функции $f_2$, где $f_2(x) = \mbox{sign } x$ на $[-\pi,\pi]$ и $n \leq \lfloor N/2\rfloor$, справедлива следующая оценка:
+	\begin{equation*}
+		|\hat{L}_{n,N}(f,x) - f(x)| \leq \frac{C(\varepsilon)}{n}, \quad x \in \Delta^I(\varepsilon).
+	\end{equation*}
+\end{theorem} 

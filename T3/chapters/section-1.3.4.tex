@@ -1,0 +1,213 @@
+\section{Численный метод нахождения радиально-симметричного положительного решения задачи Дирихле для одного нелинейного дифференциального уравнения второго порядка}
+%\textbf{Получены новые достаточные условия существования и единственности положительного радиально-симметричного решения задачи Дирихле для одной нелинейной системы дифференциальных уравнений с $p$-лапласианом.}
+
+
+
+Рассмотрим в $n$-мерном кольце $S=\left\{x\in R^{n} :r_{1} <r<r_{2} \right\}$, где $r=\left|x\right|$ следующую задачу Дирихле:
+\begin{equation}
+\label{EIGa.1_}
+\left\{\begin{array}{l} {\Delta U+r^{m} U^{p} =0,\, \, \, \, r_{1} <r<r_{2} ,} \\ {U\left|_{K} = 0.\right. } \end{array}\right. \end{equation}
+Здесь  $K$ -- граница кольца $S$, $m\ge 0$, $p>1$ -- действительные числа.
+
+Очевидно, $U\equiv 0$ -- тривиальное решение. Под \textit{положительным решением} задачи \eqref{EIGa.1_} будем понимать функцию $U\in C^2\left(\overline{S}\right)$ положительную в $S$ и обращающуюся в нуль на границе $K$.
+
+Существует ряд работ отечественных и зарубежных математиков, посвященных существованию положительного решения задачи Дирихле для нелинейных уравнений вида \eqref{EIGa.1_} ( см., например, \cite{pohojOvs, galahov, gidasSpruck, kuoShung, pohojIntSolve, DancerNorman, KavanoNichiro, JiangJu, abdurag5, abdurag1, bahvalov, abdurag6} и др.). Работ же, посвященных построению положительных решений таких задач, насколько нам известно, сравнительно мало. В данной работе делается попытка восполнить этот пробел. В ней численным методом строится положительное радиально-симметричное решение задачи \eqref{EIGa.1_}. Для этого сначала доказывается существование и единственность положительного радиально -- симметричного решения задачи \eqref{EIGa.1_}.
+
+\subsection{Существование и единственность положительного радиально-симметричного решения}
+
+Будем искать положительное решение $U$ в виде радиально-симметричной функции, то есть в виде $U=\varphi \left(r\right)$.
+Вычисления показывают, что $\Delta U=\varphi ''+\frac{n-1}{r} \varphi '$.
+Следовательно, положительное радиально-симметричное решение задачи \eqref{EIGa.1_} является нетривиальным решением следующей двухточечной краевой задачи:
+
+\begin{equation}
+\label{EIGa.2_}
+\left\{\begin{array}{c} {\begin{array}{l} {\varphi ''+\frac{n-1}{r} \varphi '+r^{m} \varphi ^{2p} =0,\, \, \, 0<r_{1} <r<r_{2} ,} \\ {\varphi \left(r_{1} \right)=\varphi \left(r_{2} \right)=0.} \end{array}} \\ {} \end{array}\right.
+\end{equation}
+
+Для случая $n>2$ сделаем замену:
+\begin{equation*}
+t=\frac{1}{r^{n-2} } >0;   r=t^{\frac{1}{n-2} }
+\end{equation*}
+
+В результате чего задача \eqref{EIGa.2_} примет вид:
+\begin{equation}
+\label{EIGa.3_} \left\{\begin{array}{l} {\varphi ''_{tt} +\left(\frac{1}{2-n} \right)^{2} t^{\frac{m+2n-2}{2-n} } \varphi ^{2p} =0,\, \, \, t_{2} <t<t_{1} ,} \\ {\varphi \left(t_{1} \right)=\varphi \left(t_{2} \right)=0.} \end{array}\right.
+\end{equation}
+
+Произведя еще одну замену: $s=\frac{t-t_{2} }{t_{1} -t_{2} }$, задачу \eqref{EIGa.3_} можно записать в виде:
+\begin{equation}
+\label{EIGa.4_} \left\{\begin{array}{l} {\varphi ''+\frac{\left[t_{2} +\tau \left(t_{1} -t_{2} \right)\right]^{-\gamma } \left(t_{1} -t_{2} \right)^{2} }{\left(n-2\right)^{2} } \varphi ^{2p} =0,\, \, \, 0<\tau <1,} \\ {\varphi \left(0\right)=\varphi \left(1\right)=0,} \end{array}\right.
+\end{equation}
+где  $\gamma =\frac{m+2n-2}{n-2} $.
+
+Для случая $n=2$, задача \eqref{EIGa.2_} примет вид:
+\begin{equation}
+\label{EIGa.5_} \left\{\begin{array}{l} {\varphi ''+\frac{1}{r} \varphi '+r^{m} \varphi ^{2p} =0,r_{1} <r<r_{2} ,} \\ {\varphi \left(r_{1} \right)=\varphi \left(r_{2} \right)=0.} \end{array}\right.
+\end{equation}
+
+Используем следующую замену: $t=\ln \frac{r}{r_{1} }$.  В результате задача \eqref{EIGa.5_} приведется к виду:
+
+\begin{equation}
+\label{EIGa.6_} \left\{\begin{array}{l} {\varphi ''+r_{1}^{2+m} e^{2+m} \varphi ^{2p} =0,\, \, \, 0<t<t_{2} ,} \\ {\varphi \left(0\right)=\varphi \left(t_{2} \right)=0,} \end{array}\right.
+\end{equation}
+где $t_{2} =\ln \frac{r_{2} }{r_{1} } $.
+
+Еще одна замена $\tau =\frac{t}{t_{2} } $ приводит задачу \eqref{EIGa.5_} к виду
+\begin{equation} \label{EIGa.7_} \left\{\begin{array}{l} {\varphi ''+\ln ^{2} \frac{r_{2} }{r_{1} } r_{1}^{2+m} e^{\left(2+m\right)(\ln ^{} \frac{r_{2} }{r_{1} } )\tau } \varphi ^{2p} =0,\, \, 0<\tau <1,} \\ {\varphi \left(0\right)=\varphi \left(1\right)=0.} \end{array}\right.  \end{equation}
+
+Задачи \eqref{EIGa.4_} и \eqref{EIGa.7_} являются двухточечными краевыми задачами вида
+\begin{equation} \label{EIGa.8_} y''(x)+f(x,y)=0,\, \, 0<x<1, \end{equation}
+\begin{equation} \label{EIGa.9_} y(0)=y(1)=0. \end{equation}
+Для данной задачи справедливо утверждение
+
+\begin{theorem}\label{AbEI3.4:th1}
+(\cite{abdurag6}). Предположим, что функция $f(x,z)$ непрерывна и имеет непрерывную частную производную $\frac{\partial f}{\partial z} $ при$x\in \left[0,1\right]$, $z\ge 0$, и что выполняются условия
+\begin{equation} \label{EIGa.10_} a(x)z^{p} \le f(x,y)\le b(x)z^{p} ,p=const>1, \end{equation}
+\begin{equation} \label{EIGa.11_} \frac{\partial f(x,z)}{\partial z} \ge 0, \end{equation}
+где $a(x),b(x)$ - непрерывные неотрицательные функции при$x\in \left[0,1\right]$, причем $a(x)\le b(x)$.Тогда задача \eqref{EIGa.8_}, \eqref{EIGa.9_} имеет единственное положительное решение из класса $C^{2} [0,1]$.
+\end{theorem}
+
+
+Легко проверить, что для задач \eqref{EIGa.4_} и \eqref{EIGa.7_} выполнены все условия этой теоремы.
+Следовательно, справедлива также следующая
+
+
+\begin{theorem}\label{AbEI3.4:th2}
+Задача Дирихле \eqref{EIGa.1_} имеет единственное радиально -- симметричное положительное решение при любом $m\ge 0$, $n\ge 2$ и $p>1$.
+\end{theorem}
+
+
+\subsection{Численный метод нахождения положительного решения задачи}
+
+Численный метод нахождения положительного решения задачи \eqref{EIGa.4_}, \eqref{EIGa.7_} основывается на методе Ньютона. Решение будем искать в виде радиально-симметричной функции $u=\varphi \left(r\right)$ из класса $C^{2} \left[0,1\right]$. Численные методы построения положительных решений задач \eqref{EIGa.4_} и \eqref{EIGa.7_} аналогичны. Поэтому рассмотрим только случай построения положительного решения задачи \eqref{EIGa.4_}.
+
+Заменим краевую задачу \eqref{EIGa.4_} задачей Коши, обозначив недостающее начальное условие через $s$:
+\begin{equation}
+\varphi''+\frac{\left[t_{2} +\tau \left(t_{1} -t_{2} \right)\right]^{-\gamma } \left(t_{1} -t_{2} \right)^{2} }{\left(n-2\right)^{2} } \varphi ^{2p} =0,         \label{EIGa.12_}
+\end{equation}
+
+\begin{equation}
+\varphi \left(0\right)=0,\quad\varphi'\left(0\right)=s,\label{EIGa.13_}
+\end{equation}
+решение которой можно найти, например, методом Рунге-Кутта \cite{bahvalov}.
+
+Параметр $s$ находим из условия
+\begin{equation} \label{EIGa.14_} \varphi (1,s)=0, \end{equation}
+где $\varphi (x,s)$ -- решение задачи \eqref{EIGa.12_}--\eqref{EIGa.13_}.
+
+Будем решать уравнение \eqref{EIGa.14_} методом Ньютона
+\begin{equation}s_{k+1} =s_{k} -\frac{\varphi \left(1,s_{k} \right)}{\frac{\partial \varphi \left(1,s_{k} \right)}{\partial s} }.         \label{EIGa.15_}\end{equation}
+
+Обозначим
+\begin{equation*}\frac{\partial \varphi \left(\tau ,s\right)}{\partial s} =u\left(\tau ,s\right).\end{equation*}
+Продифференцируем равенства \eqref{EIGa.12_} и \eqref{EIGa.13_} по \textit{s}, получим вспомогательную задачу Коши
+\begin{equation}u''+\frac{\left[t_{2} +\tau \left(t_{1} -t_{2} \right)\right]^{-\gamma } \left(t_{1} -t_{2} \right)^{2} }{\left(n-2\right)^{2} } 2p\varphi ^{2p-1} u=0, \label{EIGa.16_}\end{equation}
+\begin{equation}u\left(0\right)=0,\quad u'\left(0\right)=1,         \label{EIGa.17_}\end{equation}
+Итерационный процесс \eqref{EIGa.15_} можно записать в виде:
+\begin{equation*}s_{k+1} =s_{n} -\frac{\varphi \left(1,s_{k} \right)}{u\left(1,s_{k} \right)}.\end{equation*}
+Введем обозначения: $y_{1} =\varphi \left(\tau ,s\right)$, $y_{3} =u\left(\tau ,s\right)$.
+Таким образом, задачу \eqref{EIGa.4_} можно решить по алгоритму, состоящему из следующих шагов.
+\begin{enumerate}[1) ]
+  \item  Пусть $k=1$. Задаем начальное значение параметра $s=s_{k-1} $;
+
+  \item  Каким-либо одношаговым методом, например, методом Рунге-Кутта четвертого порядка решаем задачу Коши для систем дифференциальных уравнений первого порядка
+
+\[\left\{\begin{array}{c} {\frac{dy_{1} }{d\tau } =y_{2} ,\begin{array}{ccc} {\begin{array}{ccc} {\begin{array}{ccc} {} & {} & {} \end{array}} & {} & {} \end{array}} & {} & {} \end{array}} \\ {\frac{dy_{2} }{d\tau } =-\frac{\left[t_{2} +\tau \left(t_{1} -t_{2} \right)\right]^{-\gamma } \left(t_{1} -t_{2} \right)^{2} }{\left(n-2\right)^{2} } y_{1}^{2p} ,\begin{array}{cc} {} & {} \end{array}} \\ {\frac{dy_{3} }{d\tau } =y_{4} ,\begin{array}{cc} {\begin{array}{ccc} {\begin{array}{cc} {\begin{array}{ccc} {} & {} & {} \end{array}} & {} \end{array}} & {} & {} \end{array}} & {} \end{array}} \\ {\frac{dy_{4} }{d\tau } =-\frac{\left[t_{2} +\tau \left(t_{1} -t_{2} \right)\right]^{-\gamma } \left(t_{1} -t_{2} \right)^{2} }{\left(n-2\right)^{2} } 2py_{1}^{2p-1} ,} \end{array}\right. \]
+\end{enumerate}
+с начальными условиями $y_{1} \left(0\right)=0$, $y_{2} \left(0\right)=s_{k-1}$, $y_{3} \left(0\right)=1$, $y_{4} \left(0\right)=0$ от $\tau =0$ до $\tau =1$.
+
+\begin{enumerate}[1) ]
+\item  Находим $s_{k} =s_{k-1} -\frac{y_{1} (1,s_{k-1} )}{y_{3} (1,s_{k-1} )} $.
+
+\item  Если $d=\left|s_{k} -s_{k-1} \right|\le \varepsilon $, где $\varepsilon $ -- заранее заданное малое число, связанное с точностью нахождения решения, то переходим к следующему пункту, иначе, $k:=k+1$ и возвращаемся к пункту 2.
+
+\item  Решаем методом Рунге-Кутта задачу Коши \eqref{EIGa.12_}-\eqref{EIGa.13_} с найденным значением $s_{k} $ от $\tau =0$ до $\tau =1$.
+\end{enumerate}
+
+При реализации на компьютере шагов приведенного алгоритма могут представиться два неприятных случая: 1) получается тривиальное решение $y\equiv 0$, 2) метод не сходится. В обоих случаях необходимо задать другое начальное значение параметра $s$. Поскольку по теореме \ref{AbEI3.4:th2} задача \eqref{EIGa.1_} имеет единственное положительное радиально-симметричное решение и применяется для решений задач Коши численный метод Рунге-Кутта четвертого порядка, то при соответствующем подборе начального значения $s$ можно получить ее решение с точностью порядка $O(h^4)$.
+
+Приведем некоторые примеры положительных радиально-симметричных решений задачи Дирихле \eqref{EIGa.1_} в $n$ -- мерном кольце $S=\left\{x\in R^{n} :r_{1} <r<r_{2} \right\}$  с $r_1=1$,  $r_2=2$, полученных по приведенному
+алгоритму.
+$$ $$
+1. $n=3$, $m=2$, $p=2 \\$
+
+\begin{tabular}{|p{0.8in}|p{0.9in}|} \hline
+r & U \\ \hline
+1.00 & 0.0000 \\ \hline
+1.04 & 0.3677 \\ \hline
+1.08 & 0.7353 \\ \hline
+1.14 & 1.1018  \\ \hline
+1.20 & 1.4614  \\ \hline
+1.26 & 1.7904  \\ \hline
+1.35  & 2.0168   \\ \hline
+1.45 & 1.9865 \\ \hline
+1.58 & 1.5554 \\ \hline
+1.75 & 0.8175 \\ \hline
+2.00  & 0.0000 \\ \hline
+\end{tabular}
+
+$$ $$
+2. $n=3$, $m=6$, $p=2 \\$
+
+\begin{minipage}{\linewidth}
+    \centering
+    \begin{minipage}{0.45\linewidth}
+        \begin{tabular}{|p{0.8in}|p{0.9in}|} \hline
+            r & U \\ \hline
+            1.00 & 0.0000 \\ \hline
+            1.04 & 0.1763 \\ \hline
+            1.08 & 0.3527 \\ \hline
+            1.14 & 0.5289  \\ \hline
+            1.20 & 0.7045  \\ \hline
+            1.26 & 0.8766  \\ \hline
+            1.35  & 1.0322   \\ \hline
+            1.45 & 1.1224 \\ \hline
+            1.58 & 1.0133 \\ \hline
+            1.75 & 0.5866 \\ \hline
+            2.00  & 0.0000 \\ \hline
+        \end{tabular}
+    \end{minipage}
+    \hspace{0.05\linewidth}
+    \begin{minipage}{0.45\linewidth}
+        \begin{figure}[H]
+            \includegraphics[width=6cm]{elderhan-graph1}
+            %\caption{При ${\mathbf \alpha }$ =1.6}
+        \end{figure}
+    \end{minipage}
+\end{minipage}
+
+
+$$ $$
+3. $n=2$, $m=2$, $p=2 \\$
+
+\begin{minipage}{\linewidth}
+    \centering
+    \begin{minipage}{0.45\linewidth}
+        \begin{tabular}{|p{0.9in}|p{0.9in}|} \hline
+            r & U \\ \hline
+            1.00 & 0.0000 \\ \hline
+            1.07 & 1.1050 \\ \hline
+            1.15 & 2.2002 \\ \hline
+            1.23 & 3.2513  \\ \hline
+            1.32 & 4.1804  \\ \hline
+            1.41 & 4.8497  \\ \hline
+            1.52  & 5.0664   \\ \hline
+            1.62 & 4.6432 \\ \hline
+            1.74 & 3.5208 \\ \hline
+            1.87 & 1.8676 \\ \hline
+            2.00  & 0.0000 \\ \hline
+        \end{tabular}
+    \end{minipage}
+    \hspace{0.05\linewidth}
+    \begin{minipage}{0.45\linewidth}
+        \begin{figure}[H]
+            \includegraphics[width=6cm]{elderhan-graph2}
+            %\caption{При ${\mathbf \alpha }$ =1.6}
+        \end{figure}
+    \end{minipage}
+\end{minipage}
+
+$$ $$
+На основании полученных результатов можно сделать следующий вывод: при фиксированном значении параметра $p$, максимальное значение решения задачи Дирихле $\varphi \left(\tau \right)$  уменьшается, если увеличивать значение параметра $m$. При фиксированном значении параметра $m$ максимальное значение $\varphi \left(\tau \right)$ уменьшается, если увеличивать значение параметра $p$.
+
+При фиксированном параметре $m$, рост максимального значения решения $\varphi \left(\tau \right)$ происходит быстрее, чем при фиксированном параметре $p$, если при этом уменьшать значение другого соответствующего параметра.

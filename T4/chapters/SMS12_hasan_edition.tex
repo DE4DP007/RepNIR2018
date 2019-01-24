@@ -1,0 +1,3470 @@
+%Дата последнего изменения файла 12-06-2014
+\nonstopmode
+\documentclass[12pt]{book}
+\include{format-izv}
+\newcommand{\const}{\mathrm{const}}
+\newcommand{\Span}{\mathrm{Span}\,}
+\renewcommand{\Re}{\,\mathrm{Re}\,}
+\renewcommand{\Im}{\,\mathrm{Im}\,}
+\newcommand{\sgn}{\mathrm{sgn}\,}
+\newcommand{\diag}{\mathrm{diag}\,}
+%\numberwithin{equation}{section}%Двойная нумерация формул
+%Если Вы подключаете новый пакет, то обязательно сообщите об этом в комментариях к тексту статьи.
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{section}{0}\setcounter{equation}{0}\setcounter{footnote}{0}
+%Для колонтитула. Заполнять обязательно!!!
+%\renewcommand{\izscopyrights}{\copyright Султанахмедов~М.~С., 2015}%
+%\markboth{Математика}{М.~С.~Султанахмедов. Специальные вейвлеты на основе полиномов Чебышева второго рода
+%}%
+
+\UDC{517.51}
+
+\Rtitle{СПЕЦИАЛЬНЫЕ ВЕЙВЛЕТЫ НА ОСНОВЕ ПОЛИНОМОВ ЧЕБЫШЕВА ВТОРОГО РОДА}%
+%\thispagestyle{izsc}%не убирать!!!
+\Rauthor{М.~С.~Султанахмедов$^1$}
+
+%Фамилия Имя отчество, ученая степень, должность (с указанием кафедры, отдела), место работы (полное
+%официальное название учреждения), e-mail;
+\Raffil{$^1$Султанахмедов Мурад Салихович, научный сотрудник, Дагестанский научный центр РАН, г. Махачкала,
+sultanakhmedov@gmail.com}
+
+
+\Rabstract{В работе рассмотрена ортогональная система вейвлетов и скалярных функций, основанных на полиномах Чебышева второго рода и их нулях. На их базе построена полная ортонормированная  система функций. Показан недостаток в аппроксимативных свойствах частичных сумм соответствующего вейвлет-ряда, связанный со свойствами самих полиномов Чебышева и заключающийся в существенном ухудшении скорости их сходимости к исходной функции на концах отрезка ортогональности. В качестве альтернативы предлагается модифицировать вейвлет-ряд Чебышева второго рода по аналогии со специальными рядами по ортогональным полиномам со свойством <<прилипания>> на концах отрезка ортогональности. На примере лакунарных частичных сумм доказано, что такой новый специальный вейвлет-ряд лишен указанного недостатка, а, следовательно, обладает более привлекательными аппроксимативными свойствами.}
+
+\Rkeywords{полиномиальные вейвлеты; специальный вейвлет-ряд; полиномы Чебышева второго рода; аппроксимация функций}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Текст статьи
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1. ВВЕДЕНИЕ}
+
+
+На сегодняшний день вейвлеты зарекомендовали себя как достаточно эффективный инструмент
+в задачах приближения функций, обработки и сжатия цифровых сигналов (временных рядов, звука, изображений и т.д.) (см., напр.,
+[1--3]).
+В последние годы многими
+авторами активно проводятся исследования теории полиномиальных вейвлетов.
+Так Chui C.K. и Mhaskar H.N. в работе [4]
+впервые рассмотрели вейвлеты на основе тригонометрических полиномов.
+Позднее, Kilgore T. и Prestin J. в [5]
+заменили тригонометрические полиномы алгебраическими и доказали ортогональность полученной системы функций в смысле чебышевского веса первого рода.
+Далее, Fischer B. и Prestin J. в [6],
+разработали обобщенную теорию конструирования полиномиальных вейвлетов.
+В дальнейшем техника разложения функций в ряды по полиномиальным вейвлетам получила развитие в ряде работ
+([7--9] и др.).
+
+
+
+Mohd~F. и Mohd~I. в [10]
+представили новый, отличный от описанных ранее, способ построения вейвлетов и масштабирующих функций на основе полиномов Чебышева первого рода и их нулей. Используя аналогичную технику, в [11]
+автором построена ортогональная система вейвлетов на основе полиномов Чебышева второго рода и исследованы аппроксимативные свойства лакунарных частичных сумм $\mathcal{V}_n(f,x)$ соответствующего вейвлет-ряда в случае $n = 2^m$.
+В настоящей статье показан недостаток в свойствах сходимости частичных сумм $\mathcal{V}_n(f,x)$ к исходной функции $f(x)$, связанный со свойствами самих полиномов Чебышева второго рода. Предлагается модифицировать вейвлет-ряд по аналогии со специальными рядами по ортогональным полиномам со свойством <<прилипания>>, введенным в недавних работах Шарапудинова И.И.
+([12--13]). Доказано, что такой специальный вейвлет-ряд обладает значительно более привлекательными аппроксимативными свойствами на концах отрезка $[-1, 1]$.
+
+
+
+\section*{2. ПРЕДВАРИТЕЛЬНЫЕ СВЕДЕНИЯ}
+
+Пусть $w(x) = \sqrt{1-x^2}$. Обозначим тогда через $L_{2, w}([-1; 1])$ евклидово пространство интегрируемых функций $f(x)$, таких что
+$\int\limits_{-1}^{1} f^2(x)w(x)dx < \infty$.
+Определим скалярное произведение в нем с помощью равенства
+\begin{equation}
+\label{scal}
+<f, g> = \int\limits_{-1}^{1} f(x) g(x) w(x) dx.
+\end{equation}
+Хорошо известно, что полиномы Чебышева второго рода
+ \begin{equation*}
+\label{u2direct}
+U_n(x) = \frac{\sin((n+1)\arccos{x})}{\sqrt{1-x^2}}, \quad n = 0,1,2, \ldots .
+\end{equation*}
+образуют ортогональный базис в $L_{2, w}([-1; 1])$, а именно
+\begin{equation}
+\label{sms1ortho}
+<U_n, U_m> = \frac{\pi}{2}\delta_{nm} =
+\left\{
+\begin{aligned}
+\frac{\pi}{2}, \quad n=m,\\
+0, \quad  n \neq m,
+\end{aligned}
+\right.
+\end{equation}
+где $\delta_{nm}$ --- символ Кронекера.
+Нули $n$-го полинома $U_n(x)$, очевидно, могут быть определены равенством
+\begin{equation*}
+\label{sms1zeros}
+\xi_{k}^{(n)} = \cos{\theta_{k}^{(n)}} =  \cos{\frac{\pi (k+1)}{n+1}}, \quad (k = 0,...,n-1).
+\end{equation*}
+
+
+
+\section*{3. ВЕЙВЛЕТЫ ЧЕБЫШЕВА ВТОРОГО РОДА}
+
+\noindent\textbf{Определение 1. }\textit{
+Масштабирующей функцией Чебышева второго рода назовем полином вида
+\begin{equation*}
+\label{scaling}
+\phi_{n,k}(x) = \sum\limits_{j=0}^{n}U_{j}(x)U_{j}(\xi_{k}^{(n+1)}),
+\end{equation*}
+где
+$n=1,2,\ldots$ и $k=0,1,\ldots,n$.
+}
+
+
+\noindent\textbf{Определение 2. }\textit{
+Назовем вейвлет--функцией Чебышева второго рода полином
+\begin{equation*}
+\label{sms1wavelet}
+\psi_{n,k}(x) = \sum\limits_{j=n+1}^{2n}U_{j}(x)U_{j}(\xi_{k}^{(n)}),
+\end{equation*}
+для любых
+$n=1,2,\ldots$ и $k=0,1,\ldots,n-1$.
+}
+
+
+
+В работе [11]
+нами доказано, что системы масштабирующих функций  $\left\{ \phi_{n,k}(x)\right\}_{k=0}^{n}$ и
+вейвлет--функций $\left\{ \psi_{n,k}(x)\right\}_{k=0}^{n-1}$ являются ортогональными в $L_{2, w}([-1; 1])$, а именно
+\begin{equation*}
+<\phi_{n,k}, \phi_{n,l}> =
+\frac{\pi(n+2)}{4\sin^2{\frac{\pi(k+1)}{n+2}}} \delta_{kl}, \qquad <\psi_{n,k}, \psi_{n,l}> =
+\frac{\pi(n+1)}{4\sin^2{\frac{\pi(k+1)}{n+1}}} \delta_{kl}.
+\end{equation*}
+
+
+Положим тогда
+\begin{equation*}
+\hat{\phi}_{m,k}(x) = \frac{\phi_{2^m,k}(x)}{\sqrt{<\phi_{2^m,k}, \phi_{2^m,k}>}} = \phi_{2^m,k}(x)   \frac{2\left|\sin{\frac{\pi(k+1)}{2^m+2}}\right|}{\sqrt{\pi(2^m+2)}},
+\end{equation*}
+\begin{equation*}
+\hat{\psi}_{m,k}(x) = \frac{\psi_{2^m,k}(x)}{\sqrt{<\psi_{2^m,k}, \psi_{2^m,k}>}} = \psi_{2^m,k}(x)   \frac{2\left| \sin{\frac{\pi(k+1)}{2^m+1}}\right|}{\sqrt{\pi(2^m+1)}}
+\end{equation*}
+и введем обозначения
+
+$\Phi_{0} = \left\{\hat{\phi}_{0,0}(x), \hat{\phi}_{0,1}(x) \right\}$,
+$\Psi_{1} =  \left\{\hat{\psi}_{0,0}(x) \right\}$,
+$\Psi_{2} =  \left\{\hat{\psi}_{1,0}(x), \hat{\psi}_{1,1}(x) \right\}$, \ldots ,
+
+$\Psi_{m} =  \left\{\hat{\psi}_{m-1,0}(x), \hat{\psi}_{m-1,1}(x), \ldots, \hat{\psi}_{m-1, 2^{m-1}-1}(x)  \right\}$,
+
+$\Psi_{m+1} =  \left\{\hat{\psi}_{m,0}(x), \hat{\psi}_{m,1}(x), \ldots, \hat{\psi}_{m, 2^{m}-1}(x)  \right\}$, \ldots,
+
+$\mathcal{P}_m = \left\{\Phi_{0}, \Psi_1, \Psi_2, \ldots, \Psi_m \right\} =
+\left\{\hat{\phi}_{0,0}(x), \hat{\phi}_{0,1}(x), \hat{\psi}_{0,0}(x), \hat{\psi}_{1,0}(x), \hat{\psi}_{1,1}(x), \ldots, \right.$
+
+$\left. \hat{\psi}_{m-1,0}(x), \hat{\psi}_{m-1,1}(x), \ldots, \hat{\psi}_{m-1, 2^{m-1}-1}(x) \right\}$.
+
+Далее, пусть $H_{2^{m}, w}([-1; 1])$ --- подпространство в $L_{2, w}([-1; 1])$, состоящее из алгебраических полиномов степени не выше $2^{m}$. В [11]
+доказано, что система функций $\mathcal{P}_m$ образует ортонормированный базис в $H_{2^{m}, w}([-1; 1])$, т.е. любой полином $P_{n}(x) \in H_{2^{m}, w}([-1; 1])$ степени $n \leq 2^{m}$,
+представим в виде линейной комбинации
+\begin{equation}
+\label{sms1polydistr}
+P_{n}(x) = a_{0}\hat{\phi}_{0,0}(x) + a_{1}\hat{\phi}_{0,1}(x) + \sum\limits_{j=0}^{m-1} \sum\limits_{k=0}^{2^j-1} b_{j,k}\hat{\psi}_{j,k}(x).
+\end{equation}
+
+\noindent Кроме того, если рассмотреть теперь бесконечную систему функций
+
+$\mathcal{P} = \left\{\Phi_{0}, \Psi_1, \Psi_2, \ldots, \Psi_m, \ldots \right\} =
+\left\{\hat{\phi}_{0,0}(x), \hat{\phi}_{0,1}(x), \hat{\psi}_{0,0}(x), \hat{\psi}_{1,0}(x), \hat{\psi}_{1,1}(x), \ldots,\right.$
+
+$\left. \hat{\psi}_{m-1,0}(x), \hat{\psi}_{m-1,1}(x), \ldots, \hat{\psi}_{m-1, 2^{m-1}-1}(x), \ldots \right\},$
+
+\noindent то она образует ортонормированный базис в $L_{2, w}([-1; 1])$.
+
+
+Из  последнего утверждения вытекает, что произвольная функция $f(x) \in L_{2, w}([-1; 1])$, может быть представлена в виде сходящегося в $L_{2, w}([-1; 1])$ ряда
+\begin{equation}
+\label{sms1fdistr}
+f(x) = \hat{a}_{0}\hat{\phi}_{0,0}(x) + \hat{a}_{1}\hat{\phi}_{0,1}(x) + \sum\limits_{j=0}^{\infty} \sum\limits_{k=0}^{2^j-1} \hat{b}_{j,k}\hat{\psi}_{j,k}(x),
+\end{equation}
+\begin{equation*}
+\label{sms1fcoeffA}
+\text{где}\quad \hat{a}_{0} = \int\limits_{-1}^{1} f(t)\hat{\phi}_{0,0}(t)w(t)dt, \quad \hat{a}_{1} = \int\limits_{-1}^{1} f(t)\hat{\phi}_{0,1}(t)w(t)dt,
+\end{equation*}
+\begin{equation*}
+\label{sms1fcoeffB}
+\hat{b}_{j,k} = \int\limits_{-1}^{1} f(t)\hat{\psi}_{j,k}(t)w(t)dt, \quad (j=0,1, \ldots, m; k = 0, 1, \ldots, 2^j-1).
+\end{equation*}
+Через $\mathcal{V}_{2^m}(f,x)$ обозначим частичную сумму ряда \eqref{sms1fdistr} следующего вида
+\begin{equation}
+\label{sms1wavepartsum}
+\mathcal{V}_{2^m}(f,x) = \hat{a}_{0}\hat{\phi}_{0,0}(x) + \hat{a}_{1}\hat{\phi}_{0,1}(x) + \sum\limits_{j=0}^{m-1} \sum\limits_{k=0}^{2^j-1} \hat{b}_{j,k}\hat{\psi}_{j,k}(x).
+\end{equation}
+
+\noindent\textbf{Замечание 1. }\textit{
+В силу равенства \eqref{sms1polydistr}, $\mathcal{V}_{2^m}(f, x)$ представляет собой линейный оператор, проектирующий пространство $L_{2, w}([-1; 1])$ на $H_{2^m, w}([-1; 1])$.
+}
+
+
+
+\section*{4. АППРОКСИМАТИВНЫЕ СВОЙСТВА ЧАСТИЧНЫХ СУММ $\mathcal{V}_{2^m}(f,x)$}
+
+В работе [11]
+нами было показано, что частичные суммы \eqref{sms1wavepartsum} ряда \eqref{sms1fdistr} обладают теми же аппроксимативными свойствами, что и частичные суммы $S_{2^{m}}(f,x) = \sum_{k=0}^{n} \hat{f}_k U_k(x)$ ряда Фурье по полиномам Чебышева второго рода:
+\begin{equation}
+\label{sms1approxprops}
+f(x) - \mathcal{V}_{2^m}(f,x) = f(x) - S_{2^{m}}(f,x).
+\end{equation}
+
+Опираясь на этот факт и используя оценки из [14-15]
+для каждой внутренней точки отрезка $x \in (-1, 1)$ получаем
+\begin{equation}
+\label{sms1v2mforC}
+\left| f(x) - \mathcal{V}_{2^m}(f, x) \right| \leq
+E_{2^{m}}(f) \left(\frac{4 \ln{2}}{\pi^2}m + O(1)\right),  \quad f \in C[-1,1],
+\end{equation}
+где $E_{2^m}(f)$ -- наилучшее приближение функции $f(x)$ алгебраическими полиномами $p_n\in H_{2^{m}, w}([-1; 1])$. Кроме того, при $m \rightarrow \infty$ имеет  место равенство %%%pro lipschitza i (-1,1)
+\begin{equation*}
+\sup_{f \in \operatorname{Lip}{\alpha}, \atop 0 < \alpha < 1} \left| f(x) - \mathcal{V}_{2^m}(f,x) \right| =
+\end{equation*}
+\begin{equation}
+\label{sms1lipshitz}
+2^{-\alpha m} \left[
+\frac{2^{\alpha+1}\ln{2}}{\pi} \left( 1-x^2 \right)^{\frac{\alpha}{2}}m
+\int_{0}^{\frac{\pi}{2}} t^{\alpha} \sin{t} dt +
+O \left( \frac{\sin{2^{m} \arccos {x}}}{\sqrt{1-x^2}} + 1\right)
+\right].
+\end{equation}
+
+\noindent\textbf{Замечание 2. }\textit{
+В случае $\alpha = 1$ последнее равенство выполняется равномерно на всем отрезке $[-1, 1]$.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+В то же время можно привести простой пример аналитической функции $f(x)$, для которой имеет место неравенство
+\begin{equation}
+\label{sms15.2.16}
+\frac{|f(\pm1)-\mathcal{V}_{2^m}(f, \pm1)|}{ E_{2^m}(f)}\ge
+c_1 2^m.
+\end{equation}
+Для этого обратимся к обобщению полиномов Чебышева второго рода --- ультрасферическим полиномам $P_n^{\alpha, \alpha}(x)$ ($n =0,1,2,\ldots$; $\alpha > -1$), образующим ортогональную систему в пространстве $L_{2, \rho}([-1,1])$, где $\rho(x)=(1-x^2)^{\alpha}$.
+Рассмотрим известное разложение (см. [16, стр. 94])
+производящей функции для них
+\begin{equation}
+\label{sms15.2.17}
+\sum_{n=0}^\infty\frac{\Gamma(\alpha)}{\Gamma(2\alpha+1)}\frac{
+     \Gamma(n+2\alpha+1)}{\Gamma(n+\alpha)}P_n^{\alpha,\alpha}(x)
+     z^n=(1-2xz+z^2)^{-\alpha-\frac12}.
+\end{equation}
+При $0<z<1$ функция
+\begin{equation}
+\label{sms15.2.18}
+f(x)=f_z(x)=(1-2xz+z^2)^{-\alpha-\frac12}=(2z)^{-\alpha-\frac12}
+     \left({\frac{1+z^2}{2z}}-x\right)^{-\alpha-\frac12}
+\end{equation}
+аналитична  на всей плоскости,  разрезанной вдоль положительной полуоси с началом в точке $x=\frac{1+z^2}{2z}=a>1$. Известно (см. [17, стр. 476]),
+что
+\begin{equation}
+ E_n[(a-x)^{-\alpha-\frac12}]\asymp \frac{n^{\alpha+\frac12}}{
+\Gamma\left(\alpha+\frac12\right)(\sqrt{a^2-1})^{\alpha+\frac32}(a+\sqrt{a^2-1})^n}
+     \asymp n^{\alpha+\frac12}z^n.
+\end{equation}
+Отсюда находим
+\begin{equation}
+\label{sms15.2.19}
+E_n(f)\asymp n^{\alpha+\frac12}z^n.
+\end{equation}
+С другой стороны, как показано в работе [18],
+имеет место
+\begin{equation}
+\label{sms15.2.20}
+|f(\pm1)- S_n^{\alpha,\alpha}(f,\pm1)| \asymp n^{2\alpha+1}z^n.
+\end{equation}
+Сопоставляя \eqref{sms15.2.19} и \eqref{sms15.2.20}, получаем
+\begin{equation*}
+\label{sms15.2.21}
+{|f(1)-S_n^{\alpha,\alpha}(f, 1)|\over E_n(f)}\ge
+c(\alpha)n^{\alpha+\frac12}, \quad (\alpha>-1/2).
+\end{equation*}
+В интересующем нас частном случае, при $\alpha=\frac12$ и $n = 2^m$, это неравенство принимает вид
+\begin{equation}
+\label{sms15.2.16.1}
+{|f(\pm1)-S_{2^m}(f, \pm1)|\over E_{2^m}(f)} \ge c_1 2^m.
+\end{equation}
+Из \eqref{sms1approxprops} и \eqref{sms15.2.16.1} приходим к справедливости \eqref{sms15.2.16}.
+
+
+Приведенный пример показывает, что частичные суммы $\mathcal{V}_{2^m}(f, x)$ на концах отрезка $[-1,1]$ плохо приближают не только непрерывные функции $f \in C[-1,1]$, но также аналитические функции (за исключением алгебраических полиномов).
+Может случится, что $\mathcal{V}_{2^m}(f, x)$ приближает $f(x)$ по порядку в $2^m$ раз хуже, чем полином наилучшего приближения $P^{*}_{2^m}(f,x)$.
+Этот отрицательный факт является следствием того, что функция Лебега для сумм Фурье-Чебышева второго рода
+\begin{equation*}
+L_{n}(x) = \int\limits_{-1}^{1}  \left|\sum\limits_{k=0}^{n}\hat U_{k}(x)\hat U_{k}(t)\right| w(t)dt
+\end{equation*}
+в точках $x = \pm1$ имеет порядок роста, равный $n$ $(n\to\infty)$ (см., напр., [14]).
+
+
+
+
+
+\section*{5. СПЕЦИАЛЬНЫЙ ВЕЙВЛЕТ-РЯД СО СВОЙСТВОМ <<ПРИЛИПАНИЯ>>}
+
+Для того чтобы устранить указанный негативный эффект, предлагается модифицировать вейвлет-ряд \eqref{sms1fdistr} по схеме, схожей с построением введенных в недавних работах [12--13]
+предельных и специальных рядов по ультрасферическим полиномам, обладающих свойством <<прилипания>> на концах отрезка ортогональности. Следуя [13],
+введем в рассмотрение функцию
+
+\begin{equation}
+\label{sms1Ffunk}
+F(x) = \frac{f(x)-c(f,x)}{1-x^2} = \frac{g(f,x)}{1-x^2},
+\end{equation}
+\begin{equation*}
+\label{sms1af}
+\text{где}\quad c(f,x) = \frac{f(-1) + f(1)}{2} - \frac{f(-1) - f(1)}{2} x.
+\end{equation*}
+Если $f(x) \in L_{2, w}([-1; 1])$ то, очевидно, также и $F(x) \in L_{2, w}([-1; 1])$. Тогда она может быть представлена в виде ряда
+\begin{equation}
+\label{sms1eFdistr}
+F(x) = \tilde{a}_{0}\hat{\phi}_{0,0}(x) + \tilde{a}_{1}\hat{\phi}_{0,1}(x) + \sum\limits_{j=0}^{\infty} \sum\limits_{k=0}^{2^j-1} \tilde{b}_{j,k}\hat{\psi}_{j,k}(x),
+\end{equation}
+\begin{equation*}
+\label{sms1efcoeffA0}
+\text{где}\quad \tilde{a}_{0} = \int\limits_{-1}^{1} F(t)\hat{\phi}_{0,0}(t) w(t)dt,
+\end{equation*}
+\begin{equation*}
+\label{sms1efcoeffA1}
+\tilde{a}_{1} = \int\limits_{-1}^{1} F(t)\hat{\phi}_{0,1}(t) w(t) dt,
+\end{equation*}
+\begin{equation*}
+\label{sms1efcoeffB}
+\tilde{b}_{j,k} = \int\limits_{-1}^{1} F(t)\hat{\psi}_{j,k}(t) w(t) dt, \quad (j=0,1, \ldots, m; k = 0, 1, \ldots, 2^j-1).
+\end{equation*}
+Выразим теперь из \eqref{sms1Ffunk} и \eqref{sms1eFdistr} исходную функцию
+\begin{equation*}
+\label{sms1fFunk}
+f(x)=
+c(f,x)+(1-x^2) \left[ \tilde{a}_{0}\hat{\phi}_{0,0}(x) + \tilde{a}_{1}\hat{\phi}_{0,1}(x) + \sum\limits_{j=0}^{\infty} \sum\limits_{k=0}^{2^j-1} \tilde{b}_{j,k}\hat{\psi}_{j,k}(x) \right].
+\end{equation*}
+Будем называть такой модифицированный ряд \textit{специальным вейвлет-рядом Чебышева второго рода}. Обозначим его частичную сумму
+\begin{equation}
+\label{sms1fFunkSum}
+\tilde{\mathcal{V}}_{2^m}(f,x)  = c(f,x)+(1-x^2) \left[ \tilde{a}_{0}\hat{\phi}_{0,0}(x) + \tilde{a}_{1}\hat{\phi}_{0,1}(x) + \sum\limits_{j=0}^{m-1} \sum\limits_{k=0}^{2^j-1} \tilde{b}_{j,k}\hat{\psi}_{j,k}(x) \right].
+\end{equation}
+
+\noindent Рассмотрим некоторые свойства $\tilde{\mathcal{V}}_{2^m}(f,x)$. Из явного вида \eqref{sms1fFunkSum} легко следует
+
+\noindent\textbf{Теорема 1. }\textit{
+Частичная сумма $\tilde{\mathcal{V}}_{2^m}(f,x)$ на концах отрезка $[-1,1]$ совпадает с исходной функцией $f(x)$, т.е. $\tilde{\mathcal{V}}_{2^m}(f,\pm1) = f(\pm1)$.
+}
+
+\noindent Как отмечено в [13],
+это свойство имеет важное значение в задачах, связанных с обработкой временных рядов и изображений.
+
+\noindent\textbf{Теорема 2. }\textit{
+Частичная сумма $\tilde{\mathcal{V}}_{2^m}(f,x)$ представляет собой линейный оператор, проектирующий пространство $L_{2, w}([-1; 1])$ на $H_{2^m+2, w}([-1; 1])$, т.е. для любого полинома $P_n(x)$ степени не выше $n\le 2^{m}+2$ справедливо равенство $\tilde{\mathcal{V}}_{2^m}(P_n,x) \equiv P_n(x)$.
+}
+
+% \noindent\textbf{Доказательство. }
+% Для произвольного полинома $P_n(x)$ $(n\le 2^{m}+2)$ рассмотрим выражение вида \eqref{sms1Ffunk}:
+% \begin{equation}
+% \label{sms1Pfunk1}
+% \frac{P_n(x)-c(P_n,x)}{1-x^2}=\frac{g(P_n,x)}{1-x^2}.
+% \end{equation}
+% Очевидно, $g(P_n,x)$ представляет из себя полином степени $n$, причем $g(P_n,\pm1)=0$. Вследствии теоремы Безу, он представим в виде $g(P_n,x)=(1-x^2)M_{n-2}(x)$, где $M_{n-2}(x)$ -- полином степени $n-2 \le 2^{m}$. Таким образом, из \eqref{sms1Pfunk1} имеем
+% \begin{equation*}
+% \label{sms1Pfunk2}
+% \frac{P_n(x)-c(P_n,x)}{1-x^2}=M_{n-2}(x).
+% \end{equation*}
+% Воспользуемся теперь замечанием 1p, тогда $\mathcal{V}_{2^m}(M_{n-2},x) = M_{n-2}(x)$, откуда
+% $$\mathcal{V}_{2^m}(M_{n-2},x) = M_{n-2}(x)= \frac{P_n(x)-c(P_n,x)}{1-x^2}.$$
+% Выражая отсюда $P_n(x)$, получаем окончательно
+% $$P_n(x)= c(P_n,x) + (1-x^2)\mathcal{V}_{2^m}(M_{n-2},x) = \tilde{\mathcal{V}}_{2^m}(P_n,x).$$
+% \hfill$\Box$
+
+
+
+\noindent\textbf{Теорема 3. }\textit{
+Для любой функции $f\in C[-1,1]$ и любого $x \in (-1, 1)$ имеет место оценка
+\begin{equation*}
+\label{sms1thrm3eq}
+|f(x)-\tilde{\mathcal{V}}_m(f,x)|\le c E_{2^{m}+2}(f)(1+\ln(1+(2^{m}+2)\sqrt{1-x^2})),
+\end{equation*}
+где $c >0$ -- константа.
+}
+
+% \noindent\textbf{Доказательство. }
+% Как отмечалось выше, в работе [13]
+% сконструированы специальные ряды по ультрасферическим полиномам, обладающие свойством <<прилипания>> в точках $x=\pm1$. Частичные суммы такого ряда в случае $\alpha = \frac12$ могут быть записаны в виде
+% \begin{equation*}
+% \label{sms1sigma}
+% \sigma_{n}(f,x) = \sigma^{\frac12}_{n}(f,x) = c(f,x)+(1-x^2) S_{n-2}(F, x).
+% \end{equation*}
+% Рассмотрим отклонение этих частичных сумм от аппроксимируемой функции
+% \begin{equation*}
+% |f(x)-\sigma_n(f,x)| = |f(x)-c(f,x)-(1-x^2) S_{n-2}(F, x)| =
+% \end{equation*}
+% \begin{equation}
+% \label{sms1sigmaV1}
+% |g(f,x)-(1-x^2) S_{n-2}(F, x)|=(1-x^2) |F(x)-S_{n-2}(F, x)|.
+% \end{equation}
+% С другой стороны, преобразовав аналогичным образом погрешность приближения функции $f(x)$ частичной суммой $\tilde{\mathcal{V}}_m(f,x)$ специального вейвлет-ряда, получим
+% \begin{equation*}
+% |f(x)-\tilde{\mathcal{V}}_m(f,x)| = (1-x^2) |F(x)- \mathcal{V}_m(F, x)|.
+% \end{equation*}
+% Отсюда и из \eqref{sms1approxprops} тогда имеем
+% \begin{equation}
+% \label{sms1sigmaV2}
+% |f(x)-\tilde{\mathcal{V}}_m(f,x)| = (1-x^2) \left|F(x) - S_{2^{m}}(F,x) \right|.
+% \end{equation}
+% Сопоставляя теперь \eqref{sms1sigmaV1} с \eqref{sigmaV2}, получаем
+% \begin{equation}
+% \label{sms1sigmaV3}
+% |f(x)-\tilde{\mathcal{V}}_m(f,x)| = |f(x)-\sigma_{2^{m}+2}(f,x)|.
+% \end{equation}
+% В [13]
+% доказана следующая оценка
+% \begin{equation}
+% \label{sms1sigmaestim}
+% |f(x)-\sigma_n(f,x)|\le c E_n(f)(1+\ln(1+n\sqrt{1-x^2})).
+% \end{equation}
+% Из \eqref{sigmaV3}--\eqref{sms1sigmaestim} следует справедливость утверждения теоремы.
+% \hfill$\Box$
+
+
+
+
+
+Рассмотрим теперь верхнюю грань отклонения частичных сумм $\tilde{\mathcal{V}}_{2^m}(f,x)$ от функций из класса Липшица $\operatorname{Lip} \alpha$ $(0< \alpha <1)$.
+
+\noindent\textbf{Теорема 4. }\textit{
+Для каждой внутренней точки отрезка $x \in (-1, 1)$ при $m \rightarrow \infty$ справедливо асимптотическое равенство
+\begin{equation*}
+\sup_{f \in \operatorname{Lip}{\alpha}, \atop 0 < \alpha < 1} \left| f(x) - \tilde{\mathcal{V}}_{2^m}(f,x) \right| =
+\end{equation*}
+\begin{equation*}
+\label{sms1thrm4eq}
+2^{-\alpha m} \left[
+\frac{2^{\alpha+1}\ln{2}}{\pi} \left( 1-x^2 \right)^{\frac{\alpha}{2}+1}m
+\int_{0}^{\frac{\pi}{2}} t^{\alpha} \sin{t} dt +
+O \left( \frac{\sin{2^{m} \arccos {x}}}{\sqrt{1-x^2}} + 1\right)
+\right].
+\end{equation*}
+}
+
+
+% \noindent\textbf{Доказательство. }
+% Из \eqref{sms1fFunkSum} имеем
+% \begin{equation}
+% \tilde{\mathcal{V}}_{2^m}(f,x)  = c(f,x)+(1-x^2) \mathcal{V}_{2^m}(F,x).
+% \end{equation}
+% Отклонение частичных сумм специального вейвлет-ряда тогда может быть записано в следующем виде
+% \begin{equation*}
+% \left|f(x)-\tilde{\mathcal{V}}_{2^m}(f,x)\right| = \left|f(x)-c(f,x)-(1-x^2) \mathcal{V}_{2^m}(F,x)\right| =
+% \end{equation*}
+% \begin{equation}
+% \label{sms1sigmaeq}
+% \left|g(f,x)-(1-x^2) \mathcal{V}_{2^m}(F,x)\right| =
+% \left|f(x)-\tilde{\mathcal{V}}_{2^m}(f,x)\right| =(1-x^2) \left|F(x)-\mathcal{V}_{2^m}(F,x)\right|.
+% \end{equation}
+% Воспользовавшись \eqref{sms1lipshitz}, имеем
+% \begin{equation*}
+% \sup_{f \in \operatorname{Lip}{\alpha}, \atop 0 < \alpha < 1} \left| f(x) - \tilde{\mathcal{V}}_{2^m}(f,x) \right| =
+% \sup_{f \in \operatorname{Lip}{\alpha}, \atop 0 < \alpha < 1}
+% \left|1-x^2\right| \left|F(x)-\mathcal{V}_{2^m}(F,x)\right| =
+% \end{equation*}
+% \begin{equation*}
+% 2^{-\alpha m} \left[
+% \frac{2^{\alpha+1}\ln{2}}{\pi} \left( \sqrt{1-x^2} \right)^{\alpha+2}m
+% \int_{0}^{\frac{\pi}{2}} t^{\alpha} \sin{t} dt +
+% O \left( \frac{\sin{2^{m} \arccos {x}}}{\sqrt{1-x^2}} + 1\right)
+% \right].
+% \end{equation*}
+
+% \hfill$\Box$
+
+\noindent\textbf{Замечание 2. }\textit{
+Из замечания 2 следует, что в случае $\alpha = 1$ утверждение теоремы 4 справедливо на всем отрезке $[-1, 1]$.
+}
+
+
+Теоремы 1--4 показывают, что частичные суммы $\tilde{\mathcal{V}}_{2^m}(f,x)$ как аппарат приближения обладают весьма привлекательными аппроксимативными свойствами.
+
+
+
+
+\vspace*{10mm}
+
+\noindent \textit{Автор благодарит д.ф.-м.н. И.И. Шарапудинова за постановку задачи и ценные советы при ее решении.}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Библиографический список
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace*{3mm}
+
+
+\begin{Rtwocolbib}%Не убирать!!!
+
+1. \textit{Meyer, Y.} Ondelettes et Operateurs. Paris: Hermann, 1990, Vol.~I–III.
+
+2. \textit{Daubechies, L.} Ten Lectures on Wavelets. CBMS-NSF Regional Conference Series in Applied Mathematics Proceedings,
+Vol. 61. Philadelphia, PA: SIAM, 1992, 357~p. ISBN 0-89871-274-2. DOI: 10.1137/1.9781611970104.
+
+3. \textit{Chui, C.K.} An Introduction to  Wavelets. Boston: Academic Press., 1992, 271~p. ISBN 0-12-174584-8.
+
+4. \textit{Chui, C.K., Mhaskar, H.N.} On Trigonometric Wavelets // Constructive Approximation, 1993. Vol.~9, Issue~2--3. pp.~167--190. DOI: 10.1007/BF01198002.
+
+5. \textit{Kilgore, T., Prestin, J.} Polynomial wavelets on an interval // Constructive Approximation, 1996. Vol.~12, Issue~1. pp.~95--110. DOI: 10.1007/BF02432856.
+
+6. \textit{Fischer, B., Prestin, J.} Wavelet based on orthogonal polynomials // Mathematics of computation, 1997. Vol.~66, Num.~220. pp.~1593--1618. DOI: 10.1090/S0025-5718-97-00876-4.
+
+7. \textit{Fischer, B., Themistoclakis, W.} Orthogonal polynomial wavelets // Numerical Algorithms, 2002. Vol.~30, Issue~1. pp.~37--58. DOI: 10.1023/A:1015689418605.
+
+8. \textit{Capobiancho, M.R., Themistoclakis, W.} Interpolating polynomial wavelet on $[-1,1]$ // Advanced in Computational Mathematics, 2005. Vol.~23, Issue~4. pp.~353–-374. DOI: 10.1007/s10444-004-1828-2.
+
+9. \textit{Dao-Qing Dai, Wei Lin} Orthonormal polynomial wavelets on the interval // Proceedings of the American Mathematical Society, 2005. Vol.~134, Issue~5. pp.~1383–1390. DOI: 10.1090/S0002-9939-05-08088-3.
+
+10. \textit{Mohd, F., Mohd, I.} Orthogonal Functions Based on Chebyshev Polynomials // Matematika, 2011. Vol.~27, Num.~1, pp.~97-–107.
+
+11. \textit{Султанахмедов М.С.} Аппроксимативные свойства вейвлетов, построенных на основе полиномов Чебышева второго рода // Владикавказский математический журнал, 2015, Вып. , С.~.
+
+12. \textit{Шарапудинов И.И.} Предельные ультрасферические ряды и их аппроксимативные свойства // Математические заметки, 2013. Т.~94, Вып.~2. С.~295–-309. DOI: 10.4213/mzm10292.
+
+13. \textit{Шарапудинов И.И.} Некоторые специальные ряды по ультрасферическим полиномам и их аппроксимативные свойства // Известия РАН. Серия математическая. Т.~78,	Вып.~5,	C.~201–-224.  DOI: 10.4213/im8117.
+
+14. \textit{Яхнин Б.М.} О функциях Лебега разложений в ряды по полиномам Якоби для случаев $\alpha=\beta=\frac12, \alpha=\beta=-\frac12, \alpha=\frac12, \beta=-\frac12$ // Успехи математических наук, 1958. Т.~13, Вып.~6(84), C.~207-–211.
+
+15. \textit{Яхнин Б.М.} Приближение функций класса $Lip_\alpha$ частными суммами ряда Фурье по многочленам Чебышева второго рода // Изв. вузов. Матем., 1963. Вып.~1, C.~172-–178.
+
+16. \textit{Сеге Г.} Ортогональные многочлены.  Москва: Физматлит, 1962. 500~с.
+
+17. \textit{Тиман А.Ф.} Теория приближения функций действительного переменного. Москва: Физматгиз, 1960. 626~с.
+
+18. \textit{Шарапудинов И.И.} О наилучшем приближении и суммах Фурье–Якоби // Математические заметки, 1983, Т.~34, Вып.~5, С.~651-–661. DOI: 10.1007/BF01157445.
+
+\end{Rtwocolbib}%Не убирать!!!
+
+\Etitle{Special Wavelets Based On Chebyshev Polynomials of the Second Kind and Their Approximative Properties}
+
+\Eauthor{M.~S.~Sultanakhmedov$^1$}%
+
+%На англ. языке: Фамилия Имя Отчество, официальное название организации, почтовый адрес
+%организации, e-mail автора
+\Eaffil{$^1$Sultanakhmedov Murad Salikhovich, scientific worker of Department of Mathematics and Computer Science, Daghestan Scientific Center of RAS, Gadzhiev st., 45, 367000, Makhachkala, Daghestan, Russia, sultanakhmedov@gmail.com}%
+
+\Eabstract{
+System of wavelets and scalar functions based on Chebyshev polynomials of the second kind and their zeros is considered.
+With the help of them we construct a complete orthonormal system of functions.
+It is shown %/ submitted
+certain disadvantage in approximation properties of partial sums of the corresponding wavelet series,
+related to the properties of Chebyshev polynomials themselves
+and consisting in a significant decrease of the rate of their convergence to the original function at the endpoints of orthogonality segment.
+%is shown.
+As an alternative, we propose modification of Chebyshev wavelet series of the second kind by analogy to the special polynomial series with the property of adhesion. %at the endpoints of orthogonality segment.
+These new special wavelet series is proved to be deprived of the mentioned disadvantage and to have better approximative properties.
+}
+
+\Ekeywords{polynomial wavelets; special wavelet series; Chebyshev polynomials of the second kind; function approximation}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Ссылка на источник финансирования (если есть)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{2mm}%\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Библиографический список на англ. языке
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{Etwocolbib}%Не убирать!!!
+
+1. Meyer, Y. \textit{Ondelettes et Operateurs}. Paris: Hermann, 1990, Vol.~I–III.
+
+2. Daubechies, L. \textit{Ten Lectures on Wavelets}. CBMS-NSF Regional Conference Series in Applied Mathematics Proceedings, Vol. 61. Philadelphia, PA: SIAM, 1992, 357~p. ISBN 0-89871-274-2. DOI: 10.1137/1.9781611970104.
+
+3. Chui, C.K. \textit{An Introduction to  Wavelets. Wavelet Analysis and its Applications, Vol.~1.} Boston: Academic Press., 1992, 264~p. ISBN 0-12-174584-8.
+
+4. Chui, C.K., Mhaskar, H.N. On Trigonometric Wavelets. \textit{Constructive Approximation}, 1993. Vol.~9, Issue~2--3. pp.~167--190. DOI: 10.1007/BF01198002.
+
+5. Kilgore, T., Prestin, J. Polynomial wavelets on an interval. \textit{Constructive Approximation}, 1996. Vol.~12, Issue~1. pp.~95--110. DOI: 10.1007/BF02432856.
+
+6. Fischer, B., Prestin, J. Wavelet based on orthogonal polynomials. \textit{Mathematics of computation}, 1997. Vol.~66, Num.~220. pp.~1593--1618. DOI: 10.1090/S0025-5718-97-00876-4.
+
+7. Fischer, B., Themistoclakis, W. Orthogonal polynomial wavelets. \textit{Numerical Algorithms}, 2002. Vol.~30, Issue~1. pp.~37--58. DOI: 10.1023/A:1015689418605.
+
+8. Capobiancho, M.R. and Themistoclakis, W. Interpolating polynomial wavelet on $[-1,1]$. \textit{Advanced in Computational Mathematics}, 2005. Vol.~23, Issue~4. pp.~353–-374. DOI: 10.1007/s10444-004-1828-2.
+
+9.Dao-Qing Dai, Wei Lin. Orthonormal polynomial wavelets on the interval. \textit{Proceedings of the American Mathematical Society}, 2005. Vol.~134, Issue~5. pp.~1383–1390. DOI: 10.1090/S0002-9939-05-08088-3.
+
+10. Mohd, F., Mohd, I. Orthogonal Functions Based on Chebyshev Polynomials. \textit{Matematika}, 2011. Vol.~27, Num.~1, pp.~97-–107.
+
+11. Sultanakhmedov M.S. Approximative properties of the Chebyshev wavelet series of the second kind. \textit{Vladikavkaz. Mat. Zh} [Vladikavkazskij matematicheskij zhurnal], 2015, Vol. , pp.~.
+
+12. Sharapudinov~I.I. Limit ultraspherical series and their approximation properties. \textit{Mathematical Notes} [Matematicheskie zametki], 2013. Vol.~94, Issue~1-2, pp.~281-293. DOI: 10.1134/S0001434613070274.
+
+13. Sharapudinov~I.I. Some special series in ultraspherical polynomials and their approximation properties. \textit{Izvestiya: Mathematics} [Izvestija RAN. Serija matematicheskaja], 2014. Vol.~78, Num.~5, 1036, pp.~201–-224. DOI: 10.1070/IM2014v078n05ABEH002718.
+
+14. Yakhnin~B.M. O funkcijah Lebega razlozhenij v rjady po polinomam Jakobi dlja sluchaev $\alpha=\beta=\frac12, \alpha=\beta=-\frac12, \alpha=\frac12, \beta=-\frac12$. [Lebesgue functions for expansions in series of Jacobi polynomials for the cases $\alpha=\beta=\frac12, \alpha=\beta=-\frac12, \alpha=\frac12, \beta=-\frac12$] \textit{Usp. Mat. Nauk} [Uspehi matematicheskih nauk], 1958. Vol.~13, No.~6(84), pp.~207-–211. (in Russian).
+
+15. Yakhnin~B.M. Priblizhenie funkcij klassa $Lip_\alpha$ chastnymi summami rjada Fur'e po mnogochlenam Chebysheva 2-go roda. [Approximation of functions of class Lip $\alpha $ by partial sums of a Fourier series in Chebyshev polynomials of second kind] \textit{Russian Math.} [Izvestiya VUZ. Matematika], 1963. No.~1 (32), pp.~172-–178.  (in Russian).
+
+16. Szeg$\ddot{o}$ G. \textit{Orthogonal Polynomials}. Colloquium Publications - American Mathematical Society (Vol.~23), 1939. 432~p. ISBN 0821889524, 9780821889527.
+
+17. Timan~A.~F. \textit{Teorija priblizhenija funkcij dejstvitel'nogo peremennogo}
+[Theory of approximation of functions of a real variable]. Moscow, Fizmatgiz, 1960. 626~p.  (in Russian).
+
+18. Sharapudinov~I.I. Best approximation and the Fourier-Jacobi sums. \textit{Mathematical Notes} [Matematicheskie zametki], 1983, Vol.~34, Num.~5, Issue~5, pp.~816--821. DOI: 10.1007/BF01157445.
+
+
+\end{Etwocolbib}%Не убирать!!!
+
+\vspace*{5mm}
+
+
+\newpage
+\newpage
+
+\noindent\begin{minipage}{160mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent\textsf{УДК~517.51}
+
+\titler{ПРИБЛИЖЕНИЕ ДИСКРЕТНЫХ ФУНКЦИЙ СРЕДНИМИ ВАЛЛЕ -- ПУССЕНА ЧАСТИЧНЫХ СУММ
+КОНЕЧНОГО ПРЕДЕЛЬНОГО РЯДА ПО ПОЛИНОМАМ ЧЕБЫШ\"ЕВА, ОРТОГОНАЛЬНЫМ НА РАВНОМЕРНОЙ СЕТКЕ}
+
+\textbf{М.\,С.~Султанахмедов}\vspace*{3mm}
+
+Дагестанский Научный Центр РАН,\\
+Отдел Математики и Информатики\\
+E-mail: sultanakhmedov@gmail.com \vspace*{3mm}
+
+Исследованы аппроксимативные свойства средних Валле -- Пуссена частичных сумм конечного предельного ряда по дискретным полиномам Чебыш\"ева $\left\{ T_n^{\alpha, \beta}(x, N) \right\}_{n=0}^{N-1}$, ортонормированным на равномерной сетке $\Omega_N=\left\{ 0, 1, \ldots, N-1\right\}$.
+
+\vspace*{3mm}
+
+\textbf{Ключевые слова:} средние Валле -- Пуссена; полиномы Чебыш\"ева; конечный предельный ряд; полиномы, ортогональные на сетках; равномерная сетка;  аппроксимативные свойства.\vspace*{3mm}
+
+\textbf{Approximation of Discrete Functions by de la Vallee - Poussin means of Partial Sums of the Limit Series by Chebyshev Polynomials Orthogonal on a Uniform Grid}\vspace*{4pt}
+
+\textbf{M.~S.~Sultanakhmedov}\vspace*{4pt}
+
+
+Daghestan Scientific Center of RAS,\\
+Department of Mathematics and Computer Science\\
+E-mail: sultanakhmedov@gmail.com \vspace*{4pt}
+
+Approximative properties of de la Vallee - Poussin means over the discrete partial sums of Limit Series by Chebyshev polynomials  $\left\{ T_n^{\alpha, \beta}(x, N) \right\}_{n=0}^{N-1}$, orthogonal on unform net $\Omega_N=\left\{ 0, 1, \ldots, N-1\right\}$ are investigated.
+
+\textbf{Keywords:} de la Vallee - Poussin means; Chebychev polynomials; polynomials orthogonal on nets; limit series; uniform net; robust calculation; approximative properties.
+\end{minipage}
+\vspace*{3mm}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{ВВЕДЕНИЕ}
+
+В статье рассмотрена задача о приближении дискретной действительнозначной функции $f$, заданной на равномерной сетке $\Omega_N = \left\{ 0, 1, \ldots, N-1 \right\}$, средними типа Валле -- Пуссена частичных сумм так называемого \textit{конечного предельного ряда} по классическим ортогональным полиномам Чебыш\"ева, ортогональным на $\Omega_N$. Основной результат настоящей статьи касается оценки функции Лебега для рассматриваемых средних типа Валле -- Пуссена. Для того, чтобы сформулировать его более точно, нам понадобятся некоторые обозначения и факты.
+
+
+Для всех $\alpha,\beta>-1$ через $T_{n}^{\alpha,\beta}(x,N), (0\le n\le N-1)$ обозначим полиномы Чебыш\"ева, ортогональные на равномерной сетке $\Omega_N$ с весом
+\begin{equation}
+\label{sms2eq4}
+\mu(x) = \mu(x; \alpha,\beta, N)={\Gamma(N)2^{\alpha+\beta+1}\over \Gamma(N+\alpha+\beta+1)}
+{\Gamma(x+\beta+1)\Gamma(N-x+\alpha)\over \Gamma(x+1)\Gamma(N-x)}
+\end{equation}
+и нормированные условием $T_{n}^{\alpha,\beta}(N-1,N)={n+\alpha\choose n}$. Более точно, имеет место равенство
+\begin{equation*}
+\sum_{x=0}^{N-1}T_{n}^{\alpha,\beta}(x) T_{m}^{\alpha,\beta}(x)
+\mu(x)= \delta_{n,m}h_{n,N}^{\alpha,\beta},\quad 0\le n,m\le N-1,
+\end{equation*}
+где
+\begin{equation}
+\label{sms2hn}
+h_{n,N}^{\alpha,\beta}={(N+n+\alpha+\beta)^{[n]}\over
+(N-1)^{[n]}}{\Gamma(n+\alpha+1)\Gamma(n+\beta+1)
+2^{\alpha+\beta+1}\over
+n!\Gamma(n+\alpha+\beta+1)(2n+\alpha+\beta+1)}.
+\end{equation}
+Построим тогда на основе полиномов $T_{n}^{\alpha,\beta}(x)$ ортонормированную на
+$\Omega_N$ с весом $\mu(x)$ систему полиномов:
+\begin{equation}
+\label{sms2eq5}
+\tau_{n}^{\alpha,\beta}(x) = \tau_{n}^{\alpha,\beta}(x,N)=
+\left[h_{n,N}^{\alpha,\beta}\right]^{-1/2}
+T_{n}^{\alpha,\beta}(x,N),
+\end{equation}
+\begin{equation}
+\label{sms2eq6}
+\sum_{x=0}^{N-1}\tau_{n}^{\alpha,\beta}(x)
+\tau_{m}^{\alpha,\beta}(x)\mu(x)=\delta_{n,m}, \quad (0\le n\le N-1).
+\end{equation}
+
+
+
+В таком случае для заданной на сетке $\Omega_N$ дискретной функции $f(x)$ мы можем определить дискретный ряд Фурье-Чебыш\"ева
+\begin{equation}
+\label{sms2eq1}
+f(x)=\sum\limits_{k=0}^{N-1}\hat{f}^{\alpha,\beta}_k\tau_{k}^{\alpha,\beta}(x),\quad (x \in \Omega_N),
+\end{equation}
+где коэффициенты Фурье-Чебыш\"ева задаются формулой
+\begin{equation}
+\label{sms2eq2}
+\hat{f}_k = \sum\limits_{x=0}^{N-1}f(x)\tau_{k}^{\alpha,\beta}(x)\mu(x),\quad (0\le n\le N-1).
+\end{equation}
+Соответственно частичная сумма $n$-го порядка дискретной суммы Фурье -- Чебыш\"ева может быть записана в виде
+\begin{equation}
+\label{sms2eq5}
+S_{n,N}^{\alpha,\beta}(f,x) = \sum\limits_{k=0}^{n}\hat{f}^{\alpha,\beta}_k \tau_{k}^{\alpha,\beta}(x),\quad (0\le x\le N-1).
+\end{equation}
+
+%Далее для краткости мы примем следующие обозначения: $\tau_{n,N}^{\alpha}(x) = \tau_{n,N}^{\alpha,\alpha}(x)$, $S_{n,N}^{\alpha}(f,x) = S_{n,N}^{\alpha,\alpha}(f,x)$.
+Далее в случаях, когда $\alpha = \beta$, для краткости мы будем записывать в качестве индекса лишь один параметр, например: $\tau_{n}^{\alpha}(x) = \tau_{n}^{\alpha,\alpha}(x)$, $S_{n,N}^{\alpha}(f,x) = S_{n,N}^{\alpha,\alpha}(f,x)$ и т.д.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{НЕКОТОРЫЕ СВОЙСТВА ДИСКРЕТНЫХ ПОЛИНОМОВ ЧЕБЫШ\"ЕВА}
+
+В дальнейшем изложении мы будем опираться на ряд свойств дискретных полиномов Чебыш\"ева, которые мы соберем в данном пункте (см., например, [1, \S\,3.2, ШИИ, Спецвыпуск в ДЭМИ]).
+
+Имеет место следующее явное представление дискретных полиномов Чебыш\"ева:
+\begin{equation}
+\label{sms2eq3}
+T_{n}^{\alpha,\beta}(x) = T_{n}^{\alpha,\beta}(x,N)=(-1)^n{\Gamma(n+\beta+1)\over n!}\sum_{k=0}^n (-1)^k
+{n^{[k]}(n+\alpha+\beta+1)_kx^{[k]}\over \Gamma(k+\beta+1)
+k!(N-1)^{[k]}}.
+\end{equation}
+Здесь $a^{[0]}=1, a^{[n]}=a(a-1)\ldots (a-n+1)$; $(a)_0=1, (a)_n=a(a+1)\ldots(a+n-1)$.
+
+
+Для них справедливы следующие рекуррентные формулы:
+\begin{equation}\label{recur}
+  A^{\alpha,\beta}_{n,N} T^{\alpha,\beta}_{n+1}(x,N) = (x-B^{\alpha,\beta}_{n,N}) T^{\alpha,\beta}_{n}(x,N) - C^{\alpha,\beta}_{n,N} T^{\alpha,\beta}_{n-1}(x,N),
+\end{equation}
+где $T^{\alpha,\beta}_{0}(x,N)=1$, $T^{\alpha,\beta}_{1}(x,N)=-1-\beta+x(2+\alpha+\beta)/(N-1)$,
+\begin{equation*}
+  A^{\alpha,\beta}_{n,N} = \frac{(n+1)(n+\alpha+\beta+1)(N-n-1)}{(2n+\alpha+\beta+1)(2n+\alpha+\beta+2)},
+\end{equation*}
+\begin{equation*}
+  C^{\alpha,\beta}_{n,N} = \frac{(n+\alpha)(n+\beta)(N+n+\alpha+\beta)}{(2n+\alpha+\beta)(2n+\alpha+\beta+1)},
+\end{equation*}
+\begin{equation*}
+  B^{\alpha,\beta}_{n,N} = A^{\alpha,\beta}_{n,N}\,\frac{n+\beta+1}{n+1}+C^{\alpha,\beta}_{n,N}\,\frac{n}{n+\beta},
+\end{equation*}
+а также свойство симметрии:
+\begin{equation}\label{simmetry}
+  T^{\alpha,\beta}_{n}(x) = (-1)^{n} T^{\beta, \alpha}_{n}(N-1-x).
+\end{equation}
+Кроме того, из явного вида и свойств конечной разности вытекает следующее равенство
+\begin{equation}\label{recur1}
+  (n+1) T^{\alpha,\beta}_{n+1}(x,N) + (n+\beta+1)T^{\alpha,\beta}_{n}(x,N) = \frac{2n+\alpha+\beta+2}{N-1}\,x\,T^{\alpha,\beta+1}_{n}(x-1,N-1),
+\end{equation}
+из которого, в свою очередь, используя свойство симметрии \eqref{simmetry} получаем
+\begin{equation}\label{recur2}
+  (n+\alpha+1) T^{\alpha,\beta}_{n}(x,N) - (n+1)T^{\alpha,\beta}_{n+1}(x,N) = \frac{2n+\alpha+\beta+2}{N-1}\,(N-1-x)\,T^{\alpha+1,\beta}_{n}(x,N-1).
+\end{equation}
+
+
+
+
+
+Для этих полиномов справедлива формула Кристоффеля -- Дарбу:
+\begin{equation*}
+  D^{\alpha,\beta}_{n} (x,y) = D^{\alpha,\beta}_{n,N} (x,y) = \sum_{k=0}^{n} \frac{T^{\alpha,\beta}_{k}(x) T^{\alpha,\beta}_{k}(y)}{h^{\alpha,\beta}_{n,N}} =
+\end{equation*}
+\begin{equation*}
+  \frac{(N-1)^{[n+1]}}{(N+n+\alpha+\beta)^{[n]}} \frac{2^{-\alpha-\beta-1}}{2n+\alpha+\beta+2}
+  \frac{\Gamma(n+2)\Gamma(n+\alpha+\beta+2)}{\Gamma(n+\alpha+1)\Gamma(n+\beta+1)} \cdot
+\end{equation*}
+\begin{equation}\label{kristT}
+  \frac{T_{n+1}^{\alpha,\beta}(x) T_{n}^{\alpha,\beta}(y) - T_{n+1}^{\alpha,\beta}(y) T_{n}^{\alpha,\beta}(x)}{x-y}.
+\end{equation}
+
+В работе [2, ШИИ, Асимпт.св-ва и вес.оценки Чеб.-Хана] показано, что для любых целых $\alpha,\beta \geq 0$ имеет место асимптотическая формула
+\begin{equation}\label{asymptf}
+ T_{n}^{\alpha,\beta}\left( \frac{N-1}{2}(1+t) \right) = P_{n}^{\alpha,\beta}(t)+r_{n,N}^{\alpha,\beta}(t),
+\end{equation}
+в которой $P_{n}^{\alpha,\beta}(t)$ -- классический полином Якоби, а для остаточного члена при $1 \leq n \leq a\sqrt{N}, (a>0)$, справедливы оценки
+%\begin{equation}\label{asymptRest1}
+%  \max\limits_{0\leq t \leq 1} |r_{n,N}^{\alpha,\beta}(t)| \leq c(\alpha,\beta,a)\,n^{\alpha+3/2}\,N^{-1/2},
+%\end{equation}
+%\begin{equation}\label{asymptRest1}
+%  |r_{n,N}^{\alpha,\beta}(\cos{\theta})| \leq c(\alpha,\beta,a,c)\,n\,N^{-1/2}\,\theta^{-\alpha-1/2}, \quad \left( cn^{-1} \leq \theta \leq \pi/2\right).
+%\end{equation}
+\begin{equation}\label{asymptRest1}
+  \max\limits_{0\leq t \leq 1} |r_{n,N}^{\alpha,\beta}(t)| \leq c(\alpha,\beta,a)\,n^{\alpha+1/2},
+\end{equation}
+\begin{equation}\label{asymptRest1}
+  |r_{n,N}^{\alpha,\beta}(\cos{\theta})| \leq c(\alpha,\beta,a,c)\,\theta^{-\alpha-1/2}, \quad \left( cn^{-1} \leq \theta \leq \pi/2\right).
+\end{equation}
+В качестве следствия этой формулы, при тех же ограничениях на $n$ и $N$, получена весовая оценка
+\begin{equation}\label{weightEst}
+  \left| T_{n}^{\alpha,\beta}\left(\frac{N-1}{2}(1+t)\right)\right| \leq
+    c(\alpha,\beta,a)\,n^{-1/2}\,
+    \left[  \sqrt{1-t} + \frac1n \right]^{-\alpha-1/2}
+    \left[  \sqrt{1+t} + \frac1n \right]^{-\beta-1/2},
+\end{equation}
+%\begin{equation}\label{weightEst}
+%  \left| T_{n}^{\alpha,\beta}\left( \frac{N-1}{2}(1+\cos{\theta}) \right)\right| \leq
+%  c(\alpha,\beta,a,c)\,
+%  \left\{
+%    \begin{aligned}
+%    n^{\alpha+1/2}, \quad (0 \leq \theta \leq cn^{-1}),\\
+%    \theta^{-\alpha-1/2}, \quad (cn^{-1} \leq \theta \leq \pi/2), \\
+%    \end{aligned}
+%  \right.
+%\end{equation}
+или иначе
+%\begin{equation}\label{weightEst1}
+%  \left| T_{n}^{\alpha,\beta}\left(\frac{N-1}{2}(1+t)\right)\right| \leq
+%  c(\alpha,\beta,a,c)\,
+%  \left\{
+%    \begin{aligned}
+%    n^{\beta+1/2}, \quad (-1 \leq \theta \leq -1+cn^{-2}),\\
+%    (1+t)^{-\beta/2-1/4}, \quad (-1+cn^{-2} \leq \theta \leq 0), \\
+%    (1-t)^{-\alpha/2-1/4}, \quad (0 \leq \theta \leq 1-cn^{-2}), \\
+%    n^{\alpha+1/2}, \quad (1-cn^{-2} \leq \theta \leq 1).\\
+%    \end{aligned}
+%  \right.
+%\end{equation}
+\begin{equation}\label{weightEst1}
+  \left| T_{n}^{\alpha,\beta}\left(\frac{N-1}{2}(1+t)\right)\right| \leq
+  c(\alpha,\beta,a,c)\,
+  \left\{
+    \begin{aligned}
+    n^{\beta}, \quad (-1 \leq \theta \leq -1+cn^{-2}),\\
+    \left(n(1+t)^{\beta+1/2}\right)^{-1/2}, \quad (-1+cn^{-2} \leq \theta \leq 0), \\
+    \left(n(1-t)^{\alpha+1/2}\right)^{-1/2}, \quad (0 \leq \theta \leq 1-cn^{-2}), \\
+    n^{\alpha}, \quad (1-cn^{-2} \leq \theta \leq 1).\\
+    \end{aligned}
+  \right.
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+В работе [3, ШИИ, Об ограниченности...] показано, что оценки \eqref{weightEst} -- \eqref{weightEst1} сохраняются также для $T_{n}^{\alpha,\beta}\left(\frac{N-1}{2}(1+t)-j_1, N-j_2\right)$, где $j_1,j_2$ --- фиксированные целые числа.
+
+
+
+
+
+
+\section*{ПРЕДЕЛЬНЫЕ РЯДЫ ПО ДИСКРЕТНЫМ ПОЛИНОМАМ ЧЕБЫШ\"ЕВА}
+
+Как было отмечено выше, все перечисленные свойства справедливы при $\alpha, \beta > -1$. Если же взять $\alpha = \beta = -1$, то вес $\eqref{sms2eq4}$ обращается в бесконечность в точках $x=0$ и $x=N-1$, и суммы $\sum\limits_{x=0}^{N-1} f(x)\tau_{k}^{-1}(x)\mu^{-1}(x)$ теряют смысл.
+%, а получаемая система полиномов $\left\{ \tau_n^{-1}(x) \right\}_{n=0}^{N-1}$ перестает быть ортогональной.
+Однако, как показано в работе [4, ШТИ], можно рассмотреть дискретный ряд, получаемый в результате почленного предельного перехода в дискретном ряде \eqref{sms2eq1} при $\alpha,\beta \rightarrow -1$, т.е. $f(x) = \sum\limits_{k=0}^{N-1}\hat{f}^{-1}_k\tau_{k}^{-1}(x),\quad (x \in \Omega_N)$. %, где $\hat{f}^{-1}_k\tau_k^{-1}(x) = \lim_{\alpha \rightarrow -1} \hat{f}^{\alpha}_k\tau_k^{\alpha}(x)$.
+%Не смотря на то, что суммы $\sum\limits_{x=0}^{N-1} f(x)\tau_k^{-1}(x)\mu^{-1}(x,N)$ невозможно вычислить (ввиду того что $\mu^{-1}(0)=\mu^{-1}(N-1)=\infty$), рассматривая выражения $\hat{f}^{-1}_k\tau_k^{-1}(x) = \lim_{\alpha \rightarrow -1} \hat{f}^{\alpha}_k\tau_k^{\alpha}(x)$ в целом, удается показать, что
+Не смотря на то, что сами коэффициенты $f_k^{-1}$ не удается вычислить (ввиду того что $\mu^{-1}(0)=\mu^{-1}(N-1)=\infty$), рассматривая выражения $\hat{f}^{-1}_k\tau_{k}^{-1}(x) = \lim_{\alpha \rightarrow -1} \hat{f}^{\alpha}_k\tau_k^{\alpha}(x)$ в целом, удается показать, что
+\begin{equation}
+\label{limitR}
+ f(x) = \sum\limits_{k=0}^{N-1}\hat{f}^{-1}_k  \tau_{k}^{-1}(x) =
+a_N(f,x) + \frac{8x(N-x-1)}{N(N-1)} \sum\limits_{k=0}^{N-3} \hat{g}_k \tau_{k}^{1}(x-1,N-2),
+\end{equation}
+где
+\begin{equation}
+\label{af}
+a_N(f,x) = \frac{f(N-1)+f(0)}{2} + \frac{f(N-1)-f(0)}{2}\left( \frac{2x}{N-1}-1\right),
+\end{equation}
+%\begin{equation}
+%\label{bnN}
+%b_{n,N} = \frac{8x(N-x-1)}{N(N-1)},
+%\end{equation}
+а коэффициенты
+\begin{equation}
+\label{gk}
+\hat{g}_k = \hat{g}_k(N) = \frac{1}{N-2} \sum\limits_{j=1}^{N-2} g(j) \tau_{k}^{1}(j-1,N-2) ,
+\end{equation}
+получены для функции $g(x) = f(x) - a_N(f,x)$.
+
+Ряд \eqref{limitR} называется \textit{предельным рядом } по полиномам Чебыш\"ева, ортогональным на равномерной сетке. Соответствующий предельный случай частичных сумм Фурье -- Чебыш\"ева тогда может быть записано
+\begin{equation}
+\label{limitS}
+ S_{n,N}^{-1}(f,x) = \lim_{\alpha \rightarrow -1} S_{n,N}^{\alpha}(f,x) =
+ a_N(f,x) + \frac{8x(N-x-1)}{N(N-1)} \sum\limits_{k=0}^{n-2} \hat{g}_k \tau_{k}^{1}(x-1,N-2).
+\end{equation}
+
+
+
+
+
+
+
+В работе [4, ШТИ] были исследованы аппроксимативные свойства частичных сумм предельного ряда и показано, что они обладают следующими тремя свойствами:
+\begin{enumerate}
+  \item $S_{n,N}^{-1}(f,x)$ совпадает с $f(x)$ в точках $x=0$ и $x=N-1$:%, т.е. $S_{n,N}^{-1}(f,0) = f(0)$, $S_{n,N}^{-1}(f,N-1)=f(N-1)$;
+    \begin{equation}\label{limprop1}
+        S_{n,N}^{-1}(f,0) = f(0), \quad S_{n,N}^{-1}(f,N-1)=f(N-1);
+    \end{equation}
+  \item $S_{n,N}^{-1}(f,x)$ представляет собой проектор на пространство $H_n$ всех алгебраических полиномов $P_n(x)$ степени, не выше $n$:%, т.е.   $S_{n,N}^{-1}(P_n,x) = P_n(x)$;
+    \begin{equation}\label{limprop2}
+        S_{n,N}^{-1}(P_n,x) = P_n(x);
+    \end{equation}
+  \item Подставляя в \eqref{limitS} выражение для \eqref{gk}, получим следующее представление для частичных сумм предельного ряда:
+    %\begin{equation*}
+%     S_{n,N}^{-1}(f,x) =
+%     a_N(f,x) + \frac{8x(N-x-1)}{N(N-1)(N-2)} \sum\limits_{j=1}^{N-2} g(j) \sum\limits_{k=0}^{n-2} \tau_{k}^{1}(j-1,N-2) \tau_{k}^{1}(x-1,N-2).
+%    \end{equation*}
+    \begin{equation}
+    \label{Sn_jay}
+     S_{n,N}^{-1}(f,x) =
+     a_N(f,x) + \frac{8x(N-x-1)}{N(N-1)(N-2)} \sum\limits_{j=1}^{N-2} g(j) J_{n-2,N-2}(x-1,j-1) ,
+    \end{equation}
+    где
+    \begin{equation}\label{Jay}
+      J_{l,N}(x,j) = \sum_{r=0}^{l} \tau^{1}_{r}(x) \tau^{1}_{r}(j).
+    \end{equation}
+
+  \item Если $0\le x\le N-3$, $n\le a\sqrt{N}$, то имеет место следующая оценка
+    \begin{equation}\label{applimitR}
+        |f(x)-S_{n,N}^{-1}(f,x)|\le c(a)E_{n,N}^{*}(f)\left[1+\ln\left(2+\frac{n}{N-1}\sqrt{x(N-3-x)}\right)\right],
+    \end{equation}
+    где
+    $$E_{n,N}^{*}(f) = \inf_{p_n \in \hat{H}^n} \sup_{0\le x\le N-3} |f(x)-p_n(x)|$$
+    -- наилучшее приближение функции $f(x)$ алгебраическими полиномами, которые в точках $0$ и $N-1$ совпадают со значениями самой функции $f(x)$.
+
+    Здесь и далее через $c, c(a), c(a,b)$ и т.д. -- мы обозначаем положительные числа, зависящее только от указанных в скобках параметров и, вообще говоря, различные в разных местах.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{ВСПОМОГАТЕЛЬНЫЕ УТВЕРЖДЕНИЯ}
+
+Далее нам понадобится модифицированный вариант полиномов Чебыш\"ева:
+\begin{equation}\label{Qnn}
+ Q_{n}^{\alpha,\beta}(t) = Q_{n}^{\alpha,\beta}(t,N) = T_{n}^{\alpha,\beta}\left( \frac{N-1}{2}(1+t) - 1, N-1 \right).
+\end{equation}
+для которого в работе [3, ШИИ, Об ограниченности...] показана справедливость оценок \eqref{weightEst} -- \eqref{weightEst1}, а также следующая рекуррентная формула
+\begin{equation}\label{recurQ}
+  \hat{A}^{\alpha,\beta}_{n,N} Q^{\alpha,\beta}_{n+1}(t) = \frac{N-1}{2}\,(t+\lambda^{\alpha,\beta}_{n,N}) Q^{\alpha,\beta}_{n}(t) - \hat{C}^{\alpha,\beta}_{n,N} Q^{\alpha,\beta}_{n-1}(t),
+\end{equation}
+где $\hat{A}^{\alpha,\beta}_{n,N}= A^{\alpha,\beta}_{n,N-1}$, $\hat{C}^{\alpha,\beta}_{n,N} = C^{\alpha,\beta}_{n,N-1}$,
+\begin{equation*}
+  \hat{A}^{\alpha,\beta}_{n,N} = \frac{(n+1)(n+\alpha+\beta+1)(N-n-2)}{(2n+\alpha+\beta+1)(2n+\alpha+\beta+2)},
+\end{equation*}
+\begin{equation*}
+  \hat{C}^{\alpha,\beta}_{n,N} = \frac{(n+\alpha)(n+\beta)(N+n+\alpha+\beta-1)}{(2n+\alpha+\beta)(2n+\alpha+\beta+1)},
+\end{equation*}
+\begin{equation*}
+  \lambda^{\alpha,\beta}_{n,N} = \frac{\alpha^2-\beta^2}{(2n+\alpha+\beta)(2n+\alpha+\beta+2)}+\frac{q(n,\alpha,\beta)}{N-1}, \quad \text{где } |q(n,\alpha,\beta)| \leq c(\alpha,\beta).
+\end{equation*}
+Рассмотрим отдельно два частных случая:
+
+%1. $\alpha=\beta=1$:
+%\begin{equation*}
+%  \hat{A}^{1,1}_{n,N} Q^{1,1}_{n+1}(t) = \frac{N-1}{2}\,(t+\lambda^{1,1}_{n,N}) Q^{1,1}_{n}(t) - \hat{C}^{1,1}_{n,N} Q^{1,1}_{n-1}(t),
+%\end{equation*}
+%\begin{equation*}
+%  \hat{A}^{1,1}_{n,N} = \frac{(n+1)(n+3)(N-n)}{(2n+3)(2n+4)},
+%\end{equation*}
+%\begin{equation*}
+%  \hat{C}^{1,1}_{n,N} = \frac{(n+1)(N+n+1)}{2(2n+3)},
+%\end{equation*}
+%\begin{equation*}
+%  \lambda^{1,1}_{n,N} = \frac{q(n,1,1)}{N-1}, \quad \text{где } |q(n,1,1)| \leq c,
+%\end{equation*}
+%
+%%\begin{equation*}
+%%   Q^{1,1}_{n+1}(t) = \frac{(2n+3)(2n+4)}{(n+1)(n+3)(N-n)} \frac{N-1}{2}\,\left(t-\frac{q(n,1,1)}{N-1}\right) Q^{1,1}_{n}(t) -
+%%   \frac{(2n+3)(2n+4)}{(n+1)(n+3)(N-n)} \frac{(n+1)(N+n+1)}{2(2n+3)} Q^{1,1}_{n-1}(t),
+%%\end{equation*}
+%
+%\begin{equation*}
+%   Q^{1,1}_{n+1}(t) = \frac{(2n+3)(n+2)}{(n+1)(n+3)} \frac{N-1}{N-n}\,\left(t+\frac{q(n,1,1)}{N-1}\right) Q^{1,1}_{n}(t) -
+%   \frac{n+2}{n+3} \frac{N+n+1}{N-n} Q^{1,1}_{n-1}(t),.
+%\end{equation*}
+
+
+1. $\alpha=1, \beta=2$:
+%\begin{equation*}
+%  \hat{A}^{1,2}_{n,N} Q^{1,2}_{n+1}(t) = \frac{N-1}{2}\,(t+\lambda^{1,2}_{n,N}) Q^{1,2}_{n}(t) - \hat{C}^{1,2}_{n,N} Q^{1,2}_{n-1}(t),
+%\end{equation*}
+%\begin{equation*}
+%  \hat{A}^{1,2}_{n,N} = \frac{(n+1)(n+4)(N-n-2)}{2(n+2)(2n+5)},
+%\end{equation*}
+%\begin{equation*}
+%  \hat{C}^{1,2}_{n,N} = \frac{(n+1)(N+n+2)}{2(2n+3)},
+%\end{equation*}
+%\begin{equation*}
+%  \lambda^{1,2}_{n,N} = \frac{-3}{(2n+3)(2n+5)}+\frac{q(n,1,2)}{N-1}, \quad \text{где } |q(n,1,2)| \leq c,
+%\end{equation*}
+
+%\begin{equation*}
+%   \frac{(n+1)(n+4)(N-n)}{2(n+2)(2n+5)} Q^{1,2}_{n+1}(t) = \frac{N-1}{2}\,(t+\frac{3}{(2n+3)(2n+5)}+\frac{q(n,1,2)}{N-1}) Q^{1,2}_{n}(t) - \frac{(n+1)(n+2)(N+n+2)}{2(2n+3)(n+2)} Q^{1,2}_{n-1}(t),
+%\end{equation*}
+
+%\begin{equation*}
+%    \frac{(n+1)(n+4)(N-n)}{2(n+2)(2n+5)} \, Q^{1,2}_{n+1}(t) =
+%    \frac{N-1}{2}\,
+%    \left(t-
+%    \frac{3}{(2n+3)(2n+5)}+\frac{q(n,1,2)}{N-1}
+%    \right)\,
+%    Q^{1,2}_{n}(t) -
+%\end{equation*}
+%\begin{equation*}
+%    \frac{(n+1)(N+n+2)}{2(2n+3)}\,
+%    Q^{1,2}_{n-1}(t),
+%\end{equation*}
+
+\begin{equation*}
+    \frac{(n+1)(n+4)(N-n-2)}{(n+2)(2n+5)(N-1)} \, Q^{1,2}_{n+1}(t) =
+    \left(t-
+    \frac{3}{(2n+3)(2n+5)}+\frac{q(n,1,2)}{N-1}
+    \right)\,
+    Q^{1,2}_{n}(t) -
+\end{equation*}
+\begin{equation}\label{34}
+    \frac{(n+1)(N+n+2)}{(2n+3)(N-1)}\,
+    Q^{1,2}_{n-1}(t).
+\end{equation}
+
+
+%\begin{equation*}
+%    Q^{1,2}_{n+1}(t) = \frac{(n+2)(2n+5)}{(n+1)(n+4)}\frac{N-1}{N-n}\,
+%    \left(t+\frac{3}{(2n+3)(2n+5)}-\frac{q(n,1,2)}{N-1}\right)
+%    Q^{1,2}_{n}(t) -
+%\end{equation*}
+%\begin{equation*}
+%    \frac{(n+2)(2n+5)}{(n+4)(2n+3)}
+%    \frac{N+n+2}{N-n}
+%    Q^{1,2}_{n-1}(t),
+%\end{equation*}
+
+
+2. $\alpha=2, \beta=1$:
+%\begin{equation*}
+%  \hat{A}^{2,1}_{n,N} Q^{2,1}_{n+1}(t) = \frac{N-1}{2}\,(t+\lambda^{2,1}_{n,N}) Q^{2,1}_{n}(t) - \hat{C}^{2,1}_{n,n} Q^{2,1}_{n-1}(t),
+%\end{equation*}
+%\begin{equation*}
+%  \hat{A}^{2,1}_{n,N} = \frac{(n+1)(n+4)(N-n-2)}{2(n+2)(2n+5)},
+%\end{equation*}
+%\begin{equation*}
+%  \hat{C}^{2,1}_{n,N} = \frac{(n+1)(N+n+2)}{2(2n+3)},
+%\end{equation*}
+%\begin{equation*}
+%  \lambda^{2,1}_{n,N} = \frac{3}{(2n+3)(2n+5)}+\frac{q(n,2,1)}{N-1}, \quad \text{где } |q(n,2,1)| \leq c,
+%\end{equation*}
+
+%\begin{equation*}
+%  Q^{2,1}_{n+1}(t) = \frac{2(n+2)(2n+5)}{(n+1)(n+4)(N-n)} \frac{N-1}{2}\,
+%  \left(t-\frac{3}{(2n+3)(2n+5)}+\frac{q(n,2,1)}{N-1}\right) Q^{2,1}_{n}(t) -
+%  \frac{2(n+2)(2n+5)}{(n+1)(n+4)(N-n)} \frac{(n+1)(N+n+2)}{2(2n+3)} Q^{2,1}_{n-1}(t),
+%\end{equation*}
+%\begin{equation*}
+%  Q^{2,1}_{n+1}(t) = \frac{(n+2)(2n+5)}{(n+1)(n+4)} \frac{N-1}{N-n}\,
+%  \left(t-\frac{3}{(2n+3)(2n+5)}-\frac{q(n,2,1)}{N-1}\right) Q^{2,1}_{n}(t) -
+%\end{equation*}
+%\begin{equation*}
+%  \frac{(n+2)(2n+5)}{(n+4)(2n+3)}
+%  \frac{N+n+2}{N-n}
+%  Q^{2,1}_{n-1}(t),
+%\end{equation*}
+
+\begin{equation*}
+  \frac{(n+1)(n+4)(N-n-2)}{(n+2)(2n+5)(N-1)} Q^{2,1}_{n+1}(t) =
+  \left(t+\frac{3}{(2n+3)(2n+5)}+\frac{q(n,2,1)}{N-1}\right) Q^{2,1}_{n}(t)
+\end{equation*}
+\begin{equation}\label{35}
+  - \frac{(n+1)(N+n+2)}{(2n+3)(N-1)} \, Q^{2,1}_{n-1}(t).
+\end{equation}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lemma}\label{lemma0}
+Для всех $t,v \in [-1,1]$ имеет место равенство
+\begin{equation*}
+  T_{l+1}^1(x) T_{l}^1(j) - T_{l+1}^1(j) T_{l}^1(x) =
+    \frac{(l+2)}{2(l+1)} \,
+  \left[
+    (1+t)(1-v)\,Q^{1,2}_{l}(t)\,Q^{2,1}_{l}\left(v+\frac{2}{N-1}\right)
+  \right.
+\end{equation*}
+\begin{equation}\label{lem0eq}
+  \left.
+  - (1+v)(1-t)\,Q^{1,2}_{l}(v)\,Q^{2,1}_{l}\left(t+\frac{2}{N-1}\right)\right],
+  \quad (l=0, \ldots, N-2).
+\end{equation}
+
+\end{lemma}
+
+% \begin{proof}
+% Из рекуррентных формул \eqref{recur1}-\eqref{recur2} имеем:
+% %====================
+% %\begin{equation*}
+% %  (n+1)T^{\alpha,\beta}_{n+1}(x,N) + (n+\beta+1)T^{\alpha,\beta}_{n}(x,N) = \frac{2n+\alpha+\beta+2}{N-1}\,x\,T^{\alpha,\beta+1}_{n}(x-1,N-1)
+% %\end{equation*}
+% %\begin{equation*}
+% %  (n+\alpha+1)T^{\alpha,\beta}_{n}(x,N) - (n+1)T^{\alpha,\beta}_{n+1}(x,N) = \frac{2n+\alpha+\beta+2}{N-1}\,(N-1-x)\,T^{\alpha+1,\beta}_{n}(x,N-1)
+% %\end{equation*}
+% %====================
+% \begin{equation*}
+  % (l+1)T^{1,1}_{l+1}(x,N) + (l+2)T^{1,1}_{l}(x,N) = \frac{2l+4}{N-1}\,x\,T^{1,2}_{l}(x-1,N-1),
+% \end{equation*}
+% \begin{equation*}
+% (l+2)T^{1,1}_{l}(x,N) - (l+1)T^{1,1}_{l+1}(x,N) = \frac{2l+4}{N-1}\,(N-1-x)\,T^{2,1}_{l}(x,N-1).
+% \end{equation*}
+% Складывая эти равенства получаем:
+% %\begin{equation*}
+% %  (n+1)T^{1,1}_{n+1}(x,N) + (n+2)T^{1,1}_{n}(x,N) + (n+2)T^{1,1}_{n}(x,N) - (n+1)T^{1,1}_{n+1}(x,N)
+% %\end{equation*}
+% %\begin{equation*}
+% %   = \frac{2n+4}{N-1}\,x\,T^{1,2}_{n}(x-1,N-1) + \frac{2n+4}{N-1}\,(N-1-x)\,T^{2,1}_{n}(x,N-1),
+% %\end{equation*}
+% %\begin{equation*}
+% %  2(n+2)T^{1,1}_{n}(x,N) =
+% %   \frac{2n+4}{N-1}\, \left[ x\,T^{1,2}_{n}(x-1,N-1) + (N-1-x)\,T^{2,1}_{n}(x,N-1) \right],
+% %\end{equation*}
+% %\begin{equation*}
+% %  (N-1)T^{1,1}_{n}(x,N) =
+% %   x\,T^{1,2}_{n}(x-1,N-1) + (N-1-x)\,T^{2,1}_{n}(x,N-1),
+% %\end{equation*}
+% \begin{equation*}
+  % T^{1,1}_{l}(x,N) = \frac{1}{N-1}
+   % \left[ x\,T^{1,2}_{l}(x-1,N-1) + (N-1-x)\,T^{2,1}_{l}(x,N-1) \right],
+% \end{equation*}
+% а вычитая из первого второе:
+% %\begin{equation*}
+% %  (n+1)T^{1,1}_{n+1}(x,N) + (n+2)T^{1,1}_{n}(x,N) - (n+2)T^{1,1}_{n}(x,N) + (n+1)T^{1,1}_{n+1}(x,N) =
+% %\end{equation*}
+% %\begin{equation*}
+% %   \frac{2n+4}{N-1}\,x\,T^{1,2}_{n}(x-1,N-1) - \frac{2n+4}{N-1}\,(N-1-x)\,T^{2,1}_{n}(x,N-1),
+% %\end{equation*}
+% %\begin{equation*}
+% %  (n+1)T^{1,1}_{n+1}(x,N) + (n+1)T^{1,1}_{n+1}(x,N) =
+% %\end{equation*}
+% %\begin{equation*}
+% %   \frac{2n+4}{N-1}\,\left[ x\,T^{1,2}_{n}(x-1,N-1) - (N-1-x)\,T^{2,1}_{n}(x,N-1) \right],
+% %\end{equation*}
+% %\begin{equation*}
+% %  \frac{n+1}{n+2} (N-1) T^{1,1}_{n+1}(x,N)=
+% %   x\,T^{1,2}_{n}(x-1,N-1) - (N-1-x)\,T^{2,1}_{n}(x,N-1),
+% %\end{equation*}
+% \begin{equation*}
+  % T^{1,1}_{l+1}(x,N)=
+  % \frac{l+2}{(l+1)(N-1)}
+   % \left[ x\,T^{1,2}_{l}(x-1,N-1) - (N-1-x)\,T^{2,1}_{l}(x,N-1) \right],
+% \end{equation*}
+% Тогда можем записать
+% %\begin{equation*}
+% %  T_{l+1}^1(x) T_{l}^1(j) - T_{l+1}^1(j) T_{l}^1(x) =
+% %   \frac{l+2}{(l+1)(N-1)^2}
+% %\end{equation*}
+% %\begin{equation*}
+% %    \left[
+% %        \left( x\,T^{1,2}_{l}(x-1,N-1) - (N-1-x)\,T^{2,1}_{l}(x,N-1) \right)
+% %        \left( j\,T^{1,2}_{l}(j-1,N-1) + (N-1-j)\,T^{2,1}_{l}(j,N-1) \right)
+% %        -
+% %    \right.
+% %\end{equation*}
+% %\begin{equation*}
+% %\left.
+% %  \left( j\,T^{1,2}_{l}(j-1,N-1) - (N-1-j)\,T^{2,1}_{l}(j,N-1) \right)
+% %  \left( x\,T^{1,2}_{l}(x-1,N-1) + (N-1-x)\,T^{2,1}_{l}(x,N-1) \right)
+% %\right] =
+% %\end{equation*}
+% \begin{equation*}
+  % T_{l+1}^1(x) T_{l}^1(j) - T_{l+1}^1(j) T_{l}^1(x) =
+   % \frac{l+2}{(l+1)(N-1)^2}
+   % \left[
+        % \left( x\,T^{1,2}_{l}(x-1,N-1) -
+    % \right.\right.
+% \end{equation*}
+% \begin{equation*}
+    % \left.
+        % \left. (N-1-x)\,T^{2,1}_{l}(x,N-1) \right)
+        % \left( j\,T^{1,2}_{l}(j-1,N-1) + (N-1-j)\,T^{2,1}_{l}(j,N-1) \right)
+        % -
+    % \right.
+% \end{equation*}
+% \begin{equation*}
+% \left.
+  % \left( j\,T^{1,2}_{l}(j-1,N-1) - (N-1-j)\,T^{2,1}_{l}(j,N-1) \right)
+  % \left( x\,T^{1,2}_{l}(x-1,N-1) +  \right.
+% \right.
+% \end{equation*}
+% \begin{equation*}
+% \left.\left.
+% + (N-1-x)\,T^{2,1}_{l}(x,N-1) \right)
+% \right] =
+% \end{equation*}
+% %%%%%%%%%%%%%%%%%%
+% \begin{equation*}
+% \frac{2(l+2)}{(l+1)(N-1)^2} \left[
+    % x(N-1-j)\,T^{1,2}_{l}(x-1,N-1)\,T^{2,1}_{l}(j,N-1)-
+ % \right.
+% \end{equation*}
+% \begin{equation*}
+% \left.
+    % j(N-1-x)\,T^{1,2}_{l}(j-1,N-1)\,T^{2,1}_{l}(x,N-1)
+% \right].
+% \end{equation*}
+% %\begin{equation*}
+% %  xj\,T^{1,2}_{l}(x-1,N-1)\,T^{1,2}_{l}(j-1,N-1)
+% %- j(N-1-x)\,T^{2,1}_{l}(x,N-1) \,T^{1,2}_{l}(j-1,N-1)
+% %\end{equation*}
+% %\begin{equation*}
+% %+ x(N-1-j)\,T^{1,2}_{l}(x-1,N-1)\,T^{2,1}_{l}(j,N-1)
+% %- (N-1-x)(N-1-j)\,T^{2,1}_{l}(x,N-1) \,T^{2,1}_{l}(j,N-1)
+% %\end{equation*}
+% %\begin{equation*}
+% %  - xj\,T^{1,2}_{l}(j-1,N-1)\,T^{1,2}_{l}(x-1,N-1)
+% %  + x(N-1-j)\,T^{2,1}_{l}(j,N-1) \,T^{1,2}_{l}(x-1,N-1)
+% %  \end{equation*}
+% %\begin{equation*}
+% %  - j(N-1-x)\,T^{1,2}_{l}(j-1,N-1)\,T^{2,1}_{l}(x,N-1)
+% %  + (N-1-j)(N-1-x)\,T^{2,1}_{l}(j,N-1)\,T^{2,1}_{l}(x,N-1)
+% %\end{equation*}
+% %
+% %=============
+% %
+% %\begin{equation*}
+% % 2x(N-1-j)\,T^{1,2}_{l}(x-1,N-1)\,T^{2,1}_{l}(j,N-1)
+% %\end{equation*}
+% %\begin{equation*}
+% %  - 2j(N-1-x)\,T^{1,2}_{l}(j-1,N-1)\,T^{2,1}_{l}(x,N-1)
+% %\end{equation*}
+
+
+
+
+% Проведя замену переменных $\{x = \frac{N-1}{2}\,(1+t), j = \frac{N-1}{2}\,(1+v)\}$ приходим к справедливости утверждения Леммы.
+% \end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{lemma}\label{lemma1}
+Пусть $k=0, \ldots, N-2$, тогда для любых $t,v \in [-1,1]$, тогда имеет место
+\begin{equation*}
+    \left(
+    t-v
+    \right)\,
+   \sum_{l=0}^{k}
+    \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+    Q^{1,2}_{l}(t) \,Q^{2,1}_{l}\left(v +\frac{2}{N-1} \right)
+    =
+\end{equation*}
+\begin{equation*}
+   \frac{(N-2)^{[k+1]}}{(N+k+2)^{[k]}}  \,
+   \frac{(k+3)(k+4)}{(2k+5)(N-1)}
+   \left[
+        Q^{1,2}_{k+1}(t) \,Q^{2,1}_{k}\left(v +\frac{2}{N-1} \right) -  Q^{1,2}_{k}(t) \, Q^{2,1}_{k+1} \left(v +\frac{2}{N-1} \right)
+   \right]
+\end{equation*}
+\begin{equation}\label{lem1eq}
+   +
+   \sum_{l=0}^{k} \lambda_{l,N} \,
+    \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+    Q^{1,2}_{l}(t) \,Q^{2,1}_{l}\left(v +\frac{2}{N-1} \right),
+\end{equation}
+где $\lambda_{l,N} = \frac{6}{(2l+3)(2l+5)}+\frac{q(l)}{N-1}$, $|q(l)|<c$.
+\end{lemma}
+
+% \begin{proof}
+% Умножив \eqref{34} на $Q^{2,1}_{n}(y)$ вычтем из него \eqref{35}, умноженное на $Q^{1,2}_{n}(t)$, получим
+
+% %\begin{equation*}
+% %    \frac{(n+1)(n+4)(N-n-2)}{(n+2)(2n+5)(N-1)} \, Q^{1,2}_{n+1}(t) \,Q^{2,1}_{n}(v)
+% %    =
+% %    \left(t-
+% %    \frac{3}{(2n+3)(2n+5)}+\frac{q(n,1,2)}{N-1}
+% %    \right)\,
+% %    Q^{1,2}_{n}(t) \,Q^{2,1}_{n}(v) -
+% %\end{equation*}
+% %\begin{equation}\label{34}
+% %    \frac{(n+1)(N+n+2)}{(2n+3)(N-1)}\,
+% %    Q^{1,2}_{n-1}(t) \,Q^{2,1}_{n}(v).
+% %\end{equation}
+% %
+% %------------
+% %
+% %\begin{equation*}
+% %  \frac{(n+1)(n+4)(N-n-2)}{(n+2)(2n+5)(N-1)} Q^{2,1}_{n+1}(v)\,Q^{1,2}_{n}(t) =
+% %  \left(v+\frac{3}{(2n+3)(2n+5)}+\frac{q(n,2,1)}{N-1}\right) Q^{2,1}_{n}(v)\,Q^{1,2}_{n}(t)
+% %\end{equation*}
+% %\begin{equation}\label{35}
+% %  - \frac{(n+1)(N+n+2)}{(2n+3)(N-1)} \, Q^{2,1}_{n-1}(v)\,Q^{1,2}_{n}(t).
+% %\end{equation}
+% %
+% %=============
+
+% %
+% %\begin{equation*}
+% %    \frac{(n+1)(n+4)(N-n-2)}{(n+2)(2n+5)(N-1)} \left[ \, Q^{1,2}_{n+1}(t) \,Q^{2,1}_{n}(v)
+% %    -  Q^{1,2}_{n}(t) \, Q^{2,1}_{n+1}(v) \right]
+% %    =
+% %\end{equation*}
+% %\begin{equation*}
+% %    \left(
+% %    t-v - \frac{6}{(2n+3)(2n+5)}+\frac{q(n,1,2)- q(n,2,1)}{N-1}
+% %    \right)\,
+% %    Q^{1,2}_{n}(t) \,Q^{2,1}_{n}(v)
+% %\end{equation*}
+% %\begin{equation*}
+% %    + \frac{(n+1)(N+n+2)}{(2n+3)(N-1)}\,\left[
+% %    Q^{1,2}_{n}(t)\, Q^{2,1}_{n-1}(v) - Q^{1,2}_{n-1}(t) \,Q^{2,1}_{n}(v)
+% %    \right].
+% %\end{equation*}
+% %Обозначим $\lambda = - \frac{6}{(2n+3)(2n+5)}+\frac{q(n,1,2)- q(n,2,1)}{N-1}$, тогда
+% \begin{equation*}
+    % \frac{(n+1)(n+4)(N-n-2)}{(n+2)(2n+5)(N-1)} \left[ \, Q^{1,2}_{n+1}(t) \,Q^{2,1}_{n}(y)
+    % -  Q^{1,2}_{n}(t) \, Q^{2,1}_{n+1}(y) \right]
+    % =
+% \end{equation*}
+% \begin{equation*}
+    % \left(
+    % t-y + \lambda_{n,N}^{1,2}-\lambda_{n,N}^{2,1}
+    % \right)\,
+    % Q^{1,2}_{n}(t) \,Q^{2,1}_{n}(y)
+% \end{equation*}
+% \begin{equation*}
+    % + \frac{(n+1)(N+n+2)}{(2n+3)(N-1)}\,\left[
+    % Q^{1,2}_{n}(t)\, Q^{2,1}_{n-1}(y) - Q^{1,2}_{n-1}(t) \,Q^{2,1}_{n}(y)
+    % \right].
+% \end{equation*}
+% Умножим обе части на $\frac{(N-2)^{[n]}}{(N+n+2)^{[n]}} \, \frac{(n+2)(n+3)}{(n+1)}$, получаем:
+
+% %\begin{equation*}
+% %   \frac{(N-2)^{[n]}}{(N+n+2)^{[n]}}  \,
+% %   \frac{(n+3)(n+4)(N-n-2)}{(2n+5)(N-1)}
+% %   \left[
+% %        Q^{1,2}_{n+1}(t) \,Q^{2,1}_{n}(v) -  Q^{1,2}_{n}(t) \, Q^{2,1}_{n+1}(v)
+% %   \right] =
+% %\end{equation*}
+% %\begin{equation*}
+% %    \frac{(N-2)^{[n]}}{(N+n+2)^{[n]}} \, \frac{(n+2)(n+3)}{(n+1)}\,
+% %    \left(
+% %    t-v + \lambda
+% %    \right)\,
+% %    Q^{1,2}_{n}(t) \,Q^{2,1}_{n}(v)
+% %\end{equation*}
+% %\begin{equation*}
+% %    +
+% %    \frac{(N-2)^{[n]}}{(N+n+2)^{[n]}} \,
+% %    \frac{(n+2)(n+3)(N+n+2)}{(2n+3)(N-1)}\,\left[
+% %    Q^{1,2}_{n}(t)\, Q^{2,1}_{n-1}(v) - Q^{1,2}_{n-1}(t) \,Q^{2,1}_{n}(v)
+% %    \right],
+% %\end{equation*}
+
+
+
+% \begin{equation*}
+   % \frac{(N-2)^{[n+1]}}{(N+n+2)^{[n]}}  \,
+   % \frac{(n+3)(n+4)}{(2n+5)(N-1)}
+   % \left[
+        % Q^{1,2}_{n+1}(t) \,Q^{2,1}_{n}(y) -  Q^{1,2}_{n}(t) \, Q^{2,1}_{n+1}(y)
+   % \right] =
+% \end{equation*}
+% \begin{equation*}
+    % \frac{(N-2)^{[n]}}{(N+n+2)^{[n]}} \, \frac{(n+2)(n+3)}{(n+1)}\,
+    % \left(
+    % t-y + \lambda_{n,N}^{1,2}-\lambda_{n,N}^{2,1}
+    % \right)\,
+    % Q^{1,2}_{n}(t) \,Q^{2,1}_{n}(y)
+% \end{equation*}
+% \begin{equation}\label{qsumm}
+    % +
+    % \frac{(N-2)^{[n]}}{(N+n+1)^{[n-1]}} \,
+    % \frac{(n+2)(n+3)}{(2n+3)(N-1)}\,\left[
+    % Q^{1,2}_{n}(t)\, Q^{2,1}_{n-1}(y) - Q^{1,2}_{n-1}(t) \,Q^{2,1}_{n}(y)
+    % \right].
+% \end{equation}
+% Если принять $a^{[-1]}=1$, $Q^{\alpha,\beta}_{-1}(t)=0$, то эта формула сохранят свою справедливость и при $n=0$.
+% Просуммируем все равенства вида \eqref{qsumm} для $n=l, (l = 0,\ldots,k),$ и выведем:
+
+% \begin{equation*}
+   % \sum_{l=0}^{k}
+   % \frac{(N-2)^{[l+1]}}{(N+l+2)^{[l]}}  \,
+   % \frac{(l+3)(l+4)}{(2l+5)(N-1)}
+   % \left[
+        % Q^{1,2}_{l+1}(t) \,Q^{2,1}_{l}(y) -  Q^{1,2}_{l}(t) \, Q^{2,1}_{l+1}(y)
+   % \right] =
+% \end{equation*}
+% \begin{equation*}
+   % \sum_{l=0}^{k}
+    % \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+    % \left(
+    % t-y + \lambda_{l,N}^{1,2}-\lambda_{l,N}^{2,1}
+    % \right)\,
+    % Q^{1,2}_{l}(t) \,Q^{2,1}_{l}(y) +
+% \end{equation*}
+% \begin{equation*}
+    % \sum_{l=0}^{k}
+    % \frac{(N-2)^{[l]}}{(N+l+1)^{[l-1]}} \,
+    % \frac{(l+2)(l+3)}{(2l+3)(N-1)}\,\left[
+    % Q^{1,2}_{l}(t)\, Q^{2,1}_{l-1}(y) - Q^{1,2}_{l-1}(t) \,Q^{2,1}_{l}(y)
+    % \right].
+% \end{equation*}
+% Сгруппировав первую и последнюю суммы в равенстве, а также поменяв порядок суммирования получаем:
+% %\begin{equation*}
+% %   \sum_{l=1}^{k+1}
+% %   \frac{(N-2)^{[l]}}{(N+l+1)^{[l-1]}}  \,
+% %   \frac{(l+2)(l+3)}{(2l+3)(N-1)}
+% %   \left[
+% %        Q^{1,2}_{l}(t) \,Q^{2,1}_{l-1}(v) -  Q^{1,2}_{l-1}(t) \, Q^{2,1}_{l}(v)
+% %   \right] =
+% %\end{equation*}
+% %\begin{equation*}
+% %   \sum_{l=0}^{k}
+% %    \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+% %    \left(
+% %    t-v + \lambda
+% %    \right)\,
+% %    Q^{1,2}_{l}(t) \,Q^{2,1}_{l}(v)
+% %\end{equation*}
+% %\begin{equation*}
+% %+
+% %    \sum_{l=0}^{k}
+% %    \frac{(N-2)^{[l]}}{(N+l+1)^{[l-1]}} \,
+% %    \frac{(l+2)(l+3)}{(2l+3)(N-1)}\,\left[
+% %    Q^{1,2}_{l}(t)\, Q^{2,1}_{l-1}(v) - Q^{1,2}_{l-1}(t) \,Q^{2,1}_{l}(v)
+% %    \right].
+% %\end{equation*}
+% \begin{equation*}
+   % \sum_{l=1}^{k+1}
+   % \frac{(N-2)^{[l]}}{(N+l+1)^{[l-1]}}  \,
+   % \frac{(l+2)(l+3)}{(2l+3)(N-1)}
+   % \left[
+        % Q^{1,2}_{l}(t) \,Q^{2,1}_{l-1}(y) -  Q^{1,2}_{l-1}(t) \, Q^{2,1}_{l}(y)
+   % \right] -
+% \end{equation*}
+% \begin{equation*}
+    % \sum_{l=0}^{k}
+    % \frac{(N-2)^{[l]}}{(N+l+1)^{[l-1]}} \,
+    % \frac{(l+2)(l+3)}{(2l+3)(N-1)}\,\left[
+    % Q^{1,2}_{l}(t)\, Q^{2,1}_{l-1}(y) - Q^{1,2}_{l-1}(t) \,Q^{2,1}_{l}(y)
+    % \right]
+    % =
+% \end{equation*}
+% \begin{equation*}
+   % \sum_{l=0}^{k}
+    % \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+    % \left(
+    % t-y + \lambda_{l,N}^{1,2}-\lambda_{l,N}^{2,1}
+    % \right)\,
+    % Q^{1,2}_{l}(t) \,Q^{2,1}_{l}(y),
+% \end{equation*}
+% откуда
+% %\begin{equation*}
+% %   \frac{(N-2)^{[k+1]}}{(N+k+2)^{[k]}}  \,
+% %   \frac{(k+3)(k+4)}{(2k+5)(N-1)}
+% %   \left[
+% %        Q^{1,2}_{k+1}(t) \,Q^{2,1}_{k}(v) -  Q^{1,2}_{k}(t) \, Q^{2,1}_{k+1}(v)
+% %   \right]
+% %\end{equation*}
+% %%\begin{equation*}
+% %%-
+% %%    \frac{(N-2)^{[0]}}{(N+1)^{[-1]}} \,
+% %%    \frac{(2)(3)}{(3)(N-1)}\,\left[
+% %%    Q^{1,2}_{0}(t)\, Q^{2,1}_{-1}(v) - Q^{1,2}_{-1}(t) \,Q^{2,1}_{0}(v)
+% %%    \right]
+% %%\end{equation*}
+% %\begin{equation*}
+% %=
+% %   \sum_{l=0}^{k}
+% %    \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+% %    \left(
+% %    t-v + \lambda
+% %    \right)\,
+% %    Q^{1,2}_{l}(t) \,Q^{2,1}_{l}(v),
+% %\end{equation*}
+% %и далее
+% \begin{equation*}
+    % \left(
+    % t-y
+    % \right)\,
+   % \sum_{l=0}^{k}
+    % \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+    % Q^{1,2}_{l}(t) \,Q^{2,1}_{l}(y)
+    % =
+% \end{equation*}
+% \begin{equation*}
+   % \frac{(N-2)^{[k+1]}}{(N+k+2)^{[k]}}  \,
+   % \frac{(k+3)(k+4)}{(2k+5)(N-1)}
+   % \left[
+        % Q^{1,2}_{k+1}(t) \,Q^{2,1}_{k}(y) -  Q^{1,2}_{k}(t) \, Q^{2,1}_{k+1}(y)
+   % \right]
+% \end{equation*}
+% \begin{equation*}
+   % +
+   % \sum_{l=0}^{k} \left( \lambda_{l,N}^{2,1} - \lambda_{l,N}^{1,2} \right)\,
+    % \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+    % Q^{1,2}_{l}(t) \,Q^{2,1}_{l}(y).
+% \end{equation*}
+% Подставив теперь в это равенство $y = v + \frac{2}{N-1}$, сразу же приходим к справедливости утверждения Леммы.
+% \end{proof}
+
+
+
+\begin{lemma}\label{lemma2}
+Для любых $t \in [0, 1]$ и $v \in [-1,1]$ при $k=0, \ldots, N-2$ справедлива оценка
+\begin{equation*}
+\frac{(N-2)^{[k+1]}}{(N+k+2)^{[k]}}  \,
+   \frac{(k+3)(k+4)}{(2k+5)(N-1)}
+   \left|
+        Q^{1,2}_{k+1}(t) \,Q^{2,1}_{k}\left(v +\frac{2}{N-1} \right) -
+        \right.
+\end{equation*}
+\begin{equation*}
+\left.
+        Q^{1,2}_{k}(t) \, Q^{2,1}_{k+1} \left(v +\frac{2}{N-1} \right)
+   \right|
+   \leq
+\end{equation*}
+\begin{equation}\label{lem2eq}
+ c(a) \, (1-t)^{-1/4} (1-v)^{-3/4}(1+v)^{-3/4} \left[
+    (1-t)^{-1/2} +
+    (1-v)^{-1/2}
+    \right].
+\end{equation}
+\end{lemma}
+% \begin{proof}
+% Из \eqref{recur2} и \eqref{Qnn} можно получить рекуррентное соотношение:
+% \begin{equation*}
+   % Q^{\alpha,\beta}_{n+1}(t) =
+   % \frac{n+\alpha+1}{n+1} Q^{\alpha,\beta}_{n}(t)
+   % -
+% \end{equation*}
+% \begin{equation*}
+   % \frac{(2n+\alpha+\beta+2)(N-1)}{2(n+1)(N-2)}\,(1-t)\,T^{\alpha+1,\beta}_{n}\left(\frac{N-1}{2}(1+t)-1,N-2\right).
+% \end{equation*}
+% %\begin{equation*}
+% %   Q^{1,2}_{n+1}(t) =
+% %   \frac{n+2}{n+1} Q^{1,2}_{n}(t)
+% %   -
+% %   \frac{(2n+5)(N-1)}{2(n+1)(N-2)}\,(1-t)\,T^{2,2}_{n}\left(\frac{N-1}{2}(1+t)-1,N-2\right),
+% %\end{equation*}
+% %
+% %\begin{equation*}
+% %   Q^{2,1}_{n+1}(t) =
+% %   \frac{n+3}{n+1} Q^{2,1}_{n}(t)-
+% %   \frac{(2n+5)(N-1)}{2(n+1)(N-2)}\,(1-t)\,T^{3,1}_{n}\left(\frac{N-1}{2}(1+t)-1,N-2\right),
+% %\end{equation*}
+% Используя случаи $\alpha=1,\beta=2$ и $\alpha=2,\beta=1$ выведем
+% \begin{equation*}
+   % Q^{1,2}_{n+1}(t)Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right) -
+   % Q^{1,2}_{n}(t)Q^{2,1}_{n+1}\left(v + \frac{2}{N-1}\right)
+   % =
+% \end{equation*}
+% %\begin{equation*}
+% %   \left[
+% %        \frac{n+2}{n+1} Q^{1,2}_{n}(t) -
+% %        \frac{(2n+5)(N-1)}{2(n+1)(N-2)}\,(1-t)\,T^{2,2}_{n}\left(\frac{N-1}{2}(1+t)-1,N-2\right)
+% %   \right]
+% %   \, Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right)
+% %   -
+% %\end{equation*}
+% %\begin{equation*}
+% %   \left[
+% %        \frac{n+3}{n+1} Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right)-
+% %        \frac{(2n+5)(N-1)}{2(n+1)(N-2)}\,(1-t)\,T^{3,1}_{n}\left(\frac{N-1}{2}(1+v),N-2\right)
+% %   \right]
+% %   Q^{1,2}_{n}(t) =
+% %\end{equation*}
+% %\begin{equation*}
+% %        \frac{n+2}{n+1} Q^{1,2}_{n}(t)
+% %        \, Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right)
+% %        -
+% %        \frac{(2n+5)(N-1)}{2(n+1)(N-2)}\,(1-t)\,T^{2,2}_{n}\left(\frac{N-1}{2}(1+t)-1,N-2\right)
+% %        \, Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right)
+% %\end{equation*}
+% %\begin{equation*}
+% %    -
+% %    \frac{n+3}{n+1} Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right) \, Q^{1,2}_{n}(t)
+% %    +
+% %    \frac{(2n+5)(N-1)}{2(n+1)(N-2)}\,\left(1-v+\frac{2}{N-1}\right)\,T^{3,1}_{n}\left(\frac{N-1}{2}(1+v),N-2\right)
+% %    \,Q^{1,2}_{n}(t) =
+% %\end{equation*}
+% %\begin{equation*}
+% %        \frac{n+2}{n+1} Q^{1,2}_{n}(t)
+% %        \, Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right)
+% %        -
+% %        \frac{(2n+5)(N-1)}{2(n+1)(N-2)}\,(1-t)\,T^{2,2}_{n}\left(\frac{N-1}{2}(1+t)-1,N-2\right)
+% %        \, Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right)
+% %\end{equation*}
+% %\begin{equation*}
+% %    -
+% %    \frac{n+3}{n+1} Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right) \, Q^{1,2}_{n}(t)
+% %    +
+% %    \frac{(2n+5)(N-1)}{2(n+1)(N-2)}\,\left(1-v+\frac{2}{N-1}\right)\,T^{3,1}_{n}\left(\frac{N-1}{2}(1+v),N-2\right)
+% %    \,Q^{1,2}_{n}(t) =
+% %\end{equation*}
+% \begin{equation*}
+        % \frac{(2n+5)(N-1)}{2(n+1)(N-2)}\,
+        % \left[
+            % \left(1-v+\frac{2}{N-1}\right)\,T^{3,1}_{n}\left(\frac{N-1}{2}(1+v),N-2\right)\,Q^{1,2}_{n}(t)
+        % \right.
+% \end{equation*}
+% \begin{equation*}
+        % \left.
+            % -
+            % (1-t)\,T^{2,2}_{n}\left(\frac{N-1}{2}(1+t)-1,N-2\right)\, Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right)
+        % \right]
+% \end{equation*}
+% \begin{equation}\label{q12q21}
+        % -\frac{1}{n+1} Q^{1,2}_{n}(t)
+        % \, Q^{2,1}_{n}\left(v + \frac{2}{N-1}\right).
+% \end{equation}
+% Тогда
+% \begin{equation*}
+% \frac{(N-2)^{[k+1]}}{(N+k+2)^{[k]}}  \,
+   % \frac{(k+3)(k+4)}{(2k+5)(N-1)}
+   % \left[
+        % Q^{1,2}_{k+1}(t) \,Q^{2,1}_{k}\left(v +\frac{2}{N-1} \right) -  Q^{1,2}_{k}(t) \, Q^{2,1}_{k+1} \left(v +\frac{2}{N-1} \right)
+   % \right]
+   % =
+% \end{equation*}
+% \begin{equation*}
+% \frac{(N-2)^{[k+1]}}{(N+k+2)^{[k]}}  \,
+   % \frac{(k+3)(k+4)}{(2k+5)(N-1)}
+    % \left\{
+        % \frac{(2k+5)(N-1)}{2(k+1)(N-2)}\,
+        % \left[
+            % \left(1-v+\frac{2}{N-1}\right)\,T^{3,1}_{k}\left(\frac{N-1}{2}(1+v),N-2\right)\,Q^{1,2}_{k}(t)
+            % -
+    % \right.
+    % \right.
+% \end{equation*}
+% \begin{equation*}
+% \left.
+    % \left.
+        % (1-t)\,T^{2,2}_{k}\left(\frac{N-1}{2}(1+t)-1,N-2\right)\, Q^{2,1}_{k}\left(v + \frac{2}{N-1}\right)
+    % \right]
+        % -\frac{1}{k+1} Q^{1,2}_{k}(t)
+        % \, Q^{2,1}_{k}\left(v + \frac{2}{N-1}\right)
+   % \right\}=
+% \end{equation*}
+
+% \begin{equation*}
+% \frac{(N-3)^{[k]}}{(N+k+2)^{[k]}}  \,
+   % \frac{(k+3)(k+4)}{2(k+1)}
+        % \left[
+            % \left(1-v+\frac{2}{N-1}\right)\,T^{3,1}_{k}\left(\frac{N-1}{2}(1+v),N-2\right)\,Q^{1,2}_{k}(t)
+            % -
+    % \right.
+% \end{equation*}
+% \begin{equation*}
+    % \left.
+        % (1-t)\,T^{2,2}_{k}\left(\frac{N-1}{2}(1+t)-1,N-2\right)\, Q^{2,1}_{k}\left(v + \frac{2}{N-1}\right)
+    % \right] -
+% \end{equation*}
+% \begin{equation*}
+        % \frac{(N-2)^{[k+1]}}{(N-1)(N+k+2)^{[k]}}  \,\frac{(k+3)(k+4)}{(k+1)(2k+5)}
+        % Q^{1,2}_{k}(t)
+        % \, Q^{2,1}_{k}\left(v + \frac{2}{N-1}\right).
+% \end{equation*}
+% Используя весовые оценки \eqref{weightEst} для $t \in [0,1]$, можем записать:
+% %\begin{equation*}
+% %  \left| T_{n}^{\alpha,\beta}\left(\frac{N-1}{2}(1+t)\right)\right| \leq
+% %    c(\alpha,\beta,a)\,n^{-1/2}\,
+% %    \left[  \sqrt{1-t} + \frac1n \right]^{-\alpha-1/2}
+% %    \left[  \sqrt{1+t} + \frac1n \right]^{-\beta-1/2},
+% %\end{equation*}
+% %\begin{equation*}
+% %  \left| T_{n}^{2,2}\left(\frac{N-1}{2}(1+t)\right)\right| \leq
+% %    c(2,2,a)\,n^{-1/2}\,
+% %    \left[  \sqrt{1-t} + \frac1n \right]^{-2-1/2}
+% %    \left[  \sqrt{1+t} + \frac1n \right]^{-2-1/2},
+% %\end{equation*}
+% %\begin{equation*}
+% %  \left| T_{n}^{1,2}\left(\frac{N-1}{2}(1+t)\right)\right| \leq
+% %    c(1,2,a)\,n^{-1/2}\,
+% %    \left[  \sqrt{1-t} + \frac1n \right]^{-1-1/2}
+% %    \left[  \sqrt{1+t} + \frac1n \right]^{-2-1/2},
+% %\end{equation*}
+% %\begin{equation*}
+% %  \left| T_{n}^{2,1}\left(\frac{N-1}{2}(1+t)\right)\right| \leq
+% %    c(2,1,a)\,n^{-1/2}\,
+% %    \left[  \sqrt{1-t} + \frac1n \right]^{-2-1/2}
+% %    \left[  \sqrt{1+t} + \frac1n \right]^{-1-1/2},
+% %\end{equation*}
+% %\begin{equation*}
+% %  \left| T_{n}^{3,1}\left(\frac{N-1}{2}(1+t)\right)\right| \leq
+% %    c(3,1,a)\,n^{-1/2}\,
+% %    \left[  \sqrt{1-t} + \frac1n \right]^{-3-1/2}
+% %    \left[  \sqrt{1+t} + \frac1n \right]^{-1-1/2},
+% %\end{equation*}
+% %Первая часть:
+% \begin{equation*}
+% \frac{(N-3)^{[k]}}{(N+k+2)^{[k]}}  \,
+   % \frac{(k+3)(k+4)}{2(k+1)}\left(1-v+\frac{2}{N-1}\right)\,
+   % \left|
+        % T^{3,1}_{k}\left(\frac{N-1}{2}(1+v),N-2\right)\,
+    % \right|
+    % \left|
+        % Q^{1,2}_{k}(t)
+   % \right| \leq
+% \end{equation*}
+% \begin{equation*}
+   % c(a) \,k\,\left(1-v+\frac{2}{N-1}\right)\,k^{-1/2} \,
+    % \left(  \sqrt{1-v} + \frac1k \right)^{-7/2}
+    % \left(  \sqrt{1+v} + \frac1k \right)^{-3/2}
+    % k^{-1/2} \,
+    % \left(  \sqrt{1-t} + \frac1k \right)^{-3/2}
+   % \leq
+% \end{equation*}
+% \begin{equation*}
+   % c(a) \,\left(\sqrt{1-v}+\sqrt{\frac{2}{N-1}}\right)^2\,
+    % \left(  \sqrt{1-v} + \frac1k \right)^{-7/2}
+    % \left(  \sqrt{1+v} + \frac1k \right)^{-3/2}
+    % \left(  \sqrt{1-t} + \frac1k \right)^{-3/2}
+   % \leq
+% \end{equation*}
+% \begin{equation*}
+   % c(a) \,
+    % \left(  \sqrt{1-v} + \frac1k \right)^{-3/2}
+    % \left(  \sqrt{1+v} + \frac1k \right)^{-3/2}
+    % \left(  \sqrt{1-t} + \frac1k \right)^{-3/2}
+   % \leq
+% \end{equation*}
+% \begin{equation*}
+   % c(a) \, \left[(1-v)(1+v)(1-t)\right]^{-3/4};
+% \end{equation*}
+% %Вторая часть:
+% \begin{equation*}
+% \frac{(N-3)^{[k]}}{(N+k+2)^{[k]}}  \,
+   % \frac{(k+3)(k+4)}{2(k+1)}
+        % (1-t)\,
+        % \left| T^{2,2}_{k}\left(\frac{N-1}{2}(1+t)-1,N-2\right)\right|\,\left| Q^{2,1}_{k}\left(v + \frac{2}{N-1}\right)\right| \leq
+% \end{equation*}
+% \begin{equation*}
+% c(a)k\,(1-t)\,k^{-1/2}
+    % \left[  \sqrt{1-t} + \frac1k \right]^{-5/2}
+    % \,k^{-1/2}
+    % \left[  \sqrt{1-v} + \frac1k \right]^{-5/2}
+    % \left[  \sqrt{1+v} + \frac1k \right]^{-3/2}
+    % \leq
+% \end{equation*}
+% \begin{equation*}
+% c(a)\,
+% \left(\sqrt{1-t}+\frac1k\right)^2\,
+    % \left[  \sqrt{1-t} + \frac1k \right]^{-5/2}
+    % \left[  \sqrt{1-v} + \frac1k \right]^{-5/2}
+    % \left[  \sqrt{1+v} + \frac1k \right]^{-3/2}
+    % \leq
+% \end{equation*}
+% \begin{equation*}
+% c(a)\,
+    % %\left(\sqrt{1-t}+\frac1k\right)^{-1/2}\,
+    % (1-t)^{-1/4}
+    % (1-v)^{-5/4}
+    % (1+v)^{-3/4};
+% \end{equation*}
+% %Третья часть:
+% \begin{equation*}
+% \left|
+    % \frac{(N-2)^{[k+1]}}{(N-1)(N+k+2)^{[k]}}
+    % \,\frac{(k+3)(k+4)}{(k+1)(2k+5)}
+    % \,Q^{1,2}_{k}(t)
+    % \,Q^{2,1}_{k} \left( v + \frac{2}{N-1} \right)
+% \right| \leq
+% \end{equation*}
+% \begin{equation*}
+    % c\,
+    % \left|Q^{1,2}_{k}(t)\right| \,
+    % \left|Q^{2,1}_{k} \left( v + \frac{2}{N-1} \right)\right|
+    % \leq
+% \end{equation*}
+% %\begin{equation*}
+% %    c(a)\,\frac1k
+% %    \left[  \sqrt{1-t} + \frac1k \right]^{-3/2}
+% %    \left[  \sqrt{1+t} + \frac1k \right]^{-5/2}
+% %    \,
+% %    \left[  \sqrt{1-v - \frac{2}{N-1}} + \frac1k \right]^{-5/2}
+% %    \left[  \sqrt{1+v + \frac{2}{N-1}} + \frac1k \right]^{-3/2}
+% %    \leq
+% %\end{equation*}
+% \begin{equation*}
+    % \frac{c(a)}{k}
+    % \left(  \sqrt{1-t} + \frac1k \right)^{-3/2}
+    % \,
+    % \left(  \sqrt{1-v} + \frac1k \right)^{-5/2}
+    % \left(  \sqrt{1+v} + \frac1k \right)^{-3/2}
+    % \leq
+% \end{equation*}
+% \begin{equation*}
+    % c(a)\,\frac{\left(  \sqrt{1-t} + \frac1k \right)^{-1}}{k}
+    % \left(  \sqrt{1-t} + \frac1k \right)^{-1/2}
+    % \left(  1-v \right)^{-5/4}
+    % \left(  1+v \right)^{-3/4}
+    % \leq
+% \end{equation*}
+% \begin{equation*}
+    % c(a) \,
+    % \left(  \sqrt{1-t} + \frac1k \right)^{-1/2}
+    % \left(  1-v \right)^{-5/4}
+    % \left(  1+v \right)^{-3/4} \leq
+% \end{equation*}
+% \begin{equation*}
+    % c(a) \,
+    % \left(  1-t \right)^{-1/4}
+    % \left(  1-v \right)^{-5/4}
+    % \left(  1+v \right)^{-3/4}.
+% \end{equation*}
+% Объединяя оценки для каждой части суммы, приходим к справедливости оценки \eqref{lem2eq}.
+% %Тогда величину $X^{1}_{k,N}(t,v)$ можно оценить следующим образом
+% %
+% %\begin{equation*}
+% %X^{1}_{k,N}(t,v) =
+% %\frac{(N-3)^{[k]}}{(N+k+2)^{[k]}}  \,
+% %   \frac{(k+3)(k+4)}{2(k+1)}
+% %        \left[
+% %            \left(1-v+\frac{2}{N-1}\right)\,T^{3,1}_{k}\left(\frac{N-1}{2}(1+v),N-2\right)\,Q^{1,2}_{k}(t)
+% %            -
+% %    \right.
+% %\end{equation*}
+% %\begin{equation*}
+% %    \left.
+% %        (1-t)\,T^{2,2}_{k}\left(\frac{N-1}{2}(1+t)-1,N-2\right)\, Q^{2,1}_{k}\left(v + \frac{2}{N-1}\right)
+% %    \right]
+% %\end{equation*}
+% %\begin{equation*}
+% %        -
+% %        \frac{(N-2)^{[k+1]}}{(N-1)(N+k+2)^{[k]}}  \,\frac{(k+3)(k+4)}{(k+1)(2k+5)}
+% %        Q^{1,2}_{k}(t)
+% %        \, Q^{2,1}_{k}\left(v + \frac{2}{N-1}\right).
+% %\end{equation*}
+% %Отсюда приходим к справедливости
+% %\begin{equation*}
+% %X^{1}_{k,N}(t,v) \leq
+% % c(a) \, (1-t)^{-1/4} (1-v)^{-3/4}(1+v)^{-3/4} \left[
+% %    (1-t)^{-1/2} +
+% %    (1-v)^{-1/2}
+% %    \right].
+% %\end{equation*}
+% \end{proof}
+
+
+
+
+
+\section*{СРЕДНИЕ ВАЛЛЕ -- ПУССЕНА ДЛЯ ПРЕДЕЛЬНОГО РЯДА}
+
+Аналогично классическому случаю введем в рассмотрение усреднение частичных сумм предельного ряда \eqref{limitS} вида
+\begin{equation}\label{limitVP}
+  \mathcal{V}^{-1}_{m,n}(f,x) = \frac{S_{m,N}^{-1}(f,x) + S_{m+1,N}^{-1}(f,x) + \ldots + S_{m+n,N}^{-1}(f,x)}{n+1},
+\end{equation}
+которое назовем \textit{средними Валле -- Пуссена для частичных сумм предельного ряда}.
+
+Используя представление \eqref{Sn_jay}, можем переписать
+\begin{equation*}
+  \mathcal{V}^{-1}_{m,n}(f,x) = a_N(f,x) + %\tilde{b}_{n,N}
+  \frac{8x(N-x-1)}{N(N-1)(N-2)(n+1)}
+   \sum_{j=1}^{N-2} g(j) \left[ J_{m-2,N-2}(x-1,j-1) + \right.
+\end{equation*}
+\begin{equation*}
+  \left.\ldots + J_{m+n-2,N-2}(x-1,j-1) \right] = a_N(f,x) +
+\end{equation*}
+\begin{equation*}
+   \frac{8x(N-x-1)}{N(N-1)(N-2)(n+1)}
+   \sum_{j=1}^{N-2} g(j) \left[ I_{m+n-2,N-2}(x-1,j-1) -  \right.
+\end{equation*}
+\begin{equation} \label{limVPf}
+ \left. I_{m+n-2,N-2}(x-1,j-1) - I_{m-2,N-2}(x-1,j-1) \right],
+\end{equation}
+%\begin{equation*}
+%  \mathcal{V}^{-1}_{m,n}(f,x) = a_N(f,x) +
+%  \frac{8x(N-x-1)}{N(N-1)(n+1)}
+%  \left( \sum_{k=0}^{m-2} \hat{g}_k \tau^{1}_{k}(x-1,N-2) + \ldots \right.
+%\end{equation*}
+%\begin{equation*}
+%  \left. + \sum_{k=0}^{m+n-2} \hat{g}_k \tau^{1}_{k}(x-1,N-2) \right) =
+%\end{equation*}
+%\begin{equation*}
+%    a_N(f,x) +
+%    \frac{8x(N-x-1)}{N(N-1)(N-2)(n+1)}
+%        \sum_{j=1}^{N-2} g(j)
+%        \left[
+%            \sum_{k=0}^{m-2} + \ldots
+%        \right.
+%\end{equation*}
+%\begin{equation}\label{limitVP1}
+%        \left.
+%            + \sum_{k=0}^{m+n-2}
+%        \right] \tau^{1}_{k}(j-1,N-2) \tau^{1}_{k}(x-1,N-2).
+%\end{equation}
+где
+\begin{equation}\label{I}
+  I_{k,N}(x,j) = \sum_{l=0}^{k} J_{l,N}(x,j).
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Рассмотрим норму оператора $\mathcal{V}^{-1}_{m,n}$, действующего  в пространстве $C[0, N-1]$:
+\begin{equation}\label{norm}
+  \| \mathcal{V}^{-1}_{m,n} \| = \sup_{\| f \| \leq 1} \| \mathcal{V}^{-1}_{m,n}(f,x) \|.
+\end{equation}
+Заметим, что $\max_{x \in [0,N-1]} |g(x)| \leq 1$ при $\| f(x) \| \leq 1$, а также что $\| a_N(f,x) \| = 1$. Тогда
+\begin{equation}\label{norm2}
+  \| \mathcal{V}^{-1}_{m,n} \| = 1 + \| {V}^{-1}_{m,n}(x) \|,
+\end{equation}
+где
+\begin{equation*}
+   V^{-1}_{m,n}  = \frac{8x(N-x-1)}{N(N-1)(N-2)(n+1)}
+   \sum_{j=1}^{N-2} \left| I_{m+n-2,N-2}(x-1,j-1) - \right.
+\end{equation*}
+\begin{equation}\label{norm2}
+   \left. I_{m-2,N-2}(x-1,j-1) \right|.
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Для дальнейшего нам понадобятся некоторые выражения для $J_{l,N}(x,j)$ и $I_{k,N}(x,j)$.
+Для дальнейшего нам понадобится преобразовать некоторые выражения для $J_{l,N}(x,j)$ и $I_{k,N}(x,j)$.
+Используя формулу Кристоффеля -- Дарбу \eqref{kristT}, выводим:
+
+\begin{equation*}
+  J_{l,N} (x,j) = D^{1}_{l} (x,j) =
+  \sum_{r=0}^{l} \frac{T^{1}_{r}(x) T^{1}_{r}(j)}{h^{1}_{r,N}} =
+\end{equation*}
+\begin{equation}\label{krist}
+  \frac{(N-1)^{[l+1]}}{(N+l+2)^{[l]}} \, \frac{l+3}{16}\,
+  \frac{T_{l+1}^1(x) T_{l}^1(j) - T_{l+1}^1(j) T_{l}^1(x)}{x-j}.
+\end{equation}
+%\begin{equation*}
+%  J_{n,N+2} (x,y) = \sum_{k=0}^{n} \tau^{1}_{k,N}(x) \tau^{1}_{k,N}(y) =
+%  \sum_{k=0}^{n} \frac{T^{1}_{k,N}(x) T^{1}_{k,N}(y)}{h^{1}_{n,N}} =
+%\end{equation*}
+%\begin{equation}\label{krist}
+%  \frac{(n+3)(N-1)^{[n+1]}}{16(N+n+2)^{[n]}}
+%  \frac{T_{n+1,N}^1(x) T_{n,N}^1(y) - T_{n+1,N}^1(y) T_{n,N}^1(x)}{x-y}.
+%\end{equation}
+%\begin{equation*}
+%  D_{n,N}^{1} (x,y) = \sum_{k=0}^{n} \frac{T^{1}_{k,N}(x) T^{1}_{k,N}(y)}{h^{1}_{n,N}} =
+%  \frac{(n+3)(N-1)^{[n+1]}}{16(N+n+2)^{[n]}}
+%  \frac{T_{n+1,N}^1(x) T_{n,N}^1(y) - T_{n+1,N}^1(y) T_{n,N}^1(x)}{x-y}.
+%\end{equation}
+Отсюда и из определения \eqref{I} записываем%, обозначив для краткости $B_{l,N} = \frac{(N-1)^{[l+1]}}{(N+l+2)^{[l]}}\,\frac{l+3}{16}$,
+\begin{equation*}
+  I_{k,N}(x,j) = %\sum_{l=0}^{k} J_{l,N}(x,j) =
+  \sum_{l=0}^{k} \frac{(N-1)^{[l+1]}}{(N+l+2)^{[l]}}\,\frac{l+3}{16}\,
+  \frac{T_{l+1}^1(x) T_{l}^1(j) - T_{l+1}^1(j) T_{l}^1(x)}{x-j}.
+\end{equation*}
+%\begin{equation*}
+%\sum_{l=0}^{k} \frac{(N-1)^{[l+1]}}{(N+l+2)^{[l]}} \, \frac{l+3}{16}\,
+%  \frac{T_{l+1}^1(x) T_{l}^1(j) - T_{l+1}^1(j) T_{l}^1(x)}{x-j}.
+%\end{equation*}
+%\begin{equation*}
+%\sum_{l=0}^{k} \frac{(N-1)^{[l+1]}}{(N+l+2)^{[l]}} \, \frac{l+3}{16}\, \left(
+%    \frac{\left[T_{l+1}^1(x) - T_{l}^1(x) \right]\left[ T_{l+1}^1(j) +  T_{l}^1(j) \right]}{x-j} +
+%  \right.
+%\end{equation*}
+%\begin{equation*}
+%\left.
+%    \frac{T_{l}^1(x) T_{l}^1(j) - T_{l+1}^1(x) T_{l+1}^1(j)}{x-j}
+%\right)= A^{1}_k(x,j) + A^{2}_k(x,j).
+%\end{equation*}
+Используя Лемму \eqref{lemma0} и обозначив для краткости $B_{l,N} = \frac{(l+2)(l+3)}{16(l+1)}\,\frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} $
+получим
+%
+%\begin{equation*}
+%  I_{k,N}(x,j) = \frac{2}{N-1}\,
+%  \sum_{l=0}^{k} B_{l,N}\,
+%  \frac{T_{l+1}^1(x) T_{l}^1(j) - T_{l+1}^1(j) T_{l}^1(x)}{x-j} =
+%\end{equation*}
+%\begin{equation*}
+%  \frac{2}{N-1}\,\sum_{l=0}^{k} B_{l,N}\, \left[
+%    \frac{x(N-1-j)}{x-j}\,T^{1,2}_{l}(x-1,N-1)\,T^{2,1}_{l}(j,N-1)
+%  \right.
+%\end{equation*}
+%\begin{equation*}
+%\left.
+%  - \frac{j(N-1-x)}{x-j}\,T^{1,2}_{l}(j-1,N-1)\,T^{2,1}_{l}(x,N-1)
+%\right].
+%\end{equation*}
+%
+%
+%
+%
+%
+%
+%Проведя замену переменных $\{x = \frac{N-1}{2}\,(1+t), j = \frac{N-1}{2}\,(1+v)\}$, перепишем эти выражения в терминах полиномов $Q_n^{\alpha,\beta}(t)$:
+%\begin{equation*}
+%  I_{k,N}(t,v) =
+%  \sum_{l=0}^{k} B_{l,N}\,
+%  \left[
+%    \frac{\frac{(N-1)}{2}\,(1+t)(N-1-\frac{(N-1)}{2}\,(1+v))}{\frac{(N-1)}{2}\,(1+t)-\frac{(N-1)}{2}\,(1+v)}\,T^{1,2}_{l}(\frac{(N-1)}{2}\,(1+t)-1,N-1)\,T^{2,1}_{l}(\frac{(N-1)}{2}\,(1+v),N-1)
+%  \right.
+%\end{equation*}
+%\begin{equation*}
+%\left.
+%  - \frac{\frac{(N-1)}{2}\,(1+v)(N-1-\frac{(N-1)}{2}\,(1+t))}{\frac{(N-1)}{2}\,(1+t)-\frac{(N-1)}{2}\,(1+v)}\,T^{1,2}_{l}(\frac{(N-1)}{2}\,(1+v)-1,N-1)\,T^{2,1}_{l}(\frac{(N-1)}{2}\,(1+t),N-1)
+%\right].
+%\end{equation*}
+%\begin{equation*}
+%  I_{k,N}(t,v) =
+%  \sum_{l=0}^{k} B_{l,N} \, \frac{N-1}{2}\,
+%  \left[
+%    \frac{(1+t)(1-v)}{t-v}\,T^{1,2}_{l}(\frac{(N-1)}{2}\,(1+t)-1,N-1)\,T^{2,1}_{l}(\frac{(N-1)}{2}\,(1+v),N-1)
+%  \right.
+%\end{equation*}
+%\begin{equation*}
+%\left.
+%  - \frac{(1+v)(1-t)}{t-v}\,T^{1,2}_{l}(\frac{(N-1)}{2}\,(1+v)-1,N-1)\,T^{2,1}_{l}(\frac{(N-1)}{2}\,(1+t),N-1)
+%\right].
+%\end{equation*}
+\begin{equation*}
+  \hat{I}_{k,N}(t,v) = I_{k,N}\left( \frac{N-1}{2}(1+t) , \frac{N-1}{2}(1+v) \right)=
+\end{equation*}
+\begin{equation*}
+  \sum_{l=0}^{k} B_{l,N} \,
+  \left[
+    \frac{(1+t)(1-v)}{t-v}\,Q^{1,2}_{l}(t)\,Q^{2,1}_{l}\left(v+\frac{2}{N-1}\right)
+  \right.
+\end{equation*}
+\begin{equation}\label{Usum}
+\left.
+  - \frac{(1+v)(1-t)}{t-v}\,Q^{1,2}_{l}(v)\,Q^{2,1}_{l}\left(t+\frac{2}{N-1}\right)
+\right] = U_{k,N}(t,v) + U_{k,N}(v,t),
+\end{equation}
+%\begin{equation*}
+%  \frac{(1+t)(1-v)}{t-v}\,
+%  \sum_{l=0}^{k} B_{l,N} \,
+%    Q^{1,2}_{l}(t)\,Q^{2,1}_{l}\left(v+\frac{2}{N-1}\right)
+%\end{equation*}
+%\begin{equation*}
+%- \frac{(1+v)(1-t)}{t-v}\,
+%  \sum_{l=0}^{k} B_{l,N} \,
+%    Q^{1,2}_{l}(v)\,Q^{2,1}_{l}\left(t+\frac{2}{N-1}\right),
+%\end{equation*}
+где
+\begin{equation}\label{UkN}
+  U_{k,N}(t,v)=
+  \frac{(1+t)(1-v)}{t-v}\,
+  \sum_{l=0}^{k} B_{l,N} \,
+    Q^{1,2}_{l}(t)\,Q^{2,1}_{l}\left(v+\frac{2}{N-1}\right).
+\end{equation}
+С помощью Леммы \eqref{lemma1} мы можем преобразовать последнее выражение к виду
+%\begin{equation*}
+%  U_{k,N}(t,v)=
+%  \frac{(1+t)(1-v)}{16 (t-v)}\,
+%  \sum_{l=0}^{k}
+%   \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}}\,\frac{(l+2)(l+3)}{(l+1)}
+%  \,
+%    Q^{1,2}_{l}(t)\,Q^{2,1}_{l}\left(v+\frac{2}{N-1}\right).
+%\end{equation*}
+%
+%\begin{equation*}
+%    \left(
+%    t-v
+%    \right)\,
+%   \sum_{l=0}^{k}
+%    \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+%    Q^{1,2}_{l}(t) \,Q^{2,1}_{l}\left(v +\frac{2}{N-1} \right)
+%    =
+%\end{equation*}
+%\begin{equation*}
+%   \frac{(N-2)^{[k+1]}}{(N+k+2)^{[k]}}  \,
+%   \frac{(k+3)(k+4)}{(2k+5)(N-1)}
+%   \left[
+%        Q^{1,2}_{k+1}(t) \,Q^{2,1}_{k}\left(v +\frac{2}{N-1} \right) -  Q^{1,2}_{k}(t) \, Q^{2,1}_{k+1} \left(v +\frac{2}{N-1} \right)
+%   \right]
+%\end{equation*}
+%\begin{equation}\label{lem1eq}
+%   +
+%   \sum_{l=0}^{k} \left( \lambda_{n,N} + \frac{2}{N-1}\right)\,
+%    \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+%    Q^{1,2}_{l}(t) \,Q^{2,1}_{l}\left(v +\frac{2}{N-1} \right),
+%\end{equation}
+%где $\lambda_{n,N} = \frac{6}{(2n+3)(2n+5)}+\frac{q(n)}{N-1}$, $|q(n)|<c$.
+%
+%===============
+
+\begin{equation*}
+U_{k,N}(t,v)=
+\frac{(1+t)(1-v)}{16 (t-v)^2}\,
+\left\{
+   \frac{(N-2)^{[k+1]}}{(N+k+2)^{[k]}}  \,
+   \frac{(k+3)(k+4)}{(2k+5)(N-1)}
+\right.
+\end{equation*}
+\begin{equation*}
+   \left[
+        Q^{1,2}_{k+1}(t) \,Q^{2,1}_{k}\left(v +\frac{2}{N-1} \right) -  Q^{1,2}_{k}(t) \, Q^{2,1}_{k+1} \left(v +\frac{2}{N-1} \right)
+   \right]
+\end{equation*}
+\begin{equation*}
+\left.
+   +
+   \sum_{l=0}^{k} \lambda_{l,N}\,
+    \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+    Q^{1,2}_{l}(t) \,Q^{2,1}_{l}\left(v +\frac{2}{N-1} \right)
+\right\}=
+\end{equation*}
+\begin{equation*}
+\frac{(1+t)(1-v)}{16 (t-v)^2}\,\left\{
+    X^{1}_{k,N}(t,v) + X^{2}_{k,N}(t,v)
+\right\}.
+\end{equation*}
+Таким образом, приходим к следующей схеме оценивания выражения \eqref{limVPf}:
+
+Заметим теперь, что для $X^{1}_{k,N}(t,v)$ справедлива оценка \eqref{lem2eq} из Леммы \eqref{lemma2}, из которой следует
+\begin{equation*}
+ \left|
+ X^{1}_{m+n-2,N}(t,v) - X^{1}_{m-2,N}(t,v)
+ \right| \leq
+\end{equation*}
+\begin{equation}\label{x1mn}
+ c(a) \, (1-t)^{-1/4} (1-v)^{-3/4}(1+v)^{-3/4} \left[
+    (1-t)^{-1/2} +
+    (1-v)^{-1/2}
+    \right].
+\end{equation}
+Оценим кроме того разность
+\begin{equation*}
+  \left| X^{2}_{m+n-2,N}(t,v) - X^{2}_{m-2,N}(t,v) \right| \leq
+\end{equation*}
+\begin{equation*}
+   \sum_{l=m-2}^{m+n-2}  \lambda_{l,N}\,
+    \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{(l+1)}\,
+    \left| Q^{1,2}_{l}(t) \right|\,\left| Q^{2,1}_{l}\left(v +\frac{2}{N-1} \right)\right|
+\leq
+\end{equation*}
+\begin{equation*}
+   c(a)\sum_{l=m-2}^{m+n-2}  \lambda_{l,N}\,
+    \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} \, \frac{(l+2)(l+3)}{l(l+1)}\,
+    \left(  \sqrt{1-t} + \frac1l \right)^{-3/2}
+    %\left(  \sqrt{1+t} + \frac1l \right)^{-5/2}
+    \left(  \sqrt{1-v} + \frac1l \right)^{-5/2}
+    \left(  \sqrt{1+v} + \frac1l \right)^{-3/2}
+\leq
+\end{equation*}
+\begin{equation*}
+\left(  \sqrt{1-t} + \frac{1}{n+m} \right)^{-3/2}
+%\left( 1-t\right)^{-3/4}
+    \left(1-v\right)^{-5/4}
+    \left(1+v \right)^{-3/4}
+\sum_{l=m-2}^{m+n-2}
+    \left[ \frac{ c(a)}{(2l+3)(2l+5)}+\frac{q(l)}{N-1}\right]
+\leq
+\end{equation*}
+\begin{equation*}
+    c(a)
+    \left(  \sqrt{1-t} + \frac{1}{n+m} \right)^{-3/2}
+    %\left( 1-t\right)^{-3/4}
+    \left(1-v\right)^{-5/4}
+    \left(1+v \right)^{-3/4}
+\sum_{l=m-2}^{m+n-2}
+    \left[ \frac{ 1}{(2l+3)(2l+5)}+\frac{1}{N-1}\right]
+   =
+\end{equation*}
+\begin{equation*}
+    c(a)
+    \left(  \sqrt{1-t} + \frac{1}{n+m} \right)^{-3/2}
+    %\left( 1-t\right)^{-3/4}
+    \left(1-v\right)^{-5/4}
+    \left(1+v \right)^{-3/4}
+    \left[ \frac{ n+1}{4m^2+4mn-2n-1}+\frac{n+1}{N-1}\right].
+\end{equation*}
+Пользуясь теперь тем что $dn \leq m \leq bn$ и $n \leq a\sqrt{N}$, выводим
+\begin{equation*}
+  \left| X^{2}_{m+n-2,N}(t,v) - X^{2}_{m-2,N}(t,v) \right| \leq
+    \frac{c(a)}{n}
+    \left(  \sqrt{1-t} + \frac{1}{n} \right)^{-1-1/2}
+    %\left( 1-t\right)^{-3/4}
+    \left(1-v\right)^{-5/4}
+    \left(1+v \right)^{-3/4}
+    \leq
+\end{equation*}
+\begin{equation}\label{x2mn}
+    c(a)
+    \left(  \sqrt{1-t} + \frac{1}{n} \right)^{-1/2}
+    \left(1-v\right)^{-5/4}
+    \left(1+v \right)^{-3/4}
+    \leq
+    c(a)
+    \left( 1-t\right)^{-1/4}
+    \left(1-v\right)^{-5/4}
+    \left(1+v \right)^{-3/4}.
+\end{equation}
+Объединяя оценки \eqref{x1mn} -- \eqref{x2mn}, получим
+\begin{equation*}
+\left| U_{m+n-2,N}(t,v) - U_{m-2,N}(t,v) \right| \leq
+\frac{(1+t)(1-v)}{16 (t-v)^2}\,
+\left(
+   \left| X^{1}_{m+n-2,N}(t,v) - X^{1}_{m-2,N}(t,v) \right| +
+\right.
+\end{equation*}
+\begin{equation*}
+\left.
+   \left| X^{2}_{m+n-2,N}(t,v) - X^{2}_{m-2,N}(t,v) \right|
+\right) \leq
+\end{equation*}
+\begin{equation*}
+c(a)\frac{(1+t)(1-v)}{(t-v)^2}\,
+\left\{
+(1-t)^{-1/4} (1-v)^{-3/4}(1+v)^{-3/4} \left[
+    (1-t)^{-1/2} +
+    (1-v)^{-1/2}
+    \right]
++ \right.
+\end{equation*}
+\begin{equation*}
+\left.
+    \left( 1-t\right)^{-1/4}
+    \left(1-v\right)^{-5/4}
+    \left(1+v \right)^{-3/4}
+\right\} \leq
+\end{equation*}
+\begin{equation*}
+\frac{c(a)(1+t)}{(t-v)^2}\,
+\left\{
+    (1-t)^{-1/4} (1-v)^{1/4}(1+v)^{-3/4} \left[
+    (1-t)^{-1/2} +
+    (1-v)^{-1/2}
+    \right]
++ \right.
+\end{equation*}
+\begin{equation*}
+\left.
+    \left(1-t\right)^{-1/4}
+    \left(1-v\right)^{-1/4}
+    \left(1+v \right)^{-3/4}
+\right\} \leq
+\end{equation*}
+\begin{equation*}
+\frac{c(a)(1-t)^{-1/4}(1-v)^{1/4}(1+v)^{-3/4} }{(t-v)^2}\,
+\left\{
+    (1-t)^{-1/2} +    (1-v)^{-1/2}
+\right\}.
+\end{equation*}
+
+Рассмотрим
+\begin{equation*}
+\frac{8x(N-x-1)}{N(N-1)(N-2)(n+1)} \left| U_{m+n-2,N}(t,v) - U_{m-2,N}(t,v) \right| \leq
+\end{equation*}
+\begin{equation*}
+\frac{8x(N-x-1)}{N(N-1)(N-2)(n+1)}
+\frac{c(a)(1-t)^{-1/4}(1-v)^{1/4}(1+v)^{-3/4} }{(t-v)^2}\,
+\left\{
+    (1-t)^{-1/2} +    (1-v)^{-1/2}
+\right\}
+\leq
+\end{equation*}
+\begin{equation*}
+(1+t)(1-t)
+\frac{c(a)(1-t)^{-1/4}(1-v)^{1/4}(1+v)^{-3/4} }{nN(t-v)^2}\,
+\left\{
+    (1-t)^{-1/2} +    (1-v)^{-1/2}
+\right\}
+\leq
+\end{equation*}
+\begin{equation*}
+\frac{c(a)(1+t)(1-t)^{3/4}(1-v)^{1/4}(1+v)^{-3/4} }{nN(t-v)^2}\,
+\left\{
+    (1-t)^{-1/2} +    (1-v)^{-1/2}
+\right\}
+\leq
+\end{equation*}
+\begin{equation*}
+\frac{c(a)(1+t)(1+v)^{-3/4} }{nN(t-v)^2}\,
+\left\{
+    (1-t)^{1/4}(1-v)^{1/4}+   (1-t)^{3/4}(1-v)^{-1/4}
+\right\}
+\leq
+\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\newpage
+
+
+
+
+
+\begin{equation*}
+  I_{k,N}(t,v) =
+  \sum_{l=0}^{k} B_{l,N} \,
+  \left[
+    \frac{(1+t)(1-v)}{t-v}\,Q^{1,2}_{l}(t)\,Q^{2,1}_{l}\left(v+\frac{2}{N-1}\right)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  - \frac{(1+v)(1-t)}{t-v}\,Q^{1,2}_{l}(v)\,Q^{2,1}_{l}\left(t+\frac{2}{N-1}\right)
+\right],
+\end{equation*}
+
+========================
+
+\begin{equation*}
+(1+t)(1-v)\,
+Q^{1,2}_{l}(t)
+\,
+Q^{2,1}_{l}\left(v+\frac{2}{N-1}\right)
+-
+\end{equation*}
+\begin{equation*}
+  (1+v)(1-t)\,
+  Q^{1,2}_{l}(v)
+  \,
+  Q^{2,1}_{l}\left(t+\frac{2}{N-1}\right)
+\end{equation*}
+
+=========================
+
+
+
+\begin{equation*}
+(1+t)(1-v)\,
+\end{equation*}
+\begin{equation*}
+\left[
+\left(1+t-\frac{2}{N-1}\right)\,Q^{1,3}_{n}\left(t-\frac{2}{N-1}\right) + \left(1-t+\frac{2}{N-1}\right)\,Q^{2,2}_{n}\left(t\right)
+\right]
+\,
+\end{equation*}
+\begin{equation*}
+\left[
+ \frac{2n+3}{4n}\,\left[
+  (1+v)\,Q^{2,2}_{n-1}\left(v\right)-
+  (1-v)\,Q^{3,1}_{n-1}\left(v+\frac{2}{N-1}\right)
+  \right] + \frac{1}{2n} Q^{2,1}_{n-1}\left(v+\frac{2}{N-1},N+1\right)
+\right]
+\end{equation*}
+\begin{equation*}
+  - (1+v)(1-t)\,
+\end{equation*}
+\begin{equation*}
+  \left[
+    \frac{2n+3}{4n}\,
+  \left[
+    \left(1+v-\frac{2}{N-1}\right)\,Q^{1,3}_{n-1}\left(v-\frac{2}{N-1}\right)-
+  \left(1-v+\frac{2}{N-1}\right)\,Q^{2,2}_{n-1}\left(v\right)
+  \right]
+  - \frac{1}{2n}\, Q^{1,2}_{n-1}\left(v,N+1\right)
+\right]
+  \,
+\end{equation*}
+\begin{equation*}
+  \frac12
+\left[
+\left(1+t-\frac{2}{N-1}\right)\,Q^{1,3}_{n}\left(t-\frac{2}{N-1}\right) + \left(1-t+\frac{2}{N-1}\right)\,Q^{2,2}_{n}\left(t\right)
+\right]
+\end{equation*}
+
+
+
+
+
+%
+%
+%\begin{equation*}
+%(1+t)(1-v)\,
+%\end{equation*}
+%\begin{equation*}
+%Q^{1,2}_{l}(t)
+%\,
+%\end{equation*}
+%\begin{equation*}
+%Q^{2,1}_{l}\left(v+\frac{2}{N-1}\right)
+%-
+%\end{equation*}
+%\begin{equation*}
+%  (1+v)(1-t)\,
+%\end{equation*}
+%\begin{equation*}
+%  Q^{1,2}_{l}(v)
+%  \,
+%\end{equation*}
+%\begin{equation*}
+%  Q^{2,1}_{l}\left(t+\frac{2}{N-1}\right)
+%\end{equation*}
+
+
+
+
+
+
+
+\newpage
+\newpage
+
+
+
+\begin{equation*}
+  I_{k,N}(t,v) = \frac{(1+t)(1-v)}{t-v}\,
+  \sum_{l=0}^{k} B_{l,N} \,
+    Q^{1,2}_{l}(t)\,Q^{2,1}_{l}\left(v+\frac{2}{N-1}\right) +
+\end{equation*}
+\begin{equation*}
+\frac{(1+v)(1-t)}{v-t}\,
+\sum_{l=0}^{k} B_{l,N} \,
+  Q^{1,2}_{l}(v)\,Q^{2,1}_{l}\left(t+\frac{2}{N-1}\right) =
+U_{k,N}(t,v) + U_{k,N}(v,t).
+\end{equation*}
+
+
+=========================
+
+
+\begin{equation*}
+  (n+1) T^{\alpha,\beta}_{n+1}(x,N) + (n+\beta+1)T^{\alpha,\beta}_{n}(x,N) = \frac{2n+\alpha+\beta+2}{N-1}\,x\,T^{\alpha,\beta+1}_{n}(x-1,N-1),
+\end{equation*}
+\begin{equation*}
+  (n+\alpha+1) T^{\alpha,\beta}_{n}(x,N) - (n+1)T^{\alpha,\beta}_{n+1}(x,N) = \frac{2n+\alpha+\beta+2}{N-1}\,(N-1-x)\,T^{\alpha+1,\beta}_{n}(x,N-1).
+\end{equation*}
+
+Сложим:
+\begin{equation*}
+  (N-1)T^{\alpha,\beta}_{n}(x,N) = x\,T^{\alpha,\beta+1}_{n}(x-1,N-1) + (N-1-x)\,T^{\alpha+1,\beta}_{n}(x,N-1).
+\end{equation*}
+
+В терминах $Q^{\alpha,\beta}_{n,N}$:
+\begin{equation*}
+  2\, Q^{\alpha,\beta}_{n}\left(t+\frac{2}{N-1},N+1\right) =
+  (1+t)\,Q^{\alpha,\beta+1}_{n}(t) + (1-t)\,Q^{\alpha+1,\beta}_{n}\left(t+\frac{2}{N-1}\right).
+\end{equation*}
+
+===================
+
+
+\begin{equation*}
+  2\, Q^{1,2}_{n}\left(t+\frac{2}{N-1},N+1\right) =
+  (1+t)\,Q^{1,3}_{n}(t) + (1-t)\,Q^{2,2}_{n}\left(t+\frac{2}{N-1}\right).
+\end{equation*}
+
+\begin{equation*}
+  2\, Q^{1,2}_{n}\left(t,N+1\right) =
+  \left(1+t-\frac{2}{N-1}\right)\,Q^{1,3}_{n}\left(t-\frac{2}{N-1}\right) + \left(1-t+\frac{2}{N-1}\right)\,Q^{2,2}_{n}\left(t\right).
+\end{equation*}
+
+\begin{equation*}
+  2\, Q^{2,1}_{n}\left(t+\frac{2}{N-1},N+1\right) =
+  (1+t)\,Q^{2,2}_{n}(t) + (1-t)\,Q^{3,1}_{n}\left(t+\frac{2}{N-1}\right).
+\end{equation*}
+
+\begin{equation*}
+  2\, Q^{2,1}_{n}\left(t,N+1\right) =
+  \left(1+t-\frac{2}{N-1}\right)\,Q^{2,2}_{n}\left(t-\frac{2}{N-1}\right) + \left(1-t+\frac{2}{N-1}\right)\,Q^{3,1}_{n}(t).
+\end{equation*}
+
+
+
+==========================
+
+
+
+
+
+
+
+
+\newpage
+\newpage
+
+
+
+==========================
+
+Вычтем из первого второе:
+\begin{equation*}
+  2(n+1) T^{\alpha,\beta}_{n+1}(x,N) + (\beta-\alpha)T^{\alpha,\beta}_{n}(x,N)
+  = \frac{2n+\alpha+\beta+2}{N-1}\,\left[
+  x\,T^{\alpha,\beta+1}_{n}(x-1,N-1)-
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  (N-1-x)\,T^{\alpha+1,\beta}_{n}(x,N-1)
+  \right].
+\end{equation*}
+
+
+========================
+
+
+\begin{equation*}
+  2(n+1) T^{1,2}_{n+1}(x,N) + T^{1,2}_{n}(x,N)
+  = \frac{2n+5}{N-1}\,\left[
+  x\,T^{1,3}_{n}(x-1,N-1)-
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  (N-1-x)\,T^{2,2}_{n}(x,N-1)
+  \right].
+\end{equation*}
+
+\begin{equation*}
+  2(n+1) Q^{1,2}_{n+1}\left(t+\frac{2}{N-1},N+1\right)
+   =
+  \frac{2n+5}{2}\,
+  \left[
+    (1+t)\,Q^{1,3}_{n}(t)-
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  (1-t)\,Q^{2,2}_{n}\left(t+\frac{2}{N-1}\right)
+  \right]
+  - Q^{1,2}_{n}\left(t+\frac{2}{N-1},N+1\right).
+\end{equation*}
+
+
+\begin{equation*}
+  Q^{1,2}_{n}\left(t+\frac{2}{N-1},N+1\right)
+   =
+  \frac{2n+3}{4n}\,
+  \left[
+    (1+t)\,Q^{1,3}_{n-1}(t)-
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  (1-t)\,Q^{2,2}_{n-1}\left(t+\frac{2}{N-1}\right)
+  \right]
+  - \frac{1}{2n}\, Q^{1,2}_{n-1}\left(t+\frac{2}{N-1},N+1\right).
+\end{equation*}
+
+\begin{equation*}
+  Q^{1,2}_{n}\left(t,N+1\right)
+   =
+  \frac{2n+3}{4n}\,
+  \left[
+    \left(1+t-\frac{2}{N-1}\right)\,Q^{1,3}_{n-1}\left(t-\frac{2}{N-1}\right)-
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  \left(1-t+\frac{2}{N-1}\right)\,Q^{2,2}_{n-1}\left(t\right)
+  \right]
+  - \frac{1}{2n}\, Q^{1,2}_{n-1}\left(t,N+1\right).
+\end{equation*}
+
+
+
+
++++++++++++++++++++++++++++++
+
+
+
+
+\begin{equation*}
+  2(n+1) T^{2,1}_{n+1}(x,N) - T^{2,1}_{n}(x,N)
+  = \frac{2n+5}{N-1}\,\left[
+  x\,T^{2,2}_{n}(x-1,N-1)-
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  (N-1-x)\,T^{3,1}_{n}(x,N-1)
+  \right].
+\end{equation*}
+
+\begin{equation*}
+  2(n+1) Q^{2,1}_{n+1}\left(t+\frac{2}{N-1},N+1\right)
+  = \frac{2n+5}{2}\,\left[
+  (1+t)\,Q^{2,2}_{n}\left(t\right)-
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  (1-t)\,Q^{3,1}_{n}\left(t+\frac{2}{N-1}\right)
+  \right] + Q^{2,1}_{n}\left(t+\frac{2}{N-1},N+1\right).
+\end{equation*}
+
+\begin{equation*}
+  Q^{2,1}_{n}\left(t+\frac{2}{N-1},N+1\right)
+  = \frac{2n+3}{4n}\,\left[
+  (1+t)\,Q^{2,2}_{n-1}\left(t\right)-
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  (1-t)\,Q^{3,1}_{n-1}\left(t+\frac{2}{N-1}\right)
+  \right] + \frac{1}{2n} Q^{2,1}_{n-1}\left(t+\frac{2}{N-1},N+1\right).
+\end{equation*}
+
+\begin{equation*}
+  Q^{2,1}_{n}\left(t,N+1\right)
+  = \frac{2n+3}{4n}\,\left[
+  \left(1+t-\frac{2}{N-1}\right)\,Q^{2,2}_{n-1}\left(t-\frac{2}{N-1}\right)-
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  \left(1-t+\frac{2}{N-1}\right)\,Q^{3,1}_{n-1}\left(t\right)
+  \right] + \frac{1}{2n} Q^{2,1}_{n-1}\left(t,N+1\right).
+\end{equation*}
+
+
+
+
+
+
+
+\newpage
+\newpage
+
+Рассмотрим тогда выражение
+\begin{equation*}
+  I_{m+n-2,N-2}(x,j) - I_{m-2,N-2}(x,j) =
+\end{equation*}
+\begin{equation*}
+  \frac{2}{N-3}\,
+  \sum_{l=m-1}^{m+n-2} B_{l,N-2}\,
+  \frac{T_{l+1}^1(x,N-2) T_{l}^1(j,N-2) - T_{l+1}^1(j,N-2) T_{l}^1(x,N-2)}{x-j} =
+\end{equation*}
+\begin{equation*}
+  \frac{2}{N-3}\,\sum_{l=m-1}^{m+n-2} B_{l,N-2}\, \left[
+    \frac{x(N-1-j)}{x-j}\,T^{1,2}_{l}(x-1,N-3)\,T^{2,1}_{l}(j,N-3)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  - \frac{j(N-1-x)}{x-j}\,T^{1,2}_{l}(j-1,N-3)\,T^{2,1}_{l}(x,N-3)
+\right].
+\end{equation*}
+
+Проведя замену переменных $\{x = \frac{N-3}{2}\,(1+t), j = \frac{N-3}{2}\,(1+v)\}$, перепишем эти выражения в терминах полиномов $Q_n^{\alpha,\beta}(t)$:
+\begin{equation*}
+  I_{m+n-2,N-2}\left(t,v \right) - I_{m-2,N-2}\left(t,v \right) =
+\end{equation*}
+%\begin{equation*}
+%  \sum_{l=m-1}^{m+n-2} B_{l,N-2}\,
+%  \left[
+%    \frac{\left(1+t\right) \left(1-v\right)}
+%    {t-v}
+%    \,T^{1,2}_{l}\left(\frac{N-3}{2}\,(1+t)-1,N-3\right)
+%    \,T^{2,1}_{l}\left(\frac{N-3}{2}\,(1+v),N-3\right)
+%  \right.
+%\end{equation*}
+%\begin{equation*}
+%\left.
+%  - \frac{(1+v)(1-t)}
+%    {t-v}
+%  \,T^{1,2}_{l}\left(\frac{N-3}{2}\,(1+v)-1,N-3\right)
+%  \,T^{2,1}_{l}\left(\frac{N-3}{2}\,(1+t),N-3\right)
+%\right]=
+%\end{equation*}
+\begin{equation*}
+  \sum_{l=m-1}^{m+n-2} B_{l,N-2}\,
+  \left[
+    \frac{(1+t)(1-v)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(t\right)
+    \,Q^{2,1}_{l,N-2}\left(v+\frac{2}{N-3}\right)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  - \frac{(1+v)(1-t)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(v\right)
+    \,Q^{2,1}_{l,N-2}\left(t+\frac{2}{N-3}\right)
+\right].
+\end{equation*}
+
+Отсюда, возвращаясь к \eqref{norm2}
+\begin{equation*}
+   V^{-1}_{m,n}  = \frac{8x(N-x-1)}{N(N-1)(N-2)(n+1)}
+   \sum_{j=1}^{N-2} \left| I_{m+n-2,N-2}(x-1,j-1) - I_{m-2,N-2}(x-1,j-1) \right|.
+\end{equation*}
+Получаем
+\begin{equation*}
+   \hat{V}^{-1}_{m,n}  =
+   \frac{8x(N-x-1)}{N(N-1)(N-2)(n+1)}
+   \sum_{j=1}^{N-2} \left| I_{m+n-2,N-2}(x,j) - I_{m-2,N-2}(x,j) \right| =
+\end{equation*}
+\begin{equation*}
+ \sum_{v\in\Omega_{N-3}} \left|
+  \frac{8\left( \frac{N-3}{2}\,(1+t)\right)\left(N- 1-\frac{N-3}{2}\,(1+t)\right)}{N(N-1)(N-2)(n+1)} \,
+  \sum_{l=m-1}^{m+n-2} B_{l,N-2}\,
+  \left[
+    \frac{(1+t)(1-v)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(t\right)
+    \,Q^{2,1}_{l,N-2}\left(v+\frac{2}{N-3}\right)
+  \right.
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+\left.
+  - \frac{(1+v)(1-t)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(v\right)
+    \,Q^{2,1}_{l,N-2}\left(t+\frac{2}{N-3}\right)
+\right]
+\right| =
+\end{equation*}
+\begin{equation*}
+ \sum_{v\in\Omega_{N-3}} \left|
+  \frac{4(N-3)^2 \,\left( 1+t\right)\left(1-t+\frac{4}{N-3}\right)}{N(N-1)(N-2)(n+1)} \,
+  \sum_{l=m-1}^{m+n-2}
+  \frac{(l+2)(l+3)}{16(l+1)}\,\frac{(N-4)^{[l]}}{(N+l)^{[l]}}   \,
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  \left[
+    \frac{(1+t)(1-v)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(t\right)
+    \,Q^{2,1}_{l,N-2}\left(v+\frac{2}{N-3}\right)
+  \right.
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+\left.
+  - \frac{(1+v)(1-t)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(v\right)
+    \,Q^{2,1}_{l,N-2}\left(t+\frac{2}{N-3}\right)
+\right]
+\right| =
+\end{equation*}
+\begin{equation*}
+\frac{1}{N}
+ \sum_{v\in\Omega_{N-3}} \left|
+ \sum_{l=m-1}^{m+n-2}
+ \frac{(N-3)^2}{(N-1)(N-2)}\,
+ \frac{(l+2)(l+3)}{4(n+1)(l+1)}\,
+ \frac{(N-4)^{[l]}}{(N+l)^{[l]}}\,
+ \left( 1+t\right)\left(1-t+\frac{4}{N-3}\right)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  \left[
+    \frac{(1+t)(1-v)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(t\right)
+    \,Q^{2,1}_{l,N-2}\left(v+\frac{2}{N-3}\right)
+  \right.
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+\left.
+  - \frac{(1+v)(1-t)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(v\right)
+    \,Q^{2,1}_{l,N-2}\left(t+\frac{2}{N-3}\right)
+\right]
+\right| =
+\end{equation*}
+\begin{equation*}
+\frac{1}{N}
+ \sum_{v\in\Omega_{N-3}} \left|
+ \sum_{l=m-1}^{m+n-2}
+ \hat{B}_{l,N}
+ \left( 1+t\right)\left(1-t+\frac{4}{N-3}\right)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  \left[
+    \frac{(1+t)(1-v)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(t\right)
+    \,Q^{2,1}_{l,N-2}\left(v+\frac{2}{N-3}\right)
+  \right.
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+\left.
+  - \frac{(1+v)(1-t)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(v\right)
+    \,Q^{2,1}_{l,N-2}\left(t+\frac{2}{N-3}\right)
+\right]
+\right|,
+\end{equation*}
+где
+$$\hat{B}_{l,N} = \frac{(N-3)^2}{(N-1)(N-2)}\,\frac{(l+2)(l+3)}{4(n+1)(l+1)}\,\frac{(N-4)^{[l]}}{(N+l)^{[l]}} \leq c.$$
+Далее,
+\begin{equation*}
+   \hat{V}^{-1}_{m,n}  =
+\frac{1}{N}
+ \sum_{v\in\Omega_{N-3}} \left|
+ \sum_{l=m-1}^{m+n-2}
+ \hat{B}_{l,N}
+ \left( 1+t\right)\left(1-t+\frac{4}{N-3}\right)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  \left[
+    \frac{(1+t)(1-v)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(t\right)
+    \,Q^{2,1}_{l,N-2}\left(v+\frac{2}{N-3}\right)
+  \right.
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+\left.
+  - \frac{(1+v)(1-t)}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(v\right)
+    \,Q^{2,1}_{l,N-2}\left(t+\frac{2}{N-3}\right)
+\right]
+\right|,
+\end{equation*}
+
+===================
+\newpage
+\newpage
+
+
+\begin{equation*}
+   \hat{V}^{-1}_{m,n}  \leq
+\frac{1}{N}
+ \sum_{l=m-1}^{m+n-2}
+ \hat{B}_{l,N}
+ \left( 1+t\right)\left(1-t+\frac{4}{N-3}\right)\, W(t,v),
+\end{equation*}
+где
+\begin{equation*}
+W(t,v) = W_{m,n,N}(t,v)=
+\sum_{v\in \Omega_{N-3}}
+  \left[
+    \frac{(1+t)(1-v)}
+    {t-v}\,
+    \left| Q^{1,2}_{l,N-2}\left(t\right)\right|\,
+    \left| Q^{2,1}_{l,N-2}\left(v+\frac{2}{N-3}\right)
+  \right|
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  + \frac{(1+v)(1-t)}
+    {t-v}
+    \,
+    \left| Q^{1,2}_{l,N-2}\left(v\right) \right|\,
+    \left|Q^{2,1}_{l,N-2}\left(t+\frac{2}{N-3}\right)
+    \right|
+\right],
+\end{equation*}
+а точки сетки $\Omega_{N-3} = \left\{ -1 + \frac{2p}{N-1}\right\}_{p=1}^{N-2}$ --- не подходят к $\pm 1$ ближе чем на $\frac{2}{N-1}$.
+%Так как в случае $n \leq a N^{\frac12}$, $\frac{2}{N-1} \leq \frac{2}{(an)^2-1}$
+
+
+1. Пусть $t \in [0, 1-2n^{-2}]$, тогда
+
+
+\newpage
+\newpage
+
+Рассмотрим тогда выражение
+\begin{equation*}
+  I_{m+n-2,N-2}(x-1,j-1) - I_{m-2,N-2}(x-1,j-1) =
+\end{equation*}
+\begin{equation*}
+  \frac{2}{N-3}\,
+  \sum_{l=m-1}^{m+n-2} B_{l,N-2}\,
+  \frac{T_{l+1}^1(x-1,N-2) T_{l}^1(j-1,N-2) - T_{l+1}^1(j-1,N-2) T_{l}^1(x-1,N-2)}{x-j} =
+\end{equation*}
+\begin{equation*}
+  \frac{2}{N-3}\,\sum_{l=0}^{k} B_{l,N-2}\, \left[
+    \frac{(x-1)(N-2-j)}{x-j}\,T^{1,2}_{l}(x-2,N-3)\,T^{2,1}_{l}(j-1,N-3)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  - \frac{(j-1)(N-2-x)}{x-j}\,T^{1,2}_{l}(j-2,N-3)\,T^{2,1}_{l}(x-1,N-3)
+\right].
+\end{equation*}
+
+Проведя замену переменных $\{x = \frac{N-3}{2}\,(1+t), j = \frac{N-3}{2}\,(1+v)\}$, перепишем эти выражения в терминах полиномов $Q_n^{\alpha,\beta}(t)$:
+\begin{equation*}
+  I_{m+n-2,N-2}\left(t-\frac{2}{N-3},v-\frac{2}{N-3} \right) - I_{m-2,N-2}\left(t-\frac{2}{N-3},v-\frac{2}{N-3} \right) =
+\end{equation*}
+%\begin{equation*}
+%  \frac{2}{N-3}\,\sum_{l=m-1}^{m+n-2} B_{l,N-2}\,
+%  \left[
+%    \frac{(\frac{N-3}{2}\,(1+t)-1)(N-2-\frac{N-3}{2}\,(1+v))}{\frac{N-3}{2}\,(1+t)-\frac{N-3}{2}\,(1+v)}
+%    \,T^{1,2}_{l}\left(\frac{N-3}{2}\,(1+t)-2,N-3\right)
+%    \,T^{2,1}_{l}\left(\frac{N-3}{2}\,(1+v)-1,N-3\right)
+%  \right.
+%\end{equation*}
+%\begin{equation*}
+%\left.
+%  - \frac{(\frac{N-3}{2}\,(1+v)-1)(N-2-\frac{N-3}{2}\,(1+t))}{\frac{N-3}{2}\,(1+t)-\frac{N-3}{2}\,(1+v)}
+%  \,T^{1,2}_{l}\left(\frac{N-3}{2}\,(1+v)-2,N-3\right)
+%  \,T^{2,1}_{l}\left(\frac{N-3}{2}\,(1+t)-1,N-3\right)
+%\right].
+%\end{equation*}
+\begin{equation*}
+  \sum_{l=m-1}^{m+n-2} B_{l,N-2}\,
+  \left[
+    \frac{\left[1+t-\frac{2}{N-3}\right] \left[1-\left(v-\frac{2}{N-3}\right)\right]}
+    {t-v}
+    \,T^{1,2}_{l}\left(\frac{N-3}{2}\,(1+t)-2,N-3\right)
+    \,T^{2,1}_{l}\left(\frac{N-3}{2}\,(1+v)-1,N-3\right)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  - \frac{\left[1+v-\frac{2}{N-3}\right] \left[1-\left(t-\frac{2}{N-3}\right)\right]}
+    {t-v}
+  \,T^{1,2}_{l}\left(\frac{N-3}{2}\,(1+v)-2,N-3\right)
+  \,T^{2,1}_{l}\left(\frac{N-3}{2}\,(1+t)-1,N-3\right)
+\right]=
+\end{equation*}
+\begin{equation*}
+  \sum_{l=m-1}^{m+n-2} B_{l,N-2}\,
+  \left[
+    \frac{\left[1+t-\frac{2}{N-3}\right] \left[1-\left(v-\frac{2}{N-3}\right)\right]}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(t-\frac{2}{N-3}\right)
+    \,Q^{2,1}_{l,N-2}\left(v\right)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  - \frac{\left[1+v-\frac{2}{N-3}\right] \left[1-\left(t-\frac{2}{N-3}\right)\right]}
+    {t-v}
+    \,Q^{1,2}_{l,N-2}\left(v-\frac{2}{N-3}\right)
+    \,Q^{2,1}_{l,N-2}\left(t\right)
+\right].
+\end{equation*}
+
+
+
+
+==============
+
+\begin{equation*}
+  I_{m+n-2,N-2}(x-1,j-1) - I_{m-2,N-2}(x-1,j-1) =
+\end{equation*}
+\begin{equation*}
+\sum_{l=m-1}^{m+n-2}
+  B_{l,N}\,
+  \frac{(x-1)\,T^{1,2}_{l}(x-2,N-3) T_{l}^1(j-1,N-2) - (j-1)\,T^{1,2}_{l}(j-2,N-3) T_{l}^1(x-1,N-2)}{x-j},
+\end{equation*}
+
+==============
+
+\begin{equation*}
+  I_{k,N}(x,j) = \frac{2}{N-1}\,
+  \sum_{l=0}^{k} B_{l,N}\,
+  \frac{T_{l+1}^1(x) T_{l}^1(j) - T_{l+1}^1(j) T_{l}^1(x)}{x-j} =
+\end{equation*}
+\begin{equation*}
+  \frac{2}{N-1}\,\sum_{l=0}^{k} B_{l,N}\, \left[
+    \frac{x(N-1-j)}{x-j}\,T^{1,2}_{l}(x-1,N-1)\,T^{2,1}_{l}(j,N-1)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  - \frac{j(N-1-x)}{x-j}\,T^{1,2}_{l}(j-1,N-1)\,T^{2,1}_{l}(x,N-1)
+\right].
+\end{equation*}
+
+
+
+
+
+==============
+
+\begin{equation*}
+  I_{k,N}(t,v) =
+  \sum_{l=0}^{k} B_{l,N} \,
+  \left[
+    \frac{(1+t)(1-v)}{t-v}\,Q^{1,2}_{l}(t)\,Q^{2,1}_{l}\left(v+\frac{2}{N-1}\right)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  - \frac{(1+v)(1-t)}{t-v}\,Q^{1,2}_{l}(v)\,Q^{2,1}_{l}\left(t+\frac{2}{N-1}\right)
+\right],
+\end{equation*}
+
+\begin{equation*}
+  I_{m+n-2,N-2}(x-1,j-1) - I_{m-2,N-2}(x-1,j-1) =
+\end{equation*}
+\begin{equation*}
+\sum_{l=m-1}^{m+n-2}
+  \hat{B}_{l,N}\,
+  \frac{(N-j)\,T^{2,1}_{l}(j-1,N-3) T_{l}^1(x-1,N-2)
+    - (N-x)\,T^{2,1}_{l}(x-1,N-3) T_{l}^1(j-1,N-2)}{x-j}.
+\end{equation*}
+
+
+Отсюда, возвращаясь к \eqref{limVPf}, имеем
+\begin{equation*}
+  \mathcal{V}^{-1}_{m,n}(f,x) = a_N(f,x) +
+   \frac{8x(N-x-1)}{(n+1)N(N-1)(N-2)}
+   \sum_{j=1}^{N-2} g(j) \sum_{l=m-1}^{m+n-2}
+  B_{l,N}\,\times
+\end{equation*}
+\begin{equation*}
+  \frac{(x-1)\,T^{1,2}_{l}(x-2,N-3) T_{l}^1(j-1,N-2) - (j-1)\,T^{1,2}_{l}(j-2,N-3) T_{l}^1(x-1,N-2)}{x-j} =
+\end{equation*}
+
+\begin{equation*}
+  a_N(f,x) + \frac{1}{n+1}
+   \sum_{l=m-1}^{m+n-2} x(N-x-1) W_{l,N} \sum_{j=1}^{N-2} g(j)
+  \,\times
+\end{equation*}
+\begin{equation*}
+  \frac{(x-1)\,T^{1,2}_{l}(x-2,N-3) T_{l}^1(j-1,N-2) - (j-1)\,T^{1,2}_{l}(j-2,N-3) T_{l}^1(x-1,N-2)}{x-j},
+\end{equation*}
+где
+\begin{equation*}
+ W_{l,N} = \frac{8}{N(N-1)(N-2)} \, \frac{(l+2)(l+3)}{8(l+1)}\, \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}}
+=
+ \frac{(l+2)(l+3)}{(l+1)}\, \frac{(N-2)^{[l]}}{(N+l+2)^{[l+3]}}.
+\end{equation*}
+
+Либо иначе
+
+\begin{equation*}
+  \mathcal{V}^{-1}_{m,n}(f,x) = a_N(f,x) +
+   \frac{8x(N-x-1)}{(n+1)N(N-1)(N-2)}
+   \sum_{j=1}^{N-2} g(j) \sum_{l=m-1}^{m+n-2}
+  \hat{B}_{l,N}\,\times
+\end{equation*}
+\begin{equation*}
+  \frac{(N-j)\,T^{2,1}_{l}(j-1,N-3) T_{l}^1(x-1,N-2) - (N-x)\,T^{2,1}_{l}(x-1,N-3) T_{l}^1(j-1,N-2)}{x-j} =
+\end{equation*}
+
+\begin{equation*}
+  a_N(f,x) + \frac{1}{n+1}
+   \sum_{l=m-1}^{m+n-2} x(N-x-1) \hat{W}_{l,N} \sum_{j=1}^{N-2} g(j)
+  \,\times
+\end{equation*}
+\begin{equation*}
+  \frac{(N-j)\,T^{2,1}_{l}(j-1,N-3) T_{l}^1(x-1,N-2) - (N-x)\,T^{2,1}_{l}(x-1,N-3) T_{l}^1(j-1,N-2)}{x-j},
+\end{equation*}
+где
+\begin{equation*}
+ \hat{W}_{l,N} = \frac{8}{N(N-1)(N-2)} \, \frac{l+3}{8} \,\frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} =
+ (l+3)\,\frac{(N-2)^{[l]}}{(N+l+2)^{[l+3]}}.
+\end{equation*}
+
+
+
+
+
+
+
+\newpage
+\newpage
+
+Обозначив для краткости $B_{l,N} = \frac{(l+2)(l+3)}{16(l+1)}\,\frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} $
+получим
+
+\begin{equation*}
+  I_{k,N}(x,j) = \frac{2}{N-1}\,
+  \sum_{l=0}^{k} B_{l,N}\,
+  \frac{T_{l+1}^1(x) T_{l}^1(j) - T_{l+1}^1(j) T_{l}^1(x)}{x-j} =
+\end{equation*}
+\begin{equation*}
+  \frac{2}{N-1}\,\sum_{l=0}^{k} B_{l,N}\, \left[
+    \frac{x(N-1-j)}{x-j}\,T^{1,2}_{l}(x-1,N-1)\,T^{2,1}_{l}(j,N-1)
+  \right.
+\end{equation*}
+\begin{equation*}
+\left.
+  - \frac{j(N-1-x)}{x-j}\,T^{1,2}_{l}(j-1,N-1)\,T^{2,1}_{l}(x,N-1)
+\right].
+\end{equation*}
+
+Проведя замену переменных $\{x = \frac{(N-1)}{2}\,(1+t), j = \frac{(N-1)}{2}\,(1+v)\}$, перепишем эти выражения в терминах полиномов $Q_n^{\alpha,\beta}(t)$:
+
+
+
+
+Рассмотрим тогда выражение
+\begin{equation*}
+  I_{m+n-2,N-2}(x-1,j-1) - I_{m-2,N-2}(x-1,j-1) =
+\end{equation*}
+\begin{equation*}
+\sum_{l=m-1}^{m+n-2}
+  B_{l,N}\,
+  \frac{(x-1)\,T^{1,2}_{l}(x-2,N-3) T_{l}^1(j-1,N-2) - (j-1)\,T^{1,2}_{l}(j-2,N-3) T_{l}^1(x-1,N-2)}{x-j},
+\end{equation*}
+
+\begin{equation*}
+  I_{m+n-2,N-2}(x-1,j-1) - I_{m-2,N-2}(x-1,j-1) =
+\end{equation*}
+\begin{equation*}
+\sum_{l=m-1}^{m+n-2}
+  \hat{B}_{l,N}\,
+  \frac{(N-j)\,T^{2,1}_{l}(j-1,N-3) T_{l}^1(x-1,N-2)
+    - (N-x)\,T^{2,1}_{l}(x-1,N-3) T_{l}^1(j-1,N-2)}{x-j}.
+\end{equation*}
+
+
+Отсюда, возвращаясь к \eqref{limVPf}, имеем
+\begin{equation*}
+  \mathcal{V}^{-1}_{m,n}(f,x) = a_N(f,x) +
+   \frac{8x(N-x-1)}{(n+1)N(N-1)(N-2)}
+   \sum_{j=1}^{N-2} g(j) \sum_{l=m-1}^{m+n-2}
+  B_{l,N}\,\times
+\end{equation*}
+\begin{equation*}
+  \frac{(x-1)\,T^{1,2}_{l}(x-2,N-3) T_{l}^1(j-1,N-2) - (j-1)\,T^{1,2}_{l}(j-2,N-3) T_{l}^1(x-1,N-2)}{x-j} =
+\end{equation*}
+
+\begin{equation*}
+  a_N(f,x) + \frac{1}{n+1}
+   \sum_{l=m-1}^{m+n-2} x(N-x-1) W_{l,N} \sum_{j=1}^{N-2} g(j)
+  \,\times
+\end{equation*}
+\begin{equation*}
+  \frac{(x-1)\,T^{1,2}_{l}(x-2,N-3) T_{l}^1(j-1,N-2) - (j-1)\,T^{1,2}_{l}(j-2,N-3) T_{l}^1(x-1,N-2)}{x-j},
+\end{equation*}
+где
+\begin{equation*}
+ W_{l,N} = \frac{8}{N(N-1)(N-2)} \, \frac{(l+2)(l+3)}{8(l+1)}\, \frac{(N-2)^{[l]}}{(N+l+2)^{[l]}}
+=
+ \frac{(l+2)(l+3)}{(l+1)}\, \frac{(N-2)^{[l]}}{(N+l+2)^{[l+3]}}.
+\end{equation*}
+
+Либо иначе
+
+\begin{equation*}
+  \mathcal{V}^{-1}_{m,n}(f,x) = a_N(f,x) +
+   \frac{8x(N-x-1)}{(n+1)N(N-1)(N-2)}
+   \sum_{j=1}^{N-2} g(j) \sum_{l=m-1}^{m+n-2}
+  \hat{B}_{l,N}\,\times
+\end{equation*}
+\begin{equation*}
+  \frac{(N-j)\,T^{2,1}_{l}(j-1,N-3) T_{l}^1(x-1,N-2) - (N-x)\,T^{2,1}_{l}(x-1,N-3) T_{l}^1(j-1,N-2)}{x-j} =
+\end{equation*}
+
+\begin{equation*}
+  a_N(f,x) + \frac{1}{n+1}
+   \sum_{l=m-1}^{m+n-2} x(N-x-1) \hat{W}_{l,N} \sum_{j=1}^{N-2} g(j)
+  \,\times
+\end{equation*}
+\begin{equation*}
+  \frac{(N-j)\,T^{2,1}_{l}(j-1,N-3) T_{l}^1(x-1,N-2) - (N-x)\,T^{2,1}_{l}(x-1,N-3) T_{l}^1(j-1,N-2)}{x-j},
+\end{equation*}
+где
+\begin{equation*}
+ \hat{W}_{l,N} = \frac{8}{N(N-1)(N-2)} \, \frac{l+3}{8} \,\frac{(N-2)^{[l]}}{(N+l+2)^{[l]}} =
+ (l+3)\,\frac{(N-2)^{[l]}}{(N+l+2)^{[l+3]}}.
+\end{equation*}
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\newpage
+
+
+Справедливы следующие рекуррентные формулы:
+
+\begin{equation*}
+  A^{1,1}_{n,N} T^{1,1}_{n+1}(x,N) = (x-B^{1,1}_{n,N}) T^{1,1}_{n}(x,N) - C^{1,1}_{n,N} T^{1,1}_{n-1}(x,N),
+\end{equation*}
+где $T^{1,1}_{0}(x,N)=1$, $T^{1,1}_{1}(x,N)=-2+4x/(N-1)$,
+\begin{equation*}
+  A^{1,1}_{n,N} = \frac{(n+1)(n+3)(N-n-1)}{(2n+3)(2n+5)},
+\quad
+  C^{1,1}_{n,N} = \frac{(n+1)(N+n+2)}{2(2n+3)},
+\end{equation*}
+\begin{equation*}
+  B^{1,1}_{n,N} = A^{1,1}_{n,N}\,\frac{n+2}{n+1}+C^{1,1}_{n,N}\,\frac{n}{n+1} =
+\end{equation*}
+\begin{equation*}
+  \frac{(n+2)(n+3)(N-n-1)}{(2n+3)(2n+5)}+ \frac{n(N+n+2)}{2(2n+3)},
+\end{equation*}
+
+\begin{equation*}
+  A^{1,2}_{n,N} T^{1,2}_{n+1}(x,N) = (x-B^{1,2}_{n,N}) T^{1,2}_{n}(x,N) - C^{1,2}_{n,N} T^{1,2}_{n-1}(x,N),
+\end{equation*}
+где $T^{1,2}_{0}(x,N)=1$, $T^{1,2}_{1}(x,N)=-3+5x/(N-1)$,
+\begin{equation*}
+  A^{1,2}_{n,N} = \frac{(n+1)(n+4)(N-n-1)}{2(n+2)(2n+5)},
+\quad
+  C^{1,2}_{n,N} = \frac{(n+1)(N+n+3)}{2(2n+3)},
+\end{equation*}
+\begin{equation*}
+  B^{1,2}_{n,N} = A^{1,2}_{n,N}\,\frac{n+3}{n+1}+C^{1,2}_{n,N}\,\frac{n}{n+2}=
+\end{equation*}
+\begin{equation*}
+  \frac{(n+3)(n+4)(N-n-1)}{2(n+2)(2n+5)}+\frac{(n+1)(N+n+3)}{2(2n+3)}\,\frac{n}{n+2},
+\end{equation*}
+
+
+\begin{equation*}
+  A^{2,1}_{n,N} T^{2,1}_{n+1}(x,N) = (x-B^{2,1}_{n,N}) T^{2,1}_{n}(x,N) - C^{2,1}_{n,N} T^{2,1}_{n-1}(x,N),
+\end{equation*}
+где $T^{2,1}_{0}(x,N)=1$, $T^{2,1}_{1}(x,N)=-2+5x/(N-1)$,
+\begin{equation*}
+  A^{2,1}_{n,N} = \frac{(n+1)(n+4)(N-n-1)}{2(n+2)(2n+5)},
+\quad
+  C^{2,1}_{n,N} = \frac{(n+1)(N+n+3)}{2(2n+3)},
+\end{equation*}
+\begin{equation*}
+  B^{2,1}_{n,N} = A^{2,1}_{n,N}\,\frac{n+2}{n+1}+C^{2,1}_{n,N}\,\frac{n}{n+1}=
+\end{equation*}
+\begin{equation*}
+  \frac{(n+4)(N-n-1)}{2(2n+5)}+\frac{n(N+n+3)}{2(2n+3)},
+\end{equation*}
+
+
+Справедливы следующие рекуррентные формулы:
+\begin{equation*}
+  (n+1) T^{1,1}_{n+1}(x,N) + (n+2)T^{1,1}_{n}(x,N) = \frac{2n+4}{N-1}\,x\,T^{1,2}_{n}(x-1,N-1),
+\end{equation*}
+\begin{equation*}
+  (n+2) T^{1,1}_{n}(x,N) - (n+1)T^{1,1}_{n+1}(x,N) = \frac{2n+2}{N-1}\,(N-1-x)\,T^{2,1}_{n}(x,N-1).
+\end{equation*}
+
+\begin{equation*}
+  (n+1) T^{1,2}_{n+1}(x,N) + (n+3)T^{1,2}_{n}(x,N) = \frac{2n+5}{N-1}\,x\,T^{1,3}_{n}(x-1,N-1),
+\end{equation*}
+\begin{equation*}
+  (n+2) T^{1,2}_{n}(x,N) - (n+1)T^{1,2}_{n+1}(x,N) = \frac{2n+3}{N-1}\,(N-1-x)\,T^{2,2}_{n}(x,N-1).
+\end{equation*}
+
+\begin{equation*}
+  (n+1) T^{2,1}_{n+1}(x,N) + (n+3)T^{2,1}_{n}(x,N) = \frac{2n+5}{N-1}\,x\,T^{2,2}_{n}(x-1,N-1),
+\end{equation*}
+\begin{equation*}
+  (n+3) T^{2,1}_{n}(x,N) - (n+1)T^{2,1}_{n+1}(x,N) = \frac{2n+3}{N-1}\,(N-1-x)\,T^{3,1}_{n}(x,N-1).
+\end{equation*}
+
+Соотношения из желтой книги:
+\begin{equation*}
+  (n+1)T^{\alpha,\beta}_{n+1}(x,N) + (n+\beta+1)T^{\alpha,\beta}_{n}(x,N) = \frac{2n+\alpha+\beta+2}{N-1}\,x\,T^{\alpha,\beta+1}_{n}(x-1,N-1)
+\end{equation*}
+%\begin{equation*}
+%  nT^{\alpha,\beta}_{n}(x,N) + (n+\beta)T^{\alpha,\beta}_{n-1}(x,N) = \frac{2n+\alpha+\beta}{N-1}\,x\,T^{\alpha,\beta+1}_{n-1}(x-1,N-1)
+%\end{equation*}
+\begin{equation*}
+  (n+\alpha+1)T^{\alpha,\beta}_{n}(x,N) - (n+1)T^{\alpha,\beta}_{n+1}(x,N) = \frac{2n+\alpha+\beta+2}{N-1}\,(N-1-x)\,T^{\alpha+1,\beta}_{n}(x,N-1)
+\end{equation*}
+%\begin{equation*}
+%  (n+\alpha)T^{\alpha,\beta}_{n-1}(x,N) - nT^{\alpha,\beta}_{n}(x,N) = \frac{2n+\alpha+\beta}{N-1}\,(N-1-x)\,T^{\alpha+1,\beta}_{n-1}(x,N-1)
+%\end{equation*}
+Складывая эти два равенства, получаем
+%\begin{equation*}
+%  (n+\beta+1)T^{\alpha,\beta}_{n}(x,N) + (n+\alpha+1)T^{\alpha,\beta}_{n}(x,N)
+%  = \frac{2n+\alpha+\beta+2}{N-1} \, \left[
+%    x\,T^{\alpha,\beta+1}_{n}(x-1,N-1) + (N-1-x)\,T^{\alpha+1,\beta}_{n}(x,N-1)\right],
+%\end{equation*}
+\begin{equation*}
+  T^{\alpha,\beta}_{n}(x,N)
+  = \frac{x\,T^{\alpha,\beta+1}_{n}(x-1,N-1) + (N-1-x)\,T^{\alpha+1,\beta}_{n}(x,N-1)}{N-1}.
+\end{equation*}
+\begin{equation}\label{rec1221}
+  T^{1,1}_{n}(x,N)
+  = \frac{x\,T^{1,2}_{n}(x-1,N-1) + (N-1-x)\,T^{2,1}_{n}(x,N-1)}{N-1}.
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Разностные свойства:
+\begin{equation*}
+ T^{\alpha,\beta}_{n}(x,N) =
+  \frac{(\alpha+\beta+2)x - (\beta+1)(N-1)}{n(N-1)}\,T^{\alpha+1,\beta+1}_{n-1}(x-1,N-1)-
+\end{equation*}
+\begin{equation*}
+  \frac{(\beta+1-x)(N-1-x)(n+\alpha+\beta+2)}{n(N-1)(N-2)}\,T^{\alpha+2,\beta+2}_{n-2}(x-1,N-2),
+\end{equation*}
+
+\begin{equation*}
+ T^{1,1}_{n}(x,N) =
+  2\,\frac{2x - N+1}{n(N-1)}\,T^{2,2}_{n-1}(x-1,N-1)-
+  \frac{(2-x)(N-1-x)(n+4)}{n(N-1)(N-2)}\,T^{3,3}_{n-2}(x-1,N-2),
+\end{equation*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\newpage
+
+
+
+
+Рассмотрим разность коэффициентов
+\begin{equation*}
+  B_{l,N}-B_{l-1,N} = \frac{l+3}{16} \, \frac{(N-3)^{[l+1]}}{(N+l)^{[l]}}-
+  \frac{l+2}{16} \, \frac{(N-3)^{[l]}}{(N+l-1)^{[l-1]}} =
+\end{equation*}
+\begin{equation*}
+  \frac{(N-3)^{[l]}}{16(N+l)^{[l]}}\left(
+    (N-l-3)(l+3) - (N+l)(l+2)
+  \right)=
+\end{equation*}
+\begin{equation*}
+  \frac{(N-3)^{[l]}}{(N+l)^{[l]}}\, \frac{N-2l(l+4)-9}{16}.
+\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\vspace*{3mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Библиографический список}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+1. \textit{И.\,И.~Шарапудинов.} Смешанные ряды по классическим ортогональным полиномам // Дагестанские Электронные Математические Известия, 2015. Т.~3 (Специальный выпуск), С.~1-254.
+
+2. \textit{И.\,И.~Шарапудинов.} Асимптотические свойства и весовые оценки для ортогональных многочленов Чебыш\"ева–Хана // Математический сборник, 1991. Т.~182, №~3, С.~408–420.
+
+3. \textit{И.\,И.~Шарапудинов.} Об ограниченности в $C[-1,1]$ средних Валле-Пуссена для дискретных сумм Фурье–Чебыш\"eва // Математический сборник, 1996. Т.~187, №~1, С.~143–160.
+
+4. \textit{Т.\,И.~Шарапудинов.} Конечные предельные ряды по полиномам Чебыш\"ева, ортогональным на равномерных сетках // Изв. Сарат. ун-та. Нов. сер. Сер. Математика. Механика. Информатика, 2013. Т. 13, вып.~1, ч.~2, С.~104-108.
+
+
+
+\newpage
+
+\textsf{УДК~517.51}
+
+
+Султанахмедов М. С. Аппроксимативные свойства средних Валле -- Пуссена сумм Фурье по полиномам Чебыш\"ева, ортогональным на равномерной сетке
+
+Sultanakhmedov M. S. Approximative Properties of de la Vallee - Poussin means of Fourier sums by Chebyshev Polynomials Orthogonal on a Uniform Grid
+
+\vspace*{5mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Полные сведения об авторах
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent%
+\textit{Султанахмедов Мурад Салихович}~--- научный сотрудник Отдела математики и информатики, Дагестанский научный центр РАН. E-mail: sultanakhmedov@gmail.com; 367000, г. Махачкала, ул. Гаджиева, 45. \vspace*{3pt}
+
+\noindent%
+\textit{Sultanakhmedov Murad Salikhovich}~--- scientific worker of Department of Mathematics and Computer Science, Daghestan Scientific Center of RAS. E-mail: sultanakhmedov@gmail.com; 367000, Makhachkala, Gadzhiev st., 45.
+
+
+
+Ответственный за переписку Султанахмедов Мурад Салихович
+%E-mail: sultanakhmedov@gmail.com
+%сот.(или д.) тел. 8-988-2000-778
+\end{document} 

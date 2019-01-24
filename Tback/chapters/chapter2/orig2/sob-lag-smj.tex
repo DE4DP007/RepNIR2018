@@ -1,0 +1,694 @@
+\chapter{О представлении решения задачи Коши  рядом Фурье  по полиномам, ортогональным по  Соболеву, порожденным многочленами Лагерра}
+%\begin{abstract}
+%Рассмотрена задача о представлении решения задачи Коши для обыкновенного дифференциального уравнения в виде  ряда  Фурье по многочленам $ l_{r,k}^\alpha(x)$ $(k=0,1,\ldots)$, ортонормированным по Соболеву относительно скалярного произведения
+%$\langle f,g \rangle=\sum_{\nu=0}^{r-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_0^\infty f^{(r)}(t)g^{(r)}(t)t^\alpha e^{-t}dt$,
+%порожденным классическими ортогональными  многочленами Лагерра $L_k^{\alpha}(x)$ $(k=0,1,\ldots)$. Получены представления полиномов $ l^\alpha_{r,k}(x)$ в виде выражений, содержащих   многочлены Лагерра $L_n^{\alpha-r}(x)$. Установлен  явный  вид полиномов $ l^\alpha_{r,k+r}(x)$, представляющий собой разложение по степеням $x^{r+l}$ c $l=0,\ldots,k$. Эти результаты  могут  быть использованы при исследовании асимптотических свойств полиномов $l^\alpha_{r,k}(x)$ при $k\to\infty$ и аппроксимативных свойств частичных сумм рядов Фурье по этим полиномам.
+%\end{abstract}
+
+В ряде наших работ  \cite{Haar-Tcheb-Shar11} -- \cite{Haar-Tcheb-Shar16} были введены так называемые смешанные ряды по классическим ортогональным полиномам, частичные суммы которых также обладают свойством совпадения их значений в концах области ортогональности  со значениями исходной функции.  В указанных работах были подробно исследованы аппроксимативные свойства смешанных рядов для функций из различных функциональных пространств и классов. В частности, было показано, что частичные суммы смешанных рядов по классическим ортогональным полиномам, в отличие от сумм Фурье по этим же полиномам, успешно могут быть использованы в задачах, в которых требуется одновременно приближать дифференцируемую функцию и ее несколько производных.
+В данном параграфе мы рассмотрим один из спектральных методов решения задачи Коши для линейного обыкновенного дифференциального уравнения (ОДУ)
+\begin{equation}\label{sob-lag-smj-1.1}
+ a_r(x)y^{(r)}(x)+a_{r-1}(x)y^{(r-1)}(x)+\cdots+a_0(x)y(x)=h(x)
+ \end{equation}
+с начальными условиями $y^{(k)}(0)=y_k$, $k=0,1,\ldots,r-1$, с помощью рядов Фурье по полиномам, ортогональным по Соболеву и порожденным полиномами Лагерра. Можно показать, что смешанные ряды по классическим ортогональным полиномам, введенные и исследованные в  работах \cite{Haar-Tcheb-Shar11} -- \cite{Haar-Tcheb-Shar16}, по существу представляют собой ряды Фурье по  полиномам, ортогональным по Соболеву и порожденным соответствующими классическими ортогональными полиномами. В настоящем параграфе мы это проверим для смешанных рядов по полиномам Лагерра. А именно, мы  введем полиномы $l^\alpha_{r,k}(x)$ $(k=0,1,\ldots)$, ортонормированные  по Соболеву относительно скалярного произведения
+\begin{equation}\label{sob-lag-smj-1.3}
+\langle f,g \rangle=\sum_{s=0}^{r-1}f^{(s)}(0)g^{(s)}(0)+\int_0^\infty f^{(r)}(t)g^{(r)}(t)t^\alpha e^{-t}dt,
+\end{equation}
+порожденные классическими ортогональными полиномами Лагерра  $L_n^\alpha(x)$, и убедимся в  том, что ряд Фурье по полиномам  $l^\alpha_{r,k}(x)$ есть не что иное, как смешанный ряд по многочленам Лагерра $L_n^\alpha(x)$, введенный впервые автором в \cite{Haar-Tcheb-Shar13}.
+Мы покажем, что ряд Фурье по полиномам  $l^\alpha_{r,k}(x)$ является весьма удобным и естественным  инструментом  представления решения задачи Коши для обыкновенного дифференциального уравнения. В связи с этим возникает вопрос об изучении аппроксимативных свойств сумм Фурье по полиномам $l^\alpha_{r,k}(x)$, который приводит к задаче об асимптотических свойствах самих полиномов $l^\alpha_{r,k}(x)$ при $k\to\infty$. Для решения этой задачи в настоящем параграфе будут получены представления полиномов $l_{r,k}(x)$
+в виде некоторых выражений, содержащих   многочлены Лагерра $L_n^{\alpha-r}(x)$. Мы также найдем явный  вид полинома $l^\alpha_{r,k+r}(x)$, представляющий собой разложение по степеням $x^{r+l}$ c $l=0,\ldots,k$. Эти результаты  могут  быть использованы при исследовании асимптотических свойств полиномов $l^\alpha_{r,k}(x)$ при $k\to\infty$ и аппроксимативных свойств частичных сумм рядов Фурье по этим полиномам.
+
+
+
+\section{Некоторые сведения о полиномах Лагерра}
+При исследовании свойств полиномов, порожденных полиномами Лагерра и ортогональных по Соболеву,   нам понадобится ряд свойств самих полиномов Лагерра $L_n^\alpha(t)$, которые мы соберем в данном параграфе.
+
+Пусть $\alpha$ -- произвольное действительное число. Тогда для полиномов Лагерра  имеют место \cite{Haar-Tcheb-Sege}:
+
+\textit{Формула Родрига}
+\begin{equation}\label{sob-lag-smj-2.1}
+L_n^{\alpha}(t) = \frac{1}{n!}t^{-\alpha}e^{t} \left\{ t^{n+\alpha} e^{-t} \right\}^{(n)};
+\end{equation}
+
+\textit{Явный вид}
+\begin{equation}\label{sob-lag-smj-2.2}
+L_n^\alpha(t) =
+\sum\limits_{\nu=0}^{n}
+\binom{n+\alpha}{n-\nu}
+\frac{(-t)^\nu}{\nu!};
+\end{equation}
+
+\textit{Соотношение ортогональности}
+
+\begin{equation}
+\label{sob-lag-smj-2.3}
+\int_0^{\infty} t^{\alpha} e^{-t} L^{\alpha}_{n}(t) L^{\alpha}_{m}(t) dt = \delta_{nm} h^{\alpha}_n \quad (\alpha > -1),
+\end{equation}
+где $\delta_{nm}$ --- символ Кронекера,
+\begin{equation*}\label{sob-lag-smj-2.4}
+h^{\alpha}_n = \left( n+\alpha \atop n \right) \Gamma(\alpha +1),
+\end{equation*}
+в частности, если $L_{n}(t) = L^{0}_{n}(t)$, то
+\begin{equation*}
+\int_0^{\infty} e^{-t} L_{n}(t) L_{m}(t) dt = \delta_{nm};
+\end{equation*}
+
+\textit{ Равенства}
+
+\begin{equation} \label{sob-lag-smj-2.6}
+\frac{d^r}{dt^r} L_{k+r}^{\alpha-r}(t) = (-1)^{r} L_{k}^{\alpha}(t),
+\end{equation}
+\begin{equation}\label{sob-lag-smj-2.7}
+L_{k}^{-r}(t) = \frac{(-t)^{r}}{k^{[r]}} L_{k-r}^{r}(t),
+\end{equation}
+где $k^{[r]} = k(k-1)\ldots(k-r+1)$;
+
+
+\textit{Весовая оценка} \cite{sob-lag-sb-AskeyWaiger}
+\begin{equation}\label{sob-lag-smj-2.10}
+e^{-\frac{t}{2}}|L_n^\alpha(t)| \le c(\alpha) B_n^\alpha(t), \quad \alpha>-1,
+\end{equation}
+где здесь и далее $c,c(\alpha),c(\alpha,\ldots,\beta)$ -- положительные числа, зависящие лишь от указанных параметров,
+\begin{equation*}\label{sob-lag-smj-2.11}
+B_n^\alpha(t)=
+\begin{cases}
+\theta^\alpha, &0 \le t \le \frac{1}{\theta},\\
+\theta^{\frac{\alpha}{2} - \frac{1}{4}}\,t^{-\frac{\alpha}{2} - \frac{1}{4}}, & \frac{1}{\theta} < t \le \frac{\theta}{2},\\
+\Bigl[
+\theta(\theta^{\frac{1}{3}}+|t-\theta|)
+\Bigr]^{-\frac{1}{4}}, & \frac{\theta}{2} < t \le \frac{3\theta}{2},\\
+e^{-\frac{t}{4}}, &\frac{3\theta}{2}< t,
+\end{cases}
+\end{equation*}
+где $\theta=\theta_n=\theta_n(\alpha)=4n+2\alpha+2$.
+
+Для нормированных полиномов Лагерра
+\begin{equation}\label{sob-lag-smj-2.12}
+l_n^\alpha(t)=
+\Bigl\{h_n^\alpha \Bigr\}^{-\frac{1}{2}} L_n^\alpha(t)
+\end{equation}
+имеют место следующие оценки \cite{sob-lag-sb-AskeyWaiger}:
+\begin{equation*}\label{sob-lag-smj-2.13}
+e^{-\frac{t}{2}}
+|l_n^\alpha(t)|\le
+c(\alpha)\theta_n^{-\frac{\alpha}{2}}B_n^\alpha(t), \quad t \ge 0,
+\end{equation*}
+
+\begin{equation*}\label{sob-lag-smj-2.14}
+e^{-\frac{t}{2}}
+\Bigl|
+l_{n+1}^\alpha(t)-
+l_{n-1}^\alpha(t)
+\Bigr|\le
+\begin{cases}
+\theta^{\frac{\alpha}{2}-1}, &0 \le t \le \frac{1}{\theta},\\
+\theta^{-\frac{3}{4}}\,t^{-\frac{\alpha}{2} + \frac{1}{4}}, & \frac{1}{\theta} < t \le \frac{\theta}{2},\\
+t^{-\frac{\alpha}{2}}\,
+\theta^{-\frac{3}{4}}
+\Bigl[
+\theta^{\frac{1}{3}}+|t-\theta|
+\Bigr]^{\frac{1}{4}}, & \frac{\theta}{2} < t \le \frac{3\theta}{2},\\
+e^{-\frac{t}{4}}, &\frac{3\theta}{2}< t.
+\end{cases}
+\end{equation*}
+Отметим также следующие свойства:
+
+\textit{Свертка}
+\begin{equation}
+\label{sob-lag-smj-2.15}
+\int_0^{t} L_{n}(t-\tau) L_{m}(\tau) d\tau = L_{n+m}(t) - L_{n+m+1}(t);
+\end{equation}
+
+\textit{Формула Кристоффеля -- Дарбу}
+\begin{equation}\label{sob-lag-smj-2.16}
+\mathcal{K}_n^\alpha(t,\tau)=
+\sum\limits_{k=0}^{n}\frac{L_\nu^\alpha(t)L_\nu^\alpha(\tau)}{h_\nu^\alpha}=
+\frac{n+1}{h_n^\alpha}
+\frac{L_n^\alpha(t)L_{n+1}^\alpha(\tau) - L_n^\alpha(\tau)L_{n+1}^\alpha(t)}{t-\tau}.
+\end{equation}
+
+
+
+
+
+\section{Ортогональные по Соболеву полиномы, порожденные полиномами Лагерра}
+Пусть $-1<\alpha$,  $\rho=\rho(x)=x^\alpha e^{-x}$, $1\le p<\infty $,  $\mathcal{L}_{\rho}^p$ -- пространство измеримых функций $f(x)$, определенных на полуоси $[0,\infty)$ и таких, что
+     $$
+\|f\|_{\mathcal{L}_{\rho}^p}=
+\left(\int\limits_0^\infty|f(x)|^p\rho(x)dx\right)^{1/p}<\infty.
+    $$
+Из равенства \eqref{sob-lag-smj-2.3} следует, что если $\alpha>-1$, то полиномы $l_n^{\alpha}(x)$ $(n=0,1,\ldots)$ (см. \eqref{sob-lag-smj-2.12})
+образуют ортонормированную  в $\mathcal{L}_\rho^2$  систему. Как хорошо известно \cite{Haar-Tcheb-Sege}, система полиномов Лагерра  \eqref{sob-lag-smj-2.12} полна в $\mathcal{L}_\rho^2$.   Эта система порождает на $[0,\infty)$ систему полиномов $l_{r,k}^{\alpha}(x)$ $(r \in \mathbb{N}, k=0,1,\ldots)$, определенных равенствами
+
+  \begin{equation}\label{sob-lag-smj-3.1}
+l_{r,k}^{\alpha}(x) =\frac{x^k}{k!}, \quad k=0,1,\ldots, r-1,
+\end{equation}
+  \begin{equation}\label{sob-lag-smj-3.2}
+l_{r,r+k}^{\alpha}(x) =\frac{1}{(r-1)!}\int\limits_{0}^x(x-t)^{r-1}l_{k}^{\alpha}(t)dt, \quad k=0,1,\ldots.
+\end{equation}
+ Через $W_{\mathcal{L}_{\rho}^p}^r$ обозначим  подкласс функций $f=f(x)$,
+непрерывно дифференцируемых $r-1$ раз, для которых $f^{(r-1)}(x)$
+абсолютно непрерывна на произвольном сегменте $[a,b]\subset[0,\infty)$,
+а $f^{(r)}\in \mathcal{L}_{\rho}^p$. В $W_{\mathcal{L}_{\rho}^2}^r$ мы введем скалярное произведение \eqref{sob-lag-smj-1.3}, которое превращает $W_{\mathcal{L}_{\rho}^2}^r$ в гильбертово пространство.
+Мы покажем, что система полиномов $\{l_{r,k}^{\alpha}(x)\}_{k=0}^\infty$ является полной и ортонормированной в $W_{\mathcal{L}_{\rho}^2}^r$.
+
+\begin{theorem}\label{completeness-lag}
+Пусть $\alpha>-1$. Тогда система полиномов $\{l_{r,k}^{\alpha}(x)\}_{k=0}^\infty$, порожденная системой ортонормированных полиномов Лагерра \eqref{sob-lag-smj-2.12} посредством равенств \eqref{sob-lag-smj-3.1} и \eqref{sob-lag-smj-3.2}, полна  в $W^r_{\mathcal{L}^2_\rho}$ и ортонормирована относительно скалярного произведения \eqref{sob-lag-smj-1.3}.
+\end{theorem}
+
+Ряд Фурье функции $f\in W^r_{\mathcal{L}^2_\rho}$ по системе $\{l_{r,k}^{\alpha}(x)\}_{k=0}^\infty$
+мы можем записать в виде
+\begin{equation}\label{sob-lag-smj-3.8}
+f(x)\sim  \sum_{k=0}^\infty \langle f,l_{r,k}^\alpha \rangle  l_{r,k}^\alpha(x),
+\end{equation}
+где
+\begin{equation}\label{sob-lag-smj-3.9}
+\langle f,l_{r,k}^\alpha \rangle = f^{(k)}(0),\quad k=0,\ldots, r-1,
+\end{equation}
+\begin{equation}\label{sob-lag-smj-3.10}
+\langle f,l_{r,k}^\alpha \rangle = \int\limits_0^\infty f^{(r)}(t) l_{k-r}^\alpha(t)e^{-t}t^\alpha dt=f_{r,k}^\alpha,\quad k=r,r+1,\ldots.
+     \end{equation}
+В силу \eqref{sob-lag-smj-3.9}  и \eqref{sob-lag-smj-3.10} мы можем \eqref{sob-lag-smj-3.8} переписать еще так
+\begin{equation}\label{sob-lag-smj-3.11}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(0)\frac{x^k}{k!}+ \sum_{k=r}^\infty f_{r,k}^\alpha l_{r,k}^\alpha(x).
+\end{equation}
+Ряд, фигурирующий в правой части соотношения \eqref{sob-lag-smj-3.11}, впервые был исследован в работе автора \cite{Haar-Tcheb-Shar13}, где он был назван \textit{смешанным рядом по полиномам Лагерра $L_{k}^\alpha(x)$}. Из теоремы \ref{completeness-lag} следует, что если   $f\in W^r_{\mathcal{L}^2_\rho}$, то ряд \eqref{sob-lag-smj-3.11}, будучи  рядом Фурье  по системе $\{l_{r,k}^{\alpha}(x)\}_{k=0}^\infty$, сходится к $f$ в метрике гильбертова пространства $W^r_{\mathcal{L}^2_\rho}$ со скалярным произведением \eqref{sob-lag-smj-1.3}.
+%\textcolor{red}{Другими словами,} имеет место предельное соотношение
+% \begin{equation*}\label{sob-lag-smj-3.12}
+% \lim_{n\to\infty}\sum_{k=n}^\infty (f_{r,k}^\alpha)^2= 0 .
+%\end{equation*}
+Однако это не означает, что ряд Фурье \eqref{sob-lag-smj-3.11} сходится к $f(x)$ в заданной точке $x\in[0,\infty)$.  При исследовании этой задачи существенную роль играют асимптотические свойства полиномов $l_{r,k}^{\alpha}(x)$ при $k\to\infty$. С целью изучения асимптотических свойств  полиномов $l_{r,k}^{\alpha}(x)$ мы получим некоторые их представления, содержащие   классические полиномы Лагерра $L_{m}^{\alpha}(x)$, а также представление $l_{r,k}^{\alpha}(x)$  в явном виде.
+
+Итак, перейдем к получению некоторых важных представлений для полиномов
+$l_{r,r+k}^{\alpha}(x)$ при $k\ge0$. Для этого обратимся к свойству \eqref{sob-lag-smj-2.6} и запишем
+ $$
+ {1\over
+(r-1)!}\int\limits_{0}^x(x-t)^{r-1}
+     L^\alpha_k(t)dt=
+{(-1)^r\over (r-1)!}\int\limits_{0}^x(x-t)^{r-1}
+{d^r\over dt^r}L_{k+r}^{\alpha-r}(t)dt
+     $$
+ \begin{equation}\label{sob-lag-smj-3.13}
+ =(-1)^rL_{k+r}^{\alpha-r}(x)-(-1)^r\sum_{\nu=0}^{r-1}
+{x^\nu\over\nu!}\{L_{k+r}^{\alpha-r}(t)\}_{t=0}^{(\nu)}.
+ \end{equation}
+Далее
+\begin{equation}\label{sob-lag-smj-3.14}
+ \{L_{k+r}^{\alpha-r}(t)\}^{(\nu)}=(-1)^\nu
+L_{k+r-\nu}^{\alpha-r+\nu}(t),
+  \end{equation}
+ а в силу \eqref{sob-lag-smj-2.2}
+ \begin{equation}\label{sob-lag-smj-3.15}
+L_{k+r-\nu}^{\alpha-r+\nu}(0)= {k+\alpha\choose
+k+r-\nu}={\Gamma(k+\alpha+1)\over\Gamma(\nu-r+
+\alpha+1)(k+r-\nu)!}.
+\end{equation}
+Сопоставляя \eqref{sob-lag-smj-3.14} и \eqref{sob-lag-smj-3.15}, имеем
+\begin{equation}\label{sob-lag-smj-3.16}
+B_{k,\nu}^\alpha=\{L_{k+r}^{\alpha-r}(t)\}^{(\nu)}_{t=0}=
+{(-1)^\nu\Gamma(k+\alpha+1)\over\Gamma(\nu-r+ \alpha+1)(k+r-\nu)!}.
+\end{equation}
+Из \eqref{sob-lag-smj-3.13} и \eqref{sob-lag-smj-3.16} находим
+$$
+{1\over (r-1)!}\int\limits_{0}^x(x-t)^{r-1}
+ L^\alpha_k(t)dt=
+$$
+\begin{equation}\label{sob-lag-smj-3.17}
+(-1)^rL_{k+r}^{\alpha-r}(x)-
+     (-1)^r\sum_{\nu=0}^{r-1}
+{B_{k,\nu}^\alpha x^\nu\over\nu!}.
+\end{equation}
+С другой стороны, в силу определения \eqref{sob-lag-smj-3.2} и равенства \eqref{sob-lag-smj-2.12}    имеем
+ \begin{equation}\label{sob-lag-smj-3.18}
+l_{r,r+k}^{\alpha}(x) =\frac{1}{\sqrt{h_k^\alpha}(r-1)!}\int\limits_{0}^x(x-t)^{r-1}L_{k}^{\alpha}(t)dt, \quad k=0,1,\ldots.
+\end{equation}
+ Сопоставляя \eqref{sob-lag-smj-3.17} с \eqref{sob-lag-smj-3.18} мы приходим к следующему результату.
+\begin{theorem}
+Пусть $\alpha>-1$, $k\ge0$. Тогда имеет место равенство
+\begin{equation}\label{sob-lag-smj-3.19}
+l_{r,r+k}^{\alpha}(x)=\frac{(-1)^r}{\sqrt{h_k^\alpha}}\left[L_{k+r}^{\alpha-r}(x)-
+     \sum_{\nu=0}^{r-1}
+{B_{k,\nu}^\alpha x^\nu\over\nu!}\right],
+\end{equation}
+в котором
+$$
+B_{k,\nu}^\alpha={(-1)^\nu\Gamma(k+\alpha+1)\over\Gamma(\nu-r+ \alpha+1)(k+r-\nu)!}.
+$$
+\end{theorem}
+
+\begin{corollary}\label{lag-repr}
+Пусть  $k\ge0$. Тогда
+$$
+l_{r,r+k}^{0}(x)=(-1)^rL_{k+r}^{-r}(x)=\frac{x^{r}L_{k}^{r}(x)}{(k+r)^{[r]}}.
+$$
+\end{corollary}
+
+Еще одно важное представление для полиномов $l_{r,n+r}^{\alpha}(x)$ можно получить если мы обратимся к равенствам \eqref{sob-lag-smj-2.2} и \eqref{sob-lag-smj-2.12} и запишем
+\begin{equation}\label{sob-lag-smj-3.21}
+l_n^\alpha(x) =\frac{1}{(h_n^\alpha)^{1/2}}
+\sum\limits_{\nu=0}^{n}
+\binom{n+\alpha}{n-\nu}
+\frac{(-x)^\nu}{\nu!}.
+\end{equation}
+Поскольку, очевидно,
+\begin{equation*}
+{1\over (r-1)!}\int\limits_{0}^x(x-t)^{r-1}t^\nu dt=\frac{x^{\nu+r}}{(\nu+r)^{[r]}},
+\end{equation*}
+то из \eqref{sob-lag-smj-3.21} и \eqref{sob-lag-smj-3.2} получаем
+\begin{equation*}\label{sob-lag-smj-3.22}
+l_{r,n+r}^{\alpha}(x)=
+\frac{1}{(h_n^\alpha)^{1/2}}
+\sum\limits_{\nu=0}^{n}(-1)^\nu \binom{n+\alpha}{n-\nu}
+\frac{x^{\nu+r}}{\nu!(\nu+r)^{[r]}}\quad (n=0,1,\ldots).
+\end{equation*}
+
+
+
+
+
+\section{Достаточные условия сходимости на $[0,A]\subset[0,\infty)$ ряда Фурье по полиномам $l_{r,k}^{\alpha}(x)$ }
+
+     Перейдем к рассмотрению достаточных условий на функцию $f(x)$,
+     обеспечивающих сходимость ее  ряда Фурье \eqref{sob-lag-smj-3.11} в заданной точке $x\in[0,\infty)$ и справедливость равенства
+\begin{equation}\label{sob-lag-smj-4.1}
+f(x)= \sum_{k=0}^{r-1} f^{(k)}(0)\frac{x^k}{k!}+ \sum_{k=r}^\infty f_{r,k}^\alpha l_{r,k}^\alpha(x).
+\end{equation}
+Если $f\in W^r_{\mathcal{L}_{\rho}^2}$, то $f^{(r)}\in\mathcal{L}_{\rho}^2$,
+и, следовательно, в метрике пространства $\mathcal{L}_{\rho}^2$ имеет
+     место равенство
+\begin{equation}\label{sob-lag-smj-4.2}
+f^{(r)}(x)=\sum_{k=0}^\infty f_{r,k+r}^\alpha l_k^\alpha(x).
+\end{equation}
+Обозначим через $\mathcal{Y}_{r,n}(f)$ и $S_n(f^{(r)})$ частичные суммы рядов \eqref{sob-lag-smj-4.1} и \eqref{sob-lag-smj-4.2} соответственно:
+\begin{equation*}
+\mathcal{Y}_{r,n}(f,x)=\sum_{k=0}^{r-1} f^{(k)}(0)\frac{x^k}{k!}+ \sum_{k=r}^{n} f_{r,k}^\alpha l_{r,k}^\alpha(x), \quad
+S_{n}^\alpha(f^{(r)},x)=
+\sum_{k=0}^n f_{r,k+r}^\alpha l_k^\alpha(x).
+\end{equation*}
+Пусть $-1<\alpha<1$. Применяя формулу Тейлора остатком в интегральной форме для функции $f$ и используя определение \eqref{sob-lag-smj-3.2}, выводим
+$$
+(r-1)! \cdot \bigl|f(x) - \mathcal{Y}_{r,r+n}(f,x)\bigr| =\left|\int\limits_0^x(x-t)^{r-1}f^{(r)}(t)dt-
+\int\limits_0^x(x-t)^{r-1}S_{n}^\alpha(f^{(r)},t)dt\right|\le
+$$
+$$
+\int\limits_0^x(x-t)^{r-1}|f^{(r)}(t)-
+S_{n}^\alpha(f^{(r)},t)|dt \le
+x^{r-1}\int\limits_0^x|f^{(r)}(t)-S_{n}^\alpha(f^{(r)},t)|dt=
+$$
+$$
+x^{r-1}\int\limits_0^xt^{-{\alpha\over2}}e^{t/2}
+t^{{\alpha\over2}}e^{-t/2}
+       |f^{(r)}(t)-S_{n}^\alpha(f^{(r)},t)|dt\le
+$$
+$$
+x^{r-1}\left(\int\limits_0^xt^{-\alpha}e^tdt\right)^{1/2}
+     \left(\int\limits_0^x
+t^\alpha e^{-t}(f^{(r)}(t)-S_{n}^\alpha(f^{(r)},t))^2dt\right)^{1/2}\le
+$$
+\begin{equation}\label{sob-lag-smj-4.3}
+\left({e^xx^{2r-\alpha-1}\over 1-\alpha}\right)^{1/2}
+\|f^{(r)}-S_{n}^\alpha(f^{(r)})\|_{\mathcal{L}_{2,\rho}}.
+\end{equation}
+Поскольку в силу \eqref{sob-lag-smj-4.2} $\|f^{(r)}-S_{n}^\alpha(f^{(r)})\|_{\mathcal{L}_{2,\rho}}\to0$ $(n\to\infty)$, то из \eqref{sob-lag-smj-4.3} следует, что ряд, фигурирующий в правой части равенства \eqref{sob-lag-smj-4.1}, сходится равномерно относительно $x\in[0,A]$, где $0\le A<\infty$. Тем самым, нами доказана следующая
+\begin{theorem}\label{sob-lag-smj-fourier-laguerre}
+Пусть $-1<\alpha<1$, $f\in W^r_{\mathcal{L}_{\rho}^2}$, $0\le A<\infty$. Тогда для произвольного $x\in[0,\infty)$ имеет место равенство \eqref{sob-lag-smj-4.1}, в котором ряд Фурье функции $f$ по полиномам $l_{r,k}^\alpha(x)$ сходится равномерно относительно $x\in[0,A]$.
+\end{theorem}
+
+Данная теорема оставляет открытым вопрос о том, с какой скоростью частичные суммы ряда \eqref{sob-lag-smj-4.1} сходятся к функции $f(x)$ в заданной точке $x\in[0,\infty)$. Эту задачу мы рассмотрим в следующем пункте, ограничившись для  краткости случаем $\alpha=0$.
+
+\section{Аппроксимативные свойства частичных сумм ряда Фурье по полиномам $l_{r,k}^0(x)$}
+Пусть $\alpha=0$ и, следовательно, $\rho(x)=e^{-x}$. В этом пункте мы рассмотрим аппроксимативные свойства частичных сумм ряда Фурье функции $f\in W^r_{\mathcal{L}^2_\rho}$ по полиномам $l_{r,k}^0(x)$, который в силу \eqref{sob-lag-smj-4.1} и следствия \ref{lag-repr} имеет вид
+$$
+f(x)= \sum_{k=0}^{r-1} f^{(k)}(0)\frac{x^k}{k!}+ \sum_{k=r}^\infty f_{r,k}^0 l_{r,k}^0(x)=
+$$
+\begin{equation}\label{sob-lag-smj-5.1}
+ \sum_{k=0}^{r-1} f^{(k)}(0)\frac{x^k}{k!}+ x^r\sum_{k=r}^\infty f_{r,k}^0\frac{L_{k-r}^{r}(x)}{k^{[r]}}.
+\end{equation}
+Через $\mathcal{Y}_{r,n}(f)=\mathcal{Y}_{r,n}(f)(x)$ мы обозначим  частичные суммы ряда \eqref{sob-lag-smj-5.1}  вида
+$$
+\mathcal{Y}_{r,n}(f)(x)= \sum_{k=0}^{r-1} f^{(k)}(0)\frac{x^k}{k!}+ \sum_{k=r}^n f_{r,k}^0 l_{r,k}^0(x)=
+$$
+ \begin{equation}\label{sob-lag-smj-5.2}
+ \sum_{k=0}^{r-1} f^{(k)}(0)\frac{x^k}{k!}+x^r\sum_{k=r}^n f_{r,k}^0\frac{L_{k-r}^{r}(x)}{k^{[r]}}.
+\end{equation}
+Из определения коэффициентов $f_{r,k}^0$  (см.  \eqref{sob-lag-smj-3.10}) следует, что если $f=q_n$ -- произвольный алгебраический полином степени $n$, то $f_{r,k}^0=0$  при $k>n$. С другой стороны, в силу теоремы \ref{sob-lag-smj-fourier-laguerre} для $f=q_n$ имеет место равенство  \eqref{sob-lag-smj-5.1}, поэтому
+\begin{equation}\label{sob-lag-smj-5.3}
+\mathcal{Y}_{r,n}(q_n)(x)\equiv q_n(x).
+\end{equation}
+Другими словами, оператор $\mathcal{A}(f)=\mathcal{Y}_{r,n}(f)$ является проектором на подпространство $H^n\subset W^r_{\mathcal{L}_{\rho}^2}$, состоящее из всех  алгебраических полиномов $q_n$ степени $n$. Далее заметим, что если $n\ge r$, то для $f \in W^r_{\mathcal{L}_{\rho}^2}$ выполняется соотношение
+$$
+|f(x)-\mathcal{Y}_{r,n}(f)(x)|=x^r|\sum_{k=n+1}^\infty  f_{r,k}^0\frac{L_{k-r}^{r}(x)}{k^{[r]}}|\le
+$$
+\begin{equation}\label{sob-lag-smj-5.4}
+x^{\frac r2-\frac14}\left(\sum_{k=n+1}^\infty  (f_{r,k}^0)^2\right)^\frac12
+\left(\sum_{k=n+1}^\infty  \left(\frac{x^{\frac r2+\frac14}L_{k-r}^{r}(x)}{k^{[r]}}\right)^2\right)^\frac12.
+\end{equation}
+Далее, если $0\le x\le A$, то в силу \eqref{sob-lag-smj-2.10} найдется положительное число $c(r,A)$, зависящее лишь от указанных параметров, для которого
+$$
+x^{\frac r2+\frac14}|L_{k-r}^{r}(x)|\le c(r,A)k^{\frac r2-\frac14}.
+$$
+С учетом этой оценки из \eqref{sob-lag-smj-5.4} находим
+$$
+x^{-\frac r2+\frac14}|f(x)-\mathcal{Y}_{r,n}(f)(x)|\le \frac{c(r,A)}{n^{\frac r2-\frac14}}E_{n-r}(f^{(r)})_{\mathcal{L}^2_\rho}\quad (0\le x\le A),
+$$
+где
+$$
+E_{n-r}(f^{(r)})_{\mathcal{L}^2_\rho}=\left(\sum_{k=n+1}^\infty  (f_{r,k}^0)^2\right)^\frac12
+$$
+-- наилучшее приближение в $\mathcal{L}^2_\rho$ функции $f^{(r)}$ алгебраическими полиномами $q_{n-r}$ степени $n-r$.  В связи с этим возникает задача об оценке  величины
+\begin{equation}\label{sob-lag-smj-5.5}
+  R_{n,r}(f)(x)=|f(x)-\mathcal{Y}_{r,n}(f)(x)|x^{-\frac r2+\frac14}e^{-\frac x2}\quad (0<x<\infty).
+\end{equation}
+Обозначим через $q_n(x)$ алгебраический полином степени $n$, для которого
+\begin{equation}\label{sob-lag-smj-5.6}
+  f^{(\nu)}(0)=q_n^{(\nu)}(0)\text{ }(\nu=0,1,\ldots,r-1).
+\end{equation}
+Тогда, в силу \eqref{sob-lag-smj-5.3}
+\begin{equation*}
+  f(x)-\mathcal{Y}_{r,n}(f)(x)=f(x)-q_n(x)+q_n(x)-\mathcal{Y}_{r,n}(f)(x)=
+\end{equation*}
+\begin{equation}\label{sob-lag-smj-5.7}
+  f(x)-q_n(x)+\mathcal{Y}_{r,n}(q_n-f)(x).
+\end{equation}
+С учетом \eqref{sob-lag-smj-5.5} и \eqref{sob-lag-smj-5.7} находим
+\begin{equation}\label{sob-lag-smj-5.8}
+  |R_{n,r}(f)(x)|\le|f(t)-q_n(t)|x^{-\frac r2+\frac14}e^{-\frac x2}+|\mathcal{Y}_{r,n}(q_n-f)(x)|x^{-\frac r2+\frac14}e^{-\frac x2}.
+\end{equation}
+С другой стороны, в силу \eqref{sob-lag-smj-5.6}\, $\sum_{k=0}^{r-1} (q_n-f)^{(k)}(0)\frac{x^k}{k!}\equiv0$, поэтому из \eqref{sob-lag-smj-5.2}  имеем (мы воспользуемся попутно также равенствами \eqref{sob-lag-smj-2.1}, \eqref{sob-lag-smj-2.7}, \eqref{Haar-Tcheb-1.5} и \eqref{sob-lag-smj-3.10})
+\begin{equation*}
+  \mathcal{Y}_{r,n}(q_n-f)(x)=x^r\sum\limits_{k=r}^{n}({q_n-f})_{r,k}^0\frac{L_{k-r}^{r}(x)}{k^{[r]}}=
+\end{equation*}
+%\begin{equation*}
+%  x^r\sum\limits_{k=r}^{n}\frac{L_{k-r}^{r}(x)}{k^{[r]}}\int\limits_0^\infty
+%  (q_n(\tau)-f(\tau))^{(r)}(l_{r,k}^0(\tau))^{(r)}  e^{-\tau}d\tau=
+%\end{equation*}
+\begin{equation*}
+  x^r\sum\limits_{k=r}^{n}\frac{L_{k-r}^{r}(x)}{k^{[r]}}\int\limits_0^\infty
+  (q_n(\tau)-f(\tau))^{(r)}L_{k-r}^0(\tau)  e^{-\tau}d\tau=
+\end{equation*}
+
+\begin{equation*}
+ (-x)^r\sum\limits_{k=r}^{n}\frac{L_{k-r}^{r}(x)}{k^{[r]}}\int\limits_0^\infty
+  (q_n(\tau)-f(\tau))\frac{1}{(k-r)!}(\tau^{k-r}e^{-\tau})^{(k)}d\tau=
+\end{equation*}
+\begin{equation*}
+ (-x)^r\sum\limits_{k=r}^{n}L_{k-r}^{r}(x)\int\limits_0^\infty
+  (q_n(\tau)-f(\tau))\frac{1}{k!}(\tau^{k-r}e^{-\tau})^{(k)}d\tau=
+\end{equation*}
+\begin{equation*}
+ (-x)^r\sum\limits_{k=r}^{n}L_{k-r}^{r}(x)\int\limits_0^\infty
+  (q_n(\tau)-f(\tau))e^{-\tau}\tau^{-r}L_{k}^{-r}(\tau)d\tau=
+\end{equation*}
+\begin{equation*}
+ x^r\sum\limits_{k=r}^{n}L_{k-r}^{r}(x)\int\limits_0^\infty
+  (q_n(\tau)-f(\tau))e^{-\tau}\frac{L_{k-r}^{r}(\tau)}{k^{[r]}}d\tau=
+\end{equation*}
+\begin{equation*}
+ x^r\int\limits_0^\infty
+  (q_n(\tau)-f(\tau))e^{-\tau}\sum\limits_{k=r}^{n}\frac{L_{k-r}^{r}(x)L_{k-r}^{r}(\tau)}{k^{[r]}}d\tau=
+\end{equation*}
+\begin{equation*}
+ x^r\int\limits_0^\infty
+  (q_n(\tau)-f(\tau))e^{-\tau}
+  \sum\limits_{k=0}^{n-r}\frac{L_{k}^{r}(x)L_{k}^{r}(\tau)}{(k+r)^{[r]}}d\tau.
+\end{equation*}
+
+Отсюда
+$$
+e^{-\frac x2}x^{-\frac r2+\frac14}\mathcal{Y}_{r,n}(q_n-f)(x)=
+$$
+\begin{equation}\label{sob-lag-smj-5.9}
+  e^{-\frac x2}x^{\frac r2+\frac14}\int\limits_0^\infty
+  (q_n(\tau)-f(\tau))e^{-\tau}
+  \sum\limits_{k=0}^{n-r}\frac{L_k^r(x)L_k^r(\tau)}{h_k^r}d\tau.
+\end{equation}
+
+Положим
+\begin{equation}\label{sob-lag-smj-5.10}
+  E_n^r(f)=\inf\limits_{q_n}\sup\limits_{x>0}|q_n(x)-f(x)|e^{-\frac x2}
+  x^{-\frac r2+\frac14},
+\end{equation}
+где нижняя грань берется по всем алгебраическим полиномам $q_n(t)$ степени $n$ для которых $f^{(\nu)}(0)=q_n^{(\nu)}(0)$ $(\nu=0,\ldots,r-1)$, другими словами, $E_n^r(f)$ представляет собой наилучшее приближение на $[0,\infty)$ функции $f$ алгебраическими полиномами $q_n$   степени $n$ со свойством $q_n^{(\nu)}(0)=f^{(\nu)}(0)$ $(\nu=0,\ldots,r-1)$ относительно величины $\sup\limits_{x>0}|f(x)-q_n(x)|e^{-\frac x2}x^{-\frac r2+\frac14}$ . Тогда из \eqref{sob-lag-smj-5.9} находим
+\begin{equation}\label{sob-lag-smj-5.11}
+ e^{-\frac{x}{2}} x^{-\frac r2+\frac14}|\mathcal{Y}_{r,n}(q_n-f)(x)|\le E_n^r(f)\lambda_{r,n}(x),
+\end{equation}
+где
+\begin{equation}\label{sob-lag-smj-5.12}
+  \lambda_{r,n}(x)=x^{\frac r2+\frac14}\int\limits_0^\infty e^{-\frac{\tau+x}2}\tau^{\frac r2-\frac14}|\mathcal{K}_{n-r}^r(x,\tau)|d\tau,
+\end{equation}
+а ядро $\mathcal{K}_{n-r}^r(x,\tau)$ определяется равенством \eqref{sob-lag-smj-2.16}.
+Из \eqref{sob-lag-smj-5.8}, \eqref{sob-lag-smj-5.10} -- \eqref{sob-lag-smj-5.12} выводим
+\begin{equation}\label{sob-lag-smj-5.13}
+  |R_{n,r}^\alpha(f)(x)|\le E_n^r(f)(1+\lambda_{r,n}(x)).
+\end{equation}
+В связи с неравенством \eqref{sob-lag-smj-5.13} возникает задача об оценке величины $\lambda_{r,n}(x)$, определяемой равенством \eqref{sob-lag-smj-5.12}.  C этой целью мы обратимся к работе \cite{sob-leg-SHII}, в которой изучено поведение величины
+\begin{equation*}
+  \lambda_{r,n}^\alpha(t)=t^{\frac r2+\frac14}\int\limits_0^\infty e^{-\frac{\tau+t}2}\tau^{\alpha-\frac r2-\frac14}|\mathcal{K}_{n-r}^\alpha(t,\tau)|d\tau.
+\end{equation*}
+В частности, в \cite{sob-leg-SHII} доказана следующая
+
+ \begin{theorem}
+ Пусть $1\le r$ -- целое, $r-\frac12<\alpha< r+\frac12$, $\theta_n=4n+2\alpha+2$. Тогда имеют место следующие оценки:
+
+1) если $t \in G_1=[0,\frac3{\theta_n}]$,  то
+\begin{equation*}
+\lambda^\alpha_{r,n}(t) \leq c(\alpha,r)[\ln(n+1)+n^{\alpha-r}];
+\end{equation*}
+
+2) если $t \in G_2=[\frac3{\theta_n},\frac{\theta_n}2]$, то
+\begin{equation*}
+\lambda_{r,n}^\alpha(t) \leq c(\alpha,r)\left[\ln(n+1)+\left({n\over t}\right)^{\alpha-r\over2}\right];
+\end{equation*}
+
+3) если $t \in G_3=[\frac{\theta_n}2,\frac{3\theta_n}2]$, то
+\begin{equation*}
+\lambda_{r,n}^\alpha(t) \leq c(\alpha,r)\left[\ln(n+1)+\left({t\over \theta_n^{\frac13}+|t-\theta_n| }\right)^\frac14\right];
+\end{equation*}
+
+4) если $t \in G_4=[\frac{3\theta_n}2,\infty)$, то
+\begin{equation*}
+\lambda_{r,n}^\alpha(t) \leq c(\alpha,r)n^{-\frac{r}{2}+\frac54}t^{\frac r2+\frac14}e^{-\frac{t}{4}}.
+\end{equation*}
+\end{theorem}
+
+Поскольку для величины $\lambda_{r,n}(x)$, определенной равенством \eqref{sob-lag-smj-5.12}, очевидно, имеет место равенство $\lambda_{r,n}(x)=\lambda_{r,n}^r(x)$, то из теоремы 4 мы получаем следующий результат.
+
+\begin{theorem} Пусть
+$\theta_n=4n+2r+2$, $\mathcal{Q}_1=[0,\frac{\theta_n}2]$, $\mathcal{Q}_2=[\frac{\theta_n}2,\frac{3\theta_n}2]$, $\mathcal{Q}_3=[\frac{3\theta_n}2,\infty]$. Тогда имеют место следующие оценки:
+
+1) eсли $ x\in \mathcal{Q}_1$,  то
+\begin{equation*}
+\lambda_{r,n}(x) \leq c(r)\ln(n+1);
+\label{sob-lag-smj-5.14}
+\end{equation*}
+
+2) ecли $x \in \mathcal{Q}_2$, то
+\begin{equation*}
+\lambda_{r,n}(x) \leq c(r)\left[\ln(n+1)+\left({x\over \theta_n^{\frac13}+|x-\theta_n| }\right)^\frac14\right];
+\label{sob-lag-smj-5.15}
+\end{equation*}
+
+3) ecли $x\in \mathcal{Q}_3$, то
+\begin{equation*}
+\lambda_{r,n}(x) \leq c(r)n^{-\frac{r}{2}+\frac54}e^{-\frac{x}{4}}.
+\label{sob-lag-smj-5.16}
+\end{equation*}
+\end{theorem}
+
+
+
+
+
+\section{О представлении решения задачи Коши ОДУ в виде ряда Фурье по полиномам, ортогональным по Соболеву и порожденным многочленами Лагерра}
+
+Рассмотрим задачу Коши для дифференциального уравнения вида
+\begin{equation}\label{sob-lag-smj-6.1}
+ F(x, y, y', \ldots, y^{(r)}) = 0
+\end{equation}
+с начальными условиями
+\begin{equation}\label{sob-lag-smj-init-cond}
+y^{(\nu)}(0)=y_\nu, \quad \nu=0,1,\ldots,r-1.
+\end{equation}
+Как уже отмечалось во введении, при решении задачи Коши спектральным методом искомое решение $y(x)$ представляется в виде ряда %\eqref{sob-lag-smj-1.2}
+\begin{equation}\label{sob-lag-smj-1.2}
+y(x)=\sum_{k=0}^\infty \hat{y}_k\psi_k(x)
+\end{equation}
+по подходящей ортонормированной системе $\{\psi_k(x)\}_{k=0}^\infty$ с неизвестными коэффициентами $\hat{y}_k$. Ввиду того, что в приложениях при решении задачи Коши с помощью представления \eqref{sob-lag-smj-1.2} будет найдено только конечное число коэффициентов $\hat{y}_k$ с $k=0,1,\ldots, n$, то вместо точного решения $y(x)$ мы получим его приближение вида $y_n(x)=\sum_{k=0}^n \hat{y}_k\psi_k(x)$, которое представляет собой частичную сумму ряда \eqref{sob-lag-smj-1.2}. Поэтому естественно потребовать, чтобы частичная сумма $y_n(x)$ также удовлетворяла бы начальным условиям \eqref{sob-lag-smj-init-cond}.
+Мы покажем, что представление, основанное на использовании базиса $\{\psi_k(x)=l_{r,k}^\alpha(x)\}_{k=0}^\infty$, состоящего из полиномов $l_{r,k}^\alpha(x)$, порожденных полиномами Лагерра $l_{k}^\alpha(x)$ посредством равенств \eqref{sob-lag-smj-3.1} и \eqref{sob-lag-smj-3.2} и ортонормированных по Соболеву относительно скалярного произведения \eqref{sob-lag-smj-1.3}, обладает указанным свойством.
+
+
+\begin{theorem}\label{sob-lag-smj-ode-sob}
+Пусть $-1<\alpha<1$, $\rho=\rho(x)=x^\alpha e^{-x}$. Предположим, что решение $y(x)$ задачи Коши \eqref{sob-lag-smj-6.1} принадлежит пространству  $W^r_{\mathcal{L}_{\rho}^2}$. Тогда
+\begin{enumerate}[1)]
+\item
+для любого $x \in [0,\infty)$ имеет место представление
+\begin{equation}\label{sob-lag-smj-6.4}
+y(x)= \sum_{k=0}^{r-1} y^{(k)}(0)\frac{x^k}{k!}+ \sum_{k=r}^\infty y_{r,k}^\alpha l_{r,k}^\alpha(x),
+\end{equation}
+где коэффициенты Фурье $y_{r,k}^\alpha$ с $k \ge r$ имеют вид
+\begin{equation}\label{sob-lag-smj-6.5}
+y_{r,k}^\alpha=
+\langle y, l^\alpha_{r,k} \rangle
+=\int\limits_0^\infty y^{(r)}(t) l_{k-r}^\alpha(t)e^{-t}t^\alpha dt;
+\end{equation}
+
+\item
+ряд \eqref{sob-lag-smj-6.4} сходится к решению $y(x)$ равномерно на произвольном конечном отрезке $[0,A]$, $A>0$;
+
+\item
+частичные суммы
+\begin{equation}\label{sob-lag-smj-6.7}
+y_{n}(x)= \sum_{k=0}^{r-1} y^{(k)}(0)\frac{x^k}{k!}+ \sum_{k=r}^n y_{r,k}^\alpha l_{r,k}^\alpha(x),
+\end{equation}
+ряда \eqref{sob-lag-smj-6.4} при любом $n \ge r$ удовлетворяют начальным условиям \eqref{sob-lag-smj-init-cond}, кроме того, при $\alpha=0$ имеет место оценка
+\begin{equation}\label{sob-lag-smj-part-sum-est}
+  |y(x)-y_n(x)|x^{-\frac r2+\frac14}e^{-\frac x2}\le E_n^r(y)(1+\lambda_{r,n}(x)), \quad x \in (0,\infty),
+\end{equation}
+в которой $E^r_n(y)$ -- наилучшее приближение функции $y = y(x)$, определяемое равенством \eqref{sob-lag-smj-5.10}, а $\lambda_{r,n}(x)$ -- величина, определяемая равенством \eqref{sob-lag-smj-5.12}, для которой справедливы оценки из теоремы 5;
+
+\item
+если $1\le\nu\le r-1$, то почленно дифференцированный $\nu$-раз ряд \eqref{sob-lag-smj-6.4} сходится при любом $x \in [0,\infty)$ к $y^{(\nu)}(x)$ и имеет вид
+\begin{equation}\label{sob-lag-smj-6.6}
+y^{(\nu)}(x)= \sum_{k=0}^{r-\nu-1} y^{(k+\nu)}(0)\frac{x^k}{k!}+ \sum_{k=r}^\infty y_{r,k}^\alpha l_{r-\nu,k-\nu}^\alpha(x),
+\quad x \in [0, \infty),
+\end{equation}
+причем ряд в правой части равенства \eqref{sob-lag-smj-6.6} сходится равномерно на произвольном конечном отрезке $[0,A]$.
+
+\end{enumerate}
+\end{theorem}
+
+Таким образом, если функция $y(x) \in W^{r}_{\mathcal{L}_{\rho}^2}$ является решением задачи Коши
+\eqref{sob-lag-smj-6.1}, \eqref{sob-lag-smj-init-cond}, то она представима в виде ряда \eqref{sob-lag-smj-6.4}, а его частичная сумма $y_n(x)$ вида \eqref{sob-lag-smj-6.7} является приближенным решением этой задачи, которое также удовлетворяет начальным условиям \eqref{sob-lag-smj-init-cond}.
+
+\section{Некоторые системы линейных уравнений, которым удовлетворяют коэффициенты $y_{r,k}^\alpha$ ($k=r,r+1,\ldots$)}
+При решении задачи Коши спектральным методом с помощью представления \eqref{sob-lag-smj-6.4} задача о поиске решения $y(x)$ сводится к задаче о нахождении коэффициентов $y^\alpha_{r,k}$, $k \ge r$. В случае, когда дифференциальное уравнение \eqref{sob-lag-smj-6.1} является линейным вида \eqref{sob-lag-smj-1.1}, удается выписать некоторые бесконечные системы уравнений относительно неизвестных коэффициентов $y^\alpha_{r,k}$, $k \ge r$. При этом особый интерес представляет наиболее важный частный случай, когда коэффициенты $a_k(x)$ уравнения \eqref{sob-lag-smj-1.1} являются
+константами. В этом случае при $\alpha=0$ удается получить ленточную систему уравнений, из которой неизвестные коэффициенты $y^0_{r,k}$, $k \ge r$, можно найти рекуррентным способом (см. теорему~\ref{cauchy-lag-const}).
+
+Сначала мы остановимся на задаче Коши \eqref{sob-lag-smj-1.1}, \eqref{sob-lag-smj-1.2} с переменными коэффициентами $a_k(x)$, $k=\overline{0,r-1}$. Ниже нам понадобятся некоторые обозначения.
+Через $\Lambda^\alpha$ обозначим множество всех функций $f(x) \in \mathcal{L}^2_\rho$, ряды Фурье -- Лагерра которых сходятся к $f(x)$ при всех $x \in [0,\infty)$, т.е.
+\begin{equation*}
+  f(x) = \sum\limits_{k=0}^{\infty} f_k^\alpha l_k^\alpha(x),
+  \text{  где  } f_k^\alpha = \int\limits_{0}^{\infty} \rho(t)f(t)l_k^\alpha(t)dt.
+\end{equation*}
+%Всюду в дальнейшем будем считать, что правая часть $h(x)$ уравнения \eqref{sob-lag-smj-1.1} и старшая производная $y^{(r)}(x)$ решения $y(x)$ этого уравнения принадлежат пространству $\Lambda^\alpha$.
+Далее, положим
+\begin{equation}\label{sob-lag-smj-7.2}
+F_i(x)=a_r(x) l^\alpha_{i}(x)+ \sum_{l=0}^{r-1}a_l(x) l^\alpha_{r-l,r-l+i}(x),
+\end{equation}
+\begin{equation}\label{sob-lag-smj-7.2.1}
+g(x)=h(x)-\sum_{l=0}^{r-1}a_l(x)\sum_{k=0}^{r-l-1}y^{(k+l)}(0){x^k\over k!},
+\end{equation}
+где $a_k(x)$ и $h(x)$ -- коэффициенты и правая часть уравнения \eqref{sob-lag-smj-1.1} соответственно, $l_i(x)$ -- ортонормированный полином Лагерра \eqref{sob-lag-smj-2.12}, а $l^\alpha_{r,k}$ -- полиномы, ортогональные по Соболеву, порожденные полиномами Лагерра с помощью равенств \eqref{sob-lag-smj-3.1}, \eqref{sob-lag-smj-3.2}. Будем также считать, что коэффициенты $a_k(x)$ и правая часть $h(x)$ задачи Коши \eqref{sob-lag-smj-1.1}, \eqref{sob-lag-smj-1.2} определены и конечны всюду на $[0,\infty)$. Тогда мы можем сформулировать следующее
+
+\begin{statement}
+Пусть $-1<\alpha<1$, $\rho=\rho(x)=x^\alpha e^{-x}$. Если решение $y(x)$ задачи Коши \eqref{sob-lag-smj-1.1}, \eqref{sob-lag-smj-1.2} принадлежит пространству Соболева $W^{r}_{\mathcal{L}_{\rho}^2}$, а $y^{(r)}(x) \in \Lambda^\alpha$, то имеет место равенство
+\begin{equation*}
+y(x)= \sum_{k=0}^{r-1} y^{(k)}(0)\frac{x^k}{k!}+ \sum_{i=0}^\infty y_{r,r+i}^\alpha l_{r,r+i}^\alpha(x), \quad x \in [0,\infty),
+\end{equation*}
+в котором коэффициенты $y^\alpha_{r,r+i}$ удовлетворяют бесконечной системе уравнений
+\begin{equation}\label{sob-lag-smj-7.3}
+\sum_{i=0}^\infty y^\alpha_{r,r+i}F_i(x)=g(x), \quad x\in [0,\infty).
+\end{equation}
+\end{statement}
+
+Одно из замечательных свойств представления \eqref{sob-lag-smj-6.4} заключается в том, что в разложении \eqref{sob-lag-smj-6.4} самой функции $y(x)$ и разложениях \eqref{sob-lag-smj-6.6} всех производных $y^{(\nu)}$, $\nu=\overline{1,r-1}$, задействованных в дифференциальном уравнении \eqref{sob-lag-smj-6.1} задачи Коши, участвуют одни и те же неизвестные коэффициенты $y^\alpha_{r,k}$, $k \ge r$.
+
+
+
+%Из доказательства утверждения видно, что мы можем освободиться от ограничения об определенности и конечности коэффициентов $a_k(x)$ и правой части $h(x)$ всюду на полуоси $[0,\infty)$ введенного для утверждения 1. При этом надо добавить, что от вида коэффициентов и правой части будет зависеть то, в каком смысле следует понимать равенство в самом дифференциальном уравнении \eqref{sob-lag-smj-1.1}. В частности, если коэффициенты и правая часть заданы почти всюду, то равенство в \eqref{sob-lag-smj-1.1} надо понимать лишь как равенство почти всюду. Поэтому полученное в предыдущем утверждении равенство \eqref{sob-lag-smj-7.3} остается справедливым и без требования о конечности коэффициентов и правой части всюду на $[0,\intfy)$, однако в этом случае это равенство надо будет понимать в том же смысле, что и равенство в исходном дифференциальном уравнении.
+%Заметим, что полученное в предыдущем утверждении равенство \eqref{sob-lag-smj-7.3} остается справедливым и без требования о конечности коэффициентов и правой части всюду на $[0,\intfy)$, однако в этом случае это равенство надо будет понимать в том же смысле, что и равенство в исходном дифференциальном уравнении.
+
+Для получения еще одной бесконечной (на этот раз матричной) системы уравнений относительно искомых коэффициентов $y^\alpha_{r,k}$, $k=r,r+1,\ldots$, мы предположим, что $g(x)\in \mathcal{L}^2_\rho$, $F_i(x)\in \mathcal{L}^2_\rho$ для всех $i=0,1,\ldots$ и что ряд $\sum_{i=0}^\infty y^\alpha_{r,r+i}F_i(x)$, фигурирующий в \eqref{sob-lag-smj-7.3}, сходится к функции $g(x)$ в метрике пространства $L^2_\rho$, т.е.
+\begin{equation}\label{sob-lag-smj-L2rhoEq}
+\sum_{i=0}^\infty y^\alpha_{r,r+i}F_i(x) \stackrel{L^2_\rho}{=} g(x).
+\end{equation}
+%\textcolor{red}{Рассмотрим} еще один подход к получению бесконечной системы линейных уравнений относительно неизвестных коэффициентов $y^\alpha_{r,r+i}$ ($i=0,1,\ldots$).А именно,
+Тогда если $\varphi = \{\varphi_k(x)\}_{k=0}^\infty$ -- некоторая полная в $\mathcal{L}^2_\rho$ ортонормированная система, то для функций $F_i(x)$ и $g(x)$ мы можем записать частичные суммы Фурье по системе $\varphi$:
+\begin{equation}\label{sob-lag-smj-7.4}
+S_n^\varphi(F_i)(x)= \sum_{k=0}^n\hat F_{i,k}\varphi_k(x), \quad
+S_n^\varphi(g)(x)= \sum_{k=0}^n\hat g_{k}\varphi_k(x),
+\end{equation}
+где
+$$
+\hat F_{i,k}= \int_{0}^\infty F_{i}(t)\varphi_k(t)\rho(t)dt, \quad
+\hat g_{k}= \int_{0}^\infty g(t)\varphi_k(t)\rho(t)dt.
+$$
+Далее, в силу \eqref{sob-lag-smj-L2rhoEq}
+\begin{equation*}
+S_n^\varphi
+\Bigl(
+    \sum_{i=0}^\infty y^\alpha_{r,r+i}F_i(*)
+\Bigr)(x)
+=S_n^\varphi(g)(x).
+\end{equation*}
+Отсюда и из \eqref{sob-lag-smj-7.4}, с учетом того, что ряд в левой части последнего равенства сходится в $L^2_\rho$, а оператор $S_n^\varphi$ является непрерывным в пространстве $L^2_\rho$, имеем:
+\begin{equation}\label{sob-lag-smj-7.6}
+\sum_{i=0}^\infty y^\alpha_{r,r+i}S_n^\varphi(F_i)(x)=
+\sum_{k=0}^n \Bigl(\sum_{i=0}^\infty y^\alpha_{r,r+i}\hat F_{i,k}\Bigr)\varphi_k(x)=
+\sum_{k=0}^n\hat g_{k}\varphi_k(x).
+\end{equation}
+Из \eqref{sob-lag-smj-7.6}, в свою очередь, получаем систему уравнений
+\begin{equation}\label{sob-lag-smj-7.7}
+\sum_{i=0}^\infty y^\alpha_{r,r+i}\hat F_{i,k}=\hat g_{k}, \quad k=0,1,\ldots
+\end{equation}
+относительно неизвестных коэффициентов $y^\alpha_{r,r+i}$ $(i=0, 1, \ldots)$.
+Тем самым, доказано следующее
+\begin{statement}
+Пусть $-1<\alpha<1$, $\rho=\rho(x)=x^\alpha e^{-x}$ и имеет место соотношение \eqref{sob-lag-smj-L2rhoEq}. Тогда если решение задачи Коши \eqref{sob-lag-smj-1.1}, \eqref{sob-lag-smj-1.2} $y(x) \in W^{r}_{\mathcal{L}_{\rho}^2}$, то справедливо равенство
+\begin{equation*}
+y(x)= \sum_{k=0}^{r-1} y^{(k)}(0)\frac{x^k}{k!}+ \sum_{i=0}^\infty y_{r,r+i}^\alpha l_{r,r+i}^\alpha(x), \quad x \in [0,\infty),
+\end{equation*}
+в котором коэффициенты $y^\alpha_{r,r+i}$ удовлетворяют системе уравнений \eqref{sob-lag-smj-7.7}.
+\end{statement}
+
+Таким образом, для решения задачи Коши \eqref{sob-lag-smj-1.1} с переменными коэффициентами $a_k(x)$ достаточно найти неизвестные коэффициенты $y^\alpha_{r,r+i}$ с помощью системы уравнений \eqref{sob-lag-smj-7.3} или \eqref{sob-lag-smj-7.7}. Как будет показано ниже, если линейное ОДУ в задаче Коши имеет постоянные коэффициенты, то вместо систем вида \eqref{sob-lag-smj-7.3}, \eqref{sob-lag-smj-7.7} в частном случае $\alpha=0$ для неизвестных коэффициентов $y^0_{r,r+i}$ можно выписать ленточную систему уравнений.
+
+Рассмотрим задачу Коши для линейного ОДУ с постоянными коэффициентами:
+\begin{align}\label{sob-lag-smj-7.9}
+    &y^{(r)}(x)+a_{r-1}y^{(r-1)}(x)+\cdots+a_0y(x)=h(x), \quad x \in [0, \infty),\\
+    &y^{(\nu)}(0)=y_\nu, \nu =\overline{0, r-1}.\notag
+\end{align}
+
+Для этого нам понадобится следующая
+\begin{lemma}
+Пусть $y(x)$ -- функция, заданная на полуоси $[0,\infty)$ и абсолютна непрерывная на любом конечном отрезке вида $[0,A]$ при $A \ge 0$. Тогда если производная $y'(x) \in L^2_\rho(0,\infty)$ с $\rho=e^{-x}$, то и сама функция $y(x) \in L^2_\rho(0,\infty)$.
+\end{lemma}
+
+Вернемся к задаче \eqref{sob-lag-smj-7.9}. Будем считать, что решение $y(x)$ этой задачи принадлежит пространству $W^{r}_{\mathcal{L}_{\rho}^2}$, $\rho = \rho(x) = e^{-x}$, стало быть $y^{(r)} \in L^2_\rho$. Отсюда и из леммы, в свою очередь, вытекает, что правая часть $h(x)$ также должна принадлежать $L^2_\rho$.
+
+Для формулировки результата нам будет удобно ввести функции $Q(x)$ и $p(x)$, определяемые с помощью коэффициентов $a_\nu$ и начальных условий $y_\nu$:
+\begin{equation}\label{sob-lag-smj-Q-and-p}
+Q(x)=\sum_{\nu=0}^{r-1}{a_\nu x^{r-\nu-1}\over (r-\nu-1)!}, \quad
+p(x)=h(x)-\sum_{\nu=0}^{r-1}a_\nu\sum_{k=0}^{r-\nu-1} y^{(k+\nu)}(0)\frac{x^k}{k!}.
+\end{equation}
+Заметим, что функция $p(x)$ входит в пространство $L^2_\rho$ вместе с $h(x)$, а $Q(x)$ представляет собой алгебраический полином степени $r-1$. Поэтому мы можем определить коэффициенты Фурье -- Лагерра
+\begin{equation}\label{sob-lag-smj-laguerre-coeffs}
+Q_\nu = \int\limits_{0}^{\infty} Q(t)L_\nu(t)e^{-t}dt, \quad
+p_s = \int\limits_{0}^{\infty} p(t)L_s(t)e^{-t}dt
+\end{equation}
+этих функций по полиномам Лагерра $L_k(x)=L_k^0(x)$ и записать соответствующие ряды Фурье~-- Лагерра:
+\begin{equation*}
+Q(x)=\sum_{\nu=0}^{r-1}Q_\nu L_\nu(x), \quad
+p(x)=\sum_{s=0}^\infty p_sL_s(x),
+\end{equation*}
+где второе равенство понимается в смысле сходимости по метрике $L^2_\rho$. Теперь мы можем сформулировать следующий результат.
+
+\begin{theorem}\label{cauchy-lag-const}
+Пусть $\rho=\rho(x)=e^{-x}$. Если решение $y(x)$ задачи Коши \eqref{sob-lag-smj-7.9} принадлежит пространству Соболева $W^{r}_{\mathcal{L}_{\rho}^2}$, то имеет место равенство
+\begin{equation*}
+y(x)= \sum_{k=0}^{r-1} y^{(k)}(0)\frac{x^k}{k!}+ \sum_{i=0}^\infty y_{r,r+i}^0 l_{r,r+i}^0(x),
+\end{equation*}
+в котором коэффициенты $y^0_{r,r+i}$ можно найти рекуррентным образом из следующей системы уравнений:
+\begin{equation}\label{sob-lag-smj-7.8}
+\left.
+\begin{aligned}
+&(Q_0+1)y_{r,r}=p_0,\\
+%&(Q_0+1)y_{r,r+1}+Q_1y_{r,r}=p_1,\\
+%&Q_ky_{r,r}+\sum_{l=1}^{k-1}\left(y_{r,r+l}-y_{r,r+l-1}\right)Q_{k-l} + (1+Q_0)y_{r,r+k} =p_k,\\
+%&(Q_0+1)y_{r,r+k}+\sum\limits_{l=0}^{k-1}(Q_{k-l}-Q_{k-l-1})y_{r,r+l}=p_k, \quad k=1,\ldots,\\
+&(Q_0+1)y_{r,r+k}+\sum\limits_{l=1}^{k}(Q_{l}-Q_{l-1})y_{r,r+k-l}=p_k, \quad k=1,\ldots,\\
+\end{aligned}
+\right\}
+\end{equation}
+где через $Q_\nu$ ($Q_\nu=0, \nu \ge r$) и $p_k$ обозначены коэффициенты Фурье -- Лагерра функций $Q$ и $p$, заданных формулами \eqref{sob-lag-smj-laguerre-coeffs}, а $y_{r,r+l}=y^0_{r,r+l}$.
+\end{theorem} 

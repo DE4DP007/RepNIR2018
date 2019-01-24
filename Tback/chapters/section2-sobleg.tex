@@ -1,0 +1,500 @@
+\chapter{Специальные ряды со свойством прилипания их частичных сумм}\label{sobleg5}
+
+
+%Для  произвольного натурального $r$ рассмотрены полиномы $p^{\alpha,\beta}_{r,k}(x)$ $(k=0,1,\ldots)$, ортонормированные относительно скалярного произведения типа Соболева следующего вида
+%$$
+%<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(-1)g^{(\nu)}(-1)+
+%\int_{-1}^{1}f^{(r)}(t)g^{(r)}(t)(1-t)^\alpha(1+t)^\beta dt
+%$$
+%и изучены  их свойства. Введены в рассмотрение ряды Фурье по полиномам $p_{r,k}(x)=p^{0,0}_{r,k}(x)$ и некоторые их обобщения, частичные суммы которых  сохраняют некоторые важные  свойства частичных сумм ряда Фурье по полиномам $p_{r,k}(x)$, в том числе и свойство $r$-кратного совпадения (<<прилипания>>) частичных сумм ряда Фурье по полиномам $p_{r,k}(x)$  в  точках $-1$ и $1$ между собой и с исходной функцией $f(x)$.  Основное внимание уделено  исследованию вопросов приближения гладких и аналитических функций  частичными суммами упомянутых обобщений, представляющих собой   специальные ряды  по ультрасферическим полиномам Якоби со свойством <<прилипания>> их частичных сумм  точках $-1$ и $1$ .
+
+
+%\section{Специальные <<прилипающие>> ряды по ультрасферическим полиномам Якоби}\label{sobleg5}
+В данном параграфе мы рассмотрим специальные ряды по ультрасферическим полиномам Якоби, которые являются обобщениями одного из частных случаев смешанных рядов.
+
+Пусть $\alpha>-1$, $\kappa=\kappa(x)=(1-x^2)^\alpha$, $p\ge1$, $f\in W^r_{L^p_\kappa(-1,1)}$. Тогда $f^{(r)}\in W^r_{L(-1,1)}$ (т.к. $f^{(r-1)}(x)$ абсолютно непрерывна на $[-1,1]$) и можем ввести в рассмотрение интерполяционный полином Эрмита $D_{2r-1}(x)=D_{2r-1}(f,x)$ степени $2r-1$,  совпадающий с функцией $f(x)$ $r$-кратно в точках $-1$ и $1$, т.е. $f^{(\nu)}(\pm1)=D_{2r-1}^{(\nu)}(f,\pm1),\quad \nu=0,1,\ldots, r-1$. Как уже отмечалось выше  $D_{2r-1}(x)$ допускает представление $D_{2r-1}(x)=\mathcal{ Y}_{r,2r-1}(f,x)$, поэтому равенство \eqref{sobleg-3.48} мы можем переписать так
+\begin{equation*}
+f(x)=D_{2r-1}(x)+
+(1-x^2)^r\sum_{k=0}^\infty\frac{(-1)^r\hat f_{r,k+2r}}{2^r} \frac{\sqrt{(k+r+\frac12)h_k^{r,r}}}{ (k+r)^{[r]}}p_{k}^{r,r}(x)
+ \end{equation*}
+ и отсюда имеем $(-1<x<1)$
+\begin{equation}\label{sobleg-4.1}
+F_r(x)={f(x)-D_{2r-1}(x)\over(1-x^2)^r}=
+ \sum_{k=0}^\infty\frac{(-1)^r\hat f_{r,k+2r}}{2^r} \frac{\sqrt{(k+r+\frac12)h_k^{r,r}}}{ (k+r)^{[r]}}p_{k}^{r,r}(x).
+\end{equation}
+Правая часть этого равенства представляет собой ряд Фурье --- Якоби функции $F_r(x)$ по ортонормированной системе полиномов Якоби $p_k^{r,r}(x)$ (см. \eqref{sobleg-3.28}). Вместо \eqref{sobleg-4.1} мы можем рассмотреть более общий ряд
+\begin{equation}\label{sobleg-4.2}
+F_r(x)={f(x)-D_{2r-1}(x)\over(1-x^2)^r}=
+ \sum_{k=0}^\infty \hat F_{r,k}^\alpha p_{k}^{\alpha,\alpha}(x),
+\end{equation}
+по ортонормированной системе полиномов Якоби $p_{k}^{\alpha,\alpha}(x)$, где
+\begin{equation}\label{sobleg-4.3}
+\hat F^\alpha_{r,k}=\int_{-1}^1F_r(t)\kappa(t) p_{k}^{\alpha,\alpha}(t)=\int_{-1}^1(f(t)-D_{2r-1}(t))(1-t^2)^{\alpha-r} p_{k}^{\alpha,\alpha}(t)
+\end{equation}
+-- $k$-тый коэффициент Фурье-Якоби функции $F_r(x)$. Равенство \eqref{sobleg-4.2} перепишем следующим образом
+\begin{equation}\label{sobleg-4.4}
+f(x)=D_{2r-1}(f,x)+(1-x^2)^r \sum_{k=0}^\infty \hat F^\alpha_{r,k}p_{k}^{\alpha,\alpha}(x).
+\end{equation}
+Частичная сумма полученного разложения вида
+\begin{equation}\label{sobleg-4.5}
+ \sigma_{r,N}^\alpha(f,x)=
+ \begin{cases}
+  D_{2r-1}(f,x),&\text{$N=2r-1$,}\\
+ D_{2r-1}(f,x)+(1-x^2)^r \sum_{k=0}^{N-2r} \hat F^\alpha_{r,k}p_{k}^{\alpha,\alpha}(x),&\text{$N\ge 2r$.}
+ \end{cases}
+\end{equation}
+обладает свойством $f^{(\nu)}(\pm1)=\sigma_{r,N}^\alpha(f,\pm1))^{(\nu)}$, $\nu=0,1,\ldots, r-1$, другими словами, $\sigma_{r,N}^\alpha(f,x)$ <<\textit{прилипает}>> к $f(x)$ в точках $-1$ и $1$. Поэтому правую часть  равенства \eqref{sobleg-4.4} мы будем называть специальным рядом по полиномам Якоби $p_{k}^{\alpha,\alpha}(x)$, обладающим свойством <<\textit{прилипания}>> частичных сумм, или просто специальным прилипающим рядом по этим  полиномам.  Отметим, что при $\alpha=r$ ряд \eqref{sobleg-4.4} совпадает в силу \eqref{sobleg-4.1} с рядом \eqref{sobleg-3.48}, т. е. с рядом Фурье функции $f$ по ортогональным по Соболеву полиномам $p_{r,k}(x)$, порожденным полиномами Лежандра и, соответственно, $\sigma_{r,N}^r(f,x)=\mathcal{ Y}_{r,N}(f,x)$. Нетрудно увидеть, что для произвольного алгебраического полинома $q_N(x)$ степени не выше $N$ имеет место равенство
+\begin{equation}\label{sobleg-4.6}
+\sigma_{r,N}^\alpha(q_N,x)\equiv q_N(x),
+\end{equation}
+другими словами, $\sigma_{r,N}^\alpha$ является проектором на подпространство алгебраических полиномов $q_N$ степени не выше $N$.
+
+Отметим, что специальные ряды \eqref{sobleg-4.4} для $r=1$ впервые были введены и исследованы в работе \cite{sobleg-sharap3}, в которой для операторов $\sigma_{1,N}^\alpha$  при $\frac12\le \alpha\le\frac32$ было получено неравенство типа Лебега и доказаны неулучшаемые по порядку при $N\to\infty$ оценки для констант Лебега этих операторов.
+
+Заметим также, что для определения коэффициентов $\hat F^\alpha_{r,k}$  с помощью равенства \eqref{sobleg-4.3} и ряда \eqref{sobleg-4.4} нет необходимости, чтобы функция $f$ принадлежала пространству $W^r_{L(-1,1)}$, а достаточно, чтобы для интегрируемой с весом $(1-x^2)^{\alpha-r}$ функции $f$ существовали производные $f^{(\nu)}(\pm1)$ при $\nu=0,\ldots r-1$. Тогда  интерполяционный полином Эрмита $D_{2r-1}(f,x)$ можно определить равенством
+\begin{equation}\label{sobleg-4.7}
+D_{2r-1}(f,x)=
+{(1-x^2)^r\over2^r}\sum_{\nu=0}^{r-1}{1\over\nu!}
+\sum_{s=0}^{r-1-\nu}{(r)_s\over2^ss!}\left[{f^{(\nu)}(-1)\over(1+x)^{r-\nu-s}}+
+{(-1)^\nu f^{(\nu)}(1)\over(1-x)^{r-\nu-s}}\right].
+\end{equation}
+В частности, для $f\in C[-1,1]$ при $r=1$ ряд \eqref{sobleg-4.4} и, следовательно,  оператор $\sigma_{1,N}^\alpha(f)$ существуют. Отметим еще, что если функция $F_r(x)$, определенная первым из равенств \eqref{sobleg-4.1}, интерируема на $(-1,1)$ с весом $\kappa(x)$, то ряд \eqref{sobleg-4.4} и оператор $\sigma_{r,N}^\alpha(f)$ также существуют. В частности, это имеет место для  произвольной функции $f(x)$, аналитической на $[-1,1]$ при любом $\alpha>-1$.
+
+
+
+
+
+\section{Аппроксимативные свойства операторов $\sigma_{r,N}^\alpha$}
+
+   Частичную сумму $\sigma_{r,N}^\alpha=\sigma_{r,N}^\alpha(f)=\sigma_{r,N}^\alpha(f,x)$ можно рассмотреть как линейный оператор, действующий в пространстве  $C_r[-1,1]$, состоящем из непрерывных на $[-1,1]$ функций $f$, для которых существуют производные $f^{(\nu)}(\pm1)$ при $\nu=0,\ldots r-1$ и   \begin{equation}\label{sobleg-5.1}
+ \mathcal{ E}_r(f)=\sup_{-1<x<1}{|f(x)-D_{2r-1}(f,x)|\over (1-x^2)^\frac{r}{2}}<\infty,
+\end{equation}
+где $D_{2r-1}(f,x)$ -- нтерполяционный полином Эрмита, определенный равенством \eqref{sobleg-4.7}.
+Нетрудно проверить, например, что $W^r\subset C_r[-1,1]$. Если $f\in C_r[-1,1]$, то  величина $E_N^r(f)$, определенная равенством \eqref{sobleg-3.52}, принимает конечные значения для при всех $N\ge 2r-1$, причем $\mathcal{ E}_r(f)\ge E_{2r-1}^r(f)\ge E_{2r}^r(f)\cdots$. Будем рассматривать $\sigma_{r,N}^\alpha(f)$ как аппарат приближения функций $f\in C_r[-1,1]$.
+Если $f\in C_r[-1,1]$, то мы можем записать
+$$
+f(x)-\sigma_{r,N}^\alpha(f,x)=
+ f(x)-q_N(f,x)-\sigma_{r,N}^\alpha(f-q_N(f),x)=f(x)-q_N(f,x)
+$$
+$$
+-(1-x^2)^r \sum_{k=0}^{N-2r} \int_{-1}^1(f(t)-q_N(t))(1-t^2)^{\alpha-r} p_{k}^{\alpha,\alpha}(t)p_{k}^{\alpha,\alpha}(x)dt=f(x)-q_N(f,x)
+$$
+\begin{equation}\label{sobleg-5.2}
+-(1-x^2)^r\int_{-1}^1(f(t)-q_N(f,t))(1-t^2)^{\alpha-r}\sum_{k=0}^{N-2r}  p_{k}^{\alpha,\alpha}(t)p_{k}^{\alpha,\alpha}(x)dt,
+\end{equation}
+где $q_N(x)=q_N(f,x)$ -- алгебраический полином  степени $N$, который обладает тем свойством, что $q^{(\nu)}_N(f,\pm1)=f^{(\nu)}(\pm1)$ при $\nu=0,\ldots,r-1$  и
+\begin{equation}\label{sobleg-5.3}
+E_N^r(f)=\sup_{-1<x<1}{|f(x)-q_N(x)|\over (1-x^2)^\frac{r}{2}}.
+\end{equation}
+ Из равенства \eqref{sobleg-5.2} мы выводим следующее неравенство типа Лебега для сумм $\sigma_{r,N}^\alpha(f,x)$:
+$$
+\frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le \frac{|f(x)-q_N(f,x)|}{(1-x^2)^\frac{r}{2}}(1-x^2)^\frac{\alpha-r+1/2}{2}+
+$$
+$$
+(1-x^2)^{\frac{\alpha}{2}+\frac14}  \int_{-1}^1\frac{|f(t)-q_N(t)|}{(1-t^2)^{r/2}}(1-t^2)^{\alpha-r/2} \left|\sum_{k=0}^{N-2r}p_{k}^{\alpha,\alpha}(t)p_{k}^{\alpha,\alpha}(x)\right|dt\le
+$$
+\begin{equation}\label{sobleg-5.4}
+E_N^r(f)\left((1-x^2)^\frac{\alpha-r+1/2}{2}+\Lambda^{r,\alpha}_N(x)\right),
+\end{equation}
+где
+\begin{equation}\label{sobleg-5.5}
+\Lambda^{r,\alpha}_N(x)=(1-x^2)^{\frac{\alpha}{2}+\frac14}  \int_{-1}^1(1-t^2)^{\alpha-r/2} \left|\sum_{k=0}^{N-2r}p_{k}^{\alpha,\alpha}(t)p_{k}^{\alpha,\alpha}(x)\right|dt.
+\end{equation}
+В связи с неравенством \eqref{sobleg-5.4} возникает задача об оценке величины $\Lambda^r_N(x)$, определенной равенством \eqref{sobleg-5.5}, которое мы можем переписать еще так
+\begin{equation}\label{sobleg-5.6}
+\Lambda^{r,\alpha}_N(\cos\theta)=(\sin\theta)^{\alpha+\frac12}  \int_{0}^\pi(\sin\tau)^{2\alpha-r+1} \left|\sum_{k=0}^{N-2r}
+p_{k}^{\alpha,\alpha}(\cos\tau)p_{k}^{\alpha,\alpha}(\cos\theta)\right|d\tau.
+\end{equation}
+Мы рассмотрим   более общую задачу, которая будет нужна в дальнейшем. Положим $\Lambda^{r,\alpha}_{N,N}(\cos\theta)=0$, а  при $M>N$
+\begin{equation}\label{sobleg-5.7}
+\Lambda^{r,\alpha}_{N,M}(\cos\theta)=(\sin\theta)^{\alpha+\frac12}  \int\limits_{0}^\pi(\sin\tau)^{2\alpha-r+1} \left|\sum_{k=N-2r+1}^{M-2r}
+p_{k}^{\alpha,\alpha}(\cos\tau)p_{k}^{\alpha,\alpha}(\cos\theta)\right|d\tau.
+\end{equation}
+
+\begin{lemma} Пусть $2r-1\le N< M$, $r-\frac12\le\alpha$. Тогда имеет место следующая оценка
+\begin{equation}\label{sobleg-5.8}
+ |\Lambda^{r,\alpha}_{N,M}(\cos\theta)|\le  c(r,\alpha)\ln(M-N+1).
+ \end{equation}
+\end{lemma}
+%\begin{proof} В первую очередь заметим, что в силу симметрии\\  $p_{k}^{\alpha,\alpha}(-x)=(-1)^kp_{k}^{\alpha,\alpha}(x)$ имеем $\Lambda^{r,\alpha}_{N,M}(-x)=\Lambda^{r,\alpha}_{N,M}(x)$, поэтому мы можем ограничиться случаем $0\le\theta\le\pi/2$. Положим $h=\pi/(M-N)$ и рассмотрим   два случая: 1) $0\le \theta\le h$; 2) $h<\theta\le \pi/2$. В первом из этих случаев мы представим $\Lambda^{r,\alpha}_{N,M}(\cos\theta)$ так
+%$$
+%\Lambda^{r,\alpha}_{N,M}(\cos\theta)=(\sin\theta)^{\alpha+\frac12}  \int\limits_{0}^{\theta+h}(\sin\tau)^{2\alpha-r+1} \left|K_{N,M}^\alpha(\theta,\tau)\right|d\tau
+%$$
+%\begin{equation}\label{5.9}
+%+(\sin\theta)^{\alpha+\frac12}  \int\limits_{\theta+h}^\pi(\sin\tau)^{2\alpha-r+1} \left|K_{N,M}^\alpha(\theta,\tau)\right|d\tau=I_1+I_2,
+%\end{equation}
+%где
+%\begin{equation}\label{5.10}
+%K_{N,M}^\alpha(\theta,\tau)=\sum_{k=N-2r+1}^{M-2r}
+%p_{k}^{\alpha,\alpha}(\cos\tau)p_{k}^{\alpha,\alpha}(\cos\theta).
+% \end{equation}
+%Чтобы оценить величину $I_1$, мы воспользуемся оценкой \eqref{sobleg-2.14}. Поскольку по условию леммы 5.1 $2\alpha-r+1\ge \alpha+1/2$, то с учетом \eqref{5.9} и \eqref{5.10} имеем
+%\begin{equation}\label{5.11}
+%I_1\le c(\alpha,r)(M -N)  \int\limits_{0}^{\theta+h}d\tau\le c(\alpha).
+%\end{equation}
+%Перейдем к оценке величины $I_2$.  С этой целью мы обратимся к формуле Кристоффеля-Дарбу
+%\eqref{sobleg-2.14}, которая с учетом  \eqref{sobleg-2.13}  принимает следующий вид
+%$$
+% K_n^{\alpha,\beta}(x,y)=
+%\sum_{k=0}^np_k^{\alpha,\beta}(x)p_k^{\alpha,\beta}(y)={2^{-\alpha-\beta}\sqrt{h_n^{\alpha,\beta}
+%h_{n+1}^{\alpha,\beta}}\over
+%2n+\alpha+\beta+2}\times
+%$$
+%\begin{equation}\label{5.12}
+%{\Gamma(n+2)\Gamma(n+\alpha+\beta+2)\over
+%\Gamma(n+\alpha+1)\Gamma(n+\beta+1)}
+%  {p_{n+1}^{\alpha,\beta}(x)p_n^{\alpha,\beta}(y)-
+%p_n^{\alpha,\beta}(x)p_{n+1}^{\alpha,\beta}(y)\over x-y},
+%\end{equation}
+%а отсюда для $\alpha=\beta$ находим
+%\begin{equation}\label{5.13}
+% K_n^{\alpha,\alpha}(x,y)=
+%\sum_{k=0}^np_k^{\alpha,\alpha}(x)p_k^{\alpha,\alpha}(y)=
+%\lambda_n^\alpha  {p_{n+1}^{\alpha,\alpha}(x)p_n^{\alpha,\alpha}(y)-
+%p_n^{\alpha,\alpha}(x)p_{n+1}^{\alpha,\alpha}(y)\over x-y},
+%\end{equation}
+%где $\lambda_n^\alpha=O(1)$ при $n\to\infty$. В дальнейшем для удобства мы будем считать, что $K_{-1}^{\alpha,\alpha}(x,y)=0$, $p_{-1}^{\alpha,\alpha}(x)=0$. Из \eqref{5.10} и \eqref{5.13} имеем $(x=\cos\theta, y=\cos\tau)$
+%$$
+%K_{N,M}^\alpha(\theta,\tau)=K_{M-2r}^{\alpha,\alpha}(x,y)
+%-K_{N-2r}^{\alpha,\alpha}(x,y)=
+%$$
+%$$
+%\lambda_{M-2r}^\alpha  {p_{M-2r+1}^{\alpha,\alpha}(x)p_{M-2r}^{\alpha,\alpha}(y)-
+%p_{M-2r}^{\alpha,\alpha}(x)p_{M-2r+1}^{\alpha,\alpha}(y)\over \cos\theta-\cos\tau}-
+%$$
+%\begin{equation}\label{5.14}
+%\lambda_{N-2r}^\alpha  {p_{N-2r+1}^{\alpha,\alpha}(x)p_{N-2r}^{\alpha,\alpha}(y)-
+%p_{N-2r}^{\alpha,\alpha}(x)p_{N-2r+1}^{\alpha,\alpha}(y)\over \cos\theta-\cos\tau}.
+% \end{equation}
+%Теперь обратимся к формуле \eqref{sobleg-2.8}, которую для $\alpha=\beta$ принимает следующий вид
+%\begin{equation}\label{5.15}
+%(1-x)P_n^{\alpha+1,\alpha}(x)=P_n^{\alpha,\alpha}(x)-
+%\frac{n+1}{n+\alpha+1}P_{n+1}^{\alpha,\alpha}(x).
+%\end{equation}
+%Из \eqref{5.15} с учетом \eqref{sobleg-2.13} имеем
+%$$
+%p_{n+1}^{\alpha,\alpha}(x) =\frac{n+\alpha+1}{n+1}\sqrt{\frac{h_{n+1}^{\alpha,\alpha}}{h_n^{\alpha,\alpha}} }p_n^{\alpha,\alpha}(x)- \frac{n+\alpha+1}{n+1}(1-x)\sqrt{\frac{h_{n+1}^{\alpha,\alpha}}{h_{n}^{\alpha+1,\alpha}}}
+%p_n^{\alpha+1,\alpha}(x),
+%$$
+%а отсюда, в свою очередь,
+%$$
+%p_n^{\alpha,\alpha}(x)p_{n+1}^{\alpha,\alpha}(y)-p_n^{\alpha,\alpha}(y)p_{n+1}^{\alpha,\alpha}(x)=
+%$$
+%\begin{equation}\label{5.16}
+%\frac{n+\alpha+1}{n+1}\sqrt{\frac{h_{n+1}^{\alpha,\alpha}}{h_{n}^{\alpha+1,\alpha}}}
+%[(1-x)p_n^{\alpha+1,\alpha}(x)p_{n}^{\alpha,\alpha}(y)
+%-(1-y)p_n^{\alpha+1,\alpha}(y)p_{n}^{\alpha,\alpha}(x)].
+%\end{equation}
+%Равенство \eqref{5.16} в сочетании с \eqref{sobleg-2.14} дает
+%$$
+%(\sin\theta\sin\tau)^{\alpha+\frac12}
+%|p_n^{\alpha,\alpha}(\cos\theta)p_{n+1}^{\alpha,\alpha}(\cos\tau)
+%-p_n^{\alpha,\alpha}(\cos\tau)p_{n+1}^{\alpha,\alpha}(\cos\theta)|\le
+%$$
+%\begin{equation}\label{5.17}
+%c(\alpha)(\sin(\theta/2)+\sin(\tau/2)),\quad 0\le \theta,\tau\le\pi.
+%\end{equation}
+%Сопоставляя оценку  \eqref{5.17} с  \eqref{5.14},   при $0\le\theta\le\pi/2$ имеем
+%$$
+%(\sin\theta\sin\tau)^{\alpha+\frac12}
+%|K_{N,M}^\alpha(\theta,\tau)|\le c(r,\alpha){\sin\frac\theta2+\sin\frac\tau2\over|\cos\theta-\cos\tau|}=
+%$$
+%\begin{equation}\label{5.18}
+%c(r,\alpha)
+%{\sin\frac{\theta+\tau}{4}\cos\frac{\theta-\tau}{4}\over
+%\left|\sin\frac{\theta-\tau}{2}\sin\frac{\theta+\tau}{2}\right|}=
+%c(r,\alpha)
+%{\cos\frac{\theta-\tau}{4}\over2
+%\left|\sin\frac{\theta-\tau}{2}\cos\frac{\theta+\tau}{4}\right|}\le
+%\frac{c(r,\alpha)}{|\theta-\tau|}.
+%\end{equation}
+%Для величины $I_2$ из \eqref{5.9} с учетом  \eqref{5.18} получаем
+%$$
+%I_2\le\int\limits_{\theta+h}^\pi(\sin\theta\sin\tau)^{\alpha+\frac12}
+%|K_{N,M}^\alpha(\theta,\tau)|d\tau\le c(r,\alpha)\int\limits_{\theta+h}^\pi\frac{d\tau}{\tau-\theta}=
+%$$
+%\begin{equation}\label{5.19}
+%c(r,\alpha)\ln\frac{\pi-\theta}{h}\le c(r,\alpha)\ln(M-N+1).
+%\end{equation}
+%Оценка \eqref{sobleg-5.8} при $0\le\theta\le h$ вытекает из \eqref{5.9}, \eqref{5.11} и \eqref{5.19}. Перейдем к случаю $h<\theta\le \pi/2$ и запишем
+%$$
+%\Lambda^{r,\alpha}_{N,M}(\cos\theta)=
+%(\sin\theta)^{\alpha+\frac12}  \int\limits_{\theta-h}^{\theta+h}(\sin\tau)^{2\alpha-r+1} \left|K_{N,M}^\alpha(\theta,\tau)\right|d\tau+
+%$$
+%$$
+%(\sin\theta)^{\alpha+\frac12}  \int\limits_{0}^{\theta-h}(\sin\tau)^{2\alpha-r+1} \left|K_{N,M}^\alpha(\theta,\tau)\right|d\tau+
+%$$
+%\begin{equation}\label{5.20}
+%(\sin\theta)^{\alpha+\frac12}  \int\limits_{\theta+h}^\pi(\sin\tau)^{2\alpha-r+1} \left|K_{N,M}^\alpha(\theta,\tau)\right|d\tau=J_1+J_2+J_3.
+%\end{equation}
+%Величину $J_1$ можно оценить так же, как была оценена $I_1$, а что касается  величин $J_2$ и $J_3$, то они могут быть оценены совершенно аналогично тому, как это было сделано для $I_2$. Другими словами, мы можем записать следующие оценки
+%\begin{equation}\label{5.21}
+%J_1\le c(\alpha,r), \quad J_2\le c(\alpha,r)\ln(M-N+1),\quad J_3\le c(\alpha,r)\ln(M-N+1).
+%\end{equation}
+%Из \eqref{5.20} и \eqref{5.21} вытекает справедливость оценки \eqref{sobleg-5.8} при $h<\theta\le \pi/2$. Лемма 5.1 доказана полностью.
+%\end{proof}
+
+\begin{lemma} Пусть $2r-1\le N\le M$, $r-\frac12\le\alpha$, $f\in C_r[-1,1]$. Тогда имеет место следующая оценка
+\begin{equation}\label{sobleg-5.22}
+\frac{|\sigma_{r,M}^\alpha(f,x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le
+c(\alpha,r)E_N^r(f)\ln(M-N+1).
+ \end{equation}
+\end{lemma}
+%\begin{proof} Достаточно рассмотреть случай $M>N$. Мы имеем
+%$$
+%\frac{|\sigma_{r,M}^\alpha(f,x)-\sigma_{r,N}^\alpha(f,x)|}{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le
+%$$
+%$$
+%(1-x^2)^{\frac{\alpha}{2}+\frac14}  \int_{-1}^1\frac{|f(t)-q_N(t)|}{(1-t^2)^{r/2}}(1-t^2)^{\alpha-r/2} \left|\sum_{k=N-2r+1}^{M-2r}p_{k}^{\alpha,\alpha}(t)p_{k}^{\alpha,\alpha}(x)\right|dt\le
+%$$
+%\begin{equation}\label{5.23}
+%E_N^r(f)\Lambda^{r,\alpha}_{M,N}(x),
+%\end{equation}
+%где величина $\Lambda^{r,\alpha}_{M,N}(\cos\theta)$ определена равенством \eqref{sobleg-5.7}, а полином $q_N(t)$ имеет тот же смысл, что выше. Утверждение леммы 5.2 вытекает из \eqref{sobleg-5.4} и леммы 5.1.
+%\end{proof}
+
+
+\begin{lemma} Пусть $r\ge1$, $f\in C_r[-1,1]$, $r-\frac12\le\alpha$. Тогда имеет место следующая оценка
+\begin{equation}\label{sobleg-5.24}
+\frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le
+c(\alpha,r)E_N^r(f)\ln(N+1).
+ \end{equation}
+\end{lemma}
+%\begin{proof} Из \eqref{sobleg-5.7} и \eqref{sobleg-5.5}
+%  следует, что $\Lambda^{r,\alpha}_{2r-1,N}(x)=\Lambda^{r,\alpha}_{N}(x)$, поэтому оценка \eqref{sobleg-5.24} вытекает из леммы 5.1 и неравенства \eqref{sobleg-5.4}.
+%\end{proof}
+
+В работе \cite{sobleg-Shar15} показано, что оценка \eqref{sobleg-3.55}  является неулучшаемой по порядку при $N\to\infty$ для  $f\in W^r$, для которых $E^{r}_{N}(f)\asymp N^{-r}$. Подобным же способом можно показать, что оценка  \eqref{sobleg-5.24} является неулучшаемой по порядку, если $E^{r}_{N}(f)\asymp N^{-r}$.   Если же  наилучшие приближения  $E^{r}_{N}(f)$ убывают при $N\to\infty$ <<быстро>>, то оценка \eqref{sobleg-5.24}   становится грубой. Возникает задача о получении вместо \eqref{sobleg-5.24} другой оценки, более точно учитывающей поведение последовательности  $\{E^{r}_{k}(f)\}$. Впервые подобная задача с для тригонометричесих сумм Фурье была решена в работе \cite{sobleg-OSK}. А в работах \cite{sobleg-sharap1}, \cite{sobleg-sharap2} аналогичные задачи были решены для интерполяционных полиномов и сумм Фурье --- Якоби. Мы здесь рассмотрим  эту задачу  для операторов $\sigma_{r,N}^\alpha$.
+
+\begin{theorem}\label{soblegtheo3}
+Пусть $2r\le N$, $r-1/2\le \alpha\le 2r-1/2$, $f\in C_r[-1,1]$, $-1<x<1$. Тогда имеет место следующая оценка
+\begin{equation}\label{sobleg-5.25}
+ \frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le c(r,\alpha)\sum_{k=0}^N\frac{E_{N+k}^r(f)}{k+1}.
+ \end{equation}
+\end{theorem}
+
+%\begin{proof} Имеем
+%\begin{equation}\label{5.26}
+% \frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+%{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le \frac{|f(x)-\sigma_{r,2N}^{\alpha}(f,x)|}{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}+
+%\frac{|\sigma_{r,2N}^{\alpha}(f,x)-\sigma_{r,N}^{\alpha}(f,x)|}
+%{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}.
+% \end{equation}
+%
+%Далее, в силу леммы 5.3,
+%$$
+%  \frac{|f(x)-\sigma_{r,2N}^{\alpha}(f,x)|}{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le
+%$$
+%\begin{equation}\label{5.27}
+%   c(r,\alpha)E_{2N}^1(f)\ln (2N)\le
+%  c(r,\alpha)E_{2N}^r(f)\sum_{k=0}^{N} \frac{1}{k+1}\le c(r,\alpha)\sum_{k=0}^N \frac{E_{N+k}^r(f)}{k+1}.
+%  \end{equation}
+%С другой стороны, в силу леммы 5.2
+%$$
+% \frac{|\sigma_{r,2N}^{\alpha}(f,x)-\sigma_{r,N}^{\alpha}(f,x)|}
+% {(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le \sum_{\nu=0}^{l-1}
+% \frac{|\sigma_{r,N_{\nu+1}}^
+% {\alpha}(f,x)-\sigma_{r,N_\nu}^{\alpha}(f,x)|}{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le
+%$$
+%\begin{equation}\label{5.28}
+%c(r,\alpha)\sum_{\nu=0}^{l-1}E_{N_\nu}^r(f)\sum_{k=0}^{N_{\nu+1}-N_\nu-1} \frac{1}{k+1},
+% \end{equation}
+%где $N=N_0<N_1<\ldots<N_l=2N$. Будем считать, что последовательность $\{N_\nu\}_{\nu=1}^{l-1}$ выбрана следующим способом:
+%\begin{equation}\label{5.29}
+%N_{\nu+1}=\min\{n:E_n^r(f)<\frac12 E_{N_{\nu}}^r(f)\}.
+% \end{equation}
+% Имеем
+%$$
+%\sum_{\nu=0}^{l-1}E_{N_\nu}^r(f)\sum_{k=0}^{N_{\nu+1}-N_\nu-1} \frac{1}{k+1}\le\sum_{\nu=0}^{l-1}E_{N_\nu}^r(f)\sum_{k=0}^{N_{\nu+1}-N-1} \frac{1}{k+1}=
+%$$
+% \begin{equation}\label{5.30}
+%\sum_{k=0}^N \frac{1}{k+1}\sum_{\nu:\atop N_{\nu+1}-1\ge N+k}E_{N_\nu}^r(f).
+% \end{equation}
+%Далее, если мы обозначим через $\nu(k)$ индекс, для которого  $N_{\nu(k)}\le N+k\le N_{\nu(k)+1}-1$, то из \eqref{5.29} следует, что $E_{N_{\nu(k)}}^r(f)\le2E^r_{N+k}(f)$ и
+%$$
+%\sum_{k=0}^N \frac{1}{k+1}\sum_{\nu:\atop N_{\nu+1}-1\ge N+k}E_{N_\nu}^r(f)=
+%\sum_{k=0}^{N-1} \frac{1}{k+1}\sum_{\nu:\atop N_{\nu+1}-1\ge N+ k}E_{N_\nu}^r(f)+
+%\frac{E_{N_{l-1}}^r(f)}{N}\le
+%$$
+%$$
+%c\sum_{k=0}^{N-1} \frac{E^r_{N_{\nu(k)}}(f)}{k+1}+\frac{E_{N_{l-1}}^r(f)}{N}\le c\sum_{k=0}^{N-2} \frac{E^r_{N+k}(f)}{k+1}+c\frac{E^r_{N_{l-1}}(f)}{N-1}+\frac{E_{N_{l-1}}^r(f)}{N}\le
+%$$
+%$$
+%c\sum_{k=0}^{N-1} \frac{E^r_{N+k}(f)}{k+1}+
+%c\frac{E^r_{2N-1}(f)}{N}\le c\sum_{k=0}^{N-1} \frac{E^r_{N+k}(f)}{k+1}\le c\sum_{k=0}^{N} \frac{E^r_{N+k}(f)}{k+1}.
+%$$
+%Поэтому утверждение теоремы 3 вытекает из \eqref{sobleg-5.25} --  \eqref{5.28} и \eqref{5.30}.
+%\end{proof}
+
+\begin{corollary} Пусть $2r\le N$, $r-1/2\le \alpha\le 2r-1/2$, $f\in W^r$, $-1<x<1$. Тогда имеет место следующая оценка
+\begin{equation}\label{sobleg-5.31}
+ \frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le c(r,\alpha)\frac{\ln(N+1)}{N^r}.
+ \end{equation}
+\end{corollary}
+
+%\begin{proof}
+%Оценка \eqref{sobleg-5.31} непосредственно вытекает из \eqref{sobleg-5.25} и \eqref{sobleg-3.54}.
+%\end{proof}
+
+В связи с результатом, установленным в теореме \ref{soblegtheo3}, возникает задача об изучении поведения величины $E_{n}^r(f)$ при $n\to\infty$. Как уже отмечалось выше, для $f\in W^r$ имеет место неравенство \eqref{sobleg-3.54}. Но если функция $f$ является аналитической в области, содержащей отрезок $[-1,1]$, то задача о скорости стремления $E_{n}^r(f)$ к нулю при $n\to\infty$ оставалась нерешенной. Нижеследующая лемма дает один из возможных вариантов ответа на этот вопрос. Для того чтобы сформулировать этот результат нам понадобятся некоторые бозначения.
+
+Пусть $0<q<1$, $\mathcal{ E}_q$ -- эллипс с фокусами в точках $\pm1$, сумма полуосей которого равна $R=1/q$, $A_q(B)$ -- класс функций $f(z)$, принимающих вещественные значения при $z\in\mathbb{R}$,  аналитических в эллипсе $\mathcal{ E}_q$ и ограниченных там по модулю числом $B$. Хорошо известно  (см. п.3.7.3 из \cite{sobleg-Timan}), что если $f\in A_q(B)$, то для коэффициентов Фурье-Чебышева этой функции
+\begin{equation}\label{sobleg-5.32}
+ a_k(f)=\int_{-1}^1\frac{f(t)p_k^{-1/2,-1/2}(t)dt}{\sqrt{1-t^2}}
+ \end{equation}
+имеет место оценка
+\begin{equation}\label{sobleg-5.33}
+ |a_k(f)|\le\sqrt{2\pi}Bq^k.
+ \end{equation}
+Пусть $f\in A_q(B)$, тогда, очевидно, функция $F_r(x)$, определенная первым из равенств \eqref{sobleg-4.1},  принадлежит классу $A_q(B_r)$ c некоторой константой $B_r$, зависящей лишь от $B$  и $r$. Поэтому из \eqref{sobleg-5.33}
+имеем
+\begin{equation}\label{sobleg-5.34}
+ |a_k(F_r)|\le\sqrt{2\pi}B_rq^k.
+ \end{equation}
+Теперь обратимся к равенству \eqref{sobleg-4.2}, в котором подставим  $\alpha=-1/2$, тогда получим равенство
+ \begin{equation}\label{sobleg-5.35}
+{f(x)-D_{2r-1}(x)\over(1-x^2)^r}=
+ \sum_{k=0}^\infty \hat F_{r,k}^{-\frac12} p_{k}^{-\frac12,-\frac12}(x)=
+ \sum_{k=0}^\infty a_k(F_r) p_{k}^{-\frac12,-\frac12}(x)
+\end{equation}
+которое мы можем переписать так ($x=\cos\theta$)
+$$
+{f(x)-\sigma_{r,N}^{-\frac12}(f,x)\over(1-x^2)^r}=
+$$
+\begin{equation}\label{sobleg-5.36}
+  \sum_{k=N-2r+1}^\infty a_k(F_r) p_{k}^{-\frac12,-\frac12}(x)=\sqrt{\frac2\pi}
+  \sum_{k=N-2r+1}^\infty a_k(F_r) \cos k\theta.
+\end{equation}
+Из \eqref{sobleg-5.34} и \eqref{sobleg-5.36} мы находим
+\begin{equation}\label{sobleg-5.37}
+ {|f(x)-\sigma_{r,N}^{-\frac12}(f,x)|\over(1-x^2)^r}\le 2B_r\sum_{k=N-2r+1}^\infty q^k=
+ \frac{2B_r}{1-q}q^{N-2r+1}.
+  \end{equation}
+Из \eqref{sobleg-5.37} получаем
+\begin{equation}\label{sobleg-5.38}
+ E_{n}^r(f)\le \frac{2B_r}{1-q}q^{N-2r+1},\quad f\in A_q(B).
+  \end{equation}
+Сопоставляя оценку \eqref{sobleg-5.38} с неравенством \eqref{sobleg-5.25}, приходим к следующему утверждению.
+\begin{corollary}\label{soblegcor4}
+Пусть $2r\le N$, $r-1/2\le \alpha\le 2r-1/2$, $f\in A_q(B)$, $-1<x<1$. Тогда имеет место следующая оценка
+\begin{equation}\label{sobleg-5.39}
+ \frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le\frac{c(r,\alpha, B)}{(1-q)}q^{N-2r+1}.
+ \end{equation}
+\end{corollary}
+
+
+
+С другой стороны, если  $f\in A_q(B)$, то сопоставляя оценки \eqref{sobleg-5.37} и \eqref{sobleg-5.39}, мы замечаем, что ограничение $r-1/2\le \alpha\le 2r-1/2$, содержащееся в условиях следствия \ref{soblegcor4} является избыточным, так как из \eqref{sobleg-5.37} следует, что оценка \eqref{sobleg-5.39} верна и для $\alpha=-\frac12$. Покажем, что ограничение $r-1/2\le \alpha\le 2r-1/2$, содержащееся  в следствии \ref{soblegcor4}, может быть ослаблено до $-1/2\le \alpha\le 2r-1/2$. Для этого нам понадобятся некоторые вспомогательные утверждения.
+
+\begin{lemma} Пусть $\alpha>-1$, $k=n+2j$, $j=0,1,\ldots$. Тогда имеет место следующее равенство
+$$
+v_{n,j}^\alpha=\int_{-1}^1p_k^{-1/2,-1/2}(t)p_n^{\alpha,\alpha}(t)(1-t^2)^\alpha dt=
+$$
+\begin{equation}\label{sobleg-5.40}
+\left(\frac{h_n^{\alpha,\alpha}}{h_k^{-\frac12,-\frac12}}\right)^\frac12
+ {\Gamma(k+\frac12)(k)_n(1/2)_j(-1/2-\alpha)_j\over\Gamma(n+\frac12)(n+2\alpha+1)_n
+(n+\frac12)_j(n+\alpha+\frac32)_j(2j)!}.
+  \end{equation}
+\end{lemma}
+%\begin{proof}
+%Воспользуемся равенством \eqref{sobleg-2.15}, в котором положим $a=-\frac12$. Тогда для $k=n+2j$ имеем
+%
+%$$
+%\int_{-1}^1p_k^{-1/2,-1/2}(t)p_n^{\alpha,\alpha}(t)(1-t^2)^\alpha dt=
+%h_n^{\alpha,\alpha}(h_k^{-1/2,-1/2}h_{n}^{\alpha,\alpha})^{-\frac12}
+%\times
+%$$
+%\begin{equation}\label{5.41}
+%\frac{P_k^{-1/2,-1/2}(1)}{P_n^{\alpha,\alpha}(1)}
+%{k!(\alpha+1)_n(k)_n(1/2)_j(-1/2-\alpha)_j\over n!(n+2\alpha+1)_n
+%(1/2)_n(n+1/2)_j(n+\alpha+3/2)_j(2j)!}
+%\end{equation}
+%и отсюда, имея ввиду \eqref{sobleg-2.9}, приходим к равенству \eqref{sobleg-5.40}.
+%Лемма доказана.
+%\end{proof}
+
+\begin{lemma} Пусть $\alpha>-1$, $j$ -- натурально. Тогда имеет место следующая оценка
+$$
+|v_{n,j}^\alpha|\le c(\alpha)\left({n\over (j+1)(n+j)}\right)^{\alpha+1}.$$
+\end{lemma}
+
+%\begin{proof}
+%Пользуясь формулой Стирлинга, имеем ($k=n+2j$)
+%$$
+% {\Gamma(k+\frac12)(k)_n(1/2)_j|(-1/2-\alpha)_j|\over\Gamma(n+\frac12)(n+2\alpha+1)_n
+%(n+\frac12)_j(n+\alpha+\frac32)_j(2j)!}=
+%$$
+%$$
+%{\Gamma(n+2\alpha+1)\Gamma(n+\alpha+\frac32)\over\Gamma(2n+2\alpha+1)}
+%{|(-\frac12-\alpha)_j|\Gamma(j+\frac12)\over
+%(2j)!\Gamma(\frac12)}\times
+%$$
+%$$
+%\frac{\Gamma(n+2j+\frac12)}{\Gamma(n+2j)}{\Gamma(2(n+j))\over
+%\Gamma(n+j+\frac12)\Gamma(n+j+\alpha+\frac32)}
+%\le
+% $$
+% \begin{equation}\label{5.42}
+%c(\alpha)n^{\alpha+1}(j+1)^{-\alpha-1}(n+j)^{-\alpha-1}=
+%c(\alpha)\left({n\over (j+1)(n+j)}\right)^{\alpha+1}.
+% \end{equation}
+% Отметим также, что
+% \begin{equation}\label{5.43}
+% \left(\frac{h_n^{\alpha,\alpha}}{h_k^{-\frac12,-\frac12}}\right)^\frac12\le c(\alpha).
+% \end{equation}
+% Сопоставляя  оценки \eqref{5.42} и \eqref{5.43}  с леммой 5.4, убеждаемся в справедливости утверждения леммы 5.5.
+% \end{proof}
+
+\begin{lemma} Пусть $\alpha>-1$, $f\in A_q(B)$. Тогда имеет место следующая оценка
+ \begin{equation}\label{sobleg-5.44}
+|\hat F^\alpha_{r,n}|\le \frac{c(\alpha)\sqrt{2\pi}B_r}{1-q^2}q^n.
+ \end{equation}
+\end{lemma}
+
+%\begin{proof} Из \eqref{sobleg-4.3} и \eqref{sobleg-5.35} имеем
+%$$
+%\hat F^\alpha_{r,n}=\int_{-1}^1F_r(t)\kappa(t) p_{k}^{\alpha,\alpha}(t)dt=\sum_{k=0}^\infty a_k(F_r)\int_{-1}^1 p_{k}^{-\frac12,-\frac12}(t)p_{n}^{\alpha,\alpha}(t)(1-t^2)^\alpha dt
+%$$
+%\begin{equation}\label{5.45}
+%=\sum_{j=0}^\infty a_{n+2j}(F_r)v_{n,j}^\alpha,
+%\end{equation}
+%где величина $v_{n,j}^\alpha$ определена равенством \eqref{sobleg-5.40}. Обратимся теперь к лемме 5.5, тогда из \eqref{sobleg-5.44} и неравенства \eqref{sobleg-5.34} выводим
+%$$
+%|\hat F^\alpha_{r,n}|\le \sum_{j=0}^\infty |a_{n+2j}(F_r)v_{n,j}^\alpha|\le
+%$$
+%$$
+%c(\alpha)\sqrt{2\pi}B_r\sum_{j=0}^\infty q^{n+2j}\left({n\over (j+1)(n+j)}\right)^{\alpha+1}\le \frac{c(\alpha)\sqrt{2\pi}B_r}{1-q^2}q^n.
+%$$
+%Что и требовалось доказать.
+%\end{proof}
+
+Теперь мы можем сформулировать следующий результат.
+\begin{theorem}\label{soblegtheo4}
+Пусть $2r\le N$, $-1/2\le \alpha\le 2r-1/2$, $f\in A_q(B)$, $-1<x<1$. Тогда имеет место следующая оценка
+\begin{equation}\label{sobleg-5.46}
+ \frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le\frac{c(r,\alpha, B)}{(1-q)^2}q^{N-2r+1}.
+ \end{equation}
+\end{theorem}
+%\begin{proof} Обратимся к равенству \eqref{sobleg-4.2}  и приведем его к виду (см.\eqref{sobleg-4.5})
+%$$
+%\frac{f(x)-\sigma_{r,N}^\alpha(f,x)}{(1-x^2)^{r}}=
+% \sum_{k=N-2r+1}^\infty \hat F_{r,k}^\alpha p_{k}^{\alpha,\alpha}(x),
+%$$
+%которое, в свою очередь, перепишем так ($x=\cos\theta$)
+% \begin{equation}\label{5.47}
+%\frac{f(x)-\sigma_{r,N}^\alpha(f,x)}{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}=
+% \sum_{k=N-2r+1}^\infty \hat F_{r,k}^\alpha  p_{k}^{\alpha,\alpha}(\cos\theta)(\sin\theta)^{\alpha+\frac12}.
+%\end{equation}
+%Воспользовавшись оценкой \eqref{sobleg-2.14}, из \eqref{5.47} имеем
+%\begin{equation}\label{5.48}
+%\frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le c(\alpha)
+% \sum_{k=N-2r+1}^\infty |\hat F_{r,k}^\alpha|.
+%\end{equation}
+%Утверждение теоремы 4  вытекает из оценки \eqref{5.48} и леммы 5.6.
+%\end{proof} 

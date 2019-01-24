@@ -1,0 +1,383 @@
+\chapter{Аппроксимативные свойства дискретных сумм Фурье для кусочно-линейных функций}
+
+\section{Введение}
+Пусть $C_{2\pi}$ --- пространство непрерывных $2\pi$-периодических функций с нормой
+\begin{equation}
+\|f\| = \max_x |f(x)|.
+\end{equation}
+
+Пусть $N \geq 2$ --- целое положительное число, и
+\begin{equation*}
+  t_k = t_k^{(N)} = \frac{2\pi k}{N} \quad (0 \leq k \leq N-1)
+\end{equation*}
+--- система узловых точек. Обозначим через
+\begin{equation*}
+  L_{n,N}(f) = L_{n,N}(f,x) \quad (0 \leq n \leq N/2)
+\end{equation*}
+тригонометрический полином порядка $n$ с наименьшим квадратичным отклонением от $f$ на сетке
+$\omega_N=\{t_k\}_{k=0}^{N-1}$. Другими словами, полином $L_{n,N}(f,x)$ поставляет минимум для
+суммы
+\begin{equation*}
+  \sum\limits_{k=0}^{N-1}|f(t_k)-T_n(t_k)|^2
+\end{equation*}
+на множестве всех тригонометрических полиномов $T_n$ порядка $n$.
+В частности, $L_{[N/2],N}(f,x)$ --- интерполяционный полином, совпадающий с функцией $f(x)$ в
+точках $\omega_N$.
+Легко показать, что $L_{n,N}(f,x)$ является частичной суммой дискретного ряда Фурье функции $f$ и представляется в виде
+\begin{equation*}
+  L_{n,N}(f,x) = \sum\limits_{\nu = -n}^{n} c_\nu^{(N)}(f) e^{i\nu x},
+\end{equation*}
+где
+\begin{equation*}
+  c_\nu^{(N)}(f) = \frac{1}{N}\sum\limits_{k=0}^{N-1} f(t_k)e^{-i\nu t_k}.
+\end{equation*}
+Далее, пусть
+\begin{equation*}
+S_n(f,x) = \sum\limits_{k=-n}^{n}c_k(f)e^{ikx}
+\end{equation*}
+--- частичная сумма порядка $n$ ряда Фурье функции $f$, где
+\begin{equation*}
+  c_k(f) = \frac{1}{2\pi}\int\limits_{-\pi}^{\pi}f(t)e^{i\nu t} dt.
+\end{equation*}
+Целью данной работы является исследование аппроксимативных свойств сумм $L_{n,N}(f,x)$ для функций
+$f_1(x) = |x|$ и $\sign x$ на отрезке $[-\pi, -\pi]$. То есть, нам требуется оценить следующие величины:
+\begin{equation*}
+  |L_{n,N}(f_1,x) - |x||
+\end{equation*}
+и
+\begin{equation*}
+  |L_{n,N}(\sign,x) - \sign x|.
+\end{equation*}
+Для этого воспользуемся теоремой, доказанной в \cite{iishar_an1}. Приведем частный случай данной теоремы.
+\begin{lemma}[Шарапудинов] \label{theorem sharapudinov}
+  Если ряд Фурье функции $f$ сходится в точках $t_k = \frac{2k\pi}{N}$, тогда имеет место представление
+  \begin{equation}
+    L_{n,N}(f,x) = S_n(f,x) + R_{n,N}(f,x), \label{iishar_Ln_eq_Sn_Rn}
+  \end{equation}
+  когда $2n < N$, где $S_n(f,x)$ --- частичная сумма ряда Фурье функции $f$ и
+  \begin{equation*}
+    R_{n,N}(f,x) = \frac2\pi \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} D_n(x-t) \cos \mu N t f(t) dt.
+  \end{equation*}
+\end{lemma}
+Из приведённой теоремы \ref{theorem sharapudinov} следует
+\begin{equation}
+  |L_{n,N}(f,x) - f(x)| \leq |S_n(f,x) - f(x)| + |R_{n,N}(f,x)|. \label{Ln = Sn + Rn}
+\end{equation}
+Оценки для $|S_n(f_1,x) - f_1(x)|$ и $|S_n(f_2,x) - f_2(x)|$ на отрезке $[-\pi,\pi]$ хорошо известны:
+\begin{equation}
+  |S_n(f_1,x) - f_1(x)| \leq \frac{C}{n}, \quad x \in [-\pi, \pi], \label{Sn1 -pi pi}
+\end{equation}
+\begin{equation}
+  |S_n(f_1,x) - f_1(x)| \leq \frac{C(\varepsilon)}{n^2}, \quad x \in [-\pi + \varepsilon,- \varepsilon] \cup [\varepsilon, \pi - \varepsilon], \label{Sn1 eps pi - eps}
+\end{equation}
+\begin{equation}
+  |S_n(f_2,x) - f_2(x)| \leq \frac{C(\varepsilon)}{n}, \quad x \in [-\pi + \varepsilon,- \varepsilon] \cup [\varepsilon, \pi - \varepsilon], \label{Sn2 eps pi - eps}
+\end{equation}
+где $0 < \varepsilon < \pi$.
+Таким образом, для оценки этих функций требуется оценить остатки $|R_{n,N}(f_1,x)|$ и $|R_{n,N}(f_2,x)|$.
+Оценим, сначала, остаток для функции $f_1(x) = |x|$.
+
+\section{Оценка аппроксимативных свойств остатка $R_{n,N}(f_1,x)$.}
+Оценим остаток
+\begin{equation}
+  R_{n,N}(f_1,x) = \frac{2}{\pi} \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} D_n(x-t) \cos \mu N t |t| dt, \label{agg_1_RnN}
+\end{equation}
+где
+\begin{equation}
+  D_n(x-t) = \frac12 + \sum\limits_{k=1}^{n} \cos k (x - t) \label{agg_2_Dn}
+\end{equation}
+--- ядро Дирихле.
+
+Из \eqref{agg_1_RnN} и \eqref{agg_2_Dn} имеем
+\begin{equation}
+  R_{n,N}(f_1,x) = R^1_{n,N}(f_1,x) + R^2_{n,N}(f_1,x),
+\end{equation}
+где
+\begin{equation}
+  R^1_{n,N}(f_1,x) = \frac{1}{\pi} \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} |t| \cos \mu N t dt, \label{R_1_abs}
+\end{equation}
+\begin{equation}
+  R^2_{n,N}(f_1,x) = \frac{2}{\pi} \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} |t| \sum\limits_{k=1}^{n} \cos k (x-t) \cos \mu N t dt.
+  \label{R_2_abs}
+\end{equation}
+
+Для оценки остатка \eqref{agg_1_RnN} докажем некоторые леммы.
+\begin{lemma} \label{lemma sum cos}
+  Справедлива следующая оценка
+  \begin{equation}
+    \left|\sum_{j=1}^{n} ((-1)^{M + j} - 1) \cos jx.\right| \leq \frac{2}{|\sin x|},
+  \end{equation}
+  где $M$ --- некое целое число.
+\end{lemma}
+
+
+
+\begin{lemma} \label{lm1}
+  Остаток \eqref{R_1_abs} имеет следующую оценку:
+  \begin{equation}
+    |R^1_{n,N}(f_1,x)| \leq \frac{3}{2N^2}.
+  \end{equation}
+\end{lemma}
+
+\begin{lemma} \label{lm2}
+  Остаток \eqref{R_2_abs} имеет следующую оценку:
+  \begin{equation}
+    |R^2_{n,N}(f_1,x)| \leq \frac{8}{3 N^2|\sin x|}, \quad (-\pi, 0) \cup (0, \pi).
+  \end{equation}
+\end{lemma}
+
+
+\begin{lemma} \label{lm3}
+  Остаток
+  \begin{equation}
+    R^2_{n,N}(f_1,x) = \frac{2}{\pi} \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} |t| \sum\limits_{k=1}^{n} \cos k (x-t) \cos \mu N t dt
+  \end{equation}
+  имеет следующую оценку:
+  \begin{equation}
+    |R^2_{n,N}(f_1,x)| \leq \frac{16n}{3 N^2}, \quad x \in [-\pi, \pi].
+  \end{equation}
+\end{lemma}
+
+\begin{corollary} \label{cor_abs_1}
+  Из лемм \ref{lm1}, \ref{lm2} и \ref{lm3}, а также неравенства
+  \begin{equation}
+    \frac{n}{N} \leq \frac12
+  \end{equation}
+  следует
+  \begin{equation}
+    R^1_{n,N}(f_1,x) \leq \frac{3}{8n^2}, \quad x \in [-\pi, \pi],
+  \end{equation}
+  \begin{equation}
+    R^2_{n,N}(f_1,x) \leq \frac{2}{3 n^2 |\sin x|}, \quad x \in (-\pi, 0) \cup (0, \pi)
+  \end{equation}
+  \begin{equation}
+    R^2_{n,N}(f_1,x)| \leq \frac{4}{3n}, \quad x \in [-\pi, \pi].
+  \end{equation}
+\end{corollary}
+
+Перейдем к доказательству теорем. Справедливы следующие теоремы:
+\begin{theorem} \label{th_abs_1}
+  Для $R_{n,N}(f_1,x)$ справедливы оценки
+  \begin{equation}
+    |R_{n,N}(f_1,x)| \leq \frac{3}{2N^2} + \frac{16n}{3N^2} \leq \frac{3}{8n^2} + \frac{4}{3n}, \quad x \in [-\pi, \pi],
+  \end{equation}
+  \begin{equation}
+    |R_{n,N}(f_1,x)| \leq \frac{3}{2N^2} + \frac{8}{3 N^2|\sin x|} \leq \frac{3}{8n^2} + \frac{2}{3n^2|\sin x|}, \quad x \in (-\pi, 0) \cup (0, \pi).
+  \end{equation}
+\end{theorem}
+
+\begin{corollary} \label{cor_abs_2}
+  При $x \in [-\pi + \varepsilon,- \varepsilon] \cup [\varepsilon, \pi - \varepsilon]$, $0 < x < \pi$ оценку, полученную в теореме \ref{th_abs_1} можно переписать следующим образом:
+  \begin{equation}
+    |R_{n,N}(f_1,x)| \leq \frac{C(\varepsilon)}{n^2}.
+  \end{equation}
+\end{corollary}
+
+\begin{theorem} \label{th_abs_2}
+  Для $|L_{n,N}(f_1,x) - f_1(x)|$, где $f_1(x) = |x|$, справедливы следующие оценки:
+  \begin{equation}
+    |L_{n,N}(f_1,x) - f_1(x)| \leq \frac{C}{n}, \quad x \in [-\pi,\pi],
+  \end{equation}
+  \begin{equation}
+    |L_{n,N}(f_1,x) - f_1(x)| \leq \frac{C(\varepsilon)}{n^2}, \quad x \in [-\pi + \varepsilon,- \varepsilon] \cup [\varepsilon, \pi - \varepsilon].
+  \end{equation}
+\end{theorem}
+
+
+
+
+\section{Оценка аппроксимативных свойств остатка $R_{n,N}(f_2,x)$.}
+Оценим остаток
+\begin{equation}
+  R_{n,N}(f_2,x) = \frac{2}{\pi} \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} D_n(x-t) \cos \mu N t \sign t dt. \label{agg_2.1_RnN}
+\end{equation}
+
+Из \eqref{agg_2.1_RnN} и \eqref{agg_2_Dn} имеем
+\begin{equation}
+  R_{n,N}(f_2,x) = R^1_{n,N}(f_2,x) + R^2_{n,N}(f_2,x),
+\end{equation}
+где
+\begin{equation}
+  R^1_{n,N}(f_2,x) = \frac{1}{\pi} \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} \sign t \cos \mu N t dt,
+\end{equation}
+\begin{equation} \label{r2 sign}
+  R^2_{n,N}(f_2,x) = \frac{2}{\pi} \sum\limits_{\mu=1}^{\infty} \int\limits_{-\pi}^{\pi} \sign t \sum\limits_{k=1}^{n} \cos k (x-t) \cos \mu N t dt.
+\end{equation}
+Очевидно, что $R^1_{n,N}(f_2,x) = 0$ для всех $x$. Таким образом,
+\begin{equation}
+  R_{n,N}(f,x) = R^2_{n,N}(f,x). \label{r eq r2}
+\end{equation}
+
+Справедливы следующие леммы:
+\begin{lemma} \label{lemma sum sin}
+  Справедливы следующие оценки:
+  \begin{equation}
+    \left|\sum_{k=0}^{n} \sin (2k+1)x\right| \leq \frac{1}{|\sin x|}, \label{sum sin 2k+1}
+  \end{equation}
+  \begin{equation}
+    \left|\sum_{k=1}^{n} \sin 2kx\right| \leq \frac{1}{|\sin x|}. \label{sum sin 2k}
+  \end{equation}
+\end{lemma}
+
+\begin{lemma} \label{lm_sum_sin}
+    Имеет место следующая оценка:
+    \begin{equation}
+      \left| \sum\limits_{j=1}^{m} \sin j x (1 - (-1)^{j+M}) \right| \leq \frac{2}{|\sin x|},
+    \end{equation}
+    где $m$ и $M$ --- произвольные натуральные числа.
+\end{lemma}
+
+\begin{lemma} \label{lm2.1}
+  \eqref{r2 sign} имеет следующую оценку:
+  \begin{equation}
+    |R^2_{n,N}(f_2,x)| \leq \frac{8n}{N^2|\sin x|}.
+  \end{equation}
+\end{lemma}
+
+Справедливы следующие теоремы.
+\begin{theorem} \label{th_sign_1}
+  Для $R_{n,N}(f_2,x)$ справедлива оценка
+  \begin{equation}
+    |R_{n,N}(f_2,x)| \leq \frac{8n}{N^2|\sin x|}.
+  \end{equation}
+\end{theorem}
+
+
+\begin{corollary} \label{cor_sign_1}
+  При $x \in [-\pi + \varepsilon,- \varepsilon] \cup [\varepsilon, \pi - \varepsilon]$, $0 < \varepsilon < \pi$ оценку, полученную в теореме \ref{th_sign_1} можно переписать следующим образом:
+  \begin{equation}
+    |R_{n,N}(f_2,x)| \leq \frac{C(\varepsilon)}{n}. \label{coroll sign 1 formula}
+  \end{equation}
+\end{corollary}
+
+
+\begin{theorem} \label{th_sign_2}
+  Для $|L_{n,N}(f_2,x) - f_2(x)|$, где $f_2(x) = \sign x$, справедлива следующая оценка:
+  \begin{equation}
+    |L_{n,N}(f,x) - f(x)| \leq \frac{C(\varepsilon)}{n}, \quad x \in [-\pi + \varepsilon,- \varepsilon] \cup [\varepsilon, \pi - \varepsilon].
+  \end{equation}
+\end{theorem}
+
+%%%%%%%%%%%==============%%%%%%%%%%%%%%%%%%%
+
+\chapter{Аппроксимативные свойства сумм Фурье для непрерывных $2\pi$-периодических
+ кусочно-линейных функций}
+
+\section{Введение}
+В различных областях приложений встречается задача приближения непрерывной функции $f = f(x)
+$, значения которой известны в узлах некоторой сетки $\Omega_m = \{\xi_i\}_{i=0}^{m}$.
+Наиболее часто для решения этой задачи применяют полиномиальный сплайн $l_m^r(x)$ заданной степени $r$, который в простейшем случае $r = 1$ представляет собой ломаную $l_m = l_m(x) = l_m^1(x)$, совпадающую в узлах сетки $\Omega_m$ с самой функцией $f$. В случае, когда количество узлов сетки велико, для хранения полученной ломаной $l_m$ требуется запомнить большой объём информации: $(\xi_0, y_0), \ldots, (\xi_m, y_m)$, где $y_i = f(\xi_i)$ $(i = 0, \ldots, m)$, в связи с чем возникает промежуточная задача о сжатии указанной информации таким образом, чтобы ломаную можно было восстановить в последующем с заданной точностью. Для решения этой задачи, как правило, применяют так называемый спектральный метод, основанный на разложении ломаной $l_m$ в ряд по выбранной ортонормированной системе и хранении минимального количества коэффициентов полученного разложения, которое обеспечивает восстановление $l_m$ с заданной точностью. В настоящей работе предпринята попытка решить эту задачу для $2\pi$-периодических непрерывных ломаных путём их разложения в тригонометрический ряд Фурье.
+
+Перейдем к более подробной постановке задачи. Пусть задана система узлов $\Omega_m = \{\xi_i\}_{i=0}^{m}$, в которой
+ $-\pi = \xi_0 < \xi_1 < \ldots < \xi_m = \pi$, и соответствующие измерения $y_0, y_1, \ldots, y_m = y_0$. Через $l_m = l_m(x)$ обозначим ломаную с вершинами $(\xi_i, y_i)$ $(i = 0, \ldots, m)$. Поскольку $l_m(\xi_0) = y_0 = y_m =  l_m(\xi_m)$, то мы можем функцию $l_m(x)$ $2\pi$-периодически и непрерывно продолжить на всю числовую ось. Множество таких ломаных будем обозначать через $\mathcal{L}_m$. Кроме того, нам будем удобно считать, что $\xi_{i+km} = \xi_i + 2k\pi$, $k \in \mathbb{Z}$.
+
+Точки $\xi_i$ делят числовую ось на отрезки, которые мы обозначим
+\begin{equation}
+\Delta_i = [\xi_i, \xi_{i+1}], \quad i \in \mathbb{Z}.
+\end{equation}
+На каждом из этих отрезков $l_m$ представляет собой линейную функцию:
+\begin{equation}
+l_m(x) = l_m^i(x) = \alpha_ix+\beta_i, \quad x \in \Delta_i, \label{l_i equation}
+\end{equation}
+где значения $\alpha_i$ и $\beta_i$ вычисляются по следующим формулам:
+\begin{equation}
+\alpha_i = \frac{y_{i+1}-y_i}{\xi_{i+1}-\xi_i}, \quad \beta_i = y_i - \alpha_i \xi_i, \quad i \in \mathbb{Z}.
+\end{equation}
+Обозначим через $S_n(l_m) = S_n(l_m,x)$ частичную сумму ряда Фурье $l_m$:
+\begin{equation}
+S_n(l_m,x) = \frac{a_0}{2} + \sum\limits_{k=1}^{n} a_k \cos kx + b_k \sin kx, \quad x \in \mathbb{R},\label{S_n}
+\end{equation}
+где $a_k$ и $b_k$ --- коэффициенты Фурье функции $l_m$, вычисляемые по формулам
+\begin{equation}
+a_k = \frac1\pi \int\limits_{-\pi}^{\pi} l_m(t) \cos kt dt, \label{a_k b_k for f}
+\quad
+b_k = \frac1\pi \int\limits_{-\pi}^{\pi} l_m(t) \sin kt dt.
+\end{equation}
+Отдельно отметим важный частный случай функций вида $l_m$. Пусть $f$ --- некоторая функция из пространства Соболева $W_{2\pi}^{2,1}$, что означает, что $f$ --- $2\pi$-периодическая функция и $f^{'}$ абсолютно непрерывна на $[-\pi,\pi]$ и
+\begin{equation}
+\int\limits_{-\pi}^{\pi} | f^{''}(t) |dt < \infty.
+\end{equation}
+Если принять в качестве значений ломаной \(y_i\) значения функции $f(\xi_i)$, мы получим ломаную $l_m$, <<вписанную>> в функцию $f$:
+\begin{equation}
+l_m(\xi_i) = f(\xi_i), \quad i \in \mathbb{Z},
+\end{equation}
+которую обозначим через $l_m(f) = l_m(f,x)$. Множество всех ломаных, <<вписанных>> в данную функцию по всем сеткам $\Omega_m$ будем обозначать $L_f$.
+
+Целью данной работы является исследование аппроксимативных свойств частичных
+сумм ряда Фурье функции $l_m$ или, другими словами, оценка величины
+\begin{equation}
+R_n(l_m) = R_n(l_m,x) = l_m(x) - S_n(l_m,x)  \label{R_n}
+\end{equation}
+как для произвольной ломаной, так и для ломаной, <<вписанной>> в функцию.
+
+\section{Вывод явного вида $R_n(l_m)$}
+Согласно признаку Дирихле \cite{fiht_diff_v3}, функцию $l_m$ можно разложить в равномерно сходящийся ряд Фурье:
+\begin{equation}
+l_m(x) = \frac{a_0}{2} + \sum\limits_{k=1}^{\infty} a_k \cos kx + b_k \sin
+kx, \quad x \in \mathbb{R}. \label{l_m eq Fourier}
+\end{equation}
+Из \eqref{S_n}, \eqref{R_n} и \eqref{l_m eq Fourier} имеем
+\begin{equation}
+R_n(l_m,x) = l_m(x) - S_n(l_m,x) = \sum\limits_{k=n+1}^{\infty} a_k \cos kx +\ b_k \sin kx, \quad n \geq 1.\label{R_n ak bk}
+\end{equation}
+Далее, пользуясь методом интегрирования по частям, из равенств \eqref{a_k b_k for f} и \eqref{l_i equation} находим
+\begin{equation}
+a_k = \frac1{\pi k^2} \sum\limits_{i=0}^{m-1} \alpha_i(\cos k\xi_{i+1} - \cos k \xi_i),
+\end{equation}
+\begin{equation}
+b_k = \frac1\pi\int\limits_{-\pi}^{\pi} l_m(t) \sin kt dt = \frac1{\pi k^2}\sum_{i=0}^{m-1}\alpha_i(\sin k \xi_{i+1} - \sin k \xi_i).
+\end{equation}
+Отсюда, и из того, что $\alpha_i = \alpha_{i+m}$ и $\xi_0 = -\pi$, $\xi_m = \pi$, имеем
+\begin{equation}
+a_k = \frac1{\pi k^2}
+\left(\sum\limits_{i=0}^{m-1} \alpha_i\cos k\xi_{i+1} - \sum\limits_{i=0}^{m-1} \alpha_i\cos k \xi_i\right)
+ = \frac{1}{\pi k^2} \sum\limits_{i=1}^{m} (\alpha_{i-1}-\alpha_i) \cos k \xi_i,\label{ak sum}
+\end{equation}
+\begin{equation}
+b_k = \frac{1}{\pi k^2} \sum\limits_{i=1}^{m} (\alpha_{i-1} - \alpha_i)\sin k\xi_i.\label{bk sum}
+\end{equation}
+Последнее слагаемое в формуле \eqref{bk sum} равно нулю,\ однако мы его оставим в сумме для удобства дальнейшего изложения.
+Используя \eqref{ak sum} и \eqref{bk sum}, перепишем формулу \eqref{R_n ak bk}:
+\begin{equation}
+R_n(l_m,x) = \frac{1}{\pi}\sum\limits_{k=n+1}^{\infty}\frac{1}{k^2}  \sum\limits_{i=1}^{m} (\alpha_{i-1} - \alpha_i)\left(\cos k\xi_i \cos kx +\ \sin k\xi_i \sin kx\right).
+\end{equation}
+Откуда мы выводим следующий результат
+\begin{lemma} \label{lemma R_n}
+Для $l_m \in \mathcal{L}_m$ имеет место равенство:
+\begin{equation}
+R_n(l_m,x) = \frac{1}{\pi}\sum\limits_{i=1}^{m}(\alpha_{i-1}-\alpha_i)\sum\limits_{k=n+1}^{\infty}\frac{\cos k(x - \xi_i)}{k^2}.\label{R_n formula}
+\end{equation}
+\end{lemma}
+Перейдем теперь к задаче об оценке $R_n(l_m,x)$ для $l_m \in \mathcal{L}_m$.
+
+\section{Оценка $R_n(l_m)$ для произвольной ломаной $l_m \in \mathcal{L}_m$}
+Справедлива следующая
+\begin{theorem}
+Пусть $l_m \in \mathcal{L}_m$, $0 < \varepsilon < \frac{1}{2}\min_{i \in \mathbb{Z}} |\xi_{i+1} - \xi_i|$, $ \Delta_i^\varepsilon = [\xi_i + \varepsilon, \xi_{i+1} - \varepsilon]$. Тогда имеют место следующие неравенства:
+\begin{equation}
+|R_n(l_m,x)| \leq \frac{1}{\pi n} \sum\limits_{i=1}^{m} |\alpha_{i-1}-\alpha_i|, \quad x \in \mathbb{R}, \label{lm uniform estimate}
+\end{equation}
+\begin{equation}\label{lm non uniform estimate}
+  |R_n(l_m,x)| \leq \frac{6}{\pi n^2} \sum\limits_{i=1}^{m} \frac{|\alpha_{i-1} - \alpha_i|}{\left|\sin \frac{x - \xi_i}{2}\right|}, \quad
+  x \in \Delta_i^\varepsilon, \quad i \in \mathbb{Z}.
+\end{equation}\label{th1}
+\end{theorem}
+
+\section{Приближение ломаных $l_m \in L_f$ суммами Фурье}
+Обозначим через $\mathcal{K}$ множество функций, каждая из которых на всей оси тождественна некоторой константе, и положим
+$\widetilde{W}_{2\pi}^{2,1} = W_{2\pi}^{2,1} \setminus \mathcal{K}$.
+Перейдем к вопросу о приближении ломаных $l_m \in L_f$ в том случае, когда $f \in \widetilde{W}_{2\pi}^{2,1}$. Справедлива следующая
+\begin{theorem}
+  Пусть $f \in W_{2\pi}^{2,1}$, $l_m(f) \in L_f$. Тогда имеет место оценка
+  \begin{equation}
+    |l_m(f,x) - S_n(l_m(f),x)| \leq \frac{\kappa}{n},
+  \end{equation}
+  где
+  \begin{equation}
+    \kappa = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} |f^{''}(t)|dt,
+  \end{equation}
+  причем данная оценка не улучшаема по порядку, когда $f \in \widetilde{W}_{2\pi}^{2,1}$, другими словами, существует положительная постоянная $c = c(f)$, для которой
+  \begin{equation}
+  \sup_{l_m \in L_f} \max_{x} |l_m(f,x) - S_n(l_m(f),x)| \geq \frac{c}{n}.
+  \end{equation}
+\end{theorem} 

@@ -1,0 +1,936 @@
+\chapter{Системы функций, ортогональные по Соболеву}
+%\begin{abstract}
+%Для заданной ортонормированной на  $(a,b)$  c весом   $\rho(x)$  системы функций $\left\{\varphi_k(x)\right\}$ и натурального   $r$ построена ассоциированная с ней новая система функций $\left\{\varphi_{r,k}(x)\right\}_{k=0}^\infty$, ортонормированная относительно скалярного произведения типа Соболева следующего вида
+%\begin{equation*}
+%<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(a)g^{(\nu)}(a)+\int_{a}^{b} f^{(r)}(t)g^{(r)}(t)\rho(t) dt.
+%\end{equation*}
+%Исследованы вопросы сходимости ряда Фурье по системе $\left\{\varphi_{r,k}(x)\right\}_{k=0}^\infty$. Рассмотрены важные частные случаи систем типа $\left\{\varphi_{r,k}(x)\right\}_{k=0}^\infty$, порожденныx функциями  Хаара и полиномами Чебышева $T_n(x)=\cos(n\arccos x)$. В этих случаях  для порожденных функций $\varphi_{r,k}(x)$ получены явные представления, которые могут быть использованы при исследовании асимптотических свойств функций $\varphi_{r,k}(x)$ при $k\to\infty$ и  аппроксимативных свойств сумм Фурье по системе $\left\{\varphi_{r,k}(x)\right\}_{k=0}^\infty$.  Основное внимание уделено исследованию аппроксимативных свойств рядов Фурье по системам типа $\left\{\varphi_{r,k}(x)\right\}_{k=0}^\infty$, порожденным функциями  Хаара и полиномами Чебышева.
+%
+%Библиография:  27 названий.
+%
+%\end{abstract}
+
+\section{Смешанные ряды и ортогональность по Соболеву}
+
+В ряде наших работ  \cite{Haar-Tcheb-Shar11} -- \cite{Haar-Tcheb-Shar18}  были введены так называемые \textit{смешанные} ряды по классическим ортогональным полиномам, частичные суммы которых  обладают свойством совпадения их значений в концах области ортогональности  со значениями исходной функции. Общая идея, которая лежит в основе построения смешанных рядов, заключается в следующем. Предположим, что система функций  $\left\{\varphi_k(x)\right\}$ ортонормирована  на $(a,b)$  c весом   $\rho(x)$, т.е.
+ \begin{equation}\label{Haar-Tcheb-1.1}
+\int\limits_a^b\varphi_k(x)\varphi_l(x)\rho(x)dx=\delta_{kl},
+\end{equation}
+где $\delta_{kl}$ -- символ Кронекера. Через $L^p_\rho(a,b)$ обозначим пространство  функций $f(x)$, измеримых  на  $(a,b)$, для которых
+ \begin{equation}\label{Haar-Tcheb-1.2}
+\int\limits_a^b|f(x)|^p\rho(x)dx<\infty.
+\end{equation}
+Если $\rho(x)\equiv1$, то будем писать $L^p_\rho(a,b)=L^p(a,b)$ и $L(a,b)=L^1(a,b)$. Нетрудно показать, что если весовая функция $\rho(x)$ удовлетворяет некоторым (естественным) условиям, то пространство $L^p_\rho(a,b)$ представляет собой банахово пространство с нормой $\|f\|_{p,\rho}=(\int_a^b|f(x)|^p\rho(x)dx)^\frac1p$. Для этого достаточно, например, считать, что $1/\rho(x)\in L(a,b)$. В этом случае из  неравенства Гельдера вытекает также, что $L^2_\rho(a,b)\subset L(a,b)$.
+
+Из \eqref{Haar-Tcheb-1.1} следует, что $\varphi_k(x)\in L^2_\rho(a,b)$ $(k=0,1,\ldots)$. Мы добавим к этому условию еще одно, считая, что $\varphi_k(x)\in L(a,b)$ $(k=0,1,\ldots)$. Тогда мы можем определить следующие порожденные системой $\{\varphi_k(x)\}$ функции
+ \begin{equation}\label{Haar-Tcheb-1.3}
+\varphi_{r,r+k}(x) =\frac{1}{(r-1)!}\int\limits_a^x(x-t)^{r-1}\varphi_{k}(t)dt, \quad k=0,1,\ldots.
+\end{equation}
+ Кроме того, определим конечный набор функций
+  \begin{equation}\label{Haar-Tcheb-1.4}
+\varphi_{r,k}(x) =\frac{(x-a)^k}{k!}, \quad k=0,1,\ldots, r-1.
+\end{equation}
+
+ Из \eqref{Haar-Tcheb-1.3} и \eqref{Haar-Tcheb-1.4} следует, что
+ \begin{equation}\label{Haar-Tcheb-1.5}
+(\varphi_{r,k}(x))^{(\nu)} =\begin{cases}\varphi_{r-\nu,k-\nu}(x),&\text{если $0\le\nu\le r-1$, $r\le k$,}\\
+\varphi_{k-r}(x)\quad\text{для п.в. $x\in (a,b)$},&\text{если  $\nu=r\le k$,}\\
+\varphi_{r-\nu,k-\nu}(x),&\text{если $\nu\le k< r$,}\\
+0,&\text{если $k< \nu\le r$}.
+  \end{cases}
+\end{equation}
+При изучении свойств системы функций $\{\varphi_{r,k}(x)\}$ нам понадобится весовое пространство Соболева $W^r_{L^p_\rho(a,b)}$, состоящее из функций $f(x)$, непрерывно дифференцируемых на $[a,b]$ $r-1$ раз, причем $f^{(r-1)}(x)$ абсолютно непрерывна на $[a,b]$  и $f^{(r)}(x)\in L^p_\rho(a,b)$.
+Скалярное произведение в пространстве $W^r_{L^2_\rho(a,b)}$ определим с помощью равенства
+\begin{equation}\label{Haar-Tcheb-1.6}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(a)g^{(\nu)}(a)+\int_{a}^{b} f^{(r)}(t)g^{(r)}(t)\rho(t) dt.
+\end{equation}
+Для того, чтобы величина $<f,g>$, определяемая равенством \eqref{Haar-Tcheb-1.6}, удовлетворяла всем четырем аксиомам скалярного произведения достаточно, например, считать, что $1/\rho(x)\in L(a,b)$.  Тогда для $f\in W^r_{L^2_\rho(a,b)}$ мы можем определить норму $\|f\|_{W^r_{L^2_\rho(a,b)}}=\sqrt{<f,g>}$, которое превращает $W^r_{L^2_\rho(a,b)}$ в банахово пространство и, стало быть, $W^r_{L^2_\rho(a,b)}$ -- гильбертово пространство со скалярным произведением \eqref{Haar-Tcheb-1.6}.
+
+ Пользуясь определением функций  $\varphi_{r,k}(x)$ (см. \eqref{Haar-Tcheb-1.3} и \eqref{Haar-Tcheb-1.4}) и равенством  \eqref{Haar-Tcheb-1.5} нетрудно увидеть(см. теорему 1),  что система $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ является ортонормированной в пространстве $W^r_{L^2_\rho(a,b)}$.  Мы будем называть систему $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ \textit{ортонормированной по Соболеву } относительно скалярного произведения \eqref{Haar-Tcheb-1.6} и  \textit{порожденной} ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$.
+
+В цитированных выше   работах  \cite{Haar-Tcheb-Shar11} -- \cite{Haar-Tcheb-Shar18}, а также в \cite{Haar-Tcheb-Shar19}   были рассмотрены некоторые частные случаи  систем функций вида $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, порожденных классическими ортонормированными системами Якоби, Лежандра, Чебышева, Лагерра и Хаара. С другой стороны, в последние годы интенсивное развитие получила (см.\cite{Haar-Tcheb-IserKoch}--\cite{Haar-Tcheb-MarcelXu} и цитированную там литературу) теория полиномов, ортогональных относительно различных скалярных произведений соболевского типа (полиномы, ортогональные по Соболеву). Скалярные произведения соболевского типа характеризуются тем, что они включают в себя слагаемые, которые <<контролируют>> поведение соответствующих ортогональных полиномов  в нескольких заданных точках числовой оси. Например, в некоторых случаях оказывается так, что полиномы, ортогональные по Соболеву на интервале $(a,b)$, могут иметь нули, совпадающие с одним или с обоими концами этого интервала. Это обстоятельство имеет важное значение для некоторых приложений, в которых требуется, чтобы значения  частичных сумм ряда Фурье функции $f(x)$ по рассматриваемой системе ортогональных полиномов совпали в концах интервала $(a,b)$ со значениями $f(a)$ и $f(b)$.  Заметим, что обычные ортогональные с положительным на  $(a,b)$ весом полиномы этим важным свойством не обладают. Скалярное произведение \eqref{Haar-Tcheb-1.6}, рассматриваемое в настоящей работе, имеет одну особую точку, а именно, точку $a$, в окрестности которой <<контролируется>> поведение функций $\varphi_{r,k}(x)$, ортогональных по Соболеву и порожденных исходной ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенства \eqref{Haar-Tcheb-1.3}.
+
+
+
+В дальнейшем будет показано,  что ряд Фурье функции $f(x)\in W^r_{L^2_\rho(a,b)}$ по системе  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ имеет смешанный характер, а, более точно, имеет следующий вид
+  \begin{equation}\label{Haar-Tcheb-1.7}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^\infty f_{r,k}\varphi_{r,k}(x),
+\end{equation}
+где
+  \begin{equation}\label{Haar-Tcheb-1.8}
+ f_{r,k}=\int\limits_a^b f^{(r)}(t) \varphi^{(r)}_{r,k}(t)\rho(t)dt=\int\limits_a^b f^{(r)}(t) \varphi_{k-r}(t)\rho(t)dt,
+\end{equation}
+поэтому ряд Фурье вида \eqref{Haar-Tcheb-1.7} будем (следуя \cite{Haar-Tcheb-Shar11} -- \cite{Haar-Tcheb-Shar18})  называть \textit{смешанным рядом} по  системе $\{\varphi_{k}(x)\}_{k=0}^\infty$, считая это название условным и сокращенным обозначением полного названия: <<\textit{ряд Фурье по системе  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, ортонормированной по Соболеву, порожденной ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$}>>.
+
+Отметим некоторые важные свойства смешанного ряда \eqref{Haar-Tcheb-1.7}, непосредственно вытекающие из \eqref{Haar-Tcheb-1.5}. Первое из них связано с дифференциальным свойством смешанного ряда, а именно, если $r>1$, то в результате почленного дифференцирования смешанного ряда \eqref{Haar-Tcheb-1.7} мы получим смешанный ряд для производной $f'(x)$, соответствующий случаю, когда вместо $r$ фигурирует $r-1$, другими словами
+\begin{equation}\label{Haar-Tcheb-1.9}
+f'(x)\sim  \sum_{k=1}^\infty f'_{r-1,k-1}\varphi_{r-1,k-1}(x)=\sum_{k=1}^\infty (f_{r,k}\varphi_{r,k}(x))'.
+\end{equation}
+Второе свойство связано c почленным интегрированием с переменным верхним пределом и имеет вид
+\begin{equation}\label{Haar-Tcheb-1.10}
+\int\limits_a^xf'(t)dt\sim \sum_{k=1}^\infty f'_{r-1,k-1}\int\limits_a^x\varphi_{r-1,k-1}(t)dt=\sum_{k=1}^\infty f_{r,k}\varphi_{r,k}(x).
+\end{equation}
+Важное значение имеет свойство  смешанного ряда \eqref{Haar-Tcheb-1.7}, которое заключается в том, что его частичная сумма вида
+\begin{equation}\label{Haar-Tcheb-1.11}
+Y_{r,N}(f,x)=\sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^{N} f_{r,k}\varphi_{r,k}(x)
+\end{equation}
+ при   $N\ge r$, $r$-кратно совпадает с исходной функцией $f(x)$ в точке $x=a$, т.е.
+\begin{equation}\label{Haar-Tcheb-1.12}
+(Y_{r,N}(f,x))^{(\nu)}_{x=a}=f^{(\nu)}(a)\quad (0\le\nu\le r-1).
+\end{equation}
+Кроме того, из \eqref{Haar-Tcheb-1.5} и \eqref{Haar-Tcheb-1.11} следует, что $(0\le\nu\le r-1)$
+\begin{equation}\label{Haar-Tcheb-1.13}
+ Y_{r,N}^{(\nu)}(f,x)=\sum_{n=0}^{r-1-\nu} f^{(n+\nu)}(a)\frac{(x-a)^n}{n!}+ \sum_{n=r-\nu}^{N-\nu} f_{r-\nu,n}^{(\nu)}\varphi_{r-\nu,n}(x)=Y_{r-\nu,N-\nu}(f^{(\nu)},x),
+ \end{equation}
+отсюда, в свою очередь, выводим $(0\le\nu\le r-2)$
+ $$
+f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)= \frac{1}{(r-\nu-2)!}\int_a^x (x-t)^{r-\nu-2}(f^{(r-1)}(t)-Y_{r,N}^{(r-1)}(f,t))dt=
+$$
+  \begin{equation}\label{Haar-Tcheb-1.14}
+\frac{1}{(r-\nu-2)!}\int_a^x (x-t)^{r-\nu-2}(f^{(r-1)}(t)-Y_{1,N-r+1}(f^{(r-1)},t))dt.
+ \end{equation}
+
+\textbf{Замечание.} \textit{
+Еще одно важное свойство систем функций  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ возникает в том случае, когда исходная система $\{\varphi_{k}(x)\}_{k=0}^\infty$  является ортонормированной с весом $\rho(x)$ системой алгебраических полиномов. Как хорошо известно \cite{Haar-Tcheb-Sege}, в этом случае между тремя полиномами $\varphi_{k}(x)$, $\varphi_{k-1}(x)$ и $\varphi_{k-2}(x)$ существует рекуррентная связь вида $\varphi_{k}(x)=(a_kx+b_k)\varphi_{k-1}(x)+c_k\varphi_{k-2}(x)$. С учетом этого равенства из \eqref{Haar-Tcheb-1.3} нетрудно получить рекуррентное соотношение следующего вида
+ $$ra_k\varphi_{r+1,r+k}(x)=(a_kx+b_k)\varphi_{r,r+k-1}(x)-\varphi_{r,r+k}(x)
+ +c_k\varphi_{r,r+k-2}(x).$$
+ Рекуррентные соотношения других типов можно получить в различных частных случаях. Например, из  цитируемого ниже результата \eqref{Haar-Tcheb-1.21}, полученного в \cite{Haar-Tcheb-Shar11},  можно вывести рекуррентное для полиномов $p_{r,r+k}^{0,0}(x)$, ортогональных по Соболеву и порожденных полиномами Лежандра, исходя из рекуррентных формул для полиномов Якоби $P_n^{r,r}(x)$.
+На подробном рассмотрении этого вопроса мы здесь не будем останавливаться, поскольку он является объектом исследования другой нашей работы.}
+
+В \cite{Haar-Tcheb-Shar11} -- \cite{Haar-Tcheb-Shar18}  было показано, что частичные суммы смешанных рядов по классическим ортогональным полиномам, в отличие от сумм Фурье по этим же полиномам, успешно могут быть использованы в задачах, в которых требуется одновременно приближать дифференцируемую функцию и ее несколько производных. В качестве примера рассмотрим задачу Коши  для линейного дифференциального уравнения (ОДУ)
+\begin{equation}\label{Haar-Tcheb-1.15}
+ a_r(x)y^{(r)}(x)+a_{r-1}(x)y^{(r-1)}(x)+\cdots+a_0(x)y(x)=h(x)
+ \end{equation}
+с начальными условиями $y^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$.  Наряду с различными сеточными методами для решения этой задачи часто применяют так называемые спектральные методы \cite{Haar-Tcheb-Tref1} -- \cite{Haar-Tcheb-MMG2016}. Напомним, что суть спектрального метода решения задачи Коши  для ОДУ  заключается в том, что в первую очередь искомое решение $y(x)$ представляется в виде ряда Фурье
+\begin{equation}\label{Haar-Tcheb-1.16}
+ y(x)=\sum_{k=0}^\infty \hat y_k\psi_k(x)
+ \end{equation}
+по подходящей ортонормированной системе $\{\psi_k(x)\}_{k=0}^\infty$ (чаще всего в качестве $\{\psi_k(x)\}_{k=0}^\infty$ используют одну из классических ортонормированных систем или систему  всплесков (вэйвлетов)). На втором этапе осуществляется подстановка вместо $y(x)$ ряда \eqref{Haar-Tcheb-1.16} в уравнение \eqref{Haar-Tcheb-1.15}. Это приводит к системе уравнений относительно неизвестных коэффициентов $\hat y_k$ ($k=0,1,\ldots$). На третьем этапе требуется решить эту систему с учетом начальных условий  $y^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$, исходной задачи Коши.
+Одна из основных трудностей, которые возникают на этом этапе, состоит в том, чтобы
+выбрать такой ортонормированный базис $\{\psi_k(x)\}_{k=0}^\infty$, для которого искомое решение $y(x)$ уравнения \eqref{Haar-Tcheb-1.15}, представленное в виде ряда  \eqref{Haar-Tcheb-1.16}, удовлетворяло бы начальным условиям $y^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$. Более того, поскольку в результате решения системы уравнений относительно неизвестных коэффициентов $\hat y_k$  будет найдено только конечное их число с $k=0,1,\ldots, n$, то весьма важно, чтобы частичная сумма ряда \eqref{Haar-Tcheb-1.16}  вида $y_n(x)=\sum_{k=0}^n\hat y_k\psi_k(x)$,
+ будучи приближенным решением рассматриваемой задачи Коши, также удовлетворяла начальным условиям $y_n^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$. Покажем, что  базис $\{\psi_k(x)=p_{r,k}^{\alpha,\beta}(x)\}_{k=0}^\infty \subset W^r_{L^2_\rho(-1,1)} $, состоящий из полиномов $p_{r,k}^{\alpha,\beta}(x)$, ортонормированных по Соболеву относительно скалярного произведения
+\begin{equation}\label{Haar-Tcheb-1.17}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(-1)g^{(\nu)}(-1)+\int_{-1}^{1}f^{(r)}(t)g^{(r)}(t)\rho(x)dt
+\end{equation}
+ и порожденных ортонормированными с весом $\rho(x)=(1-x)^\alpha(1+x)^\beta$ ($-1<\alpha,\beta<1$) полиномами Якоби $p_{k}^{\alpha,\beta}(x)$  посредством равенств
+   \begin{equation*}
+p_{r,k}^{\alpha,\beta}(x) =\frac{(x+1)^k}{k!}, \quad k=0,1,\ldots, r-1,
+\end{equation*}
+  \begin{equation}\label{Haar-Tcheb-1.18}
+p_{r,r+n}^{\alpha,\beta}(x) =\frac{1}{(r-1)!}\int\limits_{-1}^x(x-t)^{r-1}p_{n}^{\alpha,\beta}(t)dt, \quad n=0,1,\ldots,
+\end{equation}
+   обладает указанными свойствами. С этой целью заметим, что ряд Фурье \eqref{Haar-Tcheb-1.16} в случае, когда $\{\psi_k(x)=p_{r,k}^{\alpha,\beta}(x)\}_{k=0}^\infty$, приобретает в силу \eqref{Haar-Tcheb-1.7} следующий вид
+   \begin{equation}\label{Haar-Tcheb-1.19}
+y(x)= \sum_{k=0}^{r-1} y^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^\infty \hat y_{r,k}p_{r,k}^{\alpha,\beta}(x),
+\end{equation}
+где
+  \begin{equation*}
+ \hat y_{r,k}=\int_{-1}^1 y^{(r)}(t)p_{k-r}^{\alpha,\beta}(t)\rho(t)dt.
+\end{equation*}
+С другой стороны, из свойства \eqref{Haar-Tcheb-1.12}, присущего частичным суммам смешанных рядов, и того, что в силу определения \eqref{Haar-Tcheb-1.18} при $k\ge r$ справедливы равенства $(p_{r,k}^{\alpha,\beta}(x))^{(\nu)}|_{x=-1}=0$ для всех $0\le\nu\le r-1$, следует, что  функция $y(x)$, представленная в виде ряда \eqref{Haar-Tcheb-1.19}, как и частичная  сумма этого ряда вида
+ \begin{equation}\label{Haar-Tcheb-1.20}
+\mathcal{Y}_N^{\alpha,\beta}(x)=\mathcal{Y}_N^{\alpha,\beta}(y,x)= \sum_{k=0}^{r-1} y^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^N \hat y_{r,k}p_{r,k}^{\alpha,\beta}(x),
+\end{equation}
+удовлетворяют начальным условиям задачи Коши для уравнения \eqref{Haar-Tcheb-1.15}.
+
+Таким образом, полиномы, ортогональные по Соболеву относительно скалярного произведения \eqref{Haar-Tcheb-1.17}, тесно связаны с задачей Коши для уравнения \eqref{Haar-Tcheb-1.15}.  Разумеется, не является исключением и один из основных объектов исследования настоящей работы -- полиномы $T_{r,n}(x)$, порожденные полиномами Чебышева первого рода $T_n(x)=\cos(n\arccos x)$,   представляющие собой  частный случай полиномов $p_{r,k}^{\alpha,\beta}(x)$, соответствующий выбору  $\alpha=\beta=-1/2$.  Отметим еще, что полиномы $p_{r,k}^{0,0}(x)$, порожденные полиномами Лежандра, могут служить удобным и эффективным методом приближенного решения не только задачи Коши, но  также   двухточечной краевой задачи для уравнений типа \eqref{Haar-Tcheb-1.15}. В связи с этим возникает задача об аппроксимативных свойствах частичных сумм рядов Фурье по полиномам, ортогональным по Соболеву. В наших работах  \cite{Haar-Tcheb-Shar11} -- \cite{Haar-Tcheb-Shar18},
+используя несколько иные  обозначения,  были исследованы апроксимативные свойства частичных сумм вида \eqref{Haar-Tcheb-1.20}. Наиболее детально были исследованы аппроксимативные свойства частичных сумм смешанных рядов по полиномам Лежандра (случай $\alpha=\beta=0$). Дело в том, что, как было обнаружено еще в работе \cite{Haar-Tcheb-Shar11} и многократно использовалось в \cite{Haar-Tcheb-Shar11} -- \cite{Haar-Tcheb-Shar18}, полиномы $p_{r,k}^{\alpha,\beta}(x)$, определенные равенством \eqref{Haar-Tcheb-1.18}, в случае $\alpha=\beta=0$ допускают следующее представление
+\begin{equation}\label{Haar-Tcheb-1.21}
+p_{r,r+k}^{0,0}(x) =
+\frac{(-1)^r}{2^rk^{[r]}\sqrt{ h_k^{0,0}}}(1-x^2)^rP_{k-r}^{r,r}(x) \quad (k=r,r+1,\ldots),
+\end{equation}
+где $P_{n}^{\alpha,\beta}(x)$ -- классический полином Якоби, $h_n^{0,0}$ -- квадрат нормы полинома Лежандра $P_{n}^{0,0}(x)$ (см.\S5), которое играет ключевую роль при исследовании аппроксимативных свойств частичных сумм $\mathcal{Y}_N^{0,0}(y,x)$, определенных равенством \eqref{Haar-Tcheb-1.20}. В частности, в работе \cite{Haar-Tcheb-Shar15}, существенно используя представление \eqref{Haar-Tcheb-1.21},  была доказана следующая неулучшаемая по порядку (при $N\to\infty$) оценка
+\begin{equation}\label{Haar-Tcheb-1.22}
+\sup_{f\in W^r}\max_{-1\le x\le 1}{\left|f^{(\nu)}(x)-\left(\mathcal{Y}_N^{0,0}(f,x)\right)^{(\nu)}\right|\over(1-x^2)^{(r-\nu)-1/4}}
+\le c(r)\frac{\ln N}{N^{r-\nu}},\,\, 0\le \nu\le r,
+\end{equation}
+где  $W^r$ -- класс функций, непрерывно дифференцируемых $r$-раз, для которых $\max_{-1\le x\le 1}|f^{(r)}(x)|\le1$.
+
+Что касается случая дробных $\alpha$ и $\beta$, то представления типа \eqref{Haar-Tcheb-1.21} для
+$p_{r,k}^{\alpha,\beta}(x)$ получены не были, поэтому вопрос о доказательстве оценок, аналогичных \eqref{Haar-Tcheb-1.22}, для $\mathcal{Y}_N^{\alpha,\beta}(f,x)$ при
+$-1<\alpha,\beta<1$ остается открытым.
+
+
+
+В настоящей научно-исследовательской работе вводятся и исследуются системы функций $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, ортонормированных по Соболеву относительно скалярного произведения \eqref{Haar-Tcheb-1.6} и порожденных системой $\{\varphi_{k}(x)\}_{k=0}^\infty$. Рассмотрена задача о представлении функций $\varphi_{r,k}(x)$, определенных равенством \eqref{Haar-Tcheb-1.3}, в виде, более удобном для исследования их асимптотических свойств при $k\to\infty$. Эта задача решена для функций, ортогональных по Соболеву, порожденных различными классическими ортогональными системами. Отдельное внимание уделено исследованию условий равномерной сходимости смешанных рядов по рассматриваемым классическим системам.
+
+\section{ О сходимости смешанных рядов  по общим ортонормированным системам }
+
+Рассмотрим сначала задачу о полноте в $W^r_{L^2_\rho(a,b)}$ системы $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, состоящей из функций, определенных равенствами   \eqref{Haar-Tcheb-1.3} и \eqref{Haar-Tcheb-1.4}.
+\begin{theorem}\label{completeness}
+Предположим, что    функции $\varphi_k(x)$ $(k=0,1,\ldots)$ образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на отрезке $[a,b]$. Тогда система $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{Haar-Tcheb-1.3} и \eqref{Haar-Tcheb-1.4}, полна  в $W^r_{L^2_\rho(a,b)}$ и ортонормирована относительно скалярного произведения \eqref{Haar-Tcheb-1.6}.
+\end{theorem}
+
+
+\begin{theorem}\label{uni-conv}
+Предположим, что  $ \frac{1}{\rho(x)}\in L(a,b) $, а  функции $\varphi_k(x)$ $(k=0,1,\ldots)$  образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на отрезке $[a,b]$, $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ -- система, ортонормированная в $W^r_{L^2_\rho(a,b)}$ относительно скалярного произведения \eqref{Haar-Tcheb-1.6},  порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{Haar-Tcheb-1.3} и \eqref{Haar-Tcheb-1.4}.
+Тогда, если $f(x)\in W^r_{L^2_\rho(a,b)}$, то ряд Фурье (смешанный ряд) \eqref{Haar-Tcheb-1.7} сходится к функции $f(x)$ равномерно относительно $x\in[a,b]$.
+\end{theorem}
+
+Ниже мы остановимся на  важных частных случаях систем функций, ортогональных по Соболеву относительного скалярного произведения вида  \eqref{Haar-Tcheb-1.6}, порожденных  классическими ортогональными системами такими, как система  Хаара и система  полиномов Чебышева первого рода и рассмотрим их особенности.
+
+\chapter{Система полиномов, ортогональных по Соболеву и порожденных функциями Хаара}
+\section{Некоторые сведения о системе  Хаара}
+При исследовании системы функций $\mathcal{X}_{r,n}(x)$ $(n=0,1,\ldots)$, ортогональных по Соболеву, порожденных функциями  Хаара $\varphi_k(x)=\chi_{k+1}(x)$ $(k=0,1,\ldots)$ нам понадобятся следующие обозначения \cite{Haar-Tcheb-KashSaak}. Пусть $n=2^k+i$, $i=1,2,\ldots, 2^k$,  $k=0,1,\ldots$,
+$\Delta_n=\Delta_k^i=(\frac{i-1}{2^k},\frac{i}{2^k})$, $\bar\Delta_n=[\frac{i-1}{2^k},\frac{i}{2^k}]$, ($n\ge2$), $\Delta_1=[0,1]$,
+$$
+ \Delta_n^+=(\Delta_k^i)^+=(\frac{i-1}{2^k},\frac{2i-1}{2^{k+1}})=\Delta_{k+1}^{2i-1}, \quad \Delta_n^-=(\Delta_k^i)^-=(\frac{2i-1}{2^{k+1}},\frac{i}{2^{k}})=\Delta_{k+1}^{2i}.
+$$
+Система Хаара - это система функций, $\chi=\{\chi_n\}_{n=1}(x)^\infty$, $x\in[0,1]$, в которой $\chi_1(x)=1$, a функция $\chi_n(x)$
+с $2^k<n\le 2^{k+1}$, $k=0,1,\ldots$ определяется так
+\begin{equation}\label{Haar-Tcheb-3.1}
+\chi_n(x)=\begin{cases} 0,&\text{если $x\notin \bar\Delta_n$,}\\
+2^{k/2},& \text{если $x\in \Delta_n^+$,}\\
+-2^{k/2},& \text{если $x\in \Delta_n^-$.}
+\end{cases}
+\end{equation}
+Значения в точках разрыва функции $\chi_n(x)$ выбирается так, чтобы выполнялись равенства:
+$$
+\chi_n(x)=\lim_{\delta\to0}\frac12[\chi_n(x+\delta)+\chi_n(x-\delta)],\quad x\in (0,1),
+$$
+$$
+\chi_n(0)=\lim_{\delta\to0} \chi_n(\delta),\quad \chi_n(1)=\lim_{\delta\to0} \chi_n(1-\delta).
+$$
+Непосредственно из \eqref{Haar-Tcheb-3.1} выводим следующее свойство ортогональности функций Хаара:
+\begin{equation}\label{Haar-Tcheb-eq3.2}
+\int_0^1\chi_n(x)\chi_m(x)dx=\delta_{nm}.
+\end{equation}
+Если функция $f=f(x)$ интегрируема на $[0,1]$, то мы можем определить коэффициенты Фурье-Хаара
+\begin{equation}\label{Haar-Tcheb-eq3.3}
+f_{0,k}=\int_0^1f(t)\chi_k(t)dt
+\end{equation}
+ и ряд Фурье- Хаара
+\begin{equation}\label{Haar-Tcheb-eq3.4}
+f(x)=\sum_{k=1}^\infty f_{0,k}\chi_k(x).
+\end{equation}
+Через $Q_n(f,x)$ обозначим частичную сумму  Фурье-Хаара вида
+\begin{equation}\label{Haar-Tcheb-eq3.5}
+Q_n(f)=Q_n(f,x)=\sum_{k=1}^n f_{0,k}\chi_k(x).
+\end{equation}
+Хорошо известно \cite{Haar-Tcheb-KashSaak}, что если $p\ge1$ и  $f\in L^p(0,1)$, то
+\begin{equation}\label{Haar-Tcheb-eq3.6}
+\int\limits_0^1|f(x)-Q_n(f,x)|^pdx\to 0 \quad(n\to\infty).
+\end{equation}
+Далее рассмотрим весовую функцию $\rho=\rho(x)=(x(1-x))^{-\frac12}$, заданную на $(0,1)$.  Имеет место
+\begin{lemma}\label{haar-series-conv}
+Пусть $f\in L^1_\rho(0,1)$. Тогда $Q_n(f)$ сходится к $f$ в метрике пространства $L^1_\rho(0,1)$.  Другими словами, если $$\int_0^1{|f(x)|\over\sqrt{x(1-x)}}dx<\infty,$$
+то
+\begin{equation}\label{Haar-Tcheb-eq3.7}
+I_n=\int_0^1{|f(x)-Q_n(f,x)|\over\sqrt{x(1-x)}}dx\to 0 \quad(n\to\infty).
+\end{equation}
+\end{lemma}
+
+\section{Ортонормированная по Соболеву система функций, порожденная функциями   Хаара}
+Положим $\varphi_k(x)=\chi_{k+1}(x)$ $(k=0,1,\ldots)$, и для каждого натурального $r$ мы определим систему функций $\{\mathcal{X}_{r,n}\}_{n=r}^\infty$ следующим образом:
+\begin{equation}\label{Haar-Tcheb-4.1}
+\mathcal{X}_{r,k+r}(x) =\frac{1}{(r-1)!}\int\limits_0^x(x-t)^{r-1}\varphi_k(x)dt, \quad k=0,1, 2, \ldots.
+\end{equation}
+ Кроме того, определим конечный набор функций
+  \begin{equation}\label{Haar-Tcheb-4.2}
+\mathcal{X}_{r,n}(x) =\frac{x^n}{n!}, \quad n=0,1,\ldots, r-1.
+\end{equation}
+
+   Пусть $W^r_{L^2(0,1)}$ --  пространство Соболева с  $L^2(0,1)=L^2_\rho(0,1)$, а $\rho=\rho(x) \equiv 1$. Из теоремы \ref{completeness} непосредственно вытекает
+ \begin{corollary}
+   Система $\{\mathcal{X}_{r,n}(x)\}_{n=0}^\infty$, порожденная системой Хаара $\{\chi_{n}(x)\}_{n=1}^\infty$ посредством равенств \eqref{Haar-Tcheb-4.1} и \eqref{Haar-Tcheb-4.2}, полна  в $W^r_{L^2(0,1)}$ и ортонормирована относительно скалярного произведения
+ \begin{equation}\label{Haar-Tcheb-4.3}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_{0}^{1} f^{(r)}(t)g^{(r)}(t) dt.
+\end{equation}
+ \end{corollary}
+
+Ряд Фурье по системе $\{\mathcal{X}_{r,n}(x)\}_{n=0}^\infty$ имеет следующий вид (см. \eqref{Haar-Tcheb-1.7})
+  \begin{equation}\label{Haar-Tcheb-4.4}
+f(x)\sim \sum_{n=0}^{r-1} f^{(n)}(0)\frac{x^n}{n!}+ \sum_{n=r}^\infty f_{r,n}\mathcal{X}_{r,n}(x),
+\end{equation}
+где
+  $$
+ f_{r,n}=\int_0^1 f^{(r)}(t)\varphi_{n-r}(t)dt=\int_0^1 f^{(r)}(t) \chi_{n-r+1}(t)dt.
+$$
+Используя обозначения, отличные от принятых в настоящей работе, в \cite{Haar-Tcheb-Shar19}  получено  следующее представление для функций $\mathcal{X}_{r,n}(x)$, определенных равенством \eqref{Haar-Tcheb-4.1}
+ ($n=2^k+i$, $i=1,2,\ldots,2^k $, $k=0,1,\ldots$ )
+  \begin{equation}\label{Haar-Tcheb-4.5}
+ \mathcal{X}_{r,n+r-1}(x)=\frac{2^{\frac{k}{2}}}{r!}
+ \begin{cases} 0,&\text{$0\le x\le\frac{i-1}{2^k}$;}\\
+ (x-\frac{i-1}{2^k})^r,&\text{$\frac{i-1}{2^k}\le x\le \frac{2i-1}{2^{k+1}}$;}\\
+ (x-\frac{i-1}{2^k})^r-2(x-\frac{2i-1}{2^{k+1}})^r,&\text{$\frac{2i-1}{2^{k+1}}\le x\le \frac{i}{2^{k}}$;}\\
+  (x-\frac{i-1}{2^k})^r-2(x-\frac{2i-1}{2^{k+1}})^r+(x-\frac{i}{2^{k}})^r, &\text{$\frac{i}{2^{k}}\le x\le1$}
+   \end{cases}
+  \end{equation}
+ и, как следствие, доказано, что
+   \begin{equation}\label{Haar-Tcheb-4.6}
+ \mathcal{X}_{r,n+r-1}(x)=\frac{2^{k/2}}{r!}\Delta^2_\frac{1}{2^{k+1}}(x-t)^r_+
+ \big|_{t=\frac{i-1}{2^k}},
+\end{equation}
+где $\Delta^2_h g(t)$ -- конечная разность второго порядка с шагом $h$,
+$$
+a_+^r=\begin{cases}a^r,&\text{если $a\ge0$,}\\0, &\text{если $a<0$.}   \end{cases}
+$$
+Используя свойства \eqref{Haar-Tcheb-4.5} и \eqref{Haar-Tcheb-4.6}, в цитированной выше работе  \cite{Haar-Tcheb-Shar19} исследованы аппроксимативные свойства частичных сумм  ряда \eqref{Haar-Tcheb-4.4} следующего вида
+\begin{equation}\label{Haar-Tcheb-4.7}
+ Y_{r,N}(f,x)=\sum_{n=0}^{r-1} f^{(n)}(0)\frac{x^n}{n!}+ \sum_{n=r}^{N} f_{r,n}\mathcal{X}_{r,n}(x)
+ \end{equation}
+ для функций $f$ из  классов  $W^r_{L^p(0,1)}$ с $p=1$ и $p=2$ . В частности, для $f\in W^r_{L(0,1)}$ получены следующие оценки
+  \begin{equation}\label{Haar-Tcheb-4.8}
+ |f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)|\le \frac{x^{r-1-\nu}}{(r-1-\nu)!}\omega_2(f^{(r-1)},\frac{1}{N-r+1}), \quad 0\le x\le1,
+ \end{equation}
+  \begin{equation}\label{Haar-Tcheb-4.9}
+ |f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)|\le \frac{x^{r-1-\nu}}{(r-1-\nu)!}\eta(f^{(r)},\frac{1}{N-r+1}), \quad 0\le x\le1,
+ \end{equation}
+ где $0\le \nu\le r-1$,
+ $$
+\omega_2(g,\delta)=\sup_{0\le h\le\delta,\atop h\le x\le 1-h}|g(x+h)+g(x-h)-2g(x)|,
+$$
+$$
+\eta(g,\delta)=\sup_{0\le h\le\delta,\atop h\le x\le 1-h}\left|\int_0^h[g(x+t)-g(x+t-h)]dt\right|.
+$$
+
+В качестве следствия неравенства \eqref{Haar-Tcheb-4.9} в \cite{Haar-Tcheb-Shar19} показано, что если $f^{(r)}(x)$ удовлетворяет условию Липшица
+$
+|f^{(r)}(x)-f^{(r)}(y)|\le M|x-y|^\alpha, x,y\in[0,1], 0< \alpha\le1,
+$
+то имеет место неравенство ($0\le\nu\le r-1$)
+\begin{equation}\label{Haar-Tcheb-4.10}
+ |f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)|\le \frac{Mx^{r-1-\nu}}{(r-1-\nu)!}(N-r+1)^{-1-\alpha}, \quad 0\le x\le1. \end{equation}
+Для $\nu=r-1$ неравенство \eqref{Haar-Tcheb-4.8}  приобретает следующий вид
+\begin{equation}\label{Haar-Tcheb-4.11}
+ |f^{(r-1)}(x)-Y_{r,N}^{(r-1)}(f,x)|\le \omega_2(f^{(r-1)},\frac{1}{N-r+1}).
+ \end{equation}
+
+Заметим, что из \eqref{Haar-Tcheb-1.12} вытекают следующие равенства
+$(Y_{r,N}(f,x))^{(\nu)}_{x=0}=f^{(\nu)}(0)$ $ (0\le\nu\le r-1)$, однако оценка \eqref{Haar-Tcheb-4.11} не учитывает этого обстоятельства в том смысле, что величина $\omega_2(f^{(r-1)},\frac{1}{N-r+1})$ не зависит от переменной $x$ (и не стремится к нулю при $x\to0$). В связи с этим возникает задача о получении такой оценки величины $|f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)|$, которая учитывает тот факт, что $$\lim_{x\to0}|f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)|=0.$$
+Рассмотрим предварительно случай $\nu=r-1$.
+Пусть $f\in W^r_{L_\rho(0,1)}$, $g(x)=f^{(r-1)}(x)$. Тогда, очевидно, $g\in W^1_{L_\rho(0,1)}$, поэтому в силу равенства
+ \begin{equation}\label{Haar-Tcheb-4.12}
+ (Y_{1,N-r+1}(f,x))'=Q_{N-r+1}(f',x),
+ \end{equation}
+которое в силу \eqref{Haar-Tcheb-1.5}, \eqref{Haar-Tcheb-4.7} и \eqref{Haar-Tcheb-eq3.5} справедливо для $f\in W^1_{L(0,1)}$  при почти всех $x\in (0,1)$,    мы можем записать
+\begin{equation}\label{Haar-Tcheb-eq4.13}
+g(x)-Y_{1,N-r+1}(g,x)=\int_0^x [g'(t)- Q_{N-r+1}(g',t)]dt.
+\end{equation}
+Пусть $n=N-r+1=2^k+i$, $1\le i\le 2^k$. Тогда мы можем воспользоваться следующим равенством \cite{Haar-Tcheb-KashSaak}
+\begin{equation}\label{Haar-Tcheb-eq4.14}
+Q_n(f,x)=\begin{cases} Q_{2^{k+1}}(f,x), &\text{$x\in[0,\frac{i}{2^k})$,}\\
+ Q_{2^{k}}(f,x), &\text{$x\in(\frac{i}{2^k},1]$.}
+\end{cases}
+\end{equation}
+Рассмотрим три случая: 1) $x\in[0,\frac{i}{2^k})$;
+2) $x\in(\frac{i}{2^k},1)$; 3) $x=\frac{i}{2^k}$ или $x=1$. Если $x\in[0,\frac{i}{2^k})$, то через $s_x$ обозначим такое натуральное число, для которого $x\in [\frac{s_x}{2^{k+1}},\frac{s_x+1}{2^{k+1}}) $.
+Тогда из \eqref{Haar-Tcheb-eq4.13} имеем
+$$
+g(x)-Y_{1,N-r+1}(g,x)=\sum_{s=1}^{s_x} \int_{\Delta_{k+1}^s}\left[g'(t)-2^{k+1}\int_{\Delta_{k+1}^s}g'(\tau)d\tau \right]dt+
+$$
+$$
+\int_{\frac{s_x}{2^{k+1}}}^x \left[g'(t)-2^{k+1}\int_{\Delta_{k+1}^{s_x+1}}g'(\tau)d\tau \right]dt=
+$$
+$$
+\sum_{s=1}^{s_x}\left[\int_{\Delta_{k+1}^s}g'(t)-2^{k+1}\int_{\Delta_{k+1}^s}
+\int_{\Delta_{k+1}^s}g'(\tau)d\tau \right]dt+
+$$
+$$
+g(x)-g(\frac{s_x}{2^{k+1}})-2^{k+1}(x-\frac{s_x}{2^{k+1}})\left[g(\frac{s_x+1}{2^{k+1}})-g(\frac{s_x}{2^{k+1}}) \right].
+$$
+Отсюда для $x\in[0,\frac{i}{2^k})$ находим
+$$
+g(x)-Y_{1,N-r+1}(g,x)=
+$$
+\begin{equation}\label{Haar-Tcheb-eq4.15}
+g(x)-g(\frac{s_x}{2^{k+1}})-2^{k+1}
+(x-\frac{s_x}{2^{k+1}})\left[g(\frac{s_x+1}{2^{k+1}})-g(\frac{s_x}{2^{k+1}}) \right]=\Gamma_n^1(g,x).
+\end{equation}
+Перейдем к случаю $x\in(\frac{i}{2^k},1)$ и обозначим через $j_x$  такое натуральное число, для которого $x\in [\frac{j_x}{2^{k+1}},\frac{j_x+1}{2^{k+1}}) $. В силу \eqref{Haar-Tcheb-eq4.13} имеем
+\begin{equation}\label{Haar-Tcheb-eq4.16}
+g(x)-Y_{1,N-r+1}(g,x)=U_1+U_2,
+\end{equation}
+где
+$$
+U_1=\int_0^\frac{i}{2^k} [g'(t)- Q_{n}(g',t)]dt=\int_0^\frac{2i}{2^{k+1}} [g'(t)dt- Q_{n}(g',t)]dt=
+$$
+\begin{equation}\label{Haar-Tcheb-eq4.17}
+\sum_{s=1}^{2i}\left[\int_{\Delta_{k+1}^s}g'(t)dt- \int_{\Delta_{k+1}^s}2^{k+1}\int_{\Delta_{k+1}^s}g'(\tau)d\tau dt\right]=0,
+\end{equation}
+$$
+U_2=\int_\frac{i}{2^k}^x [g'(t)- Q_{n}(g',t)]dt=\int_\frac{i}{2^k}^\frac{j_x}{2^k} [g'(t)dt- Q_{n}(g',t)]dt+
+$$
+$$
+\int_\frac{j_x}{2^k}^x [g'(t)- Q_{n}(g',t)]dt=\int_\frac{j_x}{2^k}^x g'(t)dt-\int_\frac{j_x}{2^k}^x  Q_{2^k}(g',t)dt=
+$$
+\begin{equation}\label{Haar-Tcheb-eq4.18}
+ g(x)-g(\frac{j_x}{2^k})-2^k(x-\frac{j_x}{2^k})[g(\frac{j_x+1}{2^k})-g(\frac{j_x}{2^k})].
+\end{equation}
+
+В третьем случае, когда $x=\frac{i}{2^k}$ или $x=1$, нетрудно увидеть, что
+\begin{equation}\label{Haar-Tcheb-eq4.19}
+ g(x)-Y_{1,N-r+1}(g,x)=0.
+ \end{equation}
+Из \eqref{Haar-Tcheb-eq4.16}- \eqref{Haar-Tcheb-eq4.19} находим для $x\in[\frac{i}{2^k},1]$
+\begin{equation}\label{Haar-Tcheb-eq4.20}
+ g(x)-Y_{1,N-r+1}(g,x)=
+ g(x)-g(\frac{j_x}{2^k})-2^k(x-\frac{j_x}{2^k})[g(\frac{j_x+1}{2^k})-g(\frac{j_x}{2^k})]=
+ \Gamma_n^2(g,x).
+ \end{equation}
+
+ Для $n=N-r+1=2^k+i$ введем в рассмотрение следующую функцию
+ \begin{equation}\label{Haar-Tcheb-eq4.21}
+ \Gamma_n(g,x)=\begin{cases}
+ \Gamma_n^1(g,x), &\text{$x\in[0,\frac{i}{2^k})$},\\
+ \Gamma_n^2(g,x), &\text{$x\in[\frac{i}{2^k},1]$},
+  \end{cases}
+ \end{equation}
+где функции $\Gamma_n^1(g,x)$ и $\Gamma_n^2(g,x)$ определены с помощью равенств \eqref{Haar-Tcheb-eq4.15} и \eqref{Haar-Tcheb-eq4.20}.
+Тогда из \eqref{Haar-Tcheb-eq4.15}, \eqref{Haar-Tcheb-eq4.20} -- \eqref{Haar-Tcheb-eq4.21} нетрудно увидеть, что
+ \begin{equation}\label{Haar-Tcheb-eq4.22}
+ |\Gamma_n(g,x)|\le \begin{cases}\omega\left(g,x-\frac{s_x}{2^{k+1}}\right)+2^{k+1}
+(x-\frac{s_x}{2^{k+1}})\omega\left(g,2^{-k-1}\right),&\text{$x\in[0,\frac{i}{2^k})$,}\\
+\omega\left(g,x-\frac{j_x}{2^{k}}\right)+2^{k}
+(x-\frac{j_x}{2^{k}})\omega\left(g,2^{-k}\right),&\text{$x\in[\frac{i}{2^k},1]$},
+\end{cases}
+ \end{equation}
+где
+$$
+\omega(g,\delta)=\max_{x,y\in[0,1],|x-y|\le\delta}|g(x)-g(y)|
+$$
+-- модуль непрерывности функции $g(x)$.
+Таким образом, в случае $\nu=r-1$ задача об оценке отклонения $|g(x)-Y_{1,N-r+1}(g,x)|$, учитывающей его поведение при приближении переменной $x$ к $0$, полностью решена с помощью точных равенств  \eqref{Haar-Tcheb-eq4.15} и \eqref{Haar-Tcheb-eq4.20} и неравенства \eqref{Haar-Tcheb-eq4.22}.
+При исследовании этой задачи при $0\le\nu\le r-2$ нам понадобится следующая величина
+ \begin{equation}\label{Haar-Tcheb-eq4.23}
+ \gamma_n(g,x)=\max_{0\le t\le x}|\Gamma_n(g,t)|,
+ \end{equation}
+ поведение которой при $n\to\infty$  мы рассмотрим позже. Но уже сейчас заметим, что, как это непосредственно вытекает из \eqref{Haar-Tcheb-eq4.22} и  \eqref{Haar-Tcheb-eq4.23}, имеет место предельное соотношение $\lim_{x\to0}\gamma_n(g,x)=0$.
+
+    Переходя к задаче об оценке разности $f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)$, мы отметим предварительно  дальнейшие свойства    частичных сумм $Y_{r,N}(f,x)$. Из \eqref{Haar-Tcheb-1.5} и  \eqref{Haar-Tcheb-4.7} следует, что
+\begin{equation}\label{Haar-Tcheb-4.24}
+ Y_{r,N}^{(\nu)}(f,x)=\sum_{k=0}^{r-1-\nu} f^{(k)}(0)\frac{x^k}{k!}+ \sum_{k=r-\nu}^{N-\nu} f_{r-\nu,k}^{(\nu)}\mathcal{X}_{r-\nu,k}(x)=Y_{r-\nu,N-\nu}(f^{(\nu)},x).
+ \end{equation}
+ Кроме того в силу \eqref{Haar-Tcheb-1.12} $(Y_{r-\nu,N-\nu}(f^{(\nu)},x))^{(j)}_{x=0}-f^{(j)}(0)=0$ при  $0\le j\le r-\nu-2$,
+ поэтому, с учетом \eqref{Haar-Tcheb-4.24},
+ $$
+f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)= \frac{1}{(r-\nu-2)!}\int_0^x (x-t)^{r-\nu-2}(f^{(r-1)}(t)-Y_{r,N}^{(r-1)}(f,t))dt=
+$$
+  \begin{equation}\label{Haar-Tcheb-4.25}
+\frac{1}{(r-\nu-2)!}\int_0^x (x-t)^{r-\nu-2}(f^{(r-1)}(t)-Y_{1,N-r+1}(f^{(r-1)},t))dt.
+ \end{equation}
+Подставим в \eqref{Haar-Tcheb-4.25} вместо $f^{(r-1)}(t)-Y_{1,N-r+1}(f^{(r-1)},t)$  функцию $\Gamma_n(g,x)$, определенную равенством \eqref{Haar-Tcheb-eq4.21}, в котором $n=N-r+1=2^k+i$.  Это дает
+ \begin{equation}\label{Haar-Tcheb-4.26}
+f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)=\frac{1}{(r-\nu-2)!}\int_0^x (x-t)^{r-\nu-2}\Gamma_n(f^{(r-1)},t)dt.
+ \end{equation}
+Из \eqref{Haar-Tcheb-eq4.23} и \eqref{Haar-Tcheb-4.26} выводим следующее неравенство $(n=N-r+1=2^k+i)$
+$$
+|f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)|\le \frac{1}{(r-\nu-2)!}\int_0^x (x-t)^{r-\nu-2}|\Gamma_n(f^{(r-1)},t)|dt
+$$
+\begin{equation}\label{Haar-Tcheb-4.27}
+\le\frac{x^{r-\nu-1}}{(r-\nu-1)!}\gamma_n(f^{(r-1)},x),
+ \end{equation}
+в котором  величина $\gamma_n(f^{(r-1)},x)$,   как уже отмечалось, стремится к нулю вместе с переменной  $x$. Нам остается рассмотреть поведение этой величины при $n\to\infty$.
+С этой целью заметим, что для произвольного интервала $(a,b)\subset(0,1)$ и произвольной непрерывной на $[0,1]$ функции $g(x)$ имеет место (см. \cite{Haar-Tcheb-KashSaak}, стр. 208)  неравенство
+\begin{equation}\label{Haar-Tcheb-4.28}
+J=\max_{x\in[a,b]}|g(x)-l(x)|\le\omega_2\left(g,\frac{b-a}{2}\right),
+\end{equation}
+где $l(x)=g(a)+\frac{g(b)-g(a)}{b-a}(x-a)$, $x\in[0,1]$. Положим $n=N-r+1=2^k+i$ и применим неравенство \eqref{Haar-Tcheb-4.28}
+к интервалу $\Delta_k^{j_x+1}$ и разности $g(x)-l(x)$, где
+$$
+l(x)=g(\frac{j_x}{2^k})+2^k(x-\frac{j_x}{2^k})[g(\frac{j_x+1}{2^k})-g(\frac{j_x}{2^k})].
+$$
+Это дает
+\begin{equation}\label{Haar-Tcheb-4.29}
+|\Gamma_n^2(g,x)|=|g(x)-l(x)|\le \omega_2\left(g,\frac{1}{2^{k+1}}\right), \quad x\in[\frac{i}{2^k},1].
+\end{equation}
+Совершенно аналогично находим
+\begin{equation}\label{Haar-Tcheb-4.30}
+|\Gamma_n^1(g,x)|\le \omega_2\left(g,\frac{1}{2^{k+2}}\right), \quad x\in[0,\frac{i}{2^k}].
+\end{equation}
+Сопоставляя  \eqref{Haar-Tcheb-4.29} и \eqref{Haar-Tcheb-4.30} с \eqref{Haar-Tcheb-eq4.21}, мы получаем для $g=f^{(r-1)}$ оценку
+\begin{equation}\label{Haar-Tcheb-4.31}
+|\Gamma_n(f^{(r-1)},x)|\le \omega_2\left(f^{(r-1)},\frac{1}{n}\right), \quad x\in[0,1].
+\end{equation}
+Из \eqref{Haar-Tcheb-eq4.23} и \eqref{Haar-Tcheb-4.31}, в свою очередь, выводим
+\begin{equation}\label{Haar-Tcheb-4.32}
+|\gamma_n(f^{(r-1)},x)|\le \omega_2\left(f^{(r-1)},\frac{1}{n}\right), \quad x\in[0,1].
+\end{equation}
+
+В случае, когда  функция $f^{(r-1)}(x)$ является абсолютно непрерывной на $[0,1]$, величины $\omega_2\left(f^{(r-1)},\delta\right)$  и $\eta\left(f^{(r)},\delta\right)$ (см.\eqref{Haar-Tcheb-4.8} и \eqref{Haar-Tcheb-4.9}) совпадают, т.е. $$\omega_2\left(f^{(r-1)},\delta\right)=\eta\left(f^{(r)},\delta\right),$$
+ поэтому вместо \eqref{Haar-Tcheb-4.31} и \eqref{Haar-Tcheb-4.32} можно использовать также неравенства
+\begin{equation}\label{Haar-Tcheb-4.33}
+|\Gamma_n(f^{(r-1)},x)|\le \eta\left(f^{(r)},\frac{1}{n}\right),\quad |\gamma_n(f^{(r)},x)|\le \eta\left(f^{(r)},\frac{1}{n}\right).
+\end{equation}
+
+
+
+
+Подводя итоги, мы можем сформулировать следующий результат.
+
+\begin{theorem}\label{mixed-haar-est}
+Пусть $r\ge1$ $f\in W^r_{L(0,1)}$, $n=N-r+1=2^k+i$.  Тогда имеют место следующие оценки
+$$
+|f^{(r-1)}(x)-Y_{r,N}^{(r-1)}(f,x)| \le |\Gamma_n(f^{(r-1)},x)|,
+$$
+$$
+|f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)| \le\frac{x^{r-\nu-1}}{(r-\nu-1)!}\gamma_n(f^{(r-1)},x),\quad  0\le\nu\le r-2,
+$$
+в которых для функции $\Gamma_n(f^{(r-1},x)$  справедливы неравенства \eqref{Haar-Tcheb-eq4.22} и \eqref{Haar-Tcheb-4.31}, а для функции $\gamma_n(f^{(r-1)},x)$ верно неравенство   \eqref{Haar-Tcheb-4.32}.
+\end{theorem}
+
+
+
+
+
+
+
+Из леммы \ref{haar-series-conv}  и равенства  \eqref{Haar-Tcheb-4.12} вытекает справедливость следующего  утверждения.
+
+\begin{lemma}\label{haar-series-deriv-conv}
+Пусть $\rho=\rho(x)=(x(1-x))^{-\frac12}$,   $f\in W^1_{L_\rho(0,1)}$.
+Тогда
+\begin{equation*}
+\int_0^1{|f'(x)-(Y_{1,N}(f,x))'|\over\sqrt{x(1-x)}}dx\to 0 \quad(N\to\infty).
+\end{equation*}
+\end{lemma}
+Из леммы \ref{haar-series-deriv-conv} и теоремы \ref{mixed-haar-est}, в свою очередь, выводим следующий результат, который нам понадобится при исследовании задачи о равномерной сходимости ряда Фурье по полиномам, ортогональным по Соболеву, порожденным полиномами Чебышева первого рода.
+
+
+\begin{proposition}\label{mixed-metric-conv}%Предложение 4.1.
+Пусть $\rho=\rho(x)=(x(1-x))^{-\frac12}$,   $f\in W^1_{L_\rho(0,1)}$. Тогда
+$$
+\max_{0\le x\le1}|f(x)-Y_{1,N}(f,x)|+
+\int_0^1{|f'(x)-(Y_{1,N}(f,x))'|\over\sqrt{x(1-x)}}dx\to 0 \quad(N\to\infty).
+$$
+\end{proposition}
+
+\chapter{Система полиномов, ортогональных по Соболеву и порожденных полиномами Якоби}
+%\section{Введение}
+При исследовании вопросов сходимости рассматриваемых рядов непосредственно возникает, как это всегда и бывает в теории ортогональных полиномов, задача об изучении поведения самих полиномов $p_{r,n}(x)$ при $n\to\infty$. С вычислительной точки зрения важно также знание таких свойств этих полиномов, как рекуррентные соотношения, которыми связаны эти полиномы между собой,  явное их представление посредством элементарных или классических специальных функций. В данном параграфе предпринята попытка получить ответы на эти вопросы. Касаясь особенностей рядов Фурье по системе полиномов $p_{r,k}(x)$ $(k=0,1,\ldots)$, прежде всего следует выделить одно важное свойство их частичных сумм вида
+\begin{equation}\label{sob-leg-1.2}
+\mathcal{Y}_{r,n}(f,x)=\sum_{k=0}^{n}<f,p_{r,k}>p_{r,k}(x),
+\end{equation}
+заключающееся в том, что если исходная функция $f(x)$ непрерывно дифференцируема $r-1$-раз
+и $f^{(r-1)}(x)$ абсолютно непрерывна  на $[-1,1]$, то $\mathcal{Y}_{r,n}(f,x)$ $r$-кратно совпадает с $f(x)$ в концах $-1$ и $1$, т. е.
+$(\mathcal{Y}_{r,n}(f,x))^{(\nu)}(\pm1)=f^{(\nu)}(\pm1)$ при $\nu=0,\ldots,r-1$. Это очень важное свойство, которое в сочетании с хорошими аппроксимативными свойствами сумм Фурье
+$\mathcal{Y}_{r,n}(f,x)$ делает их весьма эффективным инструментом приближенного решения краевых задач для обыкновенных дифференциальных уравнений спектральными методами.   Заметим при этом, что суммы Фурье по классическим ортогональным полиномам этим важным свойством не обладают.
+
+На протяжении всей работы существенно будет использован аппарат теории общих полиномов Якоби (не только ортогональных). Поэтому мы соберем для удобства ссылок в следующем параграфе необходимые сведения об этих полиномах.
+
+Основной целью настоящего параграфа является получение различных выражений для полиномов $p_{r,k}(x)$, ортогональных по Соболеву относительно скалярного произведения \eqref{Haar-Tcheb-1.17} и порожденных полиномами Якоби $p^{\alpha,\beta}_{k}(x)$ посредством  равенства \eqref{Haar-Tcheb-1.18}. Эти результаты используются  при изучении асимптотических свойств полиномов $p_{r,k}(x)$ при $x\in[-1,1]$ и $n\to\infty$ и аппроксимативных свойств рядов Фурье по ним.
+
+\section{Некоторые сведения о полиномах Якоби}
+При изучении свойств полиномов, ортогональных по Соболеву, порожденных полиномами Чебышева первого рода $T_n(x)=\cos(n\arccos x)$, нам понадобится ряд свойств классических полиномов Якоби.  Для произвольных действительных $\alpha$ и $\beta$ полиномы Якоби  $P_n^{\alpha,\beta}(x)$ можно определить \cite{Haar-Tcheb-Sege}  с помощью формулы Родрига
+ \begin{equation}\label{Haar-Tcheb-eq5.1}
+P_n^{\alpha,\beta}(x) = {(-1)^n\over2^nn!}{1\over\rho(x)}{d^n\over
+dx^n} \left\{\rho(x)\sigma^n(x)\right\},
+\end{equation}
+где  $\rho(x)=\rho(x;\alpha,\beta) =
+(1-x)^\alpha(1+x)^\beta,\,\,\sigma(x)=1-x^2$. Если
+$\alpha,\beta>-1$, то полиномы Якоби образуют ортогональную
+систему с весом $\rho(x)$, т.е.
+\begin{equation}\label{Haar-Tcheb-eq5.2}
+\int_{-1}^1P_n^{\alpha,\beta}(x)P_m^{\alpha,\beta}(x)\rho(x)dx =
+h_n^{\alpha,\beta}\delta_{nm},
+\end{equation}
+где
+\begin{equation}\label{Haar-Tcheb-eq5.3}
+h_n^{\alpha,\beta} =
+{\Gamma(n+\alpha+1)\Gamma(n+\beta+1)2^{\alpha+\beta+1} \over
+n!\Gamma(n+\alpha+\beta+1)(2n+\alpha+\beta+1)}.
+\end{equation}
+Нам понадобятся еще следующие свойства полиномов Якоби~\cite{Haar-Tcheb-Sege}, \cite{Haar-Tcheb-Gasper}:
+
+
+\begin{equation}\label{Haar-Tcheb-eq5.4}
+{d\over dx}P_n^{\alpha,\beta}(x) =
+{1\over2}(n+\alpha+\beta+1)P_{n-1}^{\alpha+1,\beta+1}(x),
+\end{equation}
+\begin{equation}\label{Haar-Tcheb-eq5.5}
+{d^\nu\over dx^\nu}P_n^{\alpha,\beta}(x) =
+{(n+\alpha+\beta+1)_\nu\over2^\nu} P_{n-\nu}^{\alpha+\nu,\beta+\nu}(x),
+\end{equation}
+где $(a)_0=1$, $(a)_\nu=a(a+1)\dots(a+\nu-1)$, $a^{[0]}=1$,
+
+ \begin{equation}\label{Haar-Tcheb-eq5.6}
+ {n\choose l}P_n^{\alpha,-l}(x)= {n+\alpha\choose
+l}\left({x+1\over2}\right)^lP_{n-l}^{\alpha,l}(x),
+     \quad 1\le l \le n,
+\end{equation}
+\begin{equation}\label{Haar-Tcheb-eq5.7}
+P_n^{\alpha,\beta}(t) ={n+\alpha\choose n}
+\sum_{k=0}^n{(-n)_k(n+\alpha+\beta+1)_k\over k!(\alpha+1)_k}
+\left({1-t\over 2}\right)^k,
+\end{equation}
+\begin{equation}\label{Haar-Tcheb-eq5.8}
+(1-x)^\alpha(1+x)^\beta P_n^{\alpha,\beta}(x)
+={(-1)^m\over2^mn^{[m]}}{d^m\over dx^m}
+\left\{(1-x)^{m+\alpha}(1+x)^{m+\beta} P_{n-m}^{m+\alpha,m+\beta}(x)
+\right\},
+\end{equation}
+где $k^{[0]}=1$, $k^{[r]}=k(k-1)\dots(k-r+1)$,
+\begin{equation}\label{Haar-Tcheb-eq5.9}
+P_n^{\alpha,\beta}(-1)=(-1)^n {n+\beta\choose n},\quad P_n^{\alpha,\beta}(1)= {n+\alpha\choose n},
+\end{equation}
+
+$$
+{P_n^{a,a}(x)\over P_n^{a,a}(1)}=\sum_{j=0}^{[n/2]}
+   { n!(\alpha+1)_{n-2j}(n+2a+1)_{n-2j}(1/2)_j(a-\alpha)_j
+    \over (n-2j)!(2j)!(a+1)_{n-2j}(n-2j+2\alpha+1)_{n-2j}}
+     $$
+\begin{equation}\label{Haar-Tcheb-eq5.10}
+    \times{1\over (n-2j+a+1)_j(n-2j+\alpha+3/2)_j}
+     {P_{n-2j}^{\alpha,\alpha}(x)\over
+P_{n-2j}^{\alpha,\alpha}(1)},
+\end{equation}
+где $[b]$ -- целая часть числа $b$,
+
+\textit{весовая оценка} $(1\le x\le1)$
+\begin{equation}\label{sob-jac-discrete-eq2.11}
+\sqrt{n}\left| P_n^{\alpha,\beta}(x)\right|\le c(\alpha,\beta)
+\left(\sqrt{1-x}+{1\over n}\right)^{-\alpha-{1\over2}}
+\left(\sqrt{1+x}+{1\over n}\right)^{-\beta-{1\over2}},
+\end{equation}
+где здесь и всюду в дальнейшем
+$c(\alpha),c(\alpha,\beta),c(\alpha,\beta,\dots,\gamma)$ означают
+положительные числа, зависящие лишь от указанных параметров, вообще
+говоря, различные в разных местах;
+
+\textit{асимптотическая формула}
+\begin{equation}\label{sob-jac-discrete-eq2.12}
+P_n^{\alpha,\beta}(\cos\theta)=n^{-1/2}
+\kappa(\theta)\left\{\cos(\lambda\theta+\gamma)+ {r_n(\theta)\over
+n\sin\theta}\right\},
+\end{equation}
+где $\alpha$, $\beta$ -- произвольные действительные числа,
+$$
+\kappa(\theta) =\kappa^{\alpha,\beta}(\theta)=
+\pi^{-1/2}\left(\sin{\theta\over2}\right)^{-\alpha-1/2}
+\left(\cos{\theta\over2}\right)^{-\beta-1/2},
+$$
+$$
+\lambda =\lambda^{\alpha,\beta}_n=
+n+{\alpha+\beta+1\over2},\quad\gamma = \gamma_\alpha= -\left(
+\alpha+{1\over2}\right){\pi\over2},
+$$
+а для остаточного члена $r_n(\theta)=r_n^{\alpha,\beta}(\theta)$
+имеет место оценка
+$$
+|r_n(\theta)|\le c(\alpha,\beta,\delta)\quad \left(0< {\delta\over
+n}\le\theta\le\pi-{\delta\over n}\right);
+$$
+\textit{формула Кристоффеля-Дарбу }
+$$
+ K_n^{\alpha,\beta}(x,y)=
+\sum_{k=0}^n{P_k^{\alpha,\beta}(x)P_k^{\alpha,\beta}(y)\over
+h_k^{\alpha,\beta}}=
+ $$
+\begin{equation}\label{sob-jac-discrete-eq2.13}
+ {2^{-\alpha-\beta}\over
+2n+\alpha+\beta+2} {\Gamma(n+2)\Gamma(n+\alpha+\beta+2)\over
+\Gamma(n+\alpha+1)\Gamma(n+\beta+1)}
+ {P_{n+1}^{\alpha,\beta}(x)P_n^{\alpha,\beta}(y)-
+P_n^{\alpha,\beta}(x)P_{n+1}^{\alpha,\beta}(y)\over x-y}.
+\end{equation}
+
+
+
+
+\begin{lemma} Пусть $\alpha>-1$, $k,r$ -- целые, $r\ge1$,
+     $k\ge r+1$. Тогда
+     $$
+P_{k+r}^{\alpha-r,\alpha-r}(x)=\sum_{j=0}^r\lambda_j^\alpha
+P_{k+r-2j}^{\alpha,\alpha}(x),
+     $$
+где
+     $$
+ \lambda_j^\alpha=\lambda_j^\alpha(r,k)=
+{(-1)^j(k-r+2\alpha+1)_{k+r-2j}(1/2)_jr^{[j]}
+     (\alpha+k)^{[j]}
+\over(k+r-2j+2\alpha+1)_{k+r-2j} (k+r-2j+\alpha+3/2)_j(2j)!}.
+     $$
+\end{lemma}
+
+\begin{lemma} Пусть  $k,r$ -- целые, $r\ge1$,
+     $k\ge r+1$. Тогда
+     $$
+P_{k+r}^{-\frac12-r,-\frac12-r}(x)=\sum_{j=0}^r\lambda_j^{-\frac12}(k,r)
+P_{k+r-2j}^{-\frac12,-\frac12}(x),
+     $$
+где
+$$
+ \lambda_j^{-\frac12}(k,r)=
+{(-1)^j(k-r)_{k+r-2j}(1/2)_jr^{[j]}
+     (k-1/2)^{[j]}
+\over(k+r-2j)_{k+r-2j} (k+r-2j+1)_j(2j)!}=
+$$
+\begin{equation}\label{Haar-Tcheb-eq5.11}
+(-1)^j{((k+r-2j)!)^22^{2k+2r-4j}\over(2(k+r-2j))!}
+{(2k)!\over(k!)^22^{2k+2r}}{r^{[j]}\over j!}
+{k^{[r+1]}\over(k+r-j)^{[r+1]}}.
+\end{equation}
+\end{lemma}
+
+Пусть $T_n(x)=\cos(n\arccos x)$ -- полином Чебышева первого рода. Тогда \cite{Haar-Tcheb-Sege}
+$$P_n^{-\frac{1}{2},-\frac{1}{2}}(x)=\frac{1\cdot3\cdot\ldots\cdot(2n-1)}
+{2\cdot4\cdot\ldots\cdot2n}T_n(x)=\frac{(2n)!}{2^{2n}{n!}^2}T_n(x)=$$
+\begin{equation}\label{Haar-Tcheb-eq5.12}
+=\frac{1}{\sqrt{\pi
+n}}(1+\sigma_n)T_n(x)\quad\left(\sigma_n=O\left(1/n\right)\right);
+\end{equation}
+Имеет место следующая
+
+\begin{lemma}\label{jacobi-repr}
+Пусть  $k,r$ -- целые, $r\ge1$,
+     $k\ge r+1$. Тогда
+ $$
+P_{k+r}^{-\frac12-r,-\frac12-r}(x)={(2k)!\over(k!)^22^{2k+2r}}\sum_{j=0}^r{(-1)^j\over j!}
+{r^{[j]}k^{[r+1]}\over(k+r-j)^{[r+1]}}T_{k+r-2j}(x).
+     $$
+\end{lemma}
+
+Пусть $A,B\in \mathbb{R} $,  $p\ge1$. Обозначим через $ L^p_{A,B}$ пространство измеримых функций $f=f(x)$,
+определенных на $[-1,1]$, для которых
+     $$
+\|f\|_{L^p_{A,B}}= \left(\int\limits_{-1}^1
+(1-x)^A(1+x)^B|f(x)|^pdx\right)^{1/p}.
+     $$
+Если $\alpha,\beta>-1$, $f\in  L^p_{\alpha,\beta}$, то мы можем определить коэффициенты
+     Фурье-Якоби
+          $$
+          f^{\alpha,\beta}_k={1\over h_k^{\alpha,\beta}}
+       \int\limits_{-1}^1(1-x)^\alpha(1+x)^\beta
+f(x)P_k^{\alpha,\beta}(x)dx
+          $$
+ и рассмотреть сумму Фурье-Якоби   по полиномам Якоби $P_k^{\alpha,\beta}(x)$:
+
+     $$
+S_n^{\alpha,\beta}(f)=S_n^{\alpha,\beta}(f,x)= \sum_{k=0}^n
+f_k^{\alpha,\beta} P_k^{\alpha,\beta}(x),
+     $$
+которая при $\alpha=\beta=-\frac12$ представляет собой  \cite{Haar-Tcheb-Sege} сумму Фурье по полиномам Чебышева $T_k(x)=\cos(k\arccos x)$.  В работе \cite{Haar-Tcheb-Muckenhoupt} доказана следующая
+
+ \textbf{Теорема M (Mackenhoupt).}
+
+Пусть $\alpha,\beta>-1$, $A,B\in\mathbb{R}$,  $p>1$ таковы, что
+$$
+\left|\frac{A+1}{p}-\frac{\alpha+1}{2}\right|<
+\min\left\{\frac{1}{4},\frac{\alpha+1}{2}\right\},
+$$
+$$
+\left|\frac{B+1}{p}-\frac{\beta+1}{2}\right|<\min\left\{\frac{1}{4},\frac{\beta+1}{2}\right\}.
+$$
+Тогда, если $f\in L^p_{A,B}$, то имеет место соотношение
+$$
+\lim_{n\to\infty}\|f-S_n^{\alpha,\beta}(f)\|_{L^p_{A,B}}=0.
+$$
+
+
+\section{Полиномы, порожденные многочленами Чебышева первого рода}
+    Полиномы Чебышева
+\begin{equation}\label{Haar-Tcheb-6.1}
+\frac{1}{\sqrt{2}},\quad T_k(x)=\cos(k\arccos x), \quad k=1,2,\ldots
+\end{equation}
+образуют ортонормированную  в $L_\rho^2(-1,1)$ с весом  $\rho(x)=\kappa(x)=\frac2\pi(1-x^2)^{-\frac12}$ систему. Как хорошо известно \cite{Haar-Tcheb-Sege}, система полиномов Чебышева \eqref{Haar-Tcheb-6.1} полна в $L_\kappa^2(-1,1)$.   Эта система порождает на $[-1,1]$ систему полиномов $T_{r,k}(x)$ $(k=0,1,\ldots)$, определенных равенствами
+
+  \begin{equation}\label{Haar-Tcheb-6.2}
+T_{r,k}(x) =\frac{(x+1)^k}{k!}, \quad k=0,1,\ldots, r-1,
+\end{equation}
+
+  \begin{equation}\label{Haar-Tcheb-6.3}
+ T_{r,r}(x) =\frac{(x+1)^r}{\sqrt{2}r!},\quad T_{r,r+k}(x) =\frac{1}{(r-1)!}\int\limits_{-1}^x(x-t)^{r-1}T_k(t)dt, \, k=1,2\ldots.
+\end{equation}
+Из теоремы \ref{completeness} непосредственно вытекает
+\begin{corollary}
+  Система полиномов $\{T_{r,k}(x)\}_{k=0}^\infty$, порожденная системой ортонормированных полиномов Чебышева \eqref{Haar-Tcheb-6.1} посредством равенств \eqref{Haar-Tcheb-6.2} и \eqref{Haar-Tcheb-6.3}, полна  в $W^r_{L^2_\kappa(-1,1)}$ и ортонормирована относительно скалярного произведения
+\begin{equation}\label{Haar-Tcheb-6.4}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(-1)g^{(\nu)}(-1)+\int_{-1}^{1} f^{(r)}(t)g^{(r)}(t)\kappa(t) dt.
+\end{equation}
+\end{corollary}
+
+Ряд Фурье \eqref{Haar-Tcheb-1.7} для системы   $\{T_{r,k}(x)\}_{k=0}^\infty$ приобретает вид
+\begin{equation}\label{Haar-Tcheb-6.5}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^\infty f_{r,k}T_{r,k}(x),
+\end{equation}
+где
+  \begin{equation}\label{Haar-Tcheb-6.6}
+f_{r,r}=\frac{1}{\sqrt{2}}\int_{-1}^1 f^{(r)}(t)\kappa(t)dt,\quad f_{r,r+j}=\int_{-1}^1 f^{(r)}(t)T_{j}(t)\kappa(t)dt\quad(j\ge1).
+\end{equation}
+
+\begin{corollary}\label{mixed-tcheb-uni-conv}
+ Если $f(x)\in W^r_{L^2_\kappa(-1,1)}$, то ряд Фурье (смешанный ряд) \eqref{Haar-Tcheb-6.5} сходится к функции $f(x)$ равномерно относительно $x\in[-1,1]$.
+\end{corollary}
+
+В дальнейшем мы значительно усилим утверждение следствия \ref{mixed-tcheb-uni-conv}, распространив его на более широкие, чем $W^r_{L^2_\kappa(-1,1)}$ классы Соболева $W^r_{L^{p}_\kappa(-1,1)}$ с показателем $p$. Но для этого нам нужны дальнейшие свойства полиномов $T_{r,k}(x)$, определенных равенствами \eqref{Haar-Tcheb-6.2} и \eqref{Haar-Tcheb-6.3}.
+
+Пусть $\alpha=\beta=-\frac{1}{2}$. Тогда $\lambda=\alpha+\beta=-1$ и если $(k-1)^{[r]}\neq0$, то мы можем воспользоваться равенством \eqref{Haar-Tcheb-eq5.5} и записать
+\begin{equation}\label{Haar-Tcheb-6.7}
+P^{-\frac{1}{2},-\frac{1}{2}}_k(t)={2^r \over (k-1 )^{[r]}}\frac{d^r}{dt^r}P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(t).
+\end{equation}
+ Если  $k\ge r+1$, то, очевидно, $(k-1)^{[r]}\neq0$ и для таких $k$ мы
+можем  воспользоваться равенством \eqref{Haar-Tcheb-6.7}. Итак, пусть $(k-1)^{[r]}\neq0$. Тогда в силу  \eqref{Haar-Tcheb-6.7}
+$$
+\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}P_k^{-\frac{1}{2},-\frac{1}{2}}(t)\,dt=
+$$
+$$
+\frac{2^r}{(k-1)^{[r]}}\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}
+\frac{d^r}{dt^r}P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(t)\,dt=
+$$
+\begin{equation}\label{Haar-Tcheb-6.8}
+\frac{2^r}{(k-1)^{[r]}}\left[P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(x)-\sum^{r-1}_{\nu=0}
+\frac{(1+x)^\nu}{\nu!}\left\{P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(t)
+\right\}_{t=-1}^{(\nu)}\right].
+\end{equation}
+ Далее, в силу \eqref{Haar-Tcheb-eq5.5}
+ \begin{equation}\label{Haar-Tcheb-6.9}
+\left\{P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(t)\right\}^{(\nu)}=
+\frac{(k-r)_\nu}{2^\nu}P_{k+r-\nu}^{-\frac{1}{2}+\nu-r,-\frac{1}{2}+\nu-r}(t),
+\end{equation}
+а из \eqref{Haar-Tcheb-eq5.9} имеем
+$$P_{k+r-\nu}^{-\frac{1}{2}+\nu-r,-\frac{1}{2}+\nu-r}(-1)=(-1)^{k+r-\nu}{k-\frac{1}{2}\choose k+r-\nu}=$$
+\begin{equation}\label{Haar-Tcheb-6.10}
+\frac{(-1)^{k+r-\nu}\Gamma(k+\frac{1}{2})}{\Gamma(\nu-r+\frac{1}{2})(k+r-\nu)!}.
+\end{equation}
+Из \eqref{Haar-Tcheb-6.9}  и \eqref{Haar-Tcheb-6.10} находим
+\begin{equation}\label{Haar-Tcheb-6.11}
+\left\{P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(t)\right\}_{t=-1}^{(\nu)}=
+\frac{(-1)^{k+r-\nu}\Gamma(k+\frac{1}{2})(k-r)_{\nu}}
+{\Gamma(\nu-r+\frac{1}{2})(k+r-\nu)!2^\nu}=A_{\nu,k,r}.
+\end{equation}
+Сопоставляя \eqref{Haar-Tcheb-6.8} и \eqref{Haar-Tcheb-6.11} мы можем записать
+$$\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}P_k^{-\frac{1}{2},-\frac{1}{2}}(t)\,dt=$$
+\begin{equation}\label{Haar-Tcheb-6.12}
+\frac{2^r}{(k-1)^{[r]}}\left[P_{k+r}^{-\frac{1}{2}-r,-\frac{1}{2}-r}(x)-\sum^{r-1}_{\nu=0}
+\frac{A_{\nu,k,r}}{\nu!}(1+x)^{\nu}\right].
+\end{equation}
+
+
+
+Из  \eqref{Haar-Tcheb-6.12},  \eqref{Haar-Tcheb-eq5.12} и \eqref{Haar-Tcheb-6.3}  имеем
+$$
+T_{r,r+k}(x)=\frac{1}{(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}T_k(t)\,dt=
+$$
+$$
+\frac{2^{2k}k!^2}{(2k)!(r-1)!}\int\limits^x_{-1}(x-t)^{r-1}P_k^{-\frac12,-\frac12}(t)\,dt=
+$$
+\begin{equation}\label{Haar-Tcheb-6.13}
+\frac{k!^2}{(2k)!}
+\frac{2^{r+2k}}{(k-1)^{[r]}}\left[P_{k+r}^{-\frac12-r,-\frac12-r}(x)-\sum^{r-1}_{\nu=0}
+\frac{A_{\nu,k,r}}{\nu!}(1+x)^{\nu}\right],
+\end{equation}
+где в силу \eqref{Haar-Tcheb-6.11} и равенств
+$$
+\Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin(\pi z)},\quad \Gamma(z+1/2)=\frac{\sqrt{\pi}\Gamma(2z)}{\Gamma(z)2^{2z-1}}
+$$
+ для $k\ge r+1$ находим
+$$
+A_{\nu,k,r}=
+\frac{(-1)^{k+r-\nu}\Gamma(k+1/2)(k-r)_{\nu}}{\Gamma(\nu-r+1/2)(k+r-\nu)!2^\nu}
+$$
+$$
+=\frac{(-1)^{k}\Gamma(k+1/2)(k-r)_{\nu}\Gamma(r-\nu+1/2)}{\pi (k+r-\nu)!2^\nu}=
+$$
+\begin{equation}\label{Haar-Tcheb-6.14}
+\frac{(-1)^{k}(2k-1)!(2(r-\nu)-1)!(k-r)_{\nu}}{(k-1)!(r-\nu-1)! (k+r-\nu)!2^{2(k+r-1)-\nu}}.
+\end{equation}
+Таким образом, при $k\ge r+1$ мы получаем следующее представление
+\begin{equation}\label{Haar-Tcheb-6.15}
+T_{r,r+k}(x)=\frac{k!^2}{(2k)!}
+\frac{2^{r+2k}}{(k-1)^{[r]}}\left[P_{k+r}^{-\frac12-r,-\frac12-r}(x)-
+\sum^{r-1}_{\nu=0}\frac{A_{\nu,k,r}}{\nu!}(1+x)^{\nu}\right].
+\end{equation}
+Теперь обратимся к лемме \ref{jacobi-repr}, из которой выводим
+\begin{equation}\label{Haar-Tcheb-6.16}
+\frac{k!^2}{(2k)!}
+\frac{2^{r+2k}}{(k-1)^{[r]}}P_{k+r}^{-\frac12-r,-\frac12-r}(x)=
+\sum_{j=0}^r(-1)^j{r\choose j}
+{kT_{k+r-2j}(x)\over2^r(k+r-j)^{[r+1]}}.
+\end{equation}
+Сопоставляя \eqref{Haar-Tcheb-6.15} и  \eqref{Haar-Tcheb-6.16}, мы приходим к следующему результату.
+\begin{theorem}
+Если  $k\ge r+1$, то
+\begin{equation}\label{Haar-Tcheb-6.17}
+T_{r,r+k}(x)=\sum_{j=0}^r{r\choose j}
+{(-1)^jkT_{k+r-2j}(x)\over2^r(k+r-j)^{[r+1]}}
+-\frac{k!^22^{r+2k}}{(2k)!(k-1)^{[r]}}
+\sum^{r-1}_{\nu=0}\frac{A_{\nu,k,r}}{\nu!}(1+x)^{\nu}.
+\end{equation}
+\end{theorem}
+
+Рассмотрим два важных частных случая, соответствующие  значениям   $r=1$  и $r=2$.
+
+
+1). Пусть $r=1$. Тогда из \eqref{Haar-Tcheb-6.14} имеем
+\begin{equation}\label{Haar-Tcheb-6.18}
+A_{0,k,1}=\frac{(-1)^{k}(2k-1)!}{(k-1)!(k+1)!2^{2k}}, \quad k=2,3,\ldots.
+\end{equation}
+
+Из \eqref{Haar-Tcheb-6.17} и \eqref{Haar-Tcheb-6.18}  для $k\ge2$ находим
+$$
+T_{1,k+1}(x)=\sum_{j=0}^1(-1)^j
+{kT_{k+1-2j}(x)\over2(k+1-j)^{[2]}}-\frac{k!^2}{(2k)!}
+\frac{2^{2k+1}}{(k-1)}\frac{(-1)^{k}(2k-1)!}{(k-1)!(k+1)!2^{2k}}
+$$
+$$
+=\sum_{j=0}^1(-1)^j
+{kT_{k+1-2j}(x)\over2(k+1-j)^{[2]}}-\frac{(-1)^k}{k^2-1}.
+$$
+Отсюда и из \eqref{Haar-Tcheb-6.2} и \eqref{Haar-Tcheb-6.3} мы водим
+\begin{corollary} Имеют место равенства
+\begin{equation}\label{Haar-Tcheb-6.19}
+T_{1,k+1}(x)={T_{k+1}(x)\over2(k+1)}- {T_{k-1}(x)\over2(k-1)} -\frac{(-1)^k}{k^2-1}\quad (k\ge 2),
+\end{equation}
+\begin{equation}\label{Haar-Tcheb-6.20}
+T_{1,0}(x)=1, \quad T_{1,1}(x)=\frac{1+x}{\sqrt{2}}, \quad T_{1,2}(x)=x^2-1.
+\end{equation}
+\end{corollary}
+2). Для $r=2$ и $k\ge3$ из \eqref{Haar-Tcheb-6.14} и \eqref{Haar-Tcheb-6.17} имеем
+$$
+A_{0,k,2}=\frac{6(-1)^{k}(2k-1)!}{(k-1)! (k+2)!2^{2(k+1)}},\quad A_{1,k,2}=\frac{(-1)^{k}(2k-1)!(k-2)}{(k-1)! (k+1)!2^{2k+1}},
+$$
+$$
+T_{2,k+2}(x)=\sum_{j=0}^2{r\choose j}
+{(-1)^jkT_{k+2-2j}(x)\over2^2(k+2-j)^{[3]}}
+-\frac{k!^2}{(2k)!}
+\frac{2^{2+2k}}{(k-1)^{[2]}}\sum^1_{\nu=0}\frac{A_{\nu,k,2}}{\nu!}(1+x)^{\nu},
+$$
+поэтому при $k\ge3$
+$$
+T_{2,k+2}(x)=\sum_{j=0}^2{2\choose j}
+{(-1)^jkT_{k+2-2j}(x)\over4(k+2-j)^{[3]}}
+-(-1)^k\left[\frac{1+x}{k^2-1}+\frac{3}{(k^2-1)(k^2-4)}\right].
+$$
+Отсюда и из \eqref{Haar-Tcheb-6.2} и \eqref{Haar-Tcheb-6.3} мы выводим
+\begin{corollary} Имеют место равенства
+$$
+T_{2,k+2}(x)={T_{k+2}(x)\over4(k+2)(k+1)}-{T_{k}(x)\over2(k^2-1)}+
+{T_{k-2}(x)\over4(k-1)(k-2)}-
+$$
+\begin{equation}\label{Haar-Tcheb-6.21}
+(-1)^k\left[\frac{1+x}{k^2-1}+\frac{3}{(k^2-1)(k^2-4)}\right]\quad(k\ge3),
+\end{equation}
+\begin{equation}\label{Haar-Tcheb-6.22}
+T_{2,0}(x)=1, \quad T_{2,1}(x)=1+x, \quad T_{2,2}(x)=\frac{(1+x)^2}{2\sqrt{2}},
+\end{equation}
+\begin{equation}\label{Haar-Tcheb-6.23}
+T_{2,3}(x)=\frac16(x-2)(x+1)^2, \quad T_{2,4}(x)=\frac16x(x-2)(x+1)^2.
+\end{equation}
+\end{corollary}
+
+\section{Условия равномерной сходимости ряда Фурье по полиномам, ортогональным по Соболеву, порожденным полиномами Чебышева первого рода}
+Вернемся к вопросу об условиях равномерной сходимости ряда Фурье (смешанного ряда) \eqref{Haar-Tcheb-6.5}. Имеет место следующая
+
+\begin{theorem}
+ Пусть $ A,B\in\mathbb{R},\,p>1$ таковы, что
+\begin{equation}\label{Haar-Tcheb-eq7.1}
+\left|\frac{A+1}{p}-\frac{1}{4}\right|<\frac{1}{4},\quad
+\left|\frac{B+1}{p}-\frac{1}{4}\right|<\frac{1}{4},
+\end{equation}
+$\rho(x)=(1-x)^A(1+x)^B$. Тогда, если $f\in
+W^r_{L_\rho^p}(-1,1)$, то ряд \eqref{Haar-Tcheb-6.5}  равномерно на $[-1,1]$ сходятся к $f(x)$.
+\end{theorem}
+
+Из теоремы 5 непосредственно вытекает
+
+\begin{corollary}
+ Пусть $\rho(x)=(1-x^2)^{-\frac12}$, $p>1$. Тогда, если $f\in
+W^r_{L_\rho^p(-1,1)}$, то ряд \eqref{Haar-Tcheb-6.5}  равномерно на $[-1,1]$ сходятся к $f(x)$.
+\end{corollary}
+
+Заметим, что для построения смешанного ряда \eqref{Haar-Tcheb-6.5}(и тем более для его равномерной сходимости) необходимо выполнение условия $f\in W^r_{L_\rho^1(-1,1)}$. Возникает вопрос о том, не является ли это условие также и достаточным для равномерной сходимости ряда \eqref{Haar-Tcheb-6.5}. Другими словами, нельзя ли в следствии 6 заменить   условие $p>1$ на $p=1$. Утвердительный ответ на этот вопрос дает следующая
+
+\begin{theorem}
+Пусть $\rho(x)=(1-x^2)^{-\frac12}$, $r\ge1$. Тогда, если $f\in
+W^r_{L_\rho^1(-1,1)}$, то ряд \eqref{Haar-Tcheb-6.5}  равномерно на $[-1,1]$ сходятся к $f(x)$.
+\end{theorem} 

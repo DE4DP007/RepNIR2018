@@ -1,0 +1,250 @@
+\chapter{Приближение функций, заданных на сетке $\{0, \delta, 2\delta, \ldots\}$ суммами Фурье-Мейкснера}
+
+
+Пусть $\Omega_{\delta}=\{0, \delta, 2\delta, \ldots\}$, где $\delta=\frac{1}{N}$, $N>0$.
+Через $M_{n,N}^\alpha(x)$ $(n=0, 1, \dots)$ обозначим, следуя \cite{Ram1}, модифицированные полиномы Мейкснера, образующие при $\alpha>-1$ ортогональную систему на дискретном множестве $\Omega_{\delta}$ с весом
+$w(x)=e^{-x}\frac{\Gamma(Nx+\alpha+1)}{\Gamma(Nx+1)},
+$
+то есть
+$$
+\sum_{x\in\Omega_{\delta}} M_{n,N}^\alpha(x)M_{k,N}^\alpha(x)w(x)=(1-e^{-\delta})^{-\alpha-1}h_{n,N}^\alpha\delta_{nk}, \quad 0<q<1,
+\ \alpha>-1,
+$$
+где $h_{n,N}^\alpha={n+\alpha\choose n}e^{-n\delta}\Gamma(\alpha+1),$
+а соответствующие ортонормированные с весом $\rho_N(x)=(1-e^{-\delta})^{\alpha+1}w(x)$ полиномы обозначим через $m_{n,N}^\alpha(x)=(h_{n,N}^\alpha)^{-1/2}M_{n,N}^\alpha(x)$ $(n=0, 1, \dots)$.
+Для функции $f$, заданной на множестве $\Omega_{\delta}$, рассмотрена задача об исследовании аппроксимативных свойств частичных сумм $S_{n,N}^{\alpha}(f,x)$ ее ряда Фурье по полиномам $m_{n,N}^\alpha(x)$. Основное внимание уделено получению верхней оценки для функции Лебега $\lambda_{n,N}^{\alpha}(x)$ указанных частичных сумм при $x\in[0,\frac{\theta_n}{2}]$, где $\theta_n=4n+2\alpha+2$.
+
+
+
+\section{Некоторые сведения о полиномах Мейкснера}
+
+Пусть $\alpha$ произвольное действительное число и $q\ne0$. Тогда для классических полиномов Мейкснера $M_{n}^{\alpha}(x)=M_{n}^{\alpha}(x,q)$ имеют место \cite{Ram1, Ram2, Ram3}:
+
+явное представление
+\begin{equation*}
+M_n^\alpha(x)=M_n^\alpha(x,q)={n+\alpha\choose n}\sum_{k=0}^n{n^{[k]}x^{[k]}\over(\alpha+1)_kk!}\left(1-{1\over q}\right)^k,
+\end{equation*}
+где $x^{[k]}=x(x-1)\ldots (x-k+1)$, $(a)_k=a(a+1)\ldots(a+k-1)$;
+
+соотношение ортогональности
+\begin{equation*}
+\sum_{x=0}^\infty M_n^\alpha(x)M_k^\alpha(x)\rho(x)=(1-q)^{-\alpha-1}h_n^\alpha(q)\delta_{nk}, \quad 0<q<1,\ \alpha>-1,
+\end{equation*}
+где  $\rho(x)=\rho(x;\alpha,q)=q^{-x}\frac{\Gamma(x+\alpha+1)}{\Gamma(x+1)}$,
+$h_n^\alpha(q)={n+\alpha\choose n}q^{-n}\Gamma(\alpha+1)$,
+$\delta_{nk}$ -- символ Кронекера;
+
+формула Кристоффеля-Дарбу
+$$
+K_{n}^{\alpha,q}(x,y)=\sum_{k=0}^nq^k{k!\over
+\Gamma(k+\alpha+1)}M_k^\alpha(x)M_k^\alpha(y)
+$$
+\begin{equation}\label{ForKris}
+={(n+1)!q^{n+1}\over
+\Gamma(n+\alpha+1)(q-1)}{M_{n+1}^\alpha(x)M_n^\alpha(y)-
+M_n^\alpha(x)M_{n+1}^\alpha(y)\over x-y}.
+\end{equation}
+
+
+Пусть $N>0$,   $\delta=1/N$,   $q=e^{-\delta}$.
+Через $M_{n,N}^\alpha(x)=M_n^\alpha(Nx,e^{-\delta})$ $(n=0, 1, \dots)$ обозначим, следуя \cite{Ram1}, модифицированные полиномы Мейкснера, которые при $\alpha>-1$ образуют ортогональную на $\Omega_{\delta}=\{0, \delta, 2\delta, \ldots\}$ систему с весом
+$\rho_N(x)=(1-e^{-\delta})^{\alpha+1}\rho(Nx;\alpha,e^{-\delta})$, т.е.,
+\begin{equation}\label{orth}
+\sum_{x\in\Omega_{\delta}} M_{n,N}^\alpha(x)M_{k,N}^\alpha(x)\rho_N(x)=h_{n,N}^\alpha\delta_{nk}, \quad 0<q<1,
+\ \alpha>-1,
+\end{equation}
+где $h_{n,N}^\alpha={n+\alpha\choose n}e^{n\delta}\Gamma(\alpha+1).$
+Из \eqref{orth} следует, что соответствующая ортонормированная система полиномов имеет вид $m_{n,N}^\alpha(x)=m_n^\alpha(Nx,e^{-\delta})=\linebreak(h_{n,N}^{\alpha})^{-1/2}M_{n,N}^\alpha(x)$.
+
+Далее, пусть
+\begin{equation}\label{gadz-eq2}
+ K_{n,N}^{\alpha}(t,x)=\sum_{k=0}^n m_{k,N}^{\alpha}(t)m_{k,N}^{\alpha}(x).
+\end{equation}
+Тогда в силу формулы Кристоффеля-Дарбу \eqref{ForKris} мы можем
+записать
+$$
+K_{n,N}^\alpha (x,y)={\delta\sqrt{(n+1)(n+\alpha+1)}\over
+(e^{\delta/2}-e^{-\delta/2})(y-x)}\times
+$$
+$$
+\left[m_{n+1,N}^\alpha (x) m_{n,N}^\alpha (y)-
+m_{n,N}^\alpha (x) m_{n+1,N}^\alpha (y) \right]
+$$
+Полагая здесь $\alpha_{n}=\sqrt{(n+1)(n+\alpha+1)}$, имеем
+$$
+{1\over \alpha_{n}} K_{n,N}^\alpha (x,y) =
+{\delta\over (e^{\delta/2}-e^{-\delta/2})(y-x)}\times
+$$
+
+\begin{equation}\label{Kernel}
+\left[m_{n+1,N}^\alpha(x)
+m_{n,N}^\alpha(y)-m_{n,N}^\alpha(x)m_{n+1,N}^\alpha(y) \right],
+\end{equation}
+
+$$
+{1\over \alpha_{n-1}} K_{n,N}^{\alpha}(x,y)=
+{\delta\over (e^{\delta/2}-e^{-\delta/2})(y-x)}\times
+$$
+
+\begin{equation}\label{Kernel1}
+\left[m_{n,N}^{\alpha}(x)
+m_{n-1,N}^{\alpha}(y)-m_{n-1,N}^{\alpha}(x)
+m_{n,N}^{\alpha}(y) \right]+
+{1\over {\alpha}_{n-1}}m_{n,N}^{\alpha}(x)m_{n,N}^{\alpha}(y)
+\end{equation}
+Складывая правые и левые части равенств \eqref{Kernel} и \eqref{Kernel1} имеем
+$$
+\left({1\over\alpha_n}+ {1\over\alpha_{n-1}}\right)
+K_{n,N}^\alpha(x,y)={1\over\alpha_{n-1}}m_{n,N}^\alpha(x)
+m_{n,N}^\alpha(y)+
+$$
+
+$$
+{\delta\over(e^{\delta/2}-e^{-\delta/2})(y-x)}
+\left[m_{n,N}^\alpha(y)\left(m_{n+1,N}^\alpha(x)-m_{n-1,N}^\alpha(x)
+\right)-\right.
+$$
+
+$$
+\left.m_{n,N}^\alpha(x)\left(m_{n+1,N}^\alpha(y)-
+m_{n-1,N}^\alpha(y)\right)\right],
+$$
+стало быть
+$$
+K_{n,N}^\alpha(x,y)={\alpha_n\over(\alpha_n+\alpha_{n-1})}
+m_{n,N}^{\alpha}(x)m_{n,N}^{\alpha}(y)+
+$$
+
+$$
+{\alpha_n\alpha_{n-1}
+\over(\alpha_n+\alpha_{n-1})}{\delta\over(e^{\delta/2}-e^{-\delta/2})} {1\over(y-x)}\times
+$$
+
+$$
+\left[m_{n,N}^\alpha(y)\left(m_{n+1,N}^\alpha(x)-
+m_{n-1,N}^\alpha(x)
+\right)\right.
+$$
+
+\begin{equation*}\label{Kernel2}
+\left.-m_{n,N}^\alpha(x)
+\left(m_{n+1,N}^\alpha(y)-m_{n-1,N}^\alpha(y)
+\right)\right]
+\end{equation*}
+
+Для $0<\delta\le1$, $N={1\over\delta}$, $\lambda>0$,\ $1\le n\le\lambda N$,  $\alpha>-1$, $0\le x<\infty$, $\theta_n=4n+2\alpha+2$ справедливы \cite{Ram1}, \cite{Ram5} следующие оценки:
+$$
+e^{-{x\over2}}\left|m_{n,N}^\alpha(x)\right|\le c(\alpha,\lambda)\theta_n^{-{\alpha\over2}}A_n^\alpha(x),\
+$$
+\begin{equation*}
+A_n^\alpha(x)=\begin{cases}
+\theta_n^{\alpha},&  0\le x\le \frac{1}{\theta_n},\\
+\theta_n^{\alpha/2-1/4}x^{-\alpha/2-1/4},&     \frac{1}{\theta_n}<x\le {\theta_n\over 2},\\
+\left[\theta_n(\theta_n^{1\over3}+|x-\theta_n)\right]^{-\frac{1}{4}},& {\theta_n\over2}<x\leq{3\theta_n\over2},\\
+e^{-{x/4}}, & {3\theta_n\over2}<x<\infty,
+\end{cases}
+\end{equation*}
+$$
+e^{-{x\over2}}\left|m_{n+1,N}^{\alpha}(x)-m_{n-1,N}^{\alpha}(x)\right|\leq
+$$
+$$
+c(\alpha,\lambda)\begin{cases}
+\theta_n^{{\alpha\over2}-1},&  0\le x\le \frac{1}{\theta_n},\\
+\theta_n^{-{3\over4}}x^{-{\alpha\over2}+{1\over4}},&     \frac{1}{\theta_n}<x\le {\theta_n\over 2},\\
+x^{-{\alpha\over2}}\theta_n^{-{3\over4}}\left[(\theta_n^{1\over3}+|x-\theta_n)\right]^{1\over4},& {\theta_n\over2}<x\leq{3\theta_n\over2},\\
+e^{-{x\over4}}, & {3\theta_n\over2}<x<\infty,
+\end{cases}
+$$
+где здесь и далее $c$, $c(\alpha)$, $c(\alpha, \ldots,\lambda)$ -- положительные числа, зависящие только от указанных параметров, причем различные в разных местах.
+
+\section{Неравенство Лебега для частичных сумм Фурье-Мейкснера}
+
+Обозначим через $C(\Omega_\delta)$ пространство дискретных функций $f(x)$ вида $f:\Omega_\delta\rightarrow\mathbb{R}$ и таких, что
+\begin{equation*}\label{cond}
+\lim_{x\to\infty}|f(x)|e^{-x/2}=0.
+\end{equation*}
+Норму в этом пространстве определим следующим образом:
+\begin{equation*}\label{norma}
+\|f\|_{C(\Omega_\delta)}=\sup_{x\in\Omega_\delta}e^{-x/2}|f(x)|.
+\end{equation*}
+Справедлива следующая лемма
+
+
+\begin{lemma}
+Пусть $\alpha>-1$, $p>1$, $l_{\rho_N}^p$ -- пространство функций, заданных на $\Omega_\delta$ и таких, что
+$$
+\|f\|_{l_{\rho_N}^p}=\left(\sum_{x\in\Omega_\delta}|f(x)|^p\rho_N(x)\right)^{1/p}<\infty.
+$$
+Тогда $C(\Omega_\delta)\subset l_{\rho_N}^p$ при $1<p<2$.
+\end{lemma}
+
+
+
+Из леммы следует, что для произвольной функции $f\in C(\Omega_\delta)$ мы можем определить коэффициенты Фурье-Мейкснера
+$$
+f_k^{\alpha}=\sum_{t\in\Omega_\delta}f(t)m_{k,N}^\alpha(t)\rho_N(t)
+$$
+и ряд Фурье-Мейкснера
+\begin{equation}\label{fser}
+f(x)\sim\sum_{k=0}^{\infty}f_k^\alpha m_{k,N}^\alpha(x).
+\end{equation}
+Через $S^\alpha_{n,N}(f,x)$ обозначим частичную сумму ряда \eqref{fser}:
+$$
+S^\alpha_{n,N}(f,x)=\sum_{k=0}^{n}f_k^\alpha m_{k,N}^\alpha(x),
+$$
+которую в силу \eqref{gadz-eq2} можем представить в виде
+\begin{equation}\label{Fsum}
+S^\alpha_{n,N}(f,x)=\sum_{t\in\Omega_{\delta}}f(t)\mathcal{ K}_{n,N}^\alpha(t,x)e^{-t}{\Gamma(Nt+\alpha+1)\over\Gamma(Nt+1)}(1-e^{-\delta})^{\alpha+1}.
+\end{equation}
+Будем рассматривать $S^\alpha_{n,N}(f,x)$ как аппарат приближения функций из $C(\Omega_\delta)$.
+Для $f\in C(\Omega_\delta)$ через $E_n(f)$ обозначим наилучшее приближение $f$ в метрике пространства
+$ C(\Omega_\delta)$ алгебраическими полиномами степени $n$, то есть,
+$$
+E_n(f)=\inf_{p_n\in H^n}\|f-p_n\|_{C(\Omega_\delta)},
+$$
+где $H^n$ -- подпространство алгебраических полиномов $p_n(x)$ степени не выше $n$.
+Пусть, далее $p_n(f)=p_n(f,x)$ полином наилучшего приближения к функции $f$ в $C(\Omega_\delta)$, для которого
+$
+E_n(f)=\|f-p_n(f)\|_{C(\Omega_\delta)}.
+$
+Тогда, пользуясь тем, что для $p_n\in H^n$ будет $S_{n,N}^\alpha(p_{n})=p_n$ мы можем записать
+$$
+\left|f(x)-S_{n,N}^\alpha(f,x)\right|=\left|f(x)-p_{n}(f,x)+p_{n}(f,x)-S_{n,N}^\alpha(f,x)\right|\leq
+$$
+$$
+\left|f(x)-p_{n}(f,x)\right|+\left|S_{n,N}^\alpha(p_{n}-f,x)\right|.
+$$
+Отсюда и из \eqref{Fsum}
+$$
+e^{-{x\over 2}}\left|f(x)-S_{n,N}^\alpha(f,x)\right|\leq e^{-{x\over 2}}\left|f(x)-p_{n}(f,x)\right|+
+e^{-{x\over 2}}\left|S_{n,N}^\alpha(p_{n}-f,x)\right|\leq
+$$
+\begin{equation}\label{ineq}
+E_n(f)(1+\lambda_{n,N}^\alpha(x)),
+\end{equation}
+где
+\begin{equation}\label{funcLeb}
+\lambda_{n,N}^{\alpha}(x)=\sum_{t\in\Omega_{\delta}}e^{-{t+x\over 2}}{\Gamma(Nt+\alpha+1)\over\Gamma(Nt+1)}(1-e^{-\delta})^{\alpha+1}\left|\mathcal{ K}_{n,N}^\alpha(t,x)\right|.
+\end{equation}
+В связи с неравенством \eqref{ineq} возникает задача об оценке на $[0,\infty)$ функции Лебега $\lambda_{n,N}^{\alpha}(x)$, определяемой равенством \eqref{funcLeb}. Здесь мы ограничимся рассмотрением этой задачи для $x\in G_1=[0,\frac{3}{\theta_n}]$ и $x\in G_2=[\frac{3}{\theta_n},{\theta_n\over 2}]$,
+Имеет место следующая теорема.
+
+\begin{theorem}
+Пусть $\alpha>-1,$ $\theta_n=4n+2\alpha+2,$ $\lambda> 0,$ $1\le n\leq\lambda N.$ Тогда имеют место следующие оценки:\\
+1) если $x\in G_1=[0, \frac{3}{\theta_n}],$ то
+\begin{equation*}\label{gadz-eq19}
+\lambda_{n,N}^{\alpha}(x)\leq c(\alpha, \lambda)
+\begin{cases}
+1, & -1<\alpha<-{1\over2},\\
+\ln (n+1),&   \alpha=-\frac{1}{2},\\
+n^{\alpha+\frac{1}{2}},&  \alpha> -\frac{1}{2}.
+\end{cases};
+\end{equation*}
+2) если $x\in G_2=[\frac{3}{\theta_n}, {\theta_n\over 2}],$ то
+\begin{equation*}\label{gadz-eq20}
+\lambda_{n,N}^{\alpha}(x)\leq c(\alpha, \lambda)\begin{cases}
+\ln(nx+1),&     -1<\alpha\leq-\frac{1}{2},\\
+\ln(n+1)+{\left(n\over x\right)}^{{\alpha\over2}+{1\over4}},& \alpha>-\frac{1}{2}.
+\end{cases}
+\end{equation*}
+\end{theorem}

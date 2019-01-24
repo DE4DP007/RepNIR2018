@@ -1,0 +1,494 @@
+\chapter{Положительная обратимость матриц и устойчивость
+дифференциальных уравнений Ито с запаздываниями}
+
+
+
+
+
+\section{Предварительные сведения и объект исследования}
+
+Пусть: $(\Omega , {\mathcal F}, ({\mathcal F})_{t\ge0},P)$ ---
+стохастический базис; $k^n$ --- линейное пространство $n$--мерных
+${\mathcal F}_0$ --- измеримых случайных величин; $\mathcal
+B_i,i=1,...,m$ --- независимые стандартные винеровские процессы; $1
+\le  p < \infty $; $c_p$ --- положительное число, зависящее от $p$
+(\cite{kad8}, с. 65); $E$ --- символ математического ожидания; $|.|$ ---
+норма в $R^n$; $||.||$ --- норма $n\times n$--матрицы, согласованная
+с нормой в $R^n$; $||.||_X$ --- норма в нормированном пространстве
+$X$; $\mu $ --- мера Лебега на $[0,+ \infty)$.
+
+Пусть  $B = (b_{ij})^m_{i,j=1}$ --- $m \times m$--матрица. Матрица
+$B$ называют неотрицательной, если $b_{ij} \geq 0$, $i, j = 1,...,m$
+и положительной, если $b_{ij} > 0$, $i, j = 1,...,m$.
+
+\begin{definition}\label{kad-def1}\cite{kad9} Матрица $B = (b_{ij})^m_{i,j=1}$ называют
+$\mathcal M$--матрицей, если $b_{ij} \leq 0$ при $i, j = 1,...,m$ и
+$i\neq j$ и выполнено одно из следующих условий:
+
+\noindent-- для матрицы $B$ существует положительная обратная матрица
+$B^{-1}$;
+
+\noindent-- диагональные миноры матрицы $B$ положительны.
+\end{definition}
+\begin{lemma}\label{kad-lem1}
+\cite{kad9} Матрица $B$ является $\mathcal M$--матрицей, если
+$b_{ij} \leq 0$ при $i, j = 1,...,m$ и $i\neq j$, а также выполнено
+одно из следующих условий:
+
+\noindent-- $b_{ii} > \sum \limits _{j=1\\ i \neq j}^m|b_{ij}|$, $i =
+1,...,m$;
+
+\noindent-- $b_{jj} > \sum \limits _{i=1\\ i \neq j}^m|b_{ij}|$, $j =
+1,...,m$;
+
+\noindent-- существуют положительные числа $\xi _i$, $i = 1,...,m$ такие, что
+$\xi_i b_{ii} > \sum \limits _{j=1\\ i \neq j}^m\xi_j |b_{ij}|$, $i
+= 1,...,m$;
+
+\noindent-- существуют положительные числа $\xi _i$, $i = 1,...,m$ такие, что
+$\xi_j b_{jj} > \sum \limits _{i=1\\ i \neq j}^m\xi_i |b_{ij}|$, $i
+= 1,...,m$.
+\end{lemma}
+Объектом исследования является система дифференциальных уравнений
+Ито с запаздываниями вида
+\begin{equation}\label{kad-eq1}
+\begin{array}{crl}
+dx_i(t) = \left [-a_i(t)x_i(h_i(t))+ \sum
+\limits_{j=1}^nF_{ij}(t,x_j(h_{ij}(t)))\right]dt +\\
+ \sum \limits_{l=1}^m \left [\sum
+\limits_{j=1}^nG^l_{ij}(t,x_j(h^l_{ij}(t)))\right ]d\mathcal B_l(t)
+\, (t \ge 0), i = 1,...,n
+\end{array}
+\end{equation}
+
+с начальными условиями
+\begin{equation}\label{kad-eq1a}
+x_i(t) = \varphi_i(t) {\,\,} (t <0), i = 1,...,n, %\eqno (1a)
+\end{equation}
+\begin{equation}\label{kad-eq1b}
+x_i(0) = b_i {\,\,}, i = 1,...,n, %\eqno (1b)
+\end{equation}
+где:
+
+1.  $a_i$ --- измеримая по Лебегу функция, заданная на $[0, \infty)$
+такая, что $0 < \bar a_i \leq a_i \leq A_i {\,} {\,} (t \in [0,
+\infty))$ $\mu $--почти всюду для некоторых  положительных чисел
+$\bar a_i, A_i$ при $i = 1,...,n$;
+
+2.$F_{ij}(.,u)$ --- измеримая по Лебегу функция, заданная на $[0,
+\infty)$,  $F_{ij}(t,.)$ --- непрерывная функция на $R^1$ такая, что
+$|F_{ij}(t,u)| \leq \bar F_{ij}|u| {\,} {\,} (t \in [0, \infty))$
+$\mu $--почти всюду для некоторого положительного числа $\bar
+F_{ij}$ при $i,j = 1,...,n$;
+
+3.$G^l_{ij}(.,u)$ --- измеримая по Лебегу функция, заданная на $[0,
+\infty)$,  $G^l_{ij}(t,.)$ --- непрерывная функция на $R^1$ такая,
+что $|G^l_{ij}(t,u)| \leq \bar G^l_{ij}|u| {\,} {\,} (t \in [0,
+\infty))$ $\mu $--почти всюду для некоторого положительного числа
+$\bar G^l_{ij}$ при $l = 1,...,m$, $i,j = 1,...,n$;
+
+4.  $h_i, h_{ij}, h^l_{ij}$ --- измеримые по Лебегу функции,
+заданные на $[0, \infty)$ такие, что $0 \leq t- h_i(t) \leq \tau _i,
+0 \leq t- h_{ij}(t) \leq \tau _{ij}, 0 \leq t- h^l_{ij}(t) \leq \tau
+^l_{ij} {\,} {\,} (t \in [0, \infty))$ $\mu $--почти всюду для
+некоторых положительных чисел $\tau_i, \tau_{ij}, \tau^l_{ij}$ при
+$l = 1,...,m$, $i, j = 1,...,n$;
+
+5.  $\varphi_i$ --- ${\mathcal F}_0$--измеримый скалярный случайный
+процесс, заданный на $[\sigma _i, 0)$, где $\sigma _i = \max \{
+\tau_i, \tau_{ij}, \tau^l_{ij}, l = 1,...,m, j = 1,...,n \}$;
+
+6.  $b_i$ --- ${\mathcal F}_0$--измеримая скалярная случайная
+величина  при  $i = 1,...,n \}$.
+
+В дальнейшем нам понадобятся следующие обозначения:
+
+\noindent-- $b:= col (b_1,...,b_n)$;
+
+\noindent-- $\varphi:= col (\varphi_1,...,\varphi_n)$.
+
+Введем следующее обозначение линейного нормированного
+подпространства $k^n$:
+
+$$
+k_p^n = \left \{\alpha: \alpha \in k^n,\|\alpha\|_{k_p^n} =
+(E|\alpha |^p)^{1/p} < \infty \right \}.
+$$
+
+Задача \eqref{kad-eq1}, \eqref{kad-eq1a}, \eqref{kad-eq1b} имеет единственное решение, если
+дополнительно предположить, что функции $F_{ij}(t,u)$,
+$G^l_{ij}t,u)$ удовлетворяют условию Липщица по $u$ при $l =
+1,...,m$, $i,j = 1,...,n$ \cite{kad10}. В дальнейшем будем считать, что
+функции $F_{ij}(t,u)$, $G^l_{ij}t,u)$ удовлетворяют условию Липщица
+по $u$ при $l = 1,...,m$, $i,j = 1,...,n$.  Обозначим через $x(t, b,
+\varphi)$ --- решение системы \eqref{kad-eq1}, удовлетворяющее условиям \eqref{kad-eq1a} и
+\eqref{kad-eq1b}, т.е. $x(t, b, \varphi ) = \varphi$ при $t < 0$ и $x(0, b,
+\varphi ) = b$. Очевидно, что $x(., b, \varphi ) \in D^n$
+\begin{definition}\label{kad-def2}
+%{\bf Определение 2.}
+Будем говорить, что система \eqref{kad-eq1} глобально
+экспоненциально \textit{ $p$-устой\-чи\-ва} ($1 \leq p < \infty$), если
+существует положительные числа $K,\lambda$ такие, что для решения
+$x(t, b, \varphi)$ задачи \eqref{kad-eq1}, \eqref{kad-eq1a}, \eqref{kad-eq1b} выполнено неравенство
+$$
+(E|x(t, b, \varphi)|^p)^{1/p} \leq K\exp \{-\lambda t\}\left
+(||b||_{k_p^n} + vrai \sup \limits _{t < 0}(E|\varphi
+(t)|^p)^{1/p}\right ){\,} {\,} (t \geq 0).
+$$
+\end{definition}
+
+\begin{lemma}\label{kad-lem2}
+%{\bf Лемма 2.}
+Пусть $f(s)$ --- скалярный случайный процесс,
+интегрируемый по винеровскому процессу $\mathcal B(s)$ на отрезке
+$[0, t]$. Тогда справедливо неравенство
+\begin{equation}\label{kad-eq2}
+  \left (E\left |\int \limits _0^tf(s)d\mathcal B(s)\right
+|^{2p}\right )^{1/2p} \leq c_p \left (E\left (\int \limits
+_0^t|f(s)|^2d(s)\right )^p\right )^{1/2p}, %\eqno (2)
+\end{equation}
+где $c_p$ --- некоторое число, зависящее от $p$.
+\end{lemma}
+
+Справедливость неравенства \eqref{kad-eq2} следует из неравенства 4 работы \cite{kad8}
+(стр. 65), где выписано и конкретное выражение для $c_p$.
+
+\begin{lemma}\label{kad-lem3}
+%{\bf Лемма 3.}
+Пусть $g(s)$ --- скалярная функция на $[0, \infty)$,
+квадрат которой локально суммируема, $f(s)$ --- скалярный случайный
+процесс такой, что $\sup \limits _{s \geq 0}(E|f(s)|^{2p})^{1/2p} <
+\infty$. Тогда справедливы следующие неравенства
+\begin{equation}\label{kad-eq3}
+\sup \limits _{t \geq 0}\left(E\left|\int \limits
+_0^tg(s)f(s)ds\right|^{2p}\right)^{1/2p} \leq \sup \limits _{t \geq
+0}\left (\int \limits _0^t|g(s)|ds\right )\sup \limits _{t \geq
+0}(E|f(s)|^{2p})^{1/2p}, %\eqno (3)
+\end{equation}
+\begin{equation}\label{kad-eq4}
+\sup \limits _{t \geq 0}\left(E\left|\int \limits
+_0^t(g(s))^2(f(s))^2ds\right|^{p}\right)^{1/2p} \leq \sup \limits
+_{t \geq 0}\left (\int \limits _0^t(g(s))^2ds\right)^{1/2}\sup
+\limits _{t \geq 0}(E|f(s)|^{2p})^{1/2p}. %\eqno (4)
+\end{equation}
+
+
+\end{lemma}
+
+\section{Основной результат}
+
+Пусть $C$ --- $n\times n$--матрица, элементы которой определены
+следующим образом
+$$
+c_{ii} = 1 - \frac{A_i^2\tau _i^2 + A_i\bar F_{ii}\tau _i  + c_p A_i
+\sqrt{\tau _i}\sum \limits _{i=1}^m\bar G^l_{ii} + \bar F_{ii}}{\bar
+a_i} - \frac{c_p\sum \limits _{l=1}^m \bar G^l_{ii}}{\sqrt{2\bar
+a_i}}, i = 1,...,n,
+$$
+$$
+c_{ij} = - \frac{A_i\bar F_{ij}\tau _i + c_p A_i \sqrt{\tau _i}\sum
+\limits _{i=1}^m\bar G^l_{ij} + \bar F_{ij}}{\bar a_i} -
+\frac{c_p\sum \limits _{l=1}^m \bar G^l_{ij}}{\sqrt{2\bar a_i}}, i,j
+= 1,...,n, i\neq j.
+$$
+
+\begin{theorem*}
+  Если матрица $C$ является $\mathcal{
+M}$-матрицей, то система \eqref{kad-eq1} глобально экспоненциально
+$2p$-устойчива.
+\end{theorem*}
+
+\section{Следствия основного результата}
+
+Отдельно рассмотрим случай, когда система дифференциальных уравнений
+Ито \eqref{kad-eq1} содержит только внедиагональные  нелинейности, т.е. имеет
+вид
+\begin{equation}\label{kad-eq14}
+\begin{array}{crl}
+dx_i(t) = \left [-a_i(t)x_i(h_i(t))+ \sum
+\limits_{j=1, i \neq j }^nF_{ij}(t,x_j(h_{ij}(t)))\right]dt +\\
+ \sum \limits_{l=1}^m \left [\sum
+\limits_{j=1, i \neq j}^nG^l_{ij}(t,x_j(h^l_{ij}(t)))\right
+]d\mathcal B_l(t) \, (t \ge 0), i = 1,...,n.
+\end{array}
+%\eqno (14 )
+\end{equation}
+
+
+Пусть $C$ --- $n\times n$--матрица, элементы которой определены
+следующим образом
+$$
+c_{ii} = 1 - \frac{A_i^2\tau _i^2}{\bar a_i}, i = 1,...,n,
+$$
+$$
+c_{ij} = - \frac{A_i\bar F_{ij}\tau _i + c_p A_i \sqrt{\tau _i}\sum
+\limits _{i=1}^m\bar G^l_{ij} + \bar F_{ij}}{\bar a_i}
+-\frac{c_p\sum \limits _{l=1}^m \bar G^l_{ij}}{\sqrt{2\bar a_i}},
+i,j = 1,...,n, i\neq j.
+$$
+Тогда из теоремы получим
+
+\begin{corollary}\label{kad-col1}
+Если матрица $C$ является $\mathcal
+M$-матрицей, то система \eqref{kad-eq14} глобально экспоненциально
+$2p$-устойчива.
+\end{corollary}
+Пусть теперь в линейной части системы \eqref{kad-eq1} отсутствуют запаздывания,
+$h_i(t) = t$ при $i = 1,...,n$,  т.е. имеет вид
+\begin{equation}\label{kad-eq15}
+\begin{array}{crl}
+dx_i(t) = \left [-a_i(t)x_i(t)+ \sum
+\limits_{j=1}^nF_{ij}(t,x_j(h_{ij}(t)))\right]dt +\\
+ \sum \limits_{l=1}^m \left [\sum
+\limits_{j=1}^nG^l_{ij}(t,x_j(h^l_{ij}(t)))\right ]d\mathcal B_l(t)
+\, (t \ge 0), i = 1,...,n.
+\end{array}
+%\eqno (15)
+\end{equation}
+Пусть $C$ --- $n\times n$-матрица, элементы которой определены
+следующим образом
+$$
+c_{ii} = 1 - \frac{\bar F_{ii}}{\bar a_i} - \frac{c_p\sum \limits
+_{l=1}^m \bar G^l_{ii}}{\sqrt{2\bar a_i}}, i = 1,...,n, c_{ij} = -
+\frac{\bar F_{ij}}{\bar a_i} - \frac{c_p\sum \limits _{l=1}^m \bar
+G^l_{ij}}{\sqrt{2\bar a_i}}, i,j = 1,...,n, i\neq j.
+$$
+Тогда из теоремы получим
+
+\begin{corollary}\label{kad-col2}
+Если матрица $C$
+является $\mathcal{M}$-матрицей, то система \eqref{kad-eq15} глобально
+экспоненциально $2p$-устойчива.
+\end{corollary}
+Пусть система \eqref{kad-eq1} линейная система, т.е. имеет вид
+\begin{equation}\label{kad-eq16}
+\begin{array}{crl}
+dx_i(t) = \left [-a_i(t)x_i(h_i(t))+ \sum
+\limits_{j=1}^nF_{ij}(t)x_j(h_{ij}(t))\right]dt +\\
+ \sum \limits_{l=1}^m \left [\sum
+\limits_{j=1}^nG^l_{ij}(t)x_j(h^l_{ij}(t))\right ]d\mathcal B_l(t)
+\, (t \ge 0), i = 1,...,n,
+\end{array}
+%\eqno (16)
+\end{equation}
+где дополнительно $F_{ij}$ --- измеримая по Лебегу функция, заданная
+на $[0, \infty)$ такая, что $|F_{ij}(t)| \leq \bar F_{ij} {\,} {\,}
+(t \in [0, \infty))$ $\mu $-почти всюду для некоторого
+положительного числа $\bar F_{ij}$ при $i,j = 1,...,n$ и $G^l_{ij}$
+--- измеримая по Лебегу функция, заданная на $[0, \infty)$ такая, что
+$|G^l_{ij}(t)| \leq \bar G^l_{ij} {\,} {\,} (t \in [0, \infty))$
+$\mu $--почти всюду для некоторого положительного числа $\bar
+G^l_{ij}$ при $l = 1,...,m$, $i,j = 1,...,n$.
+Пусть $C$ --- $n\times n$--матрица, элементы которой определены
+следующим образом
+$$
+c_{ii} = 1 - \frac{A_i^2\tau _i^2 + A_i\bar F_{ii}\tau _i  + c_p A_i
+\sqrt{\tau _i}\sum \limits _{i=1}^m\bar G^l_{ii} + \bar F_{ii}}{\bar
+a_i} - \frac{c_p\sum \limits _{l=1}^m \bar G^l_{ii}}{\sqrt{2\bar
+a_i}}, i = 1,...,n,
+$$
+$$
+c_{ij} = - \frac{A_i\bar F_{ij}\tau _i + c_p A_i \sqrt{\tau _i}\sum
+\limits _{i=1}^m\bar G^l_{ij} + \bar F_{ij}}{\bar a_i} -
+\frac{c_p\sum \limits _{l=1}^m \bar G^l_{ij}}{\sqrt{2\bar a_i}}, i,j
+= 1,...,n, i\neq j.
+$$
+Тогда из теоремы получим
+\begin{corollary}\label{kad-col3}
+Если матрица $C$ является $\mathcal
+M$-матрицей, то система \eqref{kad-eq16} глобально экспоненциально
+$2p$-устойчива.
+\end{corollary}
+Пусть система \eqref{kad-eq16} имеет вид
+\begin{equation}\label{kad-eq17}
+\begin{array}{crl}
+dx_i(t) = \left [-a_i(t)x_i(h_i(t))+ \sum
+\limits_{j=1, i\neq j}^nF_{ij}(t)x_j(h_{ij}(t))\right]dt +\\
+ \sum \limits_{l=1}^m \left [\sum
+\limits_{j=1, i\neq j}^nG^l_{ij}(t)x_j(h^l_{ij}(t))\right ]d\mathcal
+B_l(t) \, (t \ge 0), i = 1,...,n.
+\end{array}
+%\eqno (17)
+\end{equation}
+Пусть $C$ --- $n\times n$-матрица, элементы которой определены
+следующим образом
+$$
+c_{ii} = 1 - \frac{A_i^2\tau _i^2 }{\bar a_i} - \frac{c_p\sum
+\limits _{l=1}^m \bar G^l_{ii}}{\sqrt{2\bar a_i}}, i = 1,...,n,
+$$
+$$
+c_{ij} = - \frac{A_i\bar F_{ij}\tau _i + c_p A_i \sqrt{\tau _i}\sum
+\limits _{i=1}^m\bar G^l_{ij} + \bar F_{ij}}{\bar a_i} -
+\frac{c_p\sum \limits _{l=1}^m \bar G^l_{ij}}{\sqrt{2\bar a_i}}, i,j
+= 1,...,n, i\neq j.
+$$
+Тогда из следствия \ref{kad-col3} получим
+\begin{corollary}\label{kad-col4}
+Если матрица $C$ является $\mathcal{M}$-матрицей, то система \eqref{kad-eq17}) глобально экспоненциально $2p$-устойчива.
+\end{corollary}
+Пусть система \eqref{kad-eq16} имеет вид
+\begin{equation}\label{kad-eq18}
+  \begin{array}{crl}
+dx_i(t) = \left [-a_i(t)x_i(t)+ \sum
+\limits_{j=1}^nF_{ij}(t)x_j(h_{ij}(t))\right]dt +\\
+ \sum \limits_{l=1}^m \left [\sum
+\limits_{j=1}^nG^l_{ij}(t)x_j(h^l_{ij}(t))\right ]d\mathcal B_l(t)
+\, (t \ge 0), i = 1,...,n.
+\end{array}
+%\eqno (18)
+\end{equation}
+
+
+Пусть $C$ --- $n\times n$-матрица, элементы которой определены
+следующим образом
+$$
+c_{ii} = 1 - \frac{\bar F_{ii}}{\bar a_i} - \frac{c_p\sum \limits
+_{l=1}^m \bar G^l_{ii}}{\sqrt{2\bar a_i}}, i = 1,...,n, c_{ij} = -
+\frac{\bar F_{ij}}{\bar a_i} - \frac{c_p\sum \limits _{l=1}^m \bar
+G^l_{ij}}{\sqrt{2\bar a_i}}, i,j = 1,...,n, i\neq j.
+$$
+Тогда из следствия \ref{kad-col3} получим
+\begin{corollary}\label{kad-col5}
+Если матрица $C$ является $\mathcal{M}$-матрицей, то система \eqref{kad-eq18} глобально экспоненциально $2p$-устойчива.
+\end{corollary}
+Пусть система \eqref{kad-eq16}  имеет вид
+\begin{equation}\label{kad-eq19}
+\begin{array}{crl}
+dx_i(t) = \left [-a_i(t)x_i(t)+ \sum
+\limits_{j=1, i\neq j}^nF_{ij}(t)x_j(h_{ij}(t))\right]dt +\\
+ \sum \limits_{l=1}^m \left [\sum
+\limits_{j=1, i \neq j}^nG^l_{ij}(t)x_j(h^l_{ij}(t))\right
+]d\mathcal B_l(t) \, (t \ge 0), i = 1,...,n.
+\end{array}
+%\eqno (19)
+\end{equation}
+Пусть $C$ --- $n\times n$-матрица, элементы которой определены
+следующим образом
+$$
+c_{ii} = 1, i = 1,...,n, c_{ij} = - \frac{\bar F_{ij}}{\bar a_i} -
+\frac{c_p\sum \limits _{l=1}^m \bar G^l_{ij}}{\sqrt{2\bar a_i}}, i,j
+= 1,...,n, i\neq j.
+$$
+Тогда из следствия \ref{kad-col3} получим
+\begin{corollary}\label{kad-col6}
+Если матрица $C$ является $\mathcal{M}$-матрицей, то система \eqref{kad-eq19} глобально экспоненциально $2p$-устойчива.
+\end{corollary}
+\begin{corollary}\label{kad-col7}
+Пусть в системе \eqref{kad-eq1} $n = 2$ и выполнены
+неравенства
+$$
+\sqrt{2}(A_1^2\tau _1^2 + A_1\bar F_{11}\tau _1  + c_p A_1
+\sqrt{\tau _1}\sum \limits _{i=1}^m\bar G^l_{11} + \bar F_{11}) +
+\sqrt{\bar a_1}c_p\sum \limits _{l=1}^m \bar G^l_{11} < \sqrt{2}\bar
+a_1,
+$$
+$$
+\begin{array}{crl}
+(\sqrt{2}\bar a_1 - \sqrt{2}(A_1^2\tau _1^2 + A_1\bar F_{11}\tau _1
++ c_p A_1 \sqrt{\tau _1}\sum \limits _{i=1}^m\bar G^l_{11} + \bar
+F_{11}) - \sqrt{\bar a_1}c_p\sum \limits _{l=1}^m \bar G^l_{11}) \times  \\
+(\sqrt{2}\bar a_2 - \sqrt{2}(A_2^2\tau _2^2 + A_2\bar F_{22}\tau _2
++ c_p A_2 \sqrt{\tau _2}\sum \limits _{i=1}^m\bar G^l_{22} + \bar
+F_{22}) - \sqrt{\bar a_2}c_p\sum \limits _{l=1}^m \bar G^l_{22}) >
+\\
+(\sqrt{2}(A_1\bar F_{12}\tau _1 + c_p A_1 \sqrt{\tau _1}\sum \limits
+_{i=1}^m\bar G^l_{12} + \bar F_{12}) + \sqrt{\bar a_1}c_p\sum
+\limits _{l=1}^m \bar G^l_{12})\\
+(\sqrt{2}(A_2\bar F_{21}\tau _2 + c_p A_2 \sqrt{\tau _2}\sum \limits
+_{i=1}^m\bar G^l_{21} + \bar F_{21}) + \sqrt{\bar a_2} c_p\sum
+\limits _{l=1}^m \bar G^l_{21}).
+\end{array}
+$$
+Тогда система \eqref{kad-eq1} глобально экспоненциально $2p$-устойчива.
+\end{corollary}
+Из следствий \ref{kad-col5} и \ref{kad-col7} получим
+\begin{corollary}\label{kad-col8}
+Пусть в системе (18) $n = 2$ и выполнены
+неравенства
+$$
+\sqrt{2}\bar F_{11} + \sqrt{\bar a_1}c_p\sum \limits _{l=1}^m \bar
+G^l_{11} < \sqrt{2}\bar a_1,
+$$
+$$
+\begin{array}{crl}
+(\sqrt{2}\bar a_1 - \sqrt{2}\bar F_{11} - \sqrt{\bar a_1}c_p\sum
+\limits _{l=1}^m \bar G^l_{11})(\sqrt{2}\bar a_2 - \sqrt{2}\bar
+F_{22} - \sqrt{\bar a_2}c_p\sum \limits _{l=1}^m \bar G^l_{22}) >\\
+(\sqrt{2}\bar F_{12} + \sqrt{\bar a_1}c_p\sum \limits _{l=1}^m \bar
+G^l_{12})(\sqrt{2}F_{21} + \sqrt{\bar a_2} c_p\sum \limits _{l=1}^m
+\bar G^l_{21}).
+\end{array}
+$$
+Тогда система \eqref{kad-eq18} глобально экспоненциально $2p$-устойчива.
+\end{corollary}
+Из следствий \ref{kad-col6} и \ref{kad-col8} получим
+\begin{corollary}\label{kad-col9}
+Пусть в системе \eqref{kad-eq19} $n = 2$ и выполнены
+условия
+
+$$
+\begin{array}{crl}
+(\sqrt{2}\bar F_{12} + \sqrt{\bar a_1}c_p\sum \limits _{l=1}^m \bar
+G^l_{12})(\sqrt{2}F_{21} + \sqrt{\bar a_2} c_p\sum \limits _{l=1}^m
+\bar G^l_{21}) < 2\bar a_1 \bar a_2 .
+\end{array}
+$$
+Тогда система \eqref{kad-eq19} глобально экспоненциально $2p$-устойчива.
+\end{corollary}
+
+\section{Пример}
+В качестве примера рассмотрим система двух уравнений следующего
+вида
+\begin{equation}\label{kad-eq20}
+\begin{array}{crl}
+dx_1(t) = \left [-a_{1}x_1(t-h_1)+ a_{11} F_{11}(x_1(t-h_{11}))+
+a_{12} F_{12}(x_2(t-h_{12})) \right ]dt+ \\
+ \left [b_{11}G_{11}(x_1(t-\tau _{11})) + b_{12}G_{12}(x_2(t-\tau _{12}))\right ]d\mathcal B(t)
+\, (t \ge 0),\\
+dx_2(t) = \left [-a_{2}x_1(t-h_2))+ a_{21} F_{21}(x_1(t-h_{21}))+
+a_{22} F_{22}(x_2(t-h_{22})) \right ]dt+ \\
+ \left [b_{21}G_{21}(x_1(t-\tau _{21})) + b_{22}G_{22}(x_2(t-\tau _{22}))\right ]d\mathcal B(t)
+\, (t \ge 0),
+\end{array}
+%\eqno (20)
+\end{equation}
+где $a_1, a_2, h_{ij}, \tau _{ij}, a_{ij}, b_{ij}, i, j = 1,2 $ ---
+некоторые положительные числа, $F_{ij}, G_{ij}, i, j = 1, 2$ ---
+непрерывные скалярные функция на $(-\infty, +\infty)$ такие, что
+$|F_{ij}(u)| \leq |u|, |G_{ij}(u)| \leq |u|, i, j = 1, 2$, $\mathcal
+B$ --- стандартный винеровский процесс.
+Из следствия \ref{kad-col7} получим, что, если для системы \eqref{kad-eq20} выполнены
+неравенства
+$$
+\sqrt{2}(a_1^2h_1^2 + a_1a_{11}h_1  + c_p a_1 \sqrt{h_1}b_{11} +
+a_{11}) + \sqrt{a_1}c_pb_{11} < \sqrt{2}a_1,
+$$
+$$
+\begin{array}{crl}
+(\sqrt{2}a_1 - \sqrt{2}(a_1^2h_1^2 + a_1a_{11}h_1 + c_p a_1
+\sqrt{h_1}b_{11} + a_{11}) - \sqrt{a_1}c_pb_{11}) \times  \\
+(\sqrt{2}a_2 - \sqrt{2}(a_2^2h_2^2 + a_2a_{22}h_2 + c_p a_2
+\sqrt{h_2}b_{22} + a_{22}) - \sqrt{a_2}c_pb_{22})
+>
+\\
+(\sqrt{2}(a_1a_{12}h_1 + c_p a_1 \sqrt{h_1}b_{12} + a_{12}) +
+\sqrt{a_1}c_pb_{12})(\sqrt{2}(a_2a_{21}h_2 + c_p a_2
+\sqrt{h_2}b_{21} + a_{21}) + \sqrt{a_2} c_pb_{21}),
+\end{array}
+$$
+то она глобально экспоненциально $2p$-устойчива.
+Пусть в системе \eqref{kad-eq20} $a_{ii}, b_{ii}, i = 1,2 $/ , тогда, если для
+нее выполнены неравенства
+$$
+a_1h_1^2 < 1,
+$$
+$$
+\begin{array}{crl}
+(\sqrt{2}a_1 - \sqrt{2}a_1^2h_1^2)(\sqrt{2}a_2 - \sqrt{2}a_2^2h_2^2)
+> \\
+(\sqrt{2}(a_1a_{12}h_1 + c_p a_1 \sqrt{h_1}b_{12} + a_{12}) +
+\sqrt{a_1}c_pb_{12})(\sqrt{2}(a_2a_{21}h_2 + c_p a_2
+\sqrt{h_2}b_{21} + a_{21}) + \sqrt{a_2} c_pb_{21}),
+\end{array}
+$$
+то она глобально экспоненциально $2p$-устойчива. 

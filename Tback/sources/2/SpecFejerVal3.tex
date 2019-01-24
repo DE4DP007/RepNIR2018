@@ -1,0 +1,1003 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[tbtags]{amsmath}
+\usepackage{amsfonts,amssymb,mathrsfs,amscd}
+%для подключения графики используются стандартные команды, но кроме файла *.eps
+%необходимо наличие в текущей директории соответствующего файла *.pdf
+%-------------------------------------------------
+\usepackage[hyper]{msb-a}
+\JournalName{МАТЕМАТИЧЕСКИЙ СБОРНИК}
+%\JournalName{}
+%Пустой аргумент приводит к исчезновению всех атрибутов журнала "Математический
+%сборник", файл можно представить в любой другой журнал
+%-------------------------------------------------
+\numberwithin{equation}{section}
+%-------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{propos}{Предложение}
+\newtheorem{corollary}{Следствие}
+%-------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{proof}{Доказательство}\def\theproof{}
+\newtheorem{remark}{Замечание}
+%-------------------------------------------------
+\def\Re{\operatorname{Re}}
+\def\Im{\operatorname{Im}}
+\def\const{\mathrm{const}}
+\def\RR{\mathbb R}
+\def\CC{\mathbb C}
+\def\NN{\mathbb N}
+\def\RS{\mathfrak R}
+\def\bz{\mathbf z}
+\def\sH{\mathscr H}
+\def\HH{\mathscr H}
+\def\mro{\widehat\rho}
+%-------------------------------------------------
+\begin{document}
+
+\title{Аппроксимативные свойства средних типа Фейера и Валле-Пуссена частичных сумм специального ряда по системе
+$\{\sin x\sin kx\}_{k=1}^\infty$  }
+
+\author[I.\,I.~Sharapudinov]{И.\,И.~Шарапудинов}
+\address{Дагестанский научный центр РАН}
+
+
+\email{sharapud@mail.ru}
+%второй автор
+
+\date{2.06.2014}
+\udk{517.538}
+
+\maketitle
+
+\begin{fulltext}
+
+\begin{abstract}
+Рассмотрены ряды вида $\Phi(\theta)=A_\Phi(\theta)+\sin\theta\sum_{k=1}^\infty \varphi_k\sin k\theta$,
+где $\Phi(\theta)$ -- четная $2\pi$ -- периодическая функция, принимающая конечные значения $\Phi(0)$ и $\Phi(\pi)$,
+$A_\Phi(\theta)={\Phi(0)+\Phi(\pi)\over2}+{\Phi(0)-\Phi(\pi)\over2}\cos\theta$, $\varphi(\theta)=\Phi(\theta)-A_\Phi(\theta)$,
+$\varphi_k=\frac2\pi\int_0^\pi\varphi(t){\sin kt\over\sin t}dt$.
+Подобные ряды  возникают в качестве  частного случая более общих специальных рядов по ультрасферическим полиномам Якоби,
+введенных и исследованных впервые  работах автора. Показано,  что частичные суммы  вида
+$\Pi_n(\Phi)=\Pi_n(\Phi,\theta)=A_\Phi(\theta)+\sin\theta\sum_{k=1}^{n-1} \varphi_k\sin k\theta$
+обладают рядом важных свойств, выгодно отличающих их от тригонометрических  сумм Фурье вида
+$S_n(\Phi,\theta)=\frac{a_0}{2}+\sum_{k=1}^na_k\cos k\theta$. Исследованы аппроксимативные свойства средних типа Фейера и Валле Пуссена
+для частичных сумм $\Pi_n(\Phi,\theta)$.
+
+
+Библиография: 7 названий.
+
+\end{abstract}
+
+\begin{keywords}
+Специальные ряды по системе $\{\sin x\sin kx\}_{k=1}^\infty$ , средние Фейера и Валле Пуссена, аппроксимативные свойства
+\end{keywords}
+
+\markright{Средние типа Фейера и Валле Пуссена специальных рядов   }
+
+\footnotetext[0]{Работа выполнена при поддержке РФФИ (грант
+\No~10-01-00191) }
+
+
+
+
+
+
+
+
+
+\section{Введение}
+
+В настоящей работе рассмотрены ряды вида
+
+
+ \begin{equation}\label{eq1.1}
+    \Phi(\theta)=A_\Phi(\theta)+\sin\theta\sum_{k=1}^\infty \varphi_k\sin k\theta
+\end{equation}
+
+
+где $\Phi(\theta)$ -- четная $2\pi$ -- периодическая функция, принимающая конечные значения $\Phi(0)$ и $\Phi(\pi)$,
+
+ \begin{equation}\label{eq1.2}
+  A_\Phi(\theta)={\Phi(0)+\Phi(\pi)\over2}+{\Phi(0)-\Phi(\pi)\over2}\cos\theta,
+\end{equation}
+\begin{equation}\label{eq1.3}
+ \varphi(\theta)=\Phi(\theta)-A_\Phi(\theta)
+ \end{equation}
+\begin{equation}\label{eq1.4}
+\varphi_k=\frac2\pi\int_0^\pi\varphi(t){\sin kt\over\sin t}dt.
+ \end{equation}
+
+
+Ряды вида \eqref{eq1.1}       возникают в качестве одного из важный частных случаев более общих специальных рядов по ультрасферическим полиномам Якоби,
+введенных и исследованных впервые в наших работах \cite{Shar1}, \cite{Shar2}.  В частности, в работе \cite{Shar2}  было показано,  что частичные суммы ряда \eqref{eq1.1} вида
+\begin{equation}\label{eq1.5}
+\Pi_n(\Phi)=\Pi_n(\Phi,\theta)=A_\Phi(\theta)+\sin\theta\sum_{k=1}^{n-1} \varphi_k\sin k\theta
+ \end{equation}
+
+обладают рядом важных свойств, выгодно отличающих их от тригонометрических  сумм Фурье вида
+\begin{equation}\label{eq1.6}
+S_n(\Phi,\theta)=\frac{a_0}{2}+\sum_{k=1}^na_k\cos k\theta,
+ \end{equation}
+где
+\begin{equation}\label{eq1.7}
+a_k=a_k(\Phi)=\frac{2}{\pi}\int_0^\pi\Phi(t)\cos kt dt.
+ \end{equation}
+В частности, $\Pi_n(\Phi,\theta)$, в отличие от $S_n(\Phi,\theta)$, обладает свойством <<прилипания>>, заключающемся в том, что в окрестностях точек  $\theta_k=k\pi$ $(k\in \mathbb{Z})$, как правило,  $\Pi_n(\Phi,\theta)$ приближает исходную функцию $\Phi(\theta)$ значительно лучше, чем частичная сумма Фурье $S_n(\Phi,\theta)$ вида \eqref{eq1.6}.  При этом $\Pi_n(\Phi,\theta)$  совпадает с $\Phi(\theta)$ в точках $\theta_k=k\pi$ $(k\in \mathbb{Z})$, в то время, как  $S_n(\Phi,\theta)$, вообще говоря,  этим свойством не обладает. Это свойство операторов $\Pi_n(\Phi)=\Pi_n(\Phi,\theta)$ может иметь важное значение при решении  задач, возникающих \cite{DedMachUS} --  \cite{Malvar}  в  таких прикладных областях, как обработка временных рядов и изображений.   Отметим также, что $\Pi_n(\Phi,\theta)$ так же, как и $S_n(\Phi,\theta)$ является проектором на подпространство четных тригонометрических полиномов $T_n(\theta)$ порядка $n$, т.е. $\Pi_n(T_n,\theta)\equiv T_n(\theta)$. Отметим еще, что, как было показано в работе \cite{Shar2}  , для частичных сумм $\Pi_n(\Phi,\theta)$ установлена следующая оценка
+\begin{equation}\label{eq1.8}
+|\Phi(\theta)-\Pi_n(\Phi,\theta)|\le cE_n(\Phi)[1+\ln(n|\sin\theta|+1)],
+ \end{equation}
+где $E_n(\Phi)$ -- наилучшее приближение функции $\Phi(\theta)\in C_{2\pi}$ тригонометрическими полиномами $T_n(\theta)$ порядка $n$. Неравенство \eqref{eq1.8} является аналогом хорошо известного неравенства Лебега для сумм Фурье $S_n(\Phi,\theta)$, который имеет вид
+\begin{equation}\label{eq1.9}
+ |\Phi(\theta)-S_n(\Phi,\theta)|\le cE_n(\Phi)[1+\ln(n+1)]
+ \end{equation}
+
+
+
+
+Сравнивая правые части оценок \eqref{eq1.8}) и \eqref{eq1.9}, мы замечаем, что, как уже отмечалось,  в окрестностях точек  $\theta_k=k\pi$ $(k\in \mathbb{Z})$  $\Pi_n(\Phi,\theta)$ приближает исходную функцию $\Phi(\theta)$  лучше, чем частичная сумма Фурье $S_n(\Phi,\theta)$. Наконец, без особого труда можно показать, что между коэффициентами $\varphi_k$ (см.\eqref{eq1.4}) и $a_k$ (см. \eqref{eq1.7}) имеется простая связь $\varphi_{k+1}=2a_k+\varphi_{k-1}$. Это позволяет использовать быстрое дискретное косинус-преобразование Фурье для численной реализации сумм  $\Pi_n(\Phi,\theta)$. Отмеченные свойства операторов $\Pi_n(\Phi)=\Pi_n(\Phi,\theta)$ покзывают, что они обладают весьма привлекательными аппроксимативными свойствами и существуют эффективные алгоритмы для их численной реализации. Настоящая статья  посвящена исследованию аппроксимативных свойств линейных средних типа Фейера и Валле-Пуссена частичных сумм $\Pi_n(\Phi,\theta)$. Будут рассмотрены задачи о равномерной ограниченности в $C_{2\pi}$ средних типа Фейера вида
+\begin{equation}\label{eq1.10}
+{\cal F}_n(\Phi,\theta)=\frac1n[\Pi_1(\Phi,\theta)+\cdots+ \Pi_n(\Phi,\theta)]
+ \end{equation}
+
+и Валле-Пуссена
+\begin{equation}\label{eq1.11}
+{\cal V}_m^n(\Phi,\theta)=\frac1{m+1}[\Pi_n(\Phi,\theta)+\cdots+ \Pi_{n+m}(\Phi,\theta)].
+ \end{equation}
+
+Отдельно будет исследована задача о скорости поточечной сходимости средних Валле-Пуссена ${\cal V}_m^n(\Phi,\theta)$ для кусочно гладких функций.
+
+\section{Равномерная ограниченность в $C_{2\pi}$ средних типа  Фейера  для частичных сумм $\Pi_n(\Phi,\theta)$}
+
+Через $C_{2\pi}$ обозначим, как обычно, пространство $2\pi$ периодических непрерывных  функций $\Phi(x)$, для которых  норма определяется с помощью равенства $\|\Phi\|=\sup\{|\Phi(\theta)|:-\pi\le \theta\le\pi\}$. Подпространство четных функций  $\Phi\in C_{2\pi}$ будем обозначать
+через $C_{2\pi}^e$. Рассмотрим средние типа Фейера ${\cal F}_n(\Phi)={\cal F}_n(\Phi,\theta)$, определенные равенством \eqref{eq1.10}, как линейные операторы, действующие в нормированном пространстве $C_{2\pi}^e$. В настоящем параграфе мы покажем, в частности,  что операторы  ${\cal F}_n={\cal F}_n(\Phi)$ $(n=1,2,\ldots)$ равномерно ограничены в  $C_{2\pi}^e$. Другими словами, найдется такая абсолютная постоянная $c$, что
+\begin{equation}\label{eq2.1}
+\|{\cal F}_n(\Phi)\|\le c\|\Phi\|\quad(n=1,2,\ldots).
+ \end{equation}
+
+
+При доказательстве неравенства \eqref{eq2.1} нам потребуются некоторые интегральные представления для $\Pi_n(\Phi,\theta)$ и ${\cal F}_n(\Phi,\theta)$. Из \eqref{eq1.2} и \eqref{eq1.5} мы имеем, что $\Pi_1(\Phi,\theta)=A_\Phi(\theta)$,
+
+$$
+\Pi_n(\Phi,\theta)=A_\Phi(\theta)+\frac2\pi\int_0^\pi{\sin\theta\over\sin t}\sum_{k=1}^{n-1}\sin kt\sin k\theta\varphi(t)dt=
+$$
+$$
+A_\Phi(\theta)+\frac1\pi\int_0^\pi{\sin\theta\over\sin t}\sum_{k=1}^{n-1}[\cos k(\theta-t)-\cos k(\theta+t)]\varphi(t) dt=
+$$
+\begin{equation}\label{eq2.2}
+A_\Phi(\theta)+\frac1\pi\int_0^\pi{\sin\theta\over\sin t}[D_{n-1}(\theta-t)-D_{n-1}(\theta+t)]\varphi(t) dt,
+ \end{equation}
+где
+\begin{equation}\label{eq2.3}
+D_m(u)=\frac12+\cos u+\cdots+\cos mu={\sin(m+\frac12)u\over\sin\frac{u}{2} }
+ \end{equation}
+-- ядро Дирихле. Из \eqref{eq1.10} и \eqref{eq2.2} находим
+\begin{equation}\label{eq2.4}
+{\cal F}_n(\Phi,\theta)=A_\Phi(\theta)+\frac1\pi\int_0^\pi {\sin\theta\over\sin t}[F_{n}(\theta-t)-F_{n}(\theta+t)]\varphi(t) dt,
+ \end{equation}
+
+где
+\begin{equation}\label{eq2.5}
+F_n(u)=\sum_{k=0}^{n-1}D_k(u)=\frac1{2n}\left({\sin\frac{nu}{2}\over\sin\frac{u}{2}}\right)^2.
+ \end{equation}
+Для дальнейшего заметим, что разность $F_{n}(\theta-t)-F_{n}(\theta+t)$ может быть представлена следующими двумя способами
+\begin{equation}\label{eq2.6}
+F_{n}(\theta-t)-F_{n}(\theta+t)=\frac{2}{n}\sum_{k=2}^n\sum_{\nu=1}^{k-1}\sin \nu t\sin \nu\theta\quad(n\ge2),
+ \end{equation}
+\begin{equation}\label{eq2.7}
+F_{n}(\theta-t)-F_{n}(\theta+t)=\frac1{2n}\left[\left({\sin\frac{n(\theta-t)}{2}\over\sin\frac{\theta-t}{2}}\right)^2-
+\left({\sin\frac{n(\theta+t)}{2}\over\sin\frac{\theta+t}{2}}\right)^2\right].
+ \end{equation}
+
+Положим
+\begin{equation}\label{eq2.8}
+\lambda_n(\theta)=1+ \frac2\pi\int_0^\pi {|\sin\theta|\over\sin t}|F_{n}(\theta-t)-F_{n}(\theta+t)|dt,\quad \theta\in\mathbb{R}.
+ \end{equation}
+Тогда из \eqref{eq2.4} и \eqref{eq2.8} мы выводим следующее неравенство
+\begin{equation}\label{eq2.9}
+|{\cal F}_n(\Phi,\theta)|\le \lambda_n(\theta)\|\Phi\|.
+ \end{equation}
+
+
+В связи с неравенством \eqref{eq2.9} возникает задача об оценке функции  $\lambda_n(\theta)$. Основным результатом настоящей работы является следующая
+
+\begin{theorem}\label{t1}
+Последовательность функций $\lambda_n(\theta)$ равномерно ограничена в пространстве $C_{2\pi}$, другими словами, существует такая абсолютная постоянная $c$, что
+$$
+\lambda_n(\theta)\le c\quad (n=1,2,\ldots,  \theta\in\mathbb{R}).
+$$
+\end{theorem}
+
+
+
+
+Доказательству теоремы 1 мы предпошлем ряд вспомогательных утверждений. При этом через $c$, $c_1$, $c_2$, \ldots будем обозначать абсолютные постоянные, вообще говоря, различные в разных местах.
+
+\begin{lemma}\label{l2.1}
+Положим
+\begin{equation}\label{eq2.10}
+ I_n(\theta)=\int_{\theta-\frac{\pi}{2n}}^{\theta+\frac{\pi}{2n}} {\left|\sin\theta\over\sin t\right|}|F_{n}(\theta-t)-F_{n}(\theta+t)|dt.
+ \end{equation}
+Тогда
+\begin{equation}\label{eq2.11}
+ I_n(\theta)\le c.
+  \end{equation}
+\end{lemma}
+
+\begin{proof}
+Мы ограничимся доказательством оценки \eqref{eq2.11} для $0\le \theta\le \frac{\pi}{2}$. Воспользовавшись представлением \eqref{eq2.6}, мы можем записать интеграл \eqref{eq2.10} в следующем виде
+
+\begin{equation}\label{eq2.12}
+ I_n(\theta)=\frac{2}{n}\int_{\theta-\frac{\pi}{2n}}^{\theta+\frac{\pi}{2n}} {\left|\sin\theta\over\sin t\right|}\left|\sum_{k=2}^n\sum_{\nu=1}^{k-1}\sin \nu t\sin \nu\theta\right|dt.
+  \end{equation}
+
+
+Чтобы оценить эту величину мы рассмотрим два случая: 1) $0\le\theta\le\frac{\pi}{n}$; 2) $\frac{\pi}{n}\le\theta\le\frac{\pi}{2}$.
+В первом случае из \eqref{eq2.12} мы имеем
+\begin{equation}\label{eq2.13}
+I_n(\theta)\le\frac{2\pi}{n^2}\int_{\theta-\frac{\pi}{2n}}^{\theta+\frac{\pi}{2n}} \sum_{k=2}^n\sum_{\nu=1}^{k-1}\left|{\sin \nu t\over\sin t}\right|dt\le \frac{c}{n^2}\int_{\theta-\frac{\pi}{2n}}^{\theta+\frac{\pi}{2n}} \sum_{k=2}^n\sum_{\nu=1}^{k-1}\nu dt\le c.
+  \end{equation}
+Если же $\frac{\pi}{n}\le\theta\le\frac{\pi}{2}$ и $\theta-\frac{\pi}{2n}\le t\le \theta+\frac{\pi}{2n}$, то
+$$
+{\sin\theta\over\sin t}\le c, \quad \sum_{k=2}^n\sum_{\nu=1}^{k-1}\left|{\sin \nu t\sin \nu \theta}\right|\le cn^2
+$$
+и, следовательно,
+\begin{equation}\label{eq2.14}
+I_n(\theta)\le\frac{c}{n}\int_{\theta-\frac{\pi}{2n}}^{\theta+\frac{\pi}{2n}} \left|\sum_{k=2}^n\sum_{\nu=1}^{k-1}\sin \nu t\sin \nu\theta\right|dt\le c.
+  \end{equation}
+
+
+
+Из \eqref{eq2.13} и \eqref{eq2.14}  приходим к оценке \eqref{eq2.11} для $0\le \theta\le \frac{\pi}{2}$. Случай, когда $\frac{\pi}{2}\le \theta\le \pi$ сводится к рассмотренному путем замены $\theta$ на $\pi-\theta$. Лемма 2.1 доказана.
+
+\end{proof}
+
+\begin{lemma}\label{l2.2}
+ Пусть $0\le \theta\le \frac{\pi}{2}$,
+\begin{equation}\label{eq2.15}
+ J_n(\theta)=\int_{0}^{\theta-\frac{\pi}{2n}} {\sin\theta\over\sin t}|F_{n}(\theta-t)-F_{n}(\theta+t)|dt,
+  \end{equation}
+причем $J_n(\theta)=0$, если $0\le \theta\le\frac{\pi}{2n}$. Тогда $J_n(\theta)\le c$.
+\end{lemma}
+\begin{proof}
+ Пусть сначала $\frac{\pi}{n}\le \theta\le \frac{\pi}{2}$. Нам понадобятся некоторые преобразования правой части равенства \eqref{eq2.7}. Имеем
+\begin{equation}\label{eq2.16}
+\left({\sin\frac{n(\theta-t)}{2}\over\sin\frac{\theta-t}{2}}\right)^2-
+\left({\sin\frac{n(\theta+t)}{2}\over\sin\frac{\theta+t}{2}}\right)^2=ab,
+  \end{equation}
+
+
+
+где
+\begin{equation}\label{eq2.17}
+a={\sin\frac{n(\theta-t)}{2}\over\sin\frac{\theta-t}{2}}-
+{\sin\frac{n(\theta+t)}{2}\over\sin\frac{\theta+t}{2}},
+\end{equation}
+\begin{equation}\label{eq2.18}
+b={\sin\frac{n(\theta-t)}{2}\over\sin\frac{\theta-t}{2}}+
+{\sin\frac{n(\theta+t)}{2}\over\sin\frac{\theta+t}{2}}.
+\end{equation}
+Далее,
+$$
+a={\sin\frac{n(\theta-t)}{2}\sin\frac{\theta+t}{2}-
+\sin\frac{n(\theta+t)}{2}\sin\frac{\theta-t}{2}\over\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2}}=
+$$
+$$
+{\cos(\frac{n(\theta-t)}{2}-\frac{\theta+t}{2})-\cos(\frac{n(\theta-t)}{2}+\frac{\theta+t}{2})-
+\cos(\frac{n(\theta+t)}{2}-\frac{\theta-t}{2})+\cos(\frac{n(\theta+t)}{2}+\frac{\theta-t}{2})
+\over2\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2}}=
+$$
+$$
+{\cos(\frac{n(\theta-t)}{2}-\frac{\theta+t}{2})-\cos(\frac{n(\theta+t)}{2}-\frac{\theta-t}{2})-[\cos(\frac{n(\theta-t)}{2}+\frac{\theta+t}{2})-
+\cos(\frac{n(\theta+t)}{2}+\frac{\theta-t}{2})]
+\over2\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2}}=
+$$
+\begin{equation}\label{eq2.19}
+{\sin((n-1)\frac{\theta}{2})\sin((n+1)\frac{t}{2})-\sin((n+1)\frac{\theta}{2})\sin((n-1)\frac{t}{2})
+\over\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2}}.
+\end{equation}
+С другой стороны, $\sin((n+1)u=\sin(n-1)u+2\cos nu\sin u$, поэтому
+$$
+\sin((n-1)\frac{\theta}{2})\sin((n+1)\frac{t}{2})-\sin((n+1)\frac{\theta}{2})\sin((n-1)\frac{t}{2})=
+$$
+\begin{equation}\label{eq2.20}
+2\sin((n-1)\frac{\theta}{2})\sin\frac{t}{2}\cos\frac{nt}{2}-2\sin((n-1)\frac{t}{2})\sin\frac{\theta}{2}\cos\frac{n\theta}{2}.
+\end{equation}
+Из \eqref{eq2.19} и \eqref{eq2.20} выводим
+\begin{equation}\label{eq2.21}
+a=2{\sin((n-1)\frac{\theta}{2})\sin\frac{t}{2}\cos\frac{nt}{2}-\sin((n-1)\frac{t}{2})\sin\frac{\theta}{2}\cos\frac{n\theta}{2}
+\over\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2}}.
+\end{equation}
+Аналогично, из \eqref{eq2.18} имеем
+\begin{equation}\label{eq2.22}
+b=2{\sin(n\frac{\theta}{2})\sin\frac{\theta}{2}\cos\frac{(n-1)t}{2}-\sin(n\frac{t}{2})\sin\frac{t}{2}\cos\frac{(n-1)\theta}{2}
+\over\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2}}.
+\end{equation}
+Из \eqref{eq2.21} и \eqref{eq2.22} находим
+$$
+ab={4\over(\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2})^2}\times
+$$
+$$
+\left(\sin\frac{(n-1)\theta}{2}\sin\frac{t}{2}\cos\frac{nt}{2}\sin\frac{n\theta}{2}
+\sin\frac{\theta}{2}\cos\frac{(n-1)t}{2}\right.
+$$
+$$
+-\sin\frac{(n-1)\theta}{2}\sin\frac{t}{2}\cos\frac{nt}{2}\sin\frac{nt}{2}\sin\frac{t}{2}\cos\frac{(n-1)\theta}{2}
+$$
+$$
+-\sin\frac{(n-1)t}{2}\sin\frac{\theta}{2}\cos\frac{n\theta}{2}\sin\frac{n\theta}{2}\sin\frac{\theta}{2}\cos\frac{(n-1)t}{2}
+$$
+$$
++\left.\sin\frac{(n-1)t}{2}\sin\frac{\theta}{2}\cos\frac{n\theta}{2}\sin\frac{nt}{2}\sin\frac{t}{2}\cos\frac{(n-1)\theta}{2}\right)=
+$$
+$$
+{4\over(\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2})^2}\times
+$$
+
+$$
+\left(\frac12\sin\frac{(n-1)\theta}{2}\sin\frac{n\theta}{2}
+\sin\frac{\theta}{2}\sin\frac{t}{2}\left(\cos\frac{t}{2}+\cos(n-\frac12)t\right)\right.
+$$
+$$
+-\frac14\sin(n-1)\theta\sin nt\sin^2\frac{t}{2}-\frac14\sin(n-1)t\sin n\theta\sin^2\frac{\theta}{2}
+$$
+\begin{equation}\label{eq2.23}\left.
++\frac12\sin\frac{\theta}{2}\cos\frac{n\theta}{2}\sin\frac{t}{2}\cos\frac{(n-1)\theta}{2}
+\left(\cos\frac{t}{2}-\cos(n-\frac12)t\right)\right).
+\end{equation}
+
+Вернемся к величине \eqref{eq2.15}. С учетом \eqref{eq2.7}, \eqref{eq2.16} и \eqref{eq2.15} мы можем представить $J_n(\theta)$ следующим образом $(\frac{\pi}{n}\le\theta\le\frac{\pi}{2})$:
+\begin{equation}\label{eq2.24}
+J_n(\theta)\le J_{n,1}(\theta)+J_{n,2}(\theta)+J_{n,3}(\theta)+J_{n,4}(\theta),
+\end{equation}
+где
+\begin{equation}\label{eq2.25}
+J_{n,1}(\theta)=\frac{\sin\theta}{n}\left|\sin\frac{(n-1)\theta}{2}\sin\frac{n\theta}{2}
+\sin\frac{\theta}{2}\right|\int\limits_0^{\theta-\frac{\pi}{2n}}{\sin\frac{t}{2}\left|\cos\frac{t}{2}+\cos(n-\frac12)t\right|dt
+\over\sin t(\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2})^2},
+\end{equation}
+\begin{equation}\label{eq2.26}
+J_{n,2}(\theta)=\frac{\sin\theta}{2n}|\sin(n-1)\theta|\int\limits_0^{\theta-\frac{\pi}{2n}}{\sin^2\frac{t}{2}|\sin nt|dt
+\over\sin t(\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2})^2},
+\end{equation}
+\begin{equation}\label{eq2.27}
+J_{n,3}(\theta)=\frac{\sin\theta}{2n}|\sin n\theta \sin^2\frac{\theta}{2}|
+\int\limits_0^{\theta-\frac{\pi}{2n}}{|\sin (n-1)t|dt
+\over\sin t(\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2})^2},
+\end{equation}
+\begin{equation}\label{eq2.28}
+J_{n,4}(\theta)=\frac{\sin\theta}{n}\left|\cos\frac{(n-1)\theta}{2}\cos\frac{n\theta}{2}
+\sin\frac{\theta}{2}\right|\int\limits_0^{\theta-\frac{\pi}{2n}}{\sin\frac{t}{2}\left|\cos\frac{t}{2}-\cos(n-\frac12)t\right|dt
+\over\sin t(\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2})^2}.
+\end{equation}
+Покажем, что для $\frac{\pi}{n}\le\theta\le\frac{\pi}{2}$ имеет место оценка
+\begin{equation}\label{eq2.29}
+J_{n,k}(\theta)\le c\quad(k=1,2,3,4).
+\end{equation}
+Оценим $J_{n,1}(\theta)$. Из \eqref{eq2.25} имеем
+$$
+J_{n,1}(\theta)\le \frac{c\sin\frac{\theta}{2}\sin\theta}{n}\int\limits_0^{\theta-\frac{\pi}{2n}}{dt
+\over(\theta+t)^2(\theta-t)^2}\le
+$$
+\begin{equation}\label{eq2.30}
+\frac{c\theta^2}{n}\int\limits_0^{\theta-\frac{\pi}{2n}}{dt
+\over(\theta-t)^2\theta^2}=\frac{c}{n}\int\limits_0^{\theta-\frac{\pi}{2n}}{dt\over(\theta-t)^2}\le c.
+\end{equation}
+Для $J_{n,2}(\theta)$ из \eqref{eq2.26}, аналогично,  находим
+\begin{equation}\label{eq2.31}
+J_{n,2}(\theta)\le \frac{c}{n}\int\limits_0^{\theta-\frac{\pi}{2n}}{\theta tdt
+\over(\theta-t)^2(\theta+t)^2}\le\frac{c}{n}\int\limits_0^{\theta-\frac{\pi}{2n}}{dt\over(\theta-t)^2}\le c.
+\end{equation}
+Далее, из \eqref{eq2.27} имеем
+$$
+J_{n,3}(\theta)\le \frac{c\theta^3}{n}\int\limits_0^{\theta-\frac{\pi}{2n}}{|\sin(n-1)t|dt
+\over\sin t(\theta-t)^2(\theta+t)^2}=
+$$
+$$
+ \frac{c\theta^3}{n}\left[\int\limits_0^{\frac{\pi}{2n}}+\int\limits_{\frac{\pi}{2n}}^{\frac{\theta}{2}}+
+\int\limits_{\frac{\theta}{2}}^{\theta-\frac{\pi}{2n}}\right]{|\sin(n-1)t|dt
+\over\sin t(\theta-t)^2(\theta+t)^2}\le
+$$
+$$
+\frac{c}{n}\left[n\theta\int\limits_0^{\frac{\pi}{2n}}{dt\over(\theta-t)^2}+\int\limits_{\frac{\pi}{2n}}^{\frac{\theta}{2}}{dt\over t\theta}+
+\int\limits_{\frac{\theta}{2}}^{\theta-\frac{\pi}{2n}}{dt\over(\theta-t)^2}\right]\le
+$$
+\begin{equation}\label{eq2.32}
+c\left[\theta\left({1\over\theta-\frac{\pi}{2n}}-\frac{1}{\theta}\right)+\frac{1}{n\theta}\ln\frac{n\theta}{\pi}+
+\frac{1}{n}\left({1\over\frac{\pi}{2n}}-\frac{1}{\frac{\theta}{2}}\right)\right]\le c.
+\end{equation}
+Для $J_{n,4}(\theta))$ из \eqref{eq2.28} находим
+\begin{equation}\label{eq2.33}
+J_{n,4}(\theta)\le \frac{c\theta^2}{n}\int\limits_0^{\theta-\frac{\pi}{2n}}{dt
+\over(\theta+t)^2(\theta-t)^2}\le \frac{c}{n}\int\limits_0^{\theta-\frac{\pi}{2n}}{dt
+\over(\theta-t)^2}\le c.
+\end{equation}
+Оценка \eqref{eq2.29} вытекает из \eqref{eq2.30}--\eqref{eq2.33}. Сопоставляя \eqref{eq2.29} с \eqref{eq2.24}, убеждаемся в справедливости леммы 2.2 в случае $\frac{\pi}{n}\le\theta\le\frac{\pi}{2}$. Перейдем к случаю, когда $\frac{\pi}{2n}\le \theta\le\frac{\pi}{n}$. Воспользуемся представлением \eqref{eq2.6}, тогда в силу \eqref{eq2.15} мы можем записать
+$$
+J_n(\theta)=\int_{0}^{\theta-\frac{\pi}{2n}} {\sin\theta\over\sin t}\left|\frac{2}{n}\sum_{k=2}^n\sum_{\nu=1}^{k-1}\sin \nu t\sin \nu\theta\right| dt\le c\frac{\theta}{n}\int_{0}^{\theta-\frac{\pi}{2n}}\sum_{k=2}^n\sum_{\nu=1}^{k-1}\nu dt\le c(n\theta)^2\le c.
+$$
+Отсюда вытекает справедливость леммы 2.2 при $\frac{\pi}{2n}\le \theta\le\frac{\pi}{n}$. Тем самым, лемма 2.2 полностью доказана.
+\end{proof}
+
+
+\begin{lemma}\label{l2.3}
+     Пусть $0\le \theta\le \frac{\pi}{2}$,
+\begin{equation}\label{eq2.34}
+H_n(\theta)=\int_{\theta+\frac{\pi}{2n}}^\pi {\sin\theta\over\sin t}|F_{n}(\theta-t)-F_{n}(\theta+t)|dt.
+\end{equation}
+  Тогда
+\begin{equation}\label{eq2.35}
+  H_n(\theta)\le c.
+\end{equation}
+  \end{lemma}
+
+
+
+\begin{proof}
+ Пользуясь равенствами \eqref{eq2.7}, \eqref{eq2.16} и \eqref{eq2.23}, мы можем представить интеграл \eqref{eq2.34} следующим образом:
+\begin{equation}\label{eq2.36}
+H_n(\theta)=H_{n,1}(\theta)+H_{n,2}(\theta)+H_{n,3}(\theta)+H_{n,4}(\theta),
+\end{equation}
+где $H_{nk}(\theta)$ отличается от $J_{nk}(\theta)$ из \eqref{eq2.24} лишь тем, что вместо интеграла $\int_{0}^{\theta-\frac{\pi}{2n}}$ рассматривается интеграл  $\int_{\theta+\frac{\pi}{2n}}^\pi$. Оценим $H_{nk}(\theta)$. Имеем
+$$
+H_{n,1}(\theta)=\frac{\sin\theta}{n}\left|\sin\frac{(n-1)\theta}{2}\sin\frac{n\theta}{2}
+\sin\frac{\theta}{2}\right|\int\limits_{\theta+\frac{\pi}{2n}}^\pi{\sin\frac{t}{2}\left|\cos\frac{t}{2}+\cos(n-\frac12)t\right|dt
+\over\sin t(\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2})^2}\le
+$$
+$$
+\frac{c\theta^2}{n}\int\limits_{\theta+\frac{\pi}{2n}}^\frac{2\pi}{3}{dt\over(t-\theta)^2(t+\theta)^2}+
+\frac{c\theta^2}{n}\int\limits_\frac{2\pi}{3}^\pi{(\sin t+ |\sin nt|+|\sin(n-1)t|)dt\over\sin t}\le
+$$
+\begin{equation}\label{eq2.37}
+\frac{c}{n}\int\limits_{\theta+\frac{\pi}{2n}}^\frac{2\pi}{3}{dt\over(t-\theta)^2}+
+\frac{c\theta^2}{n}\int\limits_\frac{2\pi}{3}^\pi{(\sin t+ |\sin nt|+|\sin(n-1)t|)dt\over\sin t}\le c+ \frac{c\theta^2}{n}\ln n\le c,
+\end{equation}
+$$
+H_{n,2}(\theta)=\frac{\sin\theta}{2n}|\sin(n-1)\theta|\int\limits_{\theta+\frac{\pi}{2n}}^\pi{\sin^2\frac{t}{2}|\sin nt|dt
+\over\sin t(\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2})^2}\le
+$$
+\begin{equation}\label{eq2.38}
+\frac{c\theta}{n}\int\limits_{\theta+\frac{\pi}{2n}}^\frac{2\pi}{3}{tdt\over(t-\theta)^2(t+\theta)^2}+
+\frac{c\theta}{n}\int\limits_\frac{2\pi}{3}^\pi  dt\le
+\frac{c}{n}\int\limits_{\theta+\frac{\pi}{2n}}^\frac{2\pi}{3}{tdt\over(t-\theta)^2}+
+\frac{c\theta}{n}\le c,
+\end{equation}
+
+$$
+H_{n,3}(\theta)=\frac{\sin\theta}{2n}|\sin n\theta \sin^2\frac{\theta}{2}|
+\int\limits_{\theta+\frac{\pi}{2n}}^\pi{|\sin (n-1)t|dt
+\over\sin t(\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2})^2}\le
+$$
+$$
+\frac{c\theta^3}{n}\int\limits_{\theta+\frac{\pi}{2n}}^\frac{2\pi}{3}{dt\over\sin t(t-\theta)^2(t+\theta)^2}+
+\frac{c\theta^3}{n}\int\limits_\frac{2\pi}{3}^\pi{|\sin (n-1)t|dt
+\over\sin t}  dt\le
+$$
+\begin{equation}\label{eq2.39}
+\frac{c\theta}{n}\int\limits_{\theta+\frac{\pi}{2n}}^\frac{2\pi}{3}{dt\over t(t-\theta)^2}+
+\frac{c\ln n}{n}\le\frac{c}{n}\int\limits_{\theta+\frac{\pi}{2n}}^\frac{2\pi}{3}{dt\over (t-\theta)^2}+
+\frac{c\ln n}{n}\le c,
+\end{equation}
+
+$$
+H_{n,4}(\theta)=\frac{\sin\theta}{n}|\cos\frac{(n-1)\theta}{2}\cos\frac{n\theta}{2}
+\sin\frac{\theta}{2}|\int\limits_{\theta+\frac{\pi}{2n}}^\pi{\sin\frac{t}{2}\left|\cos\frac{t}{2}-\cos(n-\frac12)t\right|dt
+\over\sin t(\sin\frac{\theta+t}{2}\sin\frac{\theta-t}{2})^2}\le
+$$
+\begin{equation}\label{eq2.40}
+\frac{c\theta^2}{n}\int\limits_{\theta+\frac{\pi}{2n}}^\frac{2\pi}{3}{dt\over(t-\theta)^2(t+\theta)^2}+
+\frac{c\theta^2}{n}\int\limits_\frac{2\pi}{3}^\pi{(\sin t+ |\sin nt|+|\sin(n-1)t|)dt\over\sin t}\le c.
+\end{equation}
+
+Справедливость утверждения леммы 2.3 вытекает из \eqref{eq2.36} -- \eqref{eq2.40}.
+\end{proof}
+
+Вернемся к утверждению теоремы 1. Если $0\le \theta\le \frac{\pi}{2}$, то  его справедливость непосредственно вытекает из лемм 2.1 -- 2.3. Если же  $ \frac{\pi}{2}\le \theta\le \pi$, то утверждение теоремы 1 сводится к случаю $0\le \theta\le \frac{\pi}{2}$, так как  в силу \eqref{eq2.6} и \eqref{eq2.8}  справедливо равенство $\lambda_n(\pi-\theta)=\lambda_n(\theta)$. В самом деле, в силу \eqref{eq2.6} и \eqref{eq2.8}  имеем
+$$
+\lambda_n(\pi-\theta)=1+ \frac2{n\pi}\int_0^\pi {|\sin\theta|\over\sin t}\left|\sum_{k=2}^n\sum_{\nu=1}^{k-1}\sin \nu t\sin \nu(\pi-\theta)\right|dt=
+$$
+$$
+1+ \frac2{n\pi}\int_0^\pi {|\sin\theta|\over\sin t}\left|\sum_{k=2}^n\sum_{\nu=1}^{k-1}\sin \nu t\cos\nu\pi\sin \nu\theta\right|dt=
+$$
+$$
+1+ \frac2{n\pi}\int_0^\pi {|\sin\theta|\over\sin t}\left|\sum_{k=2}^n\sum_{\nu=1}^{k-1}\sin \nu(\pi-t)\sin \nu \theta\right|dt=
+$$
+$$
+1+ \frac2{n\pi}\int_0^\pi {|\sin\theta|\over\sin t}\left|\sum_{k=2}^n\sum_{\nu=1}^{k-1}\sin \nu t\sin \nu \theta\right|dt=\lambda_n(\theta).
+$$
+Теорема 1 доказана полностью.
+
+
+Вернемся теперь к неравенству \eqref{eq2.9}, из которого находим
+\begin{equation}\label{eq2.41}
+\|{\cal F}_n(\Phi)\|\le \|\lambda_n\|\|\Phi\|,
+\end{equation}
+где $\|\lambda_n\|\le c$ ($n=1,2,\ldots $). Из \eqref{eq2.41} вытекает справедливость следующего утверждения.
+
+\begin{corollary} \label{l1}
+  Последовательность операторов ${\cal F}_n={\cal F}_n(\Phi)$ ($n=1,2,\ldots $)
+ равномерно ограничена в $C_{2\pi}$.
+\end{corollary}
+\begin{theorem}\label{t2}
+ Если $f\in C_{2\pi}^e$, то $\|\Phi-{\cal F}_n(\Phi)\|\to0$  при $n\to\infty$.
+\end{theorem}
+ \begin{proof}
+ Сначала докажем, что для произвольного тригонометрического полинома $t_m(\theta)=\sum_{k=0}^ma_k\cos k\theta$ имеет место соотношение
+\begin{equation}\label{eq2.42}
+\|t_m-{\cal F}_n(t_m)\|\to0 \quad(n\to\infty).
+\end{equation}
+С этой целью заметим, что  для $n\ge m$
+$$
+{\cal F}_n(t_m,\theta)-t_m(\theta)=\frac1n [\Pi_1(t_m,\theta)+\dots+\Pi_n(t_m,\theta)]-t_m(\theta)=
+$$
+$$
+\frac1n [\Pi_1(t_m,\theta)-t_m(\theta)+\dots+\Pi_n(t_m,\theta)-t_m(\theta)]=
+$$
+$$
+\frac1n [\Pi_1(t_m,\theta)-t_m(\theta)+\dots+\Pi_{m-1}(t_m,\theta)-t_m(\theta)]+
+$$
+$$
+\frac1n [\Pi_m(t_m,\theta)-t_m(\theta)+\dots+\Pi_n(t_m,\theta)-t_m(\theta)]=
+$$
+\begin{equation}\label{eq2.43}
+\frac1n [\Pi_1(t_m,\theta)-t_m(\theta)+\dots+\Pi_{m-1}(t_m,\theta)-t_m(\theta)],
+\end{equation}
+так как $\Pi_k(t_m,\theta)\equiv t_m(\theta)$, если $k\ge m$ ($\Pi_k(t_m)$ -- проектор на подпространство четных тригонометрических полиномов вида  $t_m(\theta)=\sum_{k=0}^ma_k\cos k\theta$ ). Правая часть, а вместе с ней и левая равномерно по $\theta\in [0,\pi]$ стремится к нулю при $n\to\infty$ ($m$ -- фиксировано). Тем самым соотношение \eqref{eq2.42} доказано. Утверждение теоремы 2 вытекает из следствия 1, соотношения \eqref{eq2.42} и теорем Вейерштрасса и Банаха-Штейнгауза.
+\end{proof}
+
+\section{Об аппроксимативных свойствах средних типа Валле-Пуссена }
+
+Средние типа Валле-Пуссена, определенные равенством \eqref{eq1.11}, мы можем представить следующим образом
+\begin{equation}\label{eq3.1}
+{\cal V}^n_m(\Phi,\theta)={n+m\over m+1}{\cal F}_{n+m}(\Phi,\theta)-{n-1\over m+1}{\cal F}_{n-1}(\Phi,\theta).
+\end{equation}
+Если $n\le \alpha m$, где $\alpha $ -- произвольное фиксированное число, то из \eqref{eq3.1} следует, что
+$$
+|{\cal V}^n_m(\Phi,\theta)|\le (\alpha+1)(|{\cal F}_{n+m}(\Phi,\theta)|+|{\cal F}_{m-1}(\Phi,\theta)| ),
+$$
+а отсюда и из следствия 1 мы, в свою очередь, выводим следующий результат.
+\begin{theorem}\label{t3}
+ Пусть $\alpha>0$. Тогда семейство операторов   $\{{\cal V}^n_m(\Phi)={\cal V}^n_m(\Phi,\theta)\}$, где $n\le \alpha m$,
+равномерно ограничено в $C_{2\pi}$, т.е.
+\begin{equation}\label{eq3.2}
+ \|{\cal V}^n_m(\Phi)\|\le c(\alpha)\|\Phi\|\quad (n\le \alpha m),
+\end{equation}
+
+где $c(\alpha)$ -- положительная постоянная, зависящая лишь от  $\alpha$.
+\end{theorem}
+ С другой стороны, если $t_m(\theta)=\sum_{k=0}^ma_k\cos k\theta$, то из \eqref{eq1.11} и того, что при $l\ge m$ $\Pi_l(t_m,\theta)\equiv t_m(\theta)$ следует, что
+\begin{equation} \label{eq3.3}
+{\cal V}^n_m(t_m,\theta)\equiv t_m(\theta).
+\end{equation}
+
+Из \eqref{eq3.2} и \eqref{eq3.3} имеем
+\begin{equation}\label{eq3.4}
+|\Phi(\theta)-{\cal V}^n_m(\Phi,\theta)|\le c(\alpha)E_m(\Phi)
+\end{equation}
+и, в частности,
+\begin{equation}\label{eq3.5}
+|\Phi(\theta)-{\cal V}^n_n(\Phi,\theta)|\le cE_n(\Phi).
+\end{equation}
+Заметим,  что ${\cal V}^n_m(\Phi,\theta)$ также, как $\Pi_n(\Phi,\theta)$,   совпадает с $\Phi(\theta)$ в точках $\theta_k=k\pi$ $(k\in \mathbb{Z})$, т.е.
+\begin{equation}\label{eq3.6}
+{\cal V}^n_m(\Phi,k\pi)=\Phi(k\pi)\quad (k\in \mathbb{Z}).
+\end{equation}
+
+
+
+Перейдем к рассмотрению задачи о локальных аппроксимативных свойствах средних типа Валле-Пуссена ${\cal V}^n_m(\Phi,\theta)$, зависящих от свойств гладкости функции $\Phi(\theta)$ в заданном интервале $(a,b)$. Нам понадобятся некоторые свойства ряда Фурье вида
+
+\begin{equation}\label{eq3.7}
+\psi(\theta)=\sum_{k=1}^\infty b_k\sin k\theta
+\end{equation}
+
+где
+\begin{equation}\label{eq3.8}
+ b_k=b_k(\psi)=\frac1\pi\int_{-\pi}^\pi\psi(t)\sin ktdt
+\end{equation}
+-- коэффициент Фурье функции $\psi(\theta)$. Пусть $-\pi=\theta_0<\theta_1<\cdots<\theta_s<\theta_{s+1}=\pi$, $\theta_j=-\theta_{s-j+1}$ $(j=0,\ldots,s+1)$, $\psi(\theta)$ -- нечетная
+$2\pi$-периодическая функция такая, что на каждом из отрезков $[\theta_j,\theta_{j+1}]$ $(j=0,\ldots,s)$ ее можно превратить в абсолютно непрерывную функцию путем переопределения на концах $\theta_j$ и $\theta_{j+1}$. Множество всех таких функций $\psi(\theta)$ мы обозначим через ${\cal P}_\Omega $, где $\Omega=\{\theta_1,\ldots,\theta_s\}$. Если $h(\theta)\in {\cal P}_\Omega $, то ее ряд Фурье сходится к ней в каждой точке непрерывности функции $h(\theta)$ и допускает следующее представление
+\begin{equation}\label{eq3.9}
+h(\theta)=\sum_{k=1}^\infty b_k(h)\sin k\theta,
+\end{equation}
+где
+\begin{equation}\label{eq3.10}
+b_k(h)=\frac{1}{\pi}\int_{-\pi}^\pi h(t)\sin ktdt=\sum_{j=0}^sb_k^j(h),
+\end{equation}
+
+\begin{equation}\label{eq3.11}
+b_k^j(h)=\frac{1}{\pi}\int_{\theta_j}^{\theta_{j+1}}h(t)\sin ktdt.
+\end{equation}
+Обозначим через $S_n(h)=S_n(h,\theta)$ частичную сумму ряда \eqref{eq3.9} порядка $n$, т.е.
+$$
+S_n(h,\theta)=\sum_{k=1}^n b_k(h)\sin k\theta
+$$
+и положим
+\begin{equation}\label{eq3.12}
+R_n(h,\theta)=h(\theta)-S_n(h,\theta)=\sum_{k=n+1}^\infty b_k(h)\sin k\theta.
+\end{equation}
+
+Тогда из \eqref{eq3.10} -- \eqref{eq3.12} имеем
+\begin{equation}\label{eq3.13}
+R_n(h,\theta)=\sum_{j=0}^s\sum_{k=n+1}^\infty b_k^j(h)\sin k\theta.
+\end{equation}
+Поскольку функция  $h(\theta)\in {\cal P}_\Omega $ абсолютно непрерывна на $[\theta_j,\theta_{j+1}]$ (после переопределения на концах), то интегралу \eqref{eq3.11} можно применить метод интегрирования по частям и, в результате, мы можем записать
+\begin{equation}\label{eq3.14}
+ b_k^j(h)= {h(\theta_j+0)\cos k\theta_j-h(\theta_{j+1}-0)\cos k\theta_{j+1}\over \pi k}+\frac1{\pi k}\int_{\theta_j}^{\theta_{j+1}}h'(t)\cos ktdt.
+\end{equation}
+Из \eqref{eq3.13} и \eqref{eq3.14}  имеем
+\begin{equation}\label{eq3.15}
+R_n(h,\theta)=\hat R_n(h,\theta)+\tilde R_n(h,\theta),
+\end{equation}
+где
+\begin{equation}\label{eq3.16}
+\hat R_n(h,\theta)=\sum_{j=0}^s\sum_{k=n+1}^\infty{h(\theta_j+0)\cos k\theta_j-h(\theta_{j+1}-0)
+\cos k\theta_{j+1}\over \pi k}\sin k\theta,
+\end{equation}
+\begin{equation}\label{eq3.17}
+\tilde R_n(h,\theta)=\sum_{j=0}^s\sum_{k=n+1}^\infty\frac{\sin k\theta}{\pi k}\int_{\theta_j}^{\theta_{j+1}}h'(t)\cos ktdt.
+\end{equation}
+Заметим, что функция $h'(\theta)$ является четной, поэтому мы можем записать
+$$
+ \sum_{j=0}^s\frac{\sin k\theta}{\pi k}\int_{\theta_j}^{\theta_{j+1}}h'(t)\cos ktdt=
+ \frac{1}{k\pi}\int_{-\pi}^\pi h'(t)\cos kt\sin k\theta dt=
+ $$
+ $$
+  \frac{1}{k\pi}\int_{-\pi}^\pi h'(t)\sin k(\theta-t) dt=
+\sum_{j=0}^s\frac1{\pi k}\int_{\theta_j}^{\theta_{j+1}}h'(t)\sin k(\theta-t) dt,
+$$
+в результате чего \eqref{eq3.17} принимает вид
+\begin{equation}\label{eq3.18}
+\tilde R_n(h,\theta)=\sum_{j=0}^s\tilde R_{n,j}(h,\theta),
+\end{equation}
+где
+\begin{equation}\label{eq3.19}
+\tilde R_{n,j}(h,\theta)=\sum_{k=n+1}^\infty\frac1{\pi k}\int_{\theta_j}^{\theta_{j+1}}h'(t)\sin k(\theta-t)dt.
+\end{equation}
+Наша цель заключается в том, чтобы оценить некоторые линейные комбинации  величин $\tilde R_n(h,\theta)$ и $\hat R_n(h,\theta)$ при определенных дополнительных условиях  на функцию $h(\theta)\in {\cal P}_\Omega$. Для этого обозначим через  $W_1^r(a,b)$  пространство Соболева, состоящее из функций $h(\theta)$, $r-1$-раз непрерывно дифференцируемых на $[a,b]$, для которых $h^{(r-1)}(\theta)$ абсолютно непрерывна, а следовательно, $h^{(r)}(\theta)$ интегрируема на $[a,b]$. Если функция $h(\theta)\in {\cal P}_\Omega$ и ее сужение на $[\theta_j,\theta_{j+1}]$ можно переопределить в точках $\theta_j$ и $\theta_{j+1}$ так, чтобы было $h(\theta)\in  W^3_1(\theta_j,\theta_{j+1})$, то для краткости мы будем записывать так: $h(\theta)\in {\cal P}_\Omega\cap W^3_1(\theta_j,\theta_{j+1})$.
+ Если $h(\theta)\in {\cal P}_\Omega\cap W^3_1(\theta_j,\theta_{j+1})$, то из \eqref{eq3.19} путем интегрирования по частям получим
+\begin{equation}\label{eq3.20}
+\tilde R_{n,j}(h,\theta)=U_{1,j}(\theta)+U_{2,j}(\theta)+U_{3,j}(\theta),
+\end{equation}
+где
+\begin{equation}\label{eq3.21}
+U_{1,j}(\theta)=\sum_{k=n+1}^\infty\frac{1}{\pi k^2}[h'(\theta_{j+1})\cos k(\theta-\theta_{j+1})-h'(\theta_{j})\cos k(\theta-\theta_{j})],
+\end{equation}
+\begin{equation}\label{eq3.22}
+U_{2,j}(\theta)=\sum_{k=n+1}^\infty\frac{1}{\pi k^3}[h''(\theta_{j+1})\sin k(\theta-\theta_{j+1})-h''(\theta_{j})\sin k(\theta-\theta_{j})],
+\end{equation}
+\begin{equation}\label{eq3.23}
+U_{3,j}(\theta)=-\sum_{k=n+1}^\infty \frac{1}{\pi k^3}\int_{\theta_j}^{\theta_{j+1}} h'''(t)\sin k(\theta-t)dt.
+\end{equation}
+
+\begin{lemma}\label{l3.1}
+  Пусть $-\pi=\theta_0<\theta_1<\cdots<\theta_s<\theta_{s+1}=\pi$, $\theta_j=-\theta_{s-j+1}$ $(j=0,\ldots,s+1)$, $0<\varepsilon <\frac12\min\{\theta_{j+1}-\theta_{j}:0\le j\le s\}$, $h(\theta)\in {\cal P}_\Omega\cap W^3_1(\theta_j,\theta_{j+1})$ при каждом $j$ $(0\le j\le s)$, $\theta\in \bigcup_{j=0}^s[\theta_j+\varepsilon,\theta_{j+1}-\varepsilon]=A_\varepsilon$. Тогда имеет место оценка
+\begin{equation}\label{eq3.24}
+|\tilde R_n(h,\theta)|\le \frac{c(h,\varepsilon)}{n^2},
+\end{equation}
+в которой константа $c(h,\varepsilon)$ зависит только от $\varepsilon$ и $h$.
+\end{lemma}
+\begin{proof} Обратимся к равенству \eqref{eq3.20}, которое в предположениях леммы 3.1 справедливо для каждого $j$ $(0\le j\le s)$. Поэтому
+$$
+|\tilde R_{n,j}(\theta)|\le |U_{1,j}(\theta)|+|U_{2,j}(\theta)|+|U_{3,j}(\theta)|.
+$$
+Из \eqref{eq3.22} и \eqref{eq3.23} непосредственно следует, что для произвольного $\theta\in A_\varepsilon$ имеет место оценка
+\begin{equation}\label{eq3.25}
+|U_{l,j}(\theta)|\le \frac{c(h)}{n^2} \quad (l=2,3).
+\end{equation}
+Тем самым нам остается оценить $|U_{1,j}(\theta)|$ при $\theta\in A_\varepsilon$. С этой целью заметим, что с помощью преобразования Абеля мы можем записать
+$$
+\sum_{k=n+1}^\infty{\cos ku\over k^2}= -{D_n(u)\over (n+1)^2}+\sum_{k=n+1}^\infty[\frac{1}{k^2}-\frac{1}{(k+1)^2}]D_k(u)=
+$$
+\begin{equation}\label{eq3.26}
+-{D_n(u)\over (n+1)^2}+\sum_{k=n+1}^\infty\frac{2k+1}{k^2(k+1)^2}D_k(u),
+\end{equation}
+
+где $D_k(u)={\sin(k+\frac12)u\over \sin \frac{u}{2} }$ -- ядро Дирихле. Если $\varepsilon\le |u|\le \pi$, то из \eqref{eq3.26} следует, что
+\begin{equation}\label{eq3.27}
+\left|\sum_{k=n+1}^\infty{\cos ku\over k^2}\right|\le \frac{c(\varepsilon)}{n^2}.
+\end{equation}
+С другой стороны, если $\theta\in A_\varepsilon$, то $u=|\theta-\theta_j|\ge\varepsilon$ для всех $0\le j\le s+1$. Поэтому из \eqref{eq3.21}  и \eqref{eq3.27}  вытекает оценка
+\begin{equation}\label{eq3.28}
+|U_{1,j}(\theta)|\le \frac{c(h,\varepsilon)}{n^2} \quad (\theta\in A_\varepsilon).
+\end{equation}
+Утверждение леммы 3.1 вытекает из \eqref{eq3.20}, \eqref{eq3.25} и \eqref{eq3.28}.
+\end{proof}
+
+Введем следующие обозначения:
+\begin{equation}\label{eq3.29}
+r_n(u)=\sum_{k=n+1}^\infty{\sin ku\over k},
+\end{equation}
+\begin{equation}\label{eq3.30}
+v_m^n(u)=\frac{1}{m+1}(r_n(u)+\cdots+r_{n+m}(u)).
+\end{equation}
+Нам понадобятся в дальнейшем некоторые свойства величины $v_m^n(u)$.
+\begin{lemma}\label{l3.2}
+Имеет место равенство
+$$
+v_m^n(u)=\frac{1}{m+1}\sum_{l=0}^{m-1}\sum_{k=0}^\infty
+{\sin\frac{l+1}{2}u\sin\frac{k+1}{2}u\sin(2n+k+l+2)\frac{u}{2}\over\sin^2\frac{u}{2}}
+\Delta^2b(n+k+l+1)+
+$$
+\begin{equation}\label{eq3.31}
+\frac{1}{m+1}\sum_{k=0}^\infty{\sin\frac{m+1}{2}u\sin\frac{k+1}{2}u\sin(2n+k+m+2)\frac{u}{2}\over\sin^2\frac{u}{2}}
+\Delta b(n+k+m+1),
+\end{equation}
+где $b(t)=t^{-1}$, $\Delta\varphi(t)=\varphi(t+1)-\varphi(t) $, $\Delta^2\varphi(t)=\varphi(t+2)-2\varphi(t+1)+\varphi(t) $.
+
+\end{lemma}
+\begin{proof}
+ Из \eqref{eq3.29} и \eqref{eq3.30} мы имеем
+$$
+v_m^n(u)=\frac{1}{m+1}\sum_{l=0}^{m}\sum_{k=0}^\infty{\sin((n+k+l+1)u)\over n+k+l+1},
+$$
+поэтому с помощью преобразования Абеля мы можем записать
+\begin{equation}\label{eq3.32}
+v_m^n(u)=\frac{1}{m+1}\sum_{l=0}^{m}\sum_{k=0}^\infty \left[{1\over n+k+l+1}-{1\over n+k+l+2}\right]g_{k,l}^n(u),
+\end{equation}
+где
+$$
+g_{k,l}^n(u)=\sum_{j=0}^k \sin((n+j+l+1)u)=
+$$
+$$
+{1\over \sin\frac{u}{2}}\left(\sin(n+k+l+1)\frac{u}{2}\sin(n+k+l+2)\frac{u}{2}-\sin(n+l)\frac{u}{2}\sin(n+l+1)\frac{u}{2}\right)=
+$$
+\begin{equation}\label{eq3.33}
+{1\over 2\sin\frac{u}{2}}\left(\cos(2(n+l)+1)\frac{u}{2}-\cos(2(n+k+l+1)+1)\frac{u}{2}\right).
+\end{equation}
+Из \eqref{eq3.32} и \eqref{eq3.33} имеем
+$$
+v_m^n(u)=\frac{1}{2(m+1)\sin\frac{u}{2}}\times
+$$
+\begin{equation}\label{eq3.34}
+\sum_{l=0}^{m}\sum_{k=0}^\infty\Delta b(n+k+l+1) \left(\cos(2(n+l)+1)\frac{u}{2}-\cos(2(n+k+l+1)+1)\frac{u}{2}\right).
+\end{equation}
+Применим к \eqref{eq3.34} преобразование Абеля по переменной $l$. Это дает
+$$
+v_m^n(u)=\frac{1}{2(m+1)\sin\frac{u}{2}}
+\sum_{l=0}^{m-1}\sum_{k=0}^\infty\Delta^2 b(n+k+l+1) \left(w_{l,-1}(u)-w_{l,k}(u)\right)+
+$$
+\begin{equation}\label{eq3.35}
+\frac{1}{2(m+1)\sin\frac{u}{2}}\sum_{k=0}^\infty\Delta b(n+k+m+1) \left(w_{m,-1}(u)-w_{m,k}(u)\right),
+\end{equation}
+где
+$$
+w_{l,k}(u)=\sum_{\nu=0}^l \cos(2(n+k+\nu+1)+1)\frac{u}{2}={\sin(n+k+l+2)u-\sin(n+k+1)u\over2\sin\frac{u}{2}}=
+$$
+\begin{equation}\label{eq3.36}
+{\sin(l+1)\frac{u}{2}\cos(2n+2k+l+3)\frac{u}{2}\over\sin\frac{u}{2}}.
+\end{equation}
+Далее, из  \eqref{eq3.36} имеем
+$$
+w_{l,-1}(u)-w_{l,k}(u)={\sin(l+1)\frac{u}{2}[\cos(2n+l+1)\frac{u}{2}-\cos(2n+2k+l+3)\frac{u}{2}]\over\sin\frac{u}{2}}=
+$$
+\begin{equation}\label{eq3.37}
+{\sin(l+1)\frac{u}{2}\sin(k+1)\frac{u}{2}\sin(2n+k+l+2)\frac{u}{2}\over\sin\frac{u}{2}}.
+\end{equation}
+Утверждение леммы 3.2 вытекает из \eqref{eq3.35} и \eqref{eq3.37}.
+\end{proof}
+\begin{lemma}\label{l3.3}
+ Пусть  $\varepsilon \le u\le 2\pi-\varepsilon$. Тогда найдется положительное число $c=c(\gamma, \varepsilon)$, зависящее только от   $ \varepsilon$, для которого имеет место оценка
+\begin{equation}\label{eq3.38}
+|v_m^n(u)|\le\frac{c(\varepsilon)}{nm}.
+\end{equation}
+
+\end{lemma}
+\begin{proof}
+ Для $b(t)=t^{-1}$ имеем
+$$
+\Delta^2 b(n+k+l+1)= \frac{1}{n+k+l+3}-\frac{2}{n+k+l+2}+\frac{1}{n+k+l+1}
+$$
+\begin{equation}\label{eq3.39}
+=\frac{2}{(n+k+l+1)(n+k+l+2)(n+k+l+3)},
+\end{equation}
+\begin{equation}\label{eq3.40}
+\Delta b(n+k+l+1)= \frac{1}{n+k+l+2}-\frac{1}{n+k+l+1}=-\frac{2}{(n+k+m+1)(n+k+m+2)}.
+\end{equation}
+Утверждение леммы 3.3 вытекает из леммы 3.2 с учетом равенств \eqref{eq3.39} и \eqref{eq3.40}.
+\end{proof}
+
+Рассмотрим теперь функцию $\hat R_n(h,\theta)$ (см. \eqref{eq3.16}). Имеем
+\begin{equation}\label{eq3.41}
+\hat R_n(h,\theta)=\sum_{j=0}^s\hat R_{n,j}(h,\theta),
+\end{equation}
+где
+$$
+\hat R_{n,j}=\sum_{k=n+1}^\infty{h(\theta_j+0)\cos k\theta_j-h(\theta_{j+1}-0)
+\cos k\theta_{j+1}\over \pi k}\sin k\theta=
+$$
+$$
+\sum_{k=n+1}^\infty{h(\theta_j+0)\cos k\theta_j\sin k\theta\over \pi k}
+-\sum_{k=n+1}^\infty{h(\theta_{j+1}+0)\cos k\theta_{j+1}\sin k\theta\over \pi k}=
+$$
+$$
+h(\theta_j+0)\sum_{k=n+1}^\infty{\sin k(\theta-\theta_j)+\sin k(\theta+\theta_j)\over 2\pi k}
+$$
+\begin{equation}\label{eq3.42}
+-h(\theta_{j+1}-0)\sum_{k=n+1}^\infty{\sin k(\theta-\theta_{j+1})+\sin k(\theta+\theta_{j+1})\over 2\pi k}.
+\end{equation}
+Положим
+\begin{equation}\label{eq3.43}
+\hat Q_m^n(h,\theta)= \frac{1}{m+1}[\hat R_n(h,\theta)+\hat R_{n+1}(h,\theta)+\cdots+\hat R_{n+m}(h,\theta)].
+\end{equation}
+\begin{lemma}\label{l3.4}
+ Пусть   $-\pi=\theta_0<\theta_1<\cdots<\theta_s<\theta_{s+1}=\pi$, $\theta_j=-\theta_{s-j+1}$ $(j=0,\ldots,s+1)$, $0<\varepsilon <\frac12\min\{\theta_{j+1}-\theta_{j}:0\le j\le s\}$, $\theta\in \bigcup_{j=0}^s[\theta_j+\varepsilon,\theta_{j+1}-\varepsilon]=A_\varepsilon$, $h(\theta)\in {\cal P}_\Omega\cap W^3_1(\theta_j,\theta_{j+1})$ при каждом $j\in\Omega$. Тогда имеет место оценка
+$$
+|\hat Q_m^n(h,\theta)|\le \frac{M(h) c(\varepsilon)}{nm},
+$$
+где $M(h)=\max_{0\le \theta\le\pi}|h(\theta)| $.
+\end{lemma}
+\begin{proof}
+
+
+ Если $\theta\in A_\varepsilon $, то найдется такое число $j$ $(0\le j\le s)$, что $\theta\in[\theta_j+\varepsilon,\theta_{j+1}-\varepsilon] $. Тогда $\varepsilon\le \theta-\theta_j\le2\pi-\varepsilon$, $\varepsilon\le|\theta_{s-j+1}-\theta|=|-\theta_j-\theta|=|\theta+\theta_j|\le2\pi-\varepsilon$. Поэтому
+в силу леммы 3.3 имеем ($\theta\in A_\varepsilon $)
+\begin{equation}\label{eq3.44}
+|v_m^n(\theta+\theta_j)|\le\frac{c(\varepsilon)}{nm},\quad|v_m^n(\theta-\theta_j)|
+\le\frac{c(\varepsilon)}{nm}\quad (0\le j\le s).
+\end{equation}
+С другой стороны, из \eqref{eq3.42} и \eqref{eq3.29}, \eqref{eq3.30} находим
+$$
+\hat Q_m^n(h, \theta)=\sum_{j=0}^{s}{h(\theta_j+0)\over2\pi}[ v_m^n(\theta-\theta_j)+v_m^n(\theta+\theta_j)]
+$$
+\begin{equation}\label{eq3.45}
+-\sum_{j=0}^{s}{h(\theta_{j+1}-0)\over2\pi}[ v_m^n(\theta-\theta_{j+1})+v_m^n(\theta+\theta_{j+1})].
+\end{equation}
+
+
+
+Утверждение леммы 3.4 вытекает из \eqref{eq3.44}  и \eqref{eq3.45}.
+\end{proof}
+Далее положим
+\begin{equation}\label{eq3.46}
+\tilde Q_m^n(h,\theta)= \frac{1}{m+1}[\tilde R_n(h,\theta)+\tilde R_{n+1}(h,\theta)+\cdots+\tilde R_{n+m}(h,\theta)].
+\end{equation}
+\begin{lemma}\label{l3.5}
+ Пусть   $-\pi=\theta_0<\theta_1<\cdots<\theta_s<\theta_{s+1}=\pi$, $\theta_j=-\theta_{s-j+1}$ $(j=0,\ldots,s+1)$, $0<\varepsilon <\frac12\min\{\theta_{j+1}-\theta_{j}:0\le j\le s\}$, $h(\theta)\in {\cal P}_\Omega\cap W^3_1(\theta_j,\theta_{j+1})$ при каждом $j$ $(0\le j\le s)$. Тогда для $\theta\in \bigcup_{j=0}^s[\theta_j-\varepsilon,\theta_{j+1}+\varepsilon]$ имеет место оценка
+$$
+|\tilde Q_m^n(h,\theta)|\le  \frac{c(h,\varepsilon)}{nm}.
+$$
+\end{lemma}
+{\it Доказательство}  этой леммы непосредственно вытекает из \eqref{eq3.46} и леммы 3.1.
+
+Положим
+\begin{equation}\label{eq3.47}
+ Q_m^n(h,\theta)= \frac{1}{m+1}[ R_n(h,\theta)+ R_{n+1}(h,\theta)+\cdots+ R_{n+m}(h,\theta)].
+\end{equation}
+где функция  $R_n(h,\theta)$ определена равенством \eqref{eq3.12}. Тогда, сопоставляя \eqref{eq3.15},  \eqref{eq3.43}, \eqref{eq3.46} с \eqref{eq3.47}, мы можем записать
+\begin{equation}\label{eq3.48}
+Q_m^n(h,\theta)=\hat Q_m^n(h,\theta)+\tilde Q_m^n(h,\theta).
+\end{equation}
+Из лемм 3.4 и 3.5 и равенства \eqref{eq3.48} непосредственно вытекает справедливость следующего утверждения.
+\begin{lemma}\label{l3.6}
+ Пусть   $-\pi=\theta_0<\theta_1<\cdots<\theta_s<\theta_{s+1}=\pi$, $\theta_j=-\theta_{s-j+1}$ $(j=0,\ldots,s+1)$, $0<\varepsilon <\frac12\min\{\theta_{j+1}-\theta_{j}:0\le j\le s\}$, $h(\theta)\in {\cal P}_\Omega\cap W^3_1(\theta_j,\theta_{j+1})$ при каждом $j$ $(0\le j\le s)$.  Тогда для $\theta\in \bigcup_{j=0}^s[\theta_j-\varepsilon,\theta_{j+1}+\varepsilon]$ имеет место оценка
+$$
+|Q_m^n(h,\theta)|\le \frac{c(h,\varepsilon)}{nm}.
+$$
+\end{lemma}
+
+Положим
+\begin{equation}\label{3.49}
+\rho_m^n(\Phi,\theta)=\Phi(\theta)-{\cal V}_m^n(\theta)=\frac{1}{m+1}[\Phi(\theta)-\Pi_n(\Phi,\theta)+\ldots+\Phi(\theta)-\Pi_{n+m}(\Phi,\theta)]
+\end{equation}
+и предположим, что специальный ряд \eqref{eq1.1} сходится в точке $\theta$. Тогда для $\theta\in \bigcup_{j=0}^s[\theta_j-\varepsilon,\theta_{j+1}+\varepsilon]$ ($\varepsilon>0$)  мы можем записать
+\begin{equation}\label{3.50}
+\psi(\theta)={\Phi(\theta)-A_\Phi(\theta)\over \sin\theta}=\sum_{k=1}^\infty\varphi_k\sin k\theta,
+\end{equation}
+где
+$$
+\varphi_k=\frac{2}{\pi}\int_0^\pi\varphi(t){\sin kt\over\sin t}dt=\frac{2}{\pi}\int_0^\pi\psi(t)\sin ktdt=b_k(\psi).
+$$
+Отсюда и из \eqref{eq1.1} и  \eqref{eq1.5} имеем
+$$
+\Phi(\theta)-\Pi_l(\Phi,\theta)=\sin\theta\sum_{k=l}^\infty\varphi_k\sin k\theta=\sin\theta R_{l-1}(\psi,t).
+$$
+Подставляя это значение $\Phi(\theta)-\Pi_l(\Phi,\theta)$ в \eqref{3.49}, находим
+\begin{equation}\label{3.51}
+\rho_m^n(\Phi,\theta)=\frac{\sin\theta}{m+1}[R_{n-1}(\psi,t)+\ldots+R_{n+m-1}(\psi,t)]=Q_m^{n-1}(\psi,\theta)\sin\theta.
+\end{equation}
+
+
+Теперь мы можем сформулировать следующий результат.
+
+\begin{theorem}\label{t4}
+ Пусть функция  $\psi(\theta)$ определена равенством \eqref{3.50}, $-\pi=\theta_0<\theta_1<\cdots<\theta_s<\theta_{s+1}=\pi$,  $\theta_j=-\theta_{s-j+1}$ $(j=0,\ldots,s+1)$, $0<\varepsilon <\frac12\min\{\theta_{j+1}-\theta_{j}:0\le j\le s\}$. Если   $\psi(\theta)\in {\cal P}_\Omega\cap W^3_1(\theta_j,\theta_{j+1})$ при каждом $j$ $(0\le j\le s)$, то для $\theta\in \bigcup_{j=0}^s[\theta_j-\varepsilon,\theta_{j+1}+\varepsilon]$ имеет место оценка
+$$
+|\rho_m^n(\Phi,\theta)|\le \frac{ c(\Phi,\varepsilon)}{nm}.
+$$
+\end{theorem}
+
+Доказательство этой теоремы непосредственно вытекает из леммы 3.6 и равенства \eqref{3.51}.
+\vskip 0.5cm
+
+
+В заключение выражаю признательность рецензенту за полезные замечания.
+
+\end{fulltext}
+
+
+
+
+
+\begin{thebibliography}{7}
+
+\RBibitem{Shar1}
+\by  И. \,И.~Шарапудинов
+\paper Предельные ультрасферические ряды и их аппроксимативные свойства
+\jour Матем. заметки
+\vol 94
+\issue 2
+\pages    295–309
+\yr 2013
+
+\RBibitem{Shar2}
+\by  И. \,И.~Шарапудинов
+\paper  Специальные  ряды по ультрасферическим полиномам и их аппроксимативные свойства
+\jour Известия РАН. Серия математическая
+\vol
+\issue
+\pages
+\yr 2014
+
+\RBibitem{DedMachUS}
+\by  Ф.Ф. Дедус, С.А. Махортых, М.Н. Устинин,  А.Ф. Дедус
+\book  Обобщенный спектрально-аналитический метод обработки информационных массивов. Задачи анализа изображений и распознавания образов
+\yr 1999
+\serial
+\publ Машиностроение
+\publaddr Москва
+\vol
+
+\RBibitem{Tref1}
+\by   L.N. Trefethen
+\book Spectral methods in Matlab
+\yr 2000
+\serial
+\publ SIAM
+\publaddr Fhiladelphia
+\vol
+
+\RBibitem{Tref2}
+\by   L.N. Trefethen
+\book Finite difference and spectral methods for ordinary and partial differential equation
+\yr 1996
+\serial
+\publ Cornell University
+\publaddr
+\vol
+
+\RBibitem{MukRamakr}
+\by    R. Mukundan K.R. Ramakrishnan
+\book Moment functions in image analysis. Theory and Applications
+\yr 1998
+\serial
+\publ Co.Pte.Ltd.
+\publaddr
+\vol
+
+\RBibitem{Malvar}
+\by   H.S. Malvar
+\book Signal processing with lapped transform
+\yr 1992
+\serial
+\publ Artech House
+\publaddr Boston{ $\cdot$} London
+\vol
+
+
+
+\end{thebibliography}
+
+
+
+
+\end{document}
+
+
+
+

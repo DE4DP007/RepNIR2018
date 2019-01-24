@@ -1,0 +1,433 @@
+\chapter{Ортогональные на сетке по Соболеву функции, порожденные дискретными ортогональными функциями  и задача Коши для разностного уравнения}
+
+\section{Системы дискретных функций, ортонормированных по Соболеву, порожденные  ортонормированными  функциями}
+
+Нам понадобятся некоторые понятия и результаты из работы \cite{shGadj}, в которой рассмотрены системы дискретных функций, ортонормированных по Соболеву относительно скалярного произведения \eqref{1.1}, порожденных заданной системой $\{\psi_k(x)\}_{k=0}^\infty$, ортонормированной на дискретном множестве $\Omega=\{0,1,\ldots\}$ с весом $\rho(x)$.  Если целое $k\ge0$, то положим $a^{[k]}=a(a-1)\cdots (a-k+1)$, $a^{[0]}=1$ и рассмотрим следующие функции
+\begin{equation}\label{2.1}
+\psi_{r,k}(x)={x^{[k]}\over k!},\, k=0,1,\ldots,r-1,
+\end{equation}
+\begin{equation}\label{2.2}
+\psi_{r,k}(x)=\begin{cases}\frac{1}{(r-1)!}\sum\limits_{t=0}^{x-r}(x-1-t)^{[r-1]}\psi_{k-r}(t),
+&\text{$r\le x$,}\\ 0,&\text{$x=0,1,\ldots, r-1$,}
+\end{cases}
+\end{equation}
+которые определены на сетке $\Omega=\{0,1,\ldots\}$. Рассмотрим некоторые важные разностные  свойства системы функций $\psi_{r,k}(x)$, определенных равенствами \eqref{2.1} и \eqref{2.2}.
+
+\begin{lemma}\label{RII}
+Имеют место равенства
+\begin{equation}\label{2.3}
+\Delta^\nu \psi_{r,k}(x)=\begin{cases}\psi_{r-\nu,k-\nu}(x),&\text{если $0\le\nu\le r-1$, $r\le k$,}\\
+\psi_{k-r}(x),&\text{если  $\nu=r\le k$,}\\
+\psi_{r-\nu,k-\nu}(x),&\text{если $\nu\le k< r$,}\\
+0,&\text{если $k< \nu\le r$}.
+  \end{cases}
+\end{equation}
+\end{lemma}
+Систему функций $\psi_{r,k}(t)\, (k=0,1,\ldots)$ мы будем, следуя \cite{shGadj} \textit {называть системой, ортонормированной по Соболеву относительно скалярного произведения \eqref{1.1}.}
+
+Пусть $r$ -- натуральное число. Обозначим через $l_\rho$ пространство дискретных функций $f, g, \ldots$, в котором скалярное произведение определяется обычным образом с помощью равенства $\langle f,g\rangle = \sum\limits_{x\in\Omega}f(x)g(x)\rho(x)$.
+Через $W^r_{l_\rho}$ обозначим подпространство в $l_\rho$, состоящее из функций $f, g, \ldots$, для которых определено скалярное произведение \eqref{1.1}.
+%Обозначим через $W^r_{l_\rho}$ пространство дискретных функций $f=f(x)$, заданных на сетке $\Omega=\{0,1,\ldots\}$, для которых $f(x+\nu)\in l_\rho$, $\nu=0, 1, \ldots, r$. Тогда в пространстве $W^r_{l_\rho}$ определим скалярное произведение $\langle f,g\rangle$ с помощью равенства \eqref{1.1}.
+Рассмотрим  задачу об ортогональности, нормированности и полноте в $W^r_{l_\rho}$ системы $\{\psi_{r,k}(x)\}_{k=0}^\infty$, состоящей из функций, определенных равенствами   \eqref{2.1} и \eqref{2.2}.
+
+\begin{theorem}\label{RItheo}
+Предположим, что функции $\psi_k(x)$ $(k=0,1,\ldots)$ образуют полную в $l_\rho$ ортонормированную систему  c весом   $\rho(x)$. Тогда система $\{\psi_{r,k}(x)\}_{k=0}^\infty$, порожденная системой $\{\psi_{k}(x)\}_{k=0}^\infty$
+ посредством равенств \eqref{2.1} и \eqref{2.2}, полна  в $W^r_{l_\rho}$ и ортонормирована относительно скалярного произведения \eqref{1.1}.
+\end{theorem}
+
+Из теоремы \ref{RItheo} следует, что система дискретных функций $\psi_{r,k}(t)\, (k=0,1,\ldots)$
+является ортонормированным базисом (ОНБ) в пространстве $W^r_{l_\rho}$, поэтому для произвольной функции $f(x)\in W^r_{l_\rho}$ мы можем записать равенство
+  \begin{equation}\label{2.8}
+ f(x)= \sum_{k=0}^\infty\langle f,\psi_{r,k}\rangle \psi_{r,k}(x),
+  \end{equation}
+которое представляет собой  ряд Фурье функции $f(x)\in W^r_{l_\rho}$ по системе
+$\{\psi_{r,k}(t)\}_{k=0}^\infty$, ортонормированной по Соболеву. Поскольку коэффициенты Фурье $\langle f,\psi_{r,k}\rangle$ имеют  вид
+\begin{equation}\label{2.9}
+f_{r,k}=\langle f,\psi_{r,k}\rangle =\sum_{\nu=0}^{r-1}\Delta^\nu f(0)\Delta^\nu\psi_{r,k}(0)=\Delta^kf(0),\, k=0,\ldots, r-1,
+ \end{equation}
+ $$
+f_{r,k}= \langle f,\psi_{r,k}\rangle =\sum_{j=0}^\infty\Delta^rf(j)\Delta^r\psi_{r,k}(j)\rho(j)=
+ $$
+\begin{equation}\label{2.10}
+\sum_{j=0}^{\infty}\Delta^rf(j)\psi_{k-r}(j)\rho(j),\, k=r,\ldots,
+ \end{equation}
+то равенство \eqref{2.8} можно переписать в следующем  смешанном виде
+  \begin{equation}\label{2.11}
+ f(x)= \sum_{k=0}^{r-1}\Delta^kf(0){x^{[k]}\over k!} +\sum_{k=r}^\infty f_{r,k} \psi_{r,k}(x).
+  \end{equation}
+Поэтому ряд фурье по системе $\{\psi_{r,k}(t)\}_{k=0}^\infty$ мы будем следуя \cite{Shar9} --  \cite{SharII} называть смешанным рядом по исходной ортонормированной системе $\{\psi_{k}(t)\}_{k=0}^\infty$.
+
+\begin{theorem}\label{RItheo2}
+Предположим, что    функции $\psi_k(x)$ $(k=0,1,\ldots)$ образуют полную в $l_\rho$ ортонормированную систему  c весом   $\rho(x)$. Тогда если $f(x)\in W^r_{l_\rho}$, то смешанный ряд \eqref{2.11} сходится к $f(x)$ в каждой точке $x\in \{0,1,\ldots\}$.
+\end{theorem}
+Отметим некоторые важные свойства смешанных рядов  \eqref{2.11} и их частичных сумм вида
+\begin{equation}\label{2.13}
+ \mathcal{ Y}_{r,n}(f,x)= \sum_{k=0}^{r-1}\Delta^kf(0){x^{[k]}\over k!} +\sum_{k=r}^{n}f_{r,k} \psi_{r,k}(x).
+  \end{equation}
+Из \eqref{2.11} и \eqref{2.13} с учетом равенств \eqref{2.3} мы можем записать ($0\le\nu\le r-1$, $x\in \Omega$ )
+ \begin{equation}\label{2.130}
+ \Delta^\nu f(x)= \sum_{k=0}^{r-\nu-1}\Delta^{k+\nu}f(0){x^{[k]}\over k!} +\sum_{k=r-\nu}^\infty f_{r,k+\nu} \psi_{r-\nu,k}(x),
+  \end{equation}
+  \begin{equation}\label{2.14}
+ \Delta^\nu\mathcal{ Y}_{r,n}(f,x)= \sum_{k=0}^{r-\nu-1}\Delta^{k+\nu}f(0){x^{[k]}\over k!} +\sum_{k=r-\nu}^{n-\nu} f_{r,k+\nu} \psi_{r-\nu,k}(x),
+  \end{equation}
+ \begin{equation}\label{2.15}
+ \Delta^\nu\mathcal{ Y}_{r,n}(f,x) = \mathcal{ Y}_{r-\nu,n-\nu}(\Delta^\nu f,x).
+  \end{equation}
+
+  \section{О предсталении решения разностного уравнения рядом Фурье по функциям $\psi_{r,n}(x)$}
+
+  В настоящем разделе мы рассмотрим задачу о приближении решения разностного уравнения  суммами  Фурье по системе $\{\psi_{r,n}(x)\}_{n=0}^\infty$, ортогональной по Соболеву и порожденной ортонормированной системой функций $\{\psi_{n}(x)\}_{n=0}^\infty$ посредством равенств \eqref{2.1} и \eqref{2.2}.
+ Полученные ниже (теорема \ref{RItheo3}) результаты можно перенести на системы разностных  уравнений вида
+$\Delta y(x)=hf(x,y), \quad y(0)=y_0$, где $f=(f_1, \ldots, f_m)$, $y=(y_1, \ldots, y_m)$. Но для простоты выкладок мы ограничимся рассмотрением задачи  вида $(\Delta y(x)=y(x+1)-y(x))$
+\begin{equation}\label{3.1}
+\Delta y(x)=h f(x,y), \quad y(0)=y_0, \quad h>0,
+\end{equation}
+ в которой функцию   $f(x,y)$  будем считать заданной   на   декартовом произведении $\Omega\times\mathbb{R}$ и ограниченной на нем, т.е. $M(f)=\sup_{(x,y)\in \Omega\times\mathbb{R}}|f(x,y)|<\infty$.   Требуется аппроксимировать с заданной точностью  функцию $y=y(x)$, определенную на $\Omega$, которая является решением задачи \eqref{3.1}.
+
+Будем считать, что  система $\{\psi_{n}(x)\}_{n=0}^\infty$ удовлетворяет условиям теоремы 1, а порожденная система $\{\psi_{1,n}(x)\}_{n=0}^\infty$ условию
+\begin{equation}\label{3.2}
+\delta_\psi(x)=\sum_{k=1}^{\infty}(\psi_{1,k}(x))^2<\infty\quad (x\in \Omega),
+\end{equation}
+положительная весовая функция $\rho(x)$ и некоторая заданная неотрицательная функция $\gamma(x)$ удовлетворяют  условиям
+\begin{equation}\label{3.3}
+\sum\limits_{x=0}^\infty\rho(x)<\infty,\quad \kappa_{\psi}=\left(\sum_{t=0}^\infty\sum_{k=1}^{\infty}
+(\psi_{1,k}(t))^2\rho(t)\gamma(t)\right)^{\frac12}<\infty.
+\end{equation}
+  Поскольку, по предположению, функция $f(x,y)$ ограничена на множестве $\Omega\times\mathbb{R}$, то из равенства \eqref{3.1} и первого неравенства \eqref{3.3} следует, что $$\sum_{x=0}^\infty (\Delta y(x))^2\rho(x)<\infty$$  и, следовательно,   $y(x)\in W^1_{l_\rho}$. Поэтому, в силу теоремы 2, мы можем представить $y(x)$ в виде сходящего ряда
+\begin{equation}\label{3.4}
+y(x)=y(0)+\sum\limits_{k=0}^\infty y_{1,k+1}\psi_{1,k+1}(x),\quad x\in \Omega.
+\end{equation}
+где
+  \begin{equation}\label{3.5}
+y_{1,k+1}=\sum_{t=0}^{\infty} \Delta y(t)\psi_{k}(t)\rho(t)\quad(k\ge0)
+\end{equation}
+-- коэффициенты Фурье функции $g(t)=\Delta y(t)$ по ортонормированной системе $\{\psi_k(x)\}$. С учетом \eqref{3.5} мы, в свою очередь,  можем записать
+\begin{equation}\label{3.6}
+\Delta y(x)=\sum\nolimits_{k=0}^\infty y_{1,k+1}\psi_{k}(x),\quad x\in \Omega.
+\end{equation}
+Кроме того, имея ввиду равенство \eqref{3.1}, этому равенству можно придать еще такой вид
+\begin{equation}\label{3.7}
+q(x)=f(x,y(x))=\frac{1}{h}\Delta y(x)=\sum\nolimits_{k=0}^\infty c_k(q)\psi_{k}(x),\quad x\in \Omega,
+\end{equation}
+где
+\begin{equation}\label{3.8}
+c_k(q)=\frac{1}{h}y_{1,k+1}=\sum_{t=0}^{\infty} f(t,y(t))\psi_{k}(t)\rho(t)\quad(k\ge0).
+\end{equation}
+С учетом обозначения \eqref{3.8} мы можем переписать равенство \eqref{3.4} так
+\begin{equation}\label{3.9}
+y(t)=y(0)+h\sum\nolimits_{j=0}^\infty c_j(q)\psi_{1,j+1}(t),\quad t\in \Omega.
+\end{equation}
+В равенстве  \eqref{3.8} заменим $y(t)$ правой частью равенства \eqref{3.9} и запишем
+\begin{equation}\label{3.10}
+c_k(q)=\sum_{t=0}^{\infty} f\left[t,y(0)+h\sum\nolimits_{j=0}^\infty c_j(q)\psi_{1,j+1}(t)\right]\psi_{k}(t)\rho(t)\quad k=0,1,\ldots.
+\end{equation}
+Наша цель состоит в том, чтобы сконструировать итерационный процесс для нахождения приближенных значений коэффициентов $c_k(q)$ $(k=0,1,\ldots)$.
+Введем в рассмотрение гильбертово пространство $l_2$, состоящее из последовательностей $C=(c_0,c_1,\ldots)$, для которых определена норма
+$\|C\|=\left(\sum_{j=0}^\infty c_j^2\right)^\frac12$.  В пространстве $l_2$ рассмотрим оператор $A$, сопоставляющий точке $C\in l_2$ точку $C'\in l_2$ по правилу
+\begin{equation}\label{3.11}
+c'_k=\sum_{t=0}^{\infty} f\left[t,y(0)+h\sum\nolimits_{j=0}^\infty c_j\psi_{1,j+1}(t)\right]\psi_{k}(t)\rho(t)\quad k=0,1,\ldots.
+\end{equation}
+Из \eqref{3.10} следует, что точка $C(q)=(c_0(q),c_1(q),\ldots)$ является неподвижной точкой оператора $A:l_2\to l_2$. Для того чтобы найти эту точку  методом простых итераций, достаточно показать, что оператор $A:l_2\to l_2$ является сжимающим в метрике пространства $l_2$. С этой целью рассмотрим две точки $P,Q\in l_2$, где $P=(p_0, p_1, \ldots)$, $Q=(q_0, q_1, \ldots)$ и положим $P'=A(P)$, $Q'=A(Q)$. Имеем
+\begin{equation}\label{3.12}
+p'_k-q'_k=\sum_{t=0}^{\infty}F_{P,Q}(t)\psi_k(t)\rho(t)dt,\quad k=0,1,\ldots
+\end{equation}
+где
+\begin{equation}\label{3.13}
+ F_{P,Q}(t)=f\left[t,y(0)+h\sum\nolimits_{j=0}^\infty p_j\psi_{1,j+1}(t)\right]
+  -f\left[t,y(0)+h\sum\nolimits_{j=0}^\infty q_j\psi_{1,j+1}(t)\right].
+\end{equation}
+Из \eqref{3.12}, пользуясь неравенством Бесселя, находим
+ \begin{equation}\label{3.14}
+\sum\nolimits_{k=0}^\infty (p'_k-q'_k)^2\le\sum_{t=0}^{\infty}(F_{P,Q}(t))^2\rho(t).
+\end{equation}
+ Предположим, что по переменной $y$ функция $f(x,y)$ удовлетворяет условию Липшица
+ \begin{equation}\label{3.15}
+|f(x,y')-f(x,y'')|\le \sqrt{\gamma(x)}\lambda|y'-y''|, \quad  x\in\Omega,
+\end{equation}
+где $\gamma(x)$ -- функция, для которой имеет место неравенство \eqref{3.3}.
+Из \eqref{3.13} и \eqref{3.15}  имеем
+$$
+(F_{P,Q}(t))^2\le (\lambda h)^2\gamma(t) \left(\sum\nolimits_{j=0}^\infty( p_j-q_j)\psi_{1,j+1}(t)\right)^2,
+$$
+откуда,  воспользовавшись неравенством Коши-Буняковского и условием \eqref{3.2}, выводим
+ \begin{equation}\label{3.16}
+(F_{P,Q}(t))^2\le(\lambda h)^2 \gamma(t)  \sum\nolimits_{j=0}^\infty( p_j-q_j)^2\sum\nolimits_{j=0}^\infty(\psi_{1,j+1}(t))^2.
+\end{equation}
+Сопоставляя \eqref{3.16} с \eqref{3.14}, находим
+\begin{equation}\label{3.17}
+\sum\nolimits_{k=1}^\infty (p'_k-q'_k)^2\le(\lambda h)^2 \sum\nolimits_{k=0}^\infty( p_k-q_k)^2\sum\nolimits_{t=0}^{\infty} \sum\nolimits_{j=0}^\infty(\psi_{1,j+1}(t))^2\rho(t)\gamma(t).
+\end{equation}
+Из  \eqref{3.17}  и \eqref{3.3} имеем
+\begin{equation}\label{3.18}
+\left(\sum\nolimits_{k=0}^\infty (p'_k-q'_k)^2\right)^\frac12\le \kappa_\psi\lambda h \left(\sum\nolimits_{k=0}^\infty (p_k-q_k)^2\right)^\frac12. \end{equation}
+Неравенство \eqref{3.18} показывает, что если $\kappa_\psi\lambda h<1$, то оператор  $A:l_2\to l_2$ является сжимающим и, как следствие, итерационный процесс $C^{\nu+1}=A(C^{\nu})$  сходится к точке $C(q)$ при $\nu\to\infty$. Однако с точки зрения приложений важно рассмотреть конечномерный аналог оператора $A$. Мы рассмотрим оператор $A_N:\mathbb{R}^N\to \mathbb{R}^N$, cопоставляющий точке
+$C_N=(c_0,\ldots,c_{N-1})\in \mathbb{R}^N $ точку  $C'_N=(c_0',\ldots,c_{N-1}')\in \mathbb{R}^N $ по правилу
+\begin{equation}\label{3.19}
+c'_k=\sum_{t=0}^{\infty} f\left[t,y(0)+h\sum\nolimits_{j=0}^{N-1} c_j\psi_{1,j+1}(t)\right]\psi_{k}(t)\rho(t)\quad k=0,1,\ldots,N-1
+\end{equation}
+ Рассмотрим две точки $P_N,Q_N\in \mathbb{R}^N$, где $P_N=(p_0,p_1,\ldots,p_{N-1})$,\\   $Q_N=(q_0,q_1,\ldots,p_{N-1})$ и положим $P'_N=A_N(P_N)$, $Q'_N=A_N(Q_N)$. Дословно повторяя рассуждения, которые привели нас к неравенству \eqref{3.18}, мы получим
+\begin{equation}\label{3.20}
+\left(\sum\nolimits_{k=0}^{N-1} (p'_k-q'_k)^2\right)^\frac12\le \kappa_\psi\lambda h \left(\sum\nolimits_{k=0}^{N-1} (p_k-q_k)^2\right)^\frac12.
+\end{equation}
+Неравенство \eqref{3.20} показывает, что если $\kappa_\psi\lambda h<1$, то оператор  $A_N:\mathbb{R}^N\to \mathbb{R}^N$ является сжимающим и, как следствие, итерационный процесс $C_N^{\nu+1}=A_N(C_N^{\nu})$  при $\nu\to\infty$ сходится к его неподвижной точке, которую мы обозначим через  $\bar C_N(q)=(\bar c_0(q),\ldots,\bar c_{N-1}(q))$ . С другой стороны, рассмотрим точку $C_N(q)=(c_0(q),\ldots,c_{N-1}(q))$, составленную из искомых коэффициентов Фурье функции $q$ по системе $\{\psi_k\}$. Нам остается оценить погрешность, проистекающую в результате замены точки $C_N(q)$ точкой $\bar C_N(q)$. Другими словами, требуется оценить величину
+$\|C_N(q)-\bar C_N(q)\|_N= \left(\sum_{j=0}^{N-1}(c_j(q)-\bar c_j(q))^2\right)^\frac12$. С этой целью рассмотрим точку $C'_N(q)=A_N(C_N(q))=(c_0'(q),\ldots,c_{N-1}'(q))$ и запишем
+\begin{equation}\label{3.21}
+\|C_N(q)-\bar C_N(q)\|_N\le \|C_N(q)- C_N'(q)\|_N+\|C_N'(q)-\bar C_N(q)\|_N.
+\end{equation}
+Далее, пользуясь неравенством \eqref{3.20}, имеем
+$$
+\|C_N'(q)-\bar C_N(q)\|_N=\|A_N(C_N(q))-A_N(\bar C_N(q))\|_N\le
+$$
+\begin{equation}\label{3.22}
+\kappa_\psi\lambda h\|C_N(q)-\bar C_N(q)\|_N.
+\end{equation}
+Из \eqref{3.21} и \eqref{3.22} выводим
+\begin{equation}\label{3.23}
+\|C_N(q)-\bar C_N(q)\|_N\le \frac1{1-\kappa_\psi\lambda h}\|C_N(q)- C_N'(q)\|_N.
+\end{equation}
+Чтобы оценить норму в правой части неравенства \eqref{3.22}, заметим, что в силу неравенства Бесселя
+\begin{equation}\label{3.24}
+\|C_N(q)- C_N'(q)\|_N^2\le \sum_{t=0}^{\infty} (F_{C(q),C_N(q)}(t))^2\rho(t),
+\end{equation}
+где
+\begin{multline}\label{3.25}
+ F_{C(q),C_N(q)}(t)=f\left[t,y(0)+ h\sum\nolimits_{j=0}^\infty c_j(q)\psi_{1,j+1}(t)\right] \\
+  -f\left[t,y(0)+ h\sum\nolimits_{j=0}^{N-1}c_j(q)\psi_{1,j+1}(t)\right].
+\end{multline}
+Из \eqref{3.24} и \eqref{3.15} следует, что
+$$
+(F_{C(q),C_N(q)}(t))^2\le \lambda^2 \gamma(t)\left(\sum\nolimits_{j=N}^\infty hc_j(q)\psi_{1,j+1}(t)\right)^2,
+$$
+отсюда с учетом \eqref{3.8} имеем
+\begin{equation}\label{3.26}
+(F_{C(q),C_N(q)}(t))^2\le \lambda^2 \gamma(t)  \left(\sum\nolimits_{j=N}^\infty  y_{1,j+1}\psi_{1,j}(t)\right)^2.
+\end{equation}
+Сопоставляя \eqref{3.26} с \eqref{3.24}, получаем
+\begin{equation}\label{3.27}
+\|C_N(q)- C_N'(q)\|_N^2\le \lambda^2\sum_{t=0}^\infty\left(\sum\nolimits_{j=N}^\infty y_{1,j+1} \psi_{1,j+1}(t)\right)^2\rho(t)\gamma(t).
+\end{equation}
+
+Подводя итоги, из \eqref{3.23} и \eqref{3.27}  мы можем вывести следующий результат.
+
+\begin{theorem}\label{RItheo3}
+Пусть функция   $f(x,y)$  определена и ограничена на декартовом произведении $\Omega\times\mathbb{R}$ и удовлетворяет условию Липшица \eqref{3.15}, а $h$ и $\lambda$ удовлетворяет неравенству $h\lambda\kappa_\psi<1$, где величина $\kappa_\psi$ определена равенством \eqref{3.3}. Далее, пусть $l_2$ гильбертово пространство, состоящее из последовательностей $C=(c_0,\ldots)$, для которых введена норма $\|C\|=\left(\sum_{j=0}^\infty c_j^2\right)^\frac12$,   оператор $A: l_2\to l_2$ сопоставляет точке $C\in l_2$ точку $C'\in l_2$ по правилу \eqref{3.11}. Кроме того, пусть $A_N:\mathbb{R}^N\to \mathbb{R}^N$ -- конечномерный аналог оператора $A$, cопоставляющий точке $C_N=(c_0,\ldots,c_{N})\in \mathbb{R}^N $ точку  $C'_N=(c_0',\ldots,c_{N}')\in \mathbb{R}^N $ по правилу \eqref{3.19}.
+Тогда операторы $A: l_2\to l_2$ и $A_N:\mathbb{R}^N\to \mathbb{R}^N$ являются сжимающими и, следовательно, существуют  их неподвижные точки $C(q)=(c_0(q),c_1(q),\ldots)=A(C(q))\in l_2$ и $\bar C_N(q)=(\bar c_0(q),\bar c_0(q),\ldots,\bar c_{N}(q))=A_N(\bar C_N(q))\in \mathbb{R}^N$, для которых имеет место неравенство
+\begin{equation}\label{3.28}
+\|C_N(q)-\bar C_N(q)\|_N\le \frac{\lambda \sigma_N^\psi(y)}{1-h\kappa_\psi\lambda},
+\end{equation}
+где
+\begin{equation}\label{3.30}
+\sigma_N^\psi(y)=\left(\sum_{t=0}^\infty\left(\sum\nolimits_{j=N+1}^\infty  y_{1,j}\psi_{1,j}(t)\right)^2\rho(t)\gamma(t) \right)^\frac12,
+\end{equation}
+ a $C_N(q)=(c_0(q),\ldots,c_{N-1}(q))$ -- конечная последовательность, составленная из первых $N$ компонент точки  $C(q)$, при этом в силу  \eqref{3.8} справедливо также равенство  $hC_N(q)=(y_{1,1}, y_{1,2}, \ldots, y_{1,N})$.
+\end{theorem}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\chapter{Рекуррентные соотношения для полиномов, ортонормированных по Соболеву, порождённых полиномами Лагерра}
+
+\section{Некоторые сведения о полиномах Лагерра}
+При получении рекуррентных формул для полиномов, ортонормированных по Соболеву, порождённых полиномами Лагерра, нам понадобится некоторые свойства самих полиномов Лагерра $L_n^\alpha(x)$, которые приведём в этом пункте.
+
+Пусть $\alpha$ -- произвольное действительное число. Тогда для полиномов Лагерра имеют место \cite{Gadz3}:
+
+формула Родрига
+\begin{equation*}
+L_n^{\alpha}(x) = \frac{1}{n!}x^{-\alpha}e^{x} \left\{ x^{n+\alpha} e^{-x} \right\}^{(n)};
+\end{equation*}
+
+явный вид
+\begin{equation}\label{Gadz_eq2}
+L_n^\alpha(x) =\sum\limits_{k=0}^{n}\binom{n+\alpha}{n-k}\frac{(-x)^k}{k!};
+\end{equation}
+
+соотношение ортогональности
+\begin{equation}\label{Gadz_eq3}
+\int_0^{\infty} x^{\alpha} e^{-x} L^{\alpha}_{n}(x) L^{\alpha}_{m}(x) dx = \delta_{nm} h^{\alpha}_n \quad (\alpha > -1),
+\end{equation}
+где $\delta_{nm}$ -- символ Кронекера,
+\begin{equation*}
+h^{\alpha}_n = \left( n+\alpha \atop n \right) \Gamma(\alpha +1);
+\end{equation*}
+
+равенства
+\begin{equation}\label{Gadz_eqRav}
+\frac{d}{dx} L_n^{\alpha}(x) = -L_{n-1}^{\alpha+1}(x);
+\end{equation}
+
+\begin{equation}\label{Gadz_eqRav1}
+L_{n}^{\alpha}(x) =L_{n}^{\alpha+1}(x) -L_{n-1}^{\alpha+1}(x);
+\end{equation}
+
+рекуррентная формула
+\begin{equation}\label{Gadz_eq4}
+\left.\begin{gathered}
+L_{0}^{\alpha}(x)=1, \quad L_1^{\alpha}(x)=-x+\alpha+1,\\
+nL_n^{\alpha}(x)=(-x+2n+\alpha-1)L_{n-1}^{\alpha}(x)-(n+\alpha-1)L_{n-2}^{\alpha}(x), \quad n=2, 3, \ldots
+\end{gathered}\right\}.
+\end{equation}
+
+Из \eqref{Gadz_eq3} следует, что соответствующая ортонормированная система полиномов Лагерра имеет вид:
+\begin{equation}\label{Gadz_eq5}
+l_n^{\alpha}(x)=(h^{\alpha}_n)^{-\frac{1}{2}}L_n^{\alpha}(x), \quad n=0, 1, \ldots,
+\end{equation}
+т.е.
+\begin{equation*}
+\int_0^{\infty} x^{\alpha} e^{-x} l^{\alpha}_{n}(x) l^{\alpha}_{m}(x) dx = \delta_{nm} \quad (\alpha > -1).
+\end{equation*}
+
+Равенства \eqref{Gadz_eq2} и \eqref{Gadz_eq5} дают следующий явный вид для $l^{\alpha}_{n}(x)$:
+\begin{equation}\label{Gadz_eq6}
+l_n^\alpha(x) =\frac{1}{(h^{\alpha}_n)^{\frac{1}{2}}}
+\sum\limits_{k=0}^{n}\binom{n+\alpha}{n-k}\frac{(-x)^k}{k!};
+\end{equation}
+Из \eqref{Gadz_eq4} и \eqref{Gadz_eq5} легко можно получить рекуррентную формулу для ортонормированных полиномов Лагерра $l_n^\alpha(x)$:
+\begin{equation}\label{Gadz_eq7}
+\left.\begin{gathered}
+l_{0}^{\alpha}(x)=\frac{1}{(\Gamma(\alpha+1))^{1\over2}}, \quad l_1^{\alpha}(x)=\frac{-x+\alpha+1}{(\Gamma(\alpha+2))^{1\over2}},\\
+l_n^{\alpha}(x)=(a_n^\alpha-b_n^\alpha x)l_{n-1}^{\alpha}(x)-c_n^\alpha l_{n-2}^{\alpha}(x), \quad n=2, 3, \ldots
+\end{gathered}\right\},
+\end{equation}
+где
+\begin{equation*}
+a_n^\alpha=\frac{2n+\alpha-1}{[n(n+\alpha)]^\frac{1}{2}},\quad
+b_n^\alpha=\frac{1}{[n(n+\alpha)]^\frac{1}{2}},\quad
+c_n^\alpha=\Big[\frac{(n-1)(n+\alpha-1)}{n(n+\alpha)}\Big]^\frac{1}{2}.
+\end{equation*}
+
+Далее, через $\mu_n^\alpha(x)$ обозначим функции Лагерра, которые задаются следующим образом:
+\begin{equation}\label{funcLag}
+\mu_n^\alpha(x)=(\rho(x))^\frac12l_n^\alpha(x)\ (n=0, 1, \ldots).
+\end{equation}
+Они ортонормированы на множестве $[0, \infty)$ с единичным весом, т.е.
+\begin{equation*}
+\langle \mu_n^\alpha, \mu_k^\alpha \rangle=\int\limits_0^\infty \mu_n^\alpha(x)\mu_k^\alpha(x)=\delta_{nk}, \quad (\alpha>-1).
+\end{equation*}
+
+Так как функции $\mu_n^\alpha(x)$ отличаются от полиномов $l_n^\alpha(x)$ множителем, не зависящим от номера функции, следовательно, аналогичная рекуррентная формула справедлива и для функций $\mu_n^\alpha(x)$:
+\begin{equation*}
+\left.\begin{gathered}
+\mu_{0}^{\alpha}(x)=\frac{(\rho(x))^{1\over2}}{(\Gamma(\alpha+1))^{1\over2}}, \quad \mu_1^{\alpha}(x)=\frac{(\rho(x))^{1\over2}(-x+\alpha+1)}{(\Gamma(\alpha+2))^{1\over2}},\\
+\mu_n^{\alpha}(x)=(a_n^\alpha-b_n^\alpha x)\mu_{n-1}^{\alpha}(x)-c_n^\alpha \mu_{n-2}^{\alpha}(x), \quad n=2, 3, \ldots
+\end{gathered}\right\}.
+\end{equation*}
+
+\section{Некоторые сведения о полиномах, ортонормированных по Соболеву, порожденных полиномами Лагерра}
+Пусть $\alpha>-1$, $\rho=\rho(x)=e^{-x}x^\alpha$, $L^2_\rho$ -- пространство измеримых функций $f$, определенных на полуоси $[0, \infty)$ и таких, что
+$$
+\|f\|_{L^2_\rho}=\left(\int\limits_0^{\infty}f^2(x)\rho(x)dx\right)^\frac{1}{2}<\infty.
+$$
+Через $W^r_{L^2_\rho}$ обозначим подкласс функций $f$, непрерывно дифференцируемых $r-1$ раз, для которых $f^{(r-1)}$ абсолютно непрерывна на произвольном сегменте $[a, b]\subset[0, \infty)$, а $f^{(r)}\in L^2_\rho$.    В пространстве $W^r_{L^2_\rho}$ мы введем скалярное произведение \eqref{Gadz_eq1}.
+
+Ортонормированная система полиномов Лагерра $l_{n}^\alpha(x)$ ($n=0, 1, \ldots$) порождает \cite{Gadz1}, \cite{Gadz2} на $[0, \infty)$ систему полиномов $l_{r,n}^\alpha(x)$ ($r$ -- натуральное число, $n=0, 1, \ldots$), определенных равенствами
+\begin{equation}\label{Gadz_eq8}
+l_{r,r+n}^{\alpha}(x) =\frac{1}{(r-1)!}\int\limits_{0}^x(x-t)^{r-1}l_{n}^{\alpha}(t)dt, \quad n=0,1,\ldots.
+\end{equation}
+
+\begin{equation}\label{Gadz_eq9}
+l_{r,n}^{\alpha}(x) =\frac{x^n}{n!}, \quad n=0,1,\ldots, r-1.
+\end{equation}
+В работе \cite{Gadz2} доказана следующая теорема
+
+\begin{theoremA}\label{RItheoA}
+Если $\alpha>-1$, то система полиномов $l_{r,n}^{\alpha}(x)$ $(n=0, 1,\ldots)$, порожденная полиномами Лагерра $l_n^{\alpha}(x)$ $(n=0,1,\ldots)$ посредством равенств \eqref{Gadz_eq8} и \eqref{Gadz_eq9}, полна  в $W^r_{L^2_\rho}$ и ортонормирована относительно скалярного произведения \eqref{Gadz_eq1}.
+\end{theoremA}
+
+Кроме того в работах \cite{Gadz1}, \cite{Gadz2} получены следующие представления для полиномов $l_{r,r+n}^{\alpha}(x)$:
+
+\begin{equation}\label{Gadz_eq10}
+l_{r,n+r}^{\alpha}(x)=\frac{1}{(h_n^\alpha)^{1\over2}}
+\sum\limits_{\nu=0}^{n}(-1)^\nu \binom{n+\alpha}{n-\nu}
+\frac{x^{\nu+r}}{\nu!(\nu+r)^{[r]}}\quad (n=0,1,\ldots),
+\end{equation}
+
+\begin{equation*}
+l_{r,r+n}^{\alpha}(x)=\frac{(-1)^r}{(h_n^\alpha)^{1\over2}}\left[L_{n+r}^{\alpha-r}(x)-
+\sum_{\nu=0}^{r-1}{B_{n,\nu}^\alpha x^\nu\over\nu!}\right],
+\end{equation*}
+где
+$$
+B_{n,\nu}^\alpha=\{L_{n+r}^{\alpha-r}(x)\}^{(\nu)}_{x=0}=
+{(-1)^\nu\Gamma(n+\alpha+1)\over\Gamma(\nu-r+ \alpha+1)(n+r-\nu)!}.
+$$
+Сравнивая равенства \eqref{Gadz_eq6} и \eqref{Gadz_eq10} замечаем, что порожденные полиномы $l_{r,r+n}^{\alpha}(x)$ при $r=0$ совпадают с классическими полиномами Лагерра $l_{n}^{\alpha}(x)$.
+
+В свою очередь, система функций Лагерра $\mu_n^\alpha(x)$, определенная равенством \eqref{funcLag}, порождает на $[0, \infty)$ систему функций $\mu_{r,n}^\alpha(x)$ ($r$ -- натуральное число, $n=0, 1, \ldots$) посредством равенств
+\begin{equation}\label{Gadz_eq12}
+\mu_{r,r+n}^{\alpha}(x) =\frac{1}{(r-1)!}\int\limits_{0}^x(x-t)^{r-1}\mu_{n}^{\alpha}(t)dt, \quad n=0,1,\ldots.
+\end{equation}
+
+\begin{equation}\label{Gadz_eq13}
+\mu_{r,n}^{\alpha}(x) =\frac{x^n}{n!}, \quad n=0,1,\ldots, r-1.
+\end{equation}
+
+В качестве следствия теоремы 1 из работы \cite{Gadz1} можно сформулировать следующее
+\textbf{Следствие.}
+\textsl{
+Если $\alpha>-1$, то система функций $\mu_{r,n}^{\alpha}(x)$ $(n=0, 1,\ldots)$, порожденная функциями Лагерра $\mu_n^{\alpha}(x)$ $(n=0,1,\ldots)$ посредством равенств \eqref{Gadz_eq12} и \eqref{Gadz_eq13}, полна  в $W^r_{L^2_1}$ и ортонормирована относительно скалярного произведения
+\begin{equation*}
+\langle \mu_{r,n}^\alpha,\mu_{r,k}^\alpha\rangle=
+\sum_{\nu=0}^{r-1}(\mu_{r,n}^\alpha(x))^{(\nu)}|_{x=0}(\mu_{r,k}^\alpha(x))^{(\nu)}|_{x=0}+
+\int_{0}^{\infty} (\mu_{r,n}^\alpha(x))^{(r)}(\mu_{r,k}^\alpha(x))^{(r)} dx.
+\end{equation*}
+}
+
+\section{Рекуррентные соотношения для полиномов $l_{r,r+n}^{\alpha}(x)$}
+Хорошо известно, что в исследовании систем ортогональных полиномов важную роль играют рекуррентные соотношения, которые являются одним из способов задания систем ортогональных полиномов.
+В этом пункте получены рекуррентные соотношения для полиномов $l_{r,n}^\alpha(x)$, которые могут быть использованы для изучения различных свойств этих полиномов и вычисления их значений при любых $x$ и $n$.
+Имеет место следующая теорема.
+
+\begin{theorem}\label{RItheo4}
+Справедливы следующие рекуррентные соотношения:
+\begin{equation*}\label{Gadz_eq14}
+l_{r,n}^\alpha(x)=\frac{x}{n}l_{r,n-1}^\alpha(x), \ \ 1\leq n\leq r-1;
+\end{equation*}
+\begin{equation*}\label{Gadz_eq15}
+l_{r,r}^\alpha(x)=\frac{x}{r}l_{r-1,r-1}^\alpha(x), \ \ r\geq 1;
+\end{equation*}
+\begin{equation*}\label{Gadz_eq16}
+l_{1,n+1}^\alpha(x)=-\sqrt{\frac{n+\alpha+1}{n+1}} l_{n+1}^{\alpha}(x)+l_{n}^{\alpha}(x)+
+\sqrt{\frac{n+\alpha+1}{n+1}} l_{n+1}^{\alpha}(0)-l_{n}^{\alpha}(0), \ \ n\geq 1;
+\end{equation*}
+$$
+b_n^\alpha rl_{r+1,r+n}^\alpha(x)=l_{r,r+n}^{\alpha}(x)+
+$$
+\begin{equation*}\label{Gadz_eq17}
+\left[b_n^\alpha x - a_n^\alpha\right]l_{r,r+n-1}^{\alpha}(x)
++c_{n}^\alpha l_{r,r+n-2}^{\alpha}(x), \ r\geq 1, \ n=2, 3, \ldots,
+\end{equation*}
+где
+\begin{equation*}
+a_n^\alpha=\frac{2n+\alpha-1}{[n(n+\alpha)]^\frac{1}{2}},\quad
+b_n^\alpha=\frac{1}{[n(n+\alpha)]^\frac{1}{2}},\quad
+c_n^\alpha=\Big[\frac{(n-1)(n+\alpha-1)}{n(n+\alpha)}\Big]^\frac{1}{2}.
+\end{equation*}
+\end{theorem}
+
+\noindent Для функций $\mu_{r,r+n}^\alpha(x)$ мы приведем аналогичные рекуррентные соотношения при $\alpha=0$:
+\begin{equation*}
+\mu_{r,r}^0(x)=\frac{2x^{r-1}}{(r-1)!}-2\mu_{r-1,r-1}^0(x), \quad r\geq1;
+\end{equation*}
+
+\begin{equation*}
+\mu_{1,n+2}^0(x) = - \mu_{1,n+1}^0(x) - 2 (\mu_{n+1}^0(x) - \mu_{n}^0(x)) \quad n\geq 0;
+\end{equation*}
+$$
+\mu_{r+1,r+n}^0(x)=\frac{n}{r}\mu_{r,r+n}^{0}(x)+
+$$
+\begin{equation*}
+\left[\frac{x}{r} - \frac{2n-1}{r}\right]\mu_{r,r+n-1}^{0}(x)
++\frac{n-1}{r} \mu_{r,r+n-2}^{0}(x), \ r\geq 1, \ n=2, 3, \ldots.
+\end{equation*}

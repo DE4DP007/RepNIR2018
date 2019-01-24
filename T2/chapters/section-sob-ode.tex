@@ -1,0 +1,259 @@
+\chapter{Численный метод решения задачи Коши для систем дифференциальных уравнений}\label{odes-sob-ode-ch}
+
+
+
+\section{Задача Коши для нелинейных систем ДУ и системы функций, ортогональных по Соболеву}
+
+В данном разделе рассмотрен численный метод решения задачи Коши для нелинейных систем дифференциальных уравнений. Метод основан на использовании рядов Фурье по системам функций $\Phi_r=\{\varphi_{r,k}\}$, ортонормированных в смысле Соболева относительно скалярного произведения
+\begin{equation}\label{odes-inner-prod}
+\langle f,g \rangle =
+\sum_{\nu=0}^{r-1}f^{(\nu)}(a)g^{(\nu)}(a)+\int_{a}^{b}f^{(r)}(x)g^{(r)}(x)\mu(x)dx,
+\end{equation}
+
+Интерес к таким системам  в последнее время интенсивно растет  (см. \cite{Shar2016} -- \cite{Shar13}  и цитированную там литературу). Это новое направление принято обозначать словами: <<Функции, ортогональные по Соболеву>>. Возросшее  внимание специалистов  к этому направлению теории ортогональных систем можно объяснить в том числе и тем обстоятельством, что ряды Фурье по полиномам (и функциям), ортогональным по Соболеву, оказались естественным и весьма удобным инструментом для представления решений  дифференциальных (разностных) уравнений. Это можно показать, в частности, на примере  задачи Коши для  дифференциального уравнения
+\begin{equation}\label{odes-1.2}
+F(x,y,y',\ldots,y^{(r)})=0
+ \end{equation}
+с начальными условиями $y^{(k)}(a)=y_k$, $k=0,1,\ldots,r-1$.  Наряду с различными сеточными и аппроксимационно-аналитическими методами, для решения этой задачи часто применяют так называемые спектральные методы \cite{Tref1} -- \cite{Shar18}, суть которых  заключается в том, что на первом этапе искомое решение $y(x)$ задачи Коши для уравнения \eqref{odes-1.2} представляется в виде ряда Фурье
+\begin{equation}\label{odes-1.3}
+ y(x)=\sum_{k=0}^\infty \hat y_k\psi_k(x)
+ \end{equation}
+по подходящей ортонормированной системе $\{\psi_k(x)\}_{k=0}^\infty$. На втором этапе осуществляется подстановка вместо $y(x)$ ряда \eqref{odes-1.3} в уравнение \eqref{odes-1.2}. Это приводит к системе уравнений (вообще говоря, бесконечной) относительно неизвестных коэффициентов $\hat y_k$ ($k=0,1,\ldots$). На третьем этапе требуется решить эту систему с учетом начальных условий  $y^{(k)}(a)=y_k$, $k=0,1,\ldots,r-1$ исходной задачи Коши.
+Одна из основных трудностей, которая возникает на этом этапе, состоит в том, чтобы
+выбрать такой ортонормированный базис $\{\psi_k(x)\}_{k=0}^\infty$, для которого искомое решение $y(x)$ уравнения \eqref{1.1}, представленное в виде ряда  \eqref{odes-1.3}, удовлетворяло бы начальным условиям $y^{(k)}(a)=y_k$, $k=0,1,\ldots,r-1$. Более того, поскольку в результате решения системы уравнений относительно неизвестных коэффициентов $\hat y_k$  будет найдено только конечное их число с $k=0,1,\ldots, n$, то весьма важно, чтобы частичная сумма ряда \eqref{odes-1.3} вида $ y_n(x)=\sum_{k=0}^n\hat y_k\psi_k(x)$,
+ будучи приближенным решением рассматриваемой задачи Коши, также удовлетворяла начальным условиям $y_n^{(k)}(a)=y_k$, $k=0,1,\ldots,r-1$. Одна из основных задач настоящей работы заключается в том, чтобы показать, что системы функций
+ $ \{\varphi_{r,n}(x)\}_{k=0}^\infty$, ортогональных относительно скалярного произведения \eqref{odes-inner-prod} и определяемых посредством равенств
+  \begin{equation}\label{odes-1.4}
+\varphi_{r,r+k}(x) =\frac{1}{(r-1)!}\int_a^x(x-t)^{r-1}\varphi_{k}(t)dt, \quad k=0,1,\ldots,
+\end{equation}
+
+  \begin{equation}\label{odes-1.5}
+\varphi_{r,k}(x) =\frac{(x-a)^k}{k!}, \quad k=0,1,\ldots, r-1,
+\end{equation}
+где система $\left\{\varphi_k(x)\right\}_{k=0}^\infty$ ортонормирована  на $(a,b)$  c весом   $\rho(x)$, т.е.
+ \begin{equation}\label{odes-1.6}
+\int_a^b\varphi_k(x)\varphi_l(x)\rho(x)dx=\delta_{kl},
+\end{equation}
+где $\delta_{kl}$ -- символ Кронекера, является удобным и эффективным инструментом  численно-аналитического (спектрального) метода решения задачи Коши для систем дифференциальных уравнений.   Нам понадобятся некоторые факты, установленные в \cite{Shar20}.
+  Через $L^p_\rho(a,b)$ обозначим пространство  функций $f(x)$, измеримых  на  $(a,b)$, для которых
+ \begin{equation*}
+\int_a^b|f(x)|^p\rho(x)dx<\infty.
+\end{equation*}
+Если $\rho(x)\equiv1$, то будем писать $L^p_\rho(a,b)=L^p(a,b)$ и $L(a,b)=L^1(a,b)$.
+Из \eqref{odes-1.6} следует, что $\varphi_k(x)\in L^2_\rho(a,b)$ $(k=0,1,\ldots)$. Мы добавим к этому условию еще одно, считая, что $\varphi_k(x)\in L(a,b)$ $(k=0,1,\ldots)$. Тогда, следуя  \cite{Shar20}, мы можем определить  порожденные системой $\{\varphi_k(x)\}$ функции $\varphi_{r,k}(x)$, определенные равенствами \eqref{odes-1.4} и \eqref{odes-1.5}, для которых при п.в. $x\in (a,b)$ справедливы равенства
+ \begin{equation}\label{odes-1.7}
+(\varphi_{r,k}(x))^{(\nu)} =\begin{cases}\varphi_{r-\nu,k-\nu}(x),&\text{если $0\le\nu\le r-1$, $r\le k$,}\\
+\varphi_{k-r}(x),&\text{если  $\nu=r\le k$,}\\
+\varphi_{r-\nu,k-\nu}(x),&\text{если $\nu\le k< r$,}\\
+0,&\text{если $k< \nu\le r-1$}.
+  \end{cases}
+\end{equation}
+Через $W^r_{L^p_\rho(a,b)}$ обозначим пространство Соболева, состоящее из функций $f(x)$, непрерывно дифференцируемых на $[a,b]$ $r-1$ раз, причем $f^{(r-1)}(x)$ абсолютно непрерывна на $[a,b]$  и $f^{(r)}(x)\in L^p_\rho(a,b)$.
+Скалярное произведение в пространстве $W^r_{L^2_\rho(a,b)}$ определим с помощью равенства \eqref{odes-inner-prod}. Тогда, пользуясь определением функций  $\varphi_{r,k}(x)$ (см. \eqref{odes-1.4} и \eqref{odes-1.5}) и равенством  \eqref{odes-1.7}, нетрудно увидеть (см.\cite{Shar20}),  что система $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ является ортонормированной в пространстве $W^r_{L^2_\rho(a,b)}$. Следуя \cite{Shar20}, мы будем называть систему $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ \textit{ ортонормированной по Соболеву } относительно скалярного произведения \eqref{odes-1.3} и  \textit{ порожденной} ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$.
+В \cite{Shar20} показано,  что ряд Фурье функции $f(x)\in W^r_{L^2_\rho(a,b)}$ по системе  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ имеет смешанный характер, а именно:
+  \begin{equation}\label{odes-1.8}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^\infty \hat f_{r,k}\varphi_{r,k}(x),
+\end{equation}
+где
+  \begin{equation}\label{odes-1.9}
+ \hat f_{r,k}=\int_a^b f^{(r)}(t) \varphi^{(r)}_{r,k}(t)\rho(t)dt=\int_a^b f^{(r)}(t) \varphi_{k-r}(t)\rho(t)dt,
+\end{equation}
+поэтому ряд  вида \eqref{odes-1.8} будем  называть \textit{ смешанным рядом} по  системе $\{\varphi_{k}(x)\}_{k=0}^\infty$, считая это название условным и сокращенным обозначением полного названия: \textit{<<ряд Фурье по системе  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, ортонормированной по Соболеву, порожденной ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$>>}.
+
+
+\section{Некоторые результаты общего характера }
+Отметим некоторые важные свойства смешанного ряда \eqref{odes-1.8}, непосредственно вытекающие из \eqref{odes-1.7}:
+\begin{equation}\label{odes-2.1}
+f'(x)\sim \sum_{k=1}^\infty (\hat f_{r,k}\varphi_{r,k}(x))'= \sum_{k=1}^\infty f'_{r-1,k-1}\varphi_{r-1,k-1}(x).
+\end{equation}
+\begin{equation}\label{odes-2.2}
+\int_a^xf'(t)dt\sim \sum_{k=1}^\infty f'_{r-1,k-1}\int_a^x\varphi_{r-1,k-1}(t)dt=\sum_{k=1}^\infty \hat f_{r,k}\varphi_{r,k}(x).
+\end{equation}
+Важное значение имеет свойство  смешанного ряда \eqref{odes-1.8}, которое заключается в том, что его частичная сумма вида
+\begin{equation}\label{odes-2.3}
+Y_{r,N}(f,x)=\sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^{N} \hat f_{r,k}\varphi_{r,k}(x)
+\end{equation}
+ при   $r\le N$  совпадает с исходной функцией $f(x)$   в точке $x=a$ $r$-кратно , т.е.
+\begin{equation}\label{odes-2.4}
+(Y_{r,N}(f,x))^{(\nu)}_{x=a}=f^{(\nu)}(a)\quad (0\le\nu\le r-1).
+\end{equation}
+ В дальнейшем нам понадобятся  некоторые  свойства системы $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, состоящей из функций, определенных равенствами   \eqref{odes-1.5} и \eqref{odes-1.6}, установленные в работе \cite{Shar20}.
+
+\begin{theoremA}\label{odes-thA}
+Предположим, что    функции $\varphi_k(x)$ $(k=0,1,\ldots)$ образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на  $(a,b)$. Тогда система $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{odes-1.5} и \eqref{odes-1.6}, полна  в $W^r_{L^2_\rho(a,b)}$ и ортонормирована относительно скалярного произведения \eqref{odes-1.3}.
+\end{theoremA}
+
+
+\begin{theoremA}\label{odes-thB}
+Предположим, что  $ \frac{1}{\rho(x)}\in L(a,b) $, а  функции $\varphi_k(x)$ $(k=0,1,\ldots)$  образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на $(a,b)$, $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ -- система, ортонормированная в $W^r_{L^2_\rho(a,b)}$ относительно скалярного произведения \eqref{odes-1.8},  порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{odes-1.5} и \eqref{odes-1.6}.
+Тогда если $f(x)\in W^r_{L^2_\rho(a,b)}$, то ряд Фурье (смешанный ряд) \eqref{odes-1.8} сходится к функции $f(x)$ равномерно относительно $x\in[a,b]$.
+\end{theoremA}
+
+
+
+
+\section{О представлении решения задачи Коши для систем ОДУ рядом Фурье по функциям $\varphi_{r,n}(x)$}
+В этом параграфе мы рассмотрим задачу о приближении решения задачи Коши для систем ОДУ  суммами  Фурье по системе $\{\varphi_{r,n}(x)\}_{n=0}^\infty$, ортогональной по Соболеву и порожденной ортонормированной системой функций $\{\varphi_{n}(x)\}_{n=0}^\infty$ посредством равенств \eqref{odes-1.5} и \eqref{odes-1.6} с $a=0$, $b=1$.
+ Мы будем рассматривать задачу Коши для систем ОДУ вида
+
+\begin{equation}\label{odes-3.1}
+y'(x)=f(x,y), \quad y(0)=y^0,
+\end{equation}
+где $y(0)=y^0$,  $f=(f_1, \ldots, f_m)$, $y=(y_1, \ldots, y_m)$. Вектор-функцию   $f(x,y)$  будем считать непрерывной в некоторой замкнутой  области $\bar G$ переменных $(x,y)$, содержащей точку $(0,y^0)$. Кроме того, мы будем  считать, что  $[0,1]\times\mathbb{R}^m\subset\bar G$. Это требование не сужает дальнейшие рассмотрения, так как, не ограничивая в общности,  мы можем, в случае необходимости, продолжить функцию $f(x,y)$ по переменной $y$ на всё $\mathbb{R}^m$, сохраняя свойство ее подчиненности  нижеследующему условию Липшица \eqref{odes-3.3}. Например, если область $\bar G$ такова, что  прямая в $\mathbb{R}^{m+1}$ вида $(x,ty_1,\ldots,ty_m)$ ($t\in\mathbb{R}$) для каждого $x\in[0,1]$ и $(y_1,\ldots,y_m)\in\mathbb{R}^{m}$ пересекается с границей области $\bar G$ не более, чем в двух (граничных для $\bar G$) точках $(x,y')$ и $(x,y'')$, то  $f(x,y)$ можно непрерывно продолжить   на $[0,1]\times\mathbb{R}^m$, считая ее  постоянной на лучах, выходящих из точек  $(x,y')$ и $(x,y'')$ в противоположные направления вдоль прямой $(x,ty_1,\ldots,ty_m)$ ($t\in\mathbb{R}$).
+
+Требуется аппроксимировать с заданной точностью вектор-функцию $y=y(x)$, определенную на $[0,1]$, которая является решением задачи Коши \eqref{odes-3.1}.
+Будем считать, что весовая функция $\rho(x)$ интегрируема на $(0,1)$, система $\{\varphi_{n}(x)\}_{n=0}^\infty$ удовлетворяет условиям теоремы \ref{odes-thB}, а порожденная система $\{\varphi_{1,n}(x)\}_{n=0}^\infty$ -- условиям $(0\le x\le 1)$
+\begin{equation}\label{odes-3.2}
+\delta_\varphi(x)=\sum_{k=1}^{\infty}(\varphi_{1,k}(x))^2<\infty,\quad
+\kappa_{\varphi}=\left(\int_0^1\sum_{k=1}^{\infty}
+(\varphi_{1,k}(t))^2\rho(t)dt\right)^{\frac12}<\infty.
+\end{equation}
+Кроме того, мы предположим, что по переменной $y$ функция $f(x,y)$ удовлетворяет условию Липшица
+ \begin{equation}\label{odes-3.3}
+\|f(x,a)-f(x,b)\|\le \lambda\|a-b\|, \quad 0\le x \le 1,
+\end{equation}
+где $\|(a_1,\ldots,a_m)\|=\sqrt{\sum_{l=1}^ma_l^2}$. Через $s$ обозначим наименьшее натуральное число, для которого $h\lambda\kappa_\varphi<1$, где $h=1/s$. Если, в частности, $\lambda\kappa_\varphi<1$, то $s=1$. Полагая $x=t/s$, отобразим линейно отрезок $[0,s]$ на $[0,1]$. Относительно новой переменной $t\in [0,s]$ уравнение \eqref{odes-3.1} принимает следующий вид
+\begin{equation}\label{odes-3.4}
+\eta'(t)=hf(ht,\eta(t)), \quad \eta(0)=y_0,\quad 0\le t\le s,
+\end{equation}
+где $h=1/s$, $\eta(t)=y(ht)$. Мы можем представить отрезок $[0,s]$ в виде объединения отрезков $[l,l+1]$ $(l=0,1,\ldots s-1)$ и  решать поставленную задачу Коши для уравнения \eqref{odes-3.4} сначала на $[0,1]$, а затем, используя найденное начальное значение $\eta(1)$,  решать её на $[1,2]$ и так далее. Мы ограничимся рассмотрением этой задачи для отрезка $[0,1]$. Поскольку, по предположению, вектор-функция $f(x,y)$ непрерывна в области $\bar G$, то из \eqref{odes-3.4} следует, что  вектор-функция $\eta'(t)=(\eta'_1(t),\ldots,\eta'_l(t),\ldots,\eta'_m(t))$ непрерывна на $[0,1]$ и, следовательно, $\eta(t)=(\eta_1(t),\ldots,\eta_l(t),\ldots,\eta_m(t))$, где $\eta_l\in W_{L_\rho^2(0,1)}^1$ при всех $l=1,\ldots,m$, поэтому в силу теоремы \ref{odes-thB}  мы можем представить  функцию $\eta(t)$ в виде равномерно сходящегося на $[0,1]$ ряда Фурье по порожденной системе $\{\varphi_{1,n}(t)\}_{n=0}^\infty$:
+\begin{equation}\label{odes-3.5}
+\eta(t)= \eta(0)+ \sum\nolimits_{k=1}^\infty \hat \eta_{1,k}\varphi_{1,k}(t),
+\end{equation}
+где
+  \begin{equation}\label{odes-3.6}
+\hat \eta_{1,k}=(\widehat{\eta_1}_{1,k},\ldots,\widehat {\eta_l}_{1,k},\ldots,\widehat{\eta_m}_{1,k})=\int_{0}^1 \eta'(t)\varphi_{k-1}(t)\rho(t)dt\quad(k\ge1).
+\end{equation}
+Наша цель состоит в том, чтобы сконструировать итерационный процесс для нахождения приближенных значений коэффициентов $c_k=s\hat \eta_{1,k+1}$ $(k=0,1,\ldots)$, где $c_k=(c_k^1,\ldots,c_k^m)$. Для этого обратимся к соотношениям \eqref{odes-1.7} и \eqref{odes-2.1}, которые вместе с \eqref{odes-3.5} дают
+\begin{equation}\label{odes-3.7}
+\eta'(t)=  \sum\nolimits_{k=0}^\infty \hat \eta_{1,k+1}\varphi_k(t),
+\end{equation}
+где равенство понимается в том смысле, что ряд в правой части равенства \eqref{odes-3.7} сходится к $\eta'_l$ в метрике пространства $L^2_{\rho}(0,1)$ для всех $l=1,\ldots,m$. Положим $q(t)=f(ht,\eta(t))=s\eta'(t)$ и заметим, что в силу  \eqref{odes-3.6} (см. также \eqref{odes-3.7}) коэффициенты Фурье вектор-функции $q=q(t)$ по системе  $\{\varphi_{n}(t)\}_{n=0}^\infty$ имеют вид
+\begin{equation}\label{odes-3.8}
+ c_k(q)=\int_{0}^1 q(t)\varphi_{k}(t)\rho(t)dt=s\hat \eta_{1,k+1} \quad (k\ge0).
+\end{equation}
+С учетом этих равенств мы можем переписать \eqref{odes-3.5} в следующем виде
+\begin{equation}\label{odes-3.9}
+\eta(t)= \eta(0)+ h\sum\nolimits_{k=0}^\infty c_k(q){\varphi}_{1,k+1}(t).
+\end{equation}
+Из  \eqref{odes-3.8} и \eqref{odes-3.9}, в свою очередь, выводим следующие соотношения
+\begin{equation}\label{odes-3.10}
+c_k(q)=\int_{0}^1f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty c_j(q)\varphi_{1,j+1}(t)\right]\varphi_k(t)\rho(t) dt,\, k=0,1,\ldots.
+\end{equation}
+Введем в рассмотрение гильбертово пространство $l_2^m$, состоящее из вектор-после\-дователь\-ностей $C=(c_0,c_1,\ldots)$, для которых определена норма
+$$\|C\|=\left(\sum\nolimits_{j=0}^\infty \sum\nolimits_{l=1}^{m}(c_j^l)^2\right)^\frac12.$$  В пространстве $l_2^m$ рассмотрим оператор $A$, сопоставляющий точке $C\in l_2^m$ точку $C'\in l_2^m$ по правилу
+\begin{equation}\label{odes-3.11}
+c_k'=\int_{0}^1f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty c_j
+\varphi_{1,j+1}(t)\right]\varphi_k(t)\rho(t) dt,\quad k=0,1,\ldots.
+\end{equation}
+Из  \eqref{odes-3.10} следует, что точка $C(q)=(c_0(q),c_1(q),\ldots)$ является неподвижной точкой оператора $A:l_2^m\to l_2^m$. Для того чтобы найти точку $C(q)$ методом простых итераций, достаточно показать, что оператор $A:l_2^m\to l_2^m$ является сжимающим в метрике пространства $l_2^m$. С этой целью рассмотрим две точки $P,Q\in l_2^m$, где $P=(p_0,\ldots)$, $Q=(q_0,\ldots)$, и положим $P'=A(P)$, $Q'=A(Q)$. Имеем
+\begin{equation}\label{odes-3.11}
+p'_k-q'_k=\int_{0}^1F_{P,Q}(t)\varphi_k(t)\rho(t)dt,\quad k=0,1,\ldots
+\end{equation}
+где
+\begin{multline}\label{odes-3.12}
+ F_{P,Q}(t)=f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty p_j\varphi_{1,j+1}(t)\right] \\
+  -f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty q_j\varphi_{1,j+1}(t)\right].
+\end{multline}
+Из \eqref{odes-3.11}, пользуясь неравенством Бесселя, находим
+ \begin{equation}\label{odes-3.13}
+\sum\nolimits_{k=0}^\infty \sum_{l=1}^m((p^l_k)'-(q^l_k)')^2\le\int_{0}^1F_{P,Q}(t)(F_{P,Q}(t))^*\rho(t) dt,
+\end{equation}
+где $(a_1,\ldots,a_m)^*$ -- вектор-столбец, полученный в результате транспонирования строки $(a_1,\ldots,a_m)$.
+Из \eqref{odes-3.12} и \eqref{odes-3.3}  имеем
+ \begin{equation}\label{odes-3.15}
+F_{P,Q}(t)(F_{P,Q}(t))^*\rho(t)\le (h\lambda)^2 \sum\nolimits_{l=1}^m  \left(\sum\nolimits_{j=0}^\infty( p^l_j-q^l_j)\varphi_{1,j+1}(t)\right)^2,
+\end{equation}
+откуда,  воспользовавшись неравенством Коши-Буняковского, выводим
+$$
+F_{P,Q}(t)(F_{P,Q}(t))^*\rho(t)\le(h\lambda)^2  \sum\nolimits_{j=0}^\infty(\varphi_{1,j+1}(t))^2 \sum\nolimits_{j=0}^\infty\sum\nolimits_{l=1}^m( p^l_j-q^l_j)^2.
+$$
+Сопоставляя \eqref{odes-3.15} с \eqref{odes-3.13}, находим
+$$
+\sum\nolimits_{j=0}^\infty\sum\nolimits_{l=1}^m((p^l_j)'-(q^l_j)')^2\le
+$$
+\begin{equation}\label{odes-3.16}
+(h\lambda)^2 \sum\nolimits_{j=0}^\infty\sum\nolimits_{l=1}^m( p^l_j-q^l_j)^2\int_{0}^1 \sum\nolimits_{j=0}^\infty(\varphi_{1,j+1}(t))^2\rho(t) dt.
+\end{equation}
+Из  \eqref{odes-3.16}  и \eqref{odes-3.2} имеем
+\begin{equation}\label{odes-3.17}
+\left(\sum\nolimits_{j=0}^\infty\sum\nolimits_{l=1}^m((p^l_j)'-(q^l_j)')^2\right)^\frac12\le h\kappa_\varphi\lambda \left(\sum\nolimits_{j=0}^\infty\sum\nolimits_{l=1}^m( p^l_j-q^l_j)^2\right)^\frac12.
+\end{equation}
+Неравенство \eqref{odes-3.17} показывает, что если $h\kappa_\varphi\lambda<1$, то оператор  $A:l_2^m\to l_2^m$ является сжимающим и, как следствие, итерационный процесс $C^{\nu+1}=A(C^{\nu})$  сходится к точке $C(q)$ при $\nu\to\infty$. Однако с точки зрения приложений важно рассмотреть конечномерный аналог оператора $A$. Обозначим через $\mathbb{R}^N_m$ пространство матриц $C$ размерности $m\times N$, в котором определена норма
+$$\|C\|_N^m=\left(\sum\nolimits_{j=0}^{N-1} \sum\nolimits_{l=1}^{m}(c_j^l)^2\right)^\frac12.$$
+ Мы рассмотрим оператор $A_N:\mathbb{R}^N_m\to \mathbb{R}^N_m$, cопоставляющий точке\\
+$C_N=(c_0,\ldots,c_{N-1})\in \mathbb{R}^N_m $ точку  $C'_N=(c_0',\ldots,c_{N-1}')\in \mathbb{R}^N_m $ по правилу
+\begin{equation}\label{odes-3.18}
+c_k'=\int\limits_{0}^1f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^{N-1} c_j\varphi_{1,j+1}(t)\right]\varphi_k(t)\rho(t) dt,\,k=0,1,\ldots, N-1.
+\end{equation}
+ Рассмотрим две точки $P_N,Q_N\in \mathbb{R}^N_m$, где $P_N=(p_0,p_1,\ldots,p_{N-1})$,\\   $Q_N=(q_0,q_1,\ldots,p_{N-1})$ и положим $P'_N=A_N(P_N)$, $Q'_N=A_N(Q_N)$. Дословно повторяя рассуждения, которые привели нас к неравенству \eqref{odes-3.17}, мы получим
+\begin{equation}\label{odes-3.19}
+\left(\sum\nolimits_{j=0}^{N-1}\sum\nolimits_{l=1}^m((p^l_j)'-(q^l_j)')^2\right)^\frac12\le h\kappa_\varphi\lambda \left(\sum\nolimits_{j=0}^{N-1}\sum\nolimits_{l=1}^m( p^l_j-q^l_j)^2\right)^\frac12.
+\end{equation}
+
+Неравенство \eqref{odes-3.19} показывает, что если $h\kappa_\varphi\lambda<1$, то оператор  $A_N:\mathbb{R}^N_m\to \mathbb{R}^N_m$ является сжимающим и, как следствие, итерационный процесс $C_N^{\nu+1}=A_N(C_N^{\nu})$  при $\nu\to\infty$ сходится к его неподвижной точке, которую мы обозначим через  $\bar C_N(q)=(\bar c_0(q),\ldots,\bar c_{N-1}(q))$. С другой стороны, рассмотрим точку $C_N(q)=(c_0(q),\ldots,c_{N-1}(q))$, составленную из искомых коэффициентов Фурье вектор-функции $q$ по системе $\varphi$. Нам остается оценить погрешность, проистекающую в результате замены точки $C_N(q)$ точкой $\bar C_N(q)$. Другими словами, требуется оценить величину
+$\|C_N(q)-\bar C_N(q)\|_N^m= \left(\sum_{j=0}^{N-1}\sum\nolimits_{l=1}^m(c_j^l(q)-\bar c_j^l(q))^2\right)^\frac12$. С этой целью рассмотрим точку $C'_N(q)=A_N(C_N(q))=(c_0'(q),\ldots,c_{N-1}'(q))$ и запишем
+\begin{equation}\label{odes-3.20}
+\|C_N(q)-\bar C_N(q)\|_N^m\le \|C_N(q)- C_N'(q)\|_N^m+\|C_N'(q)-\bar C_N(q)\|_N^m.
+\end{equation}
+Далее, пользуясь неравенством \eqref{odes-3.19}, имеем
+$$
+\|C_N'(q)-\bar C_N(q)\|_N^m=\|A_N(C_N(q))-A_N(\bar C_N(q))\|_N^m\le
+$$
+\begin{equation}\label{odes-3.21}
+h\kappa_\varphi\lambda\|C_N(q)-\bar C_N(q)\|_N^m.
+\end{equation}
+Из \eqref{odes-3.20} и \eqref{odes-3.21} выводим
+\begin{equation}\label{odes-3.22}
+\|C_N(q)-\bar C_N(q)\|_N^m\le \frac1{1-h\kappa_\varphi\lambda}\|C_N(q)- C_N'(q)\|_N^m.
+\end{equation}
+Чтобы оценить норму в правой части неравенства \eqref{odes-3.22}, заметим, что в силу неравенства Бесселя
+\begin{equation}\label{odes-3.23}
+(\|C_N(q)- C_N'(q)\|_N^m)^2\le \int_{0}^1F_{C(q),C_N(q)}(t)(F_{C(q),C_N(q)}(t))^*\rho(t) dt,
+\end{equation}
+где
+\begin{multline}\label{odes-3.24}
+ F_{C(q),C_N(q)}(t)=f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty c_j(q)\varphi_{1,j+1}(t)\right] \\
+  -f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^{N-1}c_j(q)\varphi_{1,j+1}(t)\right].
+\end{multline}
+Из \eqref{odes-3.24} и \eqref{odes-3.3} следует, что
+$$
+F_{C(q),C_N(q)}(t)(F_{C(q),C_N(q)}(t))^*\le \lambda^2 \sum\nolimits_{l=1}^m  \left(\sum\nolimits_{j=N}^\infty hc_j^l(q)\varphi_{1,j+1}(t)\right)^2,
+$$
+отсюда с учетом того, что $hc_k=\hat \eta_{1,k+1}$ $(k=0,1,\ldots)$, имеем
+\begin{equation}\label{odes-3.25}
+F_{C(q),C_N(q)}(t)(F_{C(q),C_N(q)}(t))^*\le \lambda^2   \sum\nolimits_{l=1}^m \left(\sum\nolimits_{j=N}^\infty  \widehat {\eta_l}_{1,j+1}\varphi_{1,j+1}(t)\right)^2.
+\end{equation}
+Сопоставляя \eqref{odes-3.25} с \eqref{odes-3.23}, получаем
+\begin{equation}\label{odes-3.26}
+(\|C_N(q)- C_N'(q)\|_N^m)^2\le \lambda^2\sum\nolimits_{l=1}^m\int_{0}^1\left(\sum\nolimits_{j=N}^\infty \widehat {\eta_l}_{1,j+1}\varphi_{1,j+1}(t)\right)^2\rho(t) dt,
+\end{equation}
+где согласно \eqref{odes-3.6}
+\begin{equation}\label{odes-3.27}
+ \hat \eta_{1,j+1}=\int_{0}^1\eta'(t)\varphi_j(t)\rho(t)dt \quad(j=0,1,\ldots)
+\end{equation}
+-- коэффициенты Фурье вектор-функции $\eta'(t)=hf(ht,\eta(t))$.
+
+Подводя итоги, из \eqref{odes-3.22} и \eqref{odes-3.26}  мы можем сформулировать следующий результат.
+\begin{theorem}
+Пусть область $\bar G$ такова, что $[0,1]\times\mathbb{R}^m\subset \bar G$, вектор-функция $f(x,y)$ непрерывна в области $\bar G$ и удовлетворяет условию Липшица \eqref{odes-3.3}, а $h$ и $\lambda$ удовлетворяет неравенству $h\lambda\kappa_\varphi<1$, где величина $\kappa_\varphi$ определена равенством \eqref{odes-3.2}. Далее, пусть $l_2^m$ гильбертово пространство, состоящее из вектор-последовательностей $C=(c_0,\ldots)$, для которых введена норма $\|C\|=\left(\sum\nolimits_{j=0}^{\infty} \sum\nolimits_{l=1}^{m}(c_j^l)^2\right)^\frac12$,   оператор $A: l_2^m\to l_2^m$ сопоставлят точке $C\in l_2^m$ точку $C'\in l_2^m$ по правилу \eqref{odes-3.10}. Кроме того, пусть $A_N:\mathbb{R}^N_m\to \mathbb{R}^N_m$ -- конечномерный аналог оператора $A$, cопоставляющий точке $C_N=(c_0,\ldots,c_{N})\in \mathbb{R}^N_m $ точку  $C'_N=(c_0',\ldots,c_{N}')\in \mathbb{R}^N_m $ по правилу \eqref{odes-3.18}.
+Тогда операторы $A: l_2^m\to l_2^m$ и $A_N:\mathbb{R}^N_m\to \mathbb{R}^N_m$ являются сжимающими и, следовательно, существуют  их неподвижные точки $C(q)=(c_0(q),c_1(q),\ldots)=A(C(q))\in l_2^m$ и $\bar C_N(q)=(\bar c_0(q),\bar c_0(q),\ldots,\bar c_{N}(q))=A_N(\bar C_N(q))\in \mathbb{R}^N_m$, для которых имеет место неравенство
+\begin{equation}\label{odes-3.28}
+\|C_N(q)-\bar C_N(q)\|_N^m\le \frac{\lambda \sigma_N^\varphi(\eta)}{1-h\kappa_\varphi\lambda},
+\end{equation}
+где
+\begin{equation}\label{odes-3.29}
+\sigma_N^\varphi(\eta)=\left(\sum\nolimits_{l=1}^m\int_{0}^1\left(\sum\nolimits_{j=N+1}^\infty \widehat {\eta_l}_{1,j}\varphi_{1,j}(t)\right)^2\rho(t) dt\right)^\frac12,
+\end{equation}
+ a $C_N(q)=(c_0(q),\ldots,c_{N-1}(q))$ -- конечная последовательность, составленная из первых $N$ компонент точки  $C(q)$, при этом в силу  \eqref{odes-3.7} справедливо также равенство  $hC_N(q)=(\hat \eta_{1,1},\hat \eta_{1,2}, \ldots, \hat \eta_{1,N})$.
+\end{theorem}
+
+
+Заметим,  что величина
+\begin{equation}\label{odes-3.30}
+ V_N(\eta,t)=V_N^\varphi(\eta,t)=\eta(x)- Y_{1,N}(\eta,x)
+=\sum\nolimits_{j=N+1}^\infty \hat \eta_{1,j}\varphi_{1,j}(t),
+\end{equation}
+  фигурирующая в правой части неравенства \eqref{odes-3.29}, представляет собой остаточный член ряда Фурье функции $\eta$ по функциям $\varphi_{1,k}(t)$ $(k=0,1,\ldots)$, образующим ортонормированную систему по Соболеву относительно скалярного произведения \eqref{odes-1.3}, порожденным  функциями $\varphi_k$ посредством равенств \eqref{odes-1.5} и \eqref{odes-1.6} с $r=1$, $a=0$, $b=1$.  Неравенство \eqref{odes-3.28} непосредственно приводит к  задаче об исследовании поведения величины $\sigma_N^\varphi(\eta)=(\int_{0}^1(\eta(x)- Y_{1,N}(\eta,x))^2 dx)^\frac12$.
+Другими словами, требуется исследовать задачу об оценке приближения функции $\eta$ в метрике пространства $L^2_{\rho}(0,1)$ частичными суммами   ряда Фурье \eqref{odes-3.5} вида $Y_{1,N}(\eta,x)= \eta(0)+ \sum\nolimits_{k=1}^N \hat \eta_{1,k}\varphi_{1,k}(t).$
+
