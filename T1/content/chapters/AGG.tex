@@ -464,54 +464,56 @@ $$
 
 \section{Аппроксимативные свойства дискретных сумм Фурье для кусочно-гладких разрывных функций}
 \subsection{Аннотация}
-Denote by $L_{n,N}(f,x)$ 
-%		the discrete Fourier sum of order $n$ of the function $f$ on the grid $\left\{t_k = u + \frac{2\pi k}{N}\right\}_{k=0}^{N-1}$, where $u \in \mathbb{R}$ and $n \leq N/2$. 
-a trigonometric polynomial of order at most $n$ possessing the least quadratic deviation from $f$ with respect to the system
-$\left\{t_k = u + \frac{2\pi k}{N}\right\}_{k=0}^{N-1}$, where $u \in \mathbb{R}$ and $n \leq N/2$. 
-Let $D^1$ be a space of $2\pi$-periodic piecewise continuously differentiable functions $f$ with a finite number of jump discontinuity points $-\pi = a_1 < \ldots < a_m = \pi$ which have absolutely continuous derivatives on each interval $(a_i, a_{i+1})$.
-In the present article, we consider the problem of approximation of functions $f \in D^1$  by the trigonometric polynomials $L_{n,N}(f,x)$.
-We have found an exact order estimate $\left|f(x) - L_{n,N}(f,x)\right| \leq c(f,\varepsilon)/n$, $\left|x - a_i\right| \geq \varepsilon$.
-The proofs of these estimations based on comparing of approximating properties of discrete and continuous finite Fourier series.
+Обозначим через $L_{n,N}(f,x)$ 
+тригонометрический полином порядка не более  $n$ 
+наименее отклоняющийся от $f$ на системе
+$\left\{t_k = u + \frac{2\pi k}{N}\right\}_{k=0}^{N-1}$, где $u \in \mathbb{R}$ и $n \leq N/2$. 
+Также обозначим через $D^1$ пространство $2\pi$-периодических кусочно непрерывно дифференцируемых функции $f$ с конечным 
+количеством точек разрыва $-\pi = a_1 < \ldots < a_m = \pi$, которые имеют абсолютно непрерывную производную на каждом интервале $(a_i, a_{i+1})$.
+Мы рассмотрим проблема аппроксимации функций $f \in D^1$  тригонометрическими полиномами $L_{n,N}(f,x)$.
+Была найдена точная по порядку оценка $\left|f(x) - L_{n,N}(f,x)\right| \leq c(f,\varepsilon)/n$, $\left|x - a_i\right| \geq \varepsilon$.
+Доказательство данной оценки основано на сравнении аппроксимативных свойств дискретных и непрерывных рядов Фурье.
 \subsection{Введение}
-Let $D^1$ be a space of $2\pi$-periodic functions $f$, each of which has a finite number of jump discontinuity points $\Omega(f) = \left\{a_i\right\}_{i=0}^m$, where $-\pi = a_0 < a_1 < \ldots < a_m = \pi$, $f(a_i) = (f(a_i - 0) + f(a_i + 0)) / 2$
-and has an absolutely continuous derivative $f^{'}$ on each interval $(a_i,a_{i+1})$ $(0\leq i \leq m)$. One of the simplest examples of such functions 
-is the function $f(x) = \mbox{sign} (\sin x)$.
+Пусть $D^1$ --- пространство $2\pi$-периодических функций $f$, 
+каждая из которых имеет конечное число точек разрыва первого рода $\Omega(f) = \left\{a_i\right\}_{i=0}^m$, где $-\pi = a_0 < a_1 < \ldots < a_m = \pi$, $f(a_i) = (f(a_i - 0) + f(a_i + 0)) / 2$
+и имеет абсолютно непрерывную производную $f^{'}$ на каждом интервале $(a_i,a_{i+1})$ $(0\leq i \leq m)$. 
+Один из простейших примеров таких функций это функция 
+$f(x) = \mbox{sign} (\sin x)$.
 
-We denote by $L_{n,N}(f,x)$ $(1 \leq n \leq \lfloor N/2 \rfloor)$ a trigonometric polynomial of order at most $n$ possessing the least quadratic deviation from the function $f$ with
-respect to the system $\left\{t_k\right\}_{k=0}^{N-1}$, where $t_k = u + 2\pi k / N$ $(u \in \mathbb{R})$. 
-In other words, the minimum of the sums $\sum_{k=0}^{N-1} \left|f(t_k) - T_n(t_k)\right|^2$ on the set of trigonometric polynomials $T_n$ of order $n$ is attained when
-$T_n = L_{n,N}(f)$. In particular, $L_{\lfloor N/2\rfloor, N}(f,t_k) = f(t_k)$. It is easy to show (see \cite{shii-1983}) that for $n < N/2$ the polynomial $L_{n,N}(f,x)$ can be 
-represented as follows:
+Обозначим через $L_{n,N}(f,x)$ $(1 \leq n \leq \lfloor N/2 \rfloor)$ тригонометрический полином порядка не больше $n$,
+обладающий наименьшим квадратичным отклонением от $f$ относительно системы
+$\left\{t_k\right\}_{k=0}^{N-1}$, где $t_k = u + 2\pi k / N$ $(u \in \mathbb{R})$. 
+Другими словами, минимум суммы $\sum_{k=0}^{N-1} \left|f(t_k) - T_n(t_k)\right|^2$ на пространстве тригонометрических полиномов $T_n$ порядка не выше $n$ достигается когда
+$T_n = L_{n,N}(f)$. В частности, $L_{\lfloor N/2\rfloor, N}(f,t_k) = f(t_k)$. Легко показать (см. \cite{shii-1983}), что
+для $n < N/2$ полином $L_{n,N}(f,x)$ может быть представлен следующим образом:
 \[
-L_{n,N}(f,x)=\sum\limits _{\nu=-n}^{n}c_{\nu}^{(N)}(f)e^{i\nu x},\quad c_{\nu}^{(N)}(f)=\frac{1}{N}\sum\limits _{k=0}^{N-1}f(t_{k})e^{-i\nu t_{k}},
+L_{n,N}(f,x)=\sum\limits _{\nu=-n}^{n}c_{\nu}^{(N)}(f)e^{i\nu x},\quad c_{\nu}^{(N)}(f)=\frac{1}{N}\sum\limits _{k=0}^{N-1}f(t_{k})e^{-i\nu t_{k}}.
 \]
-and for $n=N/2$ 
+Для $n=N/2$ имеем
 \begin{equation}
 L_{N/2,N}(f,x)=L_{N/2-1,N}(f,x)+a_{N/2}^{(N)}(f)\cos \frac{N}{2}(x-u),\label{eq:L=00003DL+a}
 \end{equation}
-where
+где
 \begin{equation} \label{an_formula}
-a_n^{(2n)}(f) = a_{N/2}^{(N)}(f)=\frac{1}{N}\sum\limits_{k=0}^{N-1}f(t_{k})\cos \frac{N}{2}(t_{k} - u).
+	a_n^{(2n)}(f) = a_{N/2}^{(N)}(f)=\frac{1}{N}\sum\limits_{k=0}^{N-1}f(t_{k})\cos \frac{N}{2}(t_{k} - u).
 \end{equation}
-By $S_n(f,x)$ we denote the partial Fourier sum of order $n$ of  $f$:
+Обозначим через $S_n(f,x)$ частичную сумму ряда Фурье  функции $f$ порядка $n$:
 \begin{equation*}
-S_n(f,x) = \frac{a_0}{2} + \sum_{k=1}^{n} \left(a_k \cos kx + b_k \sin kx\right),
+	S_n(f,x) = \frac{a_0}{2} + \sum_{k=1}^{n} \left(a_k \cos kx + b_k \sin kx\right),
 \end{equation*}
-where
+где
 \begin{equation*}
-a_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos kt dt, \quad b_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin kt dt.
+	a_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos kt dt, \quad b_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin kt dt.
 \end{equation*}
-To read more about function approximation by trigonometric polynomials see 
-\cite{2_bernstein,4_erdos,7_kalashnikov,8_krilov,9_marcinkiewicz,10_marcinkiewicz,11_natanson,12_nikolsky,18_zigmund}.
 
-Also, later we will need the function
+Также, далее нам понадобится функция
 \begin{equation*} \label{h_func_introduction}
 h_{p}(x)=\begin{cases}
 \cos x, & p=0,\\
 \sin x, & p=1.
 \end{cases}
 \end{equation*}
-and the well-known inequalities
+а также известные выражения
 %	Later we will need the following inequalities:
 \begin{equation} \label{sinkx_k_inequality}
 \left|\sum_{k=1}^{\infty} \frac{\sin kx}{k}\right| \leq \frac{\pi}{2}.
@@ -522,52 +524,38 @@ and the well-known inequalities
 \begin{equation} \label{wk_sum_1_k2}
 \sum_{k=1}^{\infty} \frac{1}{k^2} = \frac{\pi^2}{6}.
 \end{equation}
-It is easy to show, that the Fourier series converges pointwise for any function $f \in D^1$ and therefore the function can be represented as follows:
+Легко показать, что ряд Фурье сходится поточечно для любой функции  $f \in D^1$ 
+и, таким образом, функция может быть представлена в виде
 \begin{equation*}
-f(x) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left(a_k \cos kx + b_k \sin kx\right).
+	f(x) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left(a_k \cos kx + b_k \sin kx\right).
 \end{equation*}	
-The goal of this work is to estimate the value $\left| f(x) - L_{n,N}(f,x) \right|$, for $f \in D^1$ as $n, N \rightarrow \infty$. We obtained the following result:
+Наша цель --- оценить  $\left| f(x) - L_{n,N}(f,x) \right|$, для $f \in D^1$ когда $n, N \rightarrow \infty$. 
+Был получен следующий результат:
 \begin{theorem}\label{theorem}
-	For a function $f \in D^1$ the following estimate holds:
+	Для функции $f \in D^1$ справедлива оценка:
 	\begin{equation}\label{theorem_result}
-	\left| f(x) - L_{n,N}(f,x) \right| \leq \frac{C(f,\varepsilon)}{n}, \quad |x - a_i| > \varepsilon.
+		\left| f(x) - L_{n,N}(f,x) \right| \leq \frac{C(f,\varepsilon)}{n}, \quad |x - a_i| > \varepsilon.
 	\end{equation}
-	The order of this estimate cannot be improved.
+	Данная оценка неулучшаема по порядку.
 \end{theorem}
-To prove this theorem we use a lemma from \cite{shii-1983}:
-\begin{lemma}\label{shii_lemma}
-	(Sharapudinov \cite{shii-1983}) If the Fourier series of $f$ converges
-	at the points $t_{k}=u+2k\pi/N$, then the representation 
-	\[
-	L_{n,N}(f,x)=S_{n}(f,x)+R_{n,N}(f,x),
-	\]
-	where 
-	\begin{equation}
-	R_{n,N}(f,x)=\frac{2}{\pi}\sum\limits_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}
-	f(t)D_{n}(x-t)\cos\mu N(u-t)dt,\label{eq:RnFormula}
-	\end{equation}
-	\begin{equation}
-	D_n(x) = \frac{1}{2} + \sum_{k=1}^{n} \cos kx, \label{kernel}
-	\end{equation}
-	holds true when $2n<N$.
-\end{lemma}
-From this lemma we have the following estimate:
+Для доказательства данной теоремы мы опять используем лемму \ref{shii_lemma} из \cite{shii-1983}.
+Из данной леммы вытекает неравенство
 \begin{equation}
 |f(x) - L_{n,N}(f,x)|\leq|f(x)-S_{n}(f,x)|+|R_{n,N}(f,x)|, \quad n < N/2.\label{eq:L<S+R}
 \end{equation}
-In the case $2n=N$ from \eqref{eq:L=00003DL+a} and \eqref{eq:L<S+R} we have
+В случае $2n=N$ from \eqref{eq:L=00003DL+a} и \eqref{eq:L<S+R} имеем
 \begin{multline}\label{eq:L<S+R+a}
-|f(x)-L_{n,N}(f,x)| \leq\\
-|f(x)-S_{n-1}(f,x)|+|R_{n-1,N}(f,x)|+|a_{n}^{(N)}(f)|,\quad n=N/2.
+	|f(x)-L_{n,N}(f,x)| \leq\\
+	|f(x)-S_{n-1}(f,x)|+|R_{n-1,N}(f,x)|+|a_{n}^{(N)}(f)|,\quad n=N/2.
 \end{multline}
-The estimate for $|f(x)-S_{n}(f,x)|$, where $f \in D^1$, were obtained in \cite{mkasumov_disc_funcs}:
+Оценка для $|f(x)-S_{n}(f,x)|$, где $f \in D^1$, была получена в работе \cite{mkasumov_disc_funcs}:
 \begin{equation} \label{f_Sn_estimate_}
-|f(x)-S_{n}(f,x)| \leq \frac{C(f,\varepsilon)}{n},\quad |x - a_i| \geq \varepsilon.
+	|f(x)-S_{n}(f,x)| \leq \frac{C(f,\varepsilon)}{n},\quad |x - a_i| \geq \varepsilon.
 \end{equation}
-Now we have to estimate the values $|R_{n,N}(f,x)|$ and $|a_{n}^{(2n)}(f)|$, which is done in the following sections.
+Нам остается оценить величины $|R_{n,N}(f,x)|$ и $|a_{n}^{(2n)}(f)|$..
 
 \subsection{Оценка $|R_{n,N}(f,x)|$}
-From \eqref{eq:RnFormula} and \eqref{kernel} we can get the representation
+Из  \eqref{eq:RnFormula} и \eqref{kernel} можно получить представление
 \begin{multline*}
 R_{n,N}(f,x)=\frac{1}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}f(t)\cos\mu N(u-t)dt+\\
 \frac{2}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}f(t)\sum_{k=1}^{n}\cos k(x-t) \cos \mu N(u-t)dt=\\
@@ -575,10 +563,10 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 \end{multline*}
 
 \begin{lemma} \label{sum_sin_kx2_with_alpha}
-	For $\alpha \in (0, \frac{1}{2}]$ the following inequality holds:
+	Для $\alpha \in (0, \frac{1}{2}]$ справедливо следующее неравенство:
 	\begin{equation*}
 	\left|
-	\sum_{k=1}^{\infty} \frac{\sin kx}{k\left(1-\frac{\alpha^2}{k^2}\right)}
+		\sum_{k=1}^{\infty} \frac{\sin kx}{k\left(1-\frac{\alpha^2}{k^2}\right)}
 	\right|
 	\leq 
 	c.
@@ -627,13 +615,13 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %\end{proof}
 
 \begin{lemma}\label{hlemma}
-	For $f \in D^1$ the following holds:
+	Для $f \in D^1$ следует:
 	\begin{multline}\label{hlemma_eq1}
-	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
-	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))-\\
-	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt+\\
-	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{1-p}(k(a_{i}-x))h_{q}(\mu N(a_{i}-u))-\\
-	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t-x))h_{q}(\mu N(t-u))dt.
+		\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
+		\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))-\\
+		\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt+\\
+		\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{1-p}(k(a_{i}-x))h_{q}(\mu N(a_{i}-u))-\\
+		\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t-x))h_{q}(\mu N(t-u))dt.
 	\end{multline}
 \end{lemma}
 
@@ -658,9 +646,9 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %\end{proof}
 
 \begin{lemma}\label{lemma:R1_estimate}
-	The value $\left|R_{n,N}^1(f,x) \right|$ can be estimated as follows:
+	Величина $\left|R_{n,N}^1(f,x) \right|$ может быть оценена следующим образом:
 	\begin{equation*}
-	\left| R_{n,N}^1 (f,x) \right| \leq \frac{c(f)}{N}.
+		\left| R_{n,N}^1 (f,x) \right| \leq \frac{c(f)}{N}.
 	\end{equation*}
 \end{lemma}
 %\begin{proof}
@@ -685,9 +673,9 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %\end{proof}
 
 \begin{lemma}\label{lemma:R2_estimate}
-	The value $\left|R_{n,N}^2(f,x) \right|$ can be estimated as follows:
+	Величина $\left|R_{n,N}^2(f,x) \right|$ может быть оценена следующим образом:
 	\begin{equation*}
-	\left| R_{n,N}^2 (f,x) \right| \leq \frac{c(f,\varepsilon)}{N}, \quad \left|x - a_i\right| \geq \varepsilon.
+		\left| R_{n,N}^2 (f,x) \right| \leq \frac{c(f,\varepsilon)}{N}, \quad \left|x - a_i\right| \geq \varepsilon.
 	\end{equation*}
 \end{lemma}
 
@@ -776,40 +764,42 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %	\left|R_{n,N}^{2}(f,x)\right| \leq \frac{c(f,\varepsilon)}{N}, \quad |x - a_i| \geq \varepsilon.
 %	\end{equation*}
 %\end{proof}
-Finally, from Lemmas \ref{lemma:R1_estimate} and \ref{lemma:R2_estimate} we have
+Наконец, из лемм \ref{lemma:R1_estimate} и \ref{lemma:R2_estimate} мы имеем
 \begin{equation} \label{R_estimate}
-\left|R_{n,N}(f,x)\right|\leq \frac{c(f,\varepsilon)}{N}, \quad |x - a_i| \geq \varepsilon.
+	\left|R_{n,N}(f,x)\right|\leq \frac{c(f,\varepsilon)}{N}, \quad |x - a_i| \geq \varepsilon.
 \end{equation}
 
 \subsection{Оценка $|a_{n}^{(2n)}(f)|$}
-From \eqref{an_formula}, using that $t_j=u+2\pi k / N$, we have
+Из \eqref{an_formula}, используя, что $t_j=u+2\pi k / N$, имеем
 \begin{equation*}
-a_{n}^{(N)}(f) = \frac{1}{N} \sum_{k=0}^{2n-1} (-1)^k f(t_k)  = 
-\frac{1}{N} \sum_{k=0}^{n-1} \left(f(t_{2k}) - f(t_{2k+1})\right)
+	a_{n}^{(N)}(f) = \frac{1}{N} \sum_{k=0}^{2n-1} (-1)^k f(t_k)  = 
+	\frac{1}{N} \sum_{k=0}^{n-1} \left(f(t_{2k}) - f(t_{2k+1})\right)
 \end{equation*}
-and
+и
 \begin{equation*}
-\left|a_{n}^{N}(f)\right| \leq \frac{1}{N} \sum_{k=0}^{n-1} \left| f(t_{2k}) - f(t_{2k+1}) \right|.
+	\left|a_{n}^{N}(f)\right| \leq \frac{1}{N} \sum_{k=0}^{n-1} \left| f(t_{2k}) - f(t_{2k+1}) \right|.
 \end{equation*}
-Denote by $G$ the subset of indexes $\left\{k\right\}_{k=0}^{n-1}$ such that for $k \in G$ the segment $[t_{2k}, t_{2k+1}]$ does not contain any point $a_i$ ($0 \leq i \leq m$) and denote 
+Обозначим через $G$ подмножество индексов $\left\{k\right\}_{k=0}^{n-1}$, таких, что для $k \in G$ отрезок $[t_{2k}, t_{2k+1}]$ 
+не содержит ни одной точки $a_i$ ($0 \leq i \leq m$), и обозначим 
 $\hat{G} = \left\{k\right\}_{k=0}^{n-1} \setminus G$. 
-Now we write
+Теперь запишем
 \begin{equation}\label{ak_estimate}
-\left|a_{n}^{N}(f)\right| \leq \frac{1}{N} \sum_{k \in G} \left| f(t_{2k}) - f(t_{2k+1}) \right| + \frac{1}{N} \sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right|.
+	\left|a_{n}^{N}(f)\right| \leq \frac{1}{N} \sum_{k \in G} \left| f(t_{2k}) - f(t_{2k+1}) \right| + \frac{1}{N} \sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right|.
 \end{equation}
-For each $k \in G$ the segment $[t_{2k}, t_{2k+1}]$ lies entirely inside some interval $(a_i, a_{i+1})$ and, therefore, the function $f$ is differentiable on it, which allows us to use the mean value theorem and get the following inequality:
+Для каждого $k \in G$ отрезок $[t_{2k}, t_{2k+1}]$ полностью лежит внутри какого-то интервала $(a_i, a_{i+1})$ и, следовательно, функция $f$ дифференцируема на этом отрезке, что позволяет использовать теорему о среднем и получить следующее неравенство:
 \begin{equation} \label{ftk_G_estimate}
 \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq c(f) \left| t_{2k} - t_{2k+1} \right| \leq \frac{c(f)}{N}.
 \end{equation}
-For $k \in \hat{G}$ there are $s(k)$ points $a_{i_{k,1}} < a_{i_{k,2}} < \ldots < a_{i_{k,s(k)}}$ inside the segment $[t_{2k}, t_{2k+1}]$. 
-Now we estimate the value $\left|f(t_{2k}) - f(t_{2k+1})\right|$ for $k \in \hat{G}$. First we need the following lemma:
+Для $k \in \hat{G}$ есть $s(k)$ точек $a_{i_{k,1}} < a_{i_{k,2}} < \ldots < a_{i_{k,s(k)}}$ внутри сегмента $[t_{2k}, t_{2k+1}]$. 
+Оценим величину $\left|f(t_{2k}) - f(t_{2k+1})\right|$ для $k \in \hat{G}$. 
+Нам понадобится следующая лемма:
 \begin{lemma}
-	For $f \in D^1$ and the segment $[a,b]$, where  $[a,b] \subset [-\pi, \pi]$ the following holds:
+	Для $f \in D^1$ и отрезка $[a,b]$, где  $[a,b] \subset [-\pi, \pi]$ выполняется
 	\begin{equation*}
-	\left|f(a) - f(b)\right| \leq c(f)(s + |a - b|),
+		\left|f(a) - f(b)\right| \leq c(f)(s + |a - b|),
 	\end{equation*}
-	where
-	$s$ is the number of jump discontinuity points $x_1,x_1,\ldots, x_s$ of the function $f$ on the segment $[a,b]$.
+	где
+	$s$ --- это число точек разрыва первого рода $x_1,x_1,\ldots, x_s$ функции $f$ на $[a,b]$.
 \end{lemma}
 %\begin{proof}
 %	Here we consider only the case $a < x_i < \ldots < x_s < b$. The proof for the cases when $a = x_1$ or $b = x_s$ is similar.
@@ -829,51 +819,54 @@ Now we estimate the value $\left|f(t_{2k}) - f(t_{2k+1})\right|$ for $k \in \hat
 %	where
 %	$M = \max_{1 \leq i \leq s} |f^{'}(x_i-0) - f^{'}(x_i + 0)|$.
 %\end{proof}	
-From this lemma  
+Из этой леммы следует  
 \begin{multline*}
-\sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq \\
-\sum_{k \in \hat{G}} c(f) \left(s(k) + \frac{2\pi}{N}\right) \leq 
-c(f) \sum_{k \in \hat{G}} s(k) + \sum_{k \in \hat{G}}\frac{2\pi}{N}.
+	\sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq \\
+	\sum_{k \in \hat{G}} c(f) \left(s(k) + \frac{2\pi}{N}\right) \leq 
+	c(f) \sum_{k \in \hat{G}} s(k) + \sum_{k \in \hat{G}}\frac{2\pi}{N}.
 \end{multline*}
-Each point $a_1,a_2,\ldots, a_{m-1}$ may be included in one or two segments $[t_{2k}, t_{2k+1}]$ 
+Каждая точка $a_1,a_2,\ldots, a_{m-1}$ 
+может быть включена в один или два отрезка $[t_{2k}, t_{2k+1}]$ 
 % 	and $[t_{2k+1}, t_{2k+2}]$ 
-($k \in \hat{G}$), therefore, $\sum_{k \in \hat{G}} s(k) < 2m$. Using this and that $|\hat{G}| \leq m$ we have
+($k \in \hat{G}$), следовательно, $\sum_{k \in \hat{G}} s(k) < 2m$. Используя это и то, что $|\hat{G}| \leq m$ имеем
 \begin{equation} \label{sum_ftk_hat}
-\sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq c(f).
+	\sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq c(f).
 \end{equation}
-From \eqref{ak_estimate}, \eqref{ftk_G_estimate}, and \eqref{sum_ftk_hat} follows
+Из \eqref{ak_estimate}, \eqref{ftk_G_estimate}, and \eqref{sum_ftk_hat} следует
 \begin{equation}\label{an_estimate}
-\left|a_{n}^{N}(f)\right| \leq \frac{c(f)}{N}.
+	\left|a_{n}^{N}(f)\right| \leq \frac{c(f)}{N}.
 \end{equation}
+
 \subsection{Доказательство Теоремы \ref{theorem}}
-The proof of the estimate \eqref{theorem_result} from Theorem \ref{theorem} immediately follows from inequalities \eqref{eq:L<S+R}, \eqref{eq:L<S+R+a}, \eqref{f_Sn_estimate_}, \eqref{R_estimate}, \eqref{an_estimate},
-and $n \leq N/2$.
-To prove that the order of this estimate cannot be improved we consider the value $\left|f_1(\frac{\pi}{2}) - L_{4n,N}(f_1,\frac{\pi}{2})\right|$, where $4n < N/2$ and $f_1(x) = \mbox{sign} (\sin x)$.
-From Lemma \ref{shii_lemma} we can get the inequality
+Доказательство оценки \eqref{theorem_result} из Теоремы \ref{theorem} немедленно следует из неравенств \eqref{eq:L<S+R}, \eqref{eq:L<S+R+a}, \eqref{f_Sn_estimate_}, \eqref{R_estimate}, \eqref{an_estimate},
+и $n \leq N/2$.
+Чтобы доказать, что оценка точна по порядку, рассмотрим величину  $\left|f_1(\frac{\pi}{2}) - L_{4n,N}(f_1,\frac{\pi}{2})\right|$, где $4n < N/2$ и $f_1(x) = \mbox{sign} (\sin x)$.
+Из Леммы \ref{shii_lemma} мы может получить неравенство
 \begin{equation*}
-\left|f(x) - L_{n,N}(f,x)\right| \geq \left|f(x) - S_n(f,x)\right| -  \left|R_{n,N}(f,x)\right|.
+	\left|f(x) - L_{n,N}(f,x)\right| \geq \left|f(x) - S_n(f,x)\right| -  \left|R_{n,N}(f,x)\right|.
 \end{equation*}
-It is easy to show that the following representation takes place:
+Нетрудно убедиться, что имеет место следующее представление:
 \begin{equation} \label{f-L>f-R}
-f_1(x) = \frac{2}{\pi} \sum_{k=1}^{\infty} \frac{(1-(-1)^k) \sin kx}{k} = \frac{4}{\pi} \sum_{k=1}^{\infty} \frac{\sin (2k-1)\pi}{2k-1},
+	f_1(x) = \frac{2}{\pi} \sum_{k=1}^{\infty} \frac{(1-(-1)^k) \sin kx}{k} = \frac{4}{\pi} \sum_{k=1}^{\infty} \frac{\sin (2k-1)\pi}{2k-1},
 \end{equation}
 \begin{equation*}
-S_{2n}(f_1,x) = \frac{4}{\pi} \sum_{k=1}^{n} \frac{\sin(2k-1)x}{2k-1}.
+	S_{2n}(f_1,x) = \frac{4}{\pi} \sum_{k=1}^{n} \frac{\sin(2k-1)x}{2k-1}.
 \end{equation*}
-From the above we can get the bottom estimate for the value $\left|f\left(\frac{\pi}{2}\right) - S_{4n}\left(f,\frac{\pi}{2}\right)\right|$: 
+Таким образом, мы можем получить нижнюю оценку величины $\left|f\left(\frac{\pi}{2}\right) - S_{4n}\left(f,\frac{\pi}{2}\right)\right|$: 
 \begin{multline*}
-\left|f\left(\frac{\pi}{2}\right) - S_{4n}\left(f,\frac{\pi}{2}\right)\right| = \\
-\frac{4}{\pi} \left|\sum_{k=2n+1}^{\infty} \frac{(-1)^{k+1}}{2k-1}\right| = 
-\frac{4}{\pi} \sum_{k=n+1}^{\infty} \left(\frac{1}{4k-3} - \frac{1}{4k-1}\right)= \\
-\frac{8}{\pi} \sum_{k=n+1}^{\infty} \frac{1}{k^2 \left(4-\frac{1}{k}\right) \left(4- \frac{3}{k}\right)} > \frac{1/4}{4n}.
+	\left|f\left(\frac{\pi}{2}\right) - S_{4n}\left(f,\frac{\pi}{2}\right)\right| = \\
+	\frac{4}{\pi} \left|\sum_{k=2n+1}^{\infty} \frac{(-1)^{k+1}}{2k-1}\right| = 
+	\frac{4}{\pi} \sum_{k=n+1}^{\infty} \left(\frac{1}{4k-3} - \frac{1}{4k-1}\right)= \\
+	\frac{8}{\pi} \sum_{k=n+1}^{\infty} \frac{1}{k^2 \left(4-\frac{1}{k}\right) \left(4- \frac{3}{k}\right)} > \frac{1/4}{4n}.
 \end{multline*}
-From this and from \eqref{f-L>f-R} we have
+Отсюда, и из \eqref{f-L>f-R} мы имеем
 \begin{equation*}
-\left|f\left(\frac{\pi}{2}\right) - L_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \geq \frac{1/4}{4n} - \left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right|.
+	\left|f\left(\frac{\pi}{2}\right) - L_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \geq \frac{1/4}{4n} - \left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right|.
 \end{equation*}
-In the previous sections we showed that $\left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \leq c/N $.
-Denote by $N(n)$ a number such that for each $N \geq N(n)$ follows $\left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \leq \frac{1/8}{4n}$. Now we have
+Ранее мы показали, что $\left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \leq c/N $.
+Через $N(n)$ обозначим натуральное число, такое что для каждого $N \geq N(n)$ следует 
+$\left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \leq \frac{1/8}{4n}$. Теперь мы имеем
 \begin{equation*}
-\left|f\left(\frac{\pi}{2}\right) - L_{4n,N(n)}\left(f,\frac{\pi}{2}\right)\right| \geq \frac{1/8}{4n} = \frac{c}{4n}.
+	\left|f\left(\frac{\pi}{2}\right) - L_{4n,N(n)}\left(f,\frac{\pi}{2}\right)\right| \geq \frac{1/8}{4n} = \frac{c}{4n}.
 \end{equation*}
-From this we see that the order of the estimate \eqref{theorem_result} cannot be improved. Theorem \ref{theorem} is proved.
+Отсюда мы видим, что порядок оценки \eqref{theorem_result} не может быть улучшен. Теорема \ref{theorem} доказана.
