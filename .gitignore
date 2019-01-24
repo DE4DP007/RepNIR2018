@@ -10,3 +10,4 @@
 !*.png
 !*.docx
 !*.xlsx
+.DS_Store
