@@ -1,0 +1,404 @@
+
+\chapter{Кадиев Р.И.}
+
+
+
+
+\section{Введение}
+
+Вопросам устойчивости решений систем со случайными параметрами посвящено большое количество работ.
+Достаточно полный их список приведен в монографиях \cite{kri-bib-1, kri-bib-2, kri-bib-3, kri-bib-4}.
+В основном, в этих работах исследование стохастической устойчивости проводится традиционными методами, основанными на функционалах Ляпунова-Красовского-Разумихина.
+Однако применение этих методов во многих случаях встречает серьёзные трудности.
+Поэтому эффективные признаки устойчивости обычно удается доказывать лишь для сравнительно узких классов стохастических дифференциальных уравнений.
+С другой стороны, в теории устойчивости детерминированных функционально-дифференциальных уравнений высокую эффективность показал  $W$-метод, т.е. метод преобразования исходного уравнения с помощью вспомогательного уравнения, разработанный Н.В. Азбелевым и его учениками \cite{kri-bib-5, kri-bib-6, kri-bib-7, kri-bib-8}.
+Целью такого преобразования является получение интегрального уравнения, для которого проще исследовать нужные свойства решений.
+На случай стохастических функционально-дифференциальных уравнений этот метод распространен в работах \cite{kri-bib-9, kri-bib-10, kri-bib-11, kri-bib-12, kri-bib-13, kri-bib-14, kri-bib-15}.
+
+Для линейных дифференциальных уравнений Ито с последействием более высоких порядков вопросы устойчивости изучены недостаточно.
+Нам не известны работы других авторов, в которых исследуются вопросы устойчивости для уравнений Ито с последействием более высоких порядков.
+
+В настоящей работе исследуются вопросы экспоненциальной p-устойчивости $(2 \le p < \infty)$ решений для линейных дифференциальных уравнений Ито с запаздываниями второго порядка.
+При этом применяются методы исследования вопросов устойчивости для линейных дифференциальных уравнений Ито с последействием высоких порядков исследованием вопросов устойчивости для систем линейных дифференциальных уравнений Ито с последействием первого порядка, построенных по исходным уравнениям, принципы  $W$-метода и теория положительно обратимых матриц.
+Отличие от классического $W$-метода состоит в том, что каждое уравнение системы преобразуется независимо от остальных, а каждая компонента решения оценивается отдельно.
+Такой подход, в сочетании со специальным видом исходных уравнений, специальным способом построения по исходным уравнениям систем линейных уравнений Ито с последействием первого порядка, позволяет получить эффективные признаки устойчивости исходных уравнений в терминах параметров этих уравнений.
+В статье использованы идеи работы \cite{kri-bib-16}, примененные при исследовании экспоненциальной устойчивости детерминированных линейных дифференциальных уравнений с запаздываниями высоких порядков.
+
+\section{Предварительные сведения и объект исследования}
+
+Пусть:  $(\Omega, \Im, (\Im_t)_{t \ge 0}, P)$ --- стохастический базис;  $k^n$ --- линейное пространство  $n$-мерных $\Im_0$-измеримых случайных величин;  $B_i, i=1, \dots, m$ --- скалярные независимые стандартные винеровские процессы; $1 \le p < \infty$;  $c_p$ --- положительное число, зависящее от $p$ (\cite[с. 65]{kri-bib-17}) и используемое в оценке \eqref{kri-eq-2}; $E$ --- символ математического ожидания; $|.|$ --- норма в $R^n$; $\|.\|$ --- норма $n \times m$-матрицы, согласованная с нормой в $R^m$; $\|.\|_X$ --- норма в нормированном пространстве  $X$; $\mu$ --- мера Лебега на $[0, \infty [$.
+$\overline E$ единичная матрица размерности  $n\times n$.
+
+Пусть $B=(b_{ij})_{i,j=1}^m$ --- $m\times m$-матрица.
+Матрица  $B$ называется неотрицательной, если  $b_{ij} \ge 0$, $i,j=1, \dots ,m$, и положительной, если $b_{ij} > 0$, $i, j=1, \dots, m$.
+
+\textbf{Определение 1. } \cite{kri-bib-18} Матрица  $B=(b_{ij})_{i,j=1}^m$ называется $M$-матрицей, если $b_{ij}\le 0$ при  $i,j=1,\dots,m$ и $i\neq j$ и выполнено одно из следующих условий:
+
+\begin{itemize}
+	\item[-]
+	для матрицы  $B$ существует положительная обратная матрица $B^{-1}$;
+	
+	\item[-]
+	диагональные миноры матрицы  $B$ положительны.
+\end{itemize}
+
+\textbf{Лемма 1.} \cite{kri-bib-18} Матрица $B$ является $M$-матрицей, если $b_{ij}\le 0$ при $i,j=1,\dots,m$ и $i\neq j$, а также выполнено одно из следующих условий:
+
+\begin{itemize}
+	\item[-]
+	$b_{ii}\ge \overset m{\underset{j=1,i\neq j}{\sum }}|b_{ij}|$, $i=1,\dots,m$;
+	
+	\item[-]
+	$b_{jj}\ge \overset m{\underset{i=1,i\neq j}{\sum }}|b_{ij}|$, $j=1,\dots,m$;
+	
+	\item[-]
+	существуют положительные числа $\xi_i$, $i=1,\dots,m$ такие, что $\xi_ib_{ii}\ge \overset m{\underset{j=1,i\neq j}{\sum}}\xi_j|b_{ij}|$, $i=1,\dots,m$;
+\end{itemize}
+
+Объектом исследований является дифференциальное уравнение Ито второго порядка вида
+
+\begin{equation}\label{kri-eq-1}
+	dx'(t) = \left[-a_{00}(t)x(t) - a_{10}(t)x'(t) + \sum_{j=1}^{m_0}c_{j0}(t)x(h_{j0}(t))\right]dt +
+\end{equation}
+\begin{equation*}
+	\sum_{i=1}^{m} \left[-a_{0i}(t)x(t)-a_{1i}(t)x'(t)+\sum_{j=1}^{m_i}c_{ji}(t)x(h_{ji}(t))\right] \quad (t \ge 0),
+\end{equation*}
+
+с начальными условиями
+
+\begin{equation}\label{kri-eq-1a}
+	x(t)=\varphi (t)\quad(t\ge 0),
+\end{equation}
+
+\begin{equation}\label{kri-eq-1b}
+	x^{(j)}(0)=b_{j+1}, \quad j=0,1,
+\end{equation}
+
+где:
+
+\begin{enumerate}
+	\item
+	$a_{ij}\le 0,$ $i=0,1,$ $j=0,\dots,m$ - измеримые по Лебегу	функции, заданные на $[0,\infty [$ и  $0<\overline{a_{\mathit{i0}}}\le a_{\mathit{i0}}(t)\le A_{\mathit{i0}}$ $\mu$-почти всюду для некоторых положительных чисел $\overline{a_{\mathit{i0}}},A_{\mathit{i0}}$ при $i=0,1$, $|a_{ij}(t)|\le A_{ij}$ $\mu$-почти всюду для некоторого положительного числа  $A_{ij}$ при $i=0,1$, $j=1,\dots,m$, $|c_{ij}(t)|\le C_{ij}$ $\mu$-почти всюду для некоторого положительного числа  $C_{ij}$ при $i=0,...,m$, $j=0,...,m_i$;
+	
+	\item
+	$h_{ij}$, $i=0,...,m$, $j=0,...,m_i$ - измеримые по Лебегу функции, заданные на $[0,\infty [$ такие, что $0 \le t-h_{ij}(t)\le \tau_{ij}$ $\mu$-почти всюду для некоторого положительного числа  $\tau_{ij}$ при $i=0,...,m$, $j=0,...,m_i$;
+	
+	\item
+	$\varphi - \Im_0$-измеримый скалярный случайный процесс, заданный на $[\sigma ,0[$, где $\sigma =\text{max}\left\{\tau_{ij}, i=0,...,m, j=0,\dots,m_i\right\}$;
+	
+	\item
+	$b_j$, $j=1,2$ $\Im_0$-измеримые скалярные случайные величины.
+\end{enumerate}
+
+В дальнейшем нам понадобятся следующие обозначения:
+
+\begin{itemize}
+	\item[-]
+	$b=\text{col}(b_1,b_2)$;
+	
+	\item[-]
+	$k_p^n=\{\alpha :\alpha \in k^n(T),\|\alpha \|_{k_p^n}\overset{\text{def}}{=}\left(E|\alpha
+	|^p\right)^{1/p}<\infty \}$.
+\end{itemize}
+
+Под решением задача \eqref{kri-eq-1}, \eqref{kri-eq-1a}, \eqref{kri-eq-1b} понимается любой случайный процесс $x(t)$, $t\in ]-\infty ,+\infty[$, прогрессивно измеримый и непрерывно дифференцируемый при  $t\ge 0$, удовлетворяющий условиям \eqref{kri-eq-1a} и \eqref{kri-eq-1b}, а также уравнению
+
+\begin{equation}\label{kri-eq-1-1}
+	x'(t) = b_1+ \int_{0}^{1} \left[-a_{00}(s)x(s) - a_{10}(s)x'(s) + \sum_{j=1}^{m_0}c_{j0}(s)x(h_{j0}(s))\right]ds +
+\end{equation}
+\begin{equation*}
+	\sum_{i=1}^{m} \int_{0}^{1} \left[-a_{0i}(t)x(t)-a_{1i}(t)x'(t)+\sum_{j=1}^{m_i}c_{ji}(t)x(h_{ji}(t))\right]dB_i(t) \quad (t \ge 0),
+\end{equation*}
+
+где первый интеграл понимается в смысле Лебега, а второй интеграл в смысле Ито.
+
+Отметим, что задача \eqref{kri-eq-1}, \eqref{kri-eq-1a}, \eqref{kri-eq-1b} при сделанных предположениях имеет единственное решение в силу результатов работы \cite{kri-bib-10}. Обозначим через $x(t,b,\varphi )$ - решение задача \eqref{kri-eq-1}, \eqref{kri-eq-1a}, \eqref{kri-eq-1b}, т.е. $x(t,b,\varphi)=\varphi$ при $t<0$ и $x(0,b,\varphi)=b_1$, $x'(0,b,\varphi)=b_2$.
+
+\textbf{Определение 2.} Будем говорить, что уравнения (1) \textit{экспоненциально } $p$\textit{{}-устойчивым}
+относительно начальных данных (или просто \textit{экспоненциально } $p$\textit{{}-устойчивым}), если при некоторых
+положительных постоянных  $K,\lambda $ \ справедливо неравенство
+
+{\centering
+ $(E|x(t,b,\varphi )|^p)^{1/p}\le K\left(\|b\|_{k_p^2}+\begin{matrix}\text{vrai sup}\\t<0\end{matrix}(E|\varphi
+(t)|^p)^{1/p}\right)\text{exp}\{-\mathit{\lambda t}\}\text{  }(t\ge 0)$.
+\par}
+
+Исследование экспоненциальной  $p${}-устойчивости \ уравнения \eqref{kri-eq-1} будет производиться исследованием вопросов
+экспоненциальной  $p${}-устойчивости \ для системы линейных уравнений Ито с последействием построенная по уравнению
+\eqref{eq-1}.Традиционна для этого по уравнению \eqref{kri-eq-1} с начальными условиями \eqref{kri-eq-1a}, \eqref{kri-eq-1b} строят систему следующего вида
+
+\begin{equation*}
+	x'_1(t) = x_2(t)\quad(t\ge0)
+\end{equation*}
+\begin{equation}\label{kri-eq-2}
+	dx_2(t) = \left[-a_{00}(t)x_1(t) - a_{10}(t)x_2(t) + \sum_{j=1}^{m_0}c_{j0}(t)x_1(h_{j0}(t))\right]dt +
+\end{equation}
+\begin{equation*}
+	\sum_{i=1}^{m} \left[-a_{0i}(t)x_1(t)-a_{1i}(t)x_2(t)+\sum_{j=1}^{m_i}c_{ji}(t)x_1(h_{ji}(t))\right]dB_i(t) \quad (t \ge 0),
+\end{equation*}
+
+с начальными условиями
+
+\begin{equation}\label{kri-eq-2a}
+	x_1(t)=\varphi (t)\quad(t\ge 0),
+\end{equation}
+\begin{equation}\label{kri-eq-2b}
+	x_j(t)=b_j, j=1,2,
+\end{equation}
+
+и при этом используется факт совпадения первой компоненты решения задачи \eqref{kri-eq-2}, \eqref{kri-eq-2a}, \eqref{kri-eq-2b} с решением задачи \eqref{kri-eq-1}, \eqref{kri-eq-1a},
+\eqref{eq-1b}. Следовательно, экспоненциальная  $p${}-устойчивость уравнения \eqref{kri-eq-1} эквивалентна экспоненциальной
+$p${}-устойчивости по первой компоненте системы \eqref{kri-eq-2}. Вопросы экспоненциальной  $p${}-устойчивости по части переменных
+для систем линейных уравнения Ито с последействием более общего вида изучены в работах \cite{kri-bib-19, kri-bib-20}. Кроме того,
+экспоненциальная  $p${}-устойчивость уравнения \eqref{kri-eq-1} будет следовать из экспоненциальной  $p${}-устойчивости системы \eqref{kri-eq-2}.
+Исследование экспоненциальной  $p${}-устойчивости системы \eqref{kri-eq-2} можно провести эффективно, используя метод
+вспомогательных уравнений и эти результаты можно применить для определения экспоненциальной  $p${}-устойчивости
+уравнения \eqref{kri-eq-1}.
+
+Использование системы \eqref{kri-eq-2} для анализа экспоненциальной  $p${}-устойчивости уравнения \eqref{kri-eq-1} не эффективен, так как первое
+уравнение этой системы не содержат информацию о параметрах уравнения \eqref{kri-eq-1}. В работе \cite{kri-bib-16} для анализа экспоненциальной
+устойчивости детерминированных линейных дифференциальных уравнений с последействием высоких порядков используя
+положительную обратимость матриц предложен другой подход построения вспомогательных систем по исходным уравнениям. Этот
+подход оказался более эффективным чем традиционный подход. Нами исследована экспоненциальная  $p${}-устойчивость
+уравнения \eqref{kri-eq-1} используя идеи и приемы работы \cite{kri-bib-16}.
+
+Рассмотрим систему линейных уравнений Ито с запаздыванием следующего вида
+
+\begin{equation}\label{kri-eq-3}
+	\begin{matrix} x_1'(t)=-qx_1(t)+x_2(t)(t\ge 0),\hfill\null
+	\\\text{dx}_2(t)=\left[-(a_{00}(t)-(a_{10}(t)-q)q)x_1(t)-(a_{10}(t)-q)x_2(t)+\overset{m_0}{\underset{j=1}{\sum
+	}}c_{\mathit{j0}}(t)x_1(h_{\mathit{j0}}(t))\right]\text{dt}+\hfill\null \\\overset
+	m{\underset{i=1}{\sum }}\left[-(a_{0i}(t)-a_{1i}(t)q)x_1(t)-a_{1i}(t)x_2(t)+\overset{m_i}{\underset{j=1}{\sum
+	}}c_{\text{ji}}(t)x_1(h_{\text{ji}}(t))\right]\mathit{dB}_i(t)\text{  }(t\ge
+	0),\hfill\null \end{matrix}\hfill
+\end{equation}
+
+где  $q${}- некоторое положительное число, а остальные параметры
+определены в уравнении \eqref{kri-eq-1}, с начальными условиями
+
+\begin{equation}\label{kri-eq-3a}
+	x_1(t)=\varphi (t)\text{
+	}(t\ge
+	0),
+\end{equation}
+\begin{equation}\label{kri-eq-3b}
+	x_j(t)=b_j,\text{
+	}j=1,2,
+\end{equation}
+
+Нетрудно убедиться, что первая компонента решения задачи \eqref{kri-eq-3}, \eqref{kri-eq-3a}, \eqref{kri-eq-3b} совпадает с решением задачи \eqref{kri-eq-1}, \eqref{kri-eq-1a}, \eqref{kri-eq-1b}.
+Следовательно, экспоненциальная  $p${}-устойчивость уравнения \eqref{kri-eq-1} будет следовать из экспоненциальной
+$p${}-устойчивости системы \eqref{kri-eq-3}. В дальнейшем для системы \eqref{kri-eq-3} будут исследованы вопросы экспоненциальной
+$p${}-устойчивости.
+
+
+\textbf{Лемма 2.} Пусть  $f(s)$\ {}- скалярный случайный процесс, интегрируемый по винеровскому процессу  $B(s)$
+\textsubscript{\ }на отрезке  $[0,t]$. Тогда справедливо неравенство
+
+\begin{equation}\label{kri-eq-4}
+	\left(E|\overset t{\underset 0{\int }}f(s)\text{dB}(s)|^{2p}\right)^{1/2p}\le
+	c_p\left(E\left(\overset t{\underset 0{\int
+	}}|f(s)|^2\text{ds}\right)^p\right)^{1/2p},
+\end{equation}
+
+
+где  $c_p$\ {}- некоторое число, зависящее от  $p$.
+
+Справедливость неравенства \eqref{kri-eq-2} следует из неравенства \eqref{kri-eq-4} работы \cite[стр. 65]{kri-bib-18}, где приведено и конкретное выражение для
+$c_p$.
+
+\textbf{Лемма 3.} Пусть  $g(s)$\ {}- скалярная функция на  $[0,\infty [$, квадрат которой локально суммируем,
+$f(s)$ {}- скалярный случайный процесс такой, что  $\underset{s\ge 0} \sup \left(E|f(s)|^{2p}\right)^{1/2p} <\infty $. Тогда справедливы следующие неравенства
+
+\begin{equation}\label{kri-eq-5}
+	\underset{t\ge 0}\sup\left(E|\overset t{\underset 0{\int
+	}}g(s)f(s)\text{ds}|^{2p}\right)^{1/2p}\le \underset{t\ge 0}\sup\left(\overset t{\underset
+		0{\int }}|g(s)|\text{ds}\right)\underset{s\ge
+		0}\sup\left(E|f(s)|^{2p}\right)^{1/2p},
+\end{equation}
+
+\begin{equation}\label{kri-eq-6}
+	\underset{t\ge 0}\sup\left(E|\overset t{\underset 0{\int
+	}}(g(s))^2(f(s))^2\text{ds}|^p\right)^{1/2p}\le \underset{t\ge 0}\sup\left(\overset
+	t{\underset 0{\int }}(g(s))^2\text{ds}\right)^{1/2}\underset{s\ge
+		0}\sup\left(E|f(s)|^{2p}\right)^{1/2p}.
+\end{equation}
+
+Справедливость неравенств \eqref{kri-eq-5} и \eqref{kri-eq-6} доказана в работе \cite{kri-bib-21}.
+
+\section{Основной результат}
+
+В силу предположений существуют положительные числа  $\gamma _i,\text{  }i=0,1,...,m$ \ такие, что для системы \eqref{kri-eq-3}
+$|(a_{00}(s)+(a_{10}(s)-q)|\le \gamma _0,\text{  }|(a_{0i}(s)+a_{1i}(s)q)|\le \gamma _i,\text{  }i=1,...,m.$ \ Пусть
+$Z=\left(\begin{matrix}z_{11}&z_{12}\\z_{21}&z_{22}\end{matrix}\right)$, где  $z_{11}=1$,  $z_{12}=-\frac 1 q$,
+$z_{21}=-\frac{\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}}{\overline{a_{10}}-q}-\frac{c_p\overset
+m{\underset{i=1}{\sum }}\left[\gamma _i\overline{y_1}+\overset{m_i}{\underset{j=1}{\sum
+}}c_{\text{ji}}\right]}{\sqrt{\overline{a_{10}}-q}}$, \  $z_{22}=1-\frac{\gamma
+_0}{\overline{a_{10}}-q}-\frac{c_p\overset m{\underset{i=1}{\sum }}A_{1i}}{\sqrt{\overline{a_{10}}-q}}.$
+
+\textbf{Теорема.} \ Если существует положительное число  $q$ \ такое, что матрица  $Z$ является  $M${}-матрицей, то
+уравнение \ \eqref{kri-eq-1} экспоненциально  $2p${}-устойчива.
+
+\textbf{Доказательство.} Систему \eqref{kri-eq-3} с условиями \eqref{kri-eq-3a} \ запишем в следующем виде
+
+\begin{equation}\label{kri-eq-7}
+	\begin{matrix}\overline{x_1}'(t)=-q\overline{x_1}(t)+\overline{x_2}(t)\text{   }(t\ge 0),\hfill\null
+	\\d\overline{x_2}(t)=[-(a_{00}(t)-(a_{10}(t)-q)q)\overline{x_1}(t)-(a_{10}(t)-q)\overline{x_2}(t)+\hfill\null
+	\\\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}(t)(\overline{x_1}(h_{\mathit{j0}}(t))+\overline{\varphi
+	}(h_{\mathit{j0}}(t)))]\text{dt}+\hfill\null \\\overset m{\underset{i=1}{\sum
+	}}[-(a_{0i}(t)-a_{1i}(t)q)\overline{x_1}(t)-a_{1i}(t)\overline{x_2}(t)+\hfill\null \\\overset{m_i}{\underset{j=1}{\sum
+	}}c_{\text{ji}}(t)(\overline{x_1}(h_{\text{ji}}(t))+\overline{\varphi
+	}(h_{\text{ji}}(t)))]\mathit{dB}_i(t)\text{  }(t\ge 0),\hfill\null \end{matrix}
+\end{equation}
+где  $\overline{x_i}$\ {}- неизвестный скалярный случайный процесс на
+$\text{  }]-\infty ,+\infty [$ \textsubscript{\ }такой, что  $\overline{x_i}(t)=0$ \textit\text{subscript{\ }}при
+$t<0$ \ и  $\overline{\varphi }(t)$\ {}- известный скалярный случайный процесс на $\text{  }]-\infty ,+\infty
+[$\textsubscript{ }\ такой, что  $\overline{\varphi }(t)=\varphi (t)$ \ при  $t\in [\sigma ,0[$ \ и  $\overline{\varphi
+}(t)=0$ \ когда  $t$ \textit\text{subscript{\ }}не принадлежит полуинтервалу  $[\sigma ,0[$. Обозначим через
+$\overline x(t,b,\varphi )$ \textit\text{subscript{\ }}решение системы \eqref{kri-eq-7}, удовлетворяющее условию \eqref{kri-eq-3b}.Очевидно, что
+решение задачи \eqref{kri-eq-7}, \eqref{kri-eq-3b} при  $t\ge 0$ совпадает с решением задачи \eqref{kri-eq-3}, \eqref{kri-eq-3a}, \eqref{kri-eq-3b}.
+
+Если в системе \eqref{kri-eq-7} сделать замену  $\overline{x_i}(t)=\text{exp}\{-\mathit{\lambda t}\}y_i(t)$, где  $y_i(t)$\ {}-
+неизвестный скалярный случайный процесс на  $\text{  }]-\infty ,+\infty [$ \ такой, что $y_i(t)=0$ при  $t<0$,
+$0<\lambda <\text{min}\{q,A_{10}-q\}$ \ для  $i=1,2$, то получится систему
+
+\begin{equation}\label{kri-eq-8}
+	\begin{matrix}y_{1'}(t)=(\lambda -q)y_1(t)+y_2(t)\text{   }(t\ge 0),\hfill\null
+	\\\text{dy}_2(t)=[-(a_{00}(t)-(a_{10}(t)-q)q)y_1(t)+(\lambda -(a_{10}(t)-q))y_2(t)+\hfill\null
+	\\\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}(t)\text{exp}\{\mathit{\lambda t}\}(\text{exp}\{-\mathit{\lambda
+		h}_{\mathit{j0}}(t)\}y_1(h_{\mathit{j0}}(t))+\overline{\varphi
+	}(h_{\mathit{j0}}(t)))]\text{dt}+\hfill\null \\\overset m{\underset{i=1}{\sum
+	}}[-(a_{0i}(t)-a_{1i}(t)q)y_1(t)-a_{1i}(t)y_2(t)+\hfill\null \\+\overset{m_i}{\underset{j=1}{\sum
+	}}c_{\text{ji}}(t)\text{exp}\{\mathit{\lambda t}\}(\text{exp}\{-\mathit{\lambda
+		h}_{\text{ji}}?(t)\}y_1(h_{\mathit{j0}}(t)+\overline{\varphi
+	}(h_{\text{ji}}(t)))]\mathit{dB}_i(t)\text{  }(t\ge 0),\hfill\null \end{matrix}
+\end{equation}
+
+Положив  $\eta (t)=(a_{10}(t)-q)-\lambda $, с учетом условий \ \eqref{kri-eq-3b} систему \eqref{kri-eq-8} можно переписать в следующем виде:
+
+\begin{equation}\label{kri-eq-9}
+	\begin{matrix}y_1(t)=\text{exp}\{-(q-\lambda )t\}b_1+\overset t{\underset 0{\int }}\text{exp}\{-(q-\lambda
+	)(t-s)\}y_2(s)\text{ds}\text{   }(t\ge 0),\hfill\null
+	\\y_2(t)=\text{exp}\left\{-\overset t{\underset 0{\int }}\eta (s)\text{ds}\right\}b_2+\overset
+	t{\underset 0{\int }}\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
+	}\right\}[-(a_{00}(s)-(a_{10}(s)-q)q)y_1(s)+\hfill\null \\\overset{m_0}{\underset{j=1}{\sum
+	}}c_{\mathit{j0}}(s)\text{exp}\{\mathit{\lambda s}\}(\text{exp}\{-\mathit{\lambda
+		h}_{\mathit{j0}}(s)\}(y_1(h_{\mathit{j0}}(s))+\overline{\varphi
+	}(h_{\mathit{j0}}(s)))]\text{ds}+\hfill\null \\\overset m{\underset{i=1}{\sum }}\overset s{\underset
+		0{\int }}\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
+	}\right\}[-(a_{0i}(s)-a_{1i}(s)q)y_1(s)-a_{1i}(s)y_2(s)+\hfill\null \\+\overset{m_i}{\underset{j=1}{\sum
+	}}c_{\text{ji}}(s)\text{exp}\{\mathit{\lambda s}\}(\text{exp}\{-\mathit{\lambda
+		h}_{\text{ji}}?(s)\}(y_1(h_{\mathit{j0}}(s)+\overline{\varphi
+	}(h_{\text{ji}}(s)))]\mathit{dB}_i(s)\text{  }(t\ge 0),\hfill\null \end{matrix}
+\end{equation}
+
+В дальнейшем будем пользоваться обозначениями \  $\overline{y_i}=\begin{matrix}\sup\\t\ge
+0\end{matrix}\left(E|y_i(t)|^{2p}\right)^{1/2p},i=1,2$, \  $\overline{\overline{\varphi
+}}=\begin{matrix}\sup\\t<0\end{matrix}\left(E|\varphi (t)|^{2p}\right)^{1/2p}$ \ и неравенствами \eqref{kri-eq-2}-\eqref{eq-4}.
+
+Из первого \ уравнения системы \eqref{kri-eq-9} получим
+
+\begin{equation*}
+\overline{y_1}\le \|b_1\|_{k_{2p}^1}+\frac 1{q-\lambda }\overline{y_2}.
+\end{equation*}
+Из последнего уравнения системы \eqref{kri-eq-9} с учетом предыдущих обозначений и неравенств \eqref{kri-eq-2}-\eqref{eq-4} получим
+
+\begin{equation}\label{kri-eq-10}
+	\begin{matrix}\overline{y_2}\le \|b_2\|_{k_{2p}^1}+.\hfill\null \end{matrix}
+\end{equation}
+
+Так как
+
+\begin{equation*}
+\begin{matrix}\sup\\t\ge 0\end{matrix}\overset t{\underset 0{\int }}\text{exp}\left\{-\overset t{\underset s{\int
+}}\eta (\zeta )\mathit{d\zeta }\right\}\text{ds}=\begin{matrix}\sup\\t\ge
+0\end{matrix}\overset t{\underset s{\int }}\left[\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta
+)\mathit{d\zeta }\right\}\eta (s)\right]/\eta (s)\text{ds}\le \frac 1{\overline{a_{10}}-q-\lambda }
+\end{equation*}
+и
+
+\begin{equation*}
+\begin{matrix}\begin{matrix}\sup\\t\ge 0\end{matrix}\left(\overset t{\underset 0{\int
+}}\text{exp}\left\{-2\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
+}\right\}\text{ds}\right)^{1/2}=\\\begin{matrix}\sup\\t\ge 0\end{matrix}\left(\overset
+t{\underset 0{\int }}\left[\text{exp}\left\{-2\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta }\right\}2\eta
+(s)\right]/(2\eta (s))\text{ds}\right)^{1/2}\le \frac 1{\sqrt{\overline{a_{10}}-q-\lambda
+}},\end{matrix}
+\end{equation*}
+то из оценки \eqref{kri-eq-10} получаем
+
+\begin{equation}\label{kri-eq-11}
+	\begin{matrix}\overline{y_2}\le \|b_2\|_{k_{2p}^1}+\gamma
+	_0\overline{y_2}+\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}\text{exp}\{\text{$\lambda \tau
+			$}_{\mathit{j0}}??\overline{y_1}??\frac ?{\overline{a_{10}}-q-\lambda }?+??\frac{c_p\overset m{\underset{i=1}{\sum
+		}}\left[\gamma _i\overline{y_1}+A_{1i}\overline{y_2}+\overset{m_i}{\underset{j=1}{\sum
+		}}c_{\text{ji}}\text{exp}\{\text{$\lambda \tau
+				$}_{\text{ji}}\}\overline{y_1}\right]}{\sqrt{\overline{a_{10}}-q-\lambda }}.+M(\lambda
+	)\overline{\overline{\varphi }},??\end{matrix}
+\end{equation}
+
+\begin{equation*}
+M(\lambda )=\frac{\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}\text{exp}\{\text{$\lambda \tau
+$}_{\mathit{j0}}\}}{\overline{a_{10}}-q-\lambda }+c_p\overset m{\underset{i=1}{\sum }}.
+\end{equation*}
+Обозначим теперь  $y(t)=\text{col}(y_1(t),y_2(t))$,  $\overline
+y=\text{col}(\overline{y_1},\overline{y_2})$,  $\overline{M(\lambda
+)}=\text{col}(0,M(\lambda ))$,  $e=\text{col}(1,1)$,  $Z(\lambda
+)=\left(\begin{matrix}z_{11}(\lambda )&z_{12}(\lambda )\\z_{21}(\lambda )&z_{22}(\lambda )\end{matrix}\right)$, \ где
+$z_{11}(\lambda )=1$,  $z_{12}(\lambda )=-\frac 1{q-\lambda }$,  $z_{21}(\lambda
+)=-\frac{\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}\text{exp}\{\text{$\lambda \tau
+$}_{\mathit{j0}}\}}{\overline{a_{10}}-q-\lambda }-c_p\overset m{\underset{i=1}{\sum }}.$, \  $z_{22}(\lambda
+)=1-\frac{\gamma _0}{\overline{a_{10}}-q-\lambda }-\frac{c_p\overset m{\underset{i=1}{\sum
+}}A_{1i}}{\sqrt{\overline{a_{10}}-q-\lambda }}.$
+
+Тогда из оценок \eqref{kri-eq-11} \ с учетом, что  $\|b_i\|_{k_{2p}^1}\le \|b\|_{k_{2p}^2},\text{  }i=1,2$ получаем
+
+\begin{equation}\label{kri-eq-12}
+	Z(\lambda
+	)\overline y\le e\|b\|_{k_{2p}^2}+\overline{M(\lambda )}\overline{\overline{\varphi
+	}}.
+\end{equation}
+
+Очевидно также, что  $Z(0)=Z$. В силу условий теоремы матрица  $Z$ является  $M${}-матрицей, а тогда при достаточно
+малых  $\lambda $ \ матрица  $Z(\lambda )$ \ также является  $M${}-матрицей, а значит существует  $\lambda =\lambda _0$
+\ такое, что \  $Z(\lambda _0)$ lambda положительно обратима. Тогда из неравенства \eqref{kri-eq-12} получаем
+
+\begin{equation}\label{kri-eq-13}
+	|\overline y|\le K(\|b\|_{k_{2p}^2}+\overline{\overline{\varphi
+	}}),
+\end{equation}
+
+где  $K=||Z(\lambda _0)^{-1}||\text{max}\{1,M(\lambda _0)\}.$
+
+Поскольку  $x(t,b,\varphi )=\text{exp}-\beta ty(t)$  и   $\underset{t\ge
+0}\sup\left(E|y(t)|^{2p}\right)^{1/2p}=|\overline y|$,  $\overline{\overline{\varphi
+}}=\begin{matrix}\sup\\t<0\end{matrix}\left(E|\varphi (t)|^{2p}\right)^{1/2p}$, то из неравенства \eqref{kri-eq-13} следует,
+что существуют положительные числа  $\lambda =\lambda _0$,  $K=||Z(\lambda _0)^{-1}||\text{max}\{1,M(\lambda _0)\}$
+такие, что для решения  $x(t,b,\varphi )$ \ задачи \eqref{kri-eq-1}, \eqref{kri-eq-1a}, \eqref{kri-eq-1b} \ справедливо неравенство
+
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  $(E|x(t,b,\varphi )|^{2p})^{1/2p}\le
+K\left(\|b\|_{k_{2p}^2}+\begin{matrix}\text{vrai sup}\\t<0\end{matrix}(E|\varphi
+(t)|^{2p})^{1/2p}\right)\text{exp}\{-\lambda _0?t\}\text{  }(t\ge 0)$.
+
+
+\section{Следствие основного результата}
+
+\textbf{Следствие.} \ Если существует положительное число  $q$ \ такое, что для \ уравнения \eqref{kri-eq-1} имеет место
+неравенство
+
+\begin{equation}\label{kri-eq-14}
+	1-\frac{\gamma _0}{\overline{a_{10}}-q}-\frac{c_p\overset m{\underset{i=1}{\sum
+		}}A_{1i}}{\sqrt{\overline{a_{10}}-q}}-\frac 1 q\left[\frac{\overset{m_0}{\underset{j=1}{\sum
+		}}c_{\mathit{j0}}}{\overline{a_{10}}-q}+\frac{c_p\overset m{\underset{i=1}{\sum }}\left[\gamma
+		_i\overline{y_1}+\overset{m_i}{\underset{j=1}{\sum
+		}}c_{\text{ji}}\right]}{\sqrt{\overline{a_{10}}-q}}\right]>0,
+\end{equation}
+
+то оно экспоненциально  $2p${}-устойчива.
+
+Справедливость следствия следует из теоремы в силу того, что при выполнении условий следствия матрица  $Z$
+\textit\text{subscript{\ }}будет  $M${}-матрицей, так как все диагональные миноры матрицы  $Z$
+\textit\text{subscript{\ }}положительны.
+
+Используя следствие можно получить достаточные условия экспоненциальной  $2p${}-устойчивости \ для конкретных уравнений
+вида \eqref{kri-eq-1} в терминах параметров этих уравнений. 
