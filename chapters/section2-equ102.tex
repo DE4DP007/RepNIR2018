@@ -1,0 +1,923 @@
+\chapter{Ортогональные по Соболеву системы функций и задача Коши для ОДУ}\label{sect-ode}
+
+
+
+%Рассмотрены системы функций $\mathcal{ \varphi}_{r,n}(x)$ $(r=1,2,\ldots, n=0,1,\ldots)$,
+% ортонормированные по Соболеву относительно скалярного произведения  вида $\langle f,g\rangle=\sum_{\nu=0}^{r-1}f^{(\nu)}(a)g^{(\nu)}(a)+\int_{a}^{b}f^{(r)}(t)g^{(r)}(x)\rho(x)dx$,
+%порожденные заданной ортонормированной системой функций $\mathcal{ \varphi}_{n}(x)$ $( n=0,1,\ldots)$.  Показано, что ряды и суммы Фурье по системе $\mathcal{ \varphi}_{r,n}(x)$ $(r=1,2,\ldots, n=0,1,\ldots)$ являются удобным и весьма эффективным инструментом приближенного решения задачи Коши для обыкновенных дифференциальных уравнений (ОДУ).
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{Введение}
+В настоящей работе мы продолжаем рассмотрение систем функций, ортогональных относительно скалярных произведений, в которых присутствуют одна или несколько точек  с дискретными массами. Интерес к таким системам  в последнее время интенсивно растет  (см. \cite{sobleg-Shar2016, equ102-Shar20, sobleg-IserKoch, sobleg-MarcelAlfaroRezola, laplas-Meijer, sobleg-KwonLittl1, sobleg-Lopez1995, sobleg-KwonLittl2, laplas-MarcelXu, sobleg-Shar17, laplas-Shar13}  и цитированную там литературу). Возросшее  внимание специалистов  к этому направлению теории ортогональных систем можно объяснить в том числе и тем обстоятельством, что ряды Фурье по полиномам (и функциям), ортогональным по Соболеву, оказались естественным и весьма удобным инструментом для представления решений  дифференциальных (разностных) уравнений (см. пункт \ref{common-sob-intro}). 
+%Это можно показать, в частности, на примере  задачи Коши для  дифференциального уравнения
+%\begin{equation}\label{equ102-1.1}
+%F(x,y,y',\ldots,y^{(r)})=0
+% \end{equation}
+%с начальными условиями $y^{(k)}(a)=y_k$, $k=0,1,\ldots,r-1$.  Наряду с различными сеточными и аппроксимационно-аналитическими методами, для решения этой задачи часто применяют так называемые спектральные методы \cite{equ102-Tref1,equ102-Tref2,equ102-SolDmEg,equ102-Pash,equ102-Arush2014,equ102-Lukom2016,equ102-MMG2016,equ102-DiffUr2017,equ102-Shar18}, суть которых  заключается в том, что на первом этапе искомое решение $y(x)$ задачи Коши для уравнения \eqref{equ102-1.1} представляется в виде ряда Фурье
+%\begin{equation}\label{equ102-1.2}
+% y(x)=\sum_{k=0}^\infty \hat y_k\psi_k(x)
+% \end{equation}
+%по подходящей ортонормированной системе $\{\psi_k(x)\}_{k=0}^\infty$. На втором этапе осуществляется подстановка вместо $y(x)$ ряда \eqref{equ102-1.2} в уравнение \eqref{equ102-1.1}. Это приводит к системе уравнений (вообще говоря, бесконечной) относительно неизвестных коэффициентов $\hat y_k$ ($k=0,1,\ldots$). На третьем этапе требуется решить эту систему с учетом начальных условий  $y^{(k)}(a)=y_k$, $k=0,1,\ldots,r-1$ исходной задачи Коши.
+%Одна из основных трудностей, которая возникает на этом этапе, состоит в том, чтобы
+%выбрать такой ортонормированный базис $\{\psi_k(x)\}_{k=0}^\infty$, для которого искомое решение $y(x)$ уравнения \eqref{equ102-1.1}, представленное в виде ряда  \eqref{equ102-1.2}, удовлетворяло бы начальным условиям $y^{(k)}(a)=y_k$, $k=0,1,\ldots,r-1$. Более того, поскольку в результате решения системы уравнений относительно неизвестных коэффициентов $\hat y_k$  будет найдено только конечное их число с $k=0,1,\ldots, n$, то весьма важно, чтобы частичная сумма ряда \eqref{equ102-1.2} вида $ y_n(x)=\sum_{k=0}^n\hat y_k\psi_k(x)$,
+% будучи приближенным решением рассматриваемой задачи Коши, также удовлетворяла начальным условиям $y_n^{(k)}(a)=y_k$, $k=0,1,\ldots,r-1$. Как это было  показано в \cite{equ102-Shar20},  базис $\{\psi_k(x)= \varphi_{r,n}(x)\}_{k=0}^\infty$, состоящий из функций $\varphi_{r,n}(x)$, ортонормированных по Соболеву относительно скалярного произведения
+%\begin{equation}\label{equ102-1.3}
+%<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(a)g^{(\nu)}(a)+\int_{a}^{b}f^{(r)}(t)g^{(r)}(x)\rho(x)dx,
+%\end{equation}
+% обладает указанными свойствами. Ниже нам понадобятся некоторые факты, установленные в \cite{equ102-Shar20}.  Предположим, что система функций  $\left\{\varphi_k(x)\right\}$ ортонормирована  на $(a,b)$  c весом   $\rho(x)$, т.е.
+% \begin{equation}\label{equ102-1.4}
+%\int_a^b\varphi_k(x)\varphi_l(x)\rho(x)dx=\delta_{kl},
+%\end{equation}
+%где $\delta_{kl}$ -- символ Кронекера. Через $L^p_\rho(a,b)$ обозначим пространство  функций $f(x)$, измеримых  на  $(a,b)$, для которых
+% \begin{equation*}
+%\int_a^b|f(x)|^p\rho(x)dx<\infty.
+%\end{equation*}
+%Если $\rho(x)\equiv1$, то будем писать $L^p_\rho(a,b)=L^p(a,b)$ и $L(a,b)=L^1(a,b)$.
+%Из \eqref{equ102-1.4} следует, что $\varphi_k(x)\in L^2_\rho(a,b)$ $(k=0,1,\ldots)$. Мы добавим к этому условию еще одно, считая, что $\varphi_k(x)\in L(a,b)$ $(k=0,1,\ldots)$. Тогда, следуя  \cite{equ102-Shar20}, мы можем определить следующие порожденные системой $\{\varphi_k(x)\}$ функции
+% \begin{equation}\label{equ102-1.5}
+%\varphi_{r,r+k}(x) =\frac{1}{(r-1)!}\int_a^x(x-t)^{r-1}\varphi_{k}(t)dt, \quad k=0,1,\ldots,
+%\end{equation}
+%
+%  \begin{equation}\label{equ102-1.6}
+%\varphi_{r,k}(x) =\frac{(x-a)^k}{k!}, \quad k=0,1,\ldots, r-1.
+%\end{equation}
+%
+% Из \eqref{equ102-1.5} и \eqref{equ102-1.6} следует, что для п.в. $x\in (a,b)$
+% \begin{equation}\label{equ102-1.7}
+%(\varphi_{r,k}(x))^{(\nu)} =\begin{cases}\varphi_{r-\nu,k-\nu}(x),&\text{если $0\le\nu\le r-1$, $r\le k$,}\\
+%\varphi_{k-r}(x),&\text{если  $\nu=r\le k$,}\\
+%\varphi_{r-\nu,k-\nu}(x),&\text{если $\nu\le k< r$,}\\
+%0,&\text{если $k< \nu\le r-1$}.
+%  \end{cases}
+%\end{equation}
+%Через $W^r_{L^p_\rho(a,b)}$ обозначим пространство Соболева, состоящее из функций $f(x)$, непрерывно дифференцируемых на $[a,b]$ $r-1$ раз, причем $f^{(r-1)}(x)$ абсолютно непрерывна на $[a,b]$  и $f^{(r)}(x)\in L^p_\rho(a,b)$.
+%Скалярное произведение в пространстве $W^r_{L^2_\rho(a,b)}$ определим с помощью равенства \eqref{equ102-1.3}. Тогда, пользуясь определением функций  $\varphi_{r,k}(x)$ (см. \eqref{equ102-1.5} и \eqref{equ102-1.6}) и равенством  \eqref{equ102-1.7}, нетрудно увидеть (см.\cite{equ102-Shar20}),  что система $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ является ортонормированной в пространстве $W^r_{L^2_\rho(a,b)}$. Следуя \cite{equ102-Shar20}, мы будем называть систему $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ \textit{ ортонормированной по Соболеву } относительно скалярного произведения \eqref{equ102-1.3} и  \textit{ порожденной} ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$.
+%В \cite{equ102-Shar20} показано,  что ряд Фурье функции $f(x)\in W^r_{L^2_\rho(a,b)}$ по системе  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ имеет смешанный характер, а именно:
+%  \begin{equation}\label{equ102-1.8}
+%f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^\infty \hat f_{r,k}\varphi_{r,k}(x),
+%\end{equation}
+%где
+%  \begin{equation}\label{equ102-1.9}
+% \hat f_{r,k}=\int_a^b f^{(r)}(t) \varphi^{(r)}_{r,k}(t)\rho(t)dt=\int_a^b f^{(r)}(t) \varphi_{k-r}(t)\rho(t)dt,
+%\end{equation}
+%поэтому ряд  вида \eqref{equ102-1.8} будем  называть \textit{смешанным рядом} по  системе $\{\varphi_{k}(x)\}_{k=0}^\infty$, считая это название условным и сокращенным обозначением полного названия: <<\textit{ряд Фурье по системе  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, ортонормированной по Соболеву, порожденной ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$}>>.
+
+
+
+%\section{Некоторые результаты общего характера }
+%Важное значение имеет свойство  смешанного ряда \eqref{equ102-1.8}, которое заключается в том, что его частичная сумма вида
+%\begin{equation}\label{equ102-2.3}
+%Y_{r,N}(f,x)=\sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^{N} \hat f_{r,k}\varphi_{r,k}(x)
+%\end{equation}
+% при   $r\le N$  совпадает с исходной функцией $f(x)$   в точке $x=a$ $r$-кратно , т.е.
+%\begin{equation}\label{equ102-2.4}
+%(Y_{r,N}(f,x))^{(\nu)}_{x=a}=f^{(\nu)}(a)\quad (0\le\nu\le r-1).
+%\end{equation}
+% В дальнейшем нам понадобятся  некоторые  свойства системы $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, состоящей из функций, определенных равенствами   \eqref{equ102-1.5} и \eqref{equ102-1.6}, установленные в работе \cite{equ102-Shar20}.
+%
+%\begin{theoremA}\label{equtheo1}
+%Предположим, что    функции $\varphi_k(x)$ $(k=0,1,\ldots)$ образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на  $(a,b)$. Тогда система $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{equ102-1.5} и \eqref{equ102-1.6}, полна  в $W^r_{L^2_\rho(a,b)}$ и ортонормирована относительно скалярного произведения \eqref{equ102-1.3}.
+%\end{theoremA}
+%
+%
+%\begin{theoremA}\label{equtheo2}
+%Предположим, что  $ \frac{1}{\rho(x)}\in L(a,b) $, а  функции $\varphi_k(x)$ $(k=0,1,\ldots)$  образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на $(a,b)$, $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ -- система, ортонормированная в $W^r_{L^2_\rho(a,b)}$ относительно скалярного произведения \eqref{equ102-1.8},  порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{equ102-1.5} и \eqref{equ102-1.6}.
+%Тогда если $f(x)\in W^r_{L^2_\rho(a,b)}$, то ряд Фурье (смешанный ряд) \eqref{equ102-1.8} сходится к функции $f(x)$ равномерно относительно $x\in[a,b]$.
+%\end{theoremA}
+
+
+
+
+
+
+
+
+
+\section{О представлении решения задачи Коши для ОДУ рядом Фурье по функциям $\varphi_{r,n}(x)$}
+В настоящем разделе мы рассмотрим задачу о приближении решения задачи Коши для ОДУ  суммами  Фурье по системе $\{\varphi_{r,n}(x)\}_{n=0}^\infty$, ортогональной по Соболеву и порожденной ортонормированной системой функций $\{\varphi_{n}(x)\}_{n=0}^\infty$ посредством равенств \eqref{sobleg-3.5} и \eqref{sobleg-3.6} с $a=0$, $b=1$.
+ Полученные ниже (теорема \ref{equ102-th1}) результаты можно перенести на системы дифференциальных уравнений вида
+$y'(x)=f(x,y), \quad y(0)=y_0$, где $f=(f_1, \ldots, f_m)$, $y=(y_1, \ldots, y_m)$. Но для простоты выкладок мы ограничимся рассмотрением задачи Коши вида
+\begin{equation}\label{equ102-3.1}
+y'(x)=f(x,y), \quad y(0)=y_0,
+\end{equation}
+ в которой функцию   $f(x,y)$  будем считать непрерывной в некоторой замкнутой  области $\bar G$ переменных $(x,y)$, содержащей точку $(0,y_0)$. Кроме того, мы будем  считать, что  $[0,1]\times\mathbb{R}\subset\bar G$. Это требование не сужает дальнейшие рассмотрения, так как, не ограничивая общности,  мы можем, в случае необходимости, продолжить функцию $f(x,y)$ по переменной $y$ на всё $\mathbb{R}$, сохраняя свойство ее подчиненности  нижеследующему условию Липшица \eqref{equ102-3.3}. Например, если область $\bar G$ такова, что  прямая в $\mathbb{R}^{2}$ вида $(x,ty)$ ($t\in\mathbb{R}$) для каждого $x\in[0,1]$ и $y\in\mathbb{R}$ пересекается с границей области $\bar G$ не более, чем в двух (граничных для $\bar G$) точках $(x,y')$ и $(x,y'')$, то функцию $f(x,y)$ можно непрерывно продолжить   на $[0,1]\times\mathbb{R}$, считая ее  постоянной на лучах, выходящих из точек  $(x,y')$ и $(x,y'')$ в противоположных направлениях вдоль прямой $(x,ty)$ ($t\in\mathbb{R}$).
+
+  Требуется аппроксимировать с заданной точностью  функцию $y=y(x)$, определенную на $[0,1]$, которая является решением задачи Коши \eqref{equ102-3.1}.
+Будем считать, что весовая функция $\rho(x)$ интегрируема на $(0,1)$, система $\{\varphi_{n}(x)\}_{n=0}^\infty$ удовлетворяет условиям теоремы \ref{soblegstate2}, а порожденная система $\{\varphi_{1,n}(x)\}_{n=0}^\infty$ -- условиям $(0\le x\le 1)$
+\begin{equation}\label{equ102-3.2}
+\delta_\varphi(x)=\sum_{k=1}^{\infty}(\varphi_{1,k}(x))^2<\infty,\quad
+\kappa_{\varphi}=\left(\int_0^1\sum_{k=1}^{\infty}
+(\varphi_{1,k}(t))^2\rho(t)dt\right)^{\frac12}<\infty.
+\end{equation}
+Кроме того, мы предположим, что по переменной $y$ функция $f(x,y)$ удовлетворяет условию Липшица
+ \begin{equation}\label{equ102-3.3}
+|f(x,y')-f(x,y'')|\le \lambda|y'-y''|, \quad 0\le x \le 1.
+\end{equation}
+Через $m$ обозначим наименьшее натуральное число, для которого $h\lambda\kappa_\varphi<1$, где $h=1/m$. Если, в частности, $\lambda\kappa_\varphi<1$, то $m=1$. Полагая $x=t/m$, отобразим линейно отрезок $[0,m]$ на $[0,1]$. Относительно новой переменной $t\in [0,m]$ уравнение \eqref{equ102-3.1} принимает следующий вид
+\begin{equation}\label{equ102-3.4}
+\eta'(t)=hf(ht,\eta(t)), \quad \eta(0)=y_0,\quad 0\le t\le m,
+\end{equation}
+где $h=1/m$, $\eta(t)=y(ht)$. Мы можем представить отрезок $[0,m]$ в виде объединения отрезков $[l,l+1]$ $(l=0,1,\ldots m-1)$ и  решать поставленную задачу Коши для уравнения \eqref{equ102-3.4} сначала на $[0,1]$, а затем, используя найденное начальное значение $\eta(1)$,  решать её на $[1,2]$ и так далее. Мы ограничимся рассмотрением этой задачи для отрезка $[0,1]$. Поскольку, по предположению, функция $f(x,y)$ непрерывна в области $\bar G$, то из \eqref{equ102-3.4} следует, что  функция $\eta'(t)$ непрерывна на $[0,1]$ и, следовательно, $\eta\in W_{L_\rho^2(0,1)}^1$, поэтому в силу теоремы \textbf{ B}  мы можем представить  функцию $\eta(t)$ в виде равномерно сходящегося на $[0,1]$ ряда Фурье по порожденной системе $\{\varphi_{1,n}(t)\}_{n=0}^\infty$:
+\begin{equation}\label{equ102-3.5}
+\eta(t)= \eta(0)+ \sum\nolimits_{k=1}^\infty \hat \eta_{1,k}\varphi_{1,k}(t),
+\end{equation}
+где
+  \begin{equation}\label{equ102-3.6}
+\hat \eta_{1,k}=\int_{0}^1 \eta'(t)\varphi_{k-1}(t)\rho(t)dt\quad(k\ge1).
+\end{equation}
+Наша цель состоит в том, чтобы сконструировать итерационный процесс для нахождения приближенных значений коэффициентов $c_k=m\hat \eta_{1,k+1}$ $(k=0,1,\ldots)$. Для этого обратимся к соотношениям \eqref{sobleg-3.7} и \eqref{equ102-2.1}, которые вместе с \eqref{equ102-3.5} дают
+\begin{equation}\label{equ102-3.7}
+\eta'(t)=  \sum\nolimits_{k=0}^\infty \hat \eta_{1,k+1}\varphi_k(t),
+\end{equation}
+где равенство понимается в том смысле, что ряд в правой части равенства \eqref{equ102-3.7} сходится к $\eta'$ в метрике пространства $L^2_{\rho}(0,1)$. Положим $q(t)=f(ht,\eta(t))=m\eta'(t)$ и заметим, что в силу  \eqref{equ102-3.6} (см. также \eqref{equ102-3.7}) коэффициенты Фурье функции $q=q(t)$ по системе  $\{\varphi_{n}(t)\}_{n=0}^\infty$ имеют вид
+\begin{equation}\label{equ102-3.8}
+ c_k(q)=\int_{0}^1 q(t)\varphi_{k}(t)\rho(t)dt=m\hat \eta_{1,k+1} \quad (k\ge0).
+\end{equation}
+С учетом этих равенств мы можем переписать \eqref{equ102-3.5} в следующем виде
+\begin{equation}\label{equ102-3.9}
+\eta(t)= \eta(0)+ h\sum\nolimits_{k=0}^\infty c_k(q){\varphi}_{1,k+1}(t).
+\end{equation}
+Из  \eqref{equ102-3.8} и \eqref{equ102-3.9}, в свою очередь, выводим следующие соотношения
+\begin{equation}\label{equ102-3.10}
+c_k(q)=\int_{0}^1f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty c_j(q)\varphi_{1,j+1}(t)\right]\varphi_k(t)\rho(t) dt,\, k=0,1,\ldots.
+\end{equation}
+Введем в рассмотрение гильбертово пространство $l_2$, состоящее из последовательностей $C=(c_0,c_1,\ldots)$, для которых определена норма
+$\|C\|=\left(\sum_{j=0}^\infty c_j^2\right)^\frac12$.  В пространстве $l_2$ рассмотрим оператор $A$, сопоставляющий точке $C\in l_2$ чиловую последовательность $C'=(c_0',c_1',\ldots)$ по правилу
+\begin{equation}\label{equ102-3.11}
+c_k'=\int_{0}^1f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty c_j
+\varphi_{1,j+1}(t)\right]\varphi_k(t)\rho(t) dt,\quad k=0,1,\ldots.
+\end{equation}
+Нетрудно увидеть, что $C'\in l_2$. В самом деле, из того, что $C\in l_2$, и из следствия 1 вытекает, что функция $g(t)=f[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty c_j
+\varphi_{1,j+1}(t)]$ непрерывна на $[0,1]$ и, следовательно, $g(t)\in L^2_\rho(0,1)$, а отсюда и следует, что $C'\in l_2$. Из  \eqref{equ102-3.10} вытекает, что точка $C(q)=(c_0(q),c_1(q),\ldots)$ является неподвижной точкой оператора $A:l_2\to l_2$. Для того чтобы найти точку $C(q)$ методом простых итераций, достаточно показать, что оператор $A:l_2\to l_2$ является сжимающим в метрике пространства $l_2$. С этой целью рассмотрим две точки $P,Q\in l_2$, где $P=(p_0,\ldots)$, $Q=(q_0,\ldots)$, и положим $P'=A(P)$, $Q'=A(Q)$. Имеем
+\begin{equation}\label{equ102-3.11}
+p'_k-q'_k=\int_{0}^1F_{P,Q}(t)\varphi_k(t)\rho(t)dt,\quad k=0,1,\ldots
+\end{equation}
+где
+\begin{equation}\label{equ102-3.12}
+ F_{P,Q}(t)=f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty p_j\varphi_{1,j+1}(t)\right] 
+  -f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty q_j\varphi_{1,j+1}(t)\right].
+\end{equation}
+Из \eqref{equ102-3.11}, пользуясь неравенством Бесселя, находим
+ \begin{equation}\label{equ102-3.13}
+\sum\nolimits_{k=0}^\infty (p'_k-q'_k)^2\le\int_{0}^1(F_{P,Q}(t))^2\rho(t) dt.
+\end{equation}
+Из \eqref{equ102-3.12} и \eqref{equ102-3.3}  имеем
+ \begin{equation}\label{equ102-3.15}
+(F_{P,Q}(t))^2\le (h\lambda)^2   \left(\sum\nolimits_{j=0}^\infty( p_j-q_j)\varphi_{1,j+1}(t)\right)^2,
+\end{equation}
+откуда,  воспользовавшись неравенством Коши-Буняковского, выводим
+$$
+(F_{P,Q}(t))^2\le(h\lambda)^2   \sum\nolimits_{j=0}^\infty( p_j-q_j)^2\sum\nolimits_{j=0}^\infty(\varphi_{1,j+1}(t))^2.
+$$
+Сопоставляя \eqref{equ102-3.15} с \eqref{equ102-3.13}, находим
+\begin{equation}\label{equ102-3.16}
+\sum\nolimits_{k=1}^\infty (p'_k-q'_k)^2\le(h\lambda)^2 \sum\nolimits_{k=0}^\infty( p_k-q_k)^2\int_{0}^1 \sum\nolimits_{j=0}^\infty(\varphi_{1,j+1}(t))^2\rho(t) dt.
+\end{equation}
+Из  \eqref{equ102-3.16}  и \eqref{equ102-3.2} имеем
+\begin{equation}\label{equ102-3.17}
+\left(\sum\nolimits_{k=0}^\infty (p'_k-q'_k)^2\right)^\frac12\le h\kappa_\varphi\lambda \left(\sum\nolimits_{k=0}^\infty (p_k-q_k)^2\right)^\frac12. \end{equation}
+Неравенство \eqref{equ102-3.17} показывает, что если $h\kappa_\varphi\lambda<1$, то оператор  $A:l_2\to l_2$ является сжимающим и, как следствие, итерационный процесс $C^{\nu+1}=A(C^{\nu})$  сходится к точке $C(q)$ при $\nu\to\infty$. Однако с точки зрения приложений важно рассмотреть конечномерный аналог оператора $A$. Мы рассмотрим оператор $A_N:\mathbb{R}^N\to \mathbb{R}^N$, cопоставляющий точке
+$C_N=(c_0,\ldots,c_{N-1})\in \mathbb{R}^N $ точку  $C'_N=(c_0',\ldots,c_{N-1}')\in \mathbb{R}^N $ по правилу
+\begin{equation}\label{equ102-3.18}
+c_k'=\int\limits_{0}^1f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^{N-1} c_j\varphi_{1,j+1}(t)\right]\varphi_k(t)\rho(t) dt,\,k=0,1,\ldots, N-1.
+\end{equation}
+ Рассмотрим две точки $P_N,Q_N\in \mathbb{R}^N$, где $P_N=(p_0,p_1,\ldots,p_{N-1})$,\\   $Q_N=(q_0,q_1,\ldots,p_{N-1})$ и положим $P'_N=A_N(P_N)$, $Q'_N=A_N(Q_N)$. Дословно повторяя рассуждения, которые привели нас к неравенству \eqref{equ102-3.17}, мы получим
+\begin{equation}\label{equ102-3.19}
+\left(\sum\nolimits_{k=0}^{N-1} (p'_k-q'_k)^2\right)^\frac12\le h\kappa_\varphi\lambda \left(\sum\nolimits_{k=0}^{N-1} (p_k-q_k)^2\right)^\frac12.
+\end{equation}
+Неравенство \eqref{equ102-3.19} показывает, что если $h\kappa_\varphi\lambda<1$, то оператор  $A_N:\mathbb{R}^N\to \mathbb{R}^N$ является сжимающим и, как следствие, итерационный процесс $C_N^{\nu+1}=A_N(C_N^{\nu})$  при $\nu\to\infty$ сходится к его неподвижной точке, которую мы обозначим через  $\bar C_N(q)=(\bar c_0(q),\ldots,\bar c_{N-1}(q))$. С другой стороны, рассмотрим точку $C_N(q)=(c_0(q),\ldots,c_{N-1}(q))$, составленную из искомых коэффициентов Фурье функции $q$ по системе $\varphi$. Нам остается оценить погрешность, проистекающую в результате замены точки $C_N(q)$ точкой $\bar C_N(q)$. Другими словами, требуется оценить величину
+$\|C_N(q)-\bar C_N(q)\|_N= \left(\sum_{j=0}^{N-1}(c_j(q)-\bar c_j(q))^2\right)^\frac12$. С этой целью рассмотрим точку $C'_N(q)=A_N(C_N(q))=(c_0'(q),\ldots,c_{N-1}'(q))$ и запишем
+\begin{equation}\label{equ102-3.20}
+\|C_N(q)-\bar C_N(q)\|_N\le \|C_N(q)- C_N'(q)\|_N+\|C_N'(q)-\bar C_N(q)\|_N.
+\end{equation}
+Далее, пользуясь неравенством \eqref{equ102-3.19}, имеем
+$$
+\|C_N'(q)-\bar C_N(q)\|_N=\|A_N(C_N(q))-A_N(\bar C_N(q))\|\le
+$$
+\begin{equation}\label{equ102-3.21}
+h\kappa_\varphi\lambda\|C_N(q)-\bar C_N(q)\|_N.
+\end{equation}
+Из \eqref{equ102-3.20} и \eqref{equ102-3.21} выводим
+\begin{equation}\label{equ102-3.22}
+\|C_N(q)-\bar C_N(q)\|_N\le \frac1{1-h\kappa_\varphi\lambda}\|C_N(q)- C_N'(q)\|_N.
+\end{equation}
+Чтобы оценить норму в правой части неравенства \eqref{equ102-3.22}, заметим, что в силу неравенства Бесселя
+\begin{equation}\label{equ102-3.23}
+\|C_N(q)- C_N'(q)\|_N^2\le \int_{0}^1(F_{C(q),C_N(q)}(t))^2\rho(t) dt,
+\end{equation}
+где
+\begin{multline}\label{equ102-3.24}
+ F_{C(q),C_N(q)}(t)=f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^\infty c_j(q)\varphi_{1,j+1}(t)\right] \\
+  -f\left[ht,\eta(0)+ h\sum\nolimits_{j=0}^{N-1}c_j(q)\varphi_{1,j+1}(t)\right].
+\end{multline}
+Из \eqref{equ102-3.24} и \eqref{equ102-3.3} следует, что
+$$
+(F_{C(q),C_N(q)}(t))^2\le \lambda^2   \left(\sum\nolimits_{j=N}^\infty hc_j(q)\varphi_{1,j+1}(t)\right)^2,
+$$
+отсюда с учетом \eqref{equ102-3.7} имеем
+\begin{equation}\label{equ102-3.25}
+(F_{C(q),C_N(q)}(t))^2\le \lambda^2   \left(\sum\nolimits_{j=N}^\infty  \hat \eta_{1,j+1}\varphi_{1,j+1}(t)\right)^2.
+\end{equation}
+Сопоставляя \eqref{equ102-3.25} с \eqref{equ102-3.23}, получаем
+\begin{equation}\label{equ102-3.26}
+\|C_N(q)- C_N'(q)\|_N^2\le \lambda^2\int_{0}^1\left(\sum\nolimits_{j=N}^\infty \hat \eta_{1,j+1} \varphi_{1,j+1}(t)\right)^2\rho(t) dt,
+\end{equation}
+где согласно \eqref{equ102-3.6}
+\begin{equation}\label{equ102-3.27}
+ \hat \eta_{1,j+1}=\int_{0}^1\eta'(t)\varphi_j(t)\rho(t)dt \quad(j=0,1,\ldots)
+\end{equation}
+-- коэффициенты Фурье функции $\eta'(t)=hf(ht,\eta(t))$.
+
+Подводя итоги, из \eqref{equ102-3.22} и \eqref{equ102-3.26}  мы можем сформулировать следующий результат.
+\begin{theorem}\label{equ102-th1}
+Пусть область $\bar G$ такова, что $[0,1]\times\mathbb{R}\subset \bar G$, функция $f(x,y)$ непрерывна в области $\bar G$ и удовлетворяет условию Липшица \eqref{equ102-3.3}, а $h$ и $\lambda$ удовлетворяет неравенству $h\lambda\kappa_\varphi<1$, где величина $\kappa_\varphi$ определена равенством \eqref{equ102-3.2}. Далее, пусть $l_2$ гильбертово пространство, состоящее из последовательностей $C=(c_0,\ldots)$, для которых введена норма $\|C\|=\left(\sum_{j=0}^\infty c_j^2\right)^\frac12$,   оператор $A: l_2\to l_2$ сопоставляет точке $C\in l_2$ точку $C'\in l_2$ по правилу \eqref{equ102-3.9}. Кроме того, пусть $A_N:\mathbb{R}^N\to \mathbb{R}^N$ -- конечномерный аналог оператора $A$, cопоставляющий точке $C_N=(c_0,\ldots,c_{N})\in \mathbb{R}^N $ точку  $C'_N=(c_0',\ldots,c_{N}')\in \mathbb{R}^N $ по правилу \eqref{equ102-3.18}.
+Тогда операторы $A: l_2\to l_2$ и $A_N:\mathbb{R}^N\to \mathbb{R}^N$ являются сжимающими и, следовательно, существуют  их неподвижные точки $C(q)=(c_0(q),c_1(q),\ldots)=A(C(q))\in l_2$ и $\bar C_N(q)=(\bar c_0(q),\bar c_0(q),\ldots,\bar c_{N}(q))=A_N(\bar C_N(q))\in \mathbb{R}^N$, для которых имеет место неравенство
+\begin{equation}\label{equ102-3.28}
+\|C_N(q)-\bar C_N(q)\|_N\le \frac{\lambda \sigma_N^\varphi(\eta)}{1-h\kappa_\varphi\lambda},
+\end{equation}
+где
+\begin{equation}\label{equ102-3.29}
+\sigma_N^\varphi(\eta)=\left(\int_{0}^1\left(\sum\nolimits_{j=N+1}^\infty \hat \eta_{1,j}\varphi_{1,j}(t)\right)^2\rho(t) dt\right)^\frac12,
+\end{equation}
+ a $C_N(q)=(c_0(q),\ldots,c_{N-1}(q))$ -- конечная последовательность, составленная из первых $N$ компонент точки  $C(q)$, при этом в силу  \eqref{equ102-3.7} справедливо также равенство  $hC_N(q)=(\hat \eta_{1,1},\hat \eta_{1,2}, \ldots, \hat \eta_{1,N})$.
+\end{theorem}
+
+
+Заметим,  что величина
+\begin{equation}\label{equ102-3.30}
+ V_N(\eta,t)=V_N^\varphi(\eta,t)=\eta(x)- Y_{1,N}(\eta,x)
+=\sum\nolimits_{j=N+1}^\infty \hat \eta_{1,j}\varphi_{1,j}(t),
+\end{equation}
+фигурирующая в правой части равенства \eqref{equ102-3.29}, представляет собой остаточный член ряда Фурье функции $\eta$ по функциям $\varphi_{1,k}(t)$ $(k=0,1,\ldots)$, образующим ортонормированную систему по Соболеву относительно скалярного произведения \eqref{sobleg-3.8}, порожденным  функциями $\varphi_k$ посредством равенств \eqref{sobleg-3.5} и \eqref{sobleg-3.6} с $r=1$, $a=0$, $b=1$.  Неравенство \eqref{equ102-3.28} непосредственно приводит к  задаче об исследовании поведения величины $\sigma_N^\varphi(\eta)=(\int_{0}^1(\eta(x)- Y_{1,N}(\eta,x))^2 dx)^\frac12$.
+Другими словами, требуется исследовать задачу об оценке приближения функции $\eta$ в метрике пространства $L^2_{\rho}(0,1)$ частичными суммами   ряда Фурье \eqref{equ102-3.5} вида $Y_{1,N}(\eta,x)= \eta(0)+ \sum\nolimits_{k=1}^N \hat \eta_{1,k}\varphi_{1,k}(t).$ Скорость стремления к нулю $V_N(t)$ при $N\to\infty$, а следовательно и погрешности $\|C_N(\phi)- \bar C_N(\phi)\|_N$, существенно зависит от свойств гладкости на $[-1,1]$ искомого решения $\varphi(t)$, а это, в свою очередь, непосредственно зависит от свойств функции $f(x,y)$, фигурирующей в исходном уравнении \eqref{equ102-3.1}.
+
+
+%\section{О представлении решения задачи Коши для ОДУ рядом Фурье по полиномам $T_{r,k}(x)$}
+%Мы ограничимся рассмотрением задачи Коши вида
+%\begin{equation}\label{sobcheb-urav-6.1}
+%y'(x)=f(x,y), \quad y(a)=y_0,
+%\end{equation}
+% в которой функцию   $f(x,y)$  будем считать достаточно гладкой в некоторой области $G$ переменных $(x,y)$, для которой точка $(a,y_0)$ является внутренней. Требуется аппроксимировать с заданной точностью  функцию $y=y(x)$, определенную на $[a,b]$, которая является решением задачи Коши \eqref{sobcheb-urav-6.1}. Для этого разобьем отрезок $[a,b]$ на $m$ частей с шагом $2h$ и пусть $[a_i,a_{i+1}]$ -- $i$-тый отрезок деления, в частности, $[a_0,a_1]=[a,a+2h]$.
+% Будем приближать искомое решение на отрезках $[a_i,a_{i+1}]$, $0\le i\le m-1$, остановившись для определенности на $i=0$.  Полагая $x=a+h(t+1)$, отобразим линейно отрезок $[-1,1]$ на $[a,a+2h]$. Относительно новой переменной $t\in [-1,1]$ уравнение \eqref{sobcheb-urav-6.1} принимает следующий вид
+%\begin{equation}\label{sobcheb-urav-6.2}
+%\varphi'(t)=hf(a+h(t+1),\varphi(t)), \quad \varphi(-1)=y_0, -1\le t\le 1,
+%\end{equation}
+%где $\varphi(t)=y(a+h(t+1))$. Представим функцию $\varphi(t)$ в виде ряда Фурье \eqref{sobcheb-urav-5.2} с $r=1$:
+%\begin{equation}\label{sobcheb-urav-6.3}
+%\varphi(t)= \varphi(-1)+ \sum\nolimits_{k=1}^\infty \hat \varphi_{1,k}T_{1,k}(t),
+%\end{equation}
+%где
+%  \begin{equation}\label{sobcheb-urav-6.4}
+%\hat \varphi_{1,1+j}=\int_{-1}^1 \varphi'(t)T_{j}(t)\mu(t)dt\quad(j\ge0).
+%\end{equation}
+%Применим  дифференциальное свойство \eqref{sobcheb-urav-1.16} к смешанному ряду \eqref{sobcheb-urav-6.3}. Это дает
+%\begin{equation}\label{sobcheb-urav-6.5}
+%\varphi'(t)=  \sum\nolimits_{k=0}^\infty \hat \varphi_{1,k+1}T_{k}(t).
+%\end{equation}
+%Положим $\phi(t)=f(a+h(t+1),\varphi(t))$ и заметим, что в силу \eqref{sobcheb-urav-6.2} и \eqref{sobcheb-urav-6.4} коэффициенты Фурье-Чебышева функции $\phi=\phi(t)$ имеют вид
+%\begin{equation}\label{sobcheb-urav-6.6}
+% c_k(\phi)=\int\limits_{-1}^1\phi(t)T_k(t)\mu(t)dt=\frac1h\hat \varphi_{1,k+1} \quad (k\ge0).
+%\end{equation}
+%С учетом этих равенств мы можем переписать \eqref{sobcheb-urav-6.3} в следующем виде
+%\begin{equation}\label{sobcheb-urav-6.7}
+%\varphi(t)= \varphi(-1)+ h\sum\nolimits_{k=0}^\infty c_k(\phi)T_{1,k+1}(t).
+%\end{equation}
+%Из  \eqref{sobcheb-urav-6.6}, \eqref{sobcheb-urav-6.7}, в свою очедь, выводим следующие соотношения
+%\begin{equation}\label{sobcheb-urav-6.8}
+%c_k(\phi)=\int\limits_{-1}^1f\left[a+h(t+1),\varphi(-1)+ h\sum\nolimits_{j=0}^\infty c_j(\phi)T_{1,j+1}(t)\right]T_k(t) \mu(t)dt,
+%\end{equation}
+%$$
+%k=0,1,2,\ldots.
+%$$
+%Введем в рассмотрение гильбертово пространство $l_2$, состоящее из последовательностей $C=(c_0,c_1,\ldots)$, для которых введена норма
+%$\|C\|=\left(\sum_{j=0}^\infty c_j^2\right)^\frac12$.  В пространстве $l_2$ рассмотрим оператор $A$, сопоставляющий точке $C\in l_2$ точку $C'\in l_2$ по правилу
+%\begin{equation}\label{sobcheb-urav-6.9}
+%c_k'=\int\limits_{-1}^1f\left[a+h(t+1),\varphi(-1)+ h\sum\nolimits_{j=0}^\infty c_jT_{1,j+1}(t)\right]T_k(t) \mu(t)dt,
+%\end{equation}
+%$$
+%k=0,1,2,\ldots.
+%$$
+%Из  \eqref{sobcheb-urav-6.8} следует, что точка $C(\phi)=(c_0(\phi),c_1(\phi),\ldots)$ является неподвижной точкой оператора $A:l_2\to l_2$. Для того, чтобы найти точку $C(\phi)$ методом простых итераций достаточно показать, что оператор $A:l_2\to l_2$ является сжимающим в метрике пространства $l_2$. С этой целью рассмотрим две точки $P,Q\in l_2$, где $P=(p_0,p_1,\ldots)$, $Q=(q_0,q_1,\ldots)$ и положим $P'=A(P)$, $Q'=A(Q)$. Имеем
+%\begin{equation}\label{sobcheb-urav-6.10}
+%p'_k-q'_k=\int_{-1}^1F_{P,Q}(t)T_k(t) \mu(t)dt,\quad k=0,1,\ldots
+%\end{equation}
+%где
+%\begin{multline}\label{sobcheb-urav-6.11}
+% F_{P,Q}(t)=f\left[a+h(t+1),\varphi(-1)+ h\sum\nolimits_{j=0}^\infty p_jT_{1,j+1}(t)\right] \\
+%  -f\left[a+h(t+1),\varphi(-1)+ h\sum\nolimits_{j=0}^\infty q_jT_{1,j+1}(t)\right].
+%\end{multline}
+%Из \eqref{sobcheb-urav-6.10}, пользуясь неравенством Бесселя, находим
+% \begin{equation}\label{sobcheb-urav-6.12}
+%\sum\nolimits_{k=0}^\infty (p'_k-q'_k)^2\le\int_{-1}^1(F_{P,Q}(t))^2 \mu(t)dt.
+%\end{equation}
+% Предположим, что по переменной $y$ функция $f(x,y)$ удовлетворяет условию Липшица
+% \begin{equation}\label{sobcheb-urav-6.13}
+%|f(x,y')-f(x,y'')|\le \lambda|y'-y''|, \quad a\le x \le a+2h.
+%\end{equation}
+%Из \eqref{sobcheb-urav-6.11} и \eqref{sobcheb-urav-6.13}  имеем
+% \begin{equation}\label{sobcheb-urav-6.14}
+%(F_{P,Q}(t))^2\le (h\lambda)^2   \left(\sum\nolimits_{j=0}^\infty( p_j-q_j)T_{1,j+1}(t)\right)^2,
+%\end{equation}
+%откуда,  воспользовавшись неравенством Коши-Буняковского, выводим
+%$$
+%(F_{P,Q}(t))^2\le(h\lambda)^2   \sum\nolimits_{j=0}^\infty( p_j-q_j)^2\sum\nolimits_{j=0}^\infty(T_{1,j+1}(t))^2
+%$$
+%Сопоставляя \eqref{sobcheb-urav-6.14} с \eqref{sobcheb-urav-6.12}, находим
+%\begin{equation}\label{sobcheb-urav-6.15}
+%\sum\nolimits_{k=0}^\infty (p'_k-q'_k)^2\le(h\lambda)^2 \sum\nolimits_{k=0}^\infty( p_k-q_k)^2\int_{-1}^1 \sum\nolimits_{j=0}^\infty(T_{1,j+1}(t))^2   \mu(t)dt.
+%\end{equation}
+%Нам остается оценить последний интеграл. С этой целью обратимся к следствию \ref{sobcheb-uravcor5}, из которого замечаем, что ряд, фигурирующий под интегралом в \eqref{sobcheb-urav-6.15}, равномерно сходится при $t\in[-1,1]$. Положим
+%\begin{equation}\label{sobcheb-urav-6.16}
+%\kappa=\left(\int_{-1}^1\sum\nolimits_{j=0}^\infty(T_{1,j+1}(t))^2\mu(t)dt\right)^\frac12.
+%\end{equation}
+%Тогда из \eqref{sobcheb-urav-6.15} и \eqref{sobcheb-urav-6.16} окончательно находим
+%\begin{equation}\label{sobcheb-urav-6.17}
+%\left(\sum\nolimits_{k=0}^\infty (p'_k-q'_k)^2\right)^\frac12\le h\kappa\lambda \left(\sum\nolimits_{k=0}^\infty (p_k-q_k)^2\right)^\frac12. \end{equation}
+%Неравенство \eqref{sobcheb-urav-6.17} показывает, что если $h\kappa\lambda<1$, то оператор  $A:l_2\to l_2$ является сжимающим и, как следствие, итерационный процесс $C^{\nu+1}=A(C^{\nu})$  сходится к точке $C(\phi)$ при $\nu\to\infty$. Однако, с точки зрения приложений важно рассмотреть конечномерный аналог оператора $A$. Мы рассмотрим оператор $A_N:\mathbb{R}^N\to \mathbb{R}^N$, cопоставляющий точке
+%$C_N=(c_0,\ldots,c_{N-1})\in \mathbb{R}^N $ точку  $C'_N=(c_0',\ldots,c_{N-1}')\in \mathbb{R}^N $ по правилу
+%\begin{equation}\label{sobcheb-urav-6.18}
+%c_k'=\int\limits_{-1}^1f\left[a+h(t+1),\varphi(-1)+ h\sum\nolimits_{j=0}^{N-1} c_jT_{1,j+1}(t)\right]T_k(t) \mu(t)dt,
+%\end{equation}
+%$$
+%k=0,1,2,\ldots, N-1.
+%$$
+% Рассмотрим две точки $P_N,Q_N\in \mathbb{R}^N$, где $P_N=(p_0,p_1,\ldots,p_{N-1})$,\\   $Q_N=(q_0,q_1,\ldots,p_{N-1})$ и положим $P'_N=A_N(P_N)$, $Q'_N=A_N(Q_N)$. Дословно повторяя рассуждения, которые привели нас к неравенству \eqref{sobcheb-urav-6.17}, мы получим
+%\begin{equation}\label{sobcheb-urav-6.19}
+%\left(\sum\nolimits_{k=0}^{N-1} (p'_k-q'_k)^2\right)^\frac12\le h\kappa\lambda \left(\sum\nolimits_{k=0}^{N-1} (p_k-q_k)^2\right)^\frac12.
+%\end{equation}
+%Неравенство \eqref{sobcheb-urav-6.19} показывает, что если $h\kappa\lambda<1$, то оператор  $A_N:\mathbb{R}^N\to \mathbb{R}^N$ является сжимающим и, как следствие, итерационный процесс $C_N^{\nu+1}=A_N(C_N^{\nu})$  при $\nu\to\infty$ сходится к его неподвижной точке, которую мы обозначим через  $\bar C_N(\phi)=(\bar c_0(\phi),\bar c_1(\phi),\ldots,\bar c_{N-1}(\phi))$ . С другой стороны, рассмотрим точку $C_N(\phi)=(c_0(\phi),c_1(\phi),\ldots,c_{N-1}(\phi))$, составленную из искомых коэффициентов Фурье-Чебышева функции $\phi$. Нам остается оценить погрешность, проистекающую в результате замены точки $C_N(\phi)$ точкой $\bar C_N(\phi)$. Другими словами, требуется оценить величину
+%$\|C_N(\phi)-\bar C_N(\phi)\|_N= \left(\sum_{j=0}^{N-1}(c_j(\phi)-\bar c_j(\phi))^2\right)^\frac12$. С этой целью рассмотрим точку $C'_N(\phi)=A_N(C_N(\phi))=(c_0'(\phi),c_1'(\phi),\ldots,c_{N-1}'(\phi))$ и запишем
+%\begin{equation}\label{sobcheb-urav-6.20}
+%\|C_N(\phi)-\bar C_N(\phi)\|_N\le \|C_N(\phi)- C_N'(\phi)\|_N+\|C_N'(\phi)-\bar C_N(\phi)\|_N.
+%\end{equation}
+%Далее, пользуясь неравенством \eqref{sobcheb-urav-6.19}, имеем
+%$$
+%\|C_N'(\phi)-\bar C_N(\phi)\|_N=\|A_N(C_N(\phi))-A_N(\bar C_N(\phi))\|\le
+%$$
+%\begin{equation}\label{sobcheb-urav-6.21}
+%h\kappa\lambda\|C_N(\phi)-\bar C_N(\phi)\|_N.
+%\end{equation}
+%Из \eqref{sobcheb-urav-6.20} и \eqref{sobcheb-urav-6.21} выводим
+%\begin{equation}\label{sobcheb-urav-6.22}
+%\|C_N(\phi)-\bar C_N(\phi)\|_N\le \frac1{1-h\kappa\lambda}\|C_N(\phi)- C_N'(\phi)\|_N.
+%\end{equation}
+%Чтобы оценить норму в правой чвасти неравенства \eqref{sobcheb-urav-6.22} заметим, что в силу неравенства Бесселя
+%\begin{equation}\label{sobcheb-urav-6.23}
+%\|C_N(\phi)- C_N'(\phi)\|_N^2\le \int_{-1}^1(F_{C(\phi),C_N(\phi)}(t))^2 \mu(t)dt,
+%\end{equation}
+%где
+%\begin{multline}\label{sobcheb-urav-6.24}
+% F_{C(\phi),C_N(\phi)}(t)=f\left[a+h(t+1),\varphi(-1)+ h\sum\nolimits_{j=0}^\infty c_j(\phi)T_{1,j+1}(t)\right] \\
+%  -f\left[a+h(t+1),\varphi(-1)+ h\sum\nolimits_{j=0}^{N-1}c_j(\phi)T_{1,j+1}(t)\right].
+%\end{multline}
+%Из \eqref{sobcheb-urav-6.24} и \eqref{sobcheb-urav-6.14} следует, что
+%$$
+%(F_{C(\phi),C_N(\phi)}(t))^2\le \lambda^2   \left(\sum\nolimits_{j=N}^\infty hc_j(\phi)T_{1,j+1}(t)\right)^2,
+%$$
+%отсюда с учетом \eqref{sobcheb-urav-6.6} имеем
+%\begin{equation}\label{sobcheb-urav-6.25}
+%(F_{C(\phi),C_N(\phi)}(t))^2\le \lambda^2   \left(\sum\nolimits_{j=N}^\infty \hat \varphi_{1,j+1}T_{1,j+1}(t)\right)^2.
+%\end{equation}
+%Сопоставляя \eqref{sobcheb-urav-6.25} с\eqref{sobcheb-urav-6.23}, получаем
+%\begin{equation}\label{sobcheb-urav-6.26}
+%\|C_N(\phi)- C_N'(\phi)\|_N^2\le \lambda^2\int_{-1}^1\left(\sum\nolimits_{j=N+1}^\infty \hat \varphi_{1,j}T_{1,j}(t)\right)^2 \mu(t)dt,
+%\end{equation}
+%где согласно \eqref{sobcheb-urav-6.6}
+%\begin{equation}\label{sobcheb-urav-6.27}
+% \hat \varphi_{1,j}=\int\limits_{-1}^1\varphi'(t)T_{j-1}(t)\mu(t)dt \quad(j\ge1)
+%\end{equation}
+%-- $j-1$-вый коэффициент Фурье-Чебышева функции $\varphi'(t)=hf(a+h(t+1),\varphi(t))$.
+%
+%Подводя итоги, из \eqref{sobcheb-urav-6.22} и \eqref{sobcheb-urav-6.26}  мы можем выводим следующий результат.
+%\begin{theorem} Пусть область $G$ такова, что $[a,a+2h]\times\mathbb{R}\subset G$, функция $f(x,y)$ непрерывна в области $G$ и удовлетворяет условию Липшица \eqref{sobcheb-urav-6.13}, а для $h$ и $\lambda$ справедливо неравенство $h\lambda\kappa<1$, где $\kappa$ определено равенством \eqref{sobcheb-urav-6.16}. Далее, пусть $l_2$ гильбертово пространство, состоящее из последовательностей $C=(c_0,c_1,\ldots)$, для которых введена норма $\|C\|=\left(\sum_{j=0}^\infty c_j^2\right)^\frac12$,   оператор $A: l_2\to l_2$ сопоставлят точке $C\in l_2$ точку $C'\in l_2$ по правилу \eqref{sobcheb-urav-6.9}. Кроме того, пусть $A_N:\mathbb{R}^N\to \mathbb{R}^N$ -- конечномерный аналог оператора $A$, cопоставляющий точке $C_N=(c_0,\ldots,c_{N-1})\in \mathbb{R}^N $ точку  $C'_N=(c_0',\ldots,c_{N-1}')\in \mathbb{R}^N $ по правилу \eqref{sobcheb-urav-6.18}.
+%Тогда операторы $A: l_2\to l_2$ и $A_N:\mathbb{R}^N\to \mathbb{R}^N$ являются сжимающими и, следовательно, существуют их неподвижные точки $C(\phi)=(c_0(\phi),c_1(\phi),\ldots,c_{N-1}(\phi),\ldots)\in l_2$ и $\bar C_N(\phi)=(\bar c_0(\phi),\bar c_1(\phi),\ldots,\bar c_{N-1}(\phi))\in \mathbb{R}^N$, соответственно, для которых имеет место следующее неравенство
+%\begin{equation}\label{sobcheb-urav-6.28}
+%\|C_N(\phi)-\bar C_N(\phi)\|_N\le \frac\lambda{1-h\kappa\lambda}\left(\int_{-1}^1\left(\sum\nolimits_{j=N+1}^\infty \hat \varphi_{1,j}T_{1,j}(t)\right)^2 \mu(t)dt\right)^\frac12,
+%\end{equation}
+%где $C_N(\phi)=(c_0(\phi),c_1(\phi),\ldots,c_{N-1}(\phi))$ -- конечная последовательность, составленная из первых $N$ компонент точки  $C(\phi)$ .
+%\end{theorem}
+
+
+
+%Заметим, что величина $V_N(t)=\sum\nolimits_{j=N+1}^\infty \hat \varphi_{1,j}T_{1,j}(t)$,
+%фигурирующая в правой части неравенства \eqref{sobcheb-urav-6.28}, представляет собой остаточный член ряда Фурье функции $\varphi(t)$ по полиномам $T_{1,k}(t)$ $(k=0,1,\ldots)$, образующим ортонормированную систему по Соболеву относительно скалярного произведения \eqref{sobcheb-urav-1.3}, ассоциированным с полиномами Чебышева $T_k(t)$ посредством равенств \eqref{sobcheb-urav-1.4} и \eqref{sobcheb-urav-1.5} с $r=1$. 
+
+Заметим, что в описанном выше методе для нахождения значений оператора $A_N$ приходится иметь дело с суммами вида $h\sum\nolimits_{j=0}^{N-1} c_j\varphi_{1,j+1}(t)$. В заключение этого параграфа мы займемся преобразованиями такого рода сумм в частном случае, когда $\varphi_{1,j+1}(t)=T_{1,k+1}(x)$ --- полиномы, порожденные полиномами Чебышева первого рода:
+\begin{equation}\label{sobcheb-urav-6.29}
+ S_N(x)=h\sum\nolimits_{k=0}^{N-1}p_kT_{1,k+1}(x),
+\end{equation}
+Мы покажем, что при их вычислении на сетках $x_i=\cos\frac{i\pi}{M}$ $(0\le i\le M)$ и $t_i=\cos\frac{(2i+1)\pi}{2M}$ $(0\le i\le M-1)$ может быть использовано быстрое дискретное косинусное преобразование Фурье. С этой целью обратимся к равенствам \eqref{sobcheb-urav-5.16} и \eqref{sobcheb-urav-5.17} (следствие \ref{sobcheb-uravcor5}) и запишем  \eqref{sobcheb-urav-6.29} в следующем виде
+$$
+S_N(x)=\frac{hp_0}{\sqrt{2}}(1+x)+\frac{hp_1}2(x^2-1)+ h\sum\nolimits_{k=2}^{N-1}p_k[{T_{k+1}(x)\over2(k+1)}- {T_{k-1}(x)\over2(k-1)} -\frac{(-1)^k}{k^2-1}]
+$$
+\begin{equation}\label{sobcheb-urav-6.30}
+  =-h\sum\nolimits_{k=2}^{N-1} \frac{(-1)^kp_k}{k^2-1}+\frac{hp_0}{\sqrt{2}}(1+x)+\frac{hp_1}2(x^2-1)+
+  h\sum\nolimits_{k=2}^{N-1}p_k[{T_{k+1}(x)\over2(k+1)}- {T_{k-1}(x)\over2(k-1)} ].
+\end{equation}
+Поскольку
+$$
+\sum\nolimits_{k=2}^{N-1}p_k[{T_{k+1}(x)\over2(k+1)}- {T_{k-1}(x)\over2(k-1)} ]=
+\sum\nolimits_{k=2}^{N-1}p_k{T_{k+1}(x)\over2(k+1)}-\sum\nolimits_{k=2}^{N-1}p_k{T_{k-1}(x)\over2(k-1)}=
+$$
+$$
+\sum\nolimits_{k=2}^{N-1}p_k{T_{k+1}(x)\over2(k+1)}-\sum\nolimits_{k=0}^{N-3}p_{k+2}{T_{k+1}(x)\over2(k+1)}=
+$$
+$$
+-{p_{2}\over2}T_{1}(x)-{p_{3}\over4}T_{2}(x)+\sum\nolimits_{k=3}^{N-2}{p_{k-1}-p_{k+1}\over2k}T_k(x)
++{p_{N-2}\over2(N-1))}T_{N-1}(x)+{p_{N-1}\over2N}T_{N}(x),
+$$
+то   мы можем переписать \eqref{sobcheb-urav-6.30}   следующем виде
+\begin{multline}\label{sobcheb-urav-6.31}
+ S_N(x)=h\bar p(N)+\frac{hp_0}{\sqrt{2}}(1+x)+\frac{hp_1}2(x^2-1)-{hp_{2}\over2}T_{1}(x)-{hp_{3}\over4}T_{2}(x)+
+ \\
+h\sum\nolimits_{k=3}^{N-2}{p_{k-1}-p_{k+1}\over2k}T_k(x)
++{hp_{N-2}\over2(N-1))}T_{N-1}(x)+{hp_{N-1}\over2N}T_{N}(x),
+  \end{multline}
+где
+\begin{equation}\label{sobcheb-urav-6.32}
+ \bar p(N)= -\sum\nolimits_{k=2}^{N-1} \frac{(-1)^kp_k}{k^2-1}.
+\end{equation}
+ Далее, имеем
+$$
+\frac{hp_0}{\sqrt{2}}(1+x)=hp_0T_0+\frac{hp_0}{\sqrt{2}}T_1(x), \frac{hp_1}2(x^2-1)= \frac{hp_1}4T_2(x) -\frac{hp_1}{2\sqrt{2}}T_0,
+$$
+поэтому из \eqref{sobcheb-urav-6.31} и  \eqref{sobcheb-urav-6.32} окончательно получаем
+\begin{multline}\label{sobcheb-urav-6.33}
+ S_N(x)=h\bar p(N)+h(p_0-\frac{p_1}{2\sqrt{2}})T_0+h(\frac{p_0}{\sqrt{2}}-{p_{2}\over2})T_1(x)+
+ \\
+h\sum\nolimits_{k=2}^{N-2}{p_{k-1}-p_{k+1}\over2k}T_k(x)
++{hp_{N-2}\over2(N-1))}T_{N-1}(x)+{hp_{N-1}\over2N}T_{N}(x).
+  \end{multline}
+
+
+
+\section{О величинах $\delta_\varphi(x)$, $\kappa_\varphi$ и $\sigma_N^\varphi(\eta)$ для системы Хаара }
+
+Анализ результатов, полученных в предыдущем пункте, показывает, что решающую роль
+при их доказательстве играют верхние оценки для величин $\delta_\varphi(x)$ и $\kappa_\varphi$, $\sigma_N^\varphi(\eta)$, определенных равенствами из \eqref{equ102-3.2} и \eqref{equ102-3.29}.  В настоящем пункте мы рассмотрим вопрос об этих оценках для   системы Хаара.
+
+При исследовании системы функций $\mathcal{ X}_{r,n}(x)$ $(n=0,1,\ldots)$, ортогональных по Соболеву, порожденных функциями  Хаара $\varphi_k(x)=\chi_{k+1}(x)$ $(k=0,1,\ldots)$ нам понадобятся следующие обозначения \cite{equ102-KashSaak}. Пусть $n=2^k+i$, $i=1,2,\ldots, 2^k$,  $k=0,1,\ldots$,
+$\Delta_n=\Delta_k^i=(\frac{i-1}{2^k},\frac{i}{2^k})$, $\bar\Delta_n=[\frac{i-1}{2^k},\frac{i}{2^k}]$, ($n\ge2$), $\Delta_1=[0,1]$,
+$$
+ \Delta_n^+=(\Delta_k^i)^+=(\frac{i-1}{2^k},\frac{2i-1}{2^{k+1}})=\Delta_{k+1}^{2i-1}, \quad \Delta_n^-=(\Delta_k^i)^-=(\frac{2i-1}{2^{k+1}},\frac{i}{2^{k}})=\Delta_{k+1}^{2i}.
+$$
+Система Хаара --- это система функций, $\chi=\{\chi_n\}_{n=1}^\infty(x)$, $x\in[0,1]$, в которой $\chi_1(x)=1$, a функция $\chi_n(x)$
+с $2^k<n\le 2^{k+1}$, $k=0,1,\ldots$ определяется равенством
+\begin{equation}\label{equ102-4.1}
+\chi_n(x)=\begin{cases} 0,&\text{если $x\notin \bar\Delta_n$,}\\
+2^{k/2},& \text{если $x\in \Delta_n^+$,}\\
+-2^{k/2},& \text{если $x\in \Delta_n^-$.}
+\end{cases}
+\end{equation}
+Значения в точках разрыва функции $\chi_n(x)$ выбираются так, чтобы выполнялись равенства:
+$$
+\chi_n(x)=\lim_{\delta\to0}\frac12[\chi_n(x+\delta)+\chi_n(x-\delta)],\quad x\in (0,1),
+$$
+$$
+\chi_n(0)=\lim_{\delta\to0} \chi_n(\delta),\quad \chi_n(1)=\lim_{\delta\to0} \chi_n(1-\delta).
+$$
+Непосредственно из \eqref{equ102-4.1} вытекает следующее свойство ортогональности функций Хаара:
+\begin{equation}\label{equ102-4.2}
+\int_0^1\chi_n(x)\chi_m(x)dx=\delta_{nm}.
+\end{equation}
+
+
+Положим $\varphi_k(x)=\chi_{k+1}(x)$ $(k=0,1,\ldots)$, и для каждого натурального $r$ мы определим систему функций $\{\mathcal{ X}_{r,n}\}_{n=r}^\infty$ следующим образом:
+\begin{equation}\label{equ102-4.3}
+\mathcal{ X}_{r,k+r}(x) =\frac{1}{(r-1)!}\int\limits_0^x(x-t)^{r-1}\varphi_k(x)dt, \quad k=0,1, 2, \ldots.
+\end{equation}
+ Кроме того, определим конечный набор функций
+  \begin{equation}\label{equ102-4.4}
+\mathcal{ X}_{r,n}(x) =\frac{x^n}{n!}, \quad n=0,1,\ldots, r-1.
+\end{equation}
+
+  Пусть $W^r_{L^2(0,1)}$ --  пространство Соболева с  $L^2(0,1)=L^2_\rho(0,1)$, а $\rho=\rho(x) \equiv 1$. Из теоремы \ref{soblegstate1} непосредственно вытекает
+ \begin{corollary}\label{equcor2}
+   Система $\mathcal{ X}_r=\{\mathcal{ X}_{r,n}(x)\}_{n=0}^\infty$, порожденная системой Хаара $\{\chi_{n}(x)\}_{n=1}^\infty$ посредством равенств \eqref{equ102-4.3} и \eqref{equ102-4.4}, полна  в $W^r_{L^2(0,1)}$ и ортонормирована относительно скалярного произведения
+ \begin{equation}\label{equ102-4.5}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_{0}^{1} f^{(r)}(t)g^{(r)}(t) dt.
+\end{equation}
+ \end{corollary}
+
+Ряд Фурье функции $\eta\in W^r_{L^2(0,1)}$ по системе $\mathcal{ X}_r$ имеет следующий вид
+  \begin{equation}\label{equ102-4.6}
+\eta(x)\sim \sum_{n=0}^{r-1} \eta^{(n)}(0)\frac{x^n}{n!}+ \sum_{n=r}^\infty\hat \eta_{r,n}\mathcal{ X}_{r,n}(x),
+\end{equation}
+где
+  $$
+\hat \eta_{r,n}=\int_0^1 \eta^{(r)}(t)\varphi_{n-r}(t)dt=\int_0^1 \eta^{(r)}(t) \chi_{n-r+1}(t)dt.
+$$
+В работах \cite{equ102-Shar19} и \cite{equ102-Shar20}  получено  следующее представление для функций $\mathcal{ X}_{r,n}(x)$, определенных равенством \eqref{equ102-4.3}
+ ($n=2^k+i$, $i=1,2,\ldots,2^k $, $k=0,1,\ldots$ )
+  \begin{equation}\label{equ102-4.7}
+ \mathcal{ X}_{r,n+r-1}(x)=\frac{2^{\frac{k}{2}}}{r!}
+ \begin{cases} 0,&\text{$0\le x\le\frac{i-1}{2^k}$;}\\
+ (x-\frac{i-1}{2^k})^r,&\text{$\frac{i-1}{2^k}\le x\le \frac{2i-1}{2^{k+1}}$;}\\
+ (x-\frac{i-1}{2^k})^r-2(x-\frac{2i-1}{2^{k+1}})^r,&\text{$\frac{2i-1}{2^{k+1}}\le x\le \frac{i}{2^{k}}$;}\\
+  (x-\frac{i-1}{2^k})^r-2(x-\frac{2i-1}{2^{k+1}})^r+(x-\frac{i}{2^{k}})^r, &\text{$\frac{i}{2^{k}}\le x\le1$}
+   \end{cases}
+  \end{equation}
+ и, как следствие, доказано, что
+
+   \begin{equation}\label{equ102-4.8}
+ \mathcal{ X}_{r,n+r-1}(x)=\frac{2^{k/2}}{r!}\Delta^2_\frac{1}{2^{k+1}}(x-t)^r_+
+ \big|_{t=\frac{i-1}{2^k}},
+\end{equation}
+где $\Delta^2_h g(t)$ -- конечная разность второго порядка с шагом $h$, $a_+^r=a^r, \text{ если } a\ge0 $ и $a_+^r=0, \text{ если } a<0 $. Отметим частный случай равенства \eqref{equ102-4.7} при $r=1$:
+\begin{equation}\label{equ102-4.9}
+ \mathcal{ X}_{1,n}(x)=2^{\frac{k}{2}}
+ \begin{cases} 0,&\text{$0\le x\le\frac{i-1}{2^k}$;}\\
+ x-\frac{i-1}{2^k},&\text{$\frac{i-1}{2^k}\le x\le \frac{2i-1}{2^{k+1}}$;}\\
+ \frac{i}{2^{k}}-x,&\text{$\frac{2i-1}{2^{k+1}}\le x\le \frac{i}{2^{k}}$;}\\
+  0, &\text{$\frac{i}{2^{k}}\le x\le1$}.
+   \end{cases}
+  \end{equation} Из \eqref{equ102-4.9} вытекает следующее неравенство
+\begin{equation}\label{equ102-4.10}
+ \mathcal{ X}_{1,n}(x)\le 2^{-\frac{k}{2}-1}, \quad 0\le x\le 1, n=2^k+i,\quad i=1,\ldots,2^k, k=0,\ldots.
+  \end{equation}
+
+Отметим, что система функций $F_0(x)=\mathcal{ X}_{1,0}(x)=1$, $F_1(x)=\mathcal{ X}_{1,1}(x)=x$,
+$F_n(x)=2\max_{0\le t\le1}|\chi_{n}(t)|\mathcal{ X}_{1,n}(x), n=2,\ldots,$
+введенная впервые  в работе \cite{equ102-Faber}, представляет собой классическую систему Фабера --- Шаудера, являющуюся базисом Шаудера в пространстве непрерывных функций $C[0,1]$.  Однако, насколько нам известно,  система Фабера --- Шаудера ранее не рассматривалась как ортогональнюю по Соболеву относительно скалярного произведения \eqref{equ102-4.5} и в этом качестве не применялась.
+
+Используя свойства \eqref{equ102-4.7} и \eqref{equ102-4.8}, в цитированных выше работах  \cite{equ102-Shar19} и \cite{equ102-Shar20} исследованы аппроксимативные свойства частичных сумм  ряда \eqref{equ102-4.6} следующего вида
+\begin{equation}\label{equ102-4.11}
+ Y_{r,N}(\eta,x)=\sum_{n=0}^{r-1} \eta^{(n)}(0)\frac{x^n}{n!}+ \sum_{n=r}^{N}\hat \eta_{r,n}\mathcal{ X}_{r,n}(x)
+ \end{equation}
+ для функций $f$ из  классов  $W^r_{L^p(0,1)}$. В частности, в \cite{equ102-Shar19}, \cite{equ102-Shar20} получен следующий результат (см., например, теорему 3 из \cite{equ102-Shar20}). Пусть $r\ge1$, $f\in W^r_{L(0,1)}$, $n=N-r+1$.  Тогда имеет место следующая оценка
+\begin{equation}\label{equ102-4.12}
+|\eta^{(r-1)}(x)-Y_{r,N}^{(r-1)}(\eta,x)| \le \omega_2(\eta^{(r-1)},1/N), \quad x\in[0,1],
+\end{equation}
+где $\omega_2(g,\delta)=\sup_{\atop{ 0\le h\le\delta,\atop h\le x\le 1-h}}|g(x+h)+g(x-h)-2g(x)|$ --- модуль непрерывности второго порядка для функции $g$.
+
+Из \eqref{equ102-3.29} и \eqref{equ102-4.12} непосредственно выводим
+\begin{corollary}
+  Пусть $\varphi=\{\varphi_k(x)=\chi_{k+1}(x)\}_{k=0}^\infty$ -- система Хаара (со сдвинутым на $1$ индексом), $\mathcal{ X}_1$ -- ассоциированная с ней система, определенная посредством равенств \eqref{equ102-4.3} и \eqref{equ102-4.4} с $r=1$.
+Тогда   справедливо следующее неравенство
+$$\sigma_N^{\varphi}(\eta)\le \omega_2(\eta,1/N).$$
+\end{corollary}
+\begin{theorem}\label{equtheo3}
+  Пусть $\varphi=\{\varphi_k(x)=\chi_{k+1}(x)\}_{k=0}^\infty$ -- система Хаара (со сдвинутым на $1$ индексом), $\mathcal{ X}_1$ -- ассоциированная с ней система, определенная посредством равенств \eqref{equ102-4.3} и \eqref{equ102-4.4} с $r=1$. Тогда для величин $\delta_\varphi(x)$ и $\kappa_\varphi$, определенных равенствами из \eqref{equ102-3.2}, имеют место соотношения
+ $$
+\delta_\varphi(x)\le 5/4,\quad\kappa_{\varphi}=\sqrt{1/2}.
+$$
+\end{theorem}
+%\begin{proof}
+%  Оценим сначала $\delta_\varphi(x)$. Прежде всего заметим, что $\mathcal{ X}_{1,1}(x)=x$, $\mathcal{ X}_{1,2}(x)=x$ при $0\le x\le1/2$  и $\mathcal{ X}_{1,2}(x)=1-x$ при $1/2\le x\le1$. Если же $n>1$, то мы можем воспользоваться равенствами \eqref{equ102-4.9} и   оценкой \eqref{equ102-4.10}. Поэтому мы можем записать
+%  $$
+%  \delta_\varphi(x)=(\mathcal{ X}_{1,1}(x))^2+(\mathcal{ X}_{1,2}(x))^2+\sum_{n=2}^{\infty}(\mathcal{ X}_{1,n}(x))^2\le 1+\sum_{k=1}^\infty 2^{-k-2}=1+1/4=5/4.
+%  $$
+%Тем самым первое утверждение теоремы 2 доказано. Рассмотрим $\kappa_\varphi$. Имеем
+%$$
+%  (\kappa_\varphi)^2=\int_0^1\sum_{n=1}^\infty(\mathcal{ X}_{1,n}(x))^2dx.
+%$$
+%Далее, пользуясь равенствами \eqref{equ102-4.9}, при $n=2^k+i$ находим
+% $$
+% \int_0^1(\mathcal{ X}_{1,n}(x))^2dx= 2^{k+1}\int_{\frac{i-1}{2^k}}^{\frac{2i-1}{2^{k+1}}}(x-\frac{i-1}{2^k})^2dx=\frac{1}{3}2^{-2k-2}.
+% $$
+% Эти равенства, взятые вместе, дают
+%$$
+%  (\kappa_\varphi)^2=\int_0^1x^2dx+\sum_{k=0}^\infty\sum_{i=1}^{2^k}\int_0^1(\mathcal{ X}_{1,2^k+i}(x))^2dx=\frac12.
+%$$
+%Теорема 2 доказана.
+%\end{proof}
+
+Из \eqref{equ102-3.28}, следствия \ref{equcor2} и теоремы \ref{equtheo3} выводим
+\begin{corollary}
+  Пусть $\varphi=\{\varphi_k(x)=\chi_{k+1}(x)\}_{k=0}^\infty$ -- система Хаара (со сдвинутым на $1$ индексом), $\mathcal{ X}_1$ -- ассоциированная с ней система, определенная посредством равенств \eqref{equ102-4.3} и \eqref{equ102-4.4} с $r=1$.
+Тогда   справедливо следующее неравенство
+$$\|C_N(q)-\bar C_N(q)\|_N\le \frac{\lambda \sqrt{2}\omega_2(\eta,1/N)}{\sqrt{2}-h\lambda}.$$
+\end{corollary}
+
+
+
+
+\section{О величинах $\delta_\varphi(x)$, $\kappa_\varphi$ и $\sigma_N^\varphi(\eta)$ для системы косинусов }
+
+
+Рассмотрим систему функций
+\begin{equation}\label{equ102-5.1}
+ \xi_0(x)=1,\quad \{\xi_n(x)=\sqrt{2}\cos(\pi nx)\}_{n=1}^\infty,
+ \end{equation}
+ которая является ортонормированной относительно скалярного произведения \linebreak $<f,g>=\int_0^1f(x)g(x)dx$, т.е.
+$
+ <\xi_n,\xi_m>=\int_0^1\xi_n(x)\xi_m(x)dx=\delta_{nm}.
+$
+Соответствующая ей порожденная система $\{\xi_{1,k}\}_{k=0}^\infty$ с $r=1$ ортонормирована
+относительно скалярного произведения $ <f,g>=f(0)g(0)+\int_0^1f'(x)g'(x)dx$
+и имеет вид
+$$
+ \xi_{1,0}(x)=1,\quad \xi_{1,n}(x)=\int_0^x \xi_{n-1}(t)dt, \quad n=1,2,\ldots,
+$$
+т.е.
+\begin{equation}\label{equ102-5.2}
+ \xi_{1,0}(x)=1,\quad \xi_{1,1}(x)=x,\quad \xi_{1,n+1}(x)=\frac{\sqrt{2}}{\pi n}\sin(\pi nx),\quad n=1,2,\ldots.
+\end{equation}
+Ряд Фурье функции $\eta$ по системе $\{\xi_{1,k}\}_{k=0}^\infty$ имеет вид
+ \begin{equation}\label{equ102-5.3}
+ \eta(t)=\eta(0) +\sum\nolimits_{j=1}^\infty \hat \eta_{1,j}\xi_{1,j}(t),
+\end{equation}
+где
+$$
+\hat \eta_{1,1}=\int_{0}^1 \eta'(t)dt,\quad
+\hat \eta_{1,k+1}=\sqrt{2}\int_{0}^1 \eta'(t)\cos(\pi kt)dt.
+$$
+\begin{theorem}\label{equtheo4}
+  Пусть $\xi=\{\xi_k(x)\}_{k=0}^\infty$ -- система  \eqref{equ102-5.1}, для которой  \eqref{equ102-5.2} является порожденной. Тогда для величин $\delta_{\xi}(x)$ и    $\kappa_\xi$  имеют место соотношения
+ $$
+\delta_{\xi}(x)\le 4/3,\quad\kappa_{\xi}=\sqrt{1/2}.
+$$
+\end{theorem}
+%\begin{proof} Из \eqref{equ102-5.2} имеем
+% $$
+%\kappa_{\xi}^2=\sum_{n=1}^\infty \int_{0}^1 (\xi_{1,n}(x))^2dx=
+%\int_{0}^1 x^2dx+\sum_{n=1}^\infty\frac{2}{(n\pi)^2} \int_{0}^1 \sin^2(\pi nx)dx
+%$$
+%$$
+%=\frac13+\frac1{\pi^2}\sum_{n=1}^\infty\frac1{n^2}=\frac13+\frac1{\pi^2}\frac{\pi^2}{6}=
+%\frac12,
+% $$
+%$$
+% \delta_{\xi}(x)= x^2+\frac2{\pi^2}\sum_{n=1}^\infty\frac{\sin^2(\pi nx)}{n^2}\le
+%1+ \frac2{\pi^2}\sum_{n=1}^\infty\frac{1}{n^2}\le \frac43.
+%$$
+% Теорема 3 доказана.
+%\end{proof}
+
+ В связи с неравенством \eqref{equ102-3.28} возникает задача об исследовании поведения остаточного члена $ V_N(\eta,t)=\eta(x)- Y_{1,N}(\eta,x)
+=\sum\nolimits_{j=N+1}^\infty \hat \eta_{1,j}\xi_{1,j}(t)$  ряда Фурье \eqref{equ102-5.3}. Прежде всего мы усилим результат, полученный в теореме \ref{soblegstate2}. А именно, мы покажем, что  условие $\eta\in W^1_{L^2(0,1)}$ можно заменить условием $\eta\in W^1_{L^1(0,1)}$. Поскольку для построения смешанного ряда \eqref{equ102-5.3} требуется, чтобы функция $\eta$ была абсолютно непрерывной на $[0,1]$, то следующая теорема носит окончательный характер.
+\begin{theorem}\label{equtheo5}
+ Пусть $\{\varphi_{1,k}(x)=\xi_{1,k}(x)\}_{k=0}^\infty$. Тогда, если $\eta\in W^1_{L^1(0,1)}$, то ряд Фурье (смешанный ряд) \eqref{equ102-5.3} сходится к функции $\eta(x)$ равномерно относительно $x\in[0,1]$.
+ \end{theorem}
+%\begin{proof} С учетом равенств \eqref{equ102-5.2} мы можем переписать \eqref{equ102-5.3} в следующем виде
+%\begin{equation}\label{5.4}
+%\eta(t)= \eta(0)+\hat \eta_{1,1}x+\sqrt{2} \sum\nolimits_{k=1}^\infty \hat \eta_{1,k+1}\frac{\sin(\pi kx)}{\pi k},
+%\end{equation}
+%где
+%  \begin{equation}\label{5.5}
+%\hat \eta_{1,1}=\int_{0}^1 \eta'(t)dt=\eta(1)-\eta(0),
+%\end{equation}
+%$$
+%\hat \eta_{1,k+1}=\sqrt{2}\int_{0}^1 \eta'(t)\cos(\pi kt)dt=
+%$$
+%$$
+%\sqrt{2}\int_{0}^1 [\eta(t)-\eta(0)-(\eta(1)-\eta(0))t]'\cos(\pi kt)dt=
+%$$
+%\begin{equation}\label{5.6}
+%\sqrt{2}\pi k\int_{0}^1 [\eta(t)-\eta(0)-(\eta(1)-\eta(0))t]\sin(\pi kt)dt.
+%\end{equation}
+%Из \eqref{5.4} -- \eqref{5.6} имеем
+%\begin{equation}\label{5.7}
+%\bar\eta(x)=\eta(x)-\eta(0)-(\eta(1)-\eta(0))x= \sum\nolimits_{k=1}^\infty b_k\sin(\pi kx),
+%\end{equation}
+%где
+%\begin{equation}\label{5.8}
+%b_k=2\int_{0}^1 \bar\eta(t)\sin(\pi kt)dt.
+%\end{equation}
+%Правая часть равенства \eqref{5.7} представляет собой  тригонометрический ряд Фурье функции $\bar\eta(x)=  \eta(x)-\eta(0)-(\eta(1)-\eta(0))x$, продолженной на всю  числовую ось по нечетности и $2$-периодически. Далее заметим, из абсолютной непрерывности функции $\eta(x)$ на $[0,1]$ следует, что функция $\bar\eta(x)$ абсолютно непрерывна на $[-1,1]$, поэтому ряд Фурье \eqref{5.7} равномерно на $[-1,1]$ сходится к $\bar\eta(x)$. Это равносильно тому, что ряд \eqref{5.4} или, что то же, ряд \eqref{equ102-5.3} сходится равномерно на $[0,1]$ к своей сумме $\eta(x)$. Теорема 4 доказана.
+%\end{proof}
+
+Вернемся к задаче об исследовании поведения остаточных членов ряда Фурье \eqref{equ102-5.3}  вида $V_N(\eta,t)=\sum\nolimits_{j=N+1}^\infty \hat \eta_{1,j}\xi_{1,j}(t)$, фигурирующих в правой части неравенства \eqref{equ102-3.28}. Как было показано выше, ряд \eqref{equ102-5.3} допускает его преобразование к виду
+\begin{equation}\label{equ102-5.7}
+\bar\eta(x)=\eta(x)-\eta(0)-(\eta(1)-\eta(0))x= \sum\nolimits_{k=1}^\infty b_k\sin(\pi kx),
+\end{equation}
+и, соответственно, имеем
+\begin{equation}\label{equ102-5.9}
+V_N(\eta,t)=\eta(x)-Y_{N-1}(\eta,t)= \sum\nolimits_{k=N}^\infty b_k\sin(\pi kx),
+\end{equation}
+где  $Y_{N-1}(\eta,t)$ частичная сумма ряда \eqref{equ102-5.3} вида
+$$
+Y_{N-1}(\eta,t)= \eta(0)+\hat\eta_{1,k}\xi_{1,1}(t)+ \sum\nolimits_{k=2}^N \hat \eta_{1,k}\xi_{1,k}(t)
+$$
+\begin{equation}\label{equ102-5.10}
+= \eta(0)+(\eta(1)-\eta(0))x+\sum\nolimits_{k=1}^{N-1} b_k\sin(\pi kx).
+\end{equation}
+Рассмотрим частичную сумму
+\begin{equation}\label{equ102-5.11}
+S_{N-1}(\bar\eta,x)= \sum\nolimits_{k=1}^{N-1} b_k\sin(\pi kx)
+\end{equation}
+тригонометрического ряда Фурье \eqref{equ102-5.7} для функции $\bar\eta(x)$ и заметим, что в силу \eqref{equ102-5.9} -- \eqref{equ102-5.11} имеем
+\begin{equation}\label{equ102-5.12}
+V_N(\eta,x)= \sum\nolimits_{k=N}^{\infty} b_k\sin(\pi kx)=\bar\eta(x)-S_{N-1}(\bar\eta,x).
+\end{equation}
+Отсюда мы замечаем, что задача об исследовании поведения величины $V_N(\eta,x)$ сводится к аналогичной задаче для остатка ряда Фурье
+\begin{equation}\label{equ102-5.13}
+R_N(\bar\eta,x)= \bar\eta(x)-S_{N-1}(\bar\eta,x).
+\end{equation}
+В частности, для величины $\sigma_N^\varphi(\eta)=\|V_N(\eta)\|_{L^2(0,1)}$, фигурирующей в неравенстве \eqref{equ102-3.28}, имеем
+\begin{equation}\label{equ102-5.14}
+\sigma_N^\xi(\eta)=\left(\int_{0}^1\left(\sum\nolimits_{j=N}^\infty \hat \eta_{1,j+1}\xi_{1,j+1}(t)\right)^2 dt\right)^\frac12=\|R_N(\bar\eta)\|_{L^2(0,1)}.
+\end{equation}
+Обозначим через $E_m(\bar\eta)_2$ наилучшее приближение функции $\bar\eta$ в $L^2(-1,1)$ тригонометрическими полиномами вида $T_m(x)=a_0+\sum_{k=1}^{m}a_k\cos(\pi kx)+b_k\sin(\pi kx)$. Поскольку $S_{N-1}(\bar\eta,x)$ является полиномом наилучшего приближения к функции $\bar\eta$ в $L^2(-1,1)$, то из \eqref{equ102-5.14}, с учетом того, что функция $\bar\eta$ нечетная, имеем
+\begin{equation}\label{equ102-5.15}
+\sigma_N^\varphi(\eta)=\frac12\|R_N(\bar\eta)\|_{L^2(-1,1)}=\frac12E_{N-1}(\bar\eta)_2.
+\end{equation}
+Из теоремы \ref{equtheo4} и равенства \eqref{equ102-5.15} непосредственно вытекает
+\begin{theorem}\label{equtheo6}
+  При соблюдении условий теоремы \ref{equ102-th1} имеют место соотношения
+  \begin{equation}\label{equ102-5.16}
+  \sigma_N^\varphi(\eta)=\frac12E_{N-1}(\bar\eta)_2, \quad
+\|C_N(q)-\bar C_N(q)\|_N\le \frac{\lambda E_{N-1}(\bar\eta)_2} {\sqrt{2}(\sqrt{2}-h\lambda)}.
+\end{equation}
+\end{theorem}
+
+
+
+
+
+
+\section{О величинах  $\kappa_\varphi$ и $\sigma_N^\varphi(\eta)$ для модифицированныx полиномов Чебышева первого рода}
+
+
+Рассмотрим систему $\varphi=\bar T$, составленную из модифицированных полиномов Чебышева первого рода:
+ \begin{equation}\label{equ102-6.1}
+1,\quad \bar T_k(x)=\sqrt{2}\cos(k\arccos(2x-1)), \quad k=1,2,\ldots.
+\end{equation}
+ Полиномы \eqref{equ102-6.1} образуют ортонормированную   с весом  $\rho(x)=\frac1\pi(x(1-x))^{-\frac12}$ систему на $(0,1)$. Прежде, чем  исследовать полиномы $\bar T_{r,k}(x)$, порожденные системой $\bar T$, нам будет удобно рассмотреть аналогичную проблему для классических  полиномов Чебышева
+ \begin{equation}\label{equ102-6.2}
+\frac{1}{\sqrt{2}},\quad  T_k(x)=\cos(k\arccos(x)), \quad k=1,2,\ldots,
+\end{equation}
+ортонормированных на $(-1,1)$ c весом  $\mu(x)=\frac2\pi(1-x^2)^{-\frac12}$.
+   Как хорошо известно \cite{laplas-Sege}, система полиномов Чебышева \eqref{equ102-6.2} полна в $L_\mu^2(-1,1)$.   Эта система порождает на $[-1,1]$ систему полиномов $T_{r,k}(x)$ $(k=0,1,\ldots)$, определенных равенствами
+
+  \begin{equation}\label{equ102-6.3}
+T_{r,k}(x) =\frac{(x+1)^k}{k!}, \quad k=0,1,\ldots, r-1,
+\end{equation}
+
+  \begin{equation}\label{equ102-6.4}
+ T_{r,r}(x) =\frac{(x+1)^r}{\sqrt{2}r!},\quad T_{r,r+k}(x) =\frac{1}{(r-1)!}\int\limits_{-1}^x(x-t)^{r-1}T_k(t)dt, \, k=1,2\ldots.
+\end{equation}
+Из теоремы \ref{soblegstate1} непосредственно вытекает
+\begin{corollary}\label{equcor5}
+  Система полиномов $\{T_{r,k}(x)\}_{k=0}^\infty$, порожденная системой ортонормированных полиномов Чебышева \eqref{equ102-6.2} посредством равенств \eqref{equ102-6.3} и \eqref{equ102-6.4}, полна  в $W^r_{L^2_\mu(-1,1)}$ и ортонормирована относительно скалярного произведения
+\begin{equation}\label{equ102-6.5}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(-1)g^{(\nu)}(-1)+\int_{-1}^{1} f^{(r)}(t)g^{(r)}(t)\mu(t) dt.
+\end{equation}
+\end{corollary}
+
+Ряд Фурье для системы   $\{T_{r,k}(x)\}_{k=0}^\infty$ приобретает вид
+\begin{equation}\label{equ102-6.6}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^\infty \hat f_{r,k}T_{r,k}(x),
+\end{equation}
+где
+  \begin{equation}\label{equ102-6.7}
+\hat f_{r,r}=\frac{1}{\sqrt{2}}\int_{-1}^1 f^{(r)}(t)\mu(t)dt,\quad \hat f_{r,r+j}=\int_{-1}^1 f^{(r)}(t)T_{j}(t)\mu(t)dt\quad(j\ge1).
+\end{equation}
+
+\begin{corollary}\label{equcor6}
+ Если $f(x)\in W^r_{L^2_\mu(-1,1)}$, то ряд Фурье (смешанный ряд) \eqref{equ102-6.6} сходится к функции $f(x)$ равномерно относительно $x\in[-1,1]$.
+\end{corollary}
+%\begin{proof}
+% Так как $\frac{1}{\mu(x)}\in L(-1,1)$, то утверждение следствия 5 вытекает из теоремы \textbf{ B} и следствия 4.
+%\end{proof}
+
+\begin{remark}
+В работе \cite{equ102-Shar20} показано, что утверждение следствия \ref{equcor5} допускает  усиление, состоящее в том, что  условие $f(x)\in W^r_{L^2_\mu(-1,1)}$ можно заменить более слабым требованием $f(x)\in W^r_{L^1_\mu(-1,1)}$, которое уже носит окончательный характер.
+\end{remark}
+
+В работах \cite{equ102-Shar20}, \cite{equ102-Shar25}, в частности, доказано
+\begin{corollary} Имеют место равенства
+\begin{equation}\label{equ102-6.8}
+T_{1,k+1}(x)={T_{k+1}(x)\over2(k+1)}- {T_{k-1}(x)\over2(k-1)} -\frac{(-1)^k}{k^2-1}\quad (k\ge 2),
+\end{equation}
+\begin{equation}\label{equ102-6.9}
+T_{1,0}(x)=1, \quad T_{1,1}(x)=\frac{1+x}{\sqrt{2}}, \quad T_{1,2}(x)=\frac12(x^2-1).
+\end{equation}
+\end{corollary}
+ Вернемся теперь к системе \eqref{equ102-6.1}. Она порождает на $[0,1]$ систему полиномов $\bar T_{r,k}(x)$ $(k=0,1,\ldots)$, определенных равенствами
+
+  \begin{equation}\label{equ102-6.10}
+\bar T_{r,k}(x) =\frac{x^k}{k!}, \quad k=0,1,\ldots, r,
+\end{equation}
+
+  \begin{equation}\label{equ102-6.11}
+\quad \bar T_{r,r+k}(x) =\frac{1}{(r-1)!}\int\limits_{0}^x(x-t)^{r-1}\bar T_k(t)dt, \, k=1,2\ldots.
+\end{equation}
+Сопоставляя \eqref{equ102-6.4} c \eqref{equ102-6.11}, при $k\ge1$ имеем
+\begin{equation}\label{equ102-6.12}
+\bar T_{r,r+k}(x) =\frac{\sqrt{2}}{(r-1)!}\int\limits_{0}^x(x-t)^{r-1}T_k(2t-1)dt=2^{\frac12-r}T_{r,r+k}(2x-1).
+\end{equation}
+Из равенств  \eqref{equ102-6.9}, \eqref{equ102-6.12} и следствия \ref{equcor6} выводим
+\begin{corollary} Имеют место равенства
+\begin{equation}\label{equ102-6.13}
+\bar T_{1,k+1}(x)={\bar T_{k+1}(x)\over4(k+1)}- {\bar T_{k-1}(x)\over4(k-1)} -\frac{(-1)^k2^{-\frac12}}{k^2-1}\quad (k\ge 2),
+\end{equation}
+\begin{equation}\label{equ102-6.14}
+\bar T_{1,0}(x)=1, \quad \bar T_{1,1}(x)=x, \quad \bar T_{1,2}(x)=\sqrt{2}x(x-1).
+\end{equation}
+\end{corollary}
+\begin{theorem}\label{equtheo7}
+  Пусть $\bar T=\{\bar T_k(x)\}_{k=0}^\infty$ -- система  \eqref{equ102-6.1}, для которой  $\{\bar T_{1,k}(x)\}_{k=0}^\infty$  является порожденной посредством равенств \eqref{equ102-6.10}, \eqref{equ102-6.11} с $r=1$. Тогда   имеют место равенства
+ $$
+\kappa_{\bar T}=\left(\frac{11}{32}+\frac{\pi^2}{48}+\frac12\sum_{k=2}^\infty\frac{1}{(k^2-1)^2}\right)^\frac12,
+$$
+$$
+(\sigma^{\bar T}_N(\eta))^2=
+$$
+$$
+\left(\sum_{j=N+1}^{\infty}\hat\eta_{1,j}\frac{(-1)^j2^{-\frac12}}{(j-1)^2-1}\right)^2+
+{(\hat\eta_{1,N+1})^2\over16(N-1)^2} +{(\hat\eta_{1,N+2})^2\over16N^2}
++\sum_{j=N+1}^{\infty}\frac{(\hat\eta_{1,j}-\hat\eta_{1,j+2})^2}{16j^2}.
+$$
+\end{theorem}
+%\begin{proof}
+%Пользуясь следствием 7, имеем
+% \begin{equation}\label{6.15}
+%\kappa^2_{\bar T}=\sum_{k=1}^{\infty}\int_{0}^{1}(\bar T_{1,k}(x))^2\rho(x)dx=
+%\sum_{k=1}^{\infty}\frac1\pi\int_{0}^{1}\frac{(\bar T_{1,k}(x))^2dx}{\sqrt{x(1-x)}},
+% \end{equation}
+%где
+%\begin{equation}\label{6.16}
+%\frac1\pi\int_{0}^{1}\frac{(\bar T_{1,1}(x))^2}{\sqrt{x(1-x)}}=\frac1\pi\int_{0}^{1}\frac{x^2dx}{\sqrt{x(1-x)}}=\frac38,
+% \end{equation}
+%\begin{equation}\label{6.17}
+%\frac1\pi\int_{0}^{1}\frac{(\bar T_{1,2}(x))^2}{\sqrt{x(1-x)}}=\frac1\pi\int_{0}^{1}\frac{x^2(1-x)^2dx}{\sqrt{x(1-x)}}=\frac{3}{64},
+% \end{equation}
+%\begin{equation}\label{6.18}
+% \int_{0}^{1}(\bar T_{1,k+1}(x))^2\rho(x)dx=\int\limits_{0}^{1}\left[{\bar T_{k+1}(x)\over4(k+1)}- {\bar T_{k-1}(x)\over4(k-1)} -\frac{(-1)^k2^{-\frac12}}{k^2-1} \right]^2\rho(x)dx.
+% \end{equation}
+%С другой стороны, пользуясь ортонормированностью с весом $\rho(x)$ системы $\bar T$,  имеем ($k\ge2$)
+%$$
+%\int\limits_{0}^{1}\left[{\bar T_{k+1}(x)\over4(k+1)}- {\bar T_{k-1}(x)\over4(k-1)} -\frac{(-1)^k2^{-\frac12}}{k^2-1} \right]^2\rho(x)dx=
+%$$
+%\begin{equation}\label{6.19}
+%{1\over16(k+1)^2}+ {1\over16(k-1)^2} +\frac{2^{-1}}{k^2-1} .
+% \end{equation}
+%Из \eqref{6.18} и \eqref{6.19}, пользуясь равенством $\sum_{n=1}^{\infty}{1\over n^2}=\pi^2/6$, находим
+%$$
+%\sum_{k=2}^{\infty}\int_{0}^{1}(\bar T_{1,k+1}(x))^2\rho(x)dx=\sum_{k=2}^{\infty}\left[{1\over16(k+1)^2}+ {1\over16(k-1)^2} +\frac{2^{-1}}{k^2-1}\right]
+%$$
+%\begin{equation}\label{6.20}
+%=\frac{\pi^2}{48}-\frac{1}{16}(1+\frac14)+\frac12\sum_{k=2}^{\infty}\frac{1}{k^2-1}.
+% \end{equation}
+%Сопоставляя \eqref{6.15} -- \eqref{6.17} с \eqref{6.20}, убеждаемся в справедливости первого утверждения теоремы 6.
+%
+%
+%Перейдем к рассмотрению величины
+%\begin{equation}\label{6.21}
+%\sigma^{\bar T}_N(\eta)=\left(\int_{0}^{1}(V_N^{\bar T}(\eta,t))^2\rho(t)dt\right)^\frac12 \quad(\rho(t)=\frac1\pi(t(1-t))^{-\frac12}),
+%\end{equation}
+%где $V_N^{\bar T}(\eta,t)=\sum_{j=N+1}^{\infty}\hat\eta_{1,j}\bar T_{1,j}(t)$,
+%$\hat \eta_{1,k}=\int_{0}^1 \eta'(t)\bar T_{k-1}(t)\rho(t)dt$.
+%Воспользовавшись равенством \eqref{equ102-6.13}, мы можем записать
+%$$
+%V_N^{\bar T}(\eta,t)=
+%-\left(\sum_{j=N+1}^{\infty}\hat\eta_{1,j}\frac{(-1)^{j-1}2^{-\frac12}}{(j-1)^2-1}\right)\bar T_0(x)
+%$$
+%\begin{equation}\label{6.22}
+%-{\hat\eta_{1,N+1}\over4(N-1)}\bar T_{N-1}(x)-{\hat\eta_{1,N+2}\over4N}\bar T_{N}(x)
+%-\sum_{j=N+1}^{\infty}\frac{\hat\eta_{1,j}-\hat\eta_{1,j+2}}{4j}\bar T_{j}(x).
+%\end{equation}
+%Поскольку система \eqref{equ102-6.1} ортонормирована с весом $\rho(x)=\frac1\pi (x(1-x))^{-1/2}$, то из   \eqref{6.22} имеем
+%$$
+%\int_{0}^{1}(V_N^{\bar T}(\eta,t))^2\rho(t)dt=
+%\left(\sum_{j=N+1}^{\infty}\hat\eta_{1,j}\frac{(-1)^{j-1}2^{-\frac12}}{(j-1)^2-1}\right)^2+
+%$$
+%\begin{equation}\label{6.23}
+%{(\hat\eta_{1,N+1})^2\over16(N-1)^2} +{(\hat\eta_{1,N+2})^2\over16N^2}
+%+\sum_{j=N+1}^{\infty}\frac{(\hat\eta_{1,j}-\hat\eta_{1,j+2})^2}{16j^2}.
+%\end{equation}
+%Из \eqref{6.21} и \eqref{6.23} вытекает справедливость второго утверждения теоремы 6.
+%\end{proof}
+
+Обозначим через $E^\rho_ m(f)$ -- наилучшее приближение функции $f\in L^2_\rho(0,1)$ алгебраическими полиномами степени $m$. Тогда из теоремы \ref{equtheo7} мы можем вывести следующее утверждение.
+\begin{corollary}
+  Пусть $\bar T=\{\bar T_k(x)\}_{k=0}^\infty$ -- система  \eqref{equ102-6.1}, для которой  $\{\bar T_{1,k}(x)\}_{k=0}^\infty$  является порожденной посредством равенств \eqref{equ102-6.10}, \eqref{equ102-6.11} с $r=1$. Тогда   имеют место неравенства
+$$
+\sigma^{\bar T}_N(\eta)\le I_NE^\rho_ {N-1}(\eta'),\quad\|C_N(q)-\bar C_N(q)\|_N\le \frac{\lambda I_N}{1-h\kappa_{\bar T}\lambda}E^\rho_ {N-1}(\eta'),
+$$
+где
+$$
+I_N=\left(\frac{1}{4(N-1)^2}+\frac12\sum_{j=N}^{\infty}\frac{1}{(j^2-1)^2}\right)^\frac12.
+ $$
+\end{corollary}
+%\begin{proof}
+%Имеем
+%$$
+%\left(\sum_{j=N+1}^{\infty}\hat\eta_{1,j}\frac{(-1)^j2^{-\frac12}}{(j-1)^2-1}\right)^2\le
+%$$
+%\begin{equation}\label{6.24}
+%\frac12 \sum_{j=N+1}^{\infty}(\hat\eta_{1,j})^2\sum_{j=N}^{\infty}\frac{1}{(j^2-1)^2}=(E^\rho_ {N-1}(\eta'))^2\frac12\sum_{j=N}^{\infty}\frac{1}{(j^2-1)^2},
+%\end{equation}
+%$$
+%{(\hat\eta_{1,N+1})^2\over16(N-1)^2} +{(\hat\eta_{1,N+2})^2\over16N^2}
+%+\sum_{j=N+1}^{\infty}\frac{(\hat\eta_{1,j}-\hat\eta_{1,j+2})^2}{16j^2}\le
+%$$
+%$$
+%{3(\hat\eta_{1,N+1})^2\over16(N-1)^2} +{3(\hat\eta_{1,N+2})^2\over16(N-1)^2}+\sum_{j=N+3}^{\infty}\frac{(\hat\eta_{1,j})^2}{8j^2}
+%+\sum_{j=N+3}^{\infty}\frac{(\hat\eta_{1,j})^2}{8(j-2)^2}\le
+%$$
+%\begin{equation}\label{6.25}
+%\frac1{4(N-1)^2}\sum_{j=N+1}^{\infty}(\hat\eta_{1,j})^2=\frac{(E^\rho_ {N-1}(\eta'))^2}{4(N-1)^2}
+%\end{equation}
+%Первое утверждение следствия 8 вытекает из  \eqref{6.21}, \eqref{6.23} -- \eqref{6.25}, а второе выводим из первого из них,  первого утверждения теорем 1 и теоремы 6.
+%\end{proof}
+% 

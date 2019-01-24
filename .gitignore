@@ -1,0 +1,12 @@
+*
+!*/
+!*.tex
+!*.cls
+!*.clo
+!*.sty
+!*.gitignore
+!*.jpg
+!*.bmp
+!*.png
+!*.docx
+!*.xlsx

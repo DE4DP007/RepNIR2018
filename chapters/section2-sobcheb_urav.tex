@@ -1,0 +1,477 @@
+\chapter{Полиномы, ортогональные по Соболеву, ассоциированные с полиномами Чебышева первого рода и задача Коши для ОДУ }
+
+%Рассмотрены полиномы $T_{r,n}(x)$ $(n=0,1,\ldots)$, порожденные многочленами Чебышева $T_{n}(x)=\cos( n\arccos x)$, образующие ортонормированную систему по Соболеву относительно скалярного произведения
+%следующего вида $<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(-1)g^{(\nu)}(-1)+\int_{-1}^{1}f^{(r)}(t)g^{(r)}(x)\mu(x)dx$,
+%где $\mu(x)=\frac2\pi(1-x^2)^{-\frac12}$. Для $T_{r,n}(x)$ $(n=0,1,\ldots)$  установлена связь с многочленами Чебышева $T_{n}(x)$ и получены явные представления, которые могут быть использованы при вычислении значений полиномов $T_{r,n}(x)$ и исследовании их асимптотических свойств. Показано, что суммы Фурье по полиномам $T_{r,n}(x)$ $(n=0,1,\ldots)$ является удобным и весьма эффективным инструментом приближенного решения задачи Коши для систем обыкновенных дифференциальных уравнений (ОДУ).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\section{Введение}
+Интерес к теории полиномов, ортогональных относительно скалярных произведений, в которых присутствуют одна или несколько точек  с дискретными массами,  в последнее время интенсивно растет  (см. \cite{sobcheb_urav-KwonLittl1,sobcheb_urav- KwonLittl2,sobcheb_urav-MarcelAlfaroRezola,sobcheb_urav-IserKoch,sobcheb_urav-Meijer,sobcheb_urav-Lopez1995,
+sobcheb_urav-MarcelXu,sobcheb_urav-Shar2016}  и цитированную там литературу).
+ Это новое направление принято обозначать словами: <<полиномы, ортогональные по Соболеву>>. Не ослабивающее внимание специалистов  к этому направлению теории ортогональных полиномов можно объяснить в том числе и тем обстоятельством, что ряды Фурье по полиномам, ортогональным по Соболеву, оказались естественным и весьма удобным инструментом для представления решений  дифференциальных (разностных) уравнений. Это можно показать, в частности, на примере  задачи Коши для  дифференциального уравнения
+\begin{equation}\label{sobcheb-urav-1.1}
+F(x,y,y',\ldots,y^{(r)})=0
+ \end{equation}
+с начальными условиями $y^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$.  Наряду с различными сеточными методами, для решения этой задачи часто применяют так называемые спектральные методы
+\cite{sobcheb_urav-Tref1,sobcheb_urav-Tref2,sobcheb_urav-SolDmEg,sobcheb_urav-Pash,sobcheb_urav-Arush2010,
+sobcheb_urav-Arush2013,sobcheb_urav-Arush2014,sobcheb_urav-Lukom2016}. Напомним, что суть спектрального метода решения задачи Коши  для ОДУ \eqref{sobcheb-urav-1.1} заключается в том, что в первую очередь искомое решение $y(x)$ представляется в виде ряда Фурье
+\begin{equation}\label{sobcheb-urav-1.2}
+ y(x)=\sum_{k=0}^\infty \hat y_k\psi_k(x)
+ \end{equation}
+по подходящей ортонормированной системе $\{\psi_k(x)\}_{k=0}^\infty$ (чаще всего в качестве $\{\psi_k(x)\}_{k=0}^\infty$ используют    тригонометрическую систему, ортогональные полиномы, вэйвлеты, корневые функции того или иного дифференциального оператора  и некоторые другие). На втором этапе осуществляется подстановка вместо $y(x)$ ряда \eqref{sobcheb-urav-1.2} в уравнение \eqref{sobcheb-urav-1.1}. Это приводит к системе уравнений относительно неизвестных коэффициентов $\hat y_k$ ($k=0,1,\ldots$). На третьем этапе требуется решить эту систему с учетом начальных условий  $y^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$ исходной задачи Коши.
+Одна из основных трудностей, которая возникает на этом этапе, состоит в том, чтобы
+выбрать такой ортонормированный базис $\{\psi_k(x)\}_{k=0}^\infty$, для которого искомое решение $y(x)$ уравнения \eqref{sobcheb-urav-1.1}, представленное в виде ряда  \eqref{sobcheb-urav-1.2}, удовлетворяло бы начальным условиям $y^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$. Более того, поскольку в результате решения системы уранений относительно неизвестных коэффициентов $\hat y_k$  будет найдено только конечное их число с $k=0,1,\ldots, n$, то весьма важно, чтобы частичная сумма ряда \eqref{sobcheb-urav-1.2} вида $ y_n(x)=\sum_{k=0}^n\hat y_k\psi_k(x)$,
+ будучи приближенным решением рассматриваемой задачи Коши, также удовлетворяла начальным условиям $y_n^{(k)}(-1)=y_k$, $k=0,1,\ldots,r-1$. Покажем, что  базис $\{\psi_k(x)=T_{r,k}(x)\}_{k=0}^\infty$, состоящий из полиномов
+$T_{r,k}(x)$, ортонормированных по Соболеву относительно скалярного произведения
+\begin{equation}\label{sobcheb-urav-1.3}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(-1)g^{(\nu)}(-1)+\int_{-1}^{1}f^{(r)}(t)g^{(r)}(x)\mu(x)dx,
+\end{equation}
+где $\mu(x)=\frac2\pi(1-x^2)^{-\frac12}$ и порожденных многочленами Чебышева  $T_{k}(x)$ посредством равенств
+   \begin{equation}\label{sobcheb-urav-1.4}
+T_{r,k}(x) =\frac{(x+1)^k}{k!}, \quad k=0,1,\ldots, r-1,
+\end{equation}
+  \begin{equation}\label{sobcheb-urav-1.5}
+ T_{r,r}(x) =\frac{(x+1)^r}{\sqrt{2}r!},\quad T_{r,r+n}(x) =\frac{1}{(r-1)!}\int\limits_{-1}^x(x-t)^{r-1}T_{n}dt, \quad n=1,\ldots.
+\end{equation}
+   обладает указанными свойствами. С этой целью заметим, что ряд Фурье \eqref{sobcheb-urav-1.2}, в случае, когда $\{\psi_k(x)=T_{r,k}(x)\}_{k=0}^\infty$, приобретает, как показано ниже, следующий вид
+   \begin{equation}\label{sobcheb-urav-1.6}
+y(x)= \sum_{k=0}^{r-1} y^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^\infty \hat y_{r,k}T_{r,k}(x),
+\end{equation}
+где
+  \begin{equation}\label{sobcheb-urav-1.7}
+ \hat y_{r,k}=\int_{-1}^1 y^{(r)}(t)T_{k-r}(t)\mu(t)dt.
+\end{equation}
+С другой стороны, из определения \eqref{sobcheb-urav-1.5} вытекает, что $(T_{r,k}(-1))^{(\nu)}=0$ для всех $0\le\nu\le r-1$, поэтому функция $y(x)$, представленная в виде ряда \eqref{sobcheb-urav-1.6}, так и частичная  сумма этого ряда вида
+ \begin{equation}\label{sobcheb-urav-1.8}
+y_n(x)= \sum_{k=0}^{r-1} y^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^n \hat y_{r,k}T_{r,k}(x)
+\end{equation}
+удовлетворяют начальным условиям задачи Коши для уравнения \eqref{sobcheb-urav-1.1}.
+
+Таким образом, полиномы, ортогональные по Соболеву относительно скалярного произведения \eqref{sobcheb-urav-1.3}, тесно связаны с задачей Коши для уравнения \eqref{sobcheb-urav-1.1}.
+
+         Следует отметить, что смешанные ряды вида \eqref{sobcheb-urav-1.6}, ассоциированные с классическими ортогональными полиномами, являлись основным объектом исследования работ  \cite{sobcheb_urav-Shar11} -- \cite{sobcheb_urav-Shar18}.
+Полиномы $T_{r,k}(x)$ (и их обобщения), определямые равенствами типа \eqref{sobcheb-urav-1.4} и \eqref{sobcheb-urav-1.5}, в этих работах существенно использовались в качестве вспомогательного аппарата при исследовании вопросов сходимости смешанных рядов вида \eqref{sobcheb-urav-1.6},  не отмечая при  этом свойство их ортогональности по Соболеву относительно скалярных произведений типа \eqref{sobcheb-urav-1.3}. В настоящей работе, напротив, смешанные ряды будут исталковываться как ряды Фурье по полиномам, ортогональным по Соболеву. С точки зрения геометрии гильбертовых пространств общая идея, которая лежит в основе построения смешанных рядов, заключается в следующем. Предположим, что система функций  $\left\{\varphi_k(x)\right\}$ ортонормирована  на $(a,b)$  c весом   $\rho(x)$, т.е.
+ \begin{equation}\label{sobcheb-urav-1.9}
+\int\limits_a^b\varphi_k(x)\varphi_l(x)\rho(x)dx=\delta_{kl},
+\end{equation}
+где $\delta_{kl}$ -- символ Кронекера. Через $L^p_\rho(a,b)$ обозначим пространство  функций $f(x)$, измеримых  на  $(a,b)$, для которых
+ \begin{equation*}
+\int\limits_a^b|f(x)|^p\rho(x)dx<\infty.
+\end{equation*}
+Если $\rho(x)\equiv1$, то будем писать $L^p_\rho(a,b)=L^p(a,b)$ и $L(a,b)=L^1(a,b)$.
+Из \eqref{sobcheb-urav-1.9} следует, что $\varphi_k(x)\in L^2_\rho(a,b)$ $(k=0,1,\ldots)$. Мы добавим к этому условию еще одно, считая, что $\varphi_k(x)\in L(a,b)$ $(k=0,1,\ldots)$. Тогда мы можем определить следующие порожденные системой $\{\varphi_k(x)\}$ функции
+ \begin{equation}\label{sobcheb-urav-1.10}
+\varphi_{r,r+k}(x) =\frac{1}{(r-1)!}\int\limits_a^x(x-t)^{r-1}\varphi_{k}(t)dt, \quad k=0,1,\ldots.
+\end{equation}
+ Кроме того, определим конечный набор функций
+  \begin{equation}\label{sobcheb-urav-1.11}
+\varphi_{r,k}(x) =\frac{(x-a)^k}{k!}, \quad k=0,1,\ldots, r-1.
+\end{equation}
+
+ Из \eqref{sobcheb-urav-1.10} и \eqref{sobcheb-urav-1.11} следует, что для п.в. $x\in (a,b)$
+ \begin{equation}\label{sobcheb-urav-1.12}
+(\varphi_{r,k}(x))^{(\nu)} =\begin{cases}\varphi_{r-\nu,k-\nu}(x),&\text{если $0\le\nu\le r-1$, $r\le k$,}\\
+\varphi_{k-r}(x),&\text{если  $\nu=r\le k$,}\\
+\varphi_{r-\nu,k-\nu}(x),&\text{если $\nu\le k< r$,}\\
+0,&\text{если $k< \nu\le r-1$}.
+  \end{cases}
+\end{equation}
+Через $W^r_{L^p_\rho(a,b)}$ обозначим пространство Соболева $W^r_{L^p_\rho(a,b)}$, состоящее из функций $f(x)$, непрерывно дифференцируемых на $[a,b]$ $r-1$ раз, причем $f^{(r-1)}(x)$ абсолютно непрерывна на $[a,b]$  и $f^{(r)}(x)\in L^p_\rho(a,b)$.
+Скалярное произведение в пространстве $W^r_{L^2_\rho(a,b)}$ определим с помощью равенства
+\begin{equation}\label{sobcheb-urav-1.13}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(a)g^{(\nu)}(a)+\int_{a}^{b} f^{(r)}(t)g^{(r)}(t)\rho(t) dt.
+\end{equation}
+Тогда, пользуясь определением функций  $\varphi_{r,k}(x)$ (см. \eqref{sobcheb-urav-1.10} и \eqref{sobcheb-urav-1.11}) и равенством  \eqref{sobcheb-urav-1.12} нетрудно увидеть(см. \ref{sobcheb-uravtheo1}),  что система $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ является ортонормированной в пространстве $W^r_{L^2_\rho(a,b)}$.  Мы будем называть систему $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ \textit{ортонормированной по Соболеву } относительно скалярного произведения \eqref{sobcheb-urav-1.13} и  \textit{порожденной} ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$.
+В дальнейшем будет показано (см.\S2),  что ряд Фурье функции $f(x)\in W^r_{L^2_\rho(a,b)}$ по системе  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ имеет смешанный характер, а, более точно, имеет следующий вид
+  \begin{equation}\label{sobcheb-urav-1.14}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^\infty \hat f_{r,k}\varphi_{r,k}(x),
+\end{equation}
+где
+  \begin{equation}\label{sobcheb-urav-1.15}
+ \hat f_{r,k}=\int\limits_a^b f^{(r)}(t) \varphi^{(r)}_{r,k}(t)\rho(t)dt=\int\limits_a^b f^{(r)}(t) \varphi_{k-r}(t)\rho(t)dt,
+\end{equation}
+поэтому ряд  вида \eqref{sobcheb-urav-1.14} будем (следуя
+\cite{sobcheb_urav-Shar11,sobcheb_urav-Shar12,sobcheb_urav-Shar13,sobcheb_urav-Shar14,sobcheb_urav-Shar15,
+sobcheb_urav-Shar16})  называть \textit{смешанным рядом} по  системе $\{\varphi_{k}(x)\}_{k=0}^\infty$, считая это название условным и сокращенным обозначением полного названия: <<\textit{ряд Фурье по системе  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, ортонормированной по Соболеву, порожденной ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$}>>.
+
+
+
+В цитированных выше   работах  \cite{sobcheb_urav-Shar11,sobcheb_urav-Shar12,sobcheb_urav-Shar13,sobcheb_urav-Shar14,sobcheb_urav-Shar15,
+sobcheb_urav-Shar16,sobcheb_urav-Shar17,sobcheb_urav-Shar18} (см. также  \cite{sobcheb_urav-Shar19})   были рассмотрены некоторые частные случаи ортонормированных систем функций вида $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, порожденных классическими ортонормированными системами Якоби, Лежандра, Чебышева, Лагерра и Хаара. С другой стороны, как уже отмечалось, в последние годы интенсивное развитие получила  теория полиномов, ортогональных относительно различных скалярных произведений соболевского типа (полиномы, ортогональные по Соболеву). Скалярные произведения соболевского типа характеризуются тем, что они включают в себя слагаемые, которые <<контролируют>>, поведение соответствующих ортогональных полиномов  в нескольких заданных точках числовой оси. Например, в некоторых случаях оказывается так, что полиномы, ортогональные по Соболеву на интервале $(a,b)$, могут иметь нули, совпадающие с одним или с обоими концами этого интервала. Это обстоятельство имеет важное значение для некоторых приложений, в которых требуется, чтобы значения  частичных сумм ряда Фурье функции $f(x)$ по рассматриваемой системе ортогональных полиномов совпали в концах интервала $(a,b)$ со значениями $f(a)$ и $f(b)$.  Заметим, что обычные ортогональные с положительным на  $(a,b)$ весом полиномы этим важным свойством не обладают. Скалярное произведение \eqref{sobcheb-urav-1.13}, рассматриваемое в настоящей работе, имеет одну особую точку, а именно, точку $a$, в окрестности которой <<контролируется>>, поведение функций $\varphi_{r,k}(x)$, ортогональных по Соболеву и порожденных исходной ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенства \eqref{sobcheb-urav-1.10}.
+
+
+Отметим некоторые важные свойства смешанного ряда \eqref{sobcheb-urav-1.14}, непосредственно вытекающие из \eqref{sobcheb-urav-1.12}. Первое из них связано с дифференциальным свойством смешанного ряда, а именно, если $r>1$, то в результате почленного дифференцирования смешанного ряда \eqref{sobcheb-urav-1.14} мы получим смешанный ряд для производной $f'(x)$, соответствующий случаю, когда вместо $r$ фигурирует $r-1$, другими словами
+\begin{equation}\label{sobcheb-urav-1.16}
+f'(x)\sim  \sum_{k=1}^\infty f'_{r-1,k-1}\varphi_{r-1,k-1}(x)=\sum_{k=1}^\infty (\hat f_{r,k}\varphi_{r,k}(x))'.
+\end{equation}
+Второе свойство связано c почленным интегрированием с переменным верхним пределом и имеет вид
+\begin{equation}\label{sobcheb-urav-1.17}
+\int\limits_a^xf'(t)dt\sim \sum_{k=1}^\infty f'_{r-1,k-1}\int\limits_a^x\varphi_{r-1,k-1}(t)dt=\sum_{k=1}^\infty \hat f_{r,k}\varphi_{r,k}(x).
+\end{equation}
+Важное значение имеет свойство  смешанного ряда \eqref{sobcheb-urav-1.14}, котрое заключается в том, что его частичная сумма вида
+\begin{equation}\label{sobcheb-urav-1.18}
+Y_{r,N}(f,x)=\sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^{N} \hat f_{r,k}\varphi_{r,k}(x)
+\end{equation}
+ при   $r\le N$  совпадает с исходной функцией $f(x)$   в точке $x=a$ $r$-кратно , т.е.
+\begin{equation}\label{sobcheb-urav-1.19}
+(Y_{r,N}(f,x))^{(\nu)}_{x=a}=f^{(\nu)}(a)\quad (0\le\nu\le r-1).
+\end{equation}
+Кроме того, из \eqref{sobcheb-urav-1.12} и \eqref{sobcheb-urav-1.18} следует, что $(0\le\nu\le r-1)$
+\begin{equation}\label{sobcheb-urav-1.20}
+ Y_{r,N}^{(\nu)}(f,x)=\sum_{n=0}^{r-1-\nu} f^{(n+\nu)}(a)\frac{(x-a)^n}{n!}+ \sum_{n=r-\nu}^{N-\nu} f_{r-\nu,n}^{(\nu)}\varphi_{r-\nu,n}(x)=Y_{r-\nu,N-\nu}(f^{(\nu)},x),
+ \end{equation}
+отсюда, в свою очередь, выводим $(0\le\nu\le r-2)$
+ $$
+f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)= \frac{1}{(r-\nu-2)!}\int_a^x (x-t)^{r-\nu-2}(f^{(r-1)}(t)-Y_{r,N}^{(r-1)}(f,t))dt=
+$$
+  \begin{equation}\label{sobcheb-urav-1.21}
+\frac{1}{(r-\nu-2)!}\int_a^x (x-t)^{r-\nu-2}(f^{(r-1)}(t)-Y_{1,N-r+1}(f^{(r-1)},t))dt.
+ \end{equation}
+
+
+  В \cite{sobcheb_urav-Shar11,sobcheb_urav-Shar12,sobcheb_urav-Shar13,sobcheb_urav-Shar14,sobcheb_urav-Shar15,
+sobcheb_urav-Shar16,sobcheb_urav-Shar17,sobcheb_urav-Shar18}, воспользовавшись равенствами типа \eqref{sobcheb-urav-1.20} и \eqref{sobcheb-urav-1.21}, было показано, что частичные суммы смешанных рядов по классическим ортогональным полиномами, в отличие от сумм Фурье по этим же полиномам, успешно могут быть использованы в задачах, в которых требуется одновременно приближать дифференцируемую функцию и ее несколько производных. Как было показано выше, такие задачи непосредственно возникают, например, в связи с решением краевых задач для дифференциальных уравнений спектральными методами.  Основное внимание  в \cite{sobcheb_urav-Shar11,sobcheb_urav-Shar12,sobcheb_urav-Shar13,sobcheb_urav-Shar14,sobcheb_urav-Shar15,
+sobcheb_urav-Shar16}  уделялось исследованию аппроксимативных свойств смешанных рядов по ультрасферическим полиномам Якоби  $P_n^{\alpha,\alpha}(x)$, тогда как в работе \cite{sobcheb_urav-Shar18} были найдены условия на параметры $\alpha$ и $\beta$, которые обеспечивают равномерную сходимость смешанных рядов по общим полиномам Якоби $P_n^{\alpha,\beta}(x)$ с $\alpha,\beta>-1$.
+
+   В связи с отмеченными выше и рядом других  задач, в которых полиномы, ортогональные по Соболеву, предстают перед нами как естественный и эффективный инструмент для их решения, возникают важные задачи об изучении различных  свойств самых этих полиномов. Наиболее трудными из них, как это и бывает в теории ортогональных полиномов, являются задачи, связанные с их асимптотическим поведением.   В связи с этой проблемой  отметим  работу
+\cite{sobcheb_urav-Lopez1995}, в которой, используя  идеи и технику А.\,А. Гончара \cite{sobcheb_urav-Gonchar1975}, исследована задача о сравнительной асимптотике полиномов, ортогональных относительно скалярного произведения типа  Соболева с дискретными массами.
+
+Одной из целей настоящей статьи является получение различных выражений для полиномов $T_{r,k}(x)$, ортогональных по Соболеву относительно скалярного произведения \eqref{sobcheb-urav-1.3} и порожденных полиномами  $T_{k}(x)$ посредством  равенства \eqref{sobcheb-urav-1.5}. Эти результаты могут быть использованы при вычислении значений полиномов  $T_{r,k}(x)$ и изучении асимптотических свойств полиномов $T_{r,k}(x)$ при $x\in[-1,1]$ и $n\to\infty$. А это, в свою очередь, позволит исследовать аппроксимативные свойства частичных сумм \eqref{sobcheb-urav-1.8} ряда Фурье \eqref{sobcheb-urav-1.6} по полиномам $T_{r,k}(x)$ для гладких и аналитических функций $y=y(x) $(решений дифференциального уравнения \eqref{sobcheb-urav-1.1}).
+
+Прежде, чем  перейти к исследованию свойств полиномов $T_{r,k}(x)$, мы рассмотрим некоторые общие свойства  функций $\varphi_{r,k}(x)$, $(k=0,1,\ldots)$, определенных равенствами \eqref{sobcheb-urav-1.10} и \eqref{sobcheb-urav-1.11},  ортонормированных по Соболеву относительно скалярного произведения \eqref{sobcheb-urav-1.13}.
+
+%\section{Некоторые результаты общего характера }
+%Рассмотрим сначала задачу о полноте в $W^r_{L^2_\rho(a,b)}$ системы $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, состоящей из функций, определенных равенствами   \eqref{sobcheb-urav-1.10} и \eqref{sobcheb-urav-1.11}.
+%\begin{theorem}\label{sobcheb-uravtheo1}
+% Предположим, что    функции $\varphi_k(x)$ $(k=0,1,\ldots)$ образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на  $(a,b)$. Тогда система $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{sobcheb-urav-1.10} и \eqref{sobcheb-urav-1.11}, полна  в $W^r_{L^2_\rho(a,b)}$ и ортонормирована относительно скалярного произведения \eqref{sobcheb-urav-1.13}.
+%\end{theorem}
+%%\begin{proof}
+%%Из равенства \eqref{sobcheb-urav-1.12} следует, что если $r\le k$ и $0\le\nu\le r-1$, то  $(\varphi_{r,k}(x))^{(\nu)}_{x=a}=0$, поэтому
+%%в силу \eqref{sobcheb-urav-1.9}, \eqref{sobcheb-urav-1.12},  имеем
+%%$$
+%%<\varphi_{r,k},\varphi_{r,l}>= \int_{a}^b(\varphi_{r,k}(x))^{(r)}(\varphi_{r,l}(x))^{(r)}\rho(x) dx=
+%%$$
+%%\begin{equation}\label{2.1}
+%%    \int_{a}^b\varphi_{k-r}(x)\varphi_{l-r}(x)\rho(x) dx=\delta_{kl},\quad k,l\ge r ,
+%%  \end{equation}
+%%  а из \eqref{sobcheb-urav-1.11} и \eqref{sobcheb-urav-1.12} имеем
+%%\begin{equation}\label{2.2}
+%%  <\varphi_{r,k},\varphi_{r,l}>=\sum_{\nu=0}^{r-1}(\varphi_{r,k}(x))^{(\nu)}|_{x=a}(\varphi_{r,l}(x))^{(\nu)}|_{x=a}=\delta_{kl},\quad k,l< r.
+%%  \end{equation}
+%%  Очевидно также, что
+%%  \begin{equation}\label{2.3}
+%%  <\varphi_{r,k},\varphi_{r,l}>=0,\quad \text{если}\quad k< r\le l\quad \text{или} \quad l< r\le k.
+%%  \end{equation}
+%% Это означает, что функции  $\varphi_{r,k}(t)\, (k=0,1,\ldots) $ образуют   в $W^r_{L^2_\rho(a,b)}$ ортонормированную  систему относительно скалярного произведения \eqref{sobcheb-urav-1.13}.  Остается убедиться в ее полноте в $W^r_{L^2_\rho(a,b)}$. С этой целью покажем, что если для некоторой функции $f=f(x)\in W^r_{L^2_\rho(a,b)}$ и для  всех $k=0,1,\ldots$ справедливы равенства $<f,\varphi_k>=0$, то $f(x)\equiv0$. В самом деле, если $k\le r-1$, то  $<f,\varphi_{r,k}>=f^{(k)}(a)$, поэтому с учетом того, что $<f,\varphi_{r,k}>=0$,  для нашей функции  $f(x)$ формула Тейлора приобретает вид
+%%\begin{equation}\label{2.4}
+%%f(x)={1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1} f^{(r)}(t)dt.
+%%     \end{equation}
+%%С другой стороны, для всех $k\ge r$ имеем
+%%$$
+%% 0= <f,\varphi_{r,k}>=\int_{a}^bf^{(r)}(x) (\varphi_{r,k}(x))^{(r)}\rho(x) dx=
+%%  \int_{a}^b f^{(r)}(x)\varphi_{k-r}(x) \rho(x) dx .
+%%$$
+%%Отсюда и из того, что $\varphi_m(x)$ ($m=0,1,\ldots$)  образуют в $L^2_{\rho}(a,b)$ полную ортонормированную систему имеем $f^{(r)}(x)=0$ почти всюду на $(a,b)$. Поэтому   $f(x)\equiv0$. Теорема 1 доказана.
+%%\
+%%\end{proof}
+%
+%\begin{theorem}\label{sobcheb-uravtheo2}
+%Предположим, что  $ \frac{1}{\rho(x)}\in L(a,b) $, а  функции $\varphi_k(x)$ $(k=0,1,\ldots)$  образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на $(a,b)$, $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ -- система, ортонормированная в $W^r_{L^2_\rho(a,b)}$ относительно скалярного произведения \eqref{sobcheb-urav-1.13},  порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{sobcheb-urav-1.10} и \eqref{sobcheb-urav-1.11}.
+%Тогда, если $f(x)\in W^r_{L^2_\rho(a,b)}$, то ряд Фурье (смешанный ряд) \eqref{sobcheb-urav-1.14} сходится к функции $f(x)$ равномерно относительно $x\in[a,b]$.
+% \end{theorem}
+%%\begin{proof}
+%%Обозначим через $S_n(f^{(r)})=S_n(f^{(r)},x)$ частичную сумму ряда Фурье функции $f^{(r)}(x)\in L^2_\rho(a,b) $ по системе $\{\varphi_k(x)\}_{k=0}^n$, т.е.
+%%\begin{equation}\label{2.5}
+%%S_n(f^{(r)},x)=\sum_{k=0}^n f_{r,k+r}\varphi_k(x),
+%%     \end{equation}
+%%где коэффициенты $f_{r,k+r}$ $(k=0,1,\ldots)$ определены равенством \eqref{sobcheb-urav-1.15}.  Из условий теоремы 2 следует, что при $n\to\infty$
+%% \begin{equation}\label{2.6}
+%%\|f^{(r)}-S_n(f^{(r)})\|_{L^2_\rho(a,b)}\to0.
+%% \end{equation}
+%%Далее, обозначим через $ Y_{n+r}(f,x)$ частичную сумму смешанного ряда \eqref{sobcheb-urav-1.14} следующего вида
+%% \begin{equation}\label{2.7}
+%% Y_{n+r}(f,x)= \sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^{n+r} \hat f_{r,k}\varphi_{r,k}(x),
+%%\end{equation}
+%%и запишем формулу Тейлора
+%%\begin{equation}\label{2.8}
+%% f(x)= \sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ {1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1} f^{(r)}(t)dt.
+%%\end{equation}
+%%Из \eqref{2.7} и \eqref{2.8} имеем
+%%\begin{equation}\label{2.9}
+%% f(x)-Y_{n+r}(f,x)=  {1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1} f^{(r)}(t)dt-\sum_{k=r}^{n+r} \hat f_{r,k}\varphi_{r,k}(x).
+%%\end{equation}
+%%Обратимся к равенству \eqref{sobcheb-urav-1.10}, тогда \eqref{2.9} можно переписать так
+%%$$
+%%f(x)-Y_{n+r}(f,x)=
+%%$$
+%%$$
+%%  {1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1} f^{(r)}(t)dt-{1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1}\sum_{k=r}^{n+r} \hat f_{r,k}\varphi_{k-r}(t)dt=
+%%$$
+%%\begin{equation}\label{2.10}
+%% {1\over (r-1)!}\int\limits_{a}^x(x-t)^{r-1}[f^{(r)}(t)-S_n(f^{(r)},t)]dt .
+%%\end{equation}
+%%Из \eqref{2.10} и неравенства Гельдера имеем
+%%$$
+%%|f(x)-Y_{n+r}(f,x)|\le
+%%$$
+%%\begin{equation}\label{2.11}
+%% {1\over (r-1)!} \left(\int\limits_{a}^b\frac{|x-t|^{2(r-1)}}{\rho(t)}dt\right)^\frac12\left(\int\limits_{a}^b [f^{(r)}(t)-S_n(f^{(r)},t)]^2\rho(t)dt\right)^\frac12.
+%% \end{equation}
+%%Сопоставляя \eqref{2.6} с \eqref{2.11}, убеждаемся в справедливости теоремы 2.
+%%
+%%\end{proof}
+%
+%%\section{Некоторые сведения о полиномах Якоби}
+%%При изучении свойств полиномов, ортогональных по Соболеву, порожденных полиномами Чебышева первого рода $T_n(x)=\cos(n\arccos x)$, нам понадобится ряд свойств классических полиномов Якоби.  Для произвольных действительных $\alpha$ и $\beta$ полиномы Якоби  $P_n^{\alpha,\beta}(x)$ можно определить \cite{sobcheb_urav-Sege}  с помощью формулы Родрига
+%% \begin{equation}\label{sobcheb-urav-3.1}
+%%P_n^{\alpha,\beta}(x) = {(-1)^n\over2^nn!}{1\over\rho(x)}{d^n\over
+%%dx^n} \left\{\rho(x)\sigma^n(x)\right\},
+%%\end{equation}
+%%где $\alpha,\beta$ -- произвольные действительные числа, $\rho(x)=
+%%\rho(x;\alpha,\beta) =
+%%(1-x)^\alpha(1+x)^\beta,\,\,\sigma(x)=1-x^2$. Если
+%%$\alpha,\beta>-1$, то полиномы Якоби образуют ортогональную
+%%систему с весом $\rho(x)$, т.е.
+%%\begin{equation}\label{sobcheb-urav-3.2}
+%%\int_{-1}^1P_n^{\alpha,\beta}(x)P_m^{\alpha,\beta}(x)\rho(x)dx =
+%%h_n^{\alpha,\beta}\delta_{nm},
+%%\end{equation}
+%%где
+%%\begin{equation}\label{sobcheb-urav-3.3}
+%%h_n^{\alpha,\beta} =
+%%{\Gamma(n+\alpha+1)\Gamma(n+\beta+1)2^{\alpha+\beta+1} \over
+%%n!\Gamma(n+\alpha+\beta+1)(2n+\alpha+\beta+1)}.
+%%\end{equation}
+%%Нам понадобятся еще следующие свойства полиномов Якоби~\cite{sobcheb_urav-Sege}, \cite{sobcheb_urav-Gasper}:
+%%
+%%
+%%\begin{equation}\label{sobcheb-urav-3.4}
+%%{d\over dx}P_n^{\alpha,\beta}(x) =
+%%{1\over2}(n+\alpha+\beta+1)P_{n-1}^{\alpha+1,\beta+1}(x),
+%%\end{equation}
+%%\begin{equation}\label{sobcheb-urav-3.5}
+%%{d^\nu\over dx^\nu}P_n^{\alpha,\beta}(x) =
+%%{(n+\alpha+\beta+1)_\nu\over2^\nu} P_{n-\nu}^{\alpha+\nu,\beta+\nu}(x),
+%%\end{equation}
+%%где $(a)_0=1$, $(a)_\nu=a(a+1)\dots(a+\nu-1)$, $a^{[0]}=1$,
+%%
+%% \begin{equation}\label{sobcheb-urav-3.6}
+%% {n\choose l}P_n^{\alpha,-l}(x)= {n+\alpha\choose
+%%l}\left({x+1\over2}\right)^lP_{n-l}^{\alpha,l}(x),
+%%     \quad 1\le l \le n,
+%%\end{equation}
+%%\begin{equation}\label{sobcheb-urav-3.7}
+%%P_n^{\alpha,\beta}(t) ={n+\alpha\choose n}
+%%\sum_{k=0}^n{(-n)_k(n+\alpha+\beta+1)_k\over k!(\alpha+1)_k}
+%%\left({1-t\over 2}\right)^k,
+%%\end{equation}
+%%\begin{equation}\label{sobcheb-urav-3.8}
+%%(1-x)^\alpha(1+x)^\beta P_n^{\alpha,\beta}(x)
+%%={(-1)^m\over2^mn^{[m]}}{d^m\over dx^m}
+%%\left\{(1-x)^{m+\alpha}(1+x)^{m+\beta} P_{n-m}^{m+\alpha,m+\beta}(x)
+%%\right\},
+%%\end{equation}
+%%где $k^{[0]}=1$, $k^{[r]}=k(k-1)\dots(k-r+1)$,
+%%\begin{equation}\label{sobcheb-urav-3.9}
+%%P_n^{\alpha,\beta}(-1)=(-1)^n {n+\beta\choose n},\quad P_n^{\alpha,\beta}(1)= {n+\alpha\choose n},
+%%\end{equation}
+%%
+%%$$
+%%{P_n^{a,a}(x)\over P_n^{a,a}(1)}=\sum_{j=0}^{[n/2]}
+%%   { n!(\alpha+1)_{n-2j}(n+2a+1)_{n-2j}(1/2)_j(a-\alpha)_j
+%%    \over (n-2j)!(2j)!(a+1)_{n-2j}(n-2j+2\alpha+1)_{n-2j}}
+%%     $$
+%%\begin{equation}\label{sobcheb-urav-3.10}
+%%    \times{1\over (n-2j+a+1)_j(n-2j+\alpha+3/2)_j}
+%%     {P_{n-2j}^{\alpha,\alpha}(x)\over
+%%P_{n-2j}^{\alpha,\alpha}(1)},
+%%\end{equation}
+%%где $[b]$ -- целая часть числа $b$.
+%%
+%%
+%%\begin{lemma} Пусть $\alpha>-1$, $k,r$ -- целые, $r\ge1$,
+%%     $k\ge r+1$. Тогда
+%%     $$
+%%P_{k+r}^{\alpha-r,\alpha-r}(x)=\sum_{j=0}^r\lambda_j^\alpha
+%%P_{k+r-2j}^{\alpha,\alpha}(x),
+%%     $$
+%%где
+%%     $$
+%% \lambda_j^\alpha=\lambda_j^\alpha(r,k)=
+%%{(-1)^j(k-r+2\alpha+1)_{k+r-2j}(1/2)_jr^{[j]}
+%%     (\alpha+k)^{[j]}
+%%\over(k+r-2j+2\alpha+1)_{k+r-2j} (k+r-2j+\alpha+3/2)_j(2j)!}.
+%%     $$
+%%\end{lemma}
+%%%\begin{proof}
+%%%Предположим сначала, что
+%%%$\alpha-r>-1$, тогда, полагая
+%%%     $a=\alpha-r$, мы можем воспользоваться формулой \eqref{sobcheb-urav-3.10}.
+%%% Поскольку  при $j\ge r+1$ выполняется равенство $(a-\alpha)_j=(-r)_j=0$, то из \eqref{sobcheb-urav-3.10} мы имеем
+%%%     $$
+%%%     P_{k+r}^{\alpha-r,\alpha-r}(x)=\sum_{j=0}^r\lambda_j^\alpha
+%%%P_{k+r-2j}^{\alpha,\alpha}(x),
+%%%     $$
+%%%где
+%%%     $$
+%%%\lambda_j^\alpha={P_{k+r}^{\alpha-r,\alpha-r}(1)\over
+%%%     P_{k+r-2j}^{\alpha,\alpha}(1)}
+%%%{(k+r)!(\alpha+1)_{k+r-2j}(k-r+2\alpha+1)_{k+r-2j}\over
+%%%     (k+r-2j)!(2j)!(\alpha-r+1)_{k+r-2j}}\times
+%%%     $$
+%%%     $$
+%%%     {(1/2)_j(-r)_j\over(k+r-2j+2\alpha+1)_{k+r-2j}(k-2j+\alpha+1)_j
+%%%     (k+r-2j+\alpha+3/2)_j}=
+%%%     $$
+%%%     $$
+%%%{(-1)^j(k-r+2\alpha+1)_{k+r-2j}(1/2)_jr^{[j]}(\alpha+k)^{[j]}
+%%%\over(k+r-2j+2\alpha+1)_{k+r-2j}
+%%%(k+r-2j+\alpha+3/2)_j(2j)!}.
+%%%     $$
+%%%     Отсюда следует справедливость утверждения леммы 3.1 в случае
+%%%     $\alpha>r-1$. Но поскольку  $P_{k+r}^{\alpha-r,\alpha-r}(x)$,
+%%% $\lambda_j^\alpha$ и $P_{k+r-2j}^{\alpha,\alpha}(x)$ представляют
+%%%собой аналитические функции относительно $\alpha$, то утверждение
+%%%леммы 3.1 вытекает из уже доказанного случая.
+%%%\end{proof}
+%%
+%%\begin{lemma} Пусть  $k,r$ -- целые, $r\ge1$,
+%%     $k\ge r+1$. Тогда
+%%     $$
+%%P_{k+r}^{-\frac12-r,-\frac12-r}(x)=\sum_{j=0}^r\lambda_j^{-\frac12}(k,r)
+%%P_{k+r-2j}^{-\frac12,-\frac12}(x),
+%%     $$
+%%где
+%%$$
+%% \lambda_j^{-\frac12}(k,r)=
+%%{(-1)^j(k-r)_{k+r-2j}(1/2)_jr^{[j]}
+%%     (k-1/2)^{[j]}
+%%\over(k+r-2j)_{k+r-2j} (k+r-2j+1)_j(2j)!}=
+%%$$
+%%\begin{equation}\label{sobcheb-urav-3.11}
+%%(-1)^j{((k+r-2j)!)^22^{2k+2r-4j}\over(2(k+r-2j))!}
+%%{(2k)!\over(k!)^22^{2k+2r}}{r^{[j]}\over j!}
+%%{k^{[r+1]}\over(k+r-j)^{[r+1]}}.
+%%\end{equation}
+%%\end{lemma}
+%%%\begin{proof}
+%%%Чтобы убедиться в справедливости утверждения леммы 3.2 достаточно в лемме 3.1 взять $\alpha=-\frac12$.
+%%%\end{proof}
+%%
+%%Пусть $T_n(x)=\cos(n\arccos x)$ -- полином Чебышева первого рода. Тогда \cite{sobcheb_urav-Sege}
+%%\begin{equation}\label{sobcheb-urav-3.12}
+%%P_n^{-\frac{1}{2},-\frac{1}{2}}(x)=\frac{1\cdot3\cdot\ldots\cdot(2n-1)}
+%%{2\cdot4\cdot\ldots\cdot2n}T_n(x)=\frac{(2n)!}{2^{2n}{n!}^2}T_n(x);
+%%\end{equation}
+%%Имеет место следующая
+%%
+%%\begin{lemma}\label{sobcheb-uravlemma3}
+%%Пусть  $k,r$ -- целые, $r\ge1$,
+%%     $k\ge r+1$. Тогда
+%% $$
+%%P_{k+r}^{-\frac12-r,-\frac12-r}(x)={(2k)!\over(k!)^22^{2k+2r}}\sum_{j=0}^r{(-1)^j\over j!}
+%%{r^{[j]}k^{[r+1]}\over(k+r-j)^{[r+1]}}T_{k+r-2j}(x).
+%%     $$
+%%\end{lemma}
+%%%\begin{proof}
+%%%Утверждение леммы 3.3 непосредственно вытекает из леммы 3.2 и равенств \eqref{sobcheb-urav-3.12} и \eqref{sobcheb-urav-3.11}.
+%%%\end{proof}
+%%
+%%Пусть $\alpha$ и $\beta$ -- произвольные вещественные числа,
+%%$$
+%%s(\theta)=\pi^{-\frac12}\left(\sin\frac{\theta}{2}\right)^{-\alpha-\frac12}
+%%\left(\cos\frac{\theta}{2}\right)^{-\beta-\frac12},
+%%$$
+%%$$
+%%\lambda_n=n+\frac{\alpha+\beta+1}{2}, \quad\gamma=-
+%%\left(\alpha+\frac{1}{2}\right)\frac{\pi}{2}.
+%%$$
+%%Тогда для $0<\theta<\pi$ имеет место асимптотическая формула
+%%\begin{equation}\label{sobcheb-urav-3.13}
+%%P_n^{\alpha,\beta}(\cos\theta)=n^{-\frac12}s(\theta)
+%%\left(\cos(\lambda_n\theta+\gamma)+
+%%\frac{v_n(\theta)}{n\sin\theta}\right),
+%%\end{equation}
+%%в которой для функции $v_n(\theta)=v_n(\theta;\alpha,\beta)$
+%%справедлива оценка
+%%\begin{equation}\label{sobcheb-urav-3.14}
+%%|v_n(\theta)|\le c(\alpha,\beta,\delta)\quad
+%% \left(0<\frac{\delta}{n}\le\theta\le\pi-\frac{\delta}{n}\right).
+%%\end{equation}
+%
+
+
+%\section{Ортогональные по Соболеву полиномы, порожденные полиномами Якоби}
+%Из равенства \eqref{sobleg-2.2} следует, что если $\alpha,\beta>-1$, то полиномы
+%\begin{equation}\label{sobcheb-urav-4.1}
+%p_n^{\alpha,\beta}(x)={P_n^{\alpha,\beta}(x)\over\sqrt{ h_n^{\alpha,\beta}}}\quad(n=0,1,\ldots)
+%\end{equation}
+%образуют ортонормированную  в $L_\kappa^2(-1,1)$ с весом $\rho(x)=(1-x)^\alpha(1+x)^\beta$ систему. Как хорошо известно \cite{sobcheb_urav-Sege}, система полиномов Якоби \eqref{sobcheb-urav-4.1}полна в $L_\kappa^2(-1,1)$.   Эта система порождает на $[-1,1]$ систему полиномов  $p_{r,k}^{\alpha,\beta}(x)=\varphi_{r,k}(x)$ $(k=0,1,\ldots)$, определенных равенствами \eqref{sobcheb-urav-1.10} и \eqref{sobcheb-urav-1.11} с $a=-1$, $\varphi_k(x)=p_{k}^{\alpha,\beta}(x)$. Из теоремы \ref{sobcheb-uravtheo1} непосредственно вытекает
+%\begin{corollary}
+%Пусть $a=-1$, $\alpha,\beta>-1$. Тогда система полиномов $\{p_{r,k}^{\alpha,\beta}(x)\}_{k=0}^\infty$, порожденная системой ортонормированных полиномов Якоби \eqref{sobcheb-urav-4.1} посредством равенств \eqref{sobcheb-urav-1.10} и \eqref{sobcheb-urav-1.11}, полна  в $W^r_{L^2_\rho(-1,1)}$ и ортонормирована относительно скалярного произведения \eqref{sobcheb-urav-1.13}.
+%\end{corollary}
+%
+%Ряд Фурье \eqref{sobcheb-urav-1.14} для системы   $\{p_{r,k}^{\alpha,\beta}(x)\}_{k=0}^\infty$ приобретает вид
+%\begin{equation}\label{sobcheb-urav-4.2}
+%f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^\infty \hat f_{r,k}p_{r,k}^{\alpha,\beta}(x),
+%\end{equation}
+%где
+%  \begin{equation}\label{sobcheb-urav-4.3}
+% \hat f_{r,k}=\int_{-1}^1 f^{(r)}(t)p_{k-r}^{\alpha,\beta}(t)\rho(t)dt.
+%\end{equation}
+%
+%\begin{corollary}
+%Пусть $-1<\alpha,\beta<1$. Тогда, если $f(x)\in W^r_{L^2_\rho(-1,1)}$, то ряд Фурье (смешанный ряд) \eqref{sobcheb-urav-4.2} сходится к функции $f(x)$ равномерно относительно $x\in[-1,1]$.
+%\end{corollary}
+%%\begin{proof}
+%%Заметим, что если $-1<\alpha,\beta<1$, то $\frac{1}{\rho(x)}\in L(-1,1)$, где $\rho(x)=(1-x)^\alpha(1+x)^\beta$. Поэтому утверждение следствия 2 вытекает из теоремы 2 и следствия 1.
+%%\end{proof}
+%
+%В следующей теореме установлен явный вид полиномов $p_{r,k}^{\alpha,\beta}(x)$ при $k\ge r$, который играет  важную роль при исследовании асимптотических свойств полиномов $p_{r,n+r}^{\alpha,\beta}(x)$ в окрестности точки $x=-1$.
+%
+%
+%
+%\begin{theorem} Для произвольных $\alpha, \beta>-1$ и $n\ge0$
+%имеет место следующее равенство
+%\begin{equation}\label{sobcheb-urav-4.4}
+%p_{r,n+r}^{\alpha,\beta}(x)=\frac{(-1)^n2^{r}}{\sqrt{ h_n^{\alpha,\beta}}}
+%{n+\beta\choose n}
+%\sum_{k=0}^n{(-n)_k(n+\alpha+\beta+1)_k\over (\beta+1)_k(k+r)!}
+%\left({1+x\over 2}\right)^{k+r}.
+%\end{equation}
+%\end{theorem}
+%%\begin{proof}
+%%Воспользуемся равенством \eqref{sobcheb-urav-3.7} и запишем
+%%$$
+%%P_{n}^{\alpha,\beta}(t)=(-1)^nP_{n}^{\beta,\alpha}(-t)=(-1)^n{n+\beta\choose n}
+%%\sum_{k=0}^n{(-n)_k(n+\alpha+\beta+1)_k\over k!(\beta+1)_k}
+%%\left({1+t\over 2}\right)^k,
+%%$$
+%%поэтому, в силу \eqref{sobcheb-urav-4.1} имеем
+%%\begin{equation}\label{4.5}
+%%p_{n}^{\alpha,\beta}(t)=\frac{(-1)^n}{\sqrt{ h_n^{\alpha,\beta}}}{n+\beta\choose n}
+%%\sum_{k=0}^n{(-n)_k(n+\alpha+\beta+1)_k\over k!(\beta+1)_k}
+%%\left({1+t\over 2}\right)^k.
+%%\end{equation}
+%%С другой стороны в силу формулы Тейлора
+%%\begin{equation}\label{4.6}
+%%\left({1+x\over 2}\right)^{k+r}={(k+r)^{[r]}\over 2^r(r-1)!}\int\limits_{-1}^x(x-t)^{r-1} \left({1+t\over 2}\right)^{k}dt.
+%%\end{equation}
+%%Сопоставляя \eqref{4.5} и \eqref{4.6} с определением
+%%\begin{equation}\label{4.7}
+%%  p_{r,n+r}^{\alpha,\beta}(x) =\frac{1}{(r-1)!}\int\limits_{-1}^x(x-t)^{r-1}p_{n}^{\alpha,\beta}(t)dt, \quad n=1,\ldots,
+%%\end{equation}
+%% убеждаемся в справедливости утверждения теоремы 3.
+%%\end{proof}
+
+
+

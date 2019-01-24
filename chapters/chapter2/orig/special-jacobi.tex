@@ -1,0 +1,217 @@
+\section{Специальные <<прилипающие>> ряды по ультрасферическим полиномам Якоби}
+\subsection{Определение}
+В этом параграфе вводятся некоторые новые ряды, идея рассмотрения которых естественным образом возникает в процессе  преобразований  рядов Фурье по полиномам $p_{r,k}(x)$. Эти новые ряды интересны тем, что, во-первых, для их частичных сумм сохраняется уже отмечавшееся   важнейшее свойство сумм  $\mathcal{Y}_{r,n}(f,x)$ об их $r$-кратном совпадении с $f(x)$ в концах $-1$ и $1$ (о \textit{<<прилипании>>} $\mathcal{Y}_{r,n}(f,x)$ с $f(x)$ в концах $-1$ и $1$) и, во-вторых, некоторые их частные случаи привлекательны с вычислительной точки зрения в том смысле, что они могут быть реализованы численно посредством быстрых дискретных преобразований Фурье.
+Достаточно много внимания в статье уделено исследованию аппроксимативных свойств  частичных сумм упомянутых выше новых рядов, которые для удобства мы будем называть рядами со свойством <<\textit{прилипания частичных сумм}>>.
+
+Пусть $\alpha>-1$, $\kappa=\kappa(x)=(1-x^2)^\alpha$, $p\ge1$, $f\in W^r_{L^p_\kappa(-1,1)}$. Тогда $f^{(r)}\in W^r_{L(-1,1)}$ (т.к. $f^{(r-1)}(x)$ абсолютно непрерывна на $[-1,1]$) и можем ввести в рассмотрение интерполяционный полином Эрмита $D_{2r-1}(x)=D_{2r-1}(f,x)$ степени $2r-1$,  совпадающий с функцией $f(x)$ $r$-кратно в точках $-1$ и $1$, т.е. $f^{(\nu)}(\pm1)=D_{2r-1}^{(\nu)}(f,\pm1),\quad \nu=0,1,\ldots, r-1$. Как уже отмечалось выше (см. \eqref{sob-leg-3.62}) $D_{2r-1}(x)$ допускает представление $D_{2r-1}(x)=\mathcal{Y}_{r,2r-1}(f,x)$, поэтому равенство \eqref{sob-leg-3.61} мы можем переписать так
+$$
+f(x)=\sum_{k=0}^{r-1} f^{(k)}(-1)\frac{(x+1)^k}{k!}+ \sum_{k=r}^{2r-1}\hat f_{r,k}p_{r,k}(x)+
+\sum_{k=2r}^\infty \hat f_{r,k}p_{r,k}(x)=
+$$
+\begin{equation*}
+D_{2r-1}(x)+
+(1-x^2)^r\sum_{k=0}^\infty\frac{(-1)^r\hat f_{r,k+2r}}{2^r} \frac{\sqrt{(k+r+1/2)h_k^{r,r}}}{ (k+r)^{[r]}}p_{k}^{r,r}(x).
+ \end{equation*}
+ и отсюда имеем $(-1<x<1)$
+\begin{equation}\label{sob-leg-4.1}
+F_r(x)={f(x)-D_{2r-1}(x)\over(1-x^2)^r}=
+ \sum_{k=0}^\infty\frac{(-1)^r\hat f_{r,k+2r}}{2^r} \frac{\sqrt{(k+r+1/2)h_k^{r,r}}}{ (k+r)^{[r]}}p_{k}^{r,r}(x).
+\end{equation}
+Правая часть этого равенства представляет собой ряд Фурье-Якоби функции $F_r(x)$ по ортонормированной системе полиномов Якоби $p_k^{r,r}(x)$ (см. \eqref{sob-leg-3.32}). Вместо \eqref{sob-leg-4.1} мы можем рассмотреть более общий ряд
+\begin{equation}\label{sob-leg-4.2}
+F_r(x)={f(x)-D_{2r-1}(x)\over(1-x^2)^r}=
+ \sum_{k=0}^\infty \hat F_{r,k}^\alpha p_{k}^{\alpha,\alpha}(x),
+\end{equation}
+по ортонормированной системе полиномов Якоби $p_{k}^{\alpha,\alpha}(x)$, где
+\begin{equation}\label{sob-leg-4.3}
+\hat F^\alpha_{r,k}=\int_{-1}^1F_r(t)\kappa(t) p_{k}^{\alpha,\alpha}(t)=\int_{-1}^1(f(t)-D_{2r-1}(t))(1-t^2)^{\alpha-r} p_{k}^{\alpha,\alpha}(t)
+\end{equation}
+-- $k$-тый коэффициенты Фурье-Якоби функции $F_r(x)$. Равенство \eqref{sob-leg-4.2} перепишем следующим образом
+\begin{equation}\label{sob-leg-4.4}
+f(x)=D_{2r-1}(f,x)+(1-x^2)^r \sum_{k=0}^\infty \hat F^\alpha_{r,k}p_{k}^{\alpha,\alpha}(x).
+\end{equation}
+Частичная сумма полученного разложения вида
+\begin{equation}\label{sob-leg-4.5}
+ \sigma_{r,N}^\alpha(f,x)=
+ \begin{cases}
+  D_{2r-1}(f,x),&\text{$N=2r-1$,}\\
+ D_{2r-1}(f,x)+(1-x^2)^r \sum_{k=0}^{N-2r} \hat F^\alpha_{r,k}p_{k}^{\alpha,\alpha}(x),&\text{$N\ge 2r$.}
+ \end{cases}
+\end{equation}
+обладает свойством $f^{(\nu)}(\pm1)=\sigma_{r,N}^\alpha(f,\pm1))^{(\nu)}$, $\nu=0,1,\ldots, r-1$, другими словами, $\sigma_{r,N}^\alpha(f,x)$ <<\textit{прилипает}>> к $f(x)$ в точках $-1$ и $1$. Поэтому правую часть  равенства \eqref{sob-leg-4.4} мы будем называть специальным рядом по полиномам Якоби $p_{k}^{\alpha,\alpha}(x)$, обладающим свойством <<\textit{прилипания}>> частичных сумм или просто специальным прилипающим рядом по этим  полиномам.  Отметим, что при $\alpha=r$ ряд \eqref{sob-leg-4.4} совпадает в силу \eqref{sob-leg-4.1} с рядом \eqref{sob-leg-3.61}, т.е. рядом Фурье функции $f$ по ортогональным по Соболеву полиномам $p_{r,k}(x)$, порожденным полиномами Лежандра и, соответственно, $\sigma_{r,N}^r(f,x)=\mathcal{Y}_{r,N}(f,x)$. Нетрудно увидеть, что для произвольного алгебраического полинома $q_N(x)$ степени не выше $N$ имеет место равенство
+\begin{equation}\label{sob-leg-4.6}
+\sigma_{r,N}^\alpha(q_N,x)\equiv q_N(x),
+\end{equation}
+другими словами, $\sigma_{r,N}^\alpha$ является проектором на подпространство алгебраических полиномов $q_N$ степени не выше $N$.
+
+Отметим, что специальные ряды \eqref{sob-leg-4.4} для $r=1$ впервые были введены и исследованы в работе \cite{sob-leg-sharap3}, в которой для операторов $\sigma_{1,N}^\alpha$  при $\frac12\le \alpha\le\frac32$ было получено неравенство типа Лебега и доказаны неулучшаемые по порядку при $N\to\infty$ оценки для констант Лебега этих операторов.
+
+Заметим также, что для определения коэффициентов $\hat F^\alpha_{r,k}$  с помощью равенства \eqref{sob-leg-4.3} и ряда \eqref{sob-leg-4.4} нет необходимости, чтобы функция $f$ принадлежала пространству $W^r_{L(-1,1)}$, а достаточно, чтобы для интегрируемой с весом $(1-x^2)^{\alpha-r}$ функции $f$ существовал интерполяционный полином Эрмита
+\begin{equation}\label{sob-leg-4.7}
+D_{2r-1}(f,x)=
+{(1-x^2)^r\over2^r}\sum_{\nu=0}^{r-1}{1\over\nu!}
+\sum_{s=0}^{r-1-\nu}{(r)_s\over2^ss!}\left[{f^{(\nu)}(-1)\over(1+x)^{r-\nu-s}}+
+{(-1)^\nu f^{(\nu)}(1)\over(1-x)^{r-\nu-s}}\right].
+\end{equation}
+В частности, для $f\in C[-1,1]$ при $r=1$ ряд \eqref{sob-leg-4.4} и, следовательно,  оператор $\sigma_{1,N}^\alpha(f)$ существуют. Отметим еще, что если функция $F_r(x)$, определенная первым из равенств \eqref{sob-leg-4.1}, интерируема на $(-1,1)$ с весом $\kappa(x)$, то ряд \eqref{sob-leg-4.4} и оператор $\sigma_{r,N}^\alpha(f)$ также существуют. В частности, это имеет место для  произвольной функции $f(x)$, аналитической на $[-1,1]$ при любом $\alpha>-1$.
+
+\subsection{Аппроксимативные свойства операторов $\sigma_{r,N}^\alpha$}
+
+   Линейный оператор $\sigma_{r,N}^\alpha=\sigma_{r,N}^\alpha(f)=\sigma_{r,N}^\alpha(f,x)$  действует в пространстве  $C_r[-1,1]$, состоящем из непрерывных на $[-1,1]$ функций $f$, для которых существует интерполяционный полином Эрмита \eqref{sob-leg-4.7} и   \begin{equation}\label{sob-leg-5.1}
+ \mathcal{E}_r(f)=\sup_{-1<x<1}{|f(x)-D_{2r-1}(f,x)|\over (1-x^2)^\frac{r}{2}}<\infty.
+\end{equation}
+Нетрудно проверить, например, что $W^r\subset C_r[-1,1]$. Если $f\in C_r[-1,1]$, то  величина $E_N^r(f)$, определенная равенством \eqref{sob-leg-3.71}, принимает конечные значения для при всех $N\ge 2r-1$, причем $\mathcal{E}_r(f)\ge E_{2r-1}^r(f)\ge E_{2r}^r(f)\cdots$. Будем рассматривать $\sigma_{r,N}^\alpha(f)$ как аппарат приближения функций $f\in C_r[-1,1]$.
+Если $f\in C_r[-1,1]$, то мы можем записать
+$$
+f(x)-\sigma_{r,N}^\alpha(f,x)=
+ f(x)-q_N(f,x)-\sigma_{r,N}^\alpha(f-q_N(f),x)=f(x)-q_N(f,x)
+$$
+$$
+-(1-x^2)^r \sum_{k=0}^{N-2r} \int_{-1}^1(f(t)-q_N(t))(1-t^2)^{\alpha-r} p_{k}^{\alpha,\alpha}(t)p_{k}^{\alpha,\alpha}(x)dt=f(x)-q_N(f,x)
+$$
+\begin{equation}\label{sob-leg-5.2}
+-(1-x^2)^r\int_{-1}^1(f(t)-q_N(f,t))(1-t^2)^{\alpha-r}\sum_{k=0}^{N-2r}  p_{k}^{\alpha,\alpha}(t)p_{k}^{\alpha,\alpha}(x)dt,
+\end{equation}
+где $q_N(x)=q_N(f,x)$ -- алгебраический полином  степени $N$, который обладает тем свойством, что $q^{(\nu)}_N(f,\pm1)=f^{(\nu)}(\pm1)$ при $\nu=0,\ldots,r-1$  и
+\begin{equation}\label{sob-leg-5.3}
+E_N^r(f)=\sup_{-1<x<1}{|f(x)-q_N(x)|\over (1-x^2)^\frac{r}{2}},
+\end{equation}
+где величина $E_N^r(f)$ определена равенством \eqref{sob-leg-3.71}. Из равенства \eqref{sob-leg-5.2} мы выводим следующее неравенство типа Лебега для сумм $\sigma_{r,N}^\alpha(f,x)$:
+$$
+\frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le \frac{|f(x)-q_N(f,x)|}{(1-x^2)^\frac{r}{2}}(1-x^2)^\frac{\alpha-r+1/2}{2}+
+$$
+$$
+(1-x^2)^{\frac{\alpha}{2}+\frac14}  \int_{-1}^1\frac{|f(t)-q_N(t)|}{(1-t^2)^{r/2}}(1-t^2)^{\alpha-r/2} \left|\sum_{k=0}^{N-2r}p_{k}^{\alpha,\alpha}(t)p_{k}^{\alpha,\alpha}(x)\right|dt\le
+$$
+\begin{equation}\label{sob-leg-5.4}
+E_N^r(f)\left((1-x^2)^\frac{\alpha-r+1/2}{2}+\Lambda^{r,\alpha}_N(x)\right),
+\end{equation}
+где
+\begin{equation}\label{sob-leg-5.5}
+\Lambda^{r,\alpha}_N(x)=(1-x^2)^{\frac{\alpha}{2}+\frac14}  \int_{-1}^1(1-t^2)^{\alpha-r/2} \left|\sum_{k=0}^{N-2r}p_{k}^{\alpha,\alpha}(t)p_{k}^{\alpha,\alpha}(x)\right|dt.
+\end{equation}
+В связи с неравенством \eqref{sob-leg-5.4} возникает задача об оценке величины $\Lambda^r_N(x)$, определенной равенством \eqref{sob-leg-5.5}, которое мы можем переписать еще так
+\begin{equation}\label{sob-leg-5.6}
+\Lambda^{r,\alpha}_N(\cos\theta)=(\sin\theta)^{\alpha+\frac12}  \int_{0}^\pi(\sin\tau)^{2\alpha-r+1} \left|\sum_{k=0}^{N-2r}
+p_{k}^{\alpha,\alpha}(\cos\tau)p_{k}^{\alpha,\alpha}(\cos\theta)\right|d\tau.
+\end{equation}
+Мы рассмотрим   более общую задачу, которая будет нужна в дальнейшем. Положим $\Lambda^{r,\alpha}_{N,N}(\cos\theta)=0$, а  при $M>N$
+\begin{equation}\label{sob-leg-5.7}
+\Lambda^{r,\alpha}_{N,M}(\cos\theta)=(\sin\theta)^{\alpha+\frac12}  \int\limits_{0}^\pi(\sin\tau)^{2\alpha-r+1} \left|\sum_{k=N-2r+1}^{M-2r}
+p_{k}^{\alpha,\alpha}(\cos\tau)p_{k}^{\alpha,\alpha}(\cos\theta)\right|d\tau.
+\end{equation}
+
+\begin{lemma} Пусть $2r-1\le N< M$, $r-\frac12\le\alpha$. Тогда имеет место следующая оценка
+\begin{equation}\label{sob-leg-5.8}
+ |\Lambda^{r,\alpha}_{N,M}(\cos\theta)|\le  c(r,\alpha)\ln(M-N+1).
+ \end{equation}
+\end{lemma}
+
+\begin{lemma} Пусть $2r-1\le N\le M$, $r-\frac12\le\alpha$, $f\in C_r[-1,1]$. Тогда имеет место следующая оценка
+\begin{equation}\label{sob-leg-5.22}
+\frac{|\sigma_{r,M}^\alpha(f,x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le
+c(\alpha,r)E_N^r(f)\ln(M-N+1).
+ \end{equation}
+\end{lemma}
+\begin{lemma} Пусть $r\ge1$, $f\in C_r[-1,1]$, $r-\frac12\le\alpha$. Тогда имеет место следующая оценка
+\begin{equation}\label{sob-leg-5.24}
+\frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le
+c(\alpha,r)E_N^r(f)\ln(N+1).
+ \end{equation}
+\end{lemma}
+
+В работе \cite{Haar-Tcheb-Shar15} показано, что оценка \eqref{sob-leg-3.75}  является неулучшаемой для  $f\in W^r$, для которых $E^{r}_{N}(f)\asymp N^{-r}$. Подобным же способом можно показать, что оценка  \eqref{sob-leg-5.24} является неулучшаемой по порядку, если $E^{r}_{N}(f)\asymp N^{-r}$.   Если же  наилучшие приближения  $E^{r}_{N}(f)$ убывают при $N\to\infty$ <<быстро>>, то оценка \eqref{sob-leg-3.75} становится грубой. Возникает задача о получении вместо \eqref{sob-leg-5.24} другой оценки, более точно учитывающей поведение последовательности  $\{E^{r}_{k}(f)\}$. Впервые подобная задача с для тригонометричесих сумм Фурье была решена в работе \cite{sob-leg-OSK}. А в работах \cite{sob-leg-sharap1}, \cite{sob-leg-sharap2} аналогичные задачи были решены для интерполяционных полиномов и сумм Фурье-Якоби. Мы здесь рассмотрим  эту задачу  для операторов $\sigma_{r,N}^\alpha$.
+
+\begin{theorem} Пусть $2r\le N$, $r-1/2\le \alpha\le 2r-1/2$, $f\in C_r[-1,1]$, $-1<x<1$. Тогда имеет место следующая оценка
+\begin{equation}\label{sob-leg-5.25}
+ \frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le c(r,\alpha)\sum_{k=0}^N\frac{E_{N+k}^r(f)}{k+1}.
+ \end{equation}
+\end{theorem}
+
+\begin{corollary} Пусть $2r\le N$, $r-1/2\le \alpha\le 2r-1/2$, $f\in W^r$, $-1<x<1$. Тогда имеет место следующая оценка
+\begin{equation}\label{sob-leg-5.31}
+ \frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le c(r,\alpha)\frac{\ln(N+1)}{N^r}.
+ \end{equation}
+\end{corollary}
+
+В связи с результатом, установленным в теореме 5, возникает задача об изучении поведения величины $E_{n}^r(f)$ при $n\to\infty$. Как уже отмечалось выше, для $f\in W^r$ имеет место неравенство \eqref{sob-leg-3.74}. Но если функция $f$ является аналитической в области, содержащей отрезок $[-1,1]$, то задача о скорости стремления $E_{n}^r(f)$ к нулю при $n\to\infty$ оставалась нерешенной. Нижеследующая лемма дает один из возможных вариантов ответа на этот вопрос. Для того чтобы сформулировать этот результат нам понадобятся некоторые бозначения.
+
+Пусть $0<q<1$, $\mathcal{E}_q$ -- эллипс с фокусами в точках $\pm1$, сумма полуосей которого равна $R=1/q$, $A_q(B)$ -- класс функций $f(z)$, принимающих вещественные значения при $z\in\mathbb{R}$,  аналитических в эллипсе $\mathcal{E}_q$ и ограниченных там по модулю числом $B$. Хорошо известно  (см. п.3.7.3 из \cite{sob-leg-Timan}), что если $f\in A_q(B)$, то для коэффициентов Фурье-Чебышева этой функции
+\begin{equation}\label{sob-leg-5.32}
+ a_k(f)=\int_{-1}^1\frac{f(t)p_k^{-1/2,-1/2}(t)dt}{\sqrt{1-t^2}}
+ \end{equation}
+имеет место оценка
+\begin{equation}\label{sob-leg-5.33}
+ |a_k(f)|\le\sqrt{2\pi}Bq^k.
+ \end{equation}
+Пусть $f\in A_q(B)$, тогда, очевидно, функция $F_r(x)$, определенная первым из равенств \eqref{sob-leg-4.1},  принадлежит классу $A_q(B_r)$ c некоторой константой $B_r$, зависящей лишь от $B$  и $r$. Поэтому из \eqref{sob-leg-5.33}
+имеем
+\begin{equation}\label{sob-leg-5.34}
+ |a_k(F_r)|\le\sqrt{2\pi}B_rq^k.
+ \end{equation}
+Теперь обратимся к равенству \eqref{sob-leg-4.2}, в котором подставим  $\alpha=-1/2$, тогда получим равенство
+ \begin{equation}\label{sob-leg-5.35}
+{f(x)-D_{2r-1}(x)\over(1-x^2)^r}=
+ \sum_{k=0}^\infty \hat F_{r,k}^{-\frac12} p_{k}^{-\frac12,-\frac12}(x)=
+ \sum_{k=0}^\infty a_k(F_r) p_{k}^{-\frac12,-\frac12}(x)
+\end{equation}
+которое мы можем переписать так ($x=\cos\theta$)
+$$
+{f(x)-\sigma_{r,N}^{-\frac12}(f,x)\over(1-x^2)^r}=
+$$
+\begin{equation}\label{sob-leg-5.36}
+  \sum_{k=N-2r+1}^\infty a_k(F_r) p_{k}^{-\frac12,-\frac12}(x)=\sqrt{\frac2\pi}
+  \sum_{k=N-2r+1}^\infty a_k(F_r) \cos k\theta.
+\end{equation}
+Из \eqref{sob-leg-5.34} и \eqref{sob-leg-5.36} мы находим
+\begin{equation}\label{sob-leg-5.37}
+ {|f(x)-\sigma_{r,N}^{-\frac12}(f,x)|\over(1-x^2)^r}\le 2B_r\sum_{k=N-2r+1}^\infty q^k=
+ \frac{2B_r}{1-q}q^{N-2r+1}.
+  \end{equation}
+Из \eqref{sob-leg-5.37} получаем
+\begin{equation}\label{sob-leg-5.38}
+ E_{n}^r(f)\le \frac{2B_r}{1-q}q^{N-2r+1},\quad f\in A_q(B).
+  \end{equation}
+Сопоставляя оценку \eqref{sob-leg-5.38} с неравенством \eqref{sob-leg-5.25}, приходим к следующему утвеждению.
+\begin{corollary} Пусть $2r\le N$, $r-1/2\le \alpha\le 2r-1/2$, $f\in A_q(B)$, $-1<x<1$. Тогда имеет место следующая оценка
+\begin{equation}\label{sob-leg-5.39}
+ \frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le\frac{c(r,\alpha, B)}{(1-q)}q^{N-2r+1}.
+ \end{equation}
+\end{corollary}
+
+
+
+С другой стороны, если  $f\in A_q(B)$, то сопоставляя оценки \eqref{sob-leg-5.37} и \eqref{sob-leg-5.39}, мы замечаем, что ограничение $r-1/2\le \alpha\le 2r-1/2$, содержащееся в условиях следствия 4 является избыточным, так как из \eqref{sob-leg-5.37} следует, что оценка \eqref{sob-leg-5.39} верна и для $\alpha=-\frac12$. Покажем, что ограничение $r-1/2\le \alpha\le 2r-1/2$, содержащееся  в следствии 4, может быть ослаблено до $-1/2\le \alpha\le 2r-1/2$. Для этого нам понадобятся некоторые вспомогательные утверждения.
+
+\begin{lemma} Пусть $\alpha>-1$, $k=n+2j$, $j=0,1,\ldots$. Тогда имеет место следующее равенство
+$$
+v_{n,j}^\alpha=\int_{-1}^1p_k^{-1/2,-1/2}(t)p_n^{\alpha,\alpha}(t)(1-t^2)^\alpha dt=
+$$
+\begin{equation}\label{sob-leg-5.40}
+\left(\frac{h_n^{\alpha,\alpha}}{h_k^{-\frac12,-\frac12}}\right)^\frac12
+ {\Gamma(k+\frac12)(k)_n(1/2)_j(-1/2-\alpha)_j\over\Gamma(n+\frac12)(n+2\alpha+1)_n
+(n+\frac12)_j(n+\alpha+\frac32)_j(2j)!}.
+  \end{equation}
+\end{lemma}
+\begin{lemma} Пусть $\alpha>-1$, $j$ -- натурально. Тогда имеет место следующая оценка
+$$
+|v_{n,j}^\alpha|\le c(\alpha)\left({n\over (j+1)(n+j)}\right)^{\alpha+1}.$$
+\end{lemma}
+
+\begin{lemma} Пусть $\alpha>-1$, $f\in A_q(B)$. Тогда имеет место следующая оценка
+ \begin{equation}\label{sob-leg-5.44}
+|\hat F^\alpha_{r,n}|\le \frac{c(\alpha)\sqrt{2\pi}B_r}{1-q^2}q^n.
+ \end{equation}
+\end{lemma}
+Теперь мы можем сформулировать следующий резулдьтат.
+\begin{theorem} Пусть $2r\le N$, $-1/2\le \alpha\le 2r-1/2$, $f\in A_q(B)$, $-1<x<1$. Тогда имеет место следующая оценка
+\begin{equation}\label{sob-leg-5.46}
+ \frac{|f(x)-\sigma_{r,N}^\alpha(f,x)|}
+{(1-x^2)^{r-\frac{\alpha}{2}-\frac14}}\le\frac{c(r,\alpha, B)}{(1-q)^2}q^{N-2r+1}.
+ \end{equation}
+\end{theorem} 
