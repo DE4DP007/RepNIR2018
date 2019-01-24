@@ -40,71 +40,63 @@ f(x) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left(a_k \cos kx + b_k \sin kx\right
 a_k = \frac1\pi \int_{-\pi}^{\pi} f(t) \cos kt dt,\quad b_k = \frac1\pi \int_{-\pi}^{\pi} f(t) \sin kt dt.
 \end{equation}
 
-
-The goal of this work is to estimate the value $\left|f(x)-L_{n,N}(f,x)\right|$ for $f\in C_{\Omega}^{2}$.
-Note that the special case of this problem is considered in \cite{akniyev}, where the value $\left|f(x)-L_{n,N}(f,x)\right|$ is estimated for a $2\pi$-periodic function $f(x) = |x|$ ($x \in [-\pi,\pi]$).
-In this work, we generalize the results from \cite{akniyev} for any function $f \in C_{\Omega}^{2}$, as stated in the following theorem:
+Рассмотрим задачу оценки значения $\left|f(x)-L_{n,N}(f,x)\right|$ для $f\in C_{\Omega}^{2}$.
+Заметим, что для одного частного случая данная задача была рассмотнера в работе \cite{akniyev}, где значение $\left|f(x)-L_{n,N}(f,x)\right|$ 
+оценено для $2\pi$-периодической функции $f(x) = |x|$ ($x \in [-\pi,\pi]$).
+В следующей теореме мы обобщим результат, полученный в \cite{akniyev}, для произвольной  $f \in C_{\Omega}^{2}$.
 \begin{theorem}
-	\label{Th1} For $f\in C_{\Omega}^{2}$ the following inequalities hold:
+	\label{Th1} Для любой $f\in C_{\Omega}^{2}$ выполняются следующие неравенства:
 	\begin{equation}\label{Th1:eq1}
 	\left|f(x)-L_{n,N}(f,x)\right|\leq\frac{c(f)}{n},\quad x\in\mathbb{R},
 	\end{equation}
 	\begin{equation}\label{Th1:eq2}
 	\left|f(x)-L_{n,N}(f,x)\right|\leq\frac{c(f,\varepsilon)}{n^{2}},\quad x\in\left|x-a_{i}\right|\geq\varepsilon.
 	\end{equation}
-	The order of these estimates cannot be improved.
+	Данные оценки неулучшаемые по порядку.
 \end{theorem}
-To prove this theorem we use a lemma from \cite{shii-1983}:
+Для доказательства данной теоремы нам понадобится лемма из \cite{shii-1983}:
 \begin{lemma}[Sharapudinov, \cite{shii-1983}]
-	If the Fourier series of $f$ converges at the points $t_{k}=u+2k\pi/N$,
-	then the representation 
+	Если ряд Фурье функции $f$ сходится в точках $t_{k}=u+2k\pi/N$,
+	тогда имеет место представление 
 	\begin{equation}
 	L_{n,N}(f,x)=S_{n}(f,x)+R_{n,N}(f,x),\label{eq:Lemma1_eq}
 	\end{equation}
-	where
+	где
 	\begin{equation}
 	R_{n,N}(f,x)=\frac{2}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}D_{n}(x-t)\cos\mu N(u-t)f(t)dt,\label{eq:RnN1}
 	\end{equation}
-	holds true, where $2n<N$ and $D_{n}(x)$ is the Dirichlet kernel:
+	$2n<N$ и $D_{n}(x)$ --- это ядро Дирихле:
 	\begin{equation}\label{eq:D(x)}
-	D_{n}(x)=\frac{1}{2}+\sum_{k=1}^{n}\cos kx.
+		D_{n}(x)=\frac{1}{2}+\sum_{k=1}^{n}\cos kx.
 	\end{equation}
 \end{lemma}
-This lemma considers only the case $2n < N$. If $2n=N$ (when $N$ is even) we can write (see \cite{shii-1983})
+Данная лемма рассматривает только случай, когда $2n < N$. Если $2n=N$ (когда $N$ --- четное) мы можем записать (см. \cite{shii-1983})
 \begin{equation}
-L_{n,2n}(f,x)=L_{n-1,2n}(f,x)+a_{n}^{(2n)}(f)\cos n(x-u),\label{eq:Ln2n_est}
+	L_{n,2n}(f,x)=L_{n-1,2n}(f,x)+a_{n}^{(2n)}(f)\cos n(x-u),\label{eq:Ln2n_est}
 \end{equation}
-where
+где
 \begin{equation}
 a_{n}^{(2n)}(f)=\frac{1}{2n}\sum_{k=0}^{2n-1}f(t_{k})\cos n(t_{k}-u).\label{eq:a_n_formula}
 \end{equation}
-To prove the inequalities \eqref{Th1:eq1} and \eqref{Th1:eq2} from Theorem \ref{Th1} we use the formulas 
+Чтобы доказать неравенства \eqref{Th1:eq1} и \eqref{Th1:eq2} из Теоремы \ref{Th1} воспользуемся формулами
 \begin{equation}
-\left|f(x)-L_{n,N}(f,x)\right|\leq\left|f(x)-S_{n}(f,x)\right|+\left|R_{n,N}(f,x)\right|,\quad n<N/2,\label{eq:Th_est1}
+	\left|f(x)-L_{n,N}(f,x)\right|\leq\left|f(x)-S_{n}(f,x)\right|+\left|R_{n,N}(f,x)\right|,\quad n<N/2,\label{eq:Th_est1}
 \end{equation}
 \begin{equation}
-\left|f(x)-L_{n,N}(f,x)\right|\leq
-\left|f(x)-S_{n-1}(f,x)\right|+\left|R_{n-1,N}(f,x)\right|+\left|a_{n}^{(2n)}(f)\right|,\quad n=N/2\label{eq:Th_est_2},
+	\left|f(x)-L_{n,N}(f,x)\right|\leq
+	\left|f(x)-S_{n-1}(f,x)\right|+\left|R_{n-1,N}(f,x)\right|+\left|a_{n}^{(2n)}(f)\right|,\quad n=N/2\label{eq:Th_est_2},
 \end{equation}
-which immediately follow from \eqref{eq:Lemma1_eq} and \eqref{eq:Ln2n_est}.
-%	The value $\left|f(x)-S_{n}(f,x)\right|$ from (\ref{eq:Th_est1}) and
-%	(\ref{eq:Th_est_2}) can be estimated (see \cite{mkasumov}) as %is estimated in \cite{mkasumov} and the 
-%	\begin{equation}
-%	\left|f(x)-S_{n}(f,x)\right|\leq\frac{c(f)}{n},\quad x\in\mathbb{R},\label{eq:fSn_est1}
-%	\end{equation}
-%	\begin{equation}
-%	\left|f(x)-S_{n}(f,x)\right|\leq\frac{c(f,\varepsilon)}{n^{2}},\quad\left|x-a_{i}\right|\geq\varepsilon.\label{eq:fSn_est2}
-%	\end{equation}
-The estimates for the values $\left|f(x)-S_{n}(f,x)\right|$, $\left|R_{n,N}(f,x)\right|$, and $|a_{n}^{(2n)}(f)|$ are found in the following sections.
+которые сразу следуют из \eqref{eq:Lemma1_eq} и \eqref{eq:Ln2n_est}.
+Далее мы найдем оценки для $\left|f(x)-S_{n}(f,x)\right|$, $\left|R_{n,N}(f,x)\right|$, и $|a_{n}^{(2n)}(f)|$.
 
-\subsection{The estimate for $\left|f(x)-S_{n}(f,x)\right|$}
-To estimate the value $\left|f(x)-S_{n}(f,x)\right|$ we need the following lemma:
+\subsection{Оценка величины $\left|f(x)-S_{n}(f,x)\right|$}
+Чтобы оценить $\left|f(x)-S_{n}(f,x)\right|$ нем понадобится следующая лемма:
 \begin{lemma} \label{l_int_estimate}
-	For $f \in C_\Omega^2$ the following inequality holds:
+	Для $f \in C_\Omega^2$ справедливо следующее неравенство:
 	\begin{equation*}
 	\left|\intop_{-\pi}^{\pi}f(t)h_{p}(k(t+\alpha))dt\right|\leq\ \frac{c(f)}{k^{2}},
 	\end{equation*}
-	where $k \in \mathbb{N}$, $\alpha \in \mathbb{R}$, and
+	где $k \in \mathbb{N}$, $\alpha \in \mathbb{R}$, и
 	\begin{equation} \label{h_func_introduction}
 	h_{p}(x)=\begin{cases}
 	\cos x, & p=0,\\
@@ -127,7 +119,7 @@ To estimate the value $\left|f(x)-S_{n}(f,x)\right|$ we need the following lemma
 %\end{proof}
 %	The following lemma holds.
 \begin{lemma}
-	For $f \in C^2_\Omega$ the following inequalities hold:
+	Для $f \in C^2_\Omega$ справедливы неравенства
 	\begin{equation}
 	\left|f(x)-S_{n}(f,x)\right|\leq\frac{c(f)}{n},\quad x\in\mathbb{R},\label{eq:fSn_est1}
 	\end{equation}
@@ -150,26 +142,26 @@ To estimate the value $\left|f(x)-S_{n}(f,x)\right|$ we need the following lemma
 %	
 %\end{proof}
 
-\subsection{The estimate for $\left|R_{n,N}(f,x)\right|$}
+\subsection{Оценка величины $\left|R_{n,N}(f,x)\right|$}
 
-From \eqref{eq:RnN1} and \eqref{eq:D(x)} follows
+Из \eqref{eq:RnN1} и \eqref{eq:D(x)} следует
 $
 R_{n,N}(f,x)=R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x),
 $
-where
+где
 \begin{equation*}
 R_{n,N}^{1}(f,x)=\frac{1}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}f(t)\cos\mu N(u-t)dt,\label{eq:R1_formula1}
 \end{equation*}
 \begin{equation}
 R_{n,N}^{2}(f,x)=\frac{2}{\pi}\sum_{\mu=1}^{\infty}\sum_{k=1}^{n}\intop_{-\pi}^{\pi}f(t)\cos k(x-t)\cos\mu N(u-t)dt.\label{eq:R2_formula1}
 \end{equation}
-Obviously,
+Очевидно,
 $
 \left|R_{n,N}(f,x)\right| \leq \left|R_{n,N}^{1}(f,x)\right| + \left|R_{n,N}^{2}(f,x)\right|
-$. The values $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\right|$ are estimated later in this section, but first we prove three auxiliary lemmas.
+$. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\right|$ оценены ниже, для чего мы используем несколько вспомогательных лемм.
 
 \begin{lemma}\label{hlemma}
-	For $f \in C_\Omega^{0,1}$ the following holds:
+	Для $f \in C_\Omega^{0,1}$ справедливо:
 	\begin{multline}\label{hlemma_eq1}
 	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
 	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))-\\
@@ -200,7 +192,7 @@ $. The values $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\right|
 %\end{proof}
 
 \begin{corollary} \label{cor_hlemma}
-	If $f \in C_\Omega^2$, then $f(a_i - 0) - f(a_i + 0) = 0$, so we can write \eqref{hlemma_eq1} as
+	Если $f \in C_\Omega^2$, тогда $f(a_i - 0) - f(a_i + 0) = 0$, таким образом, мы можем записать \eqref{hlemma_eq1} как
 	\begin{multline*}
 	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= 
 	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt-\\
@@ -209,7 +201,7 @@ $. The values $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\right|
 \end{corollary}
 
 \begin{lemma} \label{hx_sum_estimate}
-	The following estimate holds:
+	Имеют место следующие оценки:
 	\begin{equation*}
 	\left|\sum_{k=1}^{n}h_{p}(kx)\right|\leq\frac{1}{\left|\sin\frac{x}{2}\right|}.
 	\end{equation*}
@@ -222,7 +214,7 @@ $. The values $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\right|
 %\end{proof}
 
 \begin{lemma}\label{akhkx_estimate}
-	Let $\alpha_1,\alpha_2, \ldots, \alpha_n$ be a monotonous sequence (either increasing or decreasing) of $n$ positive numbers. The following holds:
+	Пусть $\alpha_1,\alpha_2, \ldots, \alpha_n$ --- монотонная последовательность (возрастающая или убывающая) $n$ положительных чисел. Имеет место следующее неравенство:
 	$$
 	\left|\sum_{k=1}^{n} \alpha_{k} h_p(kx)\right| \leq \frac{2\alpha_n + \alpha_1}{\left|\sin \frac{x}{2}\right|}.
 	$$
@@ -243,7 +235,7 @@ $. The values $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\right|
 %\end{proof}
 
 \begin{lemma}
-	The following inequality holds:
+	Справедливо следующее неравенство:
 	$
 	\left|R_{n,N}^{1}(f,x)\right|\leq{c(f)}/{N^{2}}.
 	$
@@ -343,8 +335,8 @@ $. The values $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\right|
 %	Using the same approach we can show that the value $\left|R_{n,N}^{2.2}(f,x)\right|$ has the same estimate as $\left|R_{n,N}^{2.1}(f,x)\right|$, which leads us to \eqref{eq:Lemma3_firsteq} and \eqref{eq:Lemma3_secondeq}.
 %\end{proof}
 
-From the previous lemmas and inequality $\left|R_{n,N}(f,x)\right|\leq\left|R_{n,N}^{1}(f,x)\right|+\left|R_{n,N}^{2}(f,x)\right|$
-follow estimates for $\left|R_{n,N}(f,x)\right|$:
+Из вышеприведенных лемм и неравенства $\left|R_{n,N}(f,x)\right|\leq\left|R_{n,N}^{1}(f,x)\right|+\left|R_{n,N}^{2}(f,x)\right|$
+следуют оценки для $\left|R_{n,N}(f,x)\right|$:
 \begin{equation}
 \left|R_{n,N}(f,x)\right|\leq\frac{nc(f)}{N^2},\quad x\in\mathbb{R},\label{eq:R_est1}
 \end{equation}
@@ -353,12 +345,11 @@ follow estimates for $\left|R_{n,N}(f,x)\right|$:
 \end{equation}
 %	Now we should estimate the value $\left|a_{n}^{(2n)}(f)\right|$.
 
-\subsection{The estimate for $\left|a_{n}^{(2n)}(f)\right|$}
+\subsection{Оценка величины $\left|a_{n}^{(2n)}(f)\right|$}
 
 %	The following lemma takes place:
 \begin{lemma}
-	\label{Lemma_af_est}For the value $a_{n}^{(2n)}(f)$, where $f\in C_{\Omega}^{2}$ and $2n=N$, the estimate $\left|a_{n}^{(2n)}(f)\right|\leq{c(f)}/{N^{2}}$
-	holds.
+	\label{Lemma_af_est}Для $a_{n}^{(2n)}(f)$, где $f\in C_{\Omega}^{2}$ и $2n=N$, справедлива оценка $\left|a_{n}^{(2n)}(f)\right|\leq{c(f)}/{N^{2}}$.
 \end{lemma}
 %\begin{proof}
 %	For each $f \in C_{\Omega}^{2}$ the sum
@@ -401,34 +392,34 @@ follow estimates for $\left|R_{n,N}(f,x)\right|$:
 %	$
 %\end{proof}
 
-\subsection{The proof of Theorem \ref{Th1}}
-The proof of Theorem \ref{Th1} consists of two parts: first we prove that the inequalities \eqref{Th1:eq1} and \eqref{Th1:eq2} of the theorem hold, then we prove that
-these estimates cannot be improved for all $f \in C_{\Omega}^{2}$. 	
+\subsection{Доказательство Теоремы \ref{Th1}}
+Доказательство Теоремы \ref{Th1} состоит из двух частей: сначала мы докажем неравенства \eqref{Th1:eq1} и \eqref{Th1:eq2} теоремы, а затем докажем, что данные оценки не могут быть улучшены для $f \in C_{\Omega}^{2}$. 	
 
-From the inequalities \eqref{eq:Th_est1}, \eqref{eq:Th_est_2}, the estimates
+Из неравенств \eqref{eq:Th_est1}, \eqref{eq:Th_est_2}, оценок
 (\ref{eq:fSn_est1}), (\ref{eq:fSn_est2}), %(for $\left|f(x)-S_{n}(f,x)\right|$),
 \eqref{eq:R_est1}, (\ref{eq:R_est2}) %(for $\left|R_{n,N}(f,x)\right|$),
-and Lemma \ref{Lemma_af_est} we can easily get \eqref{Th1:eq1} and \eqref{Th1:eq2}.
-To prove that the order of these estimates cannot be improved we consider the aforementioned $2\pi$-periodic function 
-$f(x) = |x|,\ x \in [-\pi,\pi]$. Obviously, $f \in C_{\Omega}^{2}$. 
-Consider only the case when $n < N/2$.	
-From \eqref{eq:Lemma1_eq} follows the inequality
+и Леммы \ref{Lemma_af_est} легко получить \eqref{Th1:eq1} и \eqref{Th1:eq2}.
+Чтобы доказать, что порядок этих оценок неулучшаем, рассмотрим вышеупомянутую $2\pi$-периодическую функцию
+$f(x) = |x|,\ x \in [-\pi,\pi]$. 
+Очевидно, $f \in C_{\Omega}^{2}$. 
+Мы будем рассматривать только случай $n < N/2$.	
+Из \eqref{eq:Lemma1_eq} следует
 $
 \left|f(x) - L_{n,N}(f,x)\right| \geq \left|f(x) - S_n(f,x)\right| - \left|R_{n,N}(f,x)\right|.
 $
-From \eqref{eq:R_est1} follows $\left|R_{n,N}(f,x)\right| \leq c(f)/N$. Therefore, for every $\varepsilon > 0$
-we can find a natural number $N_0$, such that for every $N > N_0$ follows $\left|R_{n,N}(f,x)\right| < \varepsilon$. 
-Let $N_0(n)$ be a natural number such that for every $N > N_0(n)$  
+Из \eqref{eq:R_est1} имеем $\left|R_{n,N}(f,x)\right| \leq c(f)/N$. Следовательно, для любого $\varepsilon > 0$
+можно найти натуральное число $N_0$, такое, что для каждого $N > N_0$ следует $\left|R_{n,N}(f,x)\right| < \varepsilon$. 
+Пусть $N_0(n)$ --- натуральное число, такое что для любого $N > N_0(n)$  
 $$
 \max_{\substack{x \in E \\ N > N_0(n)}} \left|R_{n,N}(f,x)\right| \leq \frac12 \max_{x \in E} \left|f(x) - S_{n}(f,x)\right|,
 $$
-where $E \subset \mathbb{R}$.
-So, we can write
+где $E \subset \mathbb{R}$.
+Таким образом, мы можем записать
 \begin{equation} \label{maxLgeqmaxRn}
 \max_{\substack{x \in E \\ N > N_0(n)}}\left|f(x) - L_{n,N}(f,x)\right| \geq \frac12 \max_{x \in E}\left|f(x) - S_n(f,x)\right|.
 \end{equation}
 \begin{lemma}
-	The following inequalities hold:
+	Справедливы следующие неравенства:
 	$$
 	\max_{x \in \mathbb{R}}\left|f(x) - S_n(f,x)\right| \geq {c(f)}/{n},\quad x \in \mathbb{R},
 	$$
@@ -462,14 +453,14 @@ So, we can write
 %	$
 %\end{proof}
 
-From \eqref{maxLgeqmaxRn}  and the above lemma follows
+Из \eqref{maxLgeqmaxRn}  и предыдущей леммы следует:
 $$
 \max_{\substack{x \in \mathbb{R} \\ N > N_0(n)}}\left|f(x) - L_{n,N}(f,x)\right| \geq \frac{c}{n}, \quad x \in \mathbb{R},
 $$
 $$
 \max_{\substack{\left|\pi k - x\right| \geq \varepsilon \\ N > N_0(n)}} \left|f(x) - L_{n,N}(f,x)\right| \geq \frac{c(\varepsilon)}{n^2},\quad \left|x - \pi k\right| \geq \varepsilon.
 $$
-Theorem \ref{Th1} is proved.
+Теорема \ref{Th1} доказана.
 
 \section{Аппроксимативные свойства дискретных сумм Фурье для кусочно-гладких разрывных функций}
 \subsection{Аннотация}
