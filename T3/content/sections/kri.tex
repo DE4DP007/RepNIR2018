@@ -53,6 +53,9 @@ $\overline E$ единичная матрица размерности  $n\times
 	
 	\item[-]
 	существуют положительные числа $\xi_i$, $i=1,\dots,m$ такие, что $\xi_ib_{ii}\ge \overset m{\underset{j=1,i\neq j}{\sum}}\xi_j|b_{ij}|$, $i=1,\dots,m$;
+	
+	\item[-]
+	существуют положительные числа $\xi_i$, $i=1,\dots,m$ такие, что $\xi_jb_{jj}\ge \overset m{\underset{j=1,i\neq j}{\sum}}\xi_j|b_{ij}|$, $j=1,\dots,m$;
 \end{itemize}
 
 Объектом исследований является дифференциальное уравнение Ито второго порядка вида
@@ -77,16 +80,16 @@ $\overline E$ единичная матрица размерности  $n\times
 где:
 
 \begin{enumerate}
-	\item
+	\item[1.]
 	$a_{ij}\le 0,$ $i=0,1,$ $j=0,\dots,m$ - измеримые по Лебегу	функции, заданные на $[0,\infty [$ и  $0<\overline{a_{\mathit{i0}}}\le a_{\mathit{i0}}(t)\le A_{\mathit{i0}}$ $\mu$-почти всюду для некоторых положительных чисел $\overline{a_{\mathit{i0}}},A_{\mathit{i0}}$ при $i=0,1$, $|a_{ij}(t)|\le A_{ij}$ $\mu$-почти всюду для некоторого положительного числа  $A_{ij}$ при $i=0,1$, $j=1,\dots,m$, $|c_{ij}(t)|\le C_{ij}$ $\mu$-почти всюду для некоторого положительного числа  $C_{ij}$ при $i=0,...,m$, $j=0,...,m_i$;
 	
-	\item
+	\item[2.]
 	$h_{ij}$, $i=0,...,m$, $j=0,...,m_i$ - измеримые по Лебегу функции, заданные на $[0,\infty [$ такие, что $0 \le t-h_{ij}(t)\le \tau_{ij}$ $\mu$-почти всюду для некоторого положительного числа  $\tau_{ij}$ при $i=0,...,m$, $j=0,...,m_i$;
 	
-	\item
-	$\varphi - \Im_0$-измеримый скалярный случайный процесс, заданный на $[\sigma ,0[$, где $\sigma =\text{max}\left\{\tau_{ij}, i=0,...,m, j=0,\dots,m_i\right\}$;
+	\item[3.]
+	$\varphi - \Im_0$-измеримый скалярный случайный процесс, заданный на $[\sigma ,0[$, где \linebreak $\sigma =\text{max}\left\{\tau_{ij}, i=0,...,m, j=0,\dots,m_i\right\}$;
 	
-	\item
+	\item[4.]
 	$b_j$, $j=1,2$ $\Im_0$-измеримые скалярные случайные величины.
 \end{enumerate}
 
@@ -114,18 +117,18 @@ $\overline E$ единичная матрица размерности  $n\times
 
 Отметим, что задача \eqref{kri-eq-1}, \eqref{kri-eq-1a}, \eqref{kri-eq-1b} при сделанных предположениях имеет единственное решение в силу результатов работы \cite{kri-bib-10}. Обозначим через $x(t,b,\varphi )$ - решение задача \eqref{kri-eq-1}, \eqref{kri-eq-1a}, \eqref{kri-eq-1b}, т.е. $x(t,b,\varphi)=\varphi$ при $t<0$ и $x(0,b,\varphi)=b_1$, $x'(0,b,\varphi)=b_2$.
 
-\textbf{Определение 2.} Будем говорить, что уравнения (1) \textit{экспоненциально } $p$\textit{{}-устойчивым}
+\textbf{Определение 2.} Будем говорить, что уравнения \eqref{kri-eq-1} \textit{экспоненциально } $p$\textit{{}-устойчивым}
 относительно начальных данных (или просто \textit{экспоненциально } $p$\textit{{}-устойчивым}), если при некоторых
 положительных постоянных  $K,\lambda $ \ справедливо неравенство
 
-{\centering
- $(E|x(t,b,\varphi )|^p)^{1/p}\le K\left(\|b\|_{k_p^2}+\begin{matrix}\text{vrai sup}\\t<0\end{matrix}(E|\varphi
-(t)|^p)^{1/p}\right)\text{exp}\{-\mathit{\lambda t}\}\text{  }(t\ge 0)$.
-\par}
+\begin{equation*}
+(E|x(t,b,\varphi )|^p)^{1/p}\le K\left(\|b\|_{k_p^2}+\begin{matrix}\text{vrai sup}\\t<0\end{matrix}(E|\varphi
+(t)|^p)^{1/p}\right)\text{exp}\{-\mathit{\lambda t}\}\text{  }(t\ge 0).
+\end{equation*}
 
 Исследование экспоненциальной  $p${}-устойчивости \ уравнения \eqref{kri-eq-1} будет производиться исследованием вопросов
 экспоненциальной  $p${}-устойчивости \ для системы линейных уравнений Ито с последействием построенная по уравнению
-\eqref{eq-1}.Традиционна для этого по уравнению \eqref{kri-eq-1} с начальными условиями \eqref{kri-eq-1a}, \eqref{kri-eq-1b} строят систему следующего вида
+\eqref{kri-eq-1}.Традиционна для этого по уравнению \eqref{kri-eq-1} с начальными условиями \eqref{kri-eq-1a}, \eqref{kri-eq-1b} строят систему следующего вида
 
 \begin{equation*}
 	x'_1(t) = x_2(t)\quad(t\ge0)
@@ -147,7 +150,7 @@ $\overline E$ единичная матрица размерности  $n\times
 \end{equation}
 
 и при этом используется факт совпадения первой компоненты решения задачи \eqref{kri-eq-2}, \eqref{kri-eq-2a}, \eqref{kri-eq-2b} с решением задачи \eqref{kri-eq-1}, \eqref{kri-eq-1a},
-\eqref{eq-1b}. Следовательно, экспоненциальная  $p${}-устойчивость уравнения \eqref{kri-eq-1} эквивалентна экспоненциальной
+\eqref{kri-eq-1b}. Следовательно, экспоненциальная  $p$-\linebreak устойчивость уравнения \eqref{kri-eq-1} эквивалентна экспоненциальной
 $p${}-устойчивости по первой компоненте системы \eqref{kri-eq-2}. Вопросы экспоненциальной  $p${}-устойчивости по части переменных
 для систем линейных уравнения Ито с последействием более общего вида изучены в работах \cite{kri-bib-19, kri-bib-20}. Кроме того,
 экспоненциальная  $p${}-устойчивость уравнения \eqref{kri-eq-1} будет следовать из экспоненциальной  $p${}-устойчивости системы \eqref{kri-eq-2}.
@@ -164,14 +167,19 @@ $p${}-устойчивости по первой компоненте систе
 
 Рассмотрим систему линейных уравнений Ито с запаздыванием следующего вида
 
+\begin{equation*}
+	x_1'(t)=-qx_1(t)+x_2(t)(t\ge 0),
+\end{equation*}
 \begin{equation}\label{kri-eq-3}
-	\begin{matrix} x_1'(t)=-qx_1(t)+x_2(t)(t\ge 0),\hfill\null
-	\\\text{dx}_2(t)=\left[-(a_{00}(t)-(a_{10}(t)-q)q)x_1(t)-(a_{10}(t)-q)x_2(t)+\overset{m_0}{\underset{j=1}{\sum
-	}}c_{\mathit{j0}}(t)x_1(h_{\mathit{j0}}(t))\right]\text{dt}+\hfill\null \\\overset
+	\text{dx}_2(t)=\left[-(a_{00}(t)-(a_{10}(t)-q)q)x_1(t)-(a_{10}(t)-q)x_2(t)+\overset{m_0}{\underset{j=1}{\sum
+	}}c_{\mathit{j0}}(t)x_1(h_{\mathit{j0}}(t))\right]\text{dt}+
+\end{equation}
+\begin{equation*}
+\overset
 	m{\underset{i=1}{\sum }}\left[-(a_{0i}(t)-a_{1i}(t)q)x_1(t)-a_{1i}(t)x_2(t)+\overset{m_i}{\underset{j=1}{\sum
 	}}c_{\text{ji}}(t)x_1(h_{\text{ji}}(t))\right]\mathit{dB}_i(t)\text{  }(t\ge
-	0),\hfill\null \end{matrix}\hfill
-\end{equation}
+	0),
+\end{equation*}
 
 где  $q${}- некоторое положительное число, а остальные параметры
 определены в уравнении \eqref{kri-eq-1}, с начальными условиями
@@ -241,101 +249,142 @@ _0}{\overline{a_{10}}-q}-\frac{c_p\overset m{\underset{i=1}{\sum }}A_{1i}}{\sqrt
 
 \textbf{Доказательство.} Систему \eqref{kri-eq-3} с условиями \eqref{kri-eq-3a} \ запишем в следующем виде
 
+\begin{equation*}
+	\overline{x_1}'(t)=-q\overline{x_1}(t)+\overline{x_2}(t)\text{   }(t\ge 0),
+\end{equation*}
+\begin{equation*}
+	d\overline{x_2}(t)=[-(a_{00}(t)-(a_{10}(t)-q)q)\overline{x_1}(t)-(a_{10}(t)-q)\overline{x_2}(t)+
+\end{equation*}
 \begin{equation}\label{kri-eq-7}
-	\begin{matrix}\overline{x_1}'(t)=-q\overline{x_1}(t)+\overline{x_2}(t)\text{   }(t\ge 0),\hfill\null
-	\\d\overline{x_2}(t)=[-(a_{00}(t)-(a_{10}(t)-q)q)\overline{x_1}(t)-(a_{10}(t)-q)\overline{x_2}(t)+\hfill\null
-	\\\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}(t)(\overline{x_1}(h_{\mathit{j0}}(t))+\overline{\varphi
-	}(h_{\mathit{j0}}(t)))]\text{dt}+\hfill\null \\\overset m{\underset{i=1}{\sum
-	}}[-(a_{0i}(t)-a_{1i}(t)q)\overline{x_1}(t)-a_{1i}(t)\overline{x_2}(t)+\hfill\null \\\overset{m_i}{\underset{j=1}{\sum
-	}}c_{\text{ji}}(t)(\overline{x_1}(h_{\text{ji}}(t))+\overline{\varphi
-	}(h_{\text{ji}}(t)))]\mathit{dB}_i(t)\text{  }(t\ge 0),\hfill\null \end{matrix}
+	\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}(t)(\overline{x_1}(h_{\mathit{j0}}(t))+\overline{\varphi
+	}(h_{\mathit{j0}}(t)))]\text{dt}+
 \end{equation}
+\begin{equation*}
+	\overset m{\underset{i=1}{\sum
+	}}[-(a_{0i}(t)-a_{1i}(t)q)\overline{x_1}(t)-a_{1i}(t)\overline{x_2}(t)+
+\end{equation*}
+\begin{equation*}
+	\overset{m_i}{\underset{j=1}{\sum
+	}}c_{\text{ji}}(t)(\overline{x_1}(h_{\text{ji}}(t))+\overline{\varphi
+	}(h_{\text{ji}}(t)))]\mathit{dB}_i(t)\text{  }(t\ge 0),
+\end{equation*}
 где  $\overline{x_i}$\ {}- неизвестный скалярный случайный процесс на
-$\text{  }]-\infty ,+\infty [$ \textsubscript{\ }такой, что  $\overline{x_i}(t)=0$ \textit\text{subscript{\ }}при
+$\text{  }]-\infty ,+\infty [$ такой, что  $\overline{x_i}(t)=0$ при
 $t<0$ \ и  $\overline{\varphi }(t)$\ {}- известный скалярный случайный процесс на $\text{  }]-\infty ,+\infty
-[$\textsubscript{ }\ такой, что  $\overline{\varphi }(t)=\varphi (t)$ \ при  $t\in [\sigma ,0[$ \ и  $\overline{\varphi
-}(t)=0$ \ когда  $t$ \textit\text{subscript{\ }}не принадлежит полуинтервалу  $[\sigma ,0[$. Обозначим через
-$\overline x(t,b,\varphi )$ \textit\text{subscript{\ }}решение системы \eqref{kri-eq-7}, удовлетворяющее условию \eqref{kri-eq-3b}.Очевидно, что
+[$ такой, что  $\overline{\varphi }(t)=\varphi (t)$ \ при  $t\in [\sigma ,0[$ \ и  $\overline{\varphi
+}(t)=0$ \ когда  $t$ не принадлежит полуинтервалу  $[\sigma ,0[$. Обозначим через
+$\overline x(t,b,\varphi )$ решение системы \eqref{kri-eq-7}, удовлетворяющее условию \eqref{kri-eq-3b}.Очевидно, что
 решение задачи \eqref{kri-eq-7}, \eqref{kri-eq-3b} при  $t\ge 0$ совпадает с решением задачи \eqref{kri-eq-3}, \eqref{kri-eq-3a}, \eqref{kri-eq-3b}.
 
 Если в системе \eqref{kri-eq-7} сделать замену  $\overline{x_i}(t)=\text{exp}\{-\mathit{\lambda t}\}y_i(t)$, где  $y_i(t)$\ {}-
 неизвестный скалярный случайный процесс на  $\text{  }]-\infty ,+\infty [$ \ такой, что $y_i(t)=0$ при  $t<0$,
-$0<\lambda <\text{min}\{q,A_{10}-q\}$ \ для  $i=1,2$, то получится систему
+$0<\lambda <\text{min}\{q,A_{10}-q\}$ \ для  $i=1,2$, то получится система
 
-\begin{equation}\label{kri-eq-8}
-	\begin{matrix}y_{1'}(t)=(\lambda -q)y_1(t)+y_2(t)\text{   }(t\ge 0),\hfill\null
-	\\\text{dy}_2(t)=[-(a_{00}(t)-(a_{10}(t)-q)q)y_1(t)+(\lambda -(a_{10}(t)-q))y_2(t)+\hfill\null
-	\\\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}(t)\text{exp}\{\mathit{\lambda t}\}(\text{exp}\{-\mathit{\lambda
+\begin{equation*}
+	y'_{1}(t)=(\lambda -q)y_1(t)+y_2(t)\text{   }(t\ge 0),
+\end{equation*}
+\begin{equation*}	
+	\text{dy}_2(t)=[-(a_{00}(t)-(a_{10}(t)-q)q)y_1(t)+(\lambda -(a_{10}(t)-q))y_2(t)+
+\end{equation*}
+\begin{equation}\label{kri-eq-8}	
+	\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}(t)\text{exp}\{\mathit{\lambda t}\}(\text{exp}\{-\mathit{\lambda
 		h}_{\mathit{j0}}(t)\}y_1(h_{\mathit{j0}}(t))+\overline{\varphi
-	}(h_{\mathit{j0}}(t)))]\text{dt}+\hfill\null \\\overset m{\underset{i=1}{\sum
-	}}[-(a_{0i}(t)-a_{1i}(t)q)y_1(t)-a_{1i}(t)y_2(t)+\hfill\null \\+\overset{m_i}{\underset{j=1}{\sum
-	}}c_{\text{ji}}(t)\text{exp}\{\mathit{\lambda t}\}(\text{exp}\{-\mathit{\lambda
-		h}_{\text{ji}}?(t)\}y_1(h_{\mathit{j0}}(t)+\overline{\varphi
-	}(h_{\text{ji}}(t)))]\mathit{dB}_i(t)\text{  }(t\ge 0),\hfill\null \end{matrix}
+	}(h_{\mathit{j0}}(t)))]\text{dt}+ 
 \end{equation}
+\begin{equation*}
+	\overset m{\underset{i=1}{\sum
+	}}[-(a_{0i}(t)-a_{1i}(t)q)y_1(t)-a_{1i}(t)y_2(t)+ 
+\end{equation*}
+\begin{equation*}
+	+\overset{m_i}{\underset{j=1}{\sum
+	}}c_{\text{ji}}(t)\text{exp}\{\mathit{\lambda t}\}(\text{exp}\{-\mathit{\lambda
+		h}_{\text{ji}}(t)\}y_1(h_{\mathit{j0}}(t)+\overline{\varphi
+	}(h_{\text{ji}}(t)))]\mathit{dB}_i(t)\text{  }(t\ge 0),
+\end{equation*}
 
 Положив  $\eta (t)=(a_{10}(t)-q)-\lambda $, с учетом условий \ \eqref{kri-eq-3b} систему \eqref{kri-eq-8} можно переписать в следующем виде:
 
-\begin{equation}\label{kri-eq-9}
-	\begin{matrix}y_1(t)=\text{exp}\{-(q-\lambda )t\}b_1+\overset t{\underset 0{\int }}\text{exp}\{-(q-\lambda
-	)(t-s)\}y_2(s)\text{ds}\text{   }(t\ge 0),\hfill\null
-	\\y_2(t)=\text{exp}\left\{-\overset t{\underset 0{\int }}\eta (s)\text{ds}\right\}b_2+\overset
+\begin{equation*}
+	y_1(t)=\text{exp}\{-(q-\lambda )t\}b_1+\overset t{\underset 0{\int }}\text{exp}\{-(q-\lambda
+	)(t-s)\}y_2(s)\text{ds}\text{   }(t\ge 0),
+\end{equation*}
+\begin{equation*}		
+	y_2(t)=\text{exp}\left\{-\overset t{\underset 0{\int }}\eta (s)\text{ds}\right\}b_2+\overset
 	t{\underset 0{\int }}\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
-	}\right\}[-(a_{00}(s)-(a_{10}(s)-q)q)y_1(s)+\hfill\null \\\overset{m_0}{\underset{j=1}{\sum
+	}\right\}[-(a_{00}(s)-(a_{10}(s)-q)q)y_1(s)+ 
+\end{equation*}	
+\begin{equation}\label{kri-eq-9}
+	\overset{m_0}{\underset{j=1}{\sum
 	}}c_{\mathit{j0}}(s)\text{exp}\{\mathit{\lambda s}\}(\text{exp}\{-\mathit{\lambda
 		h}_{\mathit{j0}}(s)\}(y_1(h_{\mathit{j0}}(s))+\overline{\varphi
-	}(h_{\mathit{j0}}(s)))]\text{ds}+\hfill\null \\\overset m{\underset{i=1}{\sum }}\overset s{\underset
+	}(h_{\mathit{j0}}(s)))]\text{ds}+ 
+\end{equation}	
+\begin{equation*}
+	\overset m{\underset{i=1}{\sum }}\overset s{\underset
 		0{\int }}\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
-	}\right\}[-(a_{0i}(s)-a_{1i}(s)q)y_1(s)-a_{1i}(s)y_2(s)+\hfill\null \\+\overset{m_i}{\underset{j=1}{\sum
+	}\right\}[-(a_{0i}(s)-a_{1i}(s)q)y_1(s)-a_{1i}(s)y_2(s)+ 
+\end{equation*}	
+\begin{equation*}
+	+\overset{m_i}{\underset{j=1}{\sum
 	}}c_{\text{ji}}(s)\text{exp}\{\mathit{\lambda s}\}(\text{exp}\{-\mathit{\lambda
-		h}_{\text{ji}}?(s)\}(y_1(h_{\mathit{j0}}(s)+\overline{\varphi
-	}(h_{\text{ji}}(s)))]\mathit{dB}_i(s)\text{  }(t\ge 0),\hfill\null \end{matrix}
-\end{equation}
+		h}_{\text{ji}}(s)\}(y_1(h_{\mathit{j0}}(s)+\overline{\varphi
+	}(h_{\text{ji}}(s)))]\mathit{dB}_i(s)\text{  }(t\ge 0),
+\end{equation*}
 
 В дальнейшем будем пользоваться обозначениями \  $\overline{y_i}=\begin{matrix}\sup\\t\ge
 0\end{matrix}\left(E|y_i(t)|^{2p}\right)^{1/2p},i=1,2$, \  $\overline{\overline{\varphi
-}}=\begin{matrix}\sup\\t<0\end{matrix}\left(E|\varphi (t)|^{2p}\right)^{1/2p}$ \ и неравенствами \eqref{kri-eq-2}-\eqref{eq-4}.
+}}=\begin{matrix}\sup\\t<0\end{matrix}\left(E|\varphi (t)|^{2p}\right)^{1/2p}$ \ и неравенствами \eqref{kri-eq-2}, \eqref{kri-eq-3}, \eqref{kri-eq-4}.
 
 Из первого \ уравнения системы \eqref{kri-eq-9} получим
 
 \begin{equation*}
 \overline{y_1}\le \|b_1\|_{k_{2p}^1}+\frac 1{q-\lambda }\overline{y_2}.
 \end{equation*}
-Из последнего уравнения системы \eqref{kri-eq-9} с учетом предыдущих обозначений и неравенств \eqref{kri-eq-2}-\eqref{eq-4} получим
+Из последнего уравнения системы \eqref{kri-eq-9} с учетом предыдущих обозначений и неравенств \eqref{kri-eq-2}, \eqref{kri-eq-3}, \eqref{kri-eq-4} получим
 
+\begin{equation*}
+  \overline{y_2} \leq \|b_2\|_{k_{2p}^1} + \left[ \gamma_0 \overline{y_2} + \sum\limits_{j=1}^{m_0} c_{j0} \exp\{\lambda\tau_{j0}\}(\overline{y_1}+\overline{\overline{\varphi}}) \right] 
+\sup\limits_{t\geq0} \int\limits_{0}^{e} \exp\left\{-\int\limits_{s}^{t} \eta(\zeta)d\zeta\right\}ds + 
+\end{equation*}
 \begin{equation}\label{kri-eq-10}
-	\begin{matrix}\overline{y_2}\le \|b_2\|_{k_{2p}^1}+.\hfill\null \end{matrix}
+c_p \sum\limits_{i=1}^{m} \left[\gamma_1\overline{y_1}+A_{1i}\overline{y_2}+\sum\limits_{j=1}^{m_i} c_{ji}\exp \{\lambda\tau_{ji}\}(\overline{y_1}+\overline{\overline{\varphi}})\right] 
+\sup\limits_{t\geq0} \left(\int\limits_{0}^{t}\exp\left\{ -2\int\limits_{s}^{t} \eta(\zeta)d\zeta \right\} ds \right)^{1/2} 
 \end{equation}
 
 Так как
 
 \begin{equation*}
-\begin{matrix}\sup\\t\ge 0\end{matrix}\overset t{\underset 0{\int }}\text{exp}\left\{-\overset t{\underset s{\int
-}}\eta (\zeta )\mathit{d\zeta }\right\}\text{ds}=\begin{matrix}\sup\\t\ge
-0\end{matrix}\overset t{\underset s{\int }}\left[\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta
+\sup\limits_{t\ge 0}\overset t{\underset 0{\int }}\text{exp}\left\{-\overset t{\underset s{\int
+}}\eta (\zeta )\mathit{d\zeta }\right\}\text{ds}=\begin{matrix}\sup\limits_{t\ge
+0}\end{matrix}\overset t{\underset s{\int }}\left[\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta
 )\mathit{d\zeta }\right\}\eta (s)\right]/\eta (s)\text{ds}\le \frac 1{\overline{a_{10}}-q-\lambda }
 \end{equation*}
 и
 
 \begin{equation*}
-\begin{matrix}\begin{matrix}\sup\\t\ge 0\end{matrix}\left(\overset t{\underset 0{\int
+\sup\limits_{t\ge 0}\left(\overset t{\underset 0{\int
 }}\text{exp}\left\{-2\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
-}\right\}\text{ds}\right)^{1/2}=\\\begin{matrix}\sup\\t\ge 0\end{matrix}\left(\overset
+}\right\}\text{ds}\right)^{1/2}=
+\end{equation*}
+\begin{equation*}
+\sup\limits_{t\ge 0}\left(\overset
 t{\underset 0{\int }}\left[\text{exp}\left\{-2\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta }\right\}2\eta
 (s)\right]/(2\eta (s))\text{ds}\right)^{1/2}\le \frac 1{\sqrt{\overline{a_{10}}-q-\lambda
-}},\end{matrix}
+}},
 \end{equation*}
 то из оценки \eqref{kri-eq-10} получаем
 
+\begin{equation*}  
+\overline{y_2} \leq \|b_2\|_{k^1_{2p}} + \frac{\gamma_0\overline{y_2}+\sum\limits_{j=1}^{m_0} c_{j0}\exp \{\lambda\tau_{j0} \} \overline{y_1}}{\overline{a_{10}}-q-\lambda} +
+\end{equation*}
 \begin{equation}\label{kri-eq-11}
-	\begin{matrix}\overline{y_2}\le \|b_2\|_{k_{2p}^1}+\gamma
-	_0\overline{y_2}+\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}\text{exp}\{\text{$\lambda \tau
-			$}_{\mathit{j0}}??\overline{y_1}??\frac ?{\overline{a_{10}}-q-\lambda }?+??\frac{c_p\overset m{\underset{i=1}{\sum
-		}}\left[\gamma _i\overline{y_1}+A_{1i}\overline{y_2}+\overset{m_i}{\underset{j=1}{\sum
-		}}c_{\text{ji}}\text{exp}\{\text{$\lambda \tau
-				$}_{\text{ji}}\}\overline{y_1}\right]}{\sqrt{\overline{a_{10}}-q-\lambda }}.+M(\lambda
-	)\overline{\overline{\varphi }},??\end{matrix}
+\frac{c_p \sum\limits_{i=1}^{m} \left[ \gamma_i\overline{y_1}+A_{1i}\overline{y_2}+\sum\limits_{j=1}^{m_i} c_{ji}\exp\{\lambda\tau_{ji} \} \overline{y_1} \right]}{\sqrt{\overline{a_{10}}-q-\lambda}} + M(\lambda)\overline{\overline{\varphi}},
 \end{equation}
+где 
+\begin{equation*}
+M(\lambda )=\frac{\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}\text{exp}\{\text{$\lambda \tau
+		$}_{\mathit{j0}}\}}{\overline{a_{10}}-q-\lambda }+ \frac{c_p \sum\limits_{i=1}^{m}\left[\sum\limits_{j=1}^{m_i} c_{ji}\exp\{\lambda\tau_{ji} \}\right]}{\sqrt{\overline{a_{10}}-q-\lambda}}.
+\end{equation*}
 
 \begin{equation*}
 M(\lambda )=\frac{\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}\text{exp}\{\text{$\lambda \tau
@@ -359,7 +408,7 @@ $}_{\mathit{j0}}\}}{\overline{a_{10}}-q-\lambda }-c_p\overset m{\underset{i=1}{\
 	}}.
 \end{equation}
 
-Очевидно также, что  $Z(0)=Z$. В силу условий теоремы матрица  $Z$ является  $M${}-матрицей, а тогда при достаточно
+Очевидно также, что  $Z(0)=Z$. В силу условий теоремы матрица  $Z$ является  $M$-\linebreak матрицей, а тогда при достаточно
 малых  $\lambda $ \ матрица  $Z(\lambda )$ \ также является  $M${}-матрицей, а значит существует  $\lambda =\lambda _0$
 \ такое, что \  $Z(\lambda _0)$ lambda положительно обратима. Тогда из неравенства \eqref{kri-eq-12} получаем
 
@@ -373,13 +422,14 @@ $}_{\mathit{j0}}\}}{\overline{a_{10}}-q-\lambda }-c_p\overset m{\underset{i=1}{\
 Поскольку  $x(t,b,\varphi )=\text{exp}-\beta ty(t)$  и   $\underset{t\ge
 0}\sup\left(E|y(t)|^{2p}\right)^{1/2p}=|\overline y|$,  $\overline{\overline{\varphi
 }}=\begin{matrix}\sup\\t<0\end{matrix}\left(E|\varphi (t)|^{2p}\right)^{1/2p}$, то из неравенства \eqref{kri-eq-13} следует,
-что существуют положительные числа  $\lambda =\lambda _0$,  $K=||Z(\lambda _0)^{-1}||\text{max}\{1,M(\lambda _0)\}$
+что существуют положительные числа  $\lambda =\lambda _0$, \linebreak  $K=||Z(\lambda _0)^{-1}||\text{max}\{1,M(\lambda _0)\}$
 такие, что для решения  $x(t,b,\varphi )$ \ задачи \eqref{kri-eq-1}, \eqref{kri-eq-1a}, \eqref{kri-eq-1b} \ справедливо неравенство
 
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  $(E|x(t,b,\varphi )|^{2p})^{1/2p}\le
+\begin{equation*}
+(E|x(t,b,\varphi )|^{2p})^{1/2p}\le
 K\left(\|b\|_{k_{2p}^2}+\begin{matrix}\text{vrai sup}\\t<0\end{matrix}(E|\varphi
-(t)|^{2p})^{1/2p}\right)\text{exp}\{-\lambda _0?t\}\text{  }(t\ge 0)$.
-
+(t)|^{2p})^{1/2p}\right)\text{exp}\{-\lambda _0 t\}\text{  }(t\ge 0).
+\end{equation*}
 
 \section{Следствие основного результата}
 
@@ -397,8 +447,8 @@ K\left(\|b\|_{k_{2p}^2}+\begin{matrix}\text{vrai sup}\\t<0\end{matrix}(E|\varphi
 то оно экспоненциально  $2p${}-устойчива.
 
 Справедливость следствия следует из теоремы в силу того, что при выполнении условий следствия матрица  $Z$
-\textit\text{subscript{\ }}будет  $M${}-матрицей, так как все диагональные миноры матрицы  $Z$
-\textit\text{subscript{\ }}положительны.
+будет  $M${}-матрицей, так как все диагональные миноры матрицы  $Z$
+положительны.
 
-Используя следствие можно получить достаточные условия экспоненциальной  $2p${}-устойчивости \ для конкретных уравнений
+Используя следствие можно получить достаточные условия экспоненциальной  $2p$-\linebreak устойчивости для конкретных уравнений
 вида \eqref{kri-eq-1} в терминах параметров этих уравнений. 
