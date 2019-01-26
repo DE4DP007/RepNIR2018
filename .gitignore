@@ -8,6 +8,7 @@
 !*.jpg
 !*.bmp
 !*.png
+!*.doc
 !*.docx
 !*.xlsx
 .DS_Store
