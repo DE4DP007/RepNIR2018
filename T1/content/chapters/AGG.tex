@@ -16,11 +16,21 @@ $\left|f(x) - L_{n,N}(f,x)\right| \leq c(f,\varepsilon)/n$, $\left|x - a_i\right
 \subsection{Введение}
 %Сначала введем некоторые обозначения.
 %Пусть $\Omega$ 
-Пусть $\Omega$ --- множество из $m+1$ точек $\left\{ a_{i}\right\} _{i=0}^{m}$ $(m > 2)$, таких, что $-\pi=a_{0}<a_{1}<\ldots<a_{m-1}<a_{m}=\pi$.
-Обозначим через $C_\Omega^{0,r}$ класс всех $2\pi$-периодических функций с $r$ абсолютно непрерывными производными на каждом интервале $(a_i, a_{i+1})$,
-для которых выполняется $f(a_i) = (f(a_i - 0) + f(a_i + 0)) / 2$.
-Через $C_\Omega^{r}$ обозначим подкласс всех непрерывных функций из $C_\Omega^{0,r}$ (здесь мы говорим, что $f$ абсолютно непрерывна на интервале $(a,b)$,
-если функция $\overline{f}$ абсолютно непрерывна на отрезке $[a,b]$, где $\overline{f}(x) = f(x)$ для $x \in (a,b)$, $\overline{f}(a) = f(a+0)$, и $\overline{f}(b) = f(b-0)$). 
+Через $\overline{f}_{[a,b]}$ мы обозначим функцию
+\begin{equation*}
+	\overline{f}_{[a,b]} = 
+	\begin{cases}
+		f(x), & x \in (a,b), \\
+		f(a + 0), & x = a,\\
+		f(b - 0), & x = b.
+	\end{cases}
+\end{equation*}
+Пусть $\Omega$ --- множество из $m+1$ точек $-\pi=a_{0}<a_{1}<\ldots<a_{m-1}<a_{m}=\pi$.
+Обозначим через $C_\Omega^{0,r}$ класс всех $2\pi$-периодических функций $f$,
+таких, что на каждом отрезке $[a_i, a_{i+1}]$ функция $\overline{f}_{[a_i, a_{i+1}]}$ имеет 
+$r$ абсолютно непрерывных производных, а в точках $a_i$ выполняется
+ $f(a_i) = (f(a_i - 0) + f(a_i + 0)) / 2$.
+Через $C_\Omega^{r}$ обозначим подкласс всех непрерывных функций из $C_\Omega^{0,r}$.
 
 Через $L_{n,N}(f,x)$ обозначим
 тригонометрических полином порядка $n$, обладающий наименьшим квадратичным отклонением от функции $f$ в точках $\left\{t_{j}\right\} _{i=0}^{N-1}$,
@@ -33,9 +43,9 @@ $
 Подробнее о приближении функций тригонометрическими полиномами можно прочитать в работах 
 \cite{2_bernstein,4_erdos,7_kalashnikov,8_krilov,9_marcinkiewicz,10_marcinkiewicz,11_natanson,12_nikolsky,18_zigmund,17_turetsky}.
 
-Также, мы будем обозначать через $c$ или $c(b_1, b_2, \ldots, b_k)$ некие положительные константы, которые зависят только от указанных в скобках аргументов, и могут 
+Также, мы будем обозначать через $c$ или $c(b_1, b_2, \ldots, b_k)$ некие положительные константы, которые зависят только от указанных в скобках аргументов и могут 
 различаться в разных местах в тексте.  Через $S_n(f,x)$ обозначим $n$-ю частичную сумму ряда Фурье функции $f$. 
-Также отметим, что легко показать, что ряд Фурье любой функции $f \in C_\Omega^{0,1}$ (и, следовательно, $C_\Omega^{2}$) 
+Также отметим, что легко показать, что ряд Фурье любой функции $f \in C_\Omega^{0,1}$ (и, следовательно, $C_\Omega^{2}$, в силу очевидного включения $C_\Omega^{2} \subset C_\Omega^{0,1}$) 
 сходится поточечно и возможно следующее представление:
 \begin{equation}\label{f_as_Fourier}
 	f(x) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left(a_k \cos kx + b_k \sin kx\right),
@@ -52,7 +62,7 @@ $
 \begin{theorem}\label{theorem}
 	Для функции $f \in C_{\Omega}^{0,1}$ справедлива оценка:
 	\begin{equation}\label{theorem_result}
-	\left| f(x) - L_{n,N}(f,x) \right| \leq \frac{C(f,\varepsilon)}{n}, \quad |x - a_i| > \varepsilon.
+	\left| f(x) - L_{n,N}(f,x) \right| \leq \frac{C(f,\varepsilon)}{n}, \quad |x - a_i| \geq \varepsilon.
 	\end{equation}
 	Данная оценка неулучшаема по порядку.
 \end{theorem}
@@ -62,7 +72,7 @@ $
 	\left|f(x)-L_{n,N}(f,x)\right|\leq\frac{c(f)}{n},\quad x\in\mathbb{R},
 	\end{equation}
 	\begin{equation}\label{Th1:eq2}
-	\left|f(x)-L_{n,N}(f,x)\right|\leq\frac{c(f,\varepsilon)}{n^{2}},\quad x\in\left|x-a_{i}\right|\geq\varepsilon.
+	\left|f(x)-L_{n,N}(f,x)\right|\leq\frac{c(f,\varepsilon)}{n^{2}},\quad \left|x-a_{i}\right|\geq\varepsilon.
 	\end{equation}
 	Данные оценки неулучшаемые по порядку.
 \end{theorem}
@@ -78,7 +88,7 @@ $
 	\begin{equation}
 	R_{n,N}(f,x)=\frac{2}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}D_{n}(x-t)\cos\mu N(u-t)f(t)dt,\label{eq:RnN1}
 	\end{equation}
-	$2n<N$ и $D_{n}(x)$ --- это ядро Дирихле:
+	$2n<N$ и 
 	\begin{equation}\label{eq:D(x)}
 		D_{n}(x)=\frac{1}{2}+\sum_{k=1}^{n}\cos kx.
 	\end{equation}
@@ -91,7 +101,7 @@ $
 \begin{equation}
 a_{n}^{(2n)}(f)=\frac{1}{2n}\sum_{k=0}^{2n-1}f(t_{k})\cos n(t_{k}-u).\label{eq:a_n_formula}
 \end{equation}
-Чтобы доказать неравенства \eqref{theorem_result}, \eqref{Th1:eq1} и \eqref{Th1:eq2} из теорем \ref{Th1} и \ref{theorem}, воспользуемся формулами
+Чтобы доказать неравенства \eqref{theorem_result}, \eqref{Th1:eq1} и \eqref{Th1:eq2} из теорем \ref{theorem} и \ref{Th1}, воспользуемся формулами
 \begin{equation}
 	\left|f(x)-L_{n,N}(f,x)\right|\leq\left|f(x)-S_{n}(f,x)\right|+\left|R_{n,N}(f,x)\right|,\quad n<N/2,\label{eq:Th_est1}
 \end{equation}
@@ -121,7 +131,7 @@ $f \in C^2_\Omega$.
 Из  \eqref{eq:RnN1} и \eqref{eq:D(x)} можно получить представление
 \begin{multline*}
 R_{n,N}(f,x)=\frac{1}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}f(t)\cos\mu N(u-t)dt+\\
-\frac{2}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}f(t)\sum_{k=1}^{n}\cos k(x-t) \cos \mu N(u-t)dt=\\
+\frac{2}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}f(t)\sum_{k=1}^{n}\cos k(x-t) \cos \mu N(u-t)dt=
 R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 \end{multline*}
 При доказательстве основного результата данного раздела нами будут использованы следующие леммы:
@@ -327,7 +337,7 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %	\left|R_{n,N}^{2}(f,x)\right| \leq \frac{c(f,\varepsilon)}{N}, \quad |x - a_i| \geq \varepsilon.
 %	\end{equation*}
 %\end{proof}
-Наконец, из лемм \ref{lemma:R1_estimate} и \ref{lemma:R2_estimate} мы имеем для $f \in С^{0,1}_\Omega$
+Из лемм \ref{lemma:R1_estimate} и \ref{lemma:R2_estimate} мы имеем для $f \in С^{0,1}_\Omega$
 \begin{equation} \label{R_estimate}
 \left|R_{n,N}(f,x)\right|\leq \frac{c(f,\varepsilon)}{N}, \quad |x - a_i| \geq \varepsilon.
 \end{equation}
@@ -349,7 +359,7 @@ $\hat{G} = \left\{k\right\}_{k=0}^{n-1} \setminus G$.
 \begin{equation}\label{ak_estimate}
 \left|a_{n}^{N}(f)\right| \leq \frac{1}{N} \sum_{k \in G} \left| f(t_{2k}) - f(t_{2k+1}) \right| + \frac{1}{N} \sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right|.
 \end{equation}
-Для каждого $k \in G$ отрезок $[t_{2k}, t_{2k+1}]$ полностью лежит внутри какого-то интервала $(a_i, a_{i+1})$ и, следовательно, функция $f \in С^{0,1}_\Omega$ дифференцируема на этом отрезке, что позволяет использовать теорему о среднем и получить следующее неравенство:
+Для каждого $k \in G$ отрезок $[t_{2k}, t_{2k+1}]$ полностью лежит внутри какого-то интервала $(a_i, a_{i+1})$ и, следовательно, функция $f \in С^{0,1}_\Omega$ дифференцируема на этом отрезке, что позволяет использовать теорему о среднем и получить неравенство
 \begin{equation} \label{ftk_G_estimate}
 \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq c(f) \left| t_{2k} - t_{2k+1} \right| \leq \frac{c(f)}{N}.
 \end{equation}
@@ -395,7 +405,7 @@ c(f) \sum_{k \in \hat{G}} s(k) + \sum_{k \in \hat{G}}\frac{2\pi}{N}.
 \begin{equation} \label{sum_ftk_hat}
 \sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq c(f).
 \end{equation}
-Из \eqref{ak_estimate}, \eqref{ftk_G_estimate}, and \eqref{sum_ftk_hat} следует для $f \in С^{0,1}_\Omega$
+Из \eqref{ak_estimate}, \eqref{ftk_G_estimate} и \eqref{sum_ftk_hat}  для $f \in С^{0,1}_\Omega$ следует
 \begin{equation}\label{an_estimate}
 \left|a_{n}^{N}(f)\right| \leq \frac{c(f)}{N}.
 \end{equation}
@@ -505,16 +515,16 @@ $
 \left|R_{n,N}(f,x)\right| \leq \left|R_{n,N}^{1}(f,x)\right| + \left|R_{n,N}^{2}(f,x)\right|
 $. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\right|$ оценены ниже, для чего мы используем несколько вспомогательных лемм.
 
-\begin{lemma}\label{hlemma}
-	Для $f \in C_\Omega^{0,1}$ справедливо:
-	\begin{multline}\label{hlemma_eq1}
-	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
-	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))-\\
-	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt+\\
-	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{1-p}(k(a_{i}-x))h_{q}(\mu N(a_{i}-u))-\\
-	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t-x))h_{q}(\mu N(t-u))dt.
-	\end{multline}
-\end{lemma}
+%\begin{lemma}\label{hlemma}
+%	Для $f \in C_\Omega^{0,1}$ справедливо:
+%	\begin{multline}\label{hlemma_eq1}
+%	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= \\
+%	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{p}(k(a_{i}-x))h_{1-q}(\mu N(a_{i}-u))-\\
+%	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt+\\
+%	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\sum_{i=0}^{m-1}\left(f(a_{i}-0)-f(a_{i}+0)\right)h_{1-p}(k(a_{i}-x))h_{q}(\mu N(a_{i}-u))-\\
+%	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t-x))h_{q}(\mu N(t-u))dt.
+%	\end{multline}
+%\end{lemma}
 
 %\begin{proof}
 %	Perform integration by parts:
@@ -535,7 +545,7 @@ $. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\
 %	\end{multline*}
 %	By moving the last integral from the right side to the left and dividing both sides by $\frac{\left(\mu N\right)^{2} - k^{2}}{\left(\mu N\right)^{2}}$ we get \eqref{hlemma_eq1}.
 %\end{proof}
-
+Из Леммы \ref{hlemma} можно получить следующее следствие:
 \begin{corollary} \label{cor_hlemma}
 	Если $f \in C_\Omega^2$, тогда $f(a_i - 0) - f(a_i + 0) = 0$, таким образом, мы можем записать \eqref{hlemma_eq1} как
 	\begin{multline*}
@@ -598,7 +608,7 @@ $. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\
 
 
 \begin{lemma} 
-	The following estimates hold:
+	Справедливы следующие неравенства:
 	\begin{equation} 
 	\left|R_{n,N}^{2}(f,x)\right|\leq\frac{nc(f)}{N^2},\quad x\in\mathbb{R},\label{eq:Lemma3_firsteq}
 	\end{equation}
