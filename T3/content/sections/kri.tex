@@ -1,10 +1,12 @@
 
-\chapter{Кадиев Р.И.}
+
+%Кадиев Р.И.
+\chapter{Экспоненциальная $p$-устойчивость решений линейных ДУ Ито второго порядка с запаздыванием}
 
 
 
 
-\section{Введение}
+\section{Введение и постановка задачи}
 
 Вопросам устойчивости решений систем со случайными параметрами посвящено большое количество работ.
 Достаточно полный их список приведен в монографиях \cite{kri-bib-1, kri-bib-2, kri-bib-3, kri-bib-4}.
@@ -139,16 +141,13 @@ $\overline E$ единичная матрица размерности  $n\times
 \begin{equation*}
 	\sum_{i=1}^{m} \left[-a_{0i}(t)x_1(t)-a_{1i}(t)x_2(t)+\sum_{j=1}^{m_i}c_{ji}(t)x_1(h_{ji}(t))\right]dB_i(t) \quad (t \ge 0),
 \end{equation*}
-
 с начальными условиями
-
 \begin{equation}\label{kri-eq-2a}
 	x_1(t)=\varphi (t)\quad(t\ge 0),
 \end{equation}
 \begin{equation}\label{kri-eq-2b}
 	x_j(t)=b_j, j=1,2,
 \end{equation}
-
 и при этом используется факт совпадения первой компоненты решения задачи \eqref{kri-eq-2}, \eqref{kri-eq-2a}, \eqref{kri-eq-2b} с решением задачи \eqref{kri-eq-1}, \eqref{kri-eq-1a},
 \eqref{kri-eq-1b}. Следовательно, экспоненциальная  $p$-\linebreak устойчивость уравнения \eqref{kri-eq-1} эквивалентна экспоненциальной
 $p${}-устойчивости по первой компоненте системы \eqref{kri-eq-2}. Вопросы экспоненциальной  $p${}-устойчивости по части переменных
@@ -180,10 +179,8 @@ $p${}-устойчивости по первой компоненте систе
 	}}c_{\text{ji}}(t)x_1(h_{\text{ji}}(t))\right]\mathit{dB}_i(t)\text{  }(t\ge
 	0),
 \end{equation*}
-
 где  $q${}- некоторое положительное число, а остальные параметры
 определены в уравнении \eqref{kri-eq-1}, с начальными условиями
-
 \begin{equation}\label{kri-eq-3a}
 	x_1(t)=\varphi (t)\text{
 	}(t\ge
@@ -208,8 +205,6 @@ $p${}-устойчивости.
 	c_p\left(E\left(\overset t{\underset 0{\int
 	}}|f(s)|^2\text{ds}\right)^p\right)^{1/2p},
 \end{equation}
-
-
 где  $c_p$\ {}- некоторое число, зависящее от  $p$.
 
 Справедливость неравенства \eqref{kri-eq-2} следует из неравенства \eqref{kri-eq-4} работы \cite[стр. 65]{kri-bib-18}, где приведено и конкретное выражение для
@@ -245,7 +240,7 @@ m{\underset{i=1}{\sum }}\left[\gamma _i\overline{y_1}+\overset{m_i}{\underset{j=
 _0}{\overline{a_{10}}-q}-\frac{c_p\overset m{\underset{i=1}{\sum }}A_{1i}}{\sqrt{\overline{a_{10}}-q}}.$
 
 \textbf{Теорема.} \ Если существует положительное число  $q$ \ такое, что матрица  $Z$ является  $M${}-матрицей, то
-уравнение \ \eqref{kri-eq-1} экспоненциально  $2p${}-устойчива.
+уравнение \ \eqref{kri-eq-1} экспоненциально  $2p${}-устойчиво.
 
 \textbf{Доказательство.} Систему \eqref{kri-eq-3} с условиями \eqref{kri-eq-3a} \ запишем в следующем виде
 
@@ -289,11 +284,11 @@ $0<\lambda <\text{min}\{q,A_{10}-q\}$ \ для  $i=1,2$, то получится
 \begin{equation}\label{kri-eq-8}	
 	\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}(t)\text{exp}\{\mathit{\lambda t}\}(\text{exp}\{-\mathit{\lambda
 		h}_{\mathit{j0}}(t)\}y_1(h_{\mathit{j0}}(t))+\overline{\varphi
-	}(h_{\mathit{j0}}(t)))]\text{dt}+ 
+	}(h_{\mathit{j0}}(t)))]\text{dt}+
 \end{equation}
 \begin{equation*}
 	\overset m{\underset{i=1}{\sum
-	}}[-(a_{0i}(t)-a_{1i}(t)q)y_1(t)-a_{1i}(t)y_2(t)+ 
+	}}[-(a_{0i}(t)-a_{1i}(t)q)y_1(t)-a_{1i}(t)y_2(t)+
 \end{equation*}
 \begin{equation*}
 	+\overset{m_i}{\underset{j=1}{\sum
@@ -311,18 +306,18 @@ $0<\lambda <\text{min}\{q,A_{10}-q\}$ \ для  $i=1,2$, то получится
 \begin{equation*}		
 	y_2(t)=\text{exp}\left\{-\overset t{\underset 0{\int }}\eta (s)\text{ds}\right\}b_2+\overset
 	t{\underset 0{\int }}\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
-	}\right\}[-(a_{00}(s)-(a_{10}(s)-q)q)y_1(s)+ 
+	}\right\}[-(a_{00}(s)-(a_{10}(s)-q)q)y_1(s)+
 \end{equation*}	
 \begin{equation}\label{kri-eq-9}
 	\overset{m_0}{\underset{j=1}{\sum
 	}}c_{\mathit{j0}}(s)\text{exp}\{\mathit{\lambda s}\}(\text{exp}\{-\mathit{\lambda
 		h}_{\mathit{j0}}(s)\}(y_1(h_{\mathit{j0}}(s))+\overline{\varphi
-	}(h_{\mathit{j0}}(s)))]\text{ds}+ 
+	}(h_{\mathit{j0}}(s)))]\text{ds}+
 \end{equation}	
 \begin{equation*}
 	\overset m{\underset{i=1}{\sum }}\overset s{\underset
 		0{\int }}\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
-	}\right\}[-(a_{0i}(s)-a_{1i}(s)q)y_1(s)-a_{1i}(s)y_2(s)+ 
+	}\right\}[-(a_{0i}(s)-a_{1i}(s)q)y_1(s)-a_{1i}(s)y_2(s)+
 \end{equation*}	
 \begin{equation*}
 	+\overset{m_i}{\underset{j=1}{\sum
@@ -343,12 +338,12 @@ $0<\lambda <\text{min}\{q,A_{10}-q\}$ \ для  $i=1,2$, то получится
 Из последнего уравнения системы \eqref{kri-eq-9} с учетом предыдущих обозначений и неравенств \eqref{kri-eq-2}, \eqref{kri-eq-3}, \eqref{kri-eq-4} получим
 
 \begin{equation*}
-  \overline{y_2} \leq \|b_2\|_{k_{2p}^1} + \left[ \gamma_0 \overline{y_2} + \sum\limits_{j=1}^{m_0} c_{j0} \exp\{\lambda\tau_{j0}\}(\overline{y_1}+\overline{\overline{\varphi}}) \right] 
-\sup\limits_{t\geq0} \int\limits_{0}^{e} \exp\left\{-\int\limits_{s}^{t} \eta(\zeta)d\zeta\right\}ds + 
+  \overline{y_2} \leq \|b_2\|_{k_{2p}^1} + \left[ \gamma_0 \overline{y_2} + \sum\limits_{j=1}^{m_0} c_{j0} \exp\{\lambda\tau_{j0}\}(\overline{y_1}+\overline{\overline{\varphi}}) \right]
+\sup\limits_{t\geq0} \int\limits_{0}^{e} \exp\left\{-\int\limits_{s}^{t} \eta(\zeta)d\zeta\right\}ds +
 \end{equation*}
 \begin{equation}\label{kri-eq-10}
-c_p \sum\limits_{i=1}^{m} \left[\gamma_1\overline{y_1}+A_{1i}\overline{y_2}+\sum\limits_{j=1}^{m_i} c_{ji}\exp \{\lambda\tau_{ji}\}(\overline{y_1}+\overline{\overline{\varphi}})\right] 
-\sup\limits_{t\geq0} \left(\int\limits_{0}^{t}\exp\left\{ -2\int\limits_{s}^{t} \eta(\zeta)d\zeta \right\} ds \right)^{1/2} 
+c_p \sum\limits_{i=1}^{m} \left[\gamma_1\overline{y_1}+A_{1i}\overline{y_2}+\sum\limits_{j=1}^{m_i} c_{ji}\exp \{\lambda\tau_{ji}\}(\overline{y_1}+\overline{\overline{\varphi}})\right]
+\sup\limits_{t\geq0} \left(\int\limits_{0}^{t}\exp\left\{ -2\int\limits_{s}^{t} \eta(\zeta)d\zeta \right\} ds \right)^{1/2}
 \end{equation}
 
 Так как
@@ -374,13 +369,13 @@ t{\underset 0{\int }}\left[\text{exp}\left\{-2\overset t{\underset s{\int }}\eta
 \end{equation*}
 то из оценки \eqref{kri-eq-10} получаем
 
-\begin{equation*}  
+\begin{equation*}
 \overline{y_2} \leq \|b_2\|_{k^1_{2p}} + \frac{\gamma_0\overline{y_2}+\sum\limits_{j=1}^{m_0} c_{j0}\exp \{\lambda\tau_{j0} \} \overline{y_1}}{\overline{a_{10}}-q-\lambda} +
 \end{equation*}
 \begin{equation}\label{kri-eq-11}
 \frac{c_p \sum\limits_{i=1}^{m} \left[ \gamma_i\overline{y_1}+A_{1i}\overline{y_2}+\sum\limits_{j=1}^{m_i} c_{ji}\exp\{\lambda\tau_{ji} \} \overline{y_1} \right]}{\sqrt{\overline{a_{10}}-q-\lambda}} + M(\lambda)\overline{\overline{\varphi}},
 \end{equation}
-где 
+где
 \begin{equation*}
 M(\lambda )=\frac{\overset{m_0}{\underset{j=1}{\sum }}c_{\mathit{j0}}\text{exp}\{\text{$\lambda \tau
 		$}_{\mathit{j0}}\}}{\overline{a_{10}}-q-\lambda }+ \frac{c_p \sum\limits_{i=1}^{m}\left[\sum\limits_{j=1}^{m_i} c_{ji}\exp\{\lambda\tau_{ji} \}\right]}{\sqrt{\overline{a_{10}}-q-\lambda}}.
@@ -416,7 +411,6 @@ $}_{\mathit{j0}}\}}{\overline{a_{10}}-q-\lambda }-c_p\overset m{\underset{i=1}{\
 	|\overline y|\le K(\|b\|_{k_{2p}^2}+\overline{\overline{\varphi
 	}}),
 \end{equation}
-
 где  $K=||Z(\lambda _0)^{-1}||\text{max}\{1,M(\lambda _0)\}.$
 
 Поскольку  $x(t,b,\varphi )=\text{exp}-\beta ty(t)$  и   $\underset{t\ge
@@ -443,8 +437,7 @@ K\left(\|b\|_{k_{2p}^2}+\begin{matrix}\text{vrai sup}\\t<0\end{matrix}(E|\varphi
 		_i\overline{y_1}+\overset{m_i}{\underset{j=1}{\sum
 		}}c_{\text{ji}}\right]}{\sqrt{\overline{a_{10}}-q}}\right]>0,
 \end{equation}
-
-то оно экспоненциально  $2p${}-устойчива.
+то оно экспоненциально  $2p${}-устойчиво.
 
 Справедливость следствия следует из теоремы в силу того, что при выполнении условий следствия матрица  $Z$
 будет  $M${}-матрицей, так как все диагональные миноры матрицы  $Z$
