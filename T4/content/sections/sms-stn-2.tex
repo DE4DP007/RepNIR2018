@@ -1,0 +1,177 @@
+\section{Быстрый алгоритм решения задачи Коши для ОДУ с помощью ортогональных по Соболеву полиномов, порожденных полиномами Чебышева первого рода}
+
+\textbf{Аннотация.} Рассмотрена задача о численной реализации итерационного процесса для решения задачи Коши для ОДУ с использованием ортогональных по Соболеву полиномов, порожденных полиномами Чебышева первого рода $T_0=1/\sqrt{2}$, $T_k(x)=\cos k\arccos x$ ($k\ge1$). Составлен алгоритм, реализующий указанный итерационный процесс с применением быстрых косинус-преобразова\-ний. Разработана программа и проведен ряд численных экспериментов, которые показывают, что ряды Фурье по порожденным полиномам являются удобным инструментом для решения дифференциальных уравнений.
+
+\subsection{Введение}
+
+%Рассмотрим задачу Коши
+Исследуется задача Коши вида
+\begin{equation}\label{sms-stn-2-CauchyProbl}
+\begin{aligned}
+&y'=f(x,y),\ x\in[0,h],\\
+&y(0)=y_0,
+\end{aligned}
+\end{equation}
+где $f(x,y)$ полагаем непрерывной в некоторой области $G$, причем на $[0,h]\times R\subset G$ функция $f(x,y)$ удовлетворяет условию Липшица по второй переменной
+\begin{equation}\label{sms-stn-2-LipSecVar}
+|f(x,q')-f(x,q'')|\le\lambda|q'-q''|,\ x\in[0,h].
+\end{equation}
+В настоящей работе описывается быстрый алгоритм реализации разработанного в \cite{sms-stn-2-PolOrtPorSobChebUrav} итерационного метода на основе ортогональных по Соболеву полиномов, порожденных полиномами Чебышева первого рода. Прежде, чем перейти к описанию алгоритма, приведем некоторые сведения из теории полиномов, ортогональных относительно скалярного произведения типа Соболева.
+
+Рассмотрим весовое пространство Лебега $L_\mu^2=L_\mu^2([-1,1])$ со скалярным произведением
+\begin{equation*}
+\langle g_1,g_2\rangle=\int\limits_{-1}^1g_1(x)g_2(x)\mu(x)dx,
+\quad
+\text{где}
+\quad
+\mu(x)=\frac2\pi(1-x^2)^{-\frac12}.
+\end{equation*}
+%где $\mu(x)=\frac2\pi(1-x^2)^{-\frac12}$.
+
+Нетрудно заметить, что полиномы Чебышева первого рода
+$$T_0=\frac{1}{\sqrt{2}},  T_k=\cos{(k\arccos x)}, \quad (k=1,2,\dots),$$
+образуют ортонормированную систему в $L_\mu^2$.
+%%%%%%%%%%
+В работе \cite{sms-stn-2-SharIzVuz} были введены и исследованы полиномы $T_{r,k}(x)\,(k=0,1,\ldots)$, ортогональные по Соболеву и порожденные полиномами $T_k(x)$ посредством  равенств
+\begin{equation}\label{sms-stn-2-sobcheb1}
+T_{r,k}(x) =\frac{(x+1)^k}{k!}, \quad (k=0,1,\ldots, r-1),
+\quad
+T_{r,r}(x) =\frac{(x+1)^r}{\sqrt{2}r!},
+\end{equation}
+\begin{equation}\label{sms-stn-2-sobcheb2}
+T_{r,r+n}(x) =\frac{1}{(r-1)!}\int\limits_{-1}^x(x-t)^{r-1}T_{n}(t)dt, \quad (n=1,2,\ldots).
+\end{equation}
+Эти полиномы образуют ортонормированную систему относительно скалярного произведения
+\begin{equation}\label{sms-stn-2-sobcheb3}
+\langle g_1,g_2\rangle=\sum_{\nu=0}^{r-1}g_1^{(\nu)}(-1)g_2^{(\nu)}(-1)+\int_{-1}^{1}g_1^{(r)}(x)g_2^{(r)}(x)\mu(x)dx.
+\end{equation}
+Через $W^r_{L^2_\mu(-1,1)}$ обозначим пространство Соболева, состоящее  из  функций $g=g(x)$, непрерывно дифференциируемых $r-1$-раз, причем $g^{(r-1)}$ абсолютно непрерывна, а $g^{(r)}\in L^2_\mu(-1,1)$.
+В работе \cite{sms-stn-2-SharIzVuz} было показано, что система полиномов $\{T_{r,k}(x)\}_{k=0}^\infty$ образует базис в $W^r_{L^2_\mu(-1,1)}$. В этой же работе было показано, что ряд Фурье функции $g\in W^r_{L^2_\mu(-1,1)}$ имеет следующий вид \cite{sms-stn-2-SharIzVuz}
+\begin{equation}\label{sms-stn-2-sobcheb7n}
+g(x)=\sum_{\nu=0}^{r-1}g^{(\nu)}(-1)\frac{(1+x)^\nu}{\nu!}+ \sum_{k=r}^\infty \hat g_{r,k}T_{r,k}(x),
+\end{equation}
+где
+\begin{equation}\label{sms-stn-2-sobcheb8n}
+\hat g_{r,k}=\int_{-1}^1 g^{(r)}(t)T_{k-r}(t)\mu(t)dt,\quad(k\ge r),
+\end{equation}
+и сходится к $g(x)$ равномерно на $[-1,1]$.
+В частности, при $r=1$ ряд \eqref{sms-stn-2-sobcheb7n} принимает следующий вид:
+\begin{equation}\label{sms-stn-2-sobcheb7}
+g(x)= g(-1)+ \sum_{k=0}^\infty c_{k}(g)T_{1,k+1}(x),
+\end{equation}
+где
+\begin{equation}\label{sms-stn-2-sobcheb8}
+c_{k}(g)=\hat g_{1,k+1}=\int_{-1}^1 g'(t)T_{k-1}(t)\mu(t)dt,\quad(k\ge0).
+\end{equation}
+
+%Ряд Фурье \eqref{sms-stn-2-sobcheb7} можно использовать для решения ряда прикладных задач, в том числе для приближенного решения систем дифференциальных уравнений так называемыми спектральными методами.
+
+\subsection{Итерационный метод}
+
+%Идея построения приближенного решения для задачи \eqref{sms-stn-2-CauchyProbl} заключается в следующем.
+Положим $x=h(t+1)/2$, $t\in[-1,1]$ и задачу \eqref{sms-stn-2-CauchyProbl} сведем к следующей
+\begin{equation}\label{sms-stn-2-CauchyProblEta}
+\begin{aligned}
+&\eta'=\frac h2f\left(\frac h2(t+1),\eta\right),\ t\in[-1,1],\\
+&\eta(-1)=y_0,
+\end{aligned}
+\end{equation}
+где $\eta(t)= y(h(t+1)/2)$. Легко заметить, что $\eta\in W^1_{L^2_\mu(-1,1)}$.
+
+%Следуя \cite{sms-stn-2-PolOrtPorSobChebUrav}, введем в рассмотрение гильбертово пространство $l_2$, состоящее из последовательностей $C=(c_0,c_1,\ldots,)$ с нормой $\|C\|=\left(\sum_{j=0}^\infty c_j^2\right)^\frac12$ и
+
+Нам понадобятся некоторые соотношения. Разложение функции $\eta(t)\in W_{L_\mu^2}^1$ в ряд Фурье по системе $\{T_{1,k}\}$
+\begin{equation}\label{sms-stn-2-SolutionSeries}
+\eta(t)=\eta(-1)+\sum\limits_{k=1}^{\infty}\hat\eta_{1,k} T_{1,k}(t),\text{ где } \hat\eta_{1,k}=\int\limits_{-1}^1\eta'(t)T_{k-1}(t)\mu(t)dt.
+\end{equation}
+Ряды Фурье по системе $\{T_k\}$ функций $\eta'(t)\in L^2_\mu$ и $\phi(t)\in L^2_\mu$ соответственно
+\begin{equation}\label{sms-stn-2-DerivativeChebSeries}
+\eta'(t)=\sum\limits_{k=0}^{\infty}c_k(\eta) T_k(t),
+\end{equation}
+\begin{equation}\label{sms-stn-2-DerivativeChebSeries2}
+\phi(t)=f\left(\frac h2(t+1),\eta(t)\right)=\sum\limits_{k=0}^{\infty}\hat\phi_k T_k(t),
+\end{equation}
+где
+\begin{equation}\label{sms-stn-2-ForierCoeffs}
+c_k(\eta)=\hat\eta_{1,k+1},\quad\hat\phi_k=\int\limits_{-1}^1\phi(t)T_k(t)\mu(t)dt.
+\end{equation}
+Здесь ряд \eqref{sms-stn-2-SolutionSeries} сходится равномерно на $[-1,1]$ (см. \cite{sms-stn-2-SharIzVuz}), а ряды \eqref{sms-stn-2-DerivativeChebSeries} и \eqref{sms-stn-2-DerivativeChebSeries2} -- в метрике $L^2_\mu$. В силу \eqref{sms-stn-2-CauchyProblEta}, \eqref{sms-stn-2-SolutionSeries} и \eqref{sms-stn-2-ForierCoeffs} коэффициенты $c_k$ принимают следующий вид
+\begin{equation}\label{sms-stn-2-operatorA}
+c_k(\eta)=\frac h2\hat\phi_k=\frac h2\int\limits_{-1}^1f\left[\frac h2(t+1),\eta(-1)+\sum\limits_{l=0}^{\infty}c_l T_{1,l+1}(t)\right]T_k(t)\mu(t)dt.
+\end{equation}
+Выражение в правой части \eqref{sms-stn-2-operatorA} представляет собой оператор $A$, действующий в гильбертовом пространстве $l_2$, которое состоит из вещественнозначных последовательностей $C=(c_0,c_1,\ldots)$, для которых конечна величина $\|C\|=\bigl(\sum_{j=0}^\infty c_j^2)^{1/2}$, задающая норму в $l_2$. Из \eqref{sms-stn-2-operatorA} следует, что $C(\eta) = (c_0(\eta),c_1(\eta),\dots)$ является неподвижной точкой для оператора $A$. В \cite{sms-stn-2-PolOrtPorSobChebUrav} было показано, что оператор $A$ является сжимающим в метрике пространства $l_2$ при условии
+\begin{equation}\label{sms-stn-2-ContractionCond}
+h\kappa\lambda<1,
+\end{equation}
+где
+\begin{equation*}
+\kappa=\left(\int\limits_{-1}^1\sum_{k=1}^{\infty}(T_{1,k}(x))^2\mu(x)dx\right)^{1/2},
+\end{equation*}
+а $\lambda$ берется из условия \eqref{sms-stn-2-LipSecVar}. Таким образом, выбором величины $h$ можно добиться выполнения условия \eqref{sms-stn-2-ContractionCond}.
+Для практических приложений важно рассмотреть конечномерный аналог $A$ -- оператор $A_N : \mathbb{R}^N\rightarrow\mathbb{R}^N$, ставящий в соответствие точке $C_N = (c_0,\ldots,c_{N-1})$ точку $C_N' = (c_0',\ldots,c_{N-1}')$ по правилу
+\begin{equation}\label{sms-stn-2-operatorA_N}
+c_k'=\frac h2\int\limits_{-1}^1f\bigl[\frac h2(t+1),\eta(-1)+\sum\limits_{l=0}^{N-1}c_l T_{1,l+1}(t)\bigr]T_k(t)\mu(t)dt,\ k=1,\ldots,N-1.
+\end{equation}
+Этот оператор также является сжимающим \cite{sms-stn-2-PolOrtPorSobChebUrav} и, следовательно, итерационный процесс $C_N^{j+1}=A_N(C_N^j)$ сходится к точке $C_N(\eta)=(c_0(\eta),\dots,c_{N-1}(\eta))$. В настоящей статье разработан быстрый алгоритм приближенного вычисления коэффициентов $c_k(\eta)$, $k=0,\ldots,N-1$. Путем подстановки этих коэффициентов в частичную сумму ряда \eqref{sms-stn-2-SolutionSeries}
+\begin{equation}\label{sms-stn-2-FurSobPartialSum}
+S_{N}(t)=\eta(-1)+\sum\limits_{k=0}^{N-1}c_k(\eta) T_{1,k+1}(t)
+\end{equation}
+получаем приближенное решение задачи \eqref{sms-stn-2-CauchyProblEta}. В \cite{sms-stn-2-demiSMS_ShTN} для вычисления суммы из правой части \eqref{sms-stn-2-FurSobPartialSum} был разработан и реализован в виде компьютерной программы быстрый алгоритм. В  дальнейшем нам потребуется преобразовать выражение \eqref{sms-stn-2-operatorA_N} посредством замены $t=\cos\tau$ к следующему
+\begin{equation*}
+c_k'=  \frac h\pi\int\limits_0^{\pi}f\left[\frac h2(\cos\tau+1),\eta(-1)+\sum\limits_{l=0}^{N-1}c_l T_{1,l+1}(\cos\tau)\right]T_k(\cos\tau)d\tau=
+\end{equation*}
+\begin{equation}\label{sms-stn-2-trigOperatorA_N}
+\frac h{2\pi}\int\limits_0^{2\pi}f\left[\frac h2(\cos\tau+1),\eta(-1)+\sum\limits_{l=0}^{N-1}c_l T_{1,l+1}(\cos\tau)\right]T_k(\cos\tau)d\tau.
+\end{equation}
+Для вычисления интегралов \eqref{sms-stn-2-trigOperatorA_N} мы будем использовать следующую квадратурную формулу
+\begin{equation}\label{sms-stn-2-quadratureA_N}
+c_k'\approx  \frac h\pi\sum\limits_{j=0}^{N}f\left[\frac h2(\cos\tau_j+1),\eta(-1)+\sum\limits_{l=0}^{N-1}c_l T_{1,l+1}(\cos\tau_j)\right]T_k(\cos\tau_j)d\tau,
+\end{equation}
+где $\tau_j=\frac{2\pi j}{N+1}$, $j=0,\ldots,N$. Отметим, что в \eqref{sms-stn-2-quadratureA_N} частичные суммы
+\begin{equation}\label{sms-stn-2-PartialSolSum}
+\eta_j=S_N(\cos\tau_j)=\eta(-1)+\sum\limits_{l=0}^{N-1}c_l T_{1,l+1}(\cos\tau_j),\ j=0,\ldots,N
+\end{equation}
+не зависят он $k$, что позволяет ограничиться однократным вычислением $\eta_j$ и существенно сэкономить время вычисления $c_k$. Отметим, что в работе \cite{sms-stn-2-demiSMS_ShTN}, был разработан алгоритм быстрого вычисления сумм $\sum_{l=0}^{N-2}c_l T_{1,l+1}(\cos\theta_l)$, $\theta_l=\frac{(2j+1)\pi}{2N}$, сведением их к сумме
+\begin{equation}\label{sms-stn-2-DCT-II}
+Q_N(\theta)=\sum_{l=0}^{N-1}d_l T_{l}(\cos\theta_l)
+\end{equation}
+и ее вычислением с помощью быстрого дискретного косинусного преобразования DCT-II.
+%Для вычисления $\eta_j$ мы воспользуемся разработанным в \cite{sms-stn-2-demiSMS_ShTN}  быстрым алгоритмом вычисления сумм
+%\begin{equation}\label{sms-stn-2-PartialSolSum}
+%  s_{N-1}(\cos\tau_j)=\sum\limits_{l=0}^{N-1}c_l T_{1,l+1}(\cos\tau_j),\ j=0,\ldots,N,
+%\end{equation}
+%основанном на представлении $s_N(t)$  через полиномы  $T_k(t)$
+%\begin{equation}\label{sms-stn-2-ChebPartialSum}
+%  s_{N-1}(t)=\sum_{k=0}^{N}d_kT_k(t)
+%\end{equation}
+
+\subsection{Описание алгоритма}
+В настоящем пункте будет описан быстрый алгоритм решения задачи Коши \eqref{sms-stn-2-CauchyProblEta}. Входными данными являются
+{
+	\renewcommand{\labelitemi}{$\circ$}
+	\begin{itemize}
+		\item[-] $y_0$ -- начальное значение задачи Коши в точке 0;
+		\item[-] $f(x,y)$ -- правая часть задачи Коши \eqref{sms-stn-2-CauchyProbl};
+		\item[-] $N$  -- порядок частичной суммы \eqref{sms-stn-2-FurSobPartialSum};
+		
+		\item[-] $C^0=(c^0_0,\ldots,c^0_{N-2})$ -- начальное приближение;
+		\item[-] $\varepsilon$ -- порог близости векторов $C^{i-1},C^i\in\mathbb{R}^{N-1}$ ($C^i=(c^i_0,\ldots,c^i_{N-2})$) в метрике $R^{N-1}$, где $C^i=A_{N-1}(C^{i-1})$, $i=0,1,\dots$ при достижении которого останавливается итерационный процесс;
+		\item[-] $M$ -- количество итераций.
+	\end{itemize}
+}
+Алгоритм состоит из следующих шагов:
+\begin{enumerate}
+	\item[1.] На вход подаются начальное условие $y_0$, правая часть $f(x,y)$ и порядок частичной суммы $N$, равный степени двух.
+	\item[2.] Задается начальное приближение $C^0=(c_0^0,c_1^0,\ldots,c_{N-2}^0)$.
+	\item[3.] Вычисляются и сохраняются в массив числа $x_j=h(\cos\frac{2\pi j}N+1)$, $j=0,1,\ldots,N-1$.
+	\item[4.] Осуществляется переход от коэффициентов $c_l^i$ к $d_m^i$, $l=0,\ldots,N-2$, $m=0,\ldots,N-1$ (см. \cite{sms-stn-2-demiSMS_ShTN}, п. 2).
+	\item[5.] Вычисляются $\eta_j$, $j=0,\ldots,N-1$, с использованием быстрого обратного косинусного преобразования массива $d_m^i$.
+	\item[6.] Создается массив $F_j=hf(x_j,\eta_j)$, $j=0,\ldots,N-1$.
+	\item[7.] С применением быстрого прямого косинусного преобразования к массиву $F_j$, вычисляются новые коэффициенты $c_k^{i+1}$.
+	\item[8.] Повторение шагов 4 -- 8 пока не будет достигнут порог точности $\varepsilon$ или же проведено требуемое количество итераций, задаваемое числом $M$.
+	%Если не достигнут порог точности $\varepsilon$ или число проведенных итераций меньше требуемого -- $M$, то переход к шагу 4 с новыми коэффициентами $c_k^{i+1}$.
+\end{enumerate}
+
+\subsection{Заключение.}
+
+% TODO Нужно заключение.

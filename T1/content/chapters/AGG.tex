@@ -2,12 +2,12 @@
 
 \subsection{Аннотация}
 Пусть $N \geq 2$ --- некоторое натуральное число. Выберем на вещественной оси $N$ равномерно расположенных точек $t_k=2\pi k / N + u$ $(0 \leq k \leq N-1)$.
-Обозначим через $L_{n,N}(f)=L_{n,N}(f,x)$ $(1\leq n\leq N/2)$ тригонометрический полином порядка $n$, обладающий наименьшим квадратичным отклонением от $f$ относительно системы $\{t_k\}_{k=0}^{N-1}$. Выберем $m+1$ точку $-\pi=a_{0}<a_{1}<\ldots<a_{m-1}<a_{m}=\pi$, где $m\geq 2$, и обозначим $\Omega=\left\{a_i\right\}_{i=0}^{m}$. 
-Через $C_{\Omega}^{0,r}$ обозначим класс $2\pi$-периодических функций $f$, $r$-раз дифференцируемых на каждом интервале  $(a_{i},a_{i+1})$, причем 
+Обозначим через $L_{n,N}(f)=L_{n,N}(f,x)$ $(1\leq n\leq N/2)$ тригонометрический полином порядка $n$, обладающий наименьшим квадратичным отклонением от $f$ относительно системы $\{t_k\}_{k=0}^{N-1}$. Выберем $m+1$ точку $-\pi=a_{0}<a_{1}<\ldots<a_{m-1}<a_{m}=\pi$, где $m\geq 2$, и обозначим $\Omega=\left\{a_i\right\}_{i=0}^{m}$.
+Через $C_{\Omega}^{0,r}$ обозначим класс $2\pi$-периодических функций $f$, $r$-раз дифференцируемых на каждом интервале  $(a_{i},a_{i+1})$, причем
 производная $f^{(r)}$ на каждом $(a_{i},a_{i+1})$ абсолютно непрерывна.
 Через $C^r_\Omega$ обозначим множество непрерывных функций из $C^{0,r}_\Omega$.
 Мы рассмотрим задачу приближения функций из $C_{\Omega}^{0,1}$ и $C_{\Omega}^{2}$ полиномами $L_{n,N}(f,x)$.
-Была найдена точная по порядку оценка 
+Была найдена точная по порядку оценка
 $\left|f(x) - L_{n,N}(f,x)\right| \leq c(f,\varepsilon)/n$, $\left|x - a_i\right| \geq \varepsilon$ для функий из $C_{\Omega}^{0,1}$.
 Для функий из $C_{\Omega}^{2}$, вместо оценки $\left|f(x)-L_{n,N}(f,x)\right| \leq c\ln n/n$, которая следует из известного неравенства Лебега, найдена точная по порядку оценка $\left|f(x)-L_{n,N}(f,x)\right| \leq c/n$ ($x \in \mathbb{R}$), которая равномерна относительно $1 \leq n \leq N/2$.
 Кроме того, для них была найдена локальная оценка $\left|f(x)-L_{n,N}(f,x)\right| \leq c(\varepsilon)/n^2$ ($\left|x - a_i\right| \geq \varepsilon$), которая также равномерна относительно $1 \leq n \leq N/2$.
@@ -28,10 +28,10 @@ $\left|f(x) - L_{n,N}(f,x)\right| \leq c(f,\varepsilon)/n$, $\left|x - a_i\right
 
 \subsection{Введение}
 %Сначала введем некоторые обозначения.
-%Пусть $\Omega$ 
+%Пусть $\Omega$
 Через $\overline{f}_{[a,b]}$ мы обозначим функцию
 \begin{equation*}
-	\overline{f}_{[a,b]} = 
+	\overline{f}_{[a,b]} =
 	\begin{cases}
 		f(x), & x \in (a,b), \\
 		f(a + 0), & x = a,\\
@@ -40,29 +40,29 @@ $\left|f(x) - L_{n,N}(f,x)\right| \leq c(f,\varepsilon)/n$, $\left|x - a_i\right
 \end{equation*}
 Пусть $\Omega$ --- множество из $m+1$ точек $-\pi=a_{0}<a_{1}<\ldots<a_{m-1}<a_{m}=\pi$.
 Обозначим через $C_\Omega^{0,r}$ класс всех $2\pi$-периодических функций $f$,
-таких, что на каждом отрезке $[a_i, a_{i+1}]$ функция $\overline{f}_{[a_i, a_{i+1}]}$ имеет 
+таких, что на каждом отрезке $[a_i, a_{i+1}]$ функция $\overline{f}_{[a_i, a_{i+1}]}$ имеет
 $r$ абсолютно непрерывных производных, а в точках $a_i$ выполняется
  $f(a_i) = (f(a_i - 0) + f(a_i + 0)) / 2$.
 Через $C_\Omega^{r}$ обозначим подкласс всех непрерывных функций из $C_\Omega^{0,r}$.
 
 Через $L_{n,N}(f,x)$ обозначим
 тригонометрических полином порядка $n$, обладающий наименьшим квадратичным отклонением от функции $f$ в точках $\left\{t_{j}\right\} _{i=0}^{N-1}$,
-где $t_{j}=u+2\pi j / N$, $n \leq N/2$, $N \geq 2$, и $u \in \mathbb{R}$. 
-Другими словами, $L_{n,N}(f,x)$ доставляет минимум сумме 
+где $t_{j}=u+2\pi j / N$, $n \leq N/2$, $N \geq 2$, и $u \in \mathbb{R}$.
+Другими словами, $L_{n,N}(f,x)$ доставляет минимум сумме
 $
 \sum_{j=0}^{N-1}\left|f(t_{j})-T_{n}(t_{j})\right|^{2}
 $
-на множестве всех тригонометрических полиномов степени не выше $n$. 
-Подробнее о приближении функций тригонометрическими полиномами можно прочитать в работах 
+на множестве всех тригонометрических полиномов степени не выше $n$.
+Подробнее о приближении функций тригонометрическими полиномами можно прочитать в работах
 \cite{2_bernstein,4_erdos,7_kalashnikov,8_krilov,9_marcinkiewicz,10_marcinkiewicz,11_natanson,12_nikolsky,18_zigmund,17_turetsky}.
 
-Также, мы будем обозначать через $c$ или $c(b_1, b_2, \ldots, b_k)$ некие положительные константы, которые зависят только от указанных в скобках аргументов и могут 
-различаться в разных местах в тексте.  Через $S_n(f,x)$ обозначим $n$-ю частичную сумму ряда Фурье функции $f$. 
-Также отметим, что легко показать, что ряд Фурье любой функции $f \in C_\Omega^{0,1}$ (и, следовательно, $C_\Omega^{2}$, в силу очевидного включения $C_\Omega^{2} \subset C_\Omega^{0,1}$) 
+Также, мы будем обозначать через $c$ или $c(b_1, b_2, \ldots, b_k)$ некие положительные константы, которые зависят только от указанных в скобках аргументов и могут
+различаться в разных местах в тексте.  Через $S_n(f,x)$ обозначим $n$-ю частичную сумму ряда Фурье функции $f$.
+Также отметим, что легко показать, что ряд Фурье любой функции $f \in C_\Omega^{0,1}$ (и, следовательно, $C_\Omega^{2}$, в силу очевидного включения $C_\Omega^{2} \subset C_\Omega^{0,1}$)
 сходится поточечно и возможно следующее представление:
 \begin{equation}\label{f_as_Fourier}
 	f(x) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left(a_k \cos kx + b_k \sin kx\right),
-\end{equation} 
+\end{equation}
 где
 \begin{equation}\label{akbk_definition}
 	a_k = \frac1\pi \int_{-\pi}^{\pi} f(t) \cos kt dt,\quad b_k = \frac1\pi \int_{-\pi}^{\pi} f(t) \sin kt dt.
@@ -93,7 +93,7 @@ $
 Для доказательства данных теорем нам понадобится лемма из \cite{shii-1983}:
 \begin{lemma}[Sharapudinov, \cite{shii-1983}] \label{shii_lemma}
 	Если ряд Фурье функции $f$ сходится в точках $t_{k}=u+2k\pi/N$,
-	тогда имеет место представление 
+	тогда имеет место представление
 	\begin{equation}
 	L_{n,N}(f,x)=S_{n}(f,x)+R_{n,N}(f,x),\label{eq:Lemma1_eq}
 	\end{equation}
@@ -101,7 +101,7 @@ $
 	\begin{equation}
 	R_{n,N}(f,x)=\frac{2}{\pi}\sum_{\mu=1}^{\infty}\intop_{-\pi}^{\pi}D_{n}(x-t)\cos\mu N(u-t)f(t)dt,\label{eq:RnN1}
 	\end{equation}
-	$2n<N$ и 
+	$2n<N$ и
 	\begin{equation}\label{eq:D(x)}
 		D_{n}(x)=\frac{1}{2}+\sum_{k=1}^{n}\cos kx.
 	\end{equation}
@@ -124,21 +124,21 @@ a_{n}^{(2n)}(f)=\frac{1}{2n}\sum_{k=0}^{2n-1}f(t_{k})\cos n(t_{k}-u).\label{eq:a
 \end{equation}
 которые сразу следуют из \eqref{eq:Lemma1_eq} и \eqref{eq:Ln2n_est}.
 
-Для доказательства неравенств \eqref{theorem_result}, \eqref{Th1:eq1} и \eqref{Th1:eq2}, нам требуется оценить $\left|f(x)-S_{n}(f,x)\right|$, $\left|R_{n,N}(f,x)\right|$, и $|a_{n}^{(2n)}(f)|$ для $f \in C^{0,1}_\Omega$ и $f \in C^2_\Omega$. 
+Для доказательства неравенств \eqref{theorem_result}, \eqref{Th1:eq1} и \eqref{Th1:eq2}, нам требуется оценить $\left|f(x)-S_{n}(f,x)\right|$, $\left|R_{n,N}(f,x)\right|$, и $|a_{n}^{(2n)}(f)|$ для $f \in C^{0,1}_\Omega$ и $f \in C^2_\Omega$.
 Следующая оценка для $|f(x)-S_{n}(f,x)|$, где $f \in C^{0,1}_\Omega$, была получена в работе \cite{mkasumov_disc_funcs}:
 \begin{equation} \label{f_Sn_estimate_}
 |f(x)-S_{n}(f,x)| \leq \frac{C(f,\varepsilon)}{n},\quad |x - a_i| \geq \varepsilon.
 \end{equation}
-Нам остается оценить величины 
-$|R_{n,N}(f,x)|$ и 
-$|a_{n}^{(2n)}(f)|$ для 
-$f \in C^{0,1}_\Omega$ и 
-$\left|f(x)-S_{n}(f,x)\right|$, 
-$\left|R_{n,N}(f,x)\right|$, 
-и 
-$|a_{n}^{(2n)}(f)|$ 
-для 
-$f \in C^2_\Omega$. 
+Нам остается оценить величины
+$|R_{n,N}(f,x)|$ и
+$|a_{n}^{(2n)}(f)|$ для
+$f \in C^{0,1}_\Omega$ и
+$\left|f(x)-S_{n}(f,x)\right|$,
+$\left|R_{n,N}(f,x)\right|$,
+и
+$|a_{n}^{(2n)}(f)|$
+для
+$f \in C^2_\Omega$.
 
 \subsection{Оценка $|R_{n,N}(f,x)|$ для $f \in C^{0,1}_\Omega$}
 Из  \eqref{eq:RnN1} и \eqref{eq:D(x)} можно получить представление
@@ -154,7 +154,7 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 	\left|
 	\sum_{k=1}^{\infty} \frac{\sin kx}{k\left(1-\frac{\alpha^2}{k^2}\right)}
 	\right|
-	\leq 
+	\leq
 	c.
 	\end{equation*}
 \end{lemma}
@@ -166,7 +166,7 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %	\frac{1}{1-\frac{\alpha^2}{k^2}} -
 %	\frac{1}{1 - \frac{\alpha^2}{(k+1)^2}}
 %	\right)
-%	\sum_{j=1}^{k} \frac{\sin jx}{j} 
+%	\sum_{j=1}^{k} \frac{\sin jx}{j}
 %	=\\
 %	\sum_{k=1}^{\infty} \frac{1}{k^2}
 %	\frac{\alpha^2 \left( 2 + \frac{1}{k} \right)}{\left(1 + \frac{1}{k}\right)^2 \left(1 - \frac{\alpha^2}{k^2}\right) \left(1 - \frac{\alpha^2}{(k+1)^2}\right)}
@@ -182,7 +182,7 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %	\frac{1}{k}
 %	\sum_{j=1}^{k}
 %	\frac{\sin jx}{j}
-%	\right| 
+%	\right|
 %	\leq 1,
 %	\end{equation*}
 %	we have
@@ -243,7 +243,7 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %	R_{n,N}^1(f,x) =\\
 %	\frac1\pi \sum_{\mu = 1}^{\infty} \intop_{-\pi}^{\pi} f(t) \cos \mu N(t-u) dt = \frac1\pi \sum_{\mu = 1}^{\infty} \sum_{i=0}^{m-1} \intop_{a_i}^{a_{i+1}}f(t)\cos \mu N(t-u) dt = \\
 %	\frac{1}{\pi N} \sum_{\mu=1}^{\infty} \frac{1}{\mu} \sum_{i=0}^{m-1} \left( f(a_i-0) - f(a_i+0) \right) \sin \mu N(a_i-u) + \\
-%	\frac{1}{\pi N^2} \sum_{\mu=1}^{\infty} \frac{1}{\mu^2} 
+%	\frac{1}{\pi N^2} \sum_{\mu=1}^{\infty} \frac{1}{\mu^2}
 %	\left[
 %	\sum_{i=0}^{m-1} \left(f^{'}(a_i - 0) -f^{'}(a_i + 0)\right) \cos \mu N (a_i - u) - \right.\\
 %	\left. \intop_{-\pi}^{\pi} f^{''}(t) \cos \mu N(t-u) dt
@@ -272,7 +272,7 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %	\frac{2}{\pi N} \sum_{i=0}^{m-1} \left(f(a_i-0) - f(a_i+0)\right) \sum_{\mu=1}^{\infty} \frac{\sin \mu N(a_i-u)}{\mu} \sum_{k=1}^{n} \frac{\cos k(a_i-x)}{1-\left(\frac{k}{\mu N}\right)^2} + \\
 %	\frac{-2}{\pi N} \sum_{\mu=1}^{\infty} \frac{1}{\mu} \sum_{k=1}^{n} \frac{1}{1-\left(\frac{k}{\mu N}\right)^2} \intop_{-\pi}^{\pi} f^{'}(t) \cos k(t-x) \sin \mu N(t-u) dt +\\
 %	\frac{-2}{\pi N^2} \sum_{i=0}^{m-1} \left(f(a_i-0) - f(a_i+0)\right) \sum_{\mu=1}^{\infty} \frac{\cos \mu N (a_i-u)}{\mu^2} \sum_{k=1}^{n} \frac{k \sin k(a_i - x)}{1-\left(\frac{k}{\mu N}\right)^2} + \\
-%	\frac{2}{\pi N^2} \sum_{\mu=1}^{\infty} \frac{1}{\mu^2} \sum_{k=1}^{n} \frac{k}{1-\left(\frac{k}{\mu N}\right)^2} 
+%	\frac{2}{\pi N^2} \sum_{\mu=1}^{\infty} \frac{1}{\mu^2} \sum_{k=1}^{n} \frac{k}{1-\left(\frac{k}{\mu N}\right)^2}
 %	\intop_{-\pi}^{\pi} f^{'}(t) \sin k(t-x) \cos \mu N(t-u) dt = \\
 %	R_{n,N}^{2.1}(f,x) + R_{n,N}^{2.2}(f,x) + R_{n,N}^{2.3}(f,x) + R_{n,N}^{2.4}(f,x).
 %	\end{multline*}
@@ -298,15 +298,15 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %	\frac{1}{1 - \left(\frac{k+1}{\mu N}\right)^2} =
 %	-\frac{k}{\left(\mu N\right)^2} \frac{2 + \frac{1}{k}}{\left(1 - \left(\frac{k}{\mu N}\right)^2\right)\left(1 - \left(\frac{k+1}{\mu N}\right)^2\right)}
 %	$$
-%	we get 
+%	we get
 %	\begin{equation*}
-%	\left|A\right| 
-%	\leq 
+%	\left|A\right|
+%	\leq
 %	\frac{c}{\left|\sin \frac{a_i - x}{2}\right|}.
 %	\end{equation*}
 %	From this we have the estimate for $\left|R_{n,N}^{2.1}(f,x)\right|$:
 %	\begin{multline} \label{R21_estimate}
-%	\left|R_{n,N}^{2.1}(f,x)\right| 
+%	\left|R_{n,N}^{2.1}(f,x)\right|
 %	\leq \\
 %	\frac{c}{N}
 %	\sum_{i=0}^{m-1}
@@ -316,12 +316,12 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 %	\leq \frac{c(f,\varepsilon)}{N},
 %	\quad \left|x - a_i\right| \geq \varepsilon.
 %	\end{multline}
-%	In the similar way we can get the estimate 
+%	In the similar way we can get the estimate
 %	\begin{equation} \label{R23_estimate}
 %	\left|R_{n,N}^{2.3}(f,x)\right| \leq \frac{c(f,\varepsilon)}{N},
 %	\quad \left|x - a_i\right| \geq \varepsilon.
 %	\end{equation}
-%	Now we estimate $\left|R_{n,N}^{2.2}(f,x)\right|$. Consider the integral 
+%	Now we estimate $\left|R_{n,N}^{2.2}(f,x)\right|$. Consider the integral
 %	$$
 %	B = \intop_{-\pi}^{\pi} f^{'}(t)\cos k(t-x) \sin \mu N(t-u) dt.
 %	$$
@@ -358,16 +358,16 @@ R_{n,N}^{1}(f,x)+R_{n,N}^{2}(f,x).
 \subsection{Оценка $|a_{n}^{(2n)}(f)|$ для $f \in C^{0,1}_\Omega$}
 Из \eqref{eq:a_n_formula}, используя, что $t_j=u+2\pi k / N$, имеем
 \begin{equation*}
-a_{n}^{(N)}(f) = \frac{1}{N} \sum_{k=0}^{2n-1} (-1)^k f(t_k)  = 
+a_{n}^{(N)}(f) = \frac{1}{N} \sum_{k=0}^{2n-1} (-1)^k f(t_k)  =
 \frac{1}{N} \sum_{k=0}^{n-1} \left(f(t_{2k}) - f(t_{2k+1})\right)
 \end{equation*}
 и
 \begin{equation*}
 \left|a_{n}^{N}(f)\right| \leq \frac{1}{N} \sum_{k=0}^{n-1} \left| f(t_{2k}) - f(t_{2k+1}) \right|.
 \end{equation*}
-Обозначим через $G$ подмножество индексов из $\left\{k\right\}_{k=0}^{n-1}$, таких, что для $k \in G$ отрезок $[t_{2k}, t_{2k+1}]$ 
-не содержит ни одной точки $a_i$ ($0 \leq i \leq m$), и обозначим 
-$\hat{G} = \left\{k\right\}_{k=0}^{n-1} \setminus G$. 
+Обозначим через $G$ подмножество индексов из $\left\{k\right\}_{k=0}^{n-1}$, таких, что для $k \in G$ отрезок $[t_{2k}, t_{2k+1}]$
+не содержит ни одной точки $a_i$ ($0 \leq i \leq m$), и обозначим
+$\hat{G} = \left\{k\right\}_{k=0}^{n-1} \setminus G$.
 Теперь запишем
 \begin{equation}\label{ak_estimate}
 \left|a_{n}^{N}(f)\right| \leq \frac{1}{N} \sum_{k \in G} \left| f(t_{2k}) - f(t_{2k+1}) \right| + \frac{1}{N} \sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right|.
@@ -376,8 +376,8 @@ $\hat{G} = \left\{k\right\}_{k=0}^{n-1} \setminus G$.
 \begin{equation} \label{ftk_G_estimate}
 \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq c(f) \left| t_{2k} - t_{2k+1} \right| \leq \frac{c(f)}{N}.
 \end{equation}
-Для $k \in \hat{G}$ есть $s(k)$ точек $a_{i_{k,1}} < a_{i_{k,2}} < \ldots < a_{i_{k,s(k)}}$ внутри сегмента $[t_{2k}, t_{2k+1}]$. 
-Оценим величину $\left|f(t_{2k}) - f(t_{2k+1})\right|$ для $k \in \hat{G}$. 
+Для $k \in \hat{G}$ есть $s(k)$ точек $a_{i_{k,1}} < a_{i_{k,2}} < \ldots < a_{i_{k,s(k)}}$ внутри сегмента $[t_{2k}, t_{2k+1}]$.
+Оценим величину $\left|f(t_{2k}) - f(t_{2k+1})\right|$ для $k \in \hat{G}$.
 Нам понадобится следующая лемма:
 \begin{lemma}
 	Для $f \in С^{0,1}_\Omega$ и отрезка $[a,b]$, где  $[a,b] \subset [-\pi, \pi]$ выполняется
@@ -391,29 +391,29 @@ $\hat{G} = \left\{k\right\}_{k=0}^{n-1} \setminus G$.
 %	Here we consider only the case $a < x_i < \ldots < x_s < b$. The proof for the cases when $a = x_1$ or $b = x_s$ is similar.
 %	Consider the following inequality:
 %	\begin{multline*}
-%	\left|f(a) - f(b)\right| \leq 
+%	\left|f(a) - f(b)\right| \leq
 %	\left|f(a) - f(x_1 - 0)\right| + \sum_{i=1}^{s} \left|f(x_i - 0) - f(x_i + 0)\right| + \\
 %	\sum_{i=1}^{s-1} \left|f(x_i + 0) - f(x_{i+1} -0)\right| +
 %	\left|f(x_s + 0) - f(b)\right|.
 %	\end{multline*}
 %	The function $f$ is differentiable on each of the intervals $(a, x_1)$, $(x_1, x_2)$, $\ldots$, $(x_{s-1}, x_s)$, $(x_s, b)$. Using the mean value theorem we can write
 %	\begin{multline*}
-%	\left|f(a) - f(b)\right| \leq 
+%	\left|f(a) - f(b)\right| \leq
 %	c(f) |a - b| + \sum_{i=1}^{s} \left|f(x_i - 0) - f(x_i + 0)\right| \leq \\
 %	c(f) |a-b| + sM \leq c(f) | a - b| + c(f) s,
 %	\end{multline*}
 %	where
 %	$M = \max_{1 \leq i \leq s} |f^{'}(x_i-0) - f^{'}(x_i + 0)|$.
 %\end{proof}	
-Из этой леммы следует  
+Из этой леммы следует
 \begin{equation*}
-\sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq 
-\sum_{k \in \hat{G}} c(f) \left(s(k) + \frac{2\pi}{N}\right) \leq 
+\sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq
+\sum_{k \in \hat{G}} c(f) \left(s(k) + \frac{2\pi}{N}\right) \leq
 c(f) \sum_{k \in \hat{G}} s(k) + \sum_{k \in \hat{G}}\frac{2\pi}{N}.
 \end{equation*}
-Каждая точка $a_1,a_2,\ldots, a_{m-1}$ 
-может быть включена в один или два отрезка $[t_{2k}, t_{2k+1}]$ 
-% 	and $[t_{2k+1}, t_{2k+2}]$ 
+Каждая точка $a_1,a_2,\ldots, a_{m-1}$
+может быть включена в один или два отрезка $[t_{2k}, t_{2k+1}]$
+% 	and $[t_{2k+1}, t_{2k+2}]$
 ($k \in \hat{G}$), следовательно, $\sum_{k \in \hat{G}} s(k) < 2m$. Используя это, и то, что $|\hat{G}| \leq m$ имеем
 \begin{equation} \label{sum_ftk_hat}
 \sum_{k \in \hat{G}} \left| f(t_{2k}) - f(t_{2k+1}) \right| \leq c(f).
@@ -438,10 +438,10 @@ f_1(x) = \frac{2}{\pi} \sum_{k=1}^{\infty} \frac{(1-(-1)^k) \sin kx}{k} = \frac{
 \begin{equation*}
 S_{2n}(f_1,x) = \frac{4}{\pi} \sum_{k=1}^{n} \frac{\sin(2k-1)x}{2k-1}.
 \end{equation*}
-Таким образом, мы можем получить нижнюю оценку величины $\left|f\left(\frac{\pi}{2}\right) - S_{4n}\left(f,\frac{\pi}{2}\right)\right|$: 
+Таким образом, мы можем получить нижнюю оценку величины $\left|f\left(\frac{\pi}{2}\right) - S_{4n}\left(f,\frac{\pi}{2}\right)\right|$:
 \begin{multline*}
-\left|f\left(\frac{\pi}{2}\right) - S_{4n}\left(f,\frac{\pi}{2}\right)\right| = 
-\frac{4}{\pi} \left|\sum_{k=2n+1}^{\infty} \frac{(-1)^{k+1}}{2k-1}\right| = 
+\left|f\left(\frac{\pi}{2}\right) - S_{4n}\left(f,\frac{\pi}{2}\right)\right| =
+\frac{4}{\pi} \left|\sum_{k=2n+1}^{\infty} \frac{(-1)^{k+1}}{2k-1}\right| =
 \frac{4}{\pi} \sum_{k=n+1}^{\infty} \left(\frac{1}{4k-3} - \frac{1}{4k-1}\right)= \\
 \frac{8}{\pi} \sum_{k=n+1}^{\infty} \frac{1}{k^2 \left(4-\frac{1}{k}\right) \left(4- \frac{3}{k}\right)} > \frac{1/4}{4n}.
 \end{multline*}
@@ -450,7 +450,7 @@ S_{2n}(f_1,x) = \frac{4}{\pi} \sum_{k=1}^{n} \frac{\sin(2k-1)x}{2k-1}.
 \left|f\left(\frac{\pi}{2}\right) - L_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \geq \frac{1/4}{4n} - \left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right|.
 \end{equation*}
 Ранее мы показали, что $\left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \leq c/N $.
-Через $N(n)$ обозначим натуральное число, такое что для каждого $N \geq N(n)$ следует 
+Через $N(n)$ обозначим натуральное число, такое что для каждого $N \geq N(n)$ следует
 $\left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \leq \frac{1/8}{4n}$. Теперь мы имеем
 \begin{equation*}
 \left|f\left(\frac{\pi}{2}\right) - L_{4n,N(n)}\left(f,\frac{\pi}{2}\right)\right| \geq \frac{1/8}{4n} = \frac{c}{4n}.
@@ -496,7 +496,7 @@ $\left|R_{4n,N}\left(f,\frac{\pi}{2}\right)\right| \leq \frac{1/8}{4n}$. Теп�
 	\end{equation}
 \end{lemma}
 %\begin{proof}
-%	Here we prove only  \eqref{eq:fSn_est1} because the proof for inequality \eqref{eq:fSn_est2} can be found in \cite[Theorem 2.1]{shii-2017}. 
+%	Here we prove only  \eqref{eq:fSn_est1} because the proof for inequality \eqref{eq:fSn_est2} can be found in \cite[Theorem 2.1]{shii-2017}.
 %	Using \eqref{f_as_Fourier} and \eqref{akbk_definition} we can write
 %	$
 %	f(x)-S_{n}(f,x) = \sum_{k=n+1}^\infty \left(a_k \cos kx + b_k \sin kx\right).
@@ -562,7 +562,7 @@ $. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\
 \begin{corollary} \label{cor_hlemma}
 	Если $f \in C_\Omega^2$, тогда $f(a_i - 0) - f(a_i + 0) = 0$, таким образом, мы можем записать \eqref{hlemma_eq1} как
 	\begin{multline*}
-	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt= 
+	\intop_{-\pi}^{\pi}f(t)h_{p}(k(t-x))h_{q}(\mu N(t-u))dt=
 	\frac{(-1)^{q}\mu N}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{p}(k(t-x))h_{1-q}(\mu N(t-u))dt-\\
 	\frac{(-1)^{1+p}k}{\left(\mu N\right)^{2}-k^{2}}\intop_{-\pi}^{\pi}f^{'}(t)h_{1-p}(k(t-x))h_{q}(\mu N(t-u))dt.
 	\end{multline*}
@@ -620,12 +620,12 @@ $. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\
 
 
 
-\begin{lemma} 
+\begin{lemma}
 	Справедливы следующие неравенства:
-	\begin{equation} 
+	\begin{equation}
 	\left|R_{n,N}^{2}(f,x)\right|\leq\frac{nc(f)}{N^2},\quad x\in\mathbb{R},\label{eq:Lemma3_firsteq}
 	\end{equation}
-	\begin{equation} 
+	\begin{equation}
 	\left|R_{n,N}^{2}(f,x)\right|\leq\frac{c(f,\varepsilon)}{N^{2}},\quad\left|x-a_{i}\right|\geq\varepsilon.\label{eq:Lemma3_secondeq}
 	\end{equation}
 \end{lemma}
@@ -651,7 +651,7 @@ $. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\
 %	\frac{-2}{\pi N^{2}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{2}}\sum_{k=1}^{n}\frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}\sum_{i=0}^{m-1}\left(f^{'}(a_{i}-0)-f^{'}(a_{i}+0)\right)h_{0}(k(a_{i}-x))h_{0}(\mu N(a_{i}-u))+\\\frac{2}{\pi N^{2}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{2}}\sum_{k=1}^{n}\frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}\intop_{-\pi}^{\pi}f^{''}(t)h_{0}(k(t-x))h_{0}(\mu N(t-u))dt+\\\frac{-2}{\pi N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{3}}\sum_{k=1}^{n}\frac{k}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}\sum_{i=0}^{m-1}\left(f^{'}(a_{i}-0)-f^{'}(a_{i}+0)\right)h_{1}(k(a_{i}-x))h_{1}(\mu N(a_{i}-u))+\\\frac{2}{\pi N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{3}}\sum_{k=1}^{n}\frac{k}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{2}}\intop_{-\pi}^{\pi}f^{''}(t)h_{1}(k(t-x))h_{1}(\mu N(t-u))dt = \\
 %	R_{n,N}^{2.1.1}(f,x)+R_{n,N}^{2.1.2}(f,x)+R_{n,N}^{2.1.3}(f,x)+R_{n,N}^{2.1.4}(f,x).
 %	\end{multline*}
-%	%		First consider the values $R_{n,N}^{2.1.2}(f,x)$ and $R_{n,N}^{2.1.4}(f,x)$. 
+%	%		First consider the values $R_{n,N}^{2.1.2}(f,x)$ and $R_{n,N}^{2.1.4}(f,x)$.
 %	Begin with $R_{n,N}^{2.1.2}(f,x)$.
 %	Applying Lemma \ref{hlemma} we get
 %	\begin{multline*}
@@ -661,7 +661,7 @@ $. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\
 %	\frac{-2}{\pi N^{4}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{4}}\sum_{k=1}^{n}\frac{k}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\sum_{i=0}^{m-1}\left(f^{''}(a_{i}-0)-f^{''}(a_{i}+0)\right)h_{1}(k(a_{i}-x))h_{0}(\mu N(a_{i}-u))+\\
 %	\frac{2}{\pi N^{4}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{4}}\sum_{k=1}^{n}\frac{k}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\intop_{-\pi}^{\pi}f^{'''}(t)h_{1}(k(t-x))h_{0}(\mu N(t-u))dt.
 %	\end{multline*}
-%	From this we can get the estimate 
+%	From this we can get the estimate
 %	\begin{multline*}
 %	\left|R_{n,N}^{2.1.2}(f,x)\right|\leq\frac{c}{N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{3}}\sum_{k=1}^{n}\frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\sum_{i=0}^{m-1}\left|f^{''}(a_{i}-0)-f^{''}(a_{i}+0)\right|+\\
 %	\frac{c}{N^{3}}\sum_{\mu=1}^{\infty}\frac{1}{\mu^{3}}\sum_{k=1}^{n}\frac{1}{\left(1-\left(\frac{k}{\mu N}\right)^{2}\right)^{3}}\intop_{-\pi}^{\pi}\left|f^{'''}(t)\right|dt+\\
@@ -697,7 +697,7 @@ $. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\
 %	Finally, for $R_{n,N}^{2.1}(f,x)$ we can write
 %	\begin{equation*}
 %	\left|R_{n,N}^{2.1}(f,x)\right| \leq \sum_{i=1}^{4}\left|R_{n,N}^{2.1.i}(f,x)\right| \leq \frac{nc(f)}{N^2}, \quad x \in \mathbb{R},
-%	\quad 
+%	\quad
 %	\left|R_{n,N}^{2.1}(f,x)\right| \leq  \frac{c(f,\varepsilon)}{N^2}, \quad \left|x - a_i\right| \geq \varepsilon.
 %	\end{equation*}
 %	Using the same approach we can show that the value $\left|R_{n,N}^{2.2}(f,x)\right|$ has the same estimate as $\left|R_{n,N}^{2.1}(f,x)\right|$, which leads us to \eqref{eq:Lemma3_firsteq} and \eqref{eq:Lemma3_secondeq}.
@@ -732,25 +732,25 @@ $. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\
 %	S_{1}-S_{2}=\sum_{k=0}^{n-1}\left(f(t_{2k})-2f(t_{2k+1})+f(t_{2k+2})\right)=\sum_{k=0}^{n-1}\Delta^{2}f\left(t_{2k}\right).
 %	\end{equation}		
 %	Denote by $G$ the set of numbers $\bigcup_{i=0}^m\left\{ k:0\leq k<n,\ \left|t_{2k+1}-a_{i}\right|\leq\frac{2\pi}{N}\right\} $
-%	and $\hat{G}=\left\{k\right\}_{k=0}^{n-1} \setminus G$. 
+%	and $\hat{G}=\left\{k\right\}_{k=0}^{n-1} \setminus G$.
 %	Rewrite \eqref{eq:S1-S2} by dividing it into two sums:
 %	$
 %	S_{1}-S_{2}=\sum_{k\in G}\Delta^{2}f(t_{2k})+\sum_{k\in\hat{G}}\Delta^{2}f(t_{2k}).
 %	$
-%	For every $k\in\hat{G}$ we have $|t_{2k+1} - a_i| > 2\pi / N$ ($0 \leq i \leq m$) so the points $t_{2k}$, $t_{2k+1}$, $t_{2k+2}$ 
+%	For every $k\in\hat{G}$ we have $|t_{2k+1} - a_i| > 2\pi / N$ ($0 \leq i \leq m$) so the points $t_{2k}$, $t_{2k+1}$, $t_{2k+2}$
 %	are inside some interval $(a_{i},a_{i+1})$, and the function $f\in C_{\Omega}^{2}$
 %	has an absolutely continuous derivative $f^{''}$ on $(a_{i},a_{i+1})$,
 %	therefore we can write
 %	$
 %	\left|\Delta^{2}f(t_{2k})\right|\leq\left(\frac{2\pi}{N}\right)^{2}\max_{x\in[-\pi,\pi]}\left|f^{''}(x)\right|.
-%	$ 
+%	$
 %	For $k \in G$ we can write $\left|\Delta^{2}f(t_{2k})\right|\leq {c(f)}/{N}$, also note, that $|G| \leq 2m$. Therefore, we have
 %	\begin{equation}
 %	\left|S_{1}\right|=\frac{\left|S_{1}-S_{2}\right|}{2} \leq\frac{c(f)}{N}.\label{eq:S1_est}
 %	\end{equation}
-%	From (\ref{eq:a_n_formula}) 
+%	From (\ref{eq:a_n_formula})
 %	\begin{equation}
-%	a_{n}^{(2n)}(f)=  
+%	a_{n}^{(2n)}(f)=
 %	%\frac{1}{N}\sum_{k=0}^{2n-1}f(t_{k})\cos n(t_{k}-u)=
 %	\frac{1}{N}\sum_{k=0}^{2n-1}f(t_{k})\cos\pi k=\frac{1}{N}\sum_{k=0}^{n-1}\left(f(t_{2k})-f(t_{2k+1})\right)=\frac{1}{N}S_{1}.\label{eq:a_n_est_S1}
 %	\end{equation}
@@ -768,16 +768,16 @@ $. Величины $\left|R_{n,N}^{1}(f,x)\right|$ and $\left|R_{n,N}^{2}(f,x)\
 \eqref{eq:R_est1}, (\ref{eq:R_est2}) %(for $\left|R_{n,N}(f,x)\right|$),
 и Леммы \ref{Lemma_af_est} легко получить \eqref{Th1:eq1} и \eqref{Th1:eq2}.
 Чтобы доказать, что порядок этих оценок неулучшаем, рассмотрим вышеупомянутую $2\pi$-периодическую функцию
-$f(x) = |x|,\ x \in [-\pi,\pi]$. 
-Очевидно, $f \in C_{\Omega}^{2}$. 
+$f(x) = |x|,\ x \in [-\pi,\pi]$.
+Очевидно, $f \in C_{\Omega}^{2}$.
 Мы будем рассматривать только случай $n < N/2$.	
 Из \eqref{eq:Lemma1_eq} следует
 $
 \left|f(x) - L_{n,N}(f,x)\right| \geq \left|f(x) - S_n(f,x)\right| - \left|R_{n,N}(f,x)\right|.
 $
 Из \eqref{eq:R_est1} имеем $\left|R_{n,N}(f,x)\right| \leq c(f)/N$. Следовательно, для любого $\varepsilon > 0$
-можно найти натуральное число $N_0$, такое, что для каждого $N > N_0$ следует $\left|R_{n,N}(f,x)\right| < \varepsilon$. 
-Пусть $N_0(n)$ --- натуральное число, такое что для любого $N > N_0(n)$  
+можно найти натуральное число $N_0$, такое, что для каждого $N > N_0$ следует $\left|R_{n,N}(f,x)\right| < \varepsilon$.
+Пусть $N_0(n)$ --- натуральное число, такое что для любого $N > N_0(n)$
 $$
 \max_{\substack{x \in E \\ N > N_0(n)}} \left|R_{n,N}(f,x)\right| \leq \frac12 \max_{x \in E} \left|f(x) - S_{n}(f,x)\right|,
 $$
@@ -833,25 +833,25 @@ $$
 
 
 %\subsection{Аннотация}
-%Обозначим через $L_{n,N}(f,x)$ 
-%тригонометрический полином порядка не более  $n$ 
+%Обозначим через $L_{n,N}(f,x)$
+%тригонометрический полином порядка не более  $n$
 %наименее отклоняющийся от $f$ на системе
-%$\left\{t_k = u + \frac{2\pi k}{N}\right\}_{k=0}^{N-1}$, где $u \in \mathbb{R}$ и $n \leq N/2$. 
-%Также обозначим через $D^1$ пространство $2\pi$-периодических кусочно непрерывно дифференцируемых функции $f$ с конечным 
+%$\left\{t_k = u + \frac{2\pi k}{N}\right\}_{k=0}^{N-1}$, где $u \in \mathbb{R}$ и $n \leq N/2$.
+%Также обозначим через $D^1$ пространство $2\pi$-периодических кусочно непрерывно дифференцируемых функции $f$ с конечным
 %количеством точек разрыва $-\pi = a_1 < \ldots < a_m = \pi$, которые имеют абсолютно непрерывную производную на каждом интервале $(a_i, a_{i+1})$.
 %Мы рассмотрим проблема аппроксимации функций $f \in D^1$  тригонометрическими полиномами $L_{n,N}(f,x)$.
 %Была найдена точная по порядку оценка $\left|f(x) - L_{n,N}(f,x)\right| \leq c(f,\varepsilon)/n$, $\left|x - a_i\right| \geq \varepsilon$.
 %Доказательство данной оценки основано на сравнении аппроксимативных свойств дискретных и непрерывных рядов Фурье.
 %\subsection{Введение}
-%Пусть $D^1$ --- пространство $2\pi$-периодических функций $f$, 
+%Пусть $D^1$ --- пространство $2\pi$-периодических функций $f$,
 %каждая из которых имеет конечное число точек разрыва первого рода $\Omega(f) = \left\{a_i\right\}_{i=0}^m$, где $-\pi = a_0 < a_1 < \ldots < a_m = \pi$, $f(a_i) = (f(a_i - 0) + f(a_i + 0)) / 2$
-%и имеет абсолютно непрерывную производную $f^{'}$ на каждом интервале $(a_i,a_{i+1})$ $(0\leq i \leq m)$. 
-%Один из простейших примеров таких функций это функция 
+%и имеет абсолютно непрерывную производную $f^{'}$ на каждом интервале $(a_i,a_{i+1})$ $(0\leq i \leq m)$.
+%Один из простейших примеров таких функций это функция
 %$f(x) = \mbox{sign} (\sin x)$.
 %
 %Обозначим через $L_{n,N}(f,x)$ $(1 \leq n \leq \lfloor N/2 \rfloor)$ тригонометрический полином порядка не больше $n$,
 %обладающий наименьшим квадратичным отклонением от $f$ относительно системы
-%$\left\{t_k\right\}_{k=0}^{N-1}$, где $t_k = u + 2\pi k / N$ $(u \in \mathbb{R})$. 
+%$\left\{t_k\right\}_{k=0}^{N-1}$, где $t_k = u + 2\pi k / N$ $(u \in \mathbb{R})$.
 %Другими словами, минимум суммы $\sum_{k=0}^{N-1} \left|f(t_k) - T_n(t_k)\right|^2$ на пространстве тригонометрических полиномов $T_n$ порядка не выше $n$ достигается когда
 %$T_n = L_{n,N}(f)$. В частности, $L_{\lfloor N/2\rfloor, N}(f,t_k) = f(t_k)$. Легко показать (см. \cite{shii-1983}), что
 %для $n < N/2$ полином $L_{n,N}(f,x)$ может быть представлен следующим образом:
@@ -893,12 +893,12 @@ $$
 %\begin{equation} \label{wk_sum_1_k2}
 %\sum_{k=1}^{\infty} \frac{1}{k^2} = \frac{\pi^2}{6}.
 %\end{equation}
-%Легко показать, что ряд Фурье сходится поточечно для любой функции  $f \in D^1$ 
+%Легко показать, что ряд Фурье сходится поточечно для любой функции  $f \in D^1$
 %и, таким образом, функция может быть представлена в виде
 %\begin{equation*}
 %	f(x) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left(a_k \cos kx + b_k \sin kx\right).
 %\end{equation*}	
-%Наша цель --- оценить  $\left| f(x) - L_{n,N}(f,x) \right|$, для $f \in D^1$ когда $n, N \rightarrow \infty$. 
+%Наша цель --- оценить  $\left| f(x) - L_{n,N}(f,x) \right|$, для $f \in D^1$ когда $n, N \rightarrow \infty$.
 %Был получен следующий результат:
 %\begin{theorem}\label{theorem}
 %	Для функции $f \in D^1$ справедлива оценка:
@@ -922,4 +922,3 @@ $$
 %	|f(x)-S_{n}(f,x)| \leq \frac{C(f,\varepsilon)}{n},\quad |x - a_i| \geq \varepsilon.
 %\end{equation}
 %Нам остается оценить величины $|R_{n,N}(f,x)|$ и $|a_{n}^{(2n)}(f)|$.
-
