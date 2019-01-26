@@ -1,0 +1,272 @@
+
+
+\chapter{Оценка функции Лебега сумм Фурье по модифицированным полиномам Мейкснера}
+\subsection{Введение}
+
+Пусть $\Omega_{\delta}=\{0, \delta, 2\delta, \ldots\}$, где $\delta=\frac{1}{N}$, $N\ge1$. Следуя \cite{RamSharMnog}, обозначим через $M_{n,N}^\alpha(x)$ $(n=0, 1, \dots)$ модифицированные полиномы Мейкснера, образующие при $\alpha>-1$ ортогональную систему на множестве $\Omega_{\delta}$ с весом
+$\rho_N(x)=e^{-x}\frac{\Gamma(Nx+\alpha+1)}{\Gamma(Nx+1)}(1-e^{-\delta})^{\alpha+1},
+$
+т.е.
+\begin{equation*}
+\sum_{x\in\Omega_{\delta}} M_{n,N}^\alpha(x)M_{k,N}^\alpha(x)\rho_N(x)=h_{n,N}^\alpha\delta_{nk},\ \alpha>-1,
+\end{equation*}
+где $\delta_{nk}$ -- символ Кронекера, $h_{n,N}^\alpha={n+\alpha\choose n}e^{n\delta}\Gamma(\alpha+1).$
+Соответствующие ортонормированные полиномы обозначим через $m_{n,N}^\alpha(x)=(h_{n,N}^\alpha)^{-1/2}M_{n,N}^\alpha(x)$ $(n=0, 1, \dots)$.
+
+Далее, пусть $C_0$ -- пространство непрерывных функций, заданных на полуоси $[0,\infty)$ и удовлетворяющих условию
+$$
+\lim_{x\rightarrow\infty}e^{-x/2}|f(x)|=0.
+$$
+норму в котором определим следующим образом
+$$
+\|f\|_{C_0}=\sup_{x\geq0}e^{-x/2}|f(x)|,
+$$
+$H^n$ -- пространство алгебраических полиномов степени $\leq n$,
+$$
+E_n(f)=\inf_{p_n\in H^n}\|f-p_n\|_{C_0}
+$$
+-- наилучшее приближение функции $f$ полиномами из $H^n$.
+
+Через $S_{n,N}^\alpha(x)=S^\alpha_{n,N}(f,x)$ обозначим частичную сумму ряда Фурье функции $f\in C_0$ по полиномам $m_{n,N}^\alpha(x)$:
+$$
+S_{n,N}^\alpha(x)=\sum_{k=0}^{n}f_k^\alpha m_{k,N}^\alpha(x),
+$$
+где
+$$
+f_k^{\alpha}=\sum_{t\in\Omega_\delta}f(t)m_{k,N}^\alpha(t)\rho_N(t).
+$$
+
+В настоящей работе для функции $f\in C_0$ рассматривается задача об оценке величины $e^{-x/2}|f(x)-S_{n,N}^\alpha(x)|$ при $x\in[0,\infty)$. Как известно, с помощью неравенства Лебега
+$$
+e^{-x/2}|f(x)-S_{n,N}^\alpha(x)|\leq (1+\lambda_{n,N}^\alpha(x))E_n(f)
+$$
+эта задача сводится к оценке функции Лебега
+\begin{equation*}\label{RamLebFunc}
+\lambda_{n,N}^{\alpha}(x)=
+\sum_{t\in\Omega_{\delta}}e^{-{t+x\over 2}}{\Gamma(Nt+\alpha+1)\over\Gamma(Nt+1)}(1-e^{-\delta})^{\alpha+1}
+\left|\mathcal{K}_{n,N}^\alpha(t,x)\right|,
+\end{equation*}
+где
+$\left|\mathcal{K}_{n,N}^\alpha(t,x)\right|$ -- ядро, определенное равенством \eqref{Ram-eq2}.
+
+Основным результатом является теорема \ref{Ramtheo1}, в которой получена поточечная оценка для функции $\lambda_{n,N}^{\alpha}(x)$ при $x\in[\theta_n/2,\infty)$, $\theta_n=4n+2\alpha+2$, $\alpha>-1$.
+Для $x\in[0,\theta_n/2]$ функция $\lambda_{n,N}^{\alpha}(x)$ была оценена в работе \cite{Rampetrazav}. Отметим также, что при $\alpha=-1/2$ задача об оценке функции $\lambda_{n,N}^{\alpha}(x)$ была исследована в \cite{Ram3}.
+
+\section{Некоторые сведения о модифицированных полиномах Мейкснера}
+
+При оценке функции Лебега $\lambda_{n,N}^{\alpha}(x)$ нам понадобятся некоторые свойства модифицированных полиномов Мейкснера $M_{n,N}^{\alpha}(x)$, которые мы приведем в этом пункте.
+Пусть $\alpha$ и $q$ произвольные действительные числа, причем $q\neq0$. Тогда для классических полиномов Мейкснера $M_n^\alpha(x)=M_n^\alpha(x,q)$ имеют место
+\cite{RamNik,RamBateman,RamSharMnog}:
+\begin{itemize}
+  \item
+явный вид
+\begin{equation*}
+M_n^\alpha(x)=M_n^\alpha(x,q)={n+\alpha\choose n}\sum_{k=0}^n{n^{[k]}x^{[k]}\over(\alpha+1)_kk!}\left(1-{1\over q}\right)^k,
+\end{equation*}
+где $x^{[k]}=x(x-1)\ldots (x-k+1)$, $(a)_k=a(a+1)\ldots(a+k-1)$.
+\item
+соотношение ортогональности
+$$
+\sum_{x=0}^{\infty} M_{n}^\alpha(x)M_{k}^\alpha(x)\rho(x)=h_{n}^{\alpha,q}\delta_{nk},\ 0<q<1, \alpha>-1,
+$$
+где $\rho(x)=q^x\frac{\Gamma(x+\alpha+1)}{\Gamma(x+1)}(1-q)^{\alpha+1}$,
+$h_{n}^{\alpha,q}={n+\alpha\choose n}q^{-n}\Gamma(\alpha+1)$.
+\end{itemize}
+
+Пусть $q=e^{-\delta}$, $N>0$, $\delta=1/N$, $\Omega_\delta=\{0,\delta,2\delta,\ldots \}$. Тогда полиномы $M_{n,N}^{\alpha}(x)=M_{n}^{\alpha}(Nx,e^{-\delta})$ при $\alpha>-1$ образуют ортогональную с весом $\rho_N(x)$ систему на сетке $\Omega_\delta$. Теперь приведем некоторые свойства полиномов $M_{n,N}^{\alpha}(x)$, которые можно найти в \cite{RamSharMnog}:
+\begin{itemize}
+\item
+равенства
+\begin{equation*}
+M_{n+1,N}^{\alpha-1}(x)=M_{n+1,N}^\alpha(x)-M_{n,N}^\alpha(x);
+\end{equation*}
+\begin{equation*}
+M_{n+1,N}^{\alpha-1}(x)=\frac{\alpha}{n+1}M_{n,N}^\alpha(x)-\frac{(e^\delta-1)Nx}{n+1}M_{n,N}^{\alpha+1}(x-\delta);
+\end{equation*}
+\item
+формула Кристоффеля--Дарбу
+\begin{multline}\label{Ram-eq2}
+\mathcal{K}_{n,N}^{\alpha}(t,x)=\sum_{k=0}^n m_{k,N}^{\alpha}(t)m_{k,N}^{\alpha}(x)=\\
+\frac{\delta\sqrt{(n+1)(n+\alpha+1)}}
+{e^{\delta/2}-e^{-\delta/2}}
+\frac{m_{n+1,N}^\alpha(t)m_{n,N}^\alpha(x)-
+m_{n,N}^\alpha(t)m_{n+1,N}^\alpha(x)}{x-t},
+\end{multline}
+которую можно записать \cite{Ram3, Ram4} в следующем виде:
+$$
+\mathcal{K}_{n,N}^\alpha(t,x)={\alpha_n\over \alpha_n+\alpha_{n-1}}m_{n,N}^{\alpha}(t)m_{n,N}^{\alpha}(x)+
+{\alpha_n\alpha_{n-1}\over \alpha_n+\alpha_{n-1}}{\delta\over e^{\delta/2}-e^{-\delta/2}} {1\over x-t}\times
+$$
+\begin{equation*}
+\left[m_{n,N}^\alpha(x)\left(m_{n+1,N}^\alpha(t)-m_{n-1,N}^\alpha(t)\right)\right.
+\left.-m_{n,N}^\alpha(t)\left(m_{n+1,N}^\alpha(x)-m_{n-1,N}^\alpha(x)
+\right)\right],
+\end{equation*}
+где $\alpha_n=\sqrt{(n+1)(n+\alpha+1)}$, $m_{-1,N}^\alpha(x)=0$.
+\end{itemize}
+
+Для $0<\delta\le1$, $N={1/\delta}$, $\lambda>0$,\ $1\le n\le\lambda N$, $\alpha>-1$, $0\le x<\infty$, $\theta_n=\theta_n(\alpha)=4n+2\alpha+2$, $s\geq0$ справедливы
+\cite{RamSharMnog} следующие весовые оценки:
+\begin{equation*}
+e^{-x/2}\left|m_{n,N}^\alpha(x\pm s\delta)\right|\le c(\alpha,\lambda,s)\theta_n^{-\alpha/2}A_n^\alpha(x),
+\end{equation*}
+\begin{equation*}
+e^{-x/2}\left|M_{n,N}^\alpha(x\pm s\delta)\right|\le c(\alpha,\lambda,s)A_n^\alpha(x),
+\end{equation*}
+\begin{equation*}
+e^{-x/2}\left|(M_{n,N}^\alpha(x\pm s\delta))'\right|\le c(\alpha,\lambda,s)A_{n-1}^{\alpha+1}(x),
+\end{equation*}
+\begin{equation*}
+A_n^\alpha(x)=\begin{cases}
+\theta_n^{\alpha},&  0\le x\le \frac{1}{\theta_n},\\
+\theta_n^{\alpha/2-1/4}x^{-\alpha/2-1/4},&     \frac{1}{\theta_n}<x\le {\theta_n\over 2},\\
+\left[\theta_n(\theta_n^{1/3}+|x-\theta_n|)\right]^{-1/4},& {\theta_n\over2}<x\leq{3\theta_n\over2},\\
+e^{-x/4}, & {3\theta_n\over2}<x<\infty,
+\end{cases}
+\end{equation*}
+$$
+e^{-x/2}\left|m_{n+1,N}^{\alpha}(x)-m_{n-1,N}^{\alpha}(x)\right|\leq
+$$
+\begin{equation*}
+c(\alpha,\lambda)\begin{cases}
+\theta_n^{\alpha/2-1},&  0\le x\le \frac{1}{\theta_n},\\
+\theta_n^{-3/4}x^{-\alpha/2+1/4},&     \frac{1}{\theta_n}<x\le {\theta_n\over 2},\\
+x^{-\alpha/2}\theta_n^{-3/4}\left[\theta_n^{1/3}+|x-\theta_n|\right]^{1/4},& {\theta_n\over2}<x\leq{3\theta_n\over2},\\
+e^{-x/4}, & {3\theta_n\over2}<x<\infty,
+\end{cases}
+\end{equation*}
+где здесь и далее $c(\alpha)$, $c(\alpha, \lambda)$, $c(\alpha, \lambda, s)$ -- положительные числа, зависящие только от указанных параметров, причем различные в разных местах.
+
+\section{Полученные результаты}
+
+\begin{lemma}
+Пусть $-1<\alpha\in\mathbb{R}$, $\theta_n=4n+2\alpha+2$, $\lambda>0$, $t\geq0$, $N=1/\delta$, $0<\delta\leq1$. Тогда для $1\leq n\leq \lambda N$ имеет место следующая оценка
+\begin{equation*}
+e^{-t}\mathcal{ K}_{n,N}^\alpha(t,t)\le c(\alpha,\lambda)n^{1-\alpha}(A_n^\alpha(t))^2.
+\end{equation*}
+\end{lemma}
+
+\begin{lemma}
+Пусть $-1<\alpha\in\mathbb{R}$, $\theta_n=4n+2\alpha+2$, $\lambda>0$, $\theta_n/2\leq t\leq 3\theta_n/2$, $N=1/\delta$, $0<\delta\leq1$. Тогда для $1\leq n\leq \lambda N$ равномерно относительно $t$ имеет место следующая оценка
+\begin{equation*}
+e^{-t}\mathcal{ K}_{n,N}^\alpha(t,t)\le c(\alpha,\lambda)n^{-\alpha}.
+\end{equation*}
+\end{lemma}
+
+Основным результатом настоящего раздела является следующая
+\begin{theorem}\label{Ramtheo1}
+Пусть $\alpha>-1$, $\theta_n=4n+2\alpha+2$, $\lambda>0$, $0<\delta\leq1$, $1\leq n\leq\lambda N.$ Тогда имеют место следующие оценки:\\
+1) если $x\in \left[\frac{\theta_n}{2},\frac{3\theta_n}{2}\right]$, то
+\begin{equation*}
+\lambda_{n,N}^{\alpha}(x)\leq c(\alpha,\lambda)\left[\ln(n+1)+
+\left(\frac{\theta_n}{\theta_n^{1/3}+|x-\theta_n|}\right)^{1/4}\right];
+\end{equation*}
+2) если $x\in \left[\frac{3\theta_n}{2},\infty\right),$ то
+\begin{equation*}
+\lambda_{n,N}^{\alpha}(x)\leq c(\alpha,\lambda)n^{3/2}e^{-x/4}.
+\end{equation*}
+\end{theorem}
+
+\chapter{Приближение дискретных функций специальными рядами по модифицированным полиномам Мейкснера}
+
+\section{Введение}
+В настоящей работе мы продолжаем, начатое в \cite{RamVMJ}, исследование аппроксимативных свойств
+частичных сумм специальных рядов по модифицированным полиномам Мейкснера $m_{n,N}^\alpha(x)$.
+Специальные ряды по полиномам $m_{n,N}^\alpha(x)$ возникают естественным образом при решении задачи об одновременном приближении дискретной функции $d$, заданной на равномерной сетке $\Omega_\delta$, и ее конечных разностей $\Delta^\nu_\delta d$, соответственно алгебраическим полиномом $p$ и его конечными разностями $\Delta^\nu_\delta p$. Упомянутые специальные ряды по полиномам $m_{n,N}^\alpha(x)$ являются более эффективным альтернативным рядам Фурье--Мейкснера аппаратом для решения этой задачи. Кроме того специальные ряды, в отличии от рядов Фурье--Мейкснера, обладают тем свойством, что они интерполируют исходную функцию в точках $0, \delta, \ldots, (r-1)\delta$.
+Однако следует отметить, что задача об исследовании аппроксимативных свойств частичных сумм упомянутых рядов оставалась мало исследованной, в частности, оставалась не исследованной задача об изучении на $[{\theta_n\over 2},\infty)$  поведения функции Лебега $l_{n,r}^{\alpha,N}(x)$ частичных сумм специального ряда по полиномам $m_{n,N}^\alpha(x)$. Основным результатом является теорема \ref{Ramtheo2}, в которой получены оценки сверху для величины $l_{n,r}^{\alpha,N}(x)$ на множествах вида $G_3=[{\theta_n\over 2},{3\theta_n\over 2}]$ и $G_4=[{3\theta_n\over 2},\infty)$, где $r\in\mathbb{N}$, $r-\frac{1}{2}<\alpha<r+\frac{1}{2}$, $\theta_n=4n+2\alpha+2$.
+
+\section{Неравенство Лебега для частичных сумм специального ряда по полиномам Мейкснера}
+
+Через $l_{\rho_N}^2(\Omega_\delta)$ обозначим пространство функций $f(x)$, заданных на $\Omega_\delta$ и таких, что $\sum_{x\in\Omega_\delta}f^2(x)\rho_N(x)<\infty$.
+Пусть $f(x)\in l_{\rho_N}^2(\Omega_\delta)$, тогда при $x\in\Omega_{r,\delta}=\{r\delta, (r+1)\delta,\ldots\}$ мы можем определить дискретный аналог полинома Тейлора следующего вида
+$P_{r-1,N}(x)=\sum_{\nu=0}^{r-1}{\Delta^{\nu}_{\delta}f(0)\over \nu!}(Nx)^{[\nu]}$.
+Легко проверить, что функция $f_r(x)={{f(x)-P_{r-1,N}(x)}\over N^{-r}(Nx)^{[r]}}$ принадлежит пространству $l_{\rho_{N,r}}^2(\Omega_{r,\delta})$, где $\rho_{N,r}(x)=\rho_N(x-r\delta)$, а модифицированные полиномы Мейкснера $m_{k,N,r}^\alpha(x)=m_{k,N}^\alpha(x-r\delta)$ ($k=0, 1, \ldots$) при $\alpha>-1$
+образуют ортонормированный базис в $l_{\rho_{N,r}}^2(\Omega_{r,\delta})$.
+Поэтому мы можем определить коэффициенты Фурье--Мейкснера
+$$
+\hat{f}_{r,k}^\alpha=\sum_{t\in\Omega_{r,\delta}}f_r(t)\rho_{N,r}(t)m_{k,N,r}^\alpha(t)=
+\sum_{t\in\Omega_{r,\delta}}{{f(t)-P_{r-1,N}(t)}\over N^{-r}(Nt)^{[r]}}\rho_{N,r}(t)m_{k,N,r}^\alpha(t)
+$$
+и ряд Фурье--Мейкснера
+$
+f_r(x)=\sum_{k=0}^\infty\hat{f}_{r,k}^\alpha m_{k,N,r}^\alpha(x),
+$
+который в силу базисности в $l_{\rho_{N,r}}^2(\Omega_{r,\delta})$ системы полиномов $m_{k,N,r}^\alpha(x)$ $(k=0, 1, \ldots)$ сходится равномерно относительно $x\in\Omega_{r,\delta}$.
+Отсюда следует, что
+\begin{equation}\label{Ram-eq12}
+f(x)=P_{r-1,N}(x)+N^{-r}(Nx)^{[r]}\sum_{k=0}^\infty\hat{f}_{r,k}^\alpha m_{k,N,r}^\alpha(x), \quad x\in\Omega_\delta.
+\end{equation}
+ Следуя \cite{RamSar, RamVMJ}, мы будем называть \eqref{Ram-eq12} специальным рядом по полиномам Мейкснера для функции $f(x)$. Частичную сумму ряда \eqref{Ram-eq12} обозначим через
+\begin{equation*}
+S_{n+r,N}^\alpha(f,x)=P_{r-1,N}(x)+N^{-r}(Nx)^{[r]}\sum_{k=0}^{n}\hat{f}_{r,k}^\alpha m_{k,N,r}^\alpha(x).
+\end{equation*}
+
+Если $f(x)=p_{n+r}(x)$ представляет собой алгебраический полином степени $n+r,$ то, очевидно, $\hat{f}_{r,k}^\alpha=0$ при $k\geq n+1$ и поэтому из \eqref{Ram-eq12} следует  $S_{n+r,N}^\alpha(p_{n+r},x)\equiv p_{n+r}(x),$ т.е. $S_{n+r,N}^\alpha(f,x)$ является проектором на подпространство алгебраических полиномов $p_{n+r}(x)$ степени не выше $n+r.$
+Обозначим через $q_{n+r}(x)$ алгебраический полином степени $n+r,$ для которого
+$
+\Delta^i f(0)=\Delta^i q_{n+r}(0)\ (i=\overline{0, r-1}).
+$
+Тогда
+$$
+\left|f(x)-S_{n+r,N}^\alpha(f,x)\right|=\left|f(x)-q_{n+r}(x)+q_{n+r}(x)-S_{n+r,N}^\alpha(f,x)\right|\leq
+$$
+$$
+\left|f(x)-q_{n+r}(x)\right|+\left|S_{n+r,N}^\alpha(q_{n+r}-f,x)\right|.
+$$
+Отсюда для $x\in\Omega_{r,\delta}$
+$$
+e^{-{x\over 2}}x^{-{r\over 2}+{1\over 4}}\left|f(x)-S_{n+r,N}^\alpha(f,x)\right|\leq e^{-{x\over 2}}x^{-{r\over 2}+{1\over 4}}\left|f(x)-q_{n+r}(x)\right|+
+$$
+\begin{equation}\label{Ram-eq15}
+e^{-{x\over 2}}x^{-{r\over 2}+{1\over 4}}\left|S_{n+r,N}^\alpha(q_{n+r}-f,x)\right|.
+\end{equation}
+Так как $P_{r-1,N}(q_{n+r}-f,x)=0,$ то
+$$
+e^{-{x\over 2}}x^{-{r\over 2}+{1\over 4}}\left|S_{n+r,N}^\alpha(q_{n+r}-f,x)\right|=
+e^{-{x\over 2}}x^{-{r\over 2}+{1\over 4}}N^{-r}(Nx)^{[r]}\left|\sum_{k=0}^n(\widehat{q_{n+r}-f})_{r,k}^\alpha m_{k,N}^\alpha(x-r\delta)\right|\leq
+$$
+$$
+e^{-{x\over 2}}x^{-{r\over 2}+{1\over 4}}(Nx)^{[r]}
+\sum_{t\in\Omega_{r,\delta}}{|q_{n+r}(t)-f(t)|\over(Nt)^{[r]}}\rho_{N,r}(t)
+\left|\sum_{k=0}^nm_{k,N}^\alpha(t-r\delta)m_{k,N}^\alpha(x-r\delta)\right|=
+$$
+\begin{equation}\label{Ram-eq16}
+e^{-{x\over 2}}x^{-{r\over 2}+{1\over 4}}(Nx)^{[r]}\sum_{t\in\Omega_{r,\delta}}{|q_{n+r}(t)-f(t)|\over(Nt)^{[r]}}\rho_{N,r}(t)\left|
+\mathcal{K}_{n,N}^\alpha(t-r\delta,x-r\delta)\right|.
+\end{equation}
+Положим
+\begin{equation}\label{Ram-eq17}
+E_{k}^r(f,\delta)=\inf_{q_{k}}\sup_{x\in\Omega_{r,\delta}} e^{-{x\over 2}}x^{-{r\over 2}+{1\over 4}}\left|f(x)-q_{k}(x)\right|,
+\end{equation}
+где нижняя грань берется по всем алгебраическим полиномам $q_{k}(x)$ степени $k,$ для которых $\Delta^i f(0)=\Delta^i q_{k}(0)\ (i=\overline{0, r-1}).$
+Тогда из \eqref{Ram-eq15} и \eqref{Ram-eq16} учитывая \eqref{Ram-eq17}, получаем
+\begin{equation}\label{Ram-eq18}
+e^{-{x\over 2}}x^{-{r\over 2}+{1\over 4}}\left|f(x)-S_{n+r,N}^\alpha(f,x)\right|\leq E_{n+r}^r(f,\delta)(1+l_{n,r}^{\alpha,N}(x)),
+\end{equation}
+где
+\begin{multline}\label{Ram-eq19}
+l_{n,r}^{\alpha,N}(x)=e^{-{x\over 2}}x^{-{r\over 2}+{1\over 4}}(Nx)^{[r]}(1-e^{-\delta})^{\alpha+1}\times\\
+\sum_{t\in\Omega_{r,\delta}}{e^{-{t\over 2}+r\delta}t^{{r\over 2}-{1\over 4}}\Gamma(Nt-r+\alpha+1)\over(Nt)^{[r]}\Gamma(Nt-r+1)}
+\left|\mathcal{K}_{n,N}^\alpha(t-r\delta,x-r\delta)\right|.
+\end{multline}
+В связи с неравенством \eqref{Ram-eq18} возникает задача об оценке на $[r\delta, \infty)$ функции Лебега $l_{n,r}^{\alpha,N}(x)$, определенной равенством \eqref{Ram-eq19}. С этой целью введем следующие обозначения:
+$G_1=[r\delta,\frac{3\lambda}{\theta_n}]$, $G_2=[\frac{3\lambda}{\theta_n},{\theta_n\over 2}]$,
+$G_3=[\frac{\theta_n}{2},{3\theta_n\over 2}]$,
+$G_4=[{3\theta_n\over 2}, \infty)$,
+Для $x\in G_1\bigcup G_2$ это задача была решена в работе \cite{RamVMJ}.
+В настоящей работе мы будем оценивать функцию $l_{n,r}^{\alpha,N}(x)$ на множествах $G_3$ и $G_4$.
+
+\begin{theorem}\label{Ramtheo2}
+Пусть $r\in\mathbb{N}$, $r-\frac{1}{2}<\alpha< r+\frac{1}{2}$, $\theta_n=4n+2\alpha+2$, $\lambda>0$, $0<\delta\leq1$, $1\leq n\leq\lambda N.$ Тогда имеют место следующие оценки:\\
+1) если $x\in G_3$, то
+\begin{equation*}
+l_{n,r}^{\alpha,N}(x)\leq c(\alpha,\lambda,r)\left[\ln(n+1)+
+\left(\frac{\theta_n}{\theta_n^{1\over3}+|x-\theta_n|}
+\right)^{\frac{1}{4}}\right];
+\end{equation*}
+2) если $x\in G_4,$ то
+\begin{equation*}
+l_{n,r}^{\alpha,N}(x)\leq c(\alpha,\lambda,r)n^{-{r\over 2}+{5\over 4}}
+x^{{r\over 2}+{1\over 4}}e^{-\frac{x}{4}}.
+\end{equation*}
+\end{theorem}
