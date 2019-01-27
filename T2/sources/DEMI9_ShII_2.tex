@@ -1,0 +1,341 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[tbtags]{amsmath}
+\usepackage{amsfonts,amssymb,mathrsfs,amscd}
+%для подключения графики используются стандартные команды, но кроме файла *.eps
+%необходимо наличие в текущей директории соответствующего файла *.pdf
+%-------------------------------------------------
+\usepackage[hyper]{demi}
+\Volume10
+\JournalName{Дагестанские Электронные Математические Известия}
+%Пустой аргумент приводит к исчезновению всех атрибутов журнала "Математический
+%сборник", файл можно представить в любой другой журнал
+%-------------------------------------------------
+\numberwithin{equation}{section}
+%-------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{propos}{Предложение}
+\newtheorem{corollary}{Следствие}
+\newcommand{\No}{№}
+%-------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{proof}{Доказательство}\def\theproof{}
+\newtheorem{remark}{Замечание}
+%-------------------------------------------------
+\def\Re{\operatorname{Re}}
+\def\Im{\operatorname{Im}}
+\def\const{\mathrm{const}}
+\def\RR{\mathbb R}
+\def\CC{\mathbb C}
+\def\NN{\mathbb N}
+\def\RS{\mathfrak R}
+\def\bz{\mathbf z}
+\def\sH{\mathscr H}
+\def\HH{\mathscr H}
+\def\mro{\widehat\rho}
+%-------------------------------------------------
+\setcounter{page}{68}
+
+\begin{document}
+
+\title{О существовании и единственности решений ОДУ с разрывной правой частью и ортогональных по Соболеву системах функций}
+
+\author[I.\,I.~Sharapudinov]{И.\,И.~Шарапудинов}
+
+\address{Дагестанский научный центр РАН,\\Владикавказский научный центр РАН}
+
+\email{sharapud@mail.ru}
+%второй автор
+
+%\date{24.08.2018}
+\date{24.07.2018}
+\udk{517.538}
+
+\maketitle
+
+\begin{fulltext}
+
+
+\begin{abstract}
+ В статье вводится понятие решения задачи Коши для системы обыкновенных дифференциальных уравнений вида
+ $ y'(x)=f(x,y),\quad y(0)=y_0, \quad 0\le x\le 1$, в которой правая часть  $f=(f_1,\ldots,f_m)$ не обязательно непрерывна в области своего определения $G\subset\mathbb{R}^{m+1}$. Рассмотрены задачи о существовании и единственности решения задачи Коши. Для того, чтобы определить понятие  решения задачи Коши для уравнения введен класс  $AC^m[0,1]$, состоящий из всех абсолютно непрерывных вектор-функций $y=y(x)=(y_1(x),\ldots,y_m(x))$, заданных на $[0,1]$.
+ Вектор-функция $y\in AC^m[0,1]$ называется решением задачи Коши, если имеет место равенство $y'(x)=f(x,y(x))$ для почти всех $x\in[0,1]$ и удовлетворяет условию $y(0)=y_0$.
+ При рассмотрении вопросов, связанных с существованием и единственностью задачи Коши  в смысле приведенного определения, ключевую роль играют системы функций, ортонормированные по Соболеву и порожденные заданной системой  $\{\varphi_k(x)\}_{k=0}^\infty$, ортонормированной в весовом пространстве Лебега $L_\rho^2(0,1)$  с весом $\rho=\rho(x)$. 
+
+Библиография: 1 название.
+
+$ $
+
+In this paper we introduce the concept of a solution of the Cauchy problem for a system of ordinary differential equations of the form $y'(x)=f(x,y)$, $ y(0)=y_0, \quad 0\le x\le 1$ in which the right-hand side of $f=(f_1,\ldots,f_m)$ is not necessarily continuous in the domain of its definition $G\subset\mathbb{R}^{m+1}$. The problems of the existence and uniqueness of the solution of the Cauchy problem are considered. In order to define the concept of a solution of the Cauchy problem for the equation, we introduced the class $AC^m[0,1]$ consisting of all the absolutely continuous vector-valued functions $y=y(x)=(y_1(x),\ldots,y_m(x))$ defined on $[0,1]$. A vector-valued function $y\in AC^m[0,1]$ is called a solution of the Cauchy problem if $y'(x)=f(x,y(x))$ holds for almost all $x\in[0,1]$ and satisfies condition $y(0)=y_0$. 
+When considering questions related to the existence and uniqueness of the Cauchy problem in the sense of the above definition, systems of functions orthonormal in the sense of Sobolev and genera-\\ted by a given system $\{\varphi_k(x)\}_{k=0}^\infty$ orthonormal in the weighted Lebesgue space $L_\rho^2(0,1)$ with weight $\rho=\rho(x)$ play a key role.
+
+Bibliography: 1 item.
+
+\end{abstract}
+
+\begin{keywords}
+Дифференциальное уравнение с разрывной правой частью, существование и единственность решений,  ортогональные по соболеву системы функций, ряды Фурье по системам функций, ортогональным по Соболеву
+
+{\bf Keywords:} 
+Differential equation with discontinuous right-hand side, exis-\\tence and uniqueness of solutions, orthogonal with respect to the sobolev system of functions, Fourier series with respect to systems of functions orthogo-\\nal in the sense of Sobolev
+\end{keywords}
+
+
+\markright{Дифференциальное уравнение с разрывной правой частью}
+%\footnotetext[0]{}
+
+
+\section{Введение}
+В настоящей статье вводится понятие решения задачи Коши для системы обыкновенных дифференциальных уравнений вида
+ \begin{equation}\label{1.1}
+   y'(x)=f(x,y),\quad y(0)=y_0, \quad 0\le x\le 1,
+ \end{equation}
+в которой правая часть  $f=(f_1,\ldots,f_m)$ не обязательно непрерывна в области своего определения $G\subset\mathbb{R}^{m+1}$. Будут рассмотрены задачи о существовании и единственности решения задачи Коши \eqref{1.1}. Для того, чтобы определить понятие  решения задачи Коши для уравнения \eqref{1.1} введем класс  $AC^m[0,1]$, состоящий из всех абсолютно непрерывных вектор-функций $y=y(x)=(y_1(x),\ldots,y_m(x))$, заданных на $[0,1]$.
+
+{\bf Определение.} {\it Вектор-функцию $y\in AC^m[0,1]$ будем называть решением задачи Коши  \eqref{1.1}, если имеет место равенство $y'(x)=f(x,y(x))$ для почти всех $x\in[0,1]$ и удовлетворяет условию $y(0)=y_0$.}
+
+В дальнейшем, при рассмотрении вопросов, связанных с существованием и единственностью решения задачи Коши  \eqref{1.1} в смысле приведенного определения, ключевую роль играют системы функций, ортонормированные по Соболеву и порожденные заданной системой  $\{\varphi_k(x)\}_{k=0}^\infty$, ортонормированной в весовом пространстве Лебега $L_\rho^2(0,1)$  с весом $\rho=\rho(x)$. Нам понадобится ряд свойств таких систем, установленных в работе \cite{SharIzv2018}, которых мы приведем в следующем параграфе.
+\section{Некоторые сведения об ортонормированных по Соболеву системах функций, порожденных ортонормированной системой}
+ Предположим, что система функций  $\left\{\varphi_k(x)\right\}$ ортонормирована  на $(a,b)$  c весом   $\rho(x)$, т.е.
+ \begin{equation}\label{2.1}
+\int\limits_a^b\varphi_k(x)\varphi_l(x)\rho(x)dx=\delta_{kl},
+\end{equation}
+где $\delta_{kl}$ -- символ Кронекера. Через $L^p_\rho(a,b)$ обозначим пространство  функций $f(x)$, измеримых  на  $(a,b)$, для которых
+ \begin{equation}\label{2.2}
+\int\limits_a^b|f(x)|^p\rho(x)dx<\infty.
+\end{equation}
+Если $\rho(x)\equiv1$, то будем писать $L^p_\rho(a,b)=L^p(a,b)$ и $L(a,b)=L^1(a,b)$. Нетрудно показать, что если весовая функция $\rho(x)$ удовлетворяет некоторым (естественным) условиям, то пространство $L^p_\rho(a,b)$ представляет собой банахово пространство с нормой $\|f\|_{p,\rho}=(\int_a^b|f(x)|^p\rho(x)dx)^\frac1p$. Для этого достаточно, например, считать, что $1/\rho(x)\in L(a,b)$. В этом случае из  неравенства Гельдера вытекает также, что $L^2_\rho(a,b)\subset L(a,b)$. Из \eqref{2.1} следует, что $\varphi_k(x)\in L^2_\rho(a,b)$ $(k=0,1,\ldots)$. Мы добавим к этому условию еще одно, считая, что $\varphi_k(x)\in L(a,b)$ $(k=0,1,\ldots)$. Тогда мы можем определить следующие порожденные системой $\{\varphi_k(x)\}$ функции
+ \begin{equation}\label{2.3}
+\varphi_{r,r+k}(x) =\frac{1}{(r-1)!}\int\limits_a^x(x-t)^{r-1}\varphi_{k}(t)dt, \quad k=0,1,\ldots.
+\end{equation}
+ Кроме того, определим конечный набор функций
+  \begin{equation}\label{2.4}
+\varphi_{r,k}(x) =\frac{(x-a)^k}{k!}, \quad k=0,1,\ldots, r-1.
+\end{equation}
+
+ Из \eqref{2.3} и \eqref{2.4} следует, что
+ \begin{equation}\label{2.5}
+(\varphi_{r,k}(x))^{(\nu)} =\begin{cases}\varphi_{r-\nu,k-\nu}(x),&\text{если $0\le\nu\le r-1$, $r\le k$,}\\
+\varphi_{k-r}(x)\quad\text{для п.в. $x\in (a,b)$},&\text{если  $\nu=r\le k$,}\\
+\varphi_{r-\nu,k-\nu}(x),&\text{если $\nu\le k< r$,}\\
+0,&\text{если $k< \nu\le r$}.
+  \end{cases}
+\end{equation}
+ Ниже нам понадобится весовое пространство Соболева $W^r_{L^p_\rho(a,b)}$, состоящее из функций $f(x)$, непрерывно дифференцируемых на $[a,b]$ $r-1$ раз, причем \linebreak $f^{(r-1)}(x)$ абсолютно непрерывна на $[a,b]$  и $f^{(r)}(x)\in L^p_\rho(a,b)$.
+Скалярное произведение в пространстве $W^r_{L^2_\rho(a,b)}$ определим с помощью равенства
+\begin{equation}\label{2.6}
+<f,g>=\sum_{\nu=0}^{r-1}f^{(\nu)}(a)g^{(\nu)}(a)+\int_{a}^{b} f^{(r)}(t)g^{(r)}(t)\rho(t) dt.
+\end{equation}
+Для того, чтобы величина $<f,g>$, определяемая равенством \eqref{2.6}, удовлетворяла всем четырем аксиомам скалярного произведения достаточно, например, считать, что $1/\rho(x)\in L(a,b)$.  Тогда для $f\in W^r_{L^2_\rho(a,b)}$ мы можем определить норму $\|f\|_{W^r_{L^2_\rho(a,b)}}=\sqrt{<f,g>}$, которое превращает $W^r_{L^2_\rho(a,b)}$ в банахово пространство и, стало быть, $W^r_{L^2_\rho(a,b)}$ -- гильбертово пространство со скалярным произведением \eqref{2.6}.
+
+ Следуя работе \cite{SharIzv2018},  мы будем называть систему $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ {\it ортонормированной по Соболеву } относительно скалярного произведения \eqref{2.6} и  {\it порожденной} ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$.
+
+
+   Заметим, что ряд Фурье функции $f(x)\in W^r_{L^2_\rho(a,b)}$ по системе  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ имеет смешанный характер, а, более точно, имеет следующий вид
+  \begin{equation}\label{2.7}
+f(x)\sim \sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^\infty f_{r,k}\varphi_{r,k}(x),
+\end{equation}
+где
+  \begin{equation}\label{2.8}
+ f_{r,k}=\int\limits_a^b f^{(r)}(t) \varphi^{(r)}_{r,k}(t)\rho(t)dt=\int\limits_a^b f^{(r)}(t) \varphi_{k-r}(t)\rho(t)dt,
+\end{equation}
+поэтому ряд Фурье вида \eqref{2.7} будем   называть  \cite{SharIzv2018} {\it смешанным рядом} по  системе $\{\varphi_{k}(x)\}_{k=0}^\infty$, считая это название условным и сокращенным обозначением полного названия: <<{\it ряд Фурье по системе  $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, ортонормированной по Соболеву, порожденной ортонормированной системой $\{\varphi_{k}(x)\}_{k=0}^\infty$}>>.
+
+Отметим некоторые важные свойства смешанного ряда \eqref{2.7}, непосредственно вытекающие из \eqref{2.5}. Первое из них связано с дифференциальным свойством смешанного ряда, а именно, если $r>1$, то в результате почленного дифференцирования смешанного ряда \eqref{2.7} мы получим смешанный ряд для производной $f'(x)$, соответствующий случаю, когда вместо $r$ фигурирует $r-1$, другими словами
+\begin{equation}\label{2.9}
+f'(x)\sim  \sum_{k=1}^\infty f'_{r-1,k-1}\varphi_{r-1,k-1}(x)=\sum_{k=1}^\infty (f_{r,k}\varphi_{r,k}(x))'.
+\end{equation}
+Второе свойство связано c почленным интегрированием с переменным верхним пределом и имеет вид
+\begin{equation}\label{2.10}
+\int\limits_a^xf'(t)dt\sim \sum_{k=1}^\infty f'_{r-1,k-1}\int\limits_a^x\varphi_{r-1,k-1}(t)dt=\sum_{k=1}^\infty f_{r,k}\varphi_{r,k}(x).
+\end{equation}
+Важное значение имеет свойство  смешанного ряда \eqref{2.7}, которое заключается в том, что его частичная сумма вида
+\begin{equation}\label{2.11}
+Y_{r,N}(f,x)=\sum_{k=0}^{r-1} f^{(k)}(a)\frac{(x-a)^k}{k!}+ \sum_{k=r}^{N} f_{r,k}\varphi_{r,k}(x)
+\end{equation}
+ при   $N\ge r$, $r$-кратно совпадает с исходной функцией $f(x)$ в точке $x=a$, т.е.
+\begin{equation}\label{2.12}
+(Y_{r,N}(f,x))^{(\nu)}_{x=a}=f^{(\nu)}(a)\quad (0\le\nu\le r-1).
+\end{equation}
+Кроме того, из \eqref{2.5} и \eqref{2.11} следует, что $(0\le\nu\le r-1)$
+\begin{equation}\label{2.13}
+ Y_{r,N}^{(\nu)}(f,x)=\sum_{n=0}^{r-1-\nu} f^{(n+\nu)}(a)\frac{(x-a)^n}{n!}+ \sum_{n=r-\nu}^{N-\nu} f_{r-\nu,n}^{(\nu)}\varphi_{r-\nu,n}(x)=Y_{r-\nu,N-\nu}(f^{(\nu)},x),
+ \end{equation}
+отсюда, в свою очередь, выводим $(0\le\nu\le r-2)$
+ $$
+f^{(\nu)}(x)-Y_{r,N}^{(\nu)}(f,x)= \frac{1}{(r-\nu-2)!}\int_a^x (x-t)^{r-\nu-2}(f^{(r-1)}(t)-Y_{r,N}^{(r-1)}(f,t))dt=
+$$
+  \begin{equation}\label{2.14}
+\frac{1}{(r-\nu-2)!}\int_a^x (x-t)^{r-\nu-2}(f^{(r-1)}(t)-Y_{1,N-r+1}(f^{(r-1)},t))dt.
+ \end{equation}
+
+В дальнейшем нам понадобятся также следующие результаты, установленные в \cite{SharIzv2018}.
+ \begin{theorem} Предположим, что    функции $\varphi_k(x)$ $(k=0,1,\ldots)$ образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на отрезке $[a,b]$. Тогда система $\{\varphi_{r,k}(x)\}_{k=0}^\infty$, порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{2.3} и \eqref{2.4}, полна  в $W^r_{L^2_\rho(a,b)}$ и ортонормирована относительно скалярного произведения \eqref{2.6}.
+ \end{theorem}
+
+\begin{theorem}\label{th2.2} Предположим, что  $ \frac{1}{\rho(x)}\in L(a,b) $, а  функции $\varphi_k(x)$ $(k=\linebreak0,1,\ldots)$  образуют полную в $L^2_\rho(a,b)$ ортонормированную   c весом   $\rho(x)$ систему на отрезке $[a,b]$, $\{\varphi_{r,k}(x)\}_{k=0}^\infty$ -- система, ортонормированная в $W^r_{L^2_\rho(a,b)}$ относительно скалярного произведения \eqref{2.6},  порожденная системой $\{\varphi_{k}(x)\}_{k=0}^\infty$ посредством равенств \eqref{2.3} и \eqref{2.4}.
+Тогда, если $f(x)\in W^r_{L^2_\rho(a,b)}$, то ряд Фурье (смешанный ряд) \eqref{2.7} сходится к функции $f(x)$ равномерно относительно $x\in[a,b]$.
+ \end{theorem}
+
+
+
+\section{О существовании и единственности  решения задачи Коши для ОДУ с разрывной правой частью и системах  функций $\varphi_{1,n}(x)$}
+
+Вернемся к системе уравнений \eqref{1.1}.
+Мы будем считать, что область $G\subset\mathbb{R}^{m+1}$, в котором определена правая часть этой системы $f(x,y)$ содержит в качестве своего подмножества полосу $[0,1]\times\mathbb{R}^m$. Кроме того будем предполагать, что функция $f(x,y)$ подчиняется нижеследующим  требованиям $A)$ и $B)$:
+
+$A)$ если $y=(y_1,\ldots,y_m)$, где $y_l\in  W^1_{L^2_\rho(0,1)}$ для  $l=1,\ldots,m$, то сложные функции $g_l(x)=f_\nu(x,y(x))$ принадлежат пространству $L^2_\rho(0,1)$, т.е.\\ $\int_0^1g^2_l(x)\rho(x)dx<\infty$ для всех $1\le l\le m$;
+
+$B)$ найдется  такое постоянное число $\delta$, что для произвольных    $u=(u_1,\ldots,\linebreak u_m)$, $v=(v_1,\ldots,v_m)$ таких, что  $u_l,v_l\in W^1_{L^2_\rho(0,1)}$ при $l=1,\ldots,m$  имеет место неравенство (усредненное  условие Липшица)
+\begin{equation}\label{3.1}
+ \sum_{\nu=1}^m \int_0^1[f_\nu(x,u(x))-f_\nu(x,v(x))]^2\rho(x)dx\le \delta^2 \sum_{\nu=1}^m\int_0^1[u_\nu(x)-v_\nu(x)]^2\rho(x)dx.
+ \end{equation}
+
+С другой стороны, рассмотрим систему ортонормированных по Соболеву функций $\{\varphi_{1,k}(x)\}_{k=0}^\infty$, которые определены  посредством равенств \eqref{2.3} и \eqref{2.4} с $r=1$, $a=0$, $b=1$,  т.е.
+\begin{equation}\label{3.2}
+\varphi_{1,0}(x)=1, \quad \varphi_{1,k}(x)= \int_0^x\varphi_{k-1}(t)dt,\quad k=1,2,\ldots,
+\end{equation}
+где $\{\varphi_{k}(x)\}_{k=0}^\infty$ -- ортонормированная система, полная в $L_{\rho}^2$ и такая, что порожденная ею система $\{\varphi_{1,k}(x)\}_{k=0}^\infty$ удовлетворяет  условию
+\begin{equation}\label{3.3}
+\kappa_\varphi=\left(\sum\nolimits_{k=1}^\infty \int_0^1\varphi^2_{1,k}(x)\rho(x)dx\right)^\frac12<\infty.
+\end{equation}
+ Мы можем   теперь сформулировать следующий результат.
+ \begin{theorem}\label{th3.3}
+Предположим, что весовая функция $\rho = \rho(x)$ подчиняется условиям теоремы \ref{th2.2} и пусть выполнены следующие условия:
+
+  1) вектор-функция $f(x,y)$ удовлетворяет условиям $A)$ и $B)$;
+  2) $\delta\kappa_\varphi<1$.
+  Тогда задача Коши \eqref{1.1} имеет  единственное решение $y=(y_1,\ldots,y_m)$ с компонентами $y_\nu\in W^1_{L^2_\rho(0,1)}$ при всех $1\le\nu\le m$. Оно
+   представимо в виде равномерно сходящегося ряда
+\begin{equation}\label{3.4}
+y(x)=y(0)+\sum_{k=1}^\infty y_{1,k} \varphi_{1,k}(x), \quad x\in[0,1],
+\end{equation}
+где
+$$
+ y_{1,k}=\int_{0}^{1} y'(t)\varphi_{k-1}(t)dt=\int_{0}^{1} f(t,y(t))\varphi_{k-1}(t)dt.
+$$
+\end{theorem}
+\begin{proof}
+  Введем в рассмотрение гильбертово пространство $l_2^m$, состоящее из $m$-мерных последовательностей $C=(c_0,c_1,\ldots)$, для которых определена норма
+$$\|C\|=\left(\sum\nolimits_{j=0}^\infty \sum\nolimits_{l=1}^{m}(c_j^l)^2\right)^\frac12.$$  Покажем, что в пространстве $l_2^m$ можно определить   оператор $A$, сопоставляющий точке $C\in l_2^m$ точку $C'\in l_2^m$ по правилу
+\begin{equation}\label{3.5}
+c_k'=\int_{0}^1f\left[t,y(0)+ \sum\nolimits_{j=0}^\infty c_j
+\varphi_{1,j+1}(t)\right]\varphi_k(t)\rho(t) dt,\quad k=0,1,\ldots.
+\end{equation}
+Для этого достаточно показать, что точка $C'=(c_0',c_1',\ldots)\in l_2^m$. С этой целью для каждого $1\le l\le m$ рассмотрим функцию
+$\eta_l'=\eta_l'(t)= \sum\nolimits_{j=0}^\infty c_j^l\varphi_j(t)$. Поскольку $C=(c_0,c_1,\ldots)\in l_2^m$, то $\eta_l'\in L^2_\rho(0,1)\subset L(0,1)$, следовательно, функция $\eta_l(x)=y_l(0)+\int_0^x\eta_l'(t)dt\in W^1_{L^2_\rho(0,1)}$ и, в силу теоремы \ref{th2.2},  $\eta_l(x)=y_l(0)+\sum_{j=1}^\infty{\eta_l}_{1,j}\varphi_{1,j}(x)$, причем этот ряд сходится равномерно на $[0,1]$, а  коэффициенты ${\eta_l}_{1,j+1}$ $(j=0,1,\ldots)$ имеют вид
+${\eta_l}_{1,j+1}=\int_0^1\eta_l'(t)\varphi_{j}(t)\rho(t)dt=c_j^l$, другими словами, функция
+$\eta_l(x)=y_l(0)+\sum_{j=0}^\infty c_j^l\varphi_{1,j+1}(x)$ абсолютно непрерывна на $[0,1]$ и принадлежит пространству $W^1_{L^2_\rho(0,1)}$. Поэтому, в силу условия $A)$, функция $f_l\left[t,y(0)+ \sum\nolimits_{j=0}^\infty c_j
+\varphi_{1,j+1}(t)\right]\in L^2_\rho(0,1)$ и, стало быть, из \eqref{3.5} заключаем, что $C'=(c_0',c_1',\ldots)\in l_2^m$. Отсюда следует, что мы можем определить  оператор $A:l_2^m\to l_2^m$ по правилу \eqref{3.5}. Покажем, что при соблюдении условий теоремы \ref{th3.3} оператор $A:l_2^m\to l_2^m$  будет сжимающим. С этой целью рассмотрим две точки $P,Q\in l_2^m$, где $P=(p_0,p_1,\ldots)$, $Q=(q_0,q_1,\ldots)$, и положим $P'=A(P)$, $Q'=A(Q)$. Имеем
+\begin{equation}\label{3.6}
+p'_k-q'_k=\int_{0}^1f_{P,Q}(t)\varphi_k(t)\rho(t)dt,\quad k=0,1,\ldots
+\end{equation}
+где
+\begin{multline}\label{3.7}
+ f_{P,Q}(t)=f\left[t,y(0)+ \sum\nolimits_{j=0}^\infty p_j\varphi_{1,j+1}(t)\right] \\
+  -f\left[t,y(0)+ \sum\nolimits_{j=0}^\infty q_j\varphi_{1,j+1}(t)\right].
+\end{multline}
+Из \eqref{3.6}, пользуясь неравенством Бесселя, находим
+ \begin{equation}\label{3.8}
+\sum\nolimits_{k=0}^\infty \sum_{l=1}^m((p^l_k)'-(q^l_k)')^2\le\int_{0}^1F_{P,Q}(t)(F_{P,Q}(t))^*\rho(t) dt,
+\end{equation}
+где $(a_1,\ldots,a_m)^*$ -- вектор-столбец, полученный в результате транспонирования строки $(a_1,\ldots,a_m)$.
+Из \eqref{3.1} и \eqref{3.7}  имеем
+  $$
+\int_0^1F_{P,Q}(t)(F_{P,Q}(t))^*\rho(t)dt\le
+\delta^2 \sum\nolimits_{l=1}^m  \int_0^1\left(\sum\nolimits_{j=0}^\infty( p^l_j-q^l_j)\varphi_{1,j+1}(t)\right)^2\rho(t)dt,
+$$
+откуда,  воспользовавшись неравенством Коши-Буняковского, выводим
+$$
+\int_0^1F_{P,Q}(t)(F_{P,Q}(t))^*\rho(t)dt \le
+$$
+\begin{equation}\label{3.9}
+\delta^2\sum\nolimits_{j=0}^\infty\sum\nolimits_{l=1}^m( p^l_j-q^l_j)^2  \int_0^1\sum\nolimits_{j=0}^\infty(\varphi_{1,j+1}(t))^2 \rho(t)dt.
+\end{equation}
+Сопоставляя \eqref{3.9} с \eqref{3.8}, находим
+$$
+\sum\nolimits_{j=0}^\infty\sum\nolimits_{l=1}^m((p^l_j)'-(q^l_j)')^2\le
+$$
+\begin{equation}\label{3.10}
+\delta^2 \sum\nolimits_{j=0}^\infty\sum\nolimits_{l=1}^m( p^l_j-q^l_j)^2\int_{0}^1 \sum\nolimits_{j=0}^\infty(\varphi_{1,j+1}(t))^2\rho(t) dt.
+\end{equation}
+Из  \eqref{3.10}  и \eqref{3.3} имеем
+\begin{equation}\label{3.11}
+\left(\sum\nolimits_{j=0}^\infty\sum\nolimits_{l=1}^m((p^l_j)'-(q^l_j)')^2\right)^\frac12\le \kappa_\varphi\delta \left(\sum\nolimits_{j=0}^\infty\sum\nolimits_{l=1}^m( p^l_j-q^l_j)^2\right)^\frac12.
+\end{equation}
+Неравенство \eqref{3.11} показывает, что если $\kappa_\varphi\delta<1$, то оператор  $A:l_2^m\to l_2^m$ является сжимающим и, как следствие, итерационный процесс $C^{\nu+1}=A(C^{\nu})$ при $\nu\to\infty$  сходится к неподвижной  точке $\dot{C}=(\dot{c}_0,\dot{c}_1,\ldots)\in l_2^m$, для которой $A(\dot{C})=\dot{C}$.
+Положим
+\begin{equation}\label{3.12}
+y'(x)=(y'_1(x),\ldots, y'_m(x))=\sum_{j=0}^{\infty}\dot{c}_j\varphi_j(x),
+\end{equation}
+где
+\begin{equation}\label{3.13}
+y'_l(x)=\sum_{j=0}^{\infty}\dot{c}_j^l\varphi_j(x), \quad 1\le l\le m.
+\end{equation}
+\end{proof}
+Функция $y'_l(x)$, определяемая равенством вида \eqref{3.13}, принадлежит пространству $L^2_\rho(0,1)$, а  функция
+\begin{equation}\label{3.14}
+ y_l(x)=y_l(0)+\int_0^x y_l'(t)dt,
+\end{equation}
+как это было показано выше, допускает представление
+\begin{equation}\label{3.15}
+y_l(x)=y_l(0)+\sum_{j=0}^{\infty}\dot{c}_j^l\varphi_{1,j+1}(x)=
+y_l(0)+\sum_{k=1}^{\infty}{y_l}_{1,k}\varphi_{1,k}(x).
+\end{equation}
+ Ясно, что  $y_l\in W^1_{L^2_\rho(0,1)}$, а вектор-функция $y(x)=(y_1(x),\ldots, y_m(x))$  удовлетворяет начальному условию задачи Коши \eqref{1.1}: $y(0)=y_0$. Остается показать, что $y(x)=(y_1(x),\ldots, y_m(x))$ является решением задачи Коши  \eqref{1.1} в смысле указанного выше определения. С этой целью заметим, что из определения оператора $A:l_2^m\to l_2^m$ посредством  равенства \eqref{3.3} следует, что для неподвижной точки $\dot{C}=(\dot{c}_0,\dot{c}_1,\ldots)\in l_2^m$, для которой $\dot{C}=A(\dot{C})$, имеют место равенства
+\begin{equation}\label{3.16}
+\dot{c}_k=\int_{0}^1f\left[t,y(0)+ \sum\nolimits_{j=0}^\infty \dot{c}_j
+\varphi_{1,j+1}(t)\right]\varphi_k(t)\rho(t) dt,\quad k=0,1,\ldots.
+\end{equation}
+Сопоставляя \eqref{3.12}, \eqref{3.15} и \eqref{3.16}, мы замечаем, что коэффициенты Фурье вектор-функций $y'(x)$ и $f(x,y(x))$ по полной в $L^2_\rho(0,1)$ ортонормированной системе $\{\varphi_k(x)\}_{k=0}^\infty$ совпадают, стало быть, соответствующие  компоненты этих вектор-функций совпадают, как элементы пространства $L^2_\rho(0,1)$. Отсюда следует, что для  почти всех  $x\in [0,1]$ имеет место равенство $y'(x)=f(x,y(x))$. Это означает, что вектор-функция $y=(y_1,\ldots,y_m)$ представляет собой решение задачи Коши \eqref{1.1}, причем его компоненты $y_\nu\in W^1_{L^2_\rho(0,1)}$ для всех $1\le\nu\le m$. Нетрудно убедиться в том, что решение, обладающее этими свойствами единственно. В самом деле, произвольное решение задачи Коши \eqref{1.1} $y=(y_1,\ldots,y_m)$, компоненты $y_\nu$ которого принадлежат пространству $ W^1_{L^2_\rho(0,1)}$ при всех $1\le\nu\le m$, можно в силу теоремы \ref{th2.2}
+представить в виде ряда \eqref{3.4}, который мы можем переписать в следующем виде
+\begin{equation}\label{3.17}
+y(x)=y(0)+\sum_{j=0}^\infty c_j(y) \varphi_{1,j+1}(x), \quad x\in[0,1],
+\end{equation}
+где
+$$
+c_k(y)= y_{1,k+1}=\int_{0}^{1} y'(t)\varphi_{k}(t)dt=\int_{0}^{1} f(t,y(t))\varphi_{k}(t)dt.
+$$
+Отсюда имеем
+\begin{equation}\label{3.18}
+c_k(y)=\int_{0}^{1} f\left[t,y(0)+\sum\nolimits_{j=0}^\infty c_j(y) \varphi_{1,j+1}(x)\right]\varphi_{k}(t)dt,\, k=0,1,\ldots.
+\end{equation}
+Равенство \eqref{3.18} показывает, что $C(y)=(c_0(y),c_1(y),\ldots)$ представляет собой неподвижную точку оператора $A:l^2_m\to l^2_m$, определенного по правилу  \eqref{3.5}. Но, поскольку, как было показано выше, при выполнении условий теоремы \ref{th3.3} оператор $A:l^2_m\to l^2_m$ является сжимающим, то точка $C(y)= \dot{C}$, где $\dot{C}$ -- единственная неподвижная точка оператора $A$, удовлетворяющая уравнению \eqref{3.16}. Другими словами, решение задачи Коши \eqref{1.1} $y=(y_1,\ldots,y_m)$ c компонентами $y_\nu\in W^1_{L^2_\rho(0,1)}$ имеет  вид
+\begin{equation}\label{3.19}
+y(x)=y(0)+\sum_{j=0}^\infty\dot{c}_j(y) \varphi_{1,j+1}(x), \quad x\in[0,1],
+\end{equation}
+стало быть, существует единственное решение задачи Коши \eqref{1.1}, представимое в виде ряда \eqref{3.19}. Теорема \ref{th3.3} доказана.
+
+
+\end{fulltext}
+
+\begin{thebibliography}{20}
+
+%\RBibitem{SharIzv2018}
+%\by И.И.Шарапудинов
+%\paper Системы функций, ортогональные по Соболеву, ассоциированные с ортогональной системой
+%\inbook Изв. РАН. Сер. матем.
+%\vol 82
+%\issue 1
+%\yr 2018
+%\pages 225 –- 258
+
+\bibitem{SharIzv2018} 
+Шарапудинов И.И. Системы функций, ортогональные по Соболеву, ассоциированные с ортогональной системой // Изв. РАН. Сер. матем. 2018. Т. 82, вып. 1. С. 225--258.
+
+\end{thebibliography}
+
+
+
+
+
+
+
+
+
+\end{document}

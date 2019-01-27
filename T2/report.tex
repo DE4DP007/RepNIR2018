@@ -9,7 +9,8 @@
 \usepackage{color}
 \usepackage[all,cmtip]{xy}
 \graphicspath{{pictures/}}
-
+\usepackage{mathtools}  
+\mathtoolsset{showonlyrefs}  
 
 \usepackage{cite}
 
@@ -17,6 +18,13 @@
 \usepackage{mathrsfs}
 %\newtheorem{theoremA}{Теорема}
 %\renewcommand*{\thetheoremA}{\Alph{theoremA}}
+
+%=======
+\usepackage[inline]{showlabels}
+\renewcommand{\showlabelfont}{\tiny\normalfont\color{red}}
+%=======
+
+
 
 \TableInChaper
 \PicInChaper
@@ -48,7 +56,7 @@
 \usepackage[shortlabels]{enumitem}
 %%%%%%%<------------- НАЧАЛО ДОКУМЕНТА
 \begin{document}
-\usefont{T2A}{ftm}{m}{} %%% Использование шрифтов Т2 для возможности скопировать текст из PDF-файлов.
+%\usefont{T2A}{ftm}{m}{} %%% Использование шрифтов Т2 для возможности скопировать текст из PDF-файлов.
 
 \frontmatter %%% <-- это выключает нумерацию ВСЕГО; здесь начинаются ненумерованные главы типа Исполнители, Обозначения и прочее
 
