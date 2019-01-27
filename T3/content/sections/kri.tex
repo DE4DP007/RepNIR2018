@@ -126,11 +126,11 @@ $\overline E$ единичная матрица размерности  $n\times
 \begin{definition}
 Будем говорить, что уравнения \eqref{kri-eq-1} \textit{экспоненциально } $p$\textit{{}-устойчивым}
 относительно начальных данных (или просто \textit{экспоненциально } $p$\textit{{}-устойчивым}), если при некоторых
-положительных постоянных  $K,\lambda $ \ справедливо неравенство
+положительных постоянных  $K, \lambda$ справедливо неравенство
 
 \begin{equation*}
-(E|x(t,b,\varphi )|^p)^{1/p}\le K\left(\|b\|_{k_p^2}+\begin{matrix}\text{vrai sup}\\t<0\end{matrix}(E|\varphi
-(t)|^p)^{1/p}\right)\text{exp}\{-\mathit{\lambda t}\}\text{  }(t\ge 0).
+(E|x(t,b,\varphi )|^p)^{1/p}\le K\left(\|b\|_{k_p^2}+ \mathrm{vrai} \sup\limits_{t<0}(E|\varphi
+(t)|^p)^{1/p}\right)\mathrm{exp}\{-\mathit{\lambda t}\}\text{  }(t\geq 0).
 \end{equation*}
 \end{definition}
 
@@ -163,7 +163,7 @@ $p${}-устойчивости по первой компоненте систе
 вспомогательных уравнений и эти результаты можно применить для определения экспоненциальной  $p${}-устойчивости
 уравнения \eqref{kri-eq-1}.
 
-Использование системы \eqref{kri-eq-2} для анализа экспоненциальной  $p${}-устойчивости уравнения \eqref{kri-eq-1} не эффективен, так как первое
+Использование системы \eqref{kri-eq-2} для анализа экспоненциальной  $p${}-устойчивости уравнения \eqref{kri-eq-1} не эффективно, так как первое
 уравнение этой системы не содержат информацию о параметрах уравнения \eqref{kri-eq-1}. В работе \cite{kri-bib-16} для анализа экспоненциальной
 устойчивости детерминированных линейных дифференциальных уравнений с последействием высоких порядков используя
 положительную обратимость матриц предложен другой подход построения вспомогательных систем по исходным уравнениям. Этот
@@ -208,9 +208,8 @@ $p${}-устойчивости.
 \textsubscript{\ }на отрезке  $[0,t]$. Тогда справедливо неравенство
 
 \begin{equation}\label{kri-eq-4}
-	\left(E|\overset t{\underset 0{\int }}f(s)\text{dB}(s)|^{2p}\right)^{1/2p}\le
-	c_p\left(E\left(\overset t{\underset 0{\int
-	}}|f(s)|^2\text{ds}\right)^p\right)^{1/2p},
+	\left(E\left| \int\limits_{0}^{t} f(s)\text{dB}(s)\right|^{2p}\right)^{1/2p}\le
+	c_p\left(E\left(\int\limits_{0}^{t} |f(s)|^2\text{ds}\right)^p\right)^{1/2p},
 \end{equation}
 где  $c_p$\ {}- некоторое число, зависящее от  $p$.
 \end{lemma}
@@ -222,16 +221,12 @@ $c_p$.
 $f(s)$ {}- скалярный случайный процесс такой, что  $\underset{s\ge 0} \sup \left(E|f(s)|^{2p}\right)^{1/2p} <\infty $. Тогда справедливы следующие неравенства
 
 \begin{equation}\label{kri-eq-5}
-	\underset{t\ge 0}\sup\left(E|\overset t{\underset 0{\int
-	}}g(s)f(s)\text{ds}|^{2p}\right)^{1/2p}\le \underset{t\ge 0}\sup\left(\overset t{\underset
-		0{\int }}|g(s)|\text{ds}\right)\underset{s\ge
+	\underset{t\ge 0}\sup\left(E\left|\int\limits_{0}^{t} g(s)f(s)\text{ds}\right|^{2p}\right)^{1/2p}\le \underset{t\ge 0}\sup\left(\int\limits_{0}^{t} |g(s)|\text{ds}\right)\underset{s\ge
 		0}\sup\left(E|f(s)|^{2p}\right)^{1/2p},
 \end{equation}
 
 \begin{equation}\label{kri-eq-6}
-	\underset{t\ge 0}\sup\left(E|\overset t{\underset 0{\int
-	}}(g(s))^2(f(s))^2\text{ds}|^p\right)^{1/2p}\le \underset{t\ge 0}\sup\left(\overset
-	t{\underset 0{\int }}(g(s))^2\text{ds}\right)^{1/2}\underset{s\ge
+	\underset{t\ge 0}\sup\left(E\left| \int\limits_{0}^{t} (g(s))^2(f(s))^2\text{ds}\right|^p\right)^{1/2p}\le \underset{t\ge 0}\sup\left(\int\limits_{0}^{t} 	(g(s))^2\text{ds}\right)^{1/2}\underset{s\ge
 		0}\sup\left(E|f(s)|^{2p}\right)^{1/2p}.
 \end{equation}
 \end{lemma}
@@ -311,12 +306,11 @@ $0<\lambda <\text{min}\{q,A_{10}-q\}$ \ для  $i=1,2$, то получится
 Положив  $\eta (t)=(a_{10}(t)-q)-\lambda $, с учетом условий \ \eqref{kri-eq-3b} систему \eqref{kri-eq-8} можно переписать в следующем виде:
 
 \begin{equation*}
-	y_1(t)=\text{exp}\{-(q-\lambda )t\}b_1+\overset t{\underset 0{\int }}\text{exp}\{-(q-\lambda
+	y_1(t)=\text{exp}\{-(q-\lambda )t\}b_1+\int\limits_{0}^{t}\text{exp}\{-(q-\lambda
 	)(t-s)\}y_2(s)\text{ds}\text{   }(t\ge 0),
 \end{equation*}
 \begin{equation*}		
-	y_2(t)=\text{exp}\left\{-\overset t{\underset 0{\int }}\eta (s)\text{ds}\right\}b_2+\overset
-	t{\underset 0{\int }}\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
+	y_2(t)=\text{exp}\left\{-\int\limits_{0}^{t}\eta (s)\text{ds}\right\}b_2+\int\limits_{0}^{t}\text{exp}\left\{-\int\limits_{s}^{t}\eta (\zeta )\mathit{d\zeta
 	}\right\}[-(a_{00}(s)-(a_{10}(s)-q)q)y_1(s)+
 \end{equation*}	
 \begin{equation}\label{kri-eq-9}
@@ -326,8 +320,7 @@ $0<\lambda <\text{min}\{q,A_{10}-q\}$ \ для  $i=1,2$, то получится
 	}(h_{\mathit{j0}}(s)))]\text{ds}+
 \end{equation}	
 \begin{equation*}
-	\overset m{\underset{i=1}{\sum }}\overset s{\underset
-		0{\int }}\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
+	\overset m{\underset{i=1}{\sum }}\int\limits_{0}^{s} \text{exp}\left\{-\int\limits_{s}^{t}\eta (\zeta )\mathit{d\zeta
 	}\right\}[-(a_{0i}(s)-a_{1i}(s)q)y_1(s)-a_{1i}(s)y_2(s)+
 \end{equation*}	
 \begin{equation*}
@@ -337,9 +330,8 @@ $0<\lambda <\text{min}\{q,A_{10}-q\}$ \ для  $i=1,2$, то получится
 	}(h_{\text{ji}}(s)))]\mathit{dB}_i(s)\text{  }(t\ge 0),
 \end{equation*}
 
-В дальнейшем будем пользоваться обозначениями \  $\overline{y_i}=\begin{matrix}\sup\\t\ge
-0\end{matrix}\left(E|y_i(t)|^{2p}\right)^{1/2p},i=1,2$, \  $\overline{\overline{\varphi
-}}=\begin{matrix}\sup\\t<0\end{matrix}\left(E|\varphi (t)|^{2p}\right)^{1/2p}$ \ и неравенствами \eqref{kri-eq-2}, \eqref{kri-eq-3}, \eqref{kri-eq-4}.
+В дальнейшем будем пользоваться обозначениями \  $\overline{y_i}=\sup\limits_{t\geq0} \left(E|y_i(t)|^{2p}\right)^{1/2p},i=1,2$, \  $\overline{\overline{\varphi
+}}=\sup\limits_{t<0} \left(E|\varphi (t)|^{2p}\right)^{1/2p}$ \ и неравенствами \eqref{kri-eq-2}, \eqref{kri-eq-3}, \eqref{kri-eq-4}.
 
 Из первого \ уравнения системы \eqref{kri-eq-9} получим
 
@@ -360,21 +352,18 @@ c_p \sum\limits_{i=1}^{m} \left[\gamma_1\overline{y_1}+A_{1i}\overline{y_2}+\sum
 Так как
 
 \begin{equation*}
-\sup\limits_{t\ge 0}\overset t{\underset 0{\int }}\text{exp}\left\{-\overset t{\underset s{\int
-}}\eta (\zeta )\mathit{d\zeta }\right\}\text{ds}=\begin{matrix}\sup\limits_{t\ge
-0}\end{matrix}\overset t{\underset s{\int }}\left[\text{exp}\left\{-\overset t{\underset s{\int }}\eta (\zeta
+\sup\limits_{t\ge 0}\int\limits_{0}^{t}\text{exp}\left\{-\int\limits_{s}^{t}\eta (\zeta )\mathit{d\zeta }\right\}\text{ds}=\sup\limits_{t\geq 0} \int\limits_{s}^{t}
+\left[\text{exp}\left\{-\int\limits_{s}^{t}\eta (\zeta
 )\mathit{d\zeta }\right\}\eta (s)\right]/\eta (s)\text{ds}\le \frac 1{\overline{a_{10}}-q-\lambda }
 \end{equation*}
 и
 
 \begin{equation*}
-\sup\limits_{t\ge 0}\left(\overset t{\underset 0{\int
-}}\text{exp}\left\{-2\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta
+\sup\limits_{t\ge 0}\left(\int\limits_{0}^{t}\text{exp}\left\{-2\int\limits_{s}^{t}\eta (\zeta )\mathit{d\zeta
 }\right\}\text{ds}\right)^{1/2}=
 \end{equation*}
 \begin{equation*}
-\sup\limits_{t\ge 0}\left(\overset
-t{\underset 0{\int }}\left[\text{exp}\left\{-2\overset t{\underset s{\int }}\eta (\zeta )\mathit{d\zeta }\right\}2\eta
+\sup\limits_{t\ge 0}\left(\int\limits_{0}^{t}\left[\text{exp}\left\{-2\int\limits_{s}^{t}\eta (\zeta )\mathit{d\zeta }\right\}2\eta
 (s)\right]/(2\eta (s))\text{ds}\right)^{1/2}\le \frac 1{\sqrt{\overline{a_{10}}-q-\lambda
 }},
 \end{equation*}
@@ -426,14 +415,13 @@ $}_{\mathit{j0}}\}}{\overline{a_{10}}-q-\lambda }-c_p\overset m{\underset{i=1}{\
 
 Поскольку  $x(t,b,\varphi )=\text{exp}-\beta ty(t)$  и   $\underset{t\ge
 0}\sup\left(E|y(t)|^{2p}\right)^{1/2p}=|\overline y|$,  $\overline{\overline{\varphi
-}}=\begin{matrix}\sup\\t<0\end{matrix}\left(E|\varphi (t)|^{2p}\right)^{1/2p}$, то из неравенства \eqref{kri-eq-13} следует,
+}}=\begin{matrix}\sup\limits_{t<0}\end{matrix}\left(E|\varphi (t)|^{2p}\right)^{1/2p}$, то из неравенства \eqref{kri-eq-13} следует,
 что существуют положительные числа  $\lambda =\lambda _0$  и \linebreak  $K=||Z(\lambda _0)^{-1}||\text{max}\{1,M(\lambda _0)\}$
 такие, что для решения  $x(t,b,\varphi )$ \ задачи \eqref{kri-eq-1}, \eqref{kri-eq-1a}, \eqref{kri-eq-1b} \ справедливо неравенство
 
 \begin{equation*}
 (E|x(t,b,\varphi )|^{2p})^{1/2p}\le
-K\left(\|b\|_{k_{2p}^2}+\begin{matrix}\text{vrai sup}\\t<0\end{matrix}(E|\varphi
-(t)|^{2p})^{1/2p}\right)\text{exp}\{-\lambda _0 t\}\text{  }(t\ge 0).
+K\left(\|b\|_{k_{2p}^2}+\mathrm{vrai} \sup\limits_{t<0}(E|\varphi(t)|^{2p})^{1/2p}\right)\text{exp}\{-\lambda _0 t\}\text{  }(t\ge 0).
 \end{equation*}
 \end{proof}
 
