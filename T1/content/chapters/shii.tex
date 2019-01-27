@@ -95,12 +95,16 @@ $P^{-r,-r}_k(x) = \frac{(-1)^r}{n!\kappa(x)} \left(  \kappa(x)(1-x^2)^n \right)^
 
 
 \section{Результаты}
-Приведенные выше результаты содержат оценки \textit{взвешенного} приближения функций частичными суммами специальных рядов и их линейными средними. Однако интерес представляют и вопросы равномерного (без веса) приближения функций.
+%Приведенные выше результаты содержат оценки \textit{взвешенного} приближения функций частичными суммами специальных рядов и их линейными средними. Однако интерес представляют и вопросы равномерного (без веса) приближения функций.
 
-В работе \cite{rffi-15} изучены аппроксимативные свойства средних Валле-Пуссена специального ряда $V_{n,m}^\alpha(f)=V_{n,m}^{\alpha,1}(f)$
-\begin{equation}\label{rffi-vp-r}
-	V_{n,m}^{\alpha, r}(g, x) = \frac{1}{m+1} \left[ \sigma_n^{\alpha, r}(g, x) + \sigma_{n+1}^{\alpha, r}(g, x) + \ldots + \sigma_{n+m}^{\alpha, r}(g, x) \right],
+В работе \cite{rffi-15} изучены аппроксимативные свойства средних Валле-Пуссена специального ряда 
+\begin{equation}\label{rffi-eq13}
+V_{n,m}^\alpha(g)=V_{n,m}^\alpha(g,x)=\frac{1}{m+1}[\sigma_n^\alpha(g,x)+\cdots+\sigma_{n+m}^\alpha(g,x)].
 \end{equation}
+%$V_{n,m}^\alpha(f)$ %$V_{n,m}^\alpha(f)=V_{n,m}^{\alpha,1}(f)$, где
+%\begin{equation}\label{rffi-vp-r}
+%	V_{n,m}^{\alpha, r}(g, x) = \frac{1}{m+1} \left[ \sigma_n^{\alpha, r}(g, x) + \sigma_{n+1}^{\alpha, r}(g, x) + \ldots + \sigma_{n+m}^{\alpha, r}(g, x) \right],
+%\end{equation}
 в случае $\alpha=\frac{1}{2}$ и $n \le qm$, где $q$ --- произвольное положительное фиксированное число, а именно, была получена оценка
 \begin{equation}\label{rffi-est-Vp05}
 |f(x)-V_{n,m}^\frac{1}{2}(f,x)| \le c(q) E_n(f), \; f \in C[-1,1].
@@ -123,11 +127,7 @@ $P^{-r,-r}_k(x) = \frac{(-1)^r}{n!\kappa(x)} \left(  \kappa(x)(1-x^2)^n \right)^
 \end{equation}
 \end{theorem}
 
-Из \eqref{rffi-eq9}, \eqref{rffi-eq11} и равенства
-\begin{equation*}%\label{rffi-eq13}
-V_{n,m}^\alpha(g)=V_{n,m}^\alpha(g,x)=\frac{1}{m+1}[\sigma_n^\alpha(g,x)+\cdots+\sigma_{n+m}^\alpha(g,x)].
-\end{equation*}
-находим
+Из \eqref{rffi-eq9}, \eqref{rffi-eq11} и \eqref{rffi-eq13} находим
 \begin{equation*}
 V_{n,m}^\alpha(f,x)=
 l_1(f,x)+(1-x^2)\int\limits_{-1}^{1}
