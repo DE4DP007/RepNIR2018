@@ -38,7 +38,8 @@ g(x)= l_1(g)(x)+(1-x^2)\sum_{k=0}^\infty q_k^\alpha\hat P_n^{\alpha}(x).
 \sigma_n^\alpha(g,x)=l_1(g)(x)+(1-x^2)\sum_{k=0}^{n-2} q_k^\alpha\hat P_n^{\alpha}(x).
 \end{equation}
 Из \eqref{rffi-eq11} непосредственно следует, что для любых $n$ и $m$ имеют место равенства $\sigma_n^\alpha(g,\pm1)=\sigma_m^\alpha(g,\pm1)=g(\pm1)$. Другими словами, $\sigma_n^\alpha(g,x)$ и $\sigma_m^\alpha(g,x)$
-<<склеены>> в точках    $x=\pm1$ друг с другом и с исходной функцией $g(x)$. Различные важные свойства операторов $\sigma_n^\alpha(g)=\sigma_n^\alpha(g,x)$ подробно обсуждались в пункте 4.1 заявки (см. также \cite{rffi-14}). Для функции Лебега $\Lambda_n^\alpha(x)$ частичной суммы $\sigma_n^\alpha(g,x)$ при $\frac12\le \alpha<\frac32$ в \cite{rffi-14} доказана оценка
+<<склеены>> в точках    $x=\pm1$ друг с другом и с исходной функцией $g(x)$. %Различные важные свойства операторов $\sigma_n^\alpha(g)=\sigma_n^\alpha(g,x)$ подробно обсуждались в пункте 4.1 заявки (см. также \cite{rffi-14}). 
+Для функции Лебега $\Lambda_n^\alpha(x)$ частичной суммы $\sigma_n^\alpha(g,x)$ при $\frac12\le \alpha<\frac32$ в \cite{rffi-14} доказана оценка
 \begin{equation}\label{rffi-eq1}
 \Lambda_n^\alpha(x)\le c(\alpha)(1+\ln(n\sqrt{1-x^2}+1))\quad(-1\le x\le1).
 \end{equation}
@@ -122,7 +123,11 @@ $P^{-r,-r}_k(x) = \frac{(-1)^r}{n!\kappa(x)} \left(  \kappa(x)(1-x^2)^n \right)^
 \end{equation}
 \end{theorem}
 
-Из \eqref{rffi-eq9}, \eqref{rffi-eq11} и \eqref{rffi-eq13} нетрудно получить равенство
+Из \eqref{rffi-eq9}, \eqref{rffi-eq11} и равенства 
+\begin{equation*}%\label{rffi-eq13}
+V_{n,m}^\alpha(g)=V_{n,m}^\alpha(g,x)=\frac{1}{m+1}[\sigma_n^\alpha(g,x)+\cdots+\sigma_{n+m}^\alpha(g,x)].
+\end{equation*}
+находим
 \begin{equation*}
 V_{n,m}^\alpha(f,x)=
 l_1(f,x)+(1-x^2)\int\limits_{-1}^{1}
