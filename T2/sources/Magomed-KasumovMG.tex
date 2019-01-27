@@ -1,0 +1,466 @@
+%Уважаемые Авторы!
+%Для подготовки pdf-файлы Вашей работы необходимо 
+%запускать компиляцию с помощью команды latex 
+%(в программе WinEdt это делается нажатием 
+%клавиш Shift + Ctrl + L), после этого нужно 
+%из получившегося dvi файла сделать pdf 
+%с помощью команды dvi2pdf (в программе WinEdt для 
+%этого есть специальная кнопка в верхней панели).
+%Не нужно использовать команду pdflatex, 
+%так как она препятствует команде \mag, 
+%которая производит увеличение страниц 
+%статьи для удобства редактирования.''
+%Просим не использовать в тексте рукописи
+%нестандартные макроопределения.
+
+\documentclass{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[tbtags]{amsmath}
+\usepackage{amsfonts,amssymb}
+
+\usepackage{mathrsfs}
+
+
+
+\usepackage[paper]{mz2ewin}
+
+\usepackage{graphicx}
+
+
+\hoffset -10mm
+\voffset -7mm
+
+
+\let\rom=\textup
+
+
+\def\thesubsection{\arabic{section}.\arabic{subsection}}
+\numberwithin{equation}{section}
+
+%\numberwithin{equation}{subsection}
+
+
+\theoremstyle{plain}
+
+\newtheorem{theorem}{Теорема}
+\newtheorem{proposition}{Предложение}
+\newtheorem{lemma}{Лемма}
+\newtheorem{statement}{Утверждение}
+\newtheorem{corollary}{Следствие}
+\newtheorem{notation}{Обозначения}
+\newtheorem{definition}{Определение}
+
+\theoremstyle{definition}
+\newtheorem{proof}{Доказательство}\def\theproof{}
+\newtheorem{remark}{Замечание}
+
+%\newcommand{\keywords}[1]{%
+%\vspace*{3mm}
+%\indent{\bf Ключевые слова:} {#1}%
+%
+%}
+
+
+
+\overfullrule5pt
+%\mag1096
+\mag1300
+\begin{document}
+
+\udk{517.521}
+
+\date{}
+
+\author{М.\,Г. Магомед-Касумов}
+\address{Владикавказский научный центр РАН,\\
+	Дагестанский научный центр РАН}
+\email{rasuldev@gmail.com}
+
+
+
+\title{Система функций, ортогональная в смысле Соболева и порожденная системой Уолша}
+
+
+\markboth{М.\,Г. Магомед-Касумов}{Система функций, ортогональная в смысле Соболева}
+
+
+\maketitle
+
+\begin{fulltext}
+\begin{abstract}
+Изучены свойства функций из ортогональной по Соболеву системы $\mathfrak{W}_r$, порожденной системой Уолша. 
+В частности, получены рекуррентные соотношения для функций из $\mathfrak{W}_1$.
+Доказана равномерная сходимость рядов Фурье по системе $\mathfrak{W}_r$ к функциям $f$ из пространств Соболева $W^r_{L^p}$, $p \ge 1$,  $r=1,2,\ldots$.
+
+Библиография: 9 названий.
+
+\end{abstract}
+
+\begin{keywords}
+ортогональность в смысле Соболева, система Уолша, равномерная сходимость, рекуррентное соотношение
+\end{keywords}
+
+\footnotetext{Работа выполнена при финансовой поддержке РФФИ (проект 18-31-00477 мол\_a)}
+
+
+\section{Введение}
+Система функций Уолша $\mathfrak{W}=\mathfrak{W}_0=\{w_n(x)\}_{n=0}^\infty$ определяется с помощью функций Радемахера $r_k(x)=\operatorname{sign}\sin 2^{k+1}\pi x$ следующим образом \cite{walsh-GolubovBook}. Положим $w_0(x)=1$. Представляя $n \ge 1$ в виде двоичного разложения $n=\sum_{i=0}^{k}\varepsilon_i2^i$, где $\varepsilon_k=1$ и $\varepsilon_i \in \{0,1\}$, определим
+\begin{equation}
+w_n(x)=\prod_{i=0}^{k}(r_i(x))^{\varepsilon_i}.
+\end{equation}
+
+Введем в рассмотрение новую систему функций $\mathfrak{W}_r$, $r \ge 1$, порожденную системой функций Уолша $\mathfrak{W}$ ($x \in [0,1]$):
+\begin{gather}
+\label{walsh-wrk-1}
+w_{r,k}(x) = \frac{x^k}{k!}, \quad 0 \le k \le r-1,\\
+\label{walsh-wrk-2}
+w_{r,k}(x) = \frac{1}{(r-1)!}\int_{0}^{x}(x-t)^{r-1}w_{k-r}(t)dt, \quad k \ge r.
+\end{gather}
+
+
+
+Пусть $L^p$ --- пространство функций, суммируемых на отрезке $[0,1]$, т. е.
+\begin{equation}
+L^p=\Bigl\{
+f: \int_{0}^{1}|f(x)|^pdx < \infty
+\Bigr\}.
+\end{equation}
+Через $W_{L^p}^r$, $r \ge 1$, обозначим пространство Соболева, состоящее из непрерывно дифференцируемых $r-1$ раз функций $f=f(x)$, заданных на отрезке $[0,1]$, для которых $f^{(r-1)}(x)$ абсолютно непрерывна, а $f^{(r)}\in L^p$. Заметим, что $\mathfrak{W}_r \subset W_{L^1}^r$ при любом $r$. В пространстве $W_{L^2}^r$ определим скалярное произведение соболевского типа
+\begin{equation}\label{walsh-inner-prod}
+\langle f,g \rangle=\sum_{s=0}^{r-1}f^{(s)}(0)g^{(s)}(0)+\int_0^1 f^{(r)}(t)g^{(r)}(t)dt,
+\end{equation}
+которое превращает $W_{L^2}^r$ в гильбертово пространство.
+Нетрудно показать (см. раздел \ref{walsh-sec-Wr-props}), что ряд Фурье функции $f \in W_{L^2}^r$ по системе $\mathfrak{W}_r$ принимает следующий вид:
+\begin{equation}\label{walsh-fourier-series-intro}
+f(x) \sim \sum_{k=0}^{r-1}f^{(k)}(0)\frac{x^k}{k!}+
+\sum_{k=r}^{\infty}c_{r,k}(f)w_{r,k}(x),
+\end{equation}
+где $c_{r,k}=\int_{0}^{1}f^{(r)}(t)w_{k-r}(t)dt$.
+
+Общая теория систем функций, ортогональных относительно соболевского скалярного произведения вида \eqref{walsh-inner-prod} и порожденных классическими ортогональными системами, разработана в работах Шарапудинова И. И. (см., например, \cite{walsh-ShII-2018-IzvRan}). В статьях \cite{walsh-ShII-2018-IzvRan, walsh-ShII-2017-mz, walsh-ShII-2017-smj, walsh-ShII-2015-demi} рассмотрены конкретные соболевские системы $\Phi_r$, $r \ge 1$, порожденные различными классическими ортогональными системами: системой Хаара, системой полиномов Чебышева, Лежандра, Якоби, Лагерра. Для функций из систем $\Phi_r$ получены явные представления, исследованы их асимптотические свойства и изучены аппроксимативные свойства частичных сумм рядов Фурье по указанным системам. 
+Аналогичные результаты получены и для систем, порожденных классическими дискретными ортогональными системами, такими как система полиномов Чебышева дискретной переменной \cite{walsh-ShII-2017-izvuz}, система полиномов Мейкснера \cite{walsh-ShII-meix-2016, walsh-Gadzh-2016-saratov}. Нерассмотренной оставалась ортогональная по Соболеву система функций $\mathfrak{W}_r$, порожденная системой Уолша. Данная работа призвана частично восполнить этот пробел.
+
+Основная цель работы заключается в исследовании вопроса о равномерной сходимости рядов Фурье по системе $\mathfrak{W}_r$ для функций $f \in W^r_{L^p}$, $p \ge 1$.
+Прежде всего, отметим, что применяя теорему 2.1, доказанную в общем случае в \cite{walsh-ShII-2018-IzvRan}, к системе $\mathfrak{W}_r$, можно получить утверждение:
+\begin{statement}
+	Система функций $\mathfrak{W}_r$ полна в $W_{L^2}^r$ и ортонормирована относительно скалярного произведения \eqref{walsh-inner-prod}.
+\end{statement}
+В той же работе исследованы вопросы равномерной сходимости рядов Фурье по системам, ортогональным относительно скалярных произведений вида \eqref{walsh-inner-prod}, для функций из пространств Соболева. Из теоремы 2.2 работы \cite{walsh-ShII-2018-IzvRan} вытекает следующее утверждение.
+\begin{statement}
+	Ряд Фурье по системе $\mathfrak{W}_r$ функции $f \in W_{L^2}^r$ равномерно на $[0,1]$ сходится к $f$.
+\end{statement}
+
+
+
+Используя базисность системы Уолша в пространствах $L^p$, $p>1$, данное утверждение можно усилить, распространив его на более широкий класс функций --- $W^r_{L^p}$, $p>1$.
+\begin{theorem}\label{walsh-st-uni-conv-pg1}
+	Для любой функции $f \in W_{L^p}^r$, $p>1$, $r=1,2,\ldots$, ряд Фурье этой функции по системе $\mathfrak{W}_r$ равномерно на $[0,1]$ сходится к $f$.
+\end{theorem}
+
+Отметим, что ряд Фурье по системе $\mathfrak{W}_r$ можно определить для любой функции $f \in W^r_{L^1}$. В связи с этим возникает естественный вопрос о том, справедливо ли утверждение теоремы \ref{walsh-st-uni-conv-pg1} для случая $p=1$. Ответ на этот вопрос является основным результатом настоящей статьи.
+\begin{theorem}\label{walsh-st-main}
+	Для любой функции $f \in W_{L^1}^r$, $r=1,2,\ldots$, ряд Фурье этой функции по системе $\mathfrak{W}_r$ равномерно на $[0,1]$ сходится к $f$.
+\end{theorem}
+
+\section{Некоторые свойства систем функций $\mathfrak{W}_r$}\label{walsh-sec-Wr-props}
+Используя формулу дифференцирования под знаком интеграла \cite{walsh-fiht2}, из \eqref{walsh-wrk-1} и \eqref{walsh-wrk-2} выводим:
+\begin{equation}\label{walsh-wrk-deriv-prop}
+(w_{r,k}(x))^{(\nu)} =
+\begin{cases}
+w_{r-\nu,k-\nu}(x), &\nu \le \min\{k,r\},\\
+0, &\nu > \min\{k,r\},
+\end{cases}
+\end{equation}
+где полагаем $w_{0,k}(x)=w_{k}(x)$, $r \ge 0$, причем если $k > r$ и $\nu \ge r$, то равенство \eqref{walsh-wrk-deriv-prop} верно лишь почти всюду.
+
+Покажем, что коэффициенты Фурье $c_{r,k}(f)$, $k, r \ge 0$, функции $f \in W^r_{L^2}$ по системе $\mathfrak{W}_r$ имеют вид
+\begin{equation}\label{walsh-crk}
+c_{r,k}(f)=
+\begin{cases}
+f^{(k)}(0), &k<r,\\
+\int\limits_{0}^{1}f^{(r)}(t)w_{k-r}(t)dt, &k \ge r.
+\end{cases}
+\end{equation}
+В самом деле, из \eqref{walsh-inner-prod} имеем
+\begin{equation*}
+c_{r,k}(f)=\langle f, w_{r,k} \rangle =
+\sum\limits_{s=0}^{r-1}f^{(s)}(0)w^{(s)}_{r,k}(0)+\int\limits_{0}^{1}f^{(r)}(t)w^{(r)}_{r,k}(t)dt.
+\end{equation*}
+Если $k < r$, то $w^{(r)}_{r,k}(x)=(x^k/k!)^{(r)}=0$ и $w^{(s)}_{r,k}(0)=(x^k/k!)^{(s)}\big|_{x=0}=\delta_{ks}$, $0 \le s \le r-1$. Следовательно, $c_{r,k}(f)=f^{(k)}(0)$, $k < r$. При $k \ge r$ в силу \eqref{walsh-wrk-deriv-prop} имеем равенство $w^{(s)}_{r,k}(0)=w_{r-s,k-s}(0)=0$, поэтому $c_{r,k}(f)=\int\limits_{0}^{1}f^{(r)}(t)w^{(r)}_{r,k}(t)dt$. Если еще раз применить \eqref{walsh-wrk-deriv-prop}, то получим вторую строку в \eqref{walsh-crk}.
+
+Непосредственно с помощью \eqref{walsh-crk} можно установить связь между коэффициентами $c_{r,k}(f)$ при различных $r$:
+\begin{equation}\label{walsh-crk-deriv}
+c_{r,k}(f)=c_{r-\nu,k-\nu}(f^{(\nu)}), \quad 0 \le \nu \le \min\{r,k\}.
+\end{equation}
+
+Частичная сумма ряда Фурье функции $f$ по системе $\mathfrak{W}_r$ порядка $n$ имеет вид:
+\begin{equation*}
+S_{r,n}(f,x)=
+\sum_{k=0}^{n-1}c_{r,k}(f)w_{r,k}(x)=
+\sum_{k=0}^{r-1}f^{(k)}(0)\frac{x^k}{k!}+
+\sum_{k=r}^{n-1}c_{r,k}(f)w_{r,k}(x), \quad n > r \ge 1.
+\end{equation*}
+
+Через $S_{0,n}(f)=S_n(f)=\sum\limits_{k=0}^{n-1}c_k(f)w_k(x)$ будем обозначать частичную сумму Фурье функции $f$ порядка $n$ по системе Уолша.
+
+Используя соотношения \eqref{walsh-wrk-deriv-prop} и \eqref{walsh-crk-deriv}, выводим:
+\begin{equation*}
+S_{r,n}^{(\nu)}(f,x)=
+\sum_{k=0}^{n-1}c_{r,k}(f)w^{(\nu)}_{r,k}(x)=
+\sum_{k=\nu}^{n-1}c_{r-\nu,k-\nu}(f^{(\nu)})w_{r-\nu,k-\nu}(x).
+\end{equation*}
+Последнее выражение представляет собой частичную сумму Фурье функции $f^{(\nu)}$ по системе $\mathfrak{W}_{r-\nu}$ порядка $n-\nu$. Таким образом, имеет место равенство
+\begin{equation}\label{walsh-Srn-deriv}
+S_{r,n}^{(\nu)}(f,x)=
+S_{r-\nu,n-\nu}(f^{(\nu)},x), \quad 0 \le \nu \le r.
+\end{equation}
+
+Остановимся более подробно на свойствах функций системы $\mathfrak{W}_1$.
+Приведем явный вид нескольких первых функций этой системы при $x \in [0,1]$:
+\begin{gather}\label{walsh-w12}
+w_{1,0}(x)=1, \;
+w_{1,1}(x)=x, \;
+w_{1,2}(x)=\frac{1}{2}-|x-\frac{1}{2}|=
+\begin{cases}
+x, &0 \le x < \frac{1}{2},\\
+1-x, &\frac{1}{2} \le x < 1,
+\end{cases}\\
+\notag
+w_{1,3}(x)=
+\begin{cases}
+x, &0 \le x < 1/4,\\
+\frac{1}{2}-x, &1/4 \le x < 1/2,\\
+x-\frac{1}{2}, &1/2 \le x < 3/4,\\
+1-x, &3/4 \le x < 1,
+\end{cases}
+\quad
+w_{1,4}(x)=
+\begin{cases}
+x, &0 \le x < 1/4,\\
+\frac{1}{2}-x, &1/4 \le x < 1/2,\\
+\frac{1}{2}-x, &1/2 \le x < 3/4,\\
+x-1 , &3/4 \le x < 1.
+\end{cases}
+\end{gather}
+
+Далее, отметим, что из ортогональности функций Уолша на $[0,1]$ вытекает соотношение
+\begin{equation*}
+w_{1,n}(0)=w_{1,n}(1)=0, \quad n \ge 2.
+\end{equation*}
+Это свойство позволяет нам без дополнительных оговорок периодически с периодом $T=1$ продолжить $w_{1,k}(x)$, $k \ge 2$, на всю ось. Поэтому
+всюду в дальнейшем мы будем считать функции $w_{1,k}(x)$, $k \ge 2$, определенными на всей оси.
+\begin{theorem}
+	Если $k \ge 0$ и $0 \le p \le k$, то имеет место следующее рекуррентное соотношение
+	\begin{equation*}
+	w_{1,1+2^k}(x)=\frac{1}{2^p}w_{1,1+2^{k-p}}(2^p x).
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	Пусть $p=1$. Пользуясь тем фактом, что
+	\begin{equation*}
+	w_{2^k}(t)=r_k(t)=r_{k-1}(2t)=w_{2^{k-1}}(2t),
+	\end{equation*}
+	непосредственно из определения \eqref{walsh-wrk-2} выводим
+	\begin{equation*}
+	w_{1,1+2^k}(x)=
+	\int\limits_0^x w_{2^k}(t)dt=
+	\int\limits_0^x w_{2^{k-1}}(2t)dt=
+	\frac{1}{2}\int\limits_0^{2x} w_{2^{k-1}}(t)dt=
+	\frac{1}{2}w_{1,1+2^{k-1}}(2x).
+	\end{equation*}
+	Доказательство завершается применением математической индукции.
+\end{proof}
+Полагая $p=k$, из приведенной выше теоремы получаем
+\begin{equation}\label{walsh-w1pow2k-w12}
+w_{1,1+2^k}(x)=\frac{1}{2^k}w_{1,2}(2^k x).
+\end{equation}
+Отсюда с учетом \eqref{walsh-w12} имеем следующую оценку:
+\begin{equation}\label{walsh-w12k-est}
+0 \le w_{1,1+2^k}(x) \le \frac{1}{2^{k+1}}, \quad k \ge 0.
+\end{equation}
+Из равенства \eqref{walsh-w1pow2k-w12} также следует, что период функции $w_{1,1+2^k}(x)$ равен $\frac{1}{2^k}$.
+Кроме того, указанное равенство дает простой способ вычисления значений функции $w_{1,1+2^k}(x)$ при произвольном $k \ge 1$.
+
+\begin{theorem}\label{walsh-st-w1n-w12k}
+	Если $n=2^k+i$, $k \ge 0$, $0 \le i \le 2^k-1$, то справедливо следующее равенство:
+	\begin{equation*}
+	w_{1,1+n}(x)=w_i(x)w_{1,1+2^k}(x).
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	Далее нам понадобятся следующие два утверждения относительно свойств системы Уолша, доказательство которых можно найти в \cite{walsh-GolubovBook} и \cite{walsh-GolubovBook} соответственно.
+	\begin{statement}\label{walsh-w-const-on-delta}
+		Функция $w_n(x)$ при $0 \le n < 2^{k+1}$ принимает постоянное значение, равное $\pm 1$, на каждом двоичном интервале 
+		$\Delta_m^{(k+1)}=\Bigl[\frac{m}{2^{k+1}},\frac{m+1}{2^{k+1}}\Bigr)$, $0 \le m < 2^{k+1}$, причем $w_n(x)=1$ при $x \in \Delta_0^{(k+1)}$ .
+	\end{statement}
+	\begin{statement}\label{walsh-int-deltak-zero}
+		Для любого $m$, $0 \le m \le 2^k-1$, и для любого $k \ge 0$ справедливо равенство 
+		\begin{equation*}
+		\int_{m/2^k}^{(m+1)/2^k}
+		w_n(x)dx = 0, \quad 2^k \le n < 2^{k+1}.
+		\end{equation*}
+	\end{statement}
+	
+	
+	
+	
+	Из определения функций Уолша легко получить соотношение (см. \cite{walsh-GolubovBook})
+	\begin{equation}\label{walsh-wn-w2k}
+	w_n(x)=w_i(x)w_{2^k}(x).
+	\end{equation}
+	Обозначим через $j(k,x)$ номер того единственного двоичного интервала $\Delta_j^{(k)}$ из $k$-той пачки, который содержит точку $x$, т. е. $x \in \Delta_{j(k,x)}^{(k)}$. Учитывая, что функция $w_i(x)$ постоянна на двоичных интервалах $\Delta_j^{(k)}$ (см. утверждение \ref{walsh-w-const-on-delta}), обозначим через $w_{i,j}^{(k)}$ значение функции $w_i(x)$ на $\Delta_j^{(k)}$ и, используя \eqref{walsh-wn-w2k}, запишем
+	\begin{equation*}
+	w_{1,1+n}(x)=
+	\int\limits_{0}^{x}w_{2^k}(t)w_i(t)dt=
+	\sum\limits_{j=0}^{j(k,x)-1}w_{i,j}^{(k)}
+	\int\limits_{\Delta_j^{(k)}}w_{2^k}(t)dt+
+	w_{i,j(k,x)}^{(k)}\int\limits_{\frac{j(k,x)}{2^k}}^{x}w_{2^k}(t)dt.
+	\end{equation*}
+	В силу утверждения \ref{walsh-int-deltak-zero} все интегралы под знаком суммы обращаются в ноль, поэтому
+	\begin{equation}\label{walsh-proof:w11n-wi}
+	w_{1,1+n}(x)=w_{i,j(k,x)}^{(k)}\int\limits_{\frac{j(k,x)}{2^k}}^{x}w_{2^k}(t)dt=
+	w_i(x)\int\limits_{\frac{j(k,x)}{2^k}}^{x}w_{2^k}(t)dt.
+	\end{equation}
+	Заметим теперь, что при $i=0$ полученное соотношение принимает вид
+	\begin{equation}\label{walsh-proof:w112k-wi}
+	w_{1,1+2^k}(x)=\int\limits_{\frac{j(k,x)}{2^k}}^{x}w_{2^k}(t)dt.
+	\end{equation}
+	Утверждение теоремы вытекает из \eqref{walsh-proof:w11n-wi} и \eqref{walsh-proof:w112k-wi}.
+\end{proof}
+
+\section{Доказательство теорем}
+\begin{proof}[теоремы \ref{walsh-st-uni-conv-pg1}]
+	Применяя формулу Тейлора с остатком в интегральной форме для функции $f$:
+	\begin{equation*}
+	f(x)=
+	\sum\limits_{k=0}^{r-1}
+	f^{(k)}(0)\frac{x^k}{k!}+
+	\frac{1}{(r-1)!}\int\limits_{0}^{x}(x-t)^{r-1}f^{(r)}(t)dt,
+	\end{equation*}
+	используя определение \eqref{walsh-wrk-2} функций $w_{r,k}(x)$ и замечая, что $c_{r,k}(f)=c_{k-r}(f^{(r)})$, можно получить следующее выражение для остатка ряда Фурье:
+	\begin{multline}\label{walsh-rem-r-0}
+	f(x)-S_{r,r+n}(f,x)=
+	\frac{1}{(r-1)!}\int\limits_{0}^{x}(x-t)^{r-1}
+	\Bigl(
+	f^{(r)}(t)-\sum\limits_{k=r}^{r+n-1}c_{k-r}(f^{(r)})w_{k-r}(t)
+	\Bigr)dt=\\
+	\frac{1}{(r-1)!}\int\limits_{0}^{x}(x-t)^{r-1}
+	\Bigl(
+	f^{(r)}(t)-S_n(f^{(r)},t)
+	\Bigr)dt.
+	\end{multline}
+	Отсюда с помощью неравенства Гельдера получаем
+	\begin{multline*}
+	|f(x)-S_{r,r+n}(f,x)| \le
+	\frac{1}{(r-1)!}\Bigl(
+	\int\limits_{0}^{1}|x-t|^{q(r-1)}dt
+	\Bigr)^{1/q}
+	\|f^{(r)}-S_n(f^{(r)})\|_p \le \\
+	\frac{1}{(r-1)!}\|f^{(r)}-S_n(f^{(r)})\|_p.
+	\end{multline*}
+	Но для $f^{(r)} \in L^p$, $p>1$, норма разности в силу базисности системы Уолша в $L^p$, $p>1$, стремится к нулю. Теорема доказана.
+\end{proof}
+
+\begin{proof}[теоремы \ref{walsh-st-main}]
+	%Обозначим через $R_{r,r+n}(f)$ остаток ряда Фурье функции $f$ по системе $\mathfrak{W}_r$:
+	%\begin{equation*}
+	%R_{r,r+n}(f)=f(x)-S_{r,r+n}(f).
+	%\end{equation*}
+	Докажем теорему \ref{walsh-st-main}, используя индукцию по $r$. 
+	
+	Пусть $r=1$.
+	При указанном $r$ формула \eqref{walsh-rem-r-0} примет вид:
+	\begin{equation*}
+	f(x)-S_{1,1+n}(f,x)=\int\limits_{0}^{x}
+	\Bigl(
+	f'(t)-S_n(f',t)
+	\Bigr)dt.
+	\end{equation*}
+	Отсюда вытекает неравенство
+	\begin{equation}\label{walsh-rem-1}
+	|f(x)-S_{1,1+n}(f,x)| \le 
+	\|f'-S_n(f')\|_{L^1}, \quad x \in [0,1].
+	\end{equation}
+	Как известно \cite{walsh-GolubovBook}, подпоследовательность с номерами $n=2^k$ последовательности частичных суммы Фурье --- Уолша функции $f \in L^1$ сходится в метрике этого пространства к самой функции $f$. Тогда из \eqref{walsh-rem-1} получаем, что
+	\begin{equation}\label{walsh-S12k-uni-conv}
+	S_{1,1+2^k}(f,x) \rightrightarrows f(x), \quad k \to \infty, \,\, x \in [0,1].
+	\end{equation}
+	Возьмем теперь произвольное $n=2^k+i$, $0 \le i \le 2^k-1$. Тогда
+	\begin{equation}\label{walsh-proof:f-S1n}
+	|f(x)-S_{1,1+n}(f,x)| \le
+	|f(x)-S_{1,1+2^k}(f,x)|+|Q_{k,i}(f,x)|,
+	\end{equation}
+	где $Q_{k,i}(f,x)=\sum\limits_{j=2^k}^{2^k+i-1}c_{1,1+j}(f)w_{1,1+j}(x)$ при $i > 0$, и $Q_{k,0}(f)=0$. Из \eqref{walsh-S12k-uni-conv} следует, что для любого $\varepsilon>0$ существует номер $k_1=k_1(\varepsilon)$, такой что 
+	\begin{equation}\label{walsh-proof:R12k}
+	|f(x)-S_{1,1+2^k}(f,x)| < \frac{\varepsilon}{2}, \quad k \ge k_1, \,\, x \in [0,1]. 
+	\end{equation}
+	Далее, используя теорему \ref{walsh-st-w1n-w12k}, оценку \eqref{walsh-w12k-est} и равенство \eqref{walsh-crk-deriv}, получаем следующее соотношение:
+	\begin{equation}\label{walsh-proof:Qki-1}
+	|Q_{k,i}(f,x)|\le
+	\frac{1}{2^{k+1}}
+	\sum\limits_{j=2^k}^{2^k+i-1}
+	|c_{1,1+j}(f)| \le 
+	%\frac{1}{2^{k+1}}
+	%\sum\limits_{j=2^k}^{2^{k+1}-2}
+	%|c_{1,1+j}(f)|=
+	\frac{1}{2^{k+1}}
+	\sum\limits_{j=2^k}^{2^{k+1}-2}
+	|c_{j}(f')|. 
+	\end{equation}
+	В рассматриваемом случае $f' \in L^1$, поскольку $f \in W^1_{L^1}$. Следовательно, ввиду того, что коэффициенты Фурье --- Уолша суммируемых функций стремятся к нулю \cite{walsh-GolubovBook}, для заданного $\varepsilon$ найдется такой номер $k_2=k_2(\varepsilon)$, что $|c_j(f')| < \varepsilon$ при $j \ge 2^{k_2}$. Тогда из \eqref{walsh-proof:Qki-1} имеем:
+	\begin{equation}\label{walsh-proof:Qki-final}
+	|Q_{k,i}(f,x)| < \frac{\varepsilon}{2}, \quad k \ge k_2, \,\, 1 \le i \le 2^k-1.
+	\end{equation}
+	Полагая $n_0 = 2^{\max\{k_1,k_2\}}$, из \eqref{walsh-proof:f-S1n}, \eqref{walsh-proof:R12k} и \eqref{walsh-proof:Qki-final} выводим:
+	\begin{equation*}
+	|f(x)-S_{1,1+n}(f,x)| < \varepsilon, \quad n \ge n_0, \,\, x \in [0,1].
+	\end{equation*}
+	Таким образом, база индукции выполнена. Для доказательства шага индукции воспользуемся свойством \eqref{walsh-Srn-deriv} частичных сумм Фурье по системе $\mathfrak{W}_r$:
+	\begin{equation*}
+	f(x)-S_{r,n}(f,x)=
+	\int\limits_{0}^{x}
+	\Bigl(f(t)-S_{r,n}(f,t)\Bigr)'dt=
+	\int\limits_{0}^{x}
+	\Bigl(f'(t)-S_{r-1,n-1}(f',t)\Bigr)dt.
+	\end{equation*}
+	Для завершения индукционного перехода остается только заметить, что если $f \in W^r_{L^1}$, то $f' \in W^{r-1}_{L^1}$.
+\end{proof}
+
+
+
+%=================Список литературы====================
+\end{fulltext}
+\begin{thebibliography}{9}
+
+\bibitem{walsh-GolubovBook}
+Б.\,И. Голубов, А.\,В. Ефимов, В.\,А. Скворцов,Ряды и преобразования Уолша: Теория и применения. Наука. Гл. ред. физ.-мат. лит, Москва, 1987, 344 с.
+
+\bibitem{walsh-ShII-2018-IzvRan}
+И.\,И. Шарапудинов,"Системы функций, ортогональные по Соболеву, ассоциированные с ортогональной системой", Изв. РАН. Сер. матем., 82:1 (2018), 225--258.
+
+\bibitem{walsh-ShII-2017-mz}
+И.\,И. Шарапудинов,"Аппроксимативные свойства рядов Фурье по многочленам, ортогональным по Соболеву с весом Якоби и дискретными массами", Матем. заметки, 101:4 (2017), 611--629.
+
+\bibitem{walsh-ShII-2017-smj}
+И.~И.~Шарапудинов,"Специальные ряды по полиномам Лагерра и~их аппроксимативные свойства", Сиб. матем. журн., 58:2 (2017), 440--467.
+
+\bibitem{walsh-ShII-2015-demi}
+И.~И.~Шарапудинов, М.~Г.~Магомед-Касумов, С.~Р.~Магомедов,"Полиномы, ортогональные по Соболеву, ассоциированные с полиномами Чебышева первого рода", Дагестанские электронные математические известия, 4 (2015), 1--14.
+
+\bibitem{walsh-ShII-2017-izvuz}
+И.~И.~Шарапудинов, Т.~И.~Шарапудинов,"Полиномы, ортогональные по Соболеву, порожденные многочленами Чебышева, ортогональными на сетке", Изв. вузов. Матем., 61:8 (2017), 67--79.
+
+\bibitem{walsh-ShII-meix-2016}
+И.~И.~Шарапудинов, З.~Д.~Гаджиева,"Полиномы, ортогональные по Соболеву, порожденные многочленами Мейкснера", Изв. Сарат. ун-та. Нов. сер. Сер. Математика. Механика. Информатика, 16:3 (2016), 310--321.
+
+\bibitem{walsh-Gadzh-2016-saratov}
+Р.~М.~Гаджимирзаев,"Ряды Фурье по полиномам Мейкснера, ортогональным по Соболеву", Изв. Сарат. ун-та. Нов. сер. Сер. Математика. Механика. Информатика, 16:4 (2016), 388--395.
+
+\bibitem{walsh-fiht2}
+Г.\,М. Фихтенгольц,Курс дифференциального и интегрального исчисления. Физматлит, Москва, 2001, 810 с.
+
+\end{thebibliography}
+\end{document}
