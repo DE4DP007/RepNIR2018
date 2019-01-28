@@ -12,6 +12,7 @@
 !*.docx
 !*.xlsx
 .DS_Store
+*.pdf
 *.aux
 *.log
 *.out
