@@ -12,3 +12,9 @@
 !*.docx
 !*.xlsx
 .DS_Store
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+
