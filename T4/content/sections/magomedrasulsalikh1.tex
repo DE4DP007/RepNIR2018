@@ -2,9 +2,7 @@
 
 В данном подразделе рассмотрены некоторые свойства ортогональных по Соболеву функций $\chi_{1,n}(x)$, порожденных функциями Хаара. В частности, получены рекуррентные формулы для функций $\chi_{1,n}(x)$. Разработан алгоритм вычисления линейных комбинаций $N$ функций $\chi_{1,n}(x)$ за $O(\log N)$ операций.
 
-\subsection{Введение}
-
-Система Хаара состоит из ортогональных на отрезке $[0,1]$ кусочно постоянных функций $\chi_n(x)$, определяемых следующим образом \cite[глава 3, с. 70]{mmgmsr1-Kashin}:
+Напомним, что система Хаара состоит из ортогональных на отрезке $[0,1]$ кусочно постоянных функций $\chi_n(x)$, определяемых следующим образом \cite[глава 3, с. 70]{mmgmsr1-Kashin}:
 \begin{equation}\label{mmgmsr1-haar-def}
 \chi_1(x)=1, \quad
 \chi_n(x)=\begin{cases} 0,&\text{если $x\notin \bar\Delta_n$,}\\
@@ -14,43 +12,34 @@
 \end{equation}
 где $n=2^k+i$, $1 \le i \le 2^k$, $\Delta_n=\Delta_k^i=(\frac{i-1}{2^k},\frac{i}{2^k})$ --- двоичный интервал, а $\bar\Delta_n$ --- замыкание двоичного интервала $\Delta_n$.
 
-В работах Шарапудинова И.\,И. (см., например, \cite{mmgmsr1-Sha18, mmgmsr1-Shii-Shti-izvvuzov2017, mmgmsr1-Shii-matzam2017, mmgmsr1-ShaGadGad16, mmgmsr1-ShaGad16, mmgmsr1-Shii-lag-demi2015, mmgmsr1-SHII-MMG-Demi2015}) разработаны теория и методы построения систем функций $\Phi_r=\{\varphi_{r,n}\}_{n=0}^\infty$, $r \ge 1$, ортонормированных относительно скалярного произведения типа Соболева
-\begin{equation}\label{mmgmsr1-inner-prod-gen}
-\langle f,g \rangle =
-\sum_{\nu=0}^{r-1}f^{(\nu)}(a)g^{(\nu)}(a)+\int_{a}^{b}f^{(r)}(x)g^{(r)}(x)\mu(x)dx.
-\end{equation}
-Для построения системы $\Phi_r$ выбирается одна из классических систем $\Phi =\{\varphi_n\}_{n=0}^\infty$, ортонормированных относительно обычного скалярного произведения
-\begin{equation}\label{mmgmsr1-classic-mul}
-\langle f,g \rangle =\int_{a}^{b}f(t)g(t)\mu(t)dt,
-\end{equation}
-и на её основе строятся функции $\varphi_{r,n}(x)$ посредством равенств
-\begin{gather}
-\label{mmgmsr1-phirk-1}
-\varphi_{r,n}(x) =\frac{(x-a)^n}{n!}, \quad n=0,1,\ldots, r-1,\\
-\label{mmgmsr1-phirk-2}
-\varphi_{r,n}(x) =\frac{1}{(r-1)!}\int\limits_{a}^x(x-t)^{r-1}\varphi_{n-r}(t)dt, \quad n=r,r+1,\ldots.
-\end{gather}
-Система функций $\Phi_r=\{\varphi_{r,n}\}_{n=0}^\infty$, определённая формулами \eqref{mmgmsr1-phirk-1}, \eqref{mmgmsr1-phirk-2}, как было показано в упомянутых выше работах, будет ортонормирована относительно скалярного произведения \eqref{mmgmsr1-inner-prod-gen}.
-Ряд Фурье функции $y(x)$ по системе функций $\Phi_r$ имеет следующий вид:
-\begin{equation}\label{mmgmsr1-fourier-series}
-y(x) \sim \sum_{n=0}^{r-1} y^{(n)}(a)\frac{(x-a)^n}{n!}+ \sum_{n=r}^\infty c_{r,n}(y) \varphi_{r,n}(x),
-\end{equation}
-где
-\begin{equation}\label{mmgmsr1-crk}
-c_{r,n}(y)=\int_{-1}^1 y^{(r)}(t)\varphi_{n-r}(t)\mu(t)dt.
-\end{equation}
+%В работах Шарапудинова И.\,И. (см., например, \cite{mmgmsr1-Sha18, mmgmsr1-Shii-Shti-izvvuzov2017, mmgmsr1-Shii-matzam2017, mmgmsr1-ShaGadGad16, mmgmsr1-ShaGad16, mmgmsr1-Shii-lag-demi2015, mmgmsr1-SHII-MMG-Demi2015}) разработаны теория и методы построения систем функций $\Phi_r=\{\varphi_{r,n}\}_{n=0}^\infty$, $r \ge 1$, ортонормированных относительно скалярного произведения типа Соболева
+%\begin{equation}\label{mmgmsr1-inner-prod-gen}
+%\langle f,g \rangle =
+%\sum_{\nu=0}^{r-1}f^{(\nu)}(a)g^{(\nu)}(a)+\int_{a}^{b}f^{(r)}(x)g^{(r)}(x)\mu(x)dx.
+%\end{equation}
+%Для построения системы $\Phi_r$ выбирается одна из классических систем $\Phi =\{\varphi_n\}_{n=0}^\infty$, ортонормированных относительно обычного скалярного произведения
+%\begin{equation}\label{mmgmsr1-classic-mul}
+%\langle f,g \rangle =\int_{a}^{b}f(t)g(t)\mu(t)dt,
+%\end{equation}
+%и на её основе строятся функции $\varphi_{r,n}(x)$ посредством равенств
+%\begin{gather}
+%\label{mmgmsr1-phirk-1}
+%\varphi_{r,n}(x) =\frac{(x-a)^n}{n!}, \quad n=0,1,\ldots, r-1,\\
+%\label{mmgmsr1-phirk-2}
+%\varphi_{r,n}(x) =\frac{1}{(r-1)!}\int\limits_{a}^x(x-t)^{r-1}\varphi_{n-r}(t)dt, \quad n=r,r+1,\ldots.
+%\end{gather}
+%Система функций $\Phi_r=\{\varphi_{r,n}\}_{n=0}^\infty$, определённая формулами \eqref{mmgmsr1-phirk-1}, \eqref{mmgmsr1-phirk-2}, как было показано в упомянутых выше работах, будет ортонормирована относительно скалярного произведения \eqref{mmgmsr1-inner-prod-gen}.
+%Ряд Фурье функции $y(x)$ по системе функций $\Phi_r$ имеет следующий вид:
+%\begin{equation}\label{mmgmsr1-fourier-series}
+%y(x) \sim \sum_{n=0}^{r-1} y^{(n)}(a)\frac{(x-a)^n}{n!}+ \sum_{n=r}^\infty c_{r,n}(y) \varphi_{r,n}(x),
+%\end{equation}
+%где
+%\begin{equation}\label{mmgmsr1-crk}
+%c_{r,n}(y)=\int_{-1}^1 y^{(r)}(t)\varphi_{n-r}(t)\mu(t)dt.
+%\end{equation}
 
-Ряды Фурье по функциям, ортогональным в смысле Соболева, могут быть эффективно использованы при решении задачи Коши для систем обыкновенных дифференциальных уравнений. В частности, в \cite{mmgmsr1-ShaOdeDemi2017,mmgmsr1-ShaMagOdeCos2017,mmgmsr1-SMS-SHTI-Demi2017,mmgmsr1-SHII-MSR-Demi2017} предложен основанный на применении рядов Фурье по системам $\Phi_1=\{\varphi_{1,n}\}$ итерационный метод решения задачи Коши для нелинейных систем обыкновенных дифференциальных уравнений первого порядка. Метод основан на представлении неизвестного решения $y(x)$ рассматриваемой задачи Коши в виде равномерно сходящегося ряда Фурье по системе вида $\Phi_1$:
-\begin{equation*}
-y(x) = y(a)+\sum\limits_{n=1}^{\infty}
-c_{1,n}(y)\varphi_{1,n}(x),
-\end{equation*}
-и поиске посредством некоторых итерационных процедур первых $N$ неизвестных коэффициентов $c_{1,n}(y)$, $k=1,\ldots,N$. В качестве приближенного решения берется частичная сумма указанного ряда:
-\begin{equation}\label{mmgmsr1-y-part-sum}
-y(x) \approx y(a)+\sum\limits_{n=0}^{N-1}
-c_{1,n+1}(y)\varphi_{1,n+1}(x).
-\end{equation}
-Упомянутый выше итерационный метод устроен так, что при его выполнении приходится неоднократно вычислять в узлах некоторой сетки линейные комбинации вида
+Как уже отмечалось во введении, ряды Фурье по функциям, ортогональным в смысле Соболева, могут быть эффективно использованы при решении задачи Коши для систем ОДУ. 
+Упомянутый во введении итерационный метод, основанный на поиске решения в виде частичной суммы \eqref{mmgmsr1-y-part-sum}, устроен так, что при его выполнении приходится неоднократно вычислять в узлах некоторой сетки линейные комбинации вида
 %При этом для вычисления приближенных значений решения в конкретных точках требуется, как это видно из \eqref{mmgmsr1-y-part-sum}, вычислять линейные комбинации вида
 \begin{equation}\label{mmgmsr1-linear-comb}
 \sum\limits_{n=0}^{N-1}\alpha_n\varphi_{1,n+1}(x),
