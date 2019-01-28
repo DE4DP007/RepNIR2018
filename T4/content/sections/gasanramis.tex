@@ -9,7 +9,7 @@
 Характерной особенностью скалярных  произведений типа Соболева является, в частности, то, что они, как правило,  содержат слагаемые, которые <<контролируют>> поведение соответствующих ортогональных полиномов в одной или нескольких точках числовой оси.
 
 
-\section{Быстрый алгоритм приближенного нахождения решения задачи Коши для ОДУ}
+\section{Быстрый алгоритм приближенного нахождения решения задачи Коши для ОДУ посредством соболевских функций, порожденных косинусами}
 
 
 В данном подразделе рассмотрен алгоритм быстрого приближенного нахождения решения задачи Коши для ОДУ путем вычисления коэффициентов разложения этого решения в ряд по системе функций $\{\varphi_{1,n}(x)\}_{n=0}^{\infty}$, где $ \varphi_{1,0}(x)=1$, $\varphi_{1,1}(x)=x$, $\varphi_{1,n+1}(x)=\frac{\sqrt{2}}{\pi n}\sin(\pi nx)$, $n=1,2,\ldots$,
@@ -141,13 +141,13 @@ y'=xy, \quad y(0)=1, \quad 0\leq x\leq 1,2.
 \begin{equation}\label{GasRamEx_Cou1}
 \eta'(t)=1,2^2\cos(\pi t) \sin(\pi t) \eta(t), \quad \eta(0)=1, \quad 0\leq t\leq 1.
 \end{equation}
-Ниже на рис. \ref{pic1} приведены первые 4 итерации применения программы к задаче \eqref{GasRamEx_Cou1} при $N=64$. Синим цветом обозначено точное решение, красным -- приближенное.
+Ниже на рисунке \ref{pic1} приведены первые 4 итерации применения программы к задаче \eqref{GasRamEx_Cou1} при $N=64$. Синим цветом обозначено точное решение, красным -- приближенное.
 \begin{figure}[h!]
 \includegraphics[width=.24\linewidth]{pictures/Ex1_image1_64(1)}
 \includegraphics[width=.24\linewidth]{pictures/Ex1_image1_64(2)}
 \includegraphics[width=.24\linewidth]{pictures/Ex1_image1_64(3)}
 \includegraphics[width=.24\linewidth]{pictures/Ex1_image1_64(4)}
-\caption{}
+\caption{Первые 4 итерации применения программы к задаче \eqref{GasRamEx_Cou1} при $N=64$. Синим цветом обозначено точное решение, красным -- приближенное}
 \label{pic1}
 \end{figure}
 
@@ -170,12 +170,12 @@ f(x,y)=
 \begin{equation}\label{GasRamEx_Cou3}
 \eta'(t)=1,5\cos(\pi t) \sin(1,5\sin(\pi t)) \sqrt{1-\eta^2(t)}, \quad \eta(0)=0, \quad 0\leq t\leq 1.
 \end{equation}
-На рис. \ref{pic2} приведены первые 3 итерации применения программы к задаче \eqref{GasRamEx_Cou3} при $N=64$. Синим цветом обозначено точное решение, красным -- приближенное.
+На рисунке \ref{pic2} приведены первые 3 итерации применения программы к задаче \eqref{GasRamEx_Cou3} при $N=64$. Синим цветом обозначено точное решение, красным -- приближенное.
 \begin{figure}
 \includegraphics[width=.32\linewidth]{pictures/Ex2_image1_64(1)}
 \includegraphics[width=.32\linewidth]{pictures/Ex2_image1_64(2)}
 \includegraphics[width=.32\linewidth]{pictures/Ex2_image1_64(3)}
-\caption{}
+\caption{Первые 3 итерации применения программы к задаче \eqref{GasRamEx_Cou3} при $N=64$. Синим цветом обозначено точное решение, красным -- приближенное}
 \label{pic2}
 \end{figure}
 
